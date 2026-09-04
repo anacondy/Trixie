@@ -1,0 +1,16 @@
+== supervised long-running process check (start_process) ==
+  http://127.0.0.1:8899/ -> HTTP 200 in 0.001418s
+  <!DOCTYPE HTML>
+  <html lang="en">
+  <head>
+  <meta charset="utf-8">
+  local server stopped
+  NOTE: run-1 additionally verified the platform-supervised process runner
+  (start_process, port proxied for live preview); not reproducible from a
+  plain shell script. Bind servers to 0.0.0.0 when using that runner.
+
+== ticker final count before cleanup ==
+  pid 7251 alive: yes
+  ticks: 2
+  span: 2026-09-04T13:58:13Z .. 2026-09-04T13:58:18Z
+  ticker stopped

@@ -1,0 +1,17 @@
+== supervised long-running process check (start_process) ==
+  http://127.0.0.1:8800/ -> HTTP 200 in 0.001140s
+  <!DOCTYPE HTML>
+  <html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <title>Directory listing for /</title>
+  </head>
+   2738       1       00:04 bash -c bash -l "$0/run.cmd" > "$0/out.log" 2>&1; echo $? > "$0/exit" /tmp/arena-workspace/procs/bench-static-file-server-0c5b38b4
+
+== ticker final count before cleanup ==
+  pid 2626 alive: yes
+  ticks: 13
+  span: 2026-09-04T11:22:05Z .. 2026-09-04T11:23:05Z
+  elapsed: 63s since first tick
+  -> detached process ran across 70 tool-call boundaries
+  ticker stopped

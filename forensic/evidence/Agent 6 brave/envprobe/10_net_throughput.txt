@@ -1,0 +1,56 @@
+== Throughput: real downloads (curl -w, HTTP/1.1, timed 11:18:51Z) ==
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    sz=52428800; sp=19279908; print(f'  {name:34s} {sz/1048576:8.2f} MiB  {sp/1048576:7.2f} MiB/s  total {float(2.719349):6.2f}s  ttfb {float(0.179280)*1000:6.0f}ms  code=200')
+                                         ^^^^
+NameError: name 'name' is not defined
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    sz=52428800; sp=120402806; print(f'  {name:34s} {sz/1048576:8.2f} MiB  {sp/1048576:7.2f} MiB/s  total {float(0.435445):6.2f}s  ttfb {float(0.117837)*1000:6.0f}ms  code=200')
+                                          ^^^^
+NameError: name 'name' is not defined
+  File "<string>", line 1
+    sz=curl: (6) Could not resolve host: speed.hetzner.de; sp=; print(f'  {name:34s} {sz/1048576:8.2f} MiB  {sp/1048576:7.2f} MiB/s  total {float():6.2f}s  ttfb {float()*1000:6.0f}ms  code=')
+           ^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    sz=11370360; sp=6169819; print(f'  {name:34s} {sz/1048576:8.2f} MiB  {sp/1048576:7.2f} MiB/s  total {float(1.842900):6.2f}s  ttfb {float(0.261816)*1000:6.0f}ms  code=200')
+                                        ^^^^
+NameError: name 'name' is not defined
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    sz=941; sp=8915; print(f'  {name:34s} {sz/1048576:8.2f} MiB  {sp/1048576:7.2f} MiB/s  total {float(0.105548):6.2f}s  ttfb {float(0.105382)*1000:6.0f}ms  code=302')
+                                ^^^^
+NameError: name 'name' is not defined
+
+== upload test: cloudflare __up 20MiB ==
+  upload 20MiB: speed=15580230B/s total=1.346034s code=200
+
+== egress location probe (ipinfo; non-fatal) ==
+{
+  "ip": "34.143.70.112",
+  "hostname": "112.70.143.34.bc.googleusercontent.com",
+  "city": "The Dalles",
+  "region": "Oregon",
+  "country": "US",
+  "loc": "45.5946,-121.1787",
+  "org": "AS396982 Google LLC",
+  "postal": "97058",
+  "timezone": "America/Los_Angeles",
+  "readme": "https://ipinfo.io/missingauth"
+}
+
+== ssh handshake egress test (port 22, github) ==
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+git@github.com: Permission denied (publickey).
+
+== git clone (shallow, https) ==
+  clone ok, 28 KiB in 0.70s
+
+== node/npm registry install test (express, small tree) ==
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    sz=sum(os.path.getsize(os.path.join(r,f)) for r,_,fs in os.walk('/tmp/npmtest/node_modules') for f in fs) if os.path.isdir('/tmp/npmtest/node_modules') else 0
+                                                                                                                 ^^
+NameError: name 'os' is not defined. Did you forget to import 'os'?

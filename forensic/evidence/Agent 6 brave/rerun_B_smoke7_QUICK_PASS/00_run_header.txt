@@ -1,0 +1,9 @@
+### environment_probe.sh v1.1.0 run header
+run_start_utc: 2026-09-04T13:57:55Z
+outdir: /tmp/smoke_run7
+quick: 1
+user: user uid=1000
+hostname: e2b.local
+sandbox_id: i9nxb4qydn3qmwway6hd3
+template_id: nlhz8vlwyupq845jsdg9
+boot_id: 2bb79165-136a-4b63-829d-17027b0a8e40

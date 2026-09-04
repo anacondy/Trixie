@@ -1,0 +1,97 @@
+== cwd/home ==
+/home/user
+HOME=/home/user
+TMPDIR=<unset>
+SHELL=/bin/bash
+
+== workspace contents ==
+total 156
+drwx------ 5 user user  4096 Sep  4 13:56 .
+drwxr-xr-x 3 root root    60 Jul 23 15:09 ..
+drwxr-xr-x 3 user user    60 Sep  4 13:47 .npm
+-rw-r--r-- 1 user user  3722 Sep  4 13:56 .patch2.py
+-rw-r--r-- 1 user user 10330 Sep  4 13:52 .patch_script.py
+drwxr-xr-x 2 user user    60 Sep  4 13:43 .ssh
+-rw-r--r-- 1 user user     0 Sep  4 13:43 .sudo_as_admin_successful
+-rw-r--r-- 1 user user 52576 Sep  4 13:45 RAW_VERBATIM_APPENDIX.md
+-rwxr-xr-x 1 user user  3361 Sep  4 13:47 compare_run.sh
+-rw-r--r-- 1 user user  2603 Sep  4 13:44 cross_turn_check.txt
+-rw-r--r-- 1 user user 24257 Sep  4 13:43 environment_characterization.md
+-rwxr-xr-x 1 user user 46953 Sep  4 13:56 environment_probe.sh
+drwxr-xr-x 2 user user  4096 Sep  4 13:43 envprobe
+
+== df -h ==
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        25G  4.1G   20G  17% /
+devtmpfs        990M     0  990M   0% /dev
+tmpfs           993M     0  993M   0% /dev/shm
+tmpfs           397M  320K  397M   1% /run
+tmpfs           993M   13M  980M   2% /tmp
+tmpfs           5.0M     0  5.0M   0% /run/lock
+
+== df -i (inodes) ==
+Filesystem      Inodes  IUsed   IFree IUse% Mounted on
+/dev/root      6759792 136342 6623450    3% /
+devtmpfs        253363    137  253226    1% /dev
+tmpfs           254076      1  254075    1% /dev/shm
+tmpfs           819200    434  818766    1% /run
+tmpfs          1048576   1197 1047379    1% /tmp
+tmpfs           254076      2  254074    1% /run/lock
+
+== read-only mounts ==
+ramfs /run/credentials/systemd-journald.service ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700 0 0
+ramfs /run/credentials/systemd-networkd.service ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700 0 0
+ramfs /run/credentials/getty@tty1.service ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700 0 0
+(ro count: 3 / total 25)
+
+== fs type per path ==
+  /            ext2/ext3
+  /home        ext2/ext3
+  /home/user   ext2/ext3
+  /tmp         tmpfs
+  /var/tmp     ext2/ext3
+  /dev/shm     tmpfs
+  /proc        proc
+  /sys         sysfs
+  /etc         ext2/ext3
+  /run         tmpfs
+
+== /tmp + /dev/shm sizing ==
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           993M   13M  980M   2% /tmp
+tmpfs           993M     0  993M   0% /dev/shm
+/dev/root        25G  4.1G   20G  17% /
+
+== write/read/delete probes ==
+  /home/user : write OK (1048576 B) + chmod OK
+  /home/user : delete OK
+  /tmp : write OK (1048576 B) + chmod OK
+  /tmp : delete OK
+  /dev/shm : write OK (1048576 B) + chmod OK
+  /dev/shm : delete OK
+  /var/tmp : write OK (1048576 B) + chmod OK
+  /var/tmp : delete OK
+
+== link/fallocate ops in /home/user ==
+  hardlink OK
+  symlink OK
+  fallocate 10MiB OK
+total 10241
+-rw-r--r-- 2 user user        2 Sep  4 13:57 a
+-rw-r--r-- 2 user user        2 Sep  4 13:57 b
+lrwxrwxrwx 1 user user        1 Sep  4 13:57 c -> a
+-rw-r--r-- 1 user user 10485760 Sep  4 13:57 fall.bin
+  cleanup OK
+
+== overlay / backing store ==
+
+== protected-path writability (as current user) ==
+  /etc: not writable
+  /usr: not writable
+  /var/log: not writable
+  /root: not writable
+  /boot: not writable
+  /proc/sys: not writable
+
+== persistence markers ==
+  wrote: HOME marker 2026-09-04T13:57:01Z | TMP marker 2026-09-04T13:57:01Z
