@@ -1,0 +1,170 @@
+[
+ {
+  "ip": "127.0.0.2",
+  "note": "loopback non-.1",
+  "rc": 111,
+  "ms": 0.22,
+  "verdict": "REFUSED (real RST from something)"
+ },
+ {
+  "ip": "169.254.0.20",
+  "note": "link-local subnet base (our /30)",
+  "rc": 11,
+  "ms": 3003.27,
+  "verdict": "BLACKHOLED (packets dropped, no RST)"
+ },
+ {
+  "ip": "169.254.0.21",
+  "note": "SELF (eth0 addr)",
+  "rc": 111,
+  "ms": 0.02,
+  "verdict": "REFUSED (real RST from something)"
+ },
+ {
+  "ip": "169.254.0.22",
+  "note": "GATEWAY (default route / ARP neighbour)",
+  "rc": 11,
+  "ms": 3003.44,
+  "verdict": "BLACKHOLED (packets dropped, no RST)"
+ },
+ {
+  "ip": "169.254.169.254",
+  "note": "cloud IMDS (link-local metadata)",
+  "rc": 0,
+  "ms": 0.36,
+  "verdict": "ACCEPTED (handshake completed locally)"
+ },
+ {
+  "ip": "169.254.170.2",
+  "note": "ECS task metadata",
+  "rc": 11,
+  "ms": 3002.57,
+  "verdict": "BLACKHOLED (packets dropped, no RST)"
+ },
+ {
+  "ip": "10.0.0.1",
+  "note": "RFC1918 10/8",
+  "rc": 11,
+  "ms": 3003.09,
+  "verdict": "BLACKHOLED (packets dropped, no RST)"
+ },
+ {
+  "ip": "10.255.255.1",
+  "note": "RFC1918 10/8",
+  "rc": 11,
+  "ms": 3002.72,
+  "verdict": "BLACKHOLED (packets dropped, no RST)"
+ },
+ {
+  "ip": "172.16.0.1",
+  "note": "RFC1918 172.16/12",
+  "rc": 11,
+  "ms": 3002.47,
+  "verdict": "BLACKHOLED (packets dropped, no RST)"
+ },
+ {
+  "ip": "192.168.1.1",
+  "note": "RFC1918 192.168/16",
+  "rc": 11,
+  "ms": 3001.63,
+  "verdict": "BLACKHOLED (packets dropped, no RST)"
+ },
+ {
+  "ip": "100.64.0.1",
+  "note": "RFC6598 CGNAT start",
+  "rc": 11,
+  "ms": 3002.18,
+  "verdict": "BLACKHOLED (packets dropped, no RST)"
+ },
+ {
+  "ip": "100.127.255.254",
+  "note": "RFC6598 CGNAT end",
+  "rc": 11,
+  "ms": 3001.65,
+  "verdict": "BLACKHOLED (packets dropped, no RST)"
+ },
+ {
+  "ip": "192.0.2.1",
+  "note": "RFC5737 TEST-NET-1 (has /etc/hosts entry)",
+  "rc": 0,
+  "ms": 0.27,
+  "verdict": "ACCEPTED (handshake completed locally)"
+ },
+ {
+  "ip": "192.0.2.7",
+  "note": "RFC5737 TEST-NET-1 other",
+  "rc": 0,
+  "ms": 0.27,
+  "verdict": "ACCEPTED (handshake completed locally)"
+ },
+ {
+  "ip": "198.51.100.7",
+  "note": "RFC5737 TEST-NET-2 other",
+  "rc": 0,
+  "ms": 0.39,
+  "verdict": "ACCEPTED (handshake completed locally)"
+ },
+ {
+  "ip": "203.0.113.7",
+  "note": "RFC5737 TEST-NET-3 other",
+  "rc": 0,
+  "ms": 0.38,
+  "verdict": "ACCEPTED (handshake completed locally)"
+ },
+ {
+  "ip": "198.18.0.1",
+  "note": "RFC2544 benchmark",
+  "rc": 0,
+  "ms": 0.26,
+  "verdict": "ACCEPTED (handshake completed locally)"
+ },
+ {
+  "ip": "192.88.99.1",
+  "note": "6to4 relay anycast",
+  "rc": 0,
+  "ms": 0.27,
+  "verdict": "ACCEPTED (handshake completed locally)"
+ },
+ {
+  "ip": "224.0.0.1",
+  "note": "multicast",
+  "rc": "n/a (non-connectable special)",
+  "ms": null,
+  "verdict": "SKIPPED"
+ },
+ {
+  "ip": "240.0.0.1",
+  "note": "reserved 240/4",
+  "rc": 0,
+  "ms": 0.18,
+  "verdict": "ACCEPTED (handshake completed locally)"
+ },
+ {
+  "ip": "0.0.0.0",
+  "note": "this-network",
+  "rc": 111,
+  "ms": 0.02,
+  "verdict": "REFUSED (real RST from something)"
+ },
+ {
+  "ip": "255.255.255.255",
+  "note": "broadcast",
+  "rc": "n/a (non-connectable special)",
+  "ms": null,
+  "verdict": "SKIPPED"
+ },
+ {
+  "ip": "8.8.8.8",
+  "note": "CONTROL: real public anycast",
+  "rc": 0,
+  "ms": 0.16,
+  "verdict": "ACCEPTED (handshake completed locally)"
+ },
+ {
+  "ip": "142.251.152.119",
+  "note": "CONTROL: real public unicast",
+  "rc": 0,
+  "ms": 0.49,
+  "verdict": "ACCEPTED (handshake completed locally)"
+ }
+]

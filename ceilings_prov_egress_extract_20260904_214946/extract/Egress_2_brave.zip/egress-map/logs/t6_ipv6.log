@@ -1,0 +1,10 @@
+=== IPv6 availability ===
+00000000000000000000000000000001 01 80 10 80       lo
+fe8000000000000000fc00fffe000005 02 40 20 80     eth0
+    inet6 ::1/128 scope host proto kernel_lo 
+    inet6 fe80::fc:ff:fe00:5/64 scope link proto kernel_ll 
+--- curl -6 test ---
+ipv6 cf: http=000 bytes=0
+--- AAAA query for speed.hetzner.de ---
+AAAA @8.8.8.8: rcode=0 answers=0 len=97
+AAAA @1.1.1.1: rcode=0 answers=0 len=97

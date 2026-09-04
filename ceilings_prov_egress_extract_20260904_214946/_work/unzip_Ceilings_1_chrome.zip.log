@@ -1,0 +1,21 @@
+Archive:  /home/user/Trixie/Ceilings 1 chrome.zip
+  inflating: extract/Ceilings_1_chrome.zip/sandbox-ceiling-report.md  
+   creating: extract/Ceilings_1_chrome.zip/ceiling/
+   creating: extract/Ceilings_1_chrome.zip/ceiling/scripts/
+  inflating: extract/Ceilings_1_chrome.zip/ceiling/scripts/mem_probe.py  
+  inflating: extract/Ceilings_1_chrome.zip/ceiling/scripts/fd_probe.py  
+  inflating: extract/Ceilings_1_chrome.zip/ceiling/scripts/proc_probe.py  
+  inflating: extract/Ceilings_1_chrome.zip/ceiling/scripts/kill_by_pattern.py  
+  inflating: extract/Ceilings_1_chrome.zip/ceiling/scripts/dup_loop.py  
+  inflating: extract/Ceilings_1_chrome.zip/ceiling/scripts/forkcal.py  
+  inflating: extract/Ceilings_1_chrome.zip/ceiling/scripts/forktest.c  
+  inflating: extract/Ceilings_1_chrome.zip/ceiling/scripts/thrtest.c  
+  inflating: extract/Ceilings_1_chrome.zip/ceiling/scripts/kill_pids_file.py  
+  inflating: extract/Ceilings_1_chrome.zip/ceiling/scripts/burn.c  
+   creating: extract/Ceilings_1_chrome.zip/ceiling/out/
+  inflating: extract/Ceilings_1_chrome.zip/ceiling/out/memory_probes.json  
+  inflating: extract/Ceilings_1_chrome.zip/ceiling/out/memory_probes.tsv  
+ extracting: extract/Ceilings_1_chrome.zip/ceiling/out/fd_ph2.txt  
+ extracting: extract/Ceilings_1_chrome.zip/ceiling/out/fd_ph3.txt  
+  inflating: extract/Ceilings_1_chrome.zip/ceiling/out/fd_ph4.txt  
+  inflating: extract/Ceilings_1_chrome.zip/ceiling/out/fd_probe.json  

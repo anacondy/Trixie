@@ -1,0 +1,11 @@
+=== HTTP/3 (QUIC over UDP 443) test ===
+  curl: (7) QUIC connection has been shut down
+  h3 code=000 proto=0 t=0.063733s
+=== sequential 100MB x3 ===
+seq1 speed=28B/s size=1 t=0.034741s code=403
+seq2 speed=18B/s size=1 t=0.054845s code=403
+seq3 speed=29B/s size=1 t=0.034109s code=403
+=== parallel 100MB x3 ===
+par1 speed=28B/s size=1 t=0.035660s code=403
+par2 speed=28B/s size=1 t=0.034962s code=403
+par3 speed=22B/s size=1 t=0.044207s code=403

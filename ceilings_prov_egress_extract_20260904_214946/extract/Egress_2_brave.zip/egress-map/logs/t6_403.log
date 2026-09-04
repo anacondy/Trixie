@@ -1,0 +1,26 @@
+=== __down 403: full headers + body ===
+HTTP/1.1 403 Forbidden
+Date: Fri, 04 Sep 2026 19:48:43 GMT
+Content-Type: text/plain
+Content-Length: 1
+Connection: keep-alive
+Cache-Control: private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Expires: Thu, 01 Jan 1970 00:00:01 GMT
+Referrer-Policy: same-origin
+X-Frame-Options: SAMEORIGIN
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=pJVaQ%2BgKwb4sYiLb%2F%2F3bgc77LpWPnxD%2BQacoj8VnEtuVhRfudaRPGYzZyC93D5ZzzE2b44OhmWOJNUVY2dxpcRTGn4gNHWxs4P1fmVL%2BFkQTeHCzYHYPf1hrHM8saHvo6XJofIS2"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.01,"max_age":604800}
+Server-Timing: cfSpeedEdge;dur=1, cfSpeedWorker;dur=0
+Server: cloudflare
+CF-RAY: a35f836b4d48defb-SEA
+server-timing: cfL4;desc="?proto=TCP&rtt=6423&min_rtt=6287&rtt_var=2455&sent=5&recv=7&lost=0&retrans=0&sent_bytes=3941&recv_bytes=1788&delivery_rate=671862&cwnd=53&unsent_bytes=0&cid=e4e7ef1825c93e6d&ts=14&x=0"
+
+--- body ---
+0
+(body bytes: 1)
+
+=== root page ===
+root http=200 bytes=68442
+
+=== small 1MB down (if allowed) ===
+1MB http=200 bytes=1000000 time=0.557735s

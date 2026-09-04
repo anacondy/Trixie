@@ -1,0 +1,5 @@
+wheel url: https://files.pythonhosted.org/packages/7b/44/59a1eb68e773c4098d107ef34a0dbdeca501d72ffcfbff9a7707343921ce/numpy-2.5.2-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+=== curl -w speed_download on 16MB wheel (3 sequential, cold) ===
+WHEEL run1 http=200 bytes=16709995 time_total=0.166547s speed_download=100332008B/s
+WHEEL run2 http=200 bytes=16709995 time_total=0.157790s speed_download=105900215B/s
+WHEEL run3 http=200 bytes=16709995 time_total=0.161284s speed_download=103606030B/s

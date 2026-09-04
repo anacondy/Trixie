@@ -1,0 +1,320 @@
+[
+ {
+  "host": "google.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Google Trust Services / WR2"
+ },
+ {
+  "host": "youtube.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Google Trust Services / WR2"
+ },
+ {
+  "host": "facebook.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "DigiCert Inc / DigiCert Global G2 TLS RSA SHA256 2020 CA1"
+ },
+ {
+  "host": "twitter.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Let's Encrypt / YR1"
+ },
+ {
+  "host": "instagram.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "DigiCert Inc / DigiCert Global G2 TLS RSA SHA256 2020 CA1"
+ },
+ {
+  "host": "linkedin.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "DigiCert Inc / DigiCert Global G2 TLS RSA SHA256 2020 CA1"
+ },
+ {
+  "host": "amazon.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "DigiCert Inc / GeoTrust TLS RSA CA G1"
+ },
+ {
+  "host": "microsoft.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Microsoft Corporation / Microsoft TLS G2 RSA CA OCSP 04"
+ },
+ {
+  "host": "apple.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Apple Inc. / Apple Public EV Server ECC CA 1 - G1"
+ },
+ {
+  "host": "netflix.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "DigiCert Inc / DigiCert Global G3 TLS ECC SHA384 2020 CA1"
+ },
+ {
+  "host": "reddit.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "DigiCert Inc / DigiCert Global G2 TLS RSA SHA256 2020 CA1"
+ },
+ {
+  "host": "wikipedia.org",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Let's Encrypt / YE2"
+ },
+ {
+  "host": "stackoverflow.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Let's Encrypt / YE1"
+ },
+ {
+  "host": "gitlab.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Sectigo Limited / Sectigo Public Server Authentication CA DV R36"
+ },
+ {
+  "host": "bitbucket.org",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Amazon / Amazon ECDSA 256 M01"
+ },
+ {
+  "host": "docker.io",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Amazon / Amazon RSA 2048 M01"
+ },
+ {
+  "host": "quay.io",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Amazon / Amazon RSA 2048 M01"
+ },
+ {
+  "host": "cdn.jsdelivr.net",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Sectigo Limited / Sectigo Public Server Authentication CA DV R36"
+ },
+ {
+  "host": "unpkg.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Google Trust Services / WE1"
+ },
+ {
+  "host": "fonts.googleapis.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Google Trust Services / WR2"
+ },
+ {
+  "host": "pypi.org",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "GlobalSign nv-sa / GlobalSign Atlas R3 DV TLS CA 2025 Q4"
+ },
+ {
+  "host": "npmjs.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Google Trust Services / WE1"
+ },
+ {
+  "host": "crates.io",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "GlobalSign nv-sa / GlobalSign Atlas R3 DV TLS CA 2025 Q4"
+ },
+ {
+  "host": "pypi.org",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "GlobalSign nv-sa / GlobalSign Atlas R3 DV TLS CA 2025 Q4"
+ },
+ {
+  "host": "rubygems.org",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "GlobalSign nv-sa / GlobalSign Atlas R3 DV TLS CA 2026 Q1"
+ },
+ {
+  "host": "maven.org",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Amazon / Amazon RSA 2048 M04"
+ },
+ {
+  "host": "debian.org",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Let's Encrypt / YR1"
+ },
+ {
+  "host": "archive.ubuntu.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Let's Encrypt / YR1"
+ },
+ {
+  "host": "alpinelinux.org",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Let's Encrypt / YR2"
+ },
+ {
+  "host": "archlinux.org",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Let's Encrypt / YE1"
+ },
+ {
+  "host": "openai.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Let's Encrypt / YE2"
+ },
+ {
+  "host": "anthropic.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Let's Encrypt / YE2"
+ },
+ {
+  "host": "api.anthropic.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Google Trust Services / WE1"
+ },
+ {
+  "host": "claude.ai",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Let's Encrypt / YE1"
+ },
+ {
+  "host": "huggingface.co",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Amazon / Amazon RSA 2048 M01"
+ },
+ {
+  "host": "kaggle.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Google Trust Services / WR3"
+ },
+ {
+  "host": "pastebin.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Google Trust Services / WE1"
+ },
+ {
+  "host": "gist.github.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Sectigo Limited / Sectigo Public Server Authentication CA DV E36"
+ },
+ {
+  "host": "webhook.site",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Let's Encrypt / YR2"
+ },
+ {
+  "host": "requestbin.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Amazon / Amazon RSA 2048 M01"
+ },
+ {
+  "host": "ngrok.io",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Let's Encrypt / YE1"
+ },
+ {
+  "host": "tailscale.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Let's Encrypt / YR1"
+ },
+ {
+  "host": "warp.dev",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Google Trust Services / WR3"
+ },
+ {
+  "host": "discord.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Google Trust Services / WE1"
+ },
+ {
+  "host": "telegram.org",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "GoDaddy.com / GoDaddy TLS Intermediate CA DV - R1v1"
+ },
+ {
+  "host": "signal.org",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Google Trust Services / WE1"
+ },
+ {
+  "host": "proton.me",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Let's Encrypt / YR2"
+ },
+ {
+  "host": "torproject.org",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Let's Encrypt / YR2"
+ },
+ {
+  "host": "speed.cloudflare.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Google Trust Services / WE1"
+ },
+ {
+  "host": "cloudflare.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Google Trust Services / WE1"
+ },
+ {
+  "host": "example.com",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "SSL Corporation / Cloudflare TLS Issuing ECC CA 3"
+ },
+ {
+  "host": "iana.org",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Sectigo Limited / Sectigo Public Server Authentication CA OV R36"
+ },
+ {
+  "host": "icann.org",
+  "status": "OK",
+  "tls": "TLSv1.3",
+  "issuer": "Sectigo Limited / Sectigo Public Server Authentication CA OV R36"
+ }
+]

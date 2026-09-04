@@ -1,0 +1,20 @@
+=== /tmp mount ===
+Filesystem     Type  1K-blocks  Used Available Use% Mounted on
+tmpfs          tmpfs   1016304    72   1016232   1% /tmp
+tmpfs on /tmp type tmpfs (rw,nosuid,nodev,nr_inodes=1048576)
+BEFORE: MemAvailable=1607.62 MiB  Shmem=1.13281 MiB
+0 MiB
+0 MiB  free=1652
+--- writing 900 MiB of /dev/urandom to /tmp (tmpfs) ---
+943718400 bytes (944 MB, 900 MiB) copied, 2.01922 s, 467 MB/s
+dd wall=2.02s -> 445 MiB/s
+awk: 1: unexpected character '\'
+awk: line 1: runaway string constant " MiB\"} ...
+DURING (900 MiB resident): MemAvailable=705.629 MiB  Shmem=  free=749
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           993M  901M   93M  91% /tmp
+--- removing file ---
+awk: 1: unexpected character '\'
+awk: line 1: runaway string constant " MiB\"} ...
+AFTER:  MemAvailable=1609.93 MiB  Shmem=
+=== TMP TEST COMPLETE ===

@@ -1,0 +1,47 @@
+=== 403 evidence (headers + body) ===
+HTTP/1.1 403 Forbidden
+Date: Fri, 04 Sep 2026 19:36:43 GMT
+Content-Type: text/plain
+Content-Length: 1
+Connection: keep-alive
+Cache-Control: private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Expires: Thu, 01 Jan 1970 00:00:01 GMT
+Referrer-Policy: same-origin
+X-Frame-Options: SAMEORIGIN
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=MfDOrBa7HsVfSk77oU48WDpRLUDvVwwjUFp4WYQ21j1vb9kzq13DzHMy8f8j9isFjCF5TYDy7p7d5Jx%2B2t75UNNiU7sHEC6H3ze2uXWjPoFuvJfxrihNSVT%2B7ug7JH0TLk34OFpp"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.01,"max_age":604800}
+Server-Timing: cfSpeedEdge;dur=2, cfSpeedWorker;dur=0
+Server: cloudflare
+CF-RAY: a35f71d5ee17eb3b-SEA
+--- 403 body:
+0
+=== threshold sweep ===
+bytes=60000000 -> 200 (0.289308s)
+bytes=75000000 -> 200 (0.513832s)
+bytes=99999999 -> 200 (0.374730s)
+bytes=100000001 -> 403 (0.033136s)
+=== ipinfo on egress IP ===
+{
+  "ip": "8.235.26.22",
+  "hostname": "22.26.235.8.bc.googleusercontent.com",
+  "city": "The Dalles",
+  "region": "Oregon",
+  "country": "US",
+  "loc": "45.5946,-121.1787",
+  "org": "AS396982 Google LLC",
+  "postal": "97058",
+  "timezone": "America/Los_Angeles",
+  "readme": "https://ipinfo.io/missingauth"
+}
+=== SEQUENTIAL 50MB x3 ===
+seq1 speed=186524013B/s size=50000000 t=0.268062s code=200
+seq2 speed=179380563B/s size=50000000 t=0.278737s code=200
+seq3 speed=195160792B/s size=50000000 t=0.256199s code=200
+=== PARALLEL 50MB x3 ===
+par1 speed=63514969B/s size=50000000 t=0.787216s code=200
+par2 speed=102703568B/s size=50000000 t=0.486838s code=200
+par3 speed=213582113B/s size=50000000 t=0.234102s code=200
+=== PyPI wheel 16.7MB x3 ===
+wheel1 speed=107571843B/s size=16709995 t=0.155338s code=200
+wheel2 speed=115102428B/s size=16709995 t=0.145175s code=200
+wheel3 speed=113781024B/s size=16709995 t=0.146861s code=200

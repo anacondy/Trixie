@@ -1,0 +1,573 @@
+{
+ "portquiz.net": {
+  "ip": "35.180.139.74",
+  "note": "all TCP ports open by design (egress test host)",
+  "ports": {
+   "21": {
+    "port": 21,
+    "handshake": true,
+    "hs_ms": 0.7,
+    "data": true,
+    "data_ms": 1654.3,
+    "snippet": "HTTP/1.1 200 OK|Date: Fri, 04 Sep 2026 19:53:04 GMT|Server: Apache/2.4.29 (Ubuntu)|Vary"
+   },
+   "22": {
+    "port": 22,
+    "handshake": true,
+    "hs_ms": 0.4,
+    "data": true,
+    "data_ms": 1653.2,
+    "snippet": "HTTP/1.1 200 OK|Date: Fri, 04 Sep 2026 19:53:04 GMT|Server: Apache/2.4.29 (Ubuntu)|Vary"
+   },
+   "25": {
+    "port": 25,
+    "handshake": true,
+    "hs_ms": 0.3,
+    "data": true,
+    "data_ms": 1653.9,
+    "snippet": "HTTP/1.1 200 OK|Date: Fri, 04 Sep 2026 19:53:04 GMT|Server: Apache/2.4.29 (Ubuntu)|Vary"
+   },
+   "53": {
+    "port": 53,
+    "handshake": true,
+    "hs_ms": 0.7,
+    "data": false,
+    "data_ms": 1501.0,
+    "snippet": "AttributeError: 'bytes' object has no attribute 'encode'"
+   },
+   "80": {
+    "port": 80,
+    "handshake": true,
+    "hs_ms": 1.3,
+    "data": false,
+    "data_ms": 1640.8,
+    "snippet": null
+   },
+   "110": {
+    "port": 110,
+    "handshake": true,
+    "hs_ms": 1.3,
+    "data": false,
+    "data_ms": 141.7,
+    "snippet": null
+   },
+   "143": {
+    "port": 143,
+    "handshake": true,
+    "hs_ms": 0.7,
+    "data": true,
+    "data_ms": 1652.1,
+    "snippet": "HTTP/1.1 200 OK|Date: Fri, 04 Sep 2026 19:53:04 GMT|Server: Apache/2.4.29 (Ubuntu)|Vary"
+   },
+   "443": {
+    "port": 443,
+    "handshake": true,
+    "hs_ms": 0.8,
+    "data": false,
+    "data_ms": 180.0,
+    "snippet": "SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of proto"
+   },
+   "465": {
+    "port": 465,
+    "handshake": true,
+    "hs_ms": 1.0,
+    "data": false,
+    "data_ms": 139.2,
+    "snippet": "ConnectionResetError: [Errno 104] Connection reset by peer"
+   },
+   "587": {
+    "port": 587,
+    "handshake": true,
+    "hs_ms": 0.6,
+    "data": false,
+    "data_ms": 141.1,
+    "snippet": null
+   },
+   "993": {
+    "port": 993,
+    "handshake": true,
+    "hs_ms": 0.6,
+    "data": false,
+    "data_ms": 140.7,
+    "snippet": "ConnectionResetError: [Errno 104] Connection reset by peer"
+   },
+   "995": {
+    "port": 995,
+    "handshake": true,
+    "hs_ms": 0.9,
+    "data": false,
+    "data_ms": 143.0,
+    "snippet": "ConnectionResetError: [Errno 104] Connection reset by peer"
+   },
+   "3306": {
+    "port": 3306,
+    "handshake": true,
+    "hs_ms": 0.8,
+    "data": false,
+    "data_ms": 139.5,
+    "snippet": null
+   },
+   "5432": {
+    "port": 5432,
+    "handshake": true,
+    "hs_ms": 0.4,
+    "data": false,
+    "data_ms": 140.6,
+    "snippet": null
+   },
+   "6379": {
+    "port": 6379,
+    "handshake": true,
+    "hs_ms": 0.4,
+    "data": false,
+    "data_ms": 140.4,
+    "snippet": null
+   },
+   "8080": {
+    "port": 8080,
+    "handshake": true,
+    "hs_ms": 0.2,
+    "data": false,
+    "data_ms": 143.0,
+    "snippet": null
+   },
+   "8443": {
+    "port": 8443,
+    "handshake": true,
+    "hs_ms": 0.2,
+    "data": false,
+    "data_ms": 139.9,
+    "snippet": "ConnectionResetError: [Errno 104] Connection reset by peer"
+   }
+  }
+ },
+ "scanme.nmap.org": {
+  "ip": "45.33.32.156",
+  "note": "Nmap's authorised scan target",
+  "ports": {
+   "21": {
+    "port": 21,
+    "handshake": true,
+    "hs_ms": 0.6,
+    "data": false,
+    "data_ms": 22.3,
+    "snippet": null
+   },
+   "22": {
+    "port": 22,
+    "handshake": true,
+    "hs_ms": 1.5,
+    "data": true,
+    "data_ms": 45.6,
+    "snippet": "SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.13|"
+   },
+   "25": {
+    "port": 25,
+    "handshake": true,
+    "hs_ms": 0.6,
+    "data": false,
+    "data_ms": 21.0,
+    "snippet": null
+   },
+   "53": {
+    "port": 53,
+    "handshake": true,
+    "hs_ms": 0.7,
+    "data": false,
+    "data_ms": 21.6,
+    "snippet": "AttributeError: 'bytes' object has no attribute 'encode'"
+   },
+   "80": {
+    "port": 80,
+    "handshake": true,
+    "hs_ms": 0.3,
+    "data": true,
+    "data_ms": 1544.1,
+    "snippet": "HTTP/1.1 200 OK|Date: Fri, 04 Sep 2026 19:53:05 GMT|Server: Apache/2.4.7 (Ubuntu)|Accep"
+   },
+   "110": {
+    "port": 110,
+    "handshake": true,
+    "hs_ms": 1.2,
+    "data": false,
+    "data_ms": 20.7,
+    "snippet": null
+   },
+   "143": {
+    "port": 143,
+    "handshake": true,
+    "hs_ms": 0.6,
+    "data": false,
+    "data_ms": 21.5,
+    "snippet": null
+   },
+   "443": {
+    "port": 443,
+    "handshake": true,
+    "hs_ms": 0.4,
+    "data": false,
+    "data_ms": 31.9,
+    "snippet": "SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of proto"
+   },
+   "465": {
+    "port": 465,
+    "handshake": true,
+    "hs_ms": 0.7,
+    "data": false,
+    "data_ms": 20.7,
+    "snippet": "ConnectionResetError: [Errno 104] Connection reset by peer"
+   },
+   "587": {
+    "port": 587,
+    "handshake": true,
+    "hs_ms": 0.5,
+    "data": false,
+    "data_ms": 21.3,
+    "snippet": null
+   },
+   "993": {
+    "port": 993,
+    "handshake": true,
+    "hs_ms": 3.5,
+    "data": false,
+    "data_ms": 22.2,
+    "snippet": "SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of proto"
+   },
+   "995": {
+    "port": 995,
+    "handshake": true,
+    "hs_ms": 0.7,
+    "data": false,
+    "data_ms": 21.2,
+    "snippet": "ConnectionResetError: [Errno 104] Connection reset by peer"
+   },
+   "3306": {
+    "port": 3306,
+    "handshake": true,
+    "hs_ms": 2.3,
+    "data": false,
+    "data_ms": 22.0,
+    "snippet": null
+   },
+   "5432": {
+    "port": 5432,
+    "handshake": true,
+    "hs_ms": 1.2,
+    "data": false,
+    "data_ms": 22.3,
+    "snippet": null
+   },
+   "6379": {
+    "port": 6379,
+    "handshake": true,
+    "hs_ms": 0.2,
+    "data": false,
+    "data_ms": 21.9,
+    "snippet": null
+   },
+   "8080": {
+    "port": 8080,
+    "handshake": true,
+    "hs_ms": 3.4,
+    "data": false,
+    "data_ms": 20.2,
+    "snippet": null
+   },
+   "8443": {
+    "port": 8443,
+    "handshake": true,
+    "hs_ms": 2.6,
+    "data": false,
+    "data_ms": 21.9,
+    "snippet": "ConnectionResetError: [Errno 104] Connection reset by peer"
+   }
+  }
+ },
+ "1.1.1.1": {
+  "ip": "1.1.1.1",
+  "note": "Cloudflare",
+  "ports": {
+   "21": {
+    "port": 21,
+    "handshake": true,
+    "hs_ms": 0.6,
+    "data": false,
+    "data_ms": 4504.9,
+    "snippet": null
+   },
+   "22": {
+    "port": 22,
+    "handshake": true,
+    "hs_ms": 0.4,
+    "data": false,
+    "data_ms": 4505.1,
+    "snippet": null
+   },
+   "25": {
+    "port": 25,
+    "handshake": true,
+    "hs_ms": 0.3,
+    "data": false,
+    "data_ms": 4505.4,
+    "snippet": null
+   },
+   "53": {
+    "port": 53,
+    "handshake": true,
+    "hs_ms": 0.3,
+    "data": false,
+    "data_ms": 1501.9,
+    "snippet": "AttributeError: 'bytes' object has no attribute 'encode'"
+   },
+   "80": {
+    "port": 80,
+    "handshake": true,
+    "hs_ms": 0.6,
+    "data": true,
+    "data_ms": 1520.0,
+    "snippet": "HTTP/1.1 403 Forbidden|Date: Fri, 04 Sep 2026 19:53:07 GMT|Content-Type: text/plain; cha"
+   },
+   "110": {
+    "port": 110,
+    "handshake": true,
+    "hs_ms": 0.4,
+    "data": false,
+    "data_ms": 4504.6,
+    "snippet": null
+   },
+   "143": {
+    "port": 143,
+    "handshake": true,
+    "hs_ms": 0.8,
+    "data": false,
+    "data_ms": 4503.8,
+    "snippet": null
+   },
+   "443": {
+    "port": 443,
+    "handshake": true,
+    "hs_ms": 0.3,
+    "data": true,
+    "data_ms": 93.2,
+    "snippet": "HTTP/1.1 301 Moved Permanently|Date: Fri, 04 Sep 2026 19:53:05 GMT|Content-Length: 0|Co",
+    "cert_issuer": "(none)"
+   },
+   "465": {
+    "port": 465,
+    "handshake": true,
+    "hs_ms": 1.2,
+    "data": false,
+    "data_ms": 4024.7,
+    "snippet": "TimeoutError: _ssl.c:1015: The handshake operation timed out"
+   },
+   "587": {
+    "port": 587,
+    "handshake": true,
+    "hs_ms": 0.7,
+    "data": false,
+    "data_ms": 4503.9,
+    "snippet": null
+   },
+   "993": {
+    "port": 993,
+    "handshake": true,
+    "hs_ms": 2.5,
+    "data": false,
+    "data_ms": 4023.8,
+    "snippet": "TimeoutError: _ssl.c:1015: The handshake operation timed out"
+   },
+   "995": {
+    "port": 995,
+    "handshake": true,
+    "hs_ms": 2.3,
+    "data": false,
+    "data_ms": 4024.5,
+    "snippet": "TimeoutError: _ssl.c:1015: The handshake operation timed out"
+   },
+   "3306": {
+    "port": 3306,
+    "handshake": true,
+    "hs_ms": 0.4,
+    "data": false,
+    "data_ms": 4504.6,
+    "snippet": null
+   },
+   "5432": {
+    "port": 5432,
+    "handshake": true,
+    "hs_ms": 1.1,
+    "data": false,
+    "data_ms": 4503.3,
+    "snippet": null
+   },
+   "6379": {
+    "port": 6379,
+    "handshake": true,
+    "hs_ms": 0.4,
+    "data": false,
+    "data_ms": 4502.0,
+    "snippet": null
+   },
+   "8080": {
+    "port": 8080,
+    "handshake": true,
+    "hs_ms": 1.1,
+    "data": true,
+    "data_ms": 1510.6,
+    "snippet": "HTTP/1.1 403 Forbidden|Date: Fri, 04 Sep 2026 19:53:07 GMT|Content-Type: text/plain; cha"
+   },
+   "8443": {
+    "port": 8443,
+    "handshake": true,
+    "hs_ms": 1.0,
+    "data": true,
+    "data_ms": 123.1,
+    "snippet": "HTTP/1.1 301 Moved Permanently|Date: Fri, 04 Sep 2026 19:53:05 GMT|Content-Length: 0|Co",
+    "cert_issuer": "(none)"
+   }
+  }
+ },
+ "8.8.8.8": {
+  "ip": "8.8.8.8",
+  "note": "Google",
+  "ports": {
+   "21": {
+    "port": 21,
+    "handshake": true,
+    "hs_ms": 0.5,
+    "data": false,
+    "data_ms": 4505.5,
+    "snippet": null
+   },
+   "22": {
+    "port": 22,
+    "handshake": true,
+    "hs_ms": 0.4,
+    "data": false,
+    "data_ms": 4505.2,
+    "snippet": null
+   },
+   "25": {
+    "port": 25,
+    "handshake": true,
+    "hs_ms": 0.5,
+    "data": false,
+    "data_ms": 4504.2,
+    "snippet": null
+   },
+   "53": {
+    "port": 53,
+    "handshake": true,
+    "hs_ms": 0.4,
+    "data": false,
+    "data_ms": 1501.1,
+    "snippet": "AttributeError: 'bytes' object has no attribute 'encode'"
+   },
+   "80": {
+    "port": 80,
+    "handshake": true,
+    "hs_ms": 1.4,
+    "data": false,
+    "data_ms": 4502.7,
+    "snippet": null
+   },
+   "110": {
+    "port": 110,
+    "handshake": true,
+    "hs_ms": 0.8,
+    "data": false,
+    "data_ms": 4503.0,
+    "snippet": null
+   },
+   "143": {
+    "port": 143,
+    "handshake": true,
+    "hs_ms": 1.0,
+    "data": false,
+    "data_ms": 4502.7,
+    "snippet": null
+   },
+   "443": {
+    "port": 443,
+    "handshake": true,
+    "hs_ms": 0.3,
+    "data": true,
+    "data_ms": 60.7,
+    "snippet": "HTTP/1.1 302 Found|X-Content-Type-Options: nosniff|Access-Control-Allow-Origin: *|Locat",
+    "cert_issuer": "(none)"
+   },
+   "465": {
+    "port": 465,
+    "handshake": true,
+    "hs_ms": 0.4,
+    "data": false,
+    "data_ms": 4016.1,
+    "snippet": "TimeoutError: _ssl.c:1015: The handshake operation timed out"
+   },
+   "587": {
+    "port": 587,
+    "handshake": true,
+    "hs_ms": 0.9,
+    "data": false,
+    "data_ms": 4504.2,
+    "snippet": null
+   },
+   "993": {
+    "port": 993,
+    "handshake": true,
+    "hs_ms": 0.9,
+    "data": false,
+    "data_ms": 4019.9,
+    "snippet": "TimeoutError: _ssl.c:1015: The handshake operation timed out"
+   },
+   "995": {
+    "port": 995,
+    "handshake": true,
+    "hs_ms": 4.1,
+    "data": false,
+    "data_ms": 4008.8,
+    "snippet": "TimeoutError: _ssl.c:1015: The handshake operation timed out"
+   },
+   "3306": {
+    "port": 3306,
+    "handshake": true,
+    "hs_ms": 1.3,
+    "data": false,
+    "data_ms": 4504.7,
+    "snippet": null
+   },
+   "5432": {
+    "port": 5432,
+    "handshake": true,
+    "hs_ms": 7.7,
+    "data": false,
+    "data_ms": 4504.7,
+    "snippet": null
+   },
+   "6379": {
+    "port": 6379,
+    "handshake": true,
+    "hs_ms": 0.4,
+    "data": false,
+    "data_ms": 4504.4,
+    "snippet": null
+   },
+   "8080": {
+    "port": 8080,
+    "handshake": true,
+    "hs_ms": 0.4,
+    "data": false,
+    "data_ms": 4504.4,
+    "snippet": null
+   },
+   "8443": {
+    "port": 8443,
+    "handshake": true,
+    "hs_ms": 0.3,
+    "data": false,
+    "data_ms": 4008.8,
+    "snippet": "TimeoutError: _ssl.c:1015: The handshake operation timed out"
+   }
+  }
+ }
+}

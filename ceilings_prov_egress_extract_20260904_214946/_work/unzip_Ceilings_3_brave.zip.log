@@ -1,0 +1,20 @@
+Archive:  /home/user/Trixie/Ceilings 3 brave.zip
+  inflating: extract/Ceilings_3_brave.zip/sandbox-ceilings.md  
+   creating: extract/Ceilings_3_brave.zip/probes/
+  inflating: extract/Ceilings_3_brave.zip/probes/mem_bisect.py  
+  inflating: extract/Ceilings_3_brave.zip/probes/mem_bisect.log  
+  inflating: extract/Ceilings_3_brave.zip/probes/fd_test.py  
+  inflating: extract/Ceilings_3_brave.zip/probes/fork_test.py  
+  inflating: extract/Ceilings_3_brave.zip/probes/thread_test.py  
+  inflating: extract/Ceilings_3_brave.zip/probes/thread_test.log  
+ extracting: extract/Ceilings_3_brave.zip/probes/fork_test.log  
+  inflating: extract/Ceilings_3_brave.zip/probes/fork_exec_test.py  
+  inflating: extract/Ceilings_3_brave.zip/probes/fork_exec_test.log  
+  inflating: extract/Ceilings_3_brave.zip/probes/disk_test.sh  
+  inflating: extract/Ceilings_3_brave.zip/probes/disk_test.log  
+  inflating: extract/Ceilings_3_brave.zip/probes/disk_test2.sh  
+  inflating: extract/Ceilings_3_brave.zip/probes/disk_test2.log  
+  inflating: extract/Ceilings_3_brave.zip/probes/tmp_test.sh  
+  inflating: extract/Ceilings_3_brave.zip/probes/tmp_test.log  
+  inflating: extract/Ceilings_3_brave.zip/probes/cpu_burn.py  
+  inflating: extract/Ceilings_3_brave.zip/probes/smt_penalty.py  

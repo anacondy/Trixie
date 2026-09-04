@@ -1,0 +1,41 @@
+=== Broader identity scan of the three Ceilings reports (read-only) — Fri Sep  4 21:51:50 UTC 2026 ===
+
+----- extract/Ceilings_1_chrome.zip/sandbox-ceiling-report.md -----
+1:# Sandbox Hard-Ceiling Probe Report
+3:**Host:** Linux e2b.local 6.1.158+ x86_64 (kernel `PREEMPT_DYNAMIC`), 2 vCPUs, ~1.94 GiB RAM VM
+4:**Date of run:** 2026-09-05 (sandbox clock 2026-09-04/05 UTC in `date` epoch terms)
+18:| cgroup of session | `/sys/fs/cgroup/user` (v2) |
+32:**Method.** Every probe ran as a **subprocess** (`subprocess.run`) that allocates `n` MiB as `bytearray` and touches every 4 KiB page; parent records returncode. `rc=-9` ⇒ OOM kill. Steps of 128 MiB upward until first kill, then binary bisect to a ≤32 MiB window, then both boundary points confirmed again. `memory.events` and `MemAvailable` snapshotted around each probe. Driver stays alive throughout — it *is* the "session survives?" test.
+71:- **Does an OOM kill terminate the session or only the child?** *Only the child.* The driver kept running through both kills (17 probes in one process), printed its summary, and the whole tool session stayed alive. Kill is charged to the cgroup (`oom_kill` 0→2) but the cgroup keeps working.
+72:- **Mechanism.** `memory.max` = 1,857 MiB but `max`/`oom` events never fired → the kills are **not** cgroup-limit-triggered; with VM RAM at 1,985 MiB, ~180 MiB cgroup baseline + ~350–400 MB out-of-cgroup daemons + a 1.66 GiB touching child ≈ 2.2 GiB, the trigger is best explained as **total-VM (host) OOM**, which kills the largest anon consumer — the child — and is credited to the victim's cgroup `oom_kill`. Effective practical ceiling for one allocate-and-touch process: **≈1.63 GiB (1,664 MiB kills); hard cgroup cap is 1,857 MiB but never reachable in one allocation because host RAM (1,985 MiB) minus ~0.4 GiB of resident agent daemons binds first.** No swap exists to soften it. Small allocations are unaffected (any single-process total ≥1,664 MiB of *touched* memory is the kill zone; untouched/`malloc`-only allocations do not count — the ceiling is on resident, touched memory).
+73:- *Caveat observed:* the 17-probe driver's own cgroup `memory.current` slumped from ~182 MiB to ~12–22 MiB between kills (kernel reclaimed file cache under pressure); the kill boundary was stable regardless (±16 MiB).
+88:**Answers:** yes, a child can `ulimit -n 65536` (and up to 524288) — soft may be raised to any value ≤ hard by the unprivileged user. The hard limit 524,288 is fully reachable and enforced. It cannot be exceeded (EPERM). So the true FD ceiling of one process is **524,288**, with the session default at 1,024. (The 818 MB/s "zeros" from earlier probing was about disk, not FDs — see §4.)
+94:Constraints present: `RLIMIT_NPROC` soft=hard=**7917** (per-uid task count, includes threads); cgroup `pids.max = max` (no cgroup cap). Kernel `threads-max` = 15,835 (irrelevant; rlimit binds first).
+119:**Answers:** process ceiling **7,914 live tasks** (fork or clone), enforced by **RLIMIT_NPROC = 7917** minus whatever your session already runs; `pids.max` is `max` and plays no role. 7,917 is therefore the theoretical cap of total uid-1000 tasks including the session itself.
+120:- *Observation worth recording:* a python-driven fork loop was pathologically slow (~2,500 forks in ~10 min) while the C fork loop hit the ceiling in 1.7 s. The slowdown was environmental pressure (forked CPython interpreters carrying multi-GB address spaces under a 1.9 GB RAM cap → reclaim storms; the stray `oom_kill` counter increments from 2 to 20 accumulated exactly during those stress phases), **not** a platform fork-rate throttle — C forking proves the kernel path is unthrottled.
+136:- **Real (non-zero) sustained numbers: 238–472 MiB/s** with writes, 0.2–0.3 s sync tails (writeback keeps up during long runs); the earlier **818 MiB/s figure was indeed meaningless** (all-zero pages: writeback of zero pages is nearly free on this stack). Sustained 15 GiB run ≈ **320 MiB/s** is the most representative device number; short/cache-warm runs read higher (470–1,150 MiB/s) because of page-cache absorption and host-disk variance.
+175:- **No per-session concurrency cap found up to 12 issued / 10 concurrent.** The only serialization is *dispatch*: calls launch ~0.35–0.9 s apart (orchestrator startup per call; pids increment ~5/call), but once launched they never wait for a slot. Practical throughput ≈ 1–3 call launches/s with unbounded overlap; wall-clock of an N-sleep wave ≈ N×0.35–0.9 s + sleep, not N×sleep.
+206:**Answer: per the topology files, cpu0 and cpu1 are SMT siblings on one physical core — but the SMT penalty is unmeasurable (zero):** two busy threads on the sibling pair run at a perfectly linear 2.0× single-thread throughput, i.e. the vCPUs behave like independent cores (guest topology is virtualized; the hypervisor is evidently backing them with separate host cores — true co-scheduled SMT typically yields only ~1.3–1.9×). 2 threads pinned to a *single* vCPU gain nothing (1.04×) as expected.
+
+----- extract/Ceilings_2_edge.zip/sandbox_ceilings.md -----
+1:# Sandbox Hard Ceilings — Bisection Report
+4:**Host:** e2b.local (KVM, `Intel(R) Xeon(R) Processor @ 2.60GHz`)  
+5:**Method:** every ceiling probed by bisection / loop-to-failure in a **child subprocess** so an OOM kill or `EAGAIN` never kills the session. All large files removed afterwards and verified.
+70:`memory.events` after coarse: `low 0, high 0, max 0, oom 0, oom_kill 2, oom_group_kill 0` (was all-zero before → **+2 kills**, exactly the two `-9`s). Session survived.
+135:| **Does OOM kill terminate the session?** | **No — only the child.** Every `-9` was the `subprocess` child. The parent `bash`/tool session always survived (exit 0, kept probing). `dmesg` confirms: `oom-kill:constraint=CONSTRAINT_NONE,…global_oom,task_memcg=/user,task=python3,pid=1485… Out of memory: Killed process 1485 (python3) total-vm:1692064kB, anon-rss:1680752kB…` — victim is always the `python3` child, `oom_score_adj:100`. |
+136:| Cgroup vs host? | **Host-global OOM, not cgroup-max.** `max`/`high` counters stayed 0 and `memory.max` (1857 MiB) was never hit; `dmesg` says `global_oom` with `CONSTRAINT_NONE`. The box has 1985 MiB total, ~0.5 GB held by root daemons/buffers, so a ~1637 MiB single allocation exhausts the host first. |
+160:| P0 | `kernel.threads-max / pid_max` | `15835 / 4194304` (kernel far above NPROC) |
+163:| P2 | Heavy fork: `timeout 150 python3 fork_test.py` (python `os.fork`, child `sleep 60`, no exec) | Forked 500…6000, then **parent OOM-killed (exit 137)** at ~6000–6250 children. `dmesg`: `global_oom,task=python3…total-vm:14012kB, anon-rss:4192kB` per child. **Heavy processes hit global-OOM (~6000) before NPROC (7917)** because each python child carries ~4 MB anon RSS. Session (tool) survived; leftovers reaped (pids.current back to 2). |
+225:Runner-measured durations: 5181–5213 ms (5 s sleep + ~0.2 s overhead). **Start spread 11 ms, end spread 19 ms, earliest-start→latest-end wall 5.025 s vs ~41.5 s serial.** All 8 PIDs distinct. **All 8 ran truly in parallel — no per-session concurrency cap at 8.**
+290:| Resource | Hard ceiling (measured) | Enforcer | Session survives? |
+292:| **Single-allocation RAM (touched)** | **1637 MiB ok / 1638 MiB killed (1 MiB window)** | host-global OOM (`CONSTRAINT_NONE,global_oom`), not cgroup `max` (1857 MiB, counters 0) | ✅ child only (`-9`), session never dies |
+301:*All probes executed 2026-09-04 ~20:46–21:02 UTC; raw tool logs retained in session transcript; this file at `/home/user/sandbox_ceilings.md` is the compiled record.*
+
+----- extract/Ceilings_3_brave.zip/sandbox-ceilings.md -----
+1:# Sandbox Hard-Ceiling Probe Report (bisection & stress)
+24:| kernel `pid_max` | 4194304 |
+86:**Does an OOM kill terminate the session?** **No — only the child.** The probing parent
+112:Constraints in play: cgroup `pids.max = max` (none), kernel `pid_max = 4194304`,
+127:  the kernel culled them, and the load hit 66 before recovery. The fork+exec test (tiny image)
+192:  per-session concurrency cap (≥8, likely higher). Calls are dispatched with a ~0.9–2.2 s
+246:| Memory (touched, in child) | **1632 MiB OK / 1664 MiB SIGKILL** (±32 MiB) | cgroup `memory.max` 1856.75 MiB; OOM kills child only, session survives |

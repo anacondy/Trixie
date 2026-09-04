@@ -1,0 +1,23 @@
+Archive:  /home/user/Trixie/Egress 2 brave.zip
+   creating: extract/Egress_2_brave.zip/egress-map/
+  inflating: extract/Egress_2_brave.zip/egress-map/EGRESS_POLICY_MAP.md  
+   creating: extract/Egress_2_brave.zip/egress-map/logs/
+  inflating: extract/Egress_2_brave.zip/egress-map/logs/t1.log  
+  inflating: extract/Egress_2_brave.zip/egress-map/logs/t1_time.log  
+  inflating: extract/Egress_2_brave.zip/egress-map/logs/t2.log  
+  inflating: extract/Egress_2_brave.zip/egress-map/logs/t3.log  
+  inflating: extract/Egress_2_brave.zip/egress-map/logs/t4.log  
+  inflating: extract/Egress_2_brave.zip/egress-map/logs/t5_tls.log  
+  inflating: extract/Egress_2_brave.zip/egress-map/logs/t6_403.log  
+  inflating: extract/Egress_2_brave.zip/egress-map/logs/t6_hetzner.log  
+  inflating: extract/Egress_2_brave.zip/egress-map/logs/t6_ipv6.log  
+  inflating: extract/Egress_2_brave.zip/egress-map/logs/t6_par.log  
+  inflating: extract/Egress_2_brave.zip/egress-map/logs/t6_pip.log  
+  inflating: extract/Egress_2_brave.zip/egress-map/logs/t6_seq.log  
+  inflating: extract/Egress_2_brave.zip/egress-map/logs/t6_std.log  
+  inflating: extract/Egress_2_brave.zip/egress-map/logs/t6_threshold.log  
+  inflating: extract/Egress_2_brave.zip/egress-map/logs/t6_wheel.log  
+  inflating: extract/Egress_2_brave.zip/egress-map/t1_proxy.py  
+  inflating: extract/Egress_2_brave.zip/egress-map/t2_dns.py  
+  inflating: extract/Egress_2_brave.zip/egress-map/t3_ip_sni.py  
+  inflating: extract/Egress_2_brave.zip/egress-map/t4_ports.py  

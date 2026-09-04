@@ -1,0 +1,52 @@
+=== curl -svI https://pypi.org ===
+* ALPN: curl offers h2,http/1.1
+*  CAfile: /etc/ssl/certs/ca-certificates.crt
+*  CApath: /etc/ssl/certs
+* SSL connection using TLSv1.3 / TLS_AES_128_GCM_SHA256 / X25519MLKEM768 / RSASSA-PSS
+*  subject: CN=pypi.org
+*  expire date: Jan 29 04:33:07 2027 GMT
+*  subjectAltName: host "pypi.org" matched cert's "pypi.org"
+*  issuer: C=BE; O=GlobalSign nv-sa; CN=GlobalSign Atlas R3 DV TLS CA 2025 Q4
+*  SSL certificate verify ok.
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://pypi.org/
+* [HTTP/2] [1] [:method: HEAD]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: pypi.org]
+* [HTTP/2] [1] [:path: /]
+* [HTTP/2] [1] [user-agent: curl/8.14.1]
+* [HTTP/2] [1] [accept: */*]
+> HEAD / HTTP/2
+< HTTP/2 200 
+HTTP/2 200 
+
+=== openssl s_client pypi.org chain ===
+issuer=C=BE, O=GlobalSign nv-sa, CN=GlobalSign Atlas R3 DV TLS CA 2025 Q4
+subject=CN=pypi.org
+notBefore=Dec 28 04:33:08 2025 GMT
+notAfter=Jan 29 04:33:07 2027 GMT
+sha256 Fingerprint=15:58:1C:41:02:3F:07:89:85:31:4E:7D:4C:4F:8A:CA:BF:05:C7:F6:97:AE:EF:CD:30:24:E0:98:39:E2:0C:E6
+
+=== chain (s_client) ===
+ 0 s:CN=pypi.org
+   i:C=BE, O=GlobalSign nv-sa, CN=GlobalSign Atlas R3 DV TLS CA 2025 Q4
+ 1 s:C=BE, O=GlobalSign nv-sa, CN=GlobalSign Atlas R3 DV TLS CA 2025 Q4
+   i:OU=GlobalSign Root CA - R3, O=GlobalSign, CN=GlobalSign
+
+=== github.com leaf ===
+issuer=C=GB, O=Sectigo Limited, CN=Sectigo Public Server Authentication CA DV E36
+subject=CN=github.com
+notBefore=Sep  1 00:00:00 2026 GMT
+notAfter=Nov 29 23:59:59 2026 GMT
+
+=== e2b-ca.crt details ===
+issuer=O=E2B, CN=E2B Proxy CA
+subject=O=E2B, CN=E2B Proxy CA
+notBefore=Sep  2 11:39:00 2026 GMT
+notAfter=Sep  2 12:39:00 2027 GMT
+sha256 Fingerprint=48:B5:CB:D3:A0:A3:0D:98:FA:93:CE:81:CF:1F:1D:D2:9D:2D:C8:30:D1:BA:30:7F:E3:DF:5B:A4:9B:CD:70:E2
+
+=== verify pypi.org against system store ===
+http_code=200 ssl_verify=0
+python TLS verify against system store: OK, cipher TLS_AES_128_GCM_SHA256
+leaf issuer: {'countryName': 'BE', 'organizationName': 'GlobalSign nv-sa', 'commonName': 'GlobalSign Atlas R3 DV TLS CA 2025 Q4'}

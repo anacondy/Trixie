@@ -1,0 +1,470 @@
+=== First 40 lines of every top-level README / INDEX / MANIFEST / main report (read-only) — Fri Sep  4 21:51:49 UTC 2026 ===
+
+==================== FIRST 40 LINES: extract/Ceilings_1_chrome.zip/sandbox-ceiling-report.md ====================
+# Sandbox Hard-Ceiling Probe Report
+
+**Host:** Linux e2b.local 6.1.158+ x86_64 (kernel `PREEMPT_DYNAMIC`), 2 vCPUs, ~1.94 GiB RAM VM
+**Date of run:** 2026-09-05 (sandbox clock 2026-09-04/05 UTC in `date` epoch terms)
+**Method:** bisection of allocate-and-TOUCH subprocesses, C fork/thread counters, `dd` from `/dev/urandom`, `taskset` pinning, cgroup event snapshots. Raw probe logs: `ceiling/out/*.json|.tsv|.txt`, probe sources in `ceiling/scripts/`.
+
+---
+
+## 0. Environment reconnaissance (baseline)
+
+| Quantity | Value |
+|---|---|
+| CPU count | 2 (`nproc`=2) |
+| CPU topology | cpu0 & cpu1: `thread_siblings_list=0-1` on both, `core_id=0`, `physical_package_id=0` → one physical core, SMT pair (see §6) |
+| MemTotal | 2,032,608 kB = **1,984.9 MiB** |
+| MemAvailable (idle) | ~1,525–1,620 MiB (agent daemons outside our cgroup hold ~350–400 MB RSS: jupyter-server 98 MB, python3.13 73 MB, uvicorn 66 MB, node ×2 ~98 MB, envd 25 MB …) |
+| Swap | none (SwapTotal 0) |
+| cgroup of session | `/sys/fs/cgroup/user` (v2) |
+| `memory.max` | **1,947,172,864 B = 1,857.0 MiB**; `memory.swap.max=max` |
+| `cpu.max` | `max 100000` (no quota) |
+| `pids.max` | `max` (no cgroup pids cap) |
+| Overcommit | `/proc/sys/vm/overcommit_memory=0` (heuristic) |
+| Filesystem | single ext4 `/dev/vda` (25 GB, 4.1 GB used, ~20 GB avail) mounted at `/`; **`/home/user` is NOT a separate mount** (same device, `df -T` shows `/dev/root` for both) |
+| `/tmp` | tmpfs 993 MB (RAM) |
+| rlimits | `nofile` soft **1024** / hard **524288**; `nproc` soft=hard **7917**; `max locked memory` 8192 kB; stack 8192 kB |
+| uid | 1000 `user`, groups include `sudo` (passwordless `sudo -n` works); agents run outside our cgroup |
+
+---
+
+## 1. MEMORY CEILING — allocate-and-touch, bisected
+
+**Method.** Every probe ran as a **subprocess** (`subprocess.run`) that allocates `n` MiB as `bytearray` and touches every 4 KiB page; parent records returncode. `rc=-9` ⇒ OOM kill. Steps of 128 MiB upward until first kill, then binary bisect to a ≤32 MiB window, then both boundary points confirmed again. `memory.events` and `MemAvailable` snapshotted around each probe. Driver stays alive throughout — it *is* the "session survives?" test.
+
+**Table of every probe** (`ceiling/out/memory_probes.json/.tsv`):
+
+| # | phase | size | rc | outcome | time (s) | cgrp mem.cur pre (MiB) | MemAvail pre (MiB) | oom_kill pre→post |
+|---|---|---|---|---|---|---|---|---|
+| 1 | STEP | 128 MiB | 0 | ok | 0.10 | 182.3 | 1489.7 | 0→0 |
+| 2 | STEP | 256 MiB | 0 | ok | 0.17 | 182.7 | 1484.9 | 0→0 |
+| 3 | STEP | 384 MiB | 0 | ok | 0.24 | 182.7 | 1492.0 | 0→0 |
+
+==================== FIRST 40 LINES: extract/Ceilings_2_edge.zip/sandbox_ceilings.md ====================
+# Sandbox Hard Ceilings — Bisection Report
+
+**Date (UTC):** 2026-09-04 21:02 (user local Asia/Calcutta = 2026-09-05)  
+**Host:** e2b.local (KVM, `Intel(R) Xeon(R) Processor @ 2.60GHz`)  
+**Method:** every ceiling probed by bisection / loop-to-failure in a **child subprocess** so an OOM kill or `EAGAIN` never kills the session. All large files removed afterwards and verified.
+
+> This file is the deliverable: “provide all your work in md file too”. Every probe is tabulated. Commands are quoted so the work is reproducible.
+
+---
+
+## 0. Baseline (before any probe)
+
+| Signal | Value |
+|---|---|
+| `MemTotal` | 2,032,608 kB = **1985.0 MiB** |
+| `MemAvailable` (initial) | **1,527,012 kB = 1491.2 MiB** (`free -m`: total 1984, avail 1491) |
+| `MemFree` (initial) | 1,343,720 kB |
+| Swap | 0 (none) |
+| cgroup | `0::/user` |
+| `/sys/fs/cgroup/user/memory.max` | `1947172864` bytes = **1856.97 MiB = 1.813 GiB** |
+| `/sys/fs/cgroup/user/memory.high` | `1947172864` (same as max) |
+| `/sys/fs/cgroup/user/memory.events` (before) | `low 0, high 0, max 0, oom 0, oom_kill 0, oom_group_kill 0` |
+| `/sys/fs/cgroup/user/pids.max` | `max` (unenforced) |
+| `/sys/fs/cgroup/user/pids.current` | `2` |
+| `/sys/fs/cgroup/user/cpu.max` | `max 100000` (unenforced) |
+| `/sys/fs/cgroup/user/cpu.stat` (before) | `usage_usec 2161341, user 775591, sys 1385749, nr_periods 0, nr_throttled 0, throttled_usec 0` |
+| `ulimit -Sn / -Hn` | `1024 / 524288` |
+| `ulimit -u` (RLIMIT_NPROC soft=hard) | `7917 / 7917` |
+| `RLIMIT_NOFILE` (python) | `(1024, 524288)` |
+| `RLIMIT_NPROC` (python) | `(7917, 7917)` |
+| Disk `/` = `/home/user` | `/dev/root 25G, Used 4.1G, Avail 20G, 17%` (same device for both paths) |
+| Disk `/tmp` | `tmpfs 993M, Used 8K, Avail 993M, 1%` — `tmpfs on /tmp type tmpfs (rw,nosuid,nodev)` |
+| CPUs | `2` — `Thread(s) per core: 2, Core(s) per socket: 1, Socket(s): 1` |
+| Topology | `cpu0 siblings 0-1 core_id 0 pkg 0; cpu1 siblings 0-1 core_id 0 pkg 0` → **siblings on one physical core (SMT)** |
+| RSS top-15 (initial, `ps -eo rss=,comm= \| sort -rn \| head -15`) | `98260 jupyter-server, 73436 python3.13, 66132 uvicorn, 60396 node, 39900 node, 25568 envd, 13988 systemd, 10316 systemd-network, 8952 systemd-journal, 7732 sshd, 7176 systemd-logind, 3624 dbus-daemon, 3540 ps, 3316 bash, 3028 socat` (RSS in KiB) |
+| RSS top (repeat just before OOM bisection) | `78416 jupyter-server, 54608 python3.13, 49032 uvicorn, 18296 node, 15316 envd, …` — daemons shrank slightly as caches dropped |
+
+Probe command for memory (always wrapped in `subprocess.run`, 30 s timeout, returncode captured):
+
+```bash
+
+==================== FIRST 40 LINES: extract/Ceilings_3_brave.zip/sandbox-ceilings.md ====================
+# Sandbox Hard-Ceiling Probe Report (bisection & stress)
+
+Date: 2026-09-05 (Asia/Calcutta). All probes run as `uid=1000(user)` inside cgroup v2 `/sys/fs/cgroup/user`
+(`0::/user`). Raw scripts/logs kept in `/home/user/probes/`. Every large file was deleted afterwards
+(verification at the end).
+
+---
+
+## Baseline
+
+| Fact | Value |
+|---|---|
+| MemTotal | 2032608 kB (**1984 MiB**) |
+| MemAvailable (start) | 1530356 kB (~**1494 MiB**) |
+| Swap | **0** (no swap; `memory.swap.max = max` but no swap device exists) |
+| cgroup `memory.max` | **1947172864 B = 1856.75 MiB** (`memory.high` set equal) |
+| cgroup `cpu.max` | `max 100000` (no quota) |
+| cgroup `pids.max` | `max` (no limit) |
+| CPUs | 2 (Intel Xeon @ 2.60 GHz) — SMT siblings, see §6 |
+| Root fs | `/dev/vda` ext4, 25 GiB total, **20 GiB free**; `/home/user` is the same fs |
+| `/tmp` | **tmpfs**, 993 MiB (RAM-backed) |
+| RLIMIT_NOFILE | soft **1024**, hard **524288** |
+| RLIMIT_NPROC | soft = hard = **7917** (per uid, counts threads) |
+| kernel `pid_max` | 4194304 |
+
+Top RSS processes (KiB, `ps -eo rss,comm | sort -rn | head -15`):
+
+| RSS (KiB) | comm |
+|---|---|
+| 98260 | jupyter-server |
+| 73436 | python3.13 |
+| 66132 | uvicorn |
+| 58328 | node |
+| 39900 | node |
+| 24784 | envd |
+| 13988 | systemd |
+| 10316 | systemd-network |
+| 8952 | systemd-journal |
+| 7732 | sshd |
+| 7176 | systemd-logind |
+
+==================== FIRST 40 LINES: extract/Provenance_1_edge.zip/README.md ====================
+# Provenance 1 — edge
+
+Sandbox identity and provenance audit, packaged 2026-09-04.
+
+## Contents
+
+| File | What it is |
+|---|---|
+| `sandbox_identity_provenance.md` | **The report.** 12 sections, every line labelled MEASURED or INFERRED, exact commands, verbatim output. Start here. |
+| `prov_probe.txt` | Stability probe, written 19:30:28 UTC. Snapshot of boot_id, sandbox/template IDs, uptime and clock state at one instant. Left unmodified on purpose — one value in it is already stale, which is the point. |
+| `raw_evidence_2026-09-04T2037Z_instance2.txt` | Primary evidence: 76 commands re-run and logged verbatim on the **second** instance. Unfiltered, including failures. |
+| `raw_capture.sh` | The script that produced the above. Re-runnable: `bash raw_capture.sh > out.txt` |
+| `README.md` | This file. |
+
+## Read this first: three corrections
+
+The report was re-checked against live state after drafting, and again after the sandbox was recreated mid-audit. **Three claims in the original draft were wrong.** They are corrected in the report and listed in its "Corrections found during re-verification" section. Summarised:
+
+| # | Original claim | Reality |
+|---|---|---|
+| 1 | `E2B_TEMPLATE_ID` is a fixed template identifier | Changed value mid-session (`nlhz8…` → `wk9vh…`), then reverted on recreation |
+| 2 | `uptime -s` is a fixed boot reference | Moved ~6 minutes within a single boot; it is `CLOCK_REALTIME − uptime`, recomputed live |
+| 3 | A changed `boot_id` is the unambiguous signal of sandbox recreation | **Falsified.** The sandbox was recreated and `boot_id` did not change |
+
+Correction 3 is the important one. It was operational advice, not description, and it was wrong. The audit's own stability probe caught it.
+
+## Headline findings
+
+- **E2B sandbox.** Build-time template `nlhz8vlwyupq845jsdg9`, build `f34a5416-ef30-4cb7-8e18-0fdecd6eb529`, envd `0.6.10`.
+- **Debian 13 (trixie) 13.6** on a custom microVM kernel `6.1.158+`; apt pinned to snapshot `20260713T000000Z`.
+- **650** dpkg packages, **180** pip packages, two distinct Python installs.
+- **Nothing on the filesystem identifies this as Arena/LMArena.** Zero non-library matches across `/etc`, `/opt`, `/usr/local`. Every `arena` hit is CPython's memory-arena allocator or R docs.
+- **No service predates the current boot** — monotonic offsets 0.70 / 2.53 / 4.44 s, `NRestarts=0`, one journal boot.
+- **The wall clock is not self-consistent.** Services stamped 2026-07-23; `date -u` is 2026-09-04. Cause: the guest is restored from a frozen snapshot taken at template-build time, with the clock stepped forward afterwards.
+
+## The recreation event (20:37 UTC)
+
+The sandbox was replaced between turns. Measured before/after:
+
+| Indicator | Before | After | Verdict |
+
+==================== FIRST 40 LINES: extract/Provenance_1_edge.zip/MANIFEST.sha256 ====================
+7b0a4c8f9afab3eda34de169ff2b1d12ca601872b54dcd0a1652dd25bc895976  README.md
+d396d4363046fdaac789097a80316f1020dbb7aa55d2a1c9063c355aa781c2ac  sandbox_identity_provenance.md
+389002234ba1e84c379c623066f34e3a634f2dbffe9ce34a87f97d97c5b9acaa  prov_probe.txt
+b443eb50388ca867aff4bdac509e8c6513d45d79b8663d682a8ec11f2373f3c4  raw_capture.sh
+2da9bdda24c7abd926b1889c0eddb6dcb1bc4c0d85dc4121169191897f9de671  raw_evidence_2026-09-04T2037Z_instance2.txt
+
+==================== FIRST 40 LINES: extract/Provenance_1_edge.zip/sandbox_identity_provenance.md ====================
+# Sandbox Identity & Provenance Audit
+
+**Audit performed:** 2026-09-04, ~19:25–19:40 UTC, inside the target sandbox
+**Scope:** identity, image build lineage, service footprint, self-description, cross-turn stability probe
+**Method:** read-only. Every command was executed in-sandbox during this session.
+**Revised:** 19:40 UTC — re-verification of the draft caught two errors, corrected below. See [Corrections](#corrections-found-during-re-verification).
+
+## Corrections found during re-verification
+
+The draft was re-checked against live state, and again after the sandbox was recreated mid-audit. **Three claims did not hold.** All are corrected inline and recorded here so the audit trail stays honest.
+
+| # | Claim I made | What actually happened | Found at |
+|---|---|---|---|
+| 1 | `E2B_TEMPLATE_ID` is a fixed template identifier | Changed value mid-session | 19:39 UTC |
+| 2 | `uptime -s` is a fixed boot reference | Moved ~6 min within one boot | 19:39 UTC |
+| 3 | A changed `boot_id` is the unambiguous recreation signal | Sandbox recreated; `boot_id` unchanged | 20:37 UTC |
+
+### Correction 1 — `E2B_TEMPLATE_ID` is **not** stable within this session
+
+My first read at ~19:25 UTC returned `E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9`. A re-read at ~19:39 UTC returned `E2B_TEMPLATE_ID=wk9vh0w7zre9vbcia51p`. The value **changed mid-session**, across three consecutive reads, and the change is visible in the calling shell's own `/proc/<pid>/environ`.
+
+| Field | Read 1 (~19:25) | Read 2 (~19:39) | Changed? |
+|---|---|---|---|
+| `E2B_TEMPLATE_ID` (env) | `nlhz8vlwyupq845jsdg9` | `wk9vh0w7zre9vbcia51p` | **YES** |
+| `/run/e2b/.E2B_TEMPLATE_ID` | `nlhz8vlwyupq845jsdg9` | `wk9vh0w7zre9vbcia51p` | **YES** |
+| `E2B_SANDBOX_ID` (env) | `ia4a7jw0xcyn756c09iwm` | `ia4a7jw0xcyn756c09iwm` | no |
+| `/run/e2b/.E2B_SANDBOX_ID` | `ia4a7jw0xcyn756c09iwm` | `ia4a7jw0xcyn756c09iwm` | no |
+| `/.e2b` `TEMPLATE_ID` | `nlhz8vlwyupq845jsdg9` | `nlhz8vlwyupq845jsdg9` | no |
+| `/.e2b` mtime | `2026-07-23 18:05:37.836974292` | `2026-07-23 18:05:37.836974292` | no |
+| `boot_id` | `2bb79165-…-17027b0a8e40` | `2bb79165-…-17027b0a8e40` | no |
+| `/proc/sys/kernel/random/boot_id` | same | same | no |
+
+**MEASURED** side-by-side at 19:39 UTC:
+
+```
+env E2B_TEMPLATE_ID       = wk9vh0w7zre9vbcia51p
+/run/e2b/.E2B_TEMPLATE_ID = wk9vh0w7zre9vbcia51p
+/.e2b TEMPLATE_ID         = nlhz8vlwyupq845jsdg9
+/.e2b ENV_ID              = nlhz8vlwyupq845jsdg9
+/.e2b BUILD_ID            = f34a5416-ef30-4cb7-8e18-0fdecd6eb529
+
+==================== FIRST 40 LINES: extract/Provenance_2_brave.zip/sandbox_identity_provenance.md ====================
+# IDENTITY AND PROVENANCE REPORT
+
+## 1. IDENTITY
+
+### full contents of `/.e2b`
+**MEASURED** `cat /.e2b`
+```
+ENV_ID=nlhz8vlwyupq845jsdg9
+TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+BUILD_ID=f34a5416-ef30-4cb7-8e18-0fdecd6eb529
+```
+
+### every env var matching `^E2B_`
+**MEASURED** `env | grep -E '^E2B_' | sort`
+```
+E2B_EVENTS_ADDRESS=http://192.0.2.1
+E2B_SANDBOX=true
+E2B_SANDBOX_ID=ibbwxrhn0lpoi9ybz9fru
+E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+```
+
+### hostname; `/etc/hosts` entries containing e2b
+**MEASURED** `hostname; grep -i e2b /etc/hosts`
+```
+e2b.local
+127.0.1.1        e2b.local
+192.0.2.1        events.e2b.local
+```
+
+### `/proc/sys/kernel/random/boot_id`
+**MEASURED** `cat /proc/sys/kernel/random/boot_id`
+```
+2bb79165-136a-4b63-829d-17027b0a8e40
+```
+
+### `uptime -s` and `/proc/uptime`
+**MEASURED** `uptime -s; cat /proc/uptime`
+```
+2026-09-04 19:16:12
+12.82 16.45
+
+==================== FIRST 40 LINES: extract/Provenance_3_chrome.zip/sandbox_provenance_report.md ====================
+# Sandbox Identity and Provenance Report
+
+## 1. IDENTITY
+
+### 1.1 Full contents of `/.e2b`
+- **Command:** `cat /.e2b` `[MEASURED]`
+```
+ENV_ID=nlhz8vlwyupq845jsdg9
+TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+BUILD_ID=f34a5416-ef30-4cb7-8e18-0fdecd6eb529
+```
+
+### 1.2 Environment Variables matching `^E2B_`
+- **Command:** `env | grep '^E2B_'` `[MEASURED]`
+```
+E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+E2B_EVENTS_ADDRESS=http://192.0.2.1
+E2B_SANDBOX_ID=i9aekzbsq1tymcft2o0e1
+E2B_SANDBOX=true
+```
+
+### 1.3 Hostname and `/etc/hosts` entries containing `e2b`
+- **Command:** `hostname` `[MEASURED]`
+```
+e2b.local
+```
+- **Command:** `grep -i e2b /etc/hosts` `[MEASURED]`
+```
+127.0.1.1        e2b.local
+192.0.2.1        events.e2b.local
+```
+
+### 1.4 Boot ID
+- **Command:** `cat /proc/sys/kernel/random/boot_id` `[MEASURED]`
+```
+2bb79165-136a-4b63-829d-17027b0a8e40
+```
+
+### 1.5 VM-Class Lock & Classification
+- **Command:** `grep PRETTY_NAME /etc/os-release` `[MEASURED]`
+
+==================== FIRST 40 LINES: extract/Egress_1_chrome.zip/network-egress-policy-report.md ====================
+# Sandbox Network Egress Policy — Characterisation Report
+
+**Environment:** E2B sandbox (`e2b.local`), Python 3.13.14, curl 8.14.1 (HTTP/3-capable), OpenSSL 3.5.6
+**Tested:** 2026-09-04 19:30–19:40 UTC (2026-09-05 01:00–01:10 IST)
+**Method:** black-box probing only. Nothing was bypassed — every result is the sandbox's own answer.
+**Raw evidence:** `egress-tests/00-environment.txt` … `egress-tests/06-bandwidth.txt` (all commands reproducible from scripts in the same folder)
+
+---
+
+## 0. Environment / vantage point
+
+| Item | Finding | Evidence |
+|---|---|---|
+| Proxy env vars | **none set** (`http_proxy` etc. absent) → interception is *transparent*, at the network layer | `00-environment.txt` |
+| Default route | `default via 169.254.0.22 dev eth0` (link-local gateway on a /30) — classic transparent-proxy design | `ip route` |
+| DNS config | `resolv.conf` → `nameserver 8.8.8.8` directly (no local stub resolver) | `cat /etc/resolv.conf` |
+| Custom CA installed | `/usr/local/share/ca-certificates/e2b-ca.crt` — `O=E2B, CN=E2B Proxy CA`, valid 1 year (2026-09-02 → 2027-09-02), SHA256 `48:B5:CB:D3:A0:A3:0D:98:FA:93:CE:81:CF:1F:1D:D2:9D:2D:C8:30:D1:BA:30:7F:E3:DF:5B:A4:9B:CD:70:E2` | `openssl x509 -in …e2b-ca.crt` |
+| Internal hosts entry | `/etc/hosts`: `192.0.2.1  events.e2b.local` — an internal service is pinned to a TEST-NET-1 address | `getent hosts events.e2b.local` |
+| Egress IP / ASN | **8.235.26.22**, `AS396982 Google LLC` (reverse DNS `…bc.googleusercontent.com`, geo: The Dalles, OR) — confirmed by two independent vantages (api.ipify.org and Cloudflare `cf-meta-ip`) | `06c-down403-h3.txt`, `06-bandwidth.txt` |
+| IPv6 | **No IPv6 egress at all** — every v6 connect → `ENETUNREACH` (errno 101) | `01-connect-blackhole.txt` |
+
+---
+
+## 1. Transparent-proxy behaviour — CONFIRMED
+
+`connect_ex()` to guaranteed-unroutable addresses (RFC 5737 TEST-NET, port 9/discards):
+
+| Target | Method | Outcome | Evidence |
+|---|---|---|---|
+| 192.0.2.1:9 | TCP connect_ex, 2s timeout | **`0` in 0.000 s** (instant "success"); 0 bytes on recv | `01-connect-blackhole.txt` |
+| 192.0.2.99:9 | same | **`0` in 0.000 s**; 0 bytes | same |
+| 198.51.100.10:9 | same | **`0` in 0.000 s**; 0 bytes | same |
+| 203.0.113.77:9 | same | **`0` in 0.000 s**; 0 bytes | same |
+| 10.255.255.1:9 (RFC1918) | same | **`11` after 2.002 s** (EAGAIN-on-timeout) → genuine blackhole | same |
+| 100.64.0.1:9 (CGNAT) | same | **`11` after 2.002 s** → genuine blackhole | same |
+| [2001:db8::1]:9 | IPv6 connect_ex | `101` ENETUNREACH, 0.000 s | same |
+
+Actual HTTP GETs (port 80, 10 s cap) against the same addresses:
+
+| Target | Method | Outcome | Evidence |
+
+==================== FIRST 40 LINES: extract/Egress_2_brave.zip/egress-map/EGRESS_POLICY_MAP.md ====================
+# Sandbox Network Egress Policy — Characterisation Map
+
+**Date:** 2026-09-05 (UTC 2026-09-04T19:44Z start) · **Location context:** Jaipur, IN (user tz)
+**Host:** `/home/user` sandbox · Python 3.13.14 · curl 7.x · OpenSSL · no `dig`/`nslookup`/`nc` (pure-Python DNS client used instead)
+**Scope:** characterise only — no bypassing, no circumvention attempted at any point.
+
+---
+
+## TL;DR — conclusions
+
+| # | Question | Answer |
+|---|----------|--------|
+| 1 | Transparent proxy on the egress path? | **YES, partial.** TCP `connect()` succeeds locally (~0.2 ms) for RFC5737 TEST-NET addresses and for *any* port on public IPs, but NOT for RFC1918 `10/8` or CGNAT `100.64/10` (those time out). A local terminator completes the SYN. |
+| 2 | DNS-level filtering? | **NO.** Every host resolves with a clean, unique, real A record (NOERROR) from 8.8.8.8 / 1.1.1.1. No NXDOMAIN/SERVFAIL spoofing, no wildcard sinkhole. Only dead `xip.io` returns NXDOMAIN — honestly, from 8.8.8.8. |
+| 3 | IP / SNI-level filtering? | **NO.** Direct-IP TLS (SNI) and direct-IP HTTP (Host header) both work for all 5 tested hosts. |
+| 4 | Port blocking? | **No port is refused.** Every TCP port 21–8443 completes a handshake in ~0 ms (SYN answered locally). Real data flows only on ports where a real backend exists (53, 80, 443). UDP 53 works; UDP 123/443/500 unanswered (ambiguous — see §8). |
+| 5 | TLS interception / MITM? | **NO.** Public CA chains (GlobalSign/Sectigo/Google Trust Services), `ssl_verify_result=0`. |
+| 6 | Bandwidth | **≈ 1.5–2.1 Gbps** (sequential median **260 MB/s** = 2.08 Gbps on Cloudflare's speed CDN; 100 MB/s on the Fastly PyPI CDN). Cloudflare's `__down` endpoint returns **403 exactly at 100,000,000 bytes** (99 MB works). |
+
+**Key environmental facts (drive most of the above):**
+
+- `/etc/resolv.conf` = `nameserver 8.8.8.8` (so "system resolver" ≡ 8.8.8.8).
+- Default route gateway = **169.254.0.22 (link-local)** — egress is via a NAT/proxy on the local link, not a real routed gateway.
+- **IPv4-only** sandbox: only `::1` + `fe80::…` exist; `curl -6` fails. No global IPv6.
+- No `http_proxy`/`https_proxy`/`all_proxy` env vars set.
+
+---
+
+## 1. Transparent-proxy behaviour (does `connect()` lie?)
+
+Method: raw `socket.connect_ex()` (2 s timeout) to RFC5737 TEST-NET + reserved ranges + real-internet controls, on TCP ports 9 and 80; then a raw HTTP `GET /` with `Host:` and a `urllib` GET over the same socket path. RFC5737 addresses are guaranteed unrouteable on the public internet — a success here can only come from the local egress path.
+
+| target | method | outcome | evidence |
+|--------|--------|---------|----------|
+| 192.0.2.1 (TEST-NET-1) | TCP connect_ex :9 | **success rc=0** | 0.3 ms — SYN answered locally |
+| 192.0.2.1 | TCP connect_ex :80 | **success rc=0** | 0.2 ms |
+| 192.0.2.1 | raw HTTP GET :80 (`Host: probe.test`) | **HTTP 404 from a proxy** | body `{"error":"no matching operation was found"}`, `Content-Type: application/json` — a local gateway answered |
+| 192.0.2.1 | urllib HTTP GET | HTTP 404 | `HTTP Error 404: Not Found` in 0.01 s |
+| 198.51.100.1 (TEST-NET-2) | TCP connect_ex :9 / :80 | **success rc=0** | 0.3 ms / 0.2 ms |
+| 198.51.100.1 | raw HTTP GET :80 | no data | TCP accepted, HTTP layer silent (recv timeout) |
+
+==================== FIRST 40 LINES: extract/Egress_3_edge.zip/netmap/INDEX.md ====================
+# Index — Sandbox Egress Policy Map
+
+**Main report:** [`egress-policy-map.md`](egress-policy-map.md) — 570 lines, 301 table rows, §0–§8.
+Start there. Everything below is the reproducible evidence behind it.
+
+Run window: 2026-09-04 19:44 – 20:00 UTC (2026-09-05 01:14 – 01:30 IST).
+Host: `e2b.local`, Debian 13 (trixie), AWS Firecracker microVM, uid 1000.
+`dig`/`nslookup`/`nc` are not installed, so DNS and raw-socket work is done by hand-rolled Python.
+
+## Contents
+
+| File | Section | What it does |
+|---|---|---|
+| `egress-policy-map.md` | all | **The report.** §0 environment · §1 transparent proxy · §2 DNS · §3 IP/SNI · §4 port & protocol matrix · §5 TLS interception · §6 bandwidth · §7 consolidated model · §8 unanswered questions |
+| `INDEX.md` | — | this file |
+
+### Scripts
+
+| Script | Section | Purpose | Writes |
+|---|---|---|---|
+| `s1_tcp.py` | §1.1 | `connect_ex()` + real HTTP GET to RFC5737 TEST-NETs (192.0.2.x, 198.51.100.x, 203.0.113.x), RFC1918 `10.255.255.1`, CGNAT `100.64.0.1`, plus loopback/real-host controls | `results/s1.json` |
+| `s1b_rtt.py` | §1.2 | connect() latency to 8 geographically distant IPs + `/proc/net/tcp` state + ARP/route dump | `results/s1b.json` |
+| `s1c_connect_vs_ttfb.py` | §1.2 | `curl -w` splitting DNS / TCP connect / TLS / TTFB across 20 URLs | `results/s1c.json` |
+| `s1d_proof.py` | §1.2 | first (flawed) connect-vs-application-plane attempt — DNS time leaked into the connect number | `results/s1d.json` |
+| `s1d_v2.py` | §1.2 | **decisive test**: resolves first, then times 7 connects, then times the first byte that provably crossed the real network | `results/s1d_v2.json` |
+| `s1e_rangemap.py` | §1.3 | 24 destinations in parallel: which ranges get a local accept vs blackhole vs RST | `results/s1e.json` |
+| `dnsprobe.py` | §2 | hand-written RFC1035 DNS client (UDP **and** TCP, no dnspython). Compares system resolver against 8.8.8.8 / 1.1.1.1 / 9.9.9.9 | `results/s2.json` |
+| `s3_direct_ip.py` | §3 | for 6 hosts: hostname TLS vs **direct-by-IP with SNI=hostname** vs SNI=IP vs plain HTTP with `Host:` vs `curl --resolve` | `results/s3.json` |
+| `s4_ports.py` | §4.1 | TCP matrix, 17 ports × 4 hosts, **handshake and data recorded separately** | `results/s4_tcp.json` |
+| `s4b_udp.py` | §4.2 | UDP probes: 53 (DNS), 123 (NTP), 443 (QUIC), 500 (IKE), 33434, 9999 to 8.8.8.8 and 1.1.1.1 | `results/s4b_udp.json` |
+| `s4c_udp_control.py` | §4.2 | **controls that corrected a false conclusion** — real NTP servers, DNS on alt ports 5353/9953/443, NTP to non-NTP hosts (synthesis check) | `results/s4c_udp_control.json` |
+| `s4d_tcpdns_portquiz.py` | §4.1 | fixes the port-53 probe bug in `s4_ports.py`; re-runs portquiz.net **sequentially** (the concurrent run hit rate limiting) | `results/s4_portquiz.json` |
+| `s5_tls_intercept.py` | §5 | `curl -svI` / `openssl s_client` chain + local-CA discovery + 20-host MITM sweep | `results/s5_mitm.json` |
+| `s5_sweep.py` | §5 | 53-domain TLS-issuer sweep: any `E2B Proxy CA` certs? (answer: 0) | `results/s5_sweep.json` |
+| `s6_bw.sh` | §6 | first bandwidth attempt — produced unusable numbers (Cloudflare 403); kept for the record | `results/s6_cloudflare.txt` |
+| `s7_gaps.py` | §7/§8 | ICMP (no `CAP_NET_RAW`), IPv6 (`ENETUNREACH`), concurrency (100 parallel connects) | — |
+
+### Raw results
+
+| File | Contents |
+
+==================== FIRST 40 LINES: extract/Egress_3_edge.zip/netmap/egress-policy-map.md ====================
+# Sandbox Egress Policy Map
+
+**Scope:** characterisation only. No attempt was made to evade, tunnel around, or defeat any control.
+Every test below is a diagnostic probe; where a result was ambiguous I say so rather than infer a policy.
+
+**Run window:** 2026-09-04 19:44 – 20:00 UTC (2026-09-05 01:14 – 01:30 IST).
+**Host:** `e2b.local`, Debian GNU/Linux 13 (trixie), uid 1000 (`user`, member of `sudo`).
+**Raw data:** `results/*.json`, `results/s6_raw.txt`. Scripts: `s1_*.py`, `dnsprobe.py`, `s3_*.py`, `s4_*.py`, `s6_bw.sh`.
+
+---
+
+## 0. Environment fingerprint (context for everything below)
+
+| Property | Value | Evidence |
+|---|---|---|
+| Interface | `eth0` 169.254.0.21/30, MTU 1500, MAC `02:fc:00:00:00:05` | `ip -brief addr`, `ip link show eth0` |
+| Default route | `default via 169.254.0.22 dev eth0` | `ip route` / `/proc/net/route` |
+| Gateway L2 | `169.254.0.22 lladdr 02:fc:00:00:00:06 REACHABLE` | `ip neigh show`, `/proc/net/arp` (only entry) |
+| Kernel | `Linux version 6.1.158+ (root@runnervm3jd5f)` | `/proc/version` |
+| Hypervisor | **AWS Firecracker microVM** | `GET http://169.254.169.254/` → `HTTP/1.1 401`, `Server: Firecracker API`, body `No MMDS token provided…` |
+| IPv6 | link-local only (`fe80::/64`), **no global route** | `ip -6 route` = `fe80::/64 dev eth0` only; IPv6 connects → `errno 101 ENETUNREACH` |
+| Local firewall | no rules; `INPUT/FORWARD/OUTPUT` policy ACCEPT, 0 packets | `iptables -L -n -v` — **filtering is not in the guest** |
+| Proxy env vars | none set | `env \| grep -i proxy` |
+| `/etc/resolv.conf` | `nameserver 8.8.8.8` (single) | file contents |
+| `/etc/nsswitch.conf` | `hosts: files dns` | file contents |
+| `/etc/hosts` (non-standard) | `192.0.2.1 events.e2b.local`, `127.0.1.1 e2b.local` | file contents |
+| Extra trust anchor | **`/usr/local/share/ca-certificates/e2b-ca.crt`** → `O=E2B, CN=E2B Proxy CA` | see §5 |
+
+> The single most important structural fact: **`iptables` in the guest is empty, yet TCP connect() to another
+> continent completes in 0.19 ms.** The policy therefore lives *outside* this VM, on the path to
+> `169.254.0.22`.
+
+---
+
+## 1. Transparent-proxy behaviour
+
+### 1.1 The command you asked for, plus RFC5737 + reserved ranges
+
+`connect_ex()` with a 2 s socket timeout, then a real HTTP GET on a fresh socket.
+

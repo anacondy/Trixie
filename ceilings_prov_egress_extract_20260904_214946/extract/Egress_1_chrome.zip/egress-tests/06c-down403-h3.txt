@@ -1,0 +1,29 @@
+=== __down size sweep: is the 403 size-specific? ===
+bytes=10 code=200 t=0.089550s
+bytes=1000000 code=200 t=0.154728s
+bytes=10000000 code=200 t=0.194879s
+bytes=50000000 code=200 t=0.237255s
+bytes=100000000 code=403 t=0.037924s
+=== egress IP identification (RDAP) ===
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+    d=json.load(sys.stdin)
+  File "/usr/local/lib/python3.13/json/__init__.py", line 298, in load
+    return loads(fp.read(),
+        cls=cls, object_hook=object_hook,
+        parse_float=parse_float, parse_int=parse_int,
+        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "/usr/local/lib/python3.13/json/__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/local/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+=== our public IP as seen by a second vantage ===
+8.235.26.22
+=== HTTP/3 forced IPv4 to speed.cloudflare.com ===
+curl: (7) QUIC connection has been shut down
+h3(-4) code=000 t=0.051753s

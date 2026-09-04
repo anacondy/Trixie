@@ -1,0 +1,37 @@
+=== memory.events BEFORE ===
+low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+memory.current BEFORE: 191172608 B
+MemAvailable BEFORE: 1542552 kB
+
+   MiB      rc     sec  phase   result
+   256       0    0.25  scan    OK  ok 256 | 
+   384       0    0.28  scan    OK  ok 384 | 
+   512       0    0.38  scan    OK  ok 512 | 
+   640       0    0.48  scan    OK  ok 640 | 
+   768       0    0.65  scan    OK  ok 768 | 
+   896       0    0.66  scan    OK  ok 896 | 
+  1024       0    0.67  scan    OK  ok 1024 | 
+  1152       0    0.94  scan    OK  ok 1152 | 
+  1280       0    1.11  scan    OK  ok 1280 | 
+  1408       0    1.20  scan    OK  ok 1408 | 
+  1536       0    1.08  scan    OK  ok 1536 | 
+  1664      -9    1.24  scan    FAIL   | 
+  1600       0    1.30  bisect  OK  ok 1600 | 
+  1632       0    1.13  bisect  OK  ok 1632 | 
+
+=== RESULT: last success = 1632 MiB, first kill = 1664 MiB (gap 32 MiB) ===
+
+=== memory.events AFTER ===
+low 0
+high 0
+max 0
+oom 0
+oom_kill 1
+oom_group_kill 0
+memory.current AFTER: 16662528 B
+MemAvailable AFTER: 1665332 kB

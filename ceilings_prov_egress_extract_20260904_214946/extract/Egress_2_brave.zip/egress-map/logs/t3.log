@@ -1,0 +1,39 @@
+================================================================================
+HOST: pypi.org
+  system resolver   : ok ['151.101.0.223', '151.101.128.223', '151.101.192.223', '151.101.64.223']
+  @8.8.8.8 (ground) : rcode=0 ['151.101.192.223', '151.101.64.223', '151.101.0.223', '151.101.128.223']
+  TLS by hostname   : TLS OK TLSv1.3 (42ms) SAN=[]
+  TLS to 151.101.192.223 SNI=pypi.org                    : TLS OK TLSv1.3 (25ms) SAN=[]
+  TLS to 151.101.64.223  SNI=pypi.org                    : TLS OK TLSv1.3 (26ms) SAN=[]
+  HTTP to 151.101.192.223 Host=pypi.org                    : HTTP b'HTTP/1.1 301 Moved Permanently\r\nConnection: close\r\nContent-Length: 0\r\n'
+================================================================================
+HOST: github.com
+  system resolver   : ok ['140.82.116.4']
+  @8.8.8.8 (ground) : rcode=0 ['140.82.116.3']
+  TLS by hostname   : TLS OK TLSv1.3 (24ms) SAN=[]
+  TLS to 140.82.116.3    SNI=github.com                  : TLS OK TLSv1.3 (23ms) SAN=[]
+  HTTP to 140.82.116.3    Host=github.com                  : HTTP b'HTTP/1.1 301 Moved Permanently\r\nContent-Length: 0\r\nLocation: https://g'
+================================================================================
+HOST: raw.githubusercontent.com
+  system resolver   : ok ['185.199.108.133', '185.199.109.133', '185.199.110.133', '185.199.111.133']
+  @8.8.8.8 (ground) : rcode=0 ['185.199.110.133', '185.199.111.133', '185.199.108.133', '185.199.109.133']
+  TLS by hostname   : TLS OK TLSv1.3 (29ms) SAN=[]
+  TLS to 185.199.110.133 SNI=raw.githubusercontent.com   : TLS OK TLSv1.3 (27ms) SAN=[]
+  TLS to 185.199.111.133 SNI=raw.githubusercontent.com   : TLS OK TLSv1.3 (24ms) SAN=[]
+  HTTP to 185.199.110.133 Host=raw.githubusercontent.com   : HTTP b'HTTP/1.1 301 Moved Permanently\r\nConnection: close\r\nContent-Length: 0\r\n'
+================================================================================
+HOST: huggingface.co
+  system resolver   : ok ['99.86.101.36', '99.86.101.39', '99.86.101.56', '99.86.101.64']
+  @8.8.8.8 (ground) : rcode=0 ['99.86.101.64', '99.86.101.39', '99.86.101.56', '99.86.101.36']
+  TLS by hostname   : TLS OK TLSv1.3 (47ms) SAN=[]
+  TLS to 99.86.101.64    SNI=huggingface.co              : TLS OK TLSv1.3 (22ms) SAN=[]
+  TLS to 99.86.101.39    SNI=huggingface.co              : TLS OK TLSv1.3 (25ms) SAN=[]
+  HTTP to 99.86.101.64    Host=huggingface.co              : HTTP b'HTTP/1.1 301 Moved Permanently\r\nServer: CloudFront\r\nDate: Fri, 04 Sep '
+================================================================================
+HOST: google.com
+  system resolver   : ok ['173.194.202.100', '173.194.202.101', '173.194.202.102', '173.194.202.113']
+  @8.8.8.8 (ground) : rcode=0 ['74.125.20.101', '74.125.20.113', '74.125.20.102', '74.125.20.100']
+  TLS by hostname   : TLS OK TLSv1.3 (13ms) SAN=[]
+  TLS to 74.125.20.101   SNI=google.com                  : TLS OK TLSv1.3 (10ms) SAN=[]
+  TLS to 74.125.20.113   SNI=google.com                  : TLS OK TLSv1.3 (10ms) SAN=[]
+  HTTP to 74.125.20.101   Host=google.com                  : HTTP b'HTTP/1.1 301 Moved Permanently\r\nLocation: http://www.google.com/\r\nCont'

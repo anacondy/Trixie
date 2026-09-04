@@ -1,0 +1,13 @@
+--- 3d. Outer SHA-256 vs published hashes in companion files (repo, excl .git + extraction root) ---
+no published match for 83faeeda79d70a6b83650b97050bd0a4cf5df8bd9c7932cd93705d7020b1a3b6
+no published match for 484e0d1bbe86dc0f505d2308febb295424acde1be7e7fa67b2e860e6c903ffa5
+no published match for 16013673423dc7c59ccffa0fae16071d8bddd3b916cc6291828679a14b2231f0
+no published match for 9f671397bff15f71038b7cfd409ae47fb3f17376daece1630c341c1d8bf0c250
+no published match for df0f9fa71def077a63f554265f678163830dd5ec1443d2ad18046afd2d87aed6
+no published match for 32775e06fb465778c4e1b40c5b32ec3db5ebeaf8c4cb709d28219d5beae8e1f1
+no published match for 3c1a7f82d33c156f5cf05351fa4af69eb6ba5f1fde87a9dabd7b4e3b1fab50f7
+no published match for 72a2990c7540bcc0b4d1e7da963c3195d854c9f5703386b230192f7535eb2a82
+no published match for 1ce470c36e838d38113d186ae6fd0cb0c8daa8a762719ce74c5c59a6b87182a9
+
+--- 3e. Companion files mentioning the family zip names ---
+(none)

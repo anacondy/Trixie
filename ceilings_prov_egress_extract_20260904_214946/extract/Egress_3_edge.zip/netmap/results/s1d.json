@@ -1,0 +1,128 @@
+[
+ {
+  "host": "www.google.com",
+  "port": 443,
+  "note": "HTTPS",
+  "connect_ms_median": 1.039,
+  "connect_ok": "5/5",
+  "appl_ms": 156.0,
+  "appl": "TLS+data b'HTTP/1.0 404 Not Fou'"
+ },
+ {
+  "host": "www.uol.com.br",
+  "port": 443,
+  "note": "HTTPS/Brazil",
+  "connect_ms_median": 17.552,
+  "connect_ok": "5/5",
+  "appl_ms": 58.3,
+  "appl": "TLS+data b'HTTP/1.1 403 Forbidd'"
+ },
+ {
+  "host": "www.telstra.com.au",
+  "port": 443,
+  "note": "HTTPS/Australia",
+  "connect_ms_median": 27.843,
+  "connect_ok": "5/5",
+  "appl_ms": 57.0,
+  "appl": "TLS+data b'HTTP/1.1 403 Forbidd'"
+ },
+ {
+  "host": "www.chinadaily.com.cn",
+  "port": 443,
+  "note": "HTTPS/China",
+  "connect_ms_median": 1.525,
+  "connect_ok": "5/5",
+  "appl_ms": 193.0,
+  "appl": "TLS+data b''"
+ },
+ {
+  "host": "pypi.org",
+  "port": 443,
+  "note": "HTTPS",
+  "connect_ms_median": 0.94,
+  "connect_ok": "5/5",
+  "appl_ms": 71.7,
+  "appl": "TLS+data b'HTTP/1.1 421 Misdire'"
+ },
+ {
+  "host": "200.160.2.3",
+  "port": 80,
+  "note": "raw IP Brazil/NIC.br",
+  "connect_ms_median": 0.184,
+  "connect_ok": "5/5",
+  "appl_ms": 10.2,
+  "appl": "ValueError"
+ },
+ {
+  "host": "139.130.4.5",
+  "port": 53,
+  "note": "raw IP Australia/Telstra",
+  "connect_ms_median": 0.148,
+  "connect_ok": "5/5",
+  "appl_ms": 10.3,
+  "appl": "ValueError"
+ },
+ {
+  "host": "196.10.52.58",
+  "port": 53,
+  "note": "raw IP South Africa/TENET",
+  "connect_ms_median": 0.149,
+  "connect_ok": "5/5",
+  "appl_ms": 10.3,
+  "appl": "ValueError"
+ },
+ {
+  "host": "168.95.1.1",
+  "port": 53,
+  "note": "raw IP Taiwan/Chunghwa",
+  "connect_ms_median": 0.152,
+  "connect_ok": "5/5",
+  "appl_ms": 7.7,
+  "appl": "ValueError"
+ },
+ {
+  "host": "192.0.2.1",
+  "port": 80,
+  "note": "CONTROL: local events.e2b.local svc",
+  "connect_ms_median": 0.181,
+  "connect_ok": "5/5",
+  "appl_ms": 7.6,
+  "appl": "ValueError"
+ },
+ {
+  "host": "198.51.100.1",
+  "port": 80,
+  "note": "TEST-NET-2",
+  "connect_ms_median": 0.174,
+  "connect_ok": "5/5",
+  "appl_ms": 7.6,
+  "appl": "ValueError"
+ },
+ {
+  "host": "203.0.113.1",
+  "port": 80,
+  "note": "TEST-NET-3",
+  "connect_ms_median": 0.154,
+  "connect_ok": "5/5",
+  "appl_ms": 7.5,
+  "appl": "ValueError"
+ },
+ {
+  "host": "10.255.255.1",
+  "port": 80,
+  "note": "RFC1918",
+  "connect_ms_median": null,
+  "connect_ok": "0/5",
+  "appl_ms": 8017.1,
+  "appl": "TimeoutError"
+ },
+ {
+  "host": "100.64.0.1",
+  "port": 80,
+  "note": "RFC6598",
+  "connect_ms_median": null,
+  "connect_ok": "0/5",
+  "appl_ms": 8016.6,
+  "appl": "TimeoutError"
+ }
+]

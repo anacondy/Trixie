@@ -1,0 +1,33 @@
+### TCP matrix (connect + data phase reported separately)
+{"target": "scanme.nmap.org:22", "connect": "SUCCESS", "data": "44B b'SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.13\\r\\n'", "t_connect": 0.008}
+{"target": "github.com:22", "connect": "SUCCESS", "data": "17B b'SSH-2.0-cb4a187\\r\\n'", "t_connect": 0.001}
+{"target": "ftp.gnu.org:21", "connect": "SUCCESS", "data": "27B b'220 GNU FTP server ready.\\r\\n'", "t_connect": 0.001}
+{"target": "gmail-smtp-in.l.google.com:25", "connect": "SUCCESS", "data": "75B b'220 mx.google.com ESMTP d2e1a72fcca58-86153a15126si7899932b3a.193 - gsmtp\\r\\n'", "t_connect": 0.002}
+{"target": "8.8.8.8:53", "connect": "SUCCESS", "data": "63B b'\\x00=\\x124\\x81\\x80\\x00\\x01\\x00\\x02\\x00\\x00\\x00\\x00\\x07example\\x03com\\x00\\x00\\x01\\x00\\x01\\xc0\\x0c\\x00\\x01\\x00\\x01\\x00\\x00\\x01,\\x00\\x04h\\x14\\x17\\x9a\\xc0\\x0c\\x00\\x01\\x00\\x01\\x00\\x00\\x01,\\x00\\x04\\xacB\\x93\\xf3'", "t_connect": 0.0}
+{"target": "example.com:80", "connect": "SUCCESS", "data": "269B b'HTTP/1.1 200 OK\\r\\nDate: Fri, 04 Sep 2026 19:34:37 GMT\\r\\nContent-Type: text/html\\r\\nC'", "t_connect": 0.026}
+{"target": "scanme.nmap.org:80", "connect": "SUCCESS", "data": "176B b'HTTP/1.1 200 OK\\r\\nDate: Fri, 04 Sep 2026 19:34:37 GMT\\r\\nServer: Apache/2.4.7 (Ubun'", "t_connect": 0.001}
+{"target": "pop.gmail.com:110", "connect": "SUCCESS", "data": "no data within 4s", "t_connect": 0.002}
+{"target": "imap.gmail.com:143", "connect": "SUCCESS", "data": "no data within 4s", "t_connect": 0.002}
+{"target": "pypi.org:443", "connect": "SUCCESS", "data": "TLS handshake ok, 1666B cert received", "t_connect": 0.001}
+{"target": "smtp.gmail.com:465", "connect": "SUCCESS", "data": "TLS handshake ok, 1080B cert received", "t_connect": 0.003}
+{"target": "smtp.gmail.com:587", "connect": "SUCCESS", "data": "71B b'220 smtp.gmail.com ESMTP d9443c01a7336-2db2c0f1daasm83525ad.5 - gsmtp\\r\\n'", "t_connect": 0.003}
+{"target": "imap.gmail.com:993", "connect": "SUCCESS", "data": "TLS handshake ok, 1081B cert received", "t_connect": 0.003}
+{"target": "pop.gmail.com:995", "connect": "SUCCESS", "data": "TLS handshake ok, 1079B cert received", "t_connect": 0.003}
+{"target": "db4free.net:3306", "connect": "SUCCESS", "data": "90B b'V\\x00\\x00\\x00\\n11.8.8-MariaDB-log\\x00\\x9bs\\xbd\\x00ZKGc>I4i\\x00\\xfe\\xff\\xe0\\x02\\x00\\xff\\x81\\x15\\x00\\x00\\x00\\x00\\x00\\x00=\\x00\\x00\\x005k=+a)D\\\\%>I4\\x00mysql_native'", "t_connect": 0.084}
+{"target": "1.1.1.1:5432", "connect": "SUCCESS", "data": "no data within 4s", "t_connect": 0.0}
+{"target": "8.8.8.8:6379", "connect": "SUCCESS", "data": "no data within 4s", "t_connect": 0.0}
+{"target": "cloudflare.com:8080", "connect": "SUCCESS", "data": "512B b'HTTP/1.1 301 Moved Permanently\\r\\nDate: Fri, 04 Sep 2026 19:34:54 GMT\\r\\nContent-Typ'", "t_connect": 0.011}
+{"target": "cloudflare.com:8443", "connect": "SUCCESS", "data": "TLS handshake ok, 981B cert received", "t_connect": 0.01}
+{"target": "192.0.2.1:443", "connect": "SUCCESS", "data": "no data within 4s", "t_connect": 0.0}
+{"target": "192.0.2.1:3306", "connect": "SUCCESS", "data": "no data within 4s", "t_connect": 0.0}
+
+### UDP matrix
+{"target": "udp 8.8.8.8:53", "result": "REPLY 61B t=0.014s"}
+{"target": "udp 1.1.1.1:53", "result": "REPLY 61B t=0.008s"}
+{"target": "udp 8.8.8.8:123", "result": "no reply in 4s"}
+{"target": "udp 1.1.1.1:123", "result": "no reply in 4s"}
+{"target": "udp 162.159.200.1:123", "result": "REPLY 48B t=0.007s"}
+{"target": "udp 8.8.8.8:443", "result": "no reply in 4s"}
+{"target": "udp 1.1.1.1:443", "result": "no reply in 4s"}
+{"target": "udp 8.8.8.8:500", "result": "no reply in 4s"}
+{"target": "udp 8.8.8.8:1", "result": "no reply in 4s"}

@@ -1,0 +1,5 @@
+=== BANDWIDTH: 3 PARALLEL runs (documenting, expect 403) ===
+PAR run1 http=403 bytes=1 time_total=0.038690s speed_download=25B/s
+PAR run2 http=403 bytes=1 time_total=0.041567s speed_download=24B/s
+PAR run3 http=403 bytes=1 time_total=0.046798s speed_download=21B/s
+(done)

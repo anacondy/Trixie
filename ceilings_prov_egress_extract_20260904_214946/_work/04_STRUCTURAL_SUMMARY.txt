@@ -1,0 +1,18 @@
+=== PHASE 4 — structural summary (Fri Sep  4 21:51:37 UTC 2026) ===
+01_ALL_EXTRACTED_FILES.txt entries (all files incl. EXTRACTED_SHA256SUMS.txt): 124
+data files (excl. sums): 115   sums files: 9   directories: 19   data bytes: 537069
+
+--- per-archive: data files / data bytes ---
+Ceilings_1_chrome.zip: 17 files, 38678 bytes
+Ceilings_2_edge.zip: 1 files, 19824 bytes
+Ceilings_3_brave.zip: 18 files, 35830 bytes
+Egress_1_chrome.zip: 15 files, 53312 bytes
+Egress_2_brave.zip: 20 files, 53873 bytes
+Egress_3_edge.zip: 34 files, 172809 bytes
+Provenance_1_edge.zip: 6 files, 123025 bytes
+Provenance_2_brave.zip: 2 files, 23281 bytes
+Provenance_3_chrome.zip: 2 files, 16437 bytes
+
+--- filename collisions across archives (same relative path in >1 zip) ---
+prov_probe.txt  ->  Provenance_1_edge.zip + Provenance_2_brave.zip + Provenance_3_chrome.zip
+sandbox_identity_provenance.md  ->  Provenance_1_edge.zip + Provenance_2_brave.zip
