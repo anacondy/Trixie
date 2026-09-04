@@ -1,0 +1,65 @@
+[
+  {
+    "test": "python_venv_create",
+    "status": "ok",
+    "seconds": 2.265217331,
+    "rc": 0,
+    "command": "python3 -m venv /tmp/envchar_install_tests/venv"
+  },
+  {
+    "test": "pip_pure_python_install",
+    "status": "ok",
+    "seconds": 0.587872805,
+    "rc": 0,
+    "command": "/tmp/envchar_install_tests/venv/bin/python -m pip install --disable-pip-version-check --no-cache-dir pyfiglet==1.0.2"
+  },
+  {
+    "test": "pip_import_verify",
+    "status": "ok",
+    "seconds": 0.055119136,
+    "rc": 0,
+    "command": "/tmp/envchar_install_tests/venv/bin/python -c import pyfiglet; print(pyfiglet.__version__); print(pyfiglet.figlet_format(\"OK\", font=\"small\"))"
+  },
+  {
+    "test": "npm_local_install",
+    "status": "ok",
+    "seconds": 0.574799147,
+    "rc": 0,
+    "command": "npm install --ignore-scripts --no-audit --no-fund is-number@7.0.0"
+  },
+  {
+    "test": "npm_require_verify",
+    "status": "ok",
+    "seconds": 0.031029682,
+    "rc": 0,
+    "command": "node -e const f=require(\"is-number\"); if(!f(42)||f(\"x\"))process.exit(1); console.log(\"is-number verification OK\")"
+  },
+  {
+    "test": "gcc_native_compile",
+    "status": "ok",
+    "seconds": 0.225724685,
+    "rc": 0,
+    "command": "gcc -O2 -Wall -Wextra -o probe-gcc probe.c"
+  },
+  {
+    "test": "gcc_binary_verify",
+    "status": "ok",
+    "seconds": 0.002307484,
+    "rc": 0,
+    "command": "/tmp/envchar_install_tests/c/probe-gcc"
+  },
+  {
+    "test": "make_native_compile",
+    "status": "ok",
+    "seconds": 0.042269525,
+    "rc": 0,
+    "command": "make CC=gcc"
+  },
+  {
+    "test": "make_binary_verify",
+    "status": "ok",
+    "seconds": 0.002235441,
+    "rc": 0,
+    "command": "/tmp/envchar_install_tests/c/probe"
+  }
+]

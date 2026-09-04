@@ -1,0 +1,75 @@
+probe_run_start_utc=2026-09-04T14:20:02.722079460Z
+probe_mode=full
+probe_script=/home/user/environment_evidence/probe_environment.sh
+raw_file=08_http_latency.txt
+
+$ for n in HTTP_PROXY HTTPS_PROXY ALL_PROXY NO_PROXY http_proxy https_proxy all_proxy no_proxy; do eval "v=\${$n-}"; if test -n "$v"; then echo "$n=set"; else echo "$n=unset"; fi; done
+HTTP_PROXY=unset
+HTTPS_PROXY=unset
+ALL_PROXY=unset
+NO_PROXY=unset
+http_proxy=unset
+https_proxy=unset
+all_proxy=unset
+no_proxy=unset
+[exit_code=0]
+
+$ for u in http://google.com/generate_204 http://example.com/ http://github.com/; do echo "### $u"; curl -4 -sS -D - -o /dev/null --max-time 12 "$u"; done
+### http://google.com/generate_204
+HTTP/1.1 204 No Content
+Content-Length: 0
+Cross-Origin-Resource-Policy: cross-origin
+Date: Fri, 04 Sep 2026 14:20:15 GMT
+
+### http://example.com/
+HTTP/1.1 200 OK
+Date: Fri, 04 Sep 2026 14:20:15 GMT
+Content-Type: text/html
+Transfer-Encoding: chunked
+Connection: keep-alive
+Server: cloudflare
+Last-Modified: Wed, 02 Sep 2026 22:14:26 GMT
+Allow: GET, HEAD
+Accept-Ranges: bytes
+Age: 12991
+cf-cache-status: HIT
+CF-RAY: a35da242c8ea7537-SEA
+
+### http://github.com/
+HTTP/1.1 301 Moved Permanently
+Content-Length: 0
+Location: https://github.com/
+
+[exit_code=0]
+
+$ python3 - <<'PY'
+import subprocess
+probes=[
+("google.com","https://www.google.com/robots.txt",[]),
+("github.com","https://github.com/robots.txt",[]),
+("pypi.org","https://pypi.org/simple/pip/",[]),
+("huggingface.co","https://huggingface.co/robots.txt",[]),
+("8.8.8.8-DoH","https://dns.google/resolve?name=example.com&type=A",["--resolve","dns.google:443:8.8.8.8"]),
+]
+fmt="code=%{http_code} http=%{http_version} remote=%{remote_ip} dns=%{time_namelookup}s tcp=%{time_connect}s tls_ready=%{time_appconnect}s ttfb=%{time_starttransfer}s total=%{time_total}s bytes=%{size_download} speed_Bps=%{speed_download} redirects=%{num_redirects} verify=%{ssl_verify_result}"
+for label,url,extra in probes:
+    for i in range(1,4):
+        p=subprocess.run(["curl","-4","-sS","-L","--compressed","--connect-timeout","6","--max-time","30","-H","Cache-Control: no-cache",*extra,"-o","/dev/null","-w",fmt,url],stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
+        print(label,i,"rc="+str(p.returncode),p.stdout)
+PY
+google.com 1 rc=0 code=200 http=2 remote=142.251.157.119 dns=0.001525s tcp=0.001742s tls_ready=0.010808s ttfb=0.013881s total=0.014071s bytes=1527 speed_Bps=108521 redirects=0 verify=0
+google.com 2 rc=0 code=200 http=2 remote=142.251.150.119 dns=0.001181s tcp=0.001452s tls_ready=0.009918s ttfb=0.013283s total=0.013593s bytes=1527 speed_Bps=112337 redirects=0 verify=0
+google.com 3 rc=0 code=200 http=2 remote=142.251.152.119 dns=0.001436s tcp=0.001689s tls_ready=0.010093s ttfb=0.015207s total=0.015354s bytes=1527 speed_Bps=99452 redirects=0 verify=0
+github.com 1 rc=0 code=200 http=2 remote=140.82.116.3 dns=0.001377s tcp=0.001605s tls_ready=0.019022s ttfb=0.102262s total=0.102373s bytes=623 speed_Bps=6085 redirects=0 verify=0
+github.com 2 rc=0 code=200 http=2 remote=140.82.116.3 dns=0.001234s tcp=0.001435s tls_ready=0.018989s ttfb=0.027692s total=0.027803s bytes=623 speed_Bps=22407 redirects=0 verify=0
+github.com 3 rc=0 code=200 http=2 remote=140.82.116.3 dns=0.001194s tcp=0.001465s tls_ready=0.017631s ttfb=0.025584s total=0.025725s bytes=623 speed_Bps=24217 redirects=0 verify=0
+pypi.org 1 rc=0 code=200 http=2 remote=151.101.64.223 dns=0.001021s tcp=0.001283s tls_ready=0.025315s ttfb=0.035547s total=0.038591s bytes=32803 speed_Bps=850016 redirects=0 verify=0
+pypi.org 2 rc=0 code=200 http=2 remote=151.101.64.223 dns=0.001104s tcp=0.001282s tls_ready=0.022344s ttfb=0.031081s total=0.033818s bytes=32803 speed_Bps=969986 redirects=0 verify=0
+pypi.org 3 rc=0 code=200 http=2 remote=151.101.192.223 dns=0.001280s tcp=0.001591s tls_ready=0.021755s ttfb=0.030498s total=0.032393s bytes=32803 speed_Bps=1012657 redirects=0 verify=0
+huggingface.co 1 rc=0 code=200 http=2 remote=99.86.101.56 dns=0.001711s tcp=0.002046s tls_ready=0.021264s ttfb=0.130337s total=0.130441s bytes=68 speed_Bps=521 redirects=0 verify=0
+huggingface.co 2 rc=0 code=200 http=2 remote=99.86.101.56 dns=0.001670s tcp=0.001923s tls_ready=0.018785s ttfb=0.124392s total=0.124464s bytes=68 speed_Bps=546 redirects=0 verify=0
+huggingface.co 3 rc=0 code=200 http=2 remote=99.86.101.56 dns=0.001090s tcp=0.001283s tls_ready=0.023329s ttfb=0.133903s total=0.134024s bytes=68 speed_Bps=507 redirects=0 verify=0
+8.8.8.8-DoH 1 rc=0 code=200 http=2 remote=8.8.8.8 dns=0.000013s tcp=0.000283s tls_ready=0.011275s ttfb=0.015060s total=0.015160s bytes=159 speed_Bps=10488 redirects=0 verify=0
+8.8.8.8-DoH 2 rc=0 code=200 http=2 remote=8.8.8.8 dns=0.000011s tcp=0.000274s tls_ready=0.010026s ttfb=0.015025s total=0.015121s bytes=159 speed_Bps=10515 redirects=0 verify=0
+8.8.8.8-DoH 3 rc=0 code=200 http=2 remote=8.8.8.8 dns=0.000011s tcp=0.000310s tls_ready=0.009717s ttfb=0.014455s total=0.014549s bytes=159 speed_Bps=10928 redirects=0 verify=0
+[exit_code=0]

@@ -1,0 +1,19 @@
+timestamp=2026-09-04T12:17:27,258746175+00:00
+[/home/user/.environment_characterization_persistence_probe]
+exists=yes
+mtime=2026-09-04 12:12:06.931608989 +0000 size=31 mode=644 owner=user:user
+content=probe-1788523926935155052-1647
+[/tmp/.environment_characterization_persistence_probe]
+exists=yes
+mtime=2026-09-04 12:12:06.931608989 +0000 size=31 mode=644 owner=user:user
+content=probe-1788523926935155052-1647
+-- apt test cleanup check
+tree absent after purge (expected)
+-- bulky benchmark artifact cleanup check
+-- final capacity
+Filesystem     Type   Size  Used Avail Use% Mounted on
+/dev/root      ext4    25G  4.1G   20G  17% /
+tmpfs          tmpfs  993M   28K  993M   1% /tmp
+Filesystem      Inodes  IUsed   IFree IUse% Mounted on
+/dev/root      6759792 136359 6623433    3% /
+tmpfs          1048576     18 1048558    1% /tmp
