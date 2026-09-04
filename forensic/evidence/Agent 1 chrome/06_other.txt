@@ -1,0 +1,29 @@
+=== Memory ===
+               total        used        free      shared  buff/cache   available
+Mem:           1.9Gi       462Mi       1.3Gi       1.1Mi       420Mi       1.5Gi
+Swap:             0B          0B          0B
+MemTotal:        2032608 kB
+MemFree:         1317556 kB
+MemAvailable:    1558856 kB
+
+=== Environment variables (relevant) ===
+SHELL=/bin/bash
+E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+E2B_EVENTS_ADDRESS=http://192.0.2.1
+PWD=/home/user
+HOME=/home/user
+E2B_SANDBOX_ID=iim386kr3aoo4j3svsogz
+USER=user
+SHLVL=1
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+E2B_SANDBOX=true
+OLDPWD=/home/user
+
+=== ping test (expected failure) ===
+ping: socktype: SOCK_RAW
+ping: socket: Operation not permitted
+ping: => missing cap_net_raw+p capability or setuid?
+ping blocked / missing capability
+
+=== dig not installed ===
+dig not found
