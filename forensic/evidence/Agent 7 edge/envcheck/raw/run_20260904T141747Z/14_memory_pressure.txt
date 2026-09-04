@@ -1,0 +1,63 @@
+################################################################
+# SECTION: 14_memory_pressure.txt   (probe run run_20260904T141747Z)
+# STARTED : 2026-09-04T14:18:40Z
+################################################################
+### baseline
+memory.current = 706134016
+memory.max     = 1947172864
+memory.events  = low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+
+### single 3GB bytearray (expect MemoryError, not OOM-kill)
+MemoryError
+exit=0  (python MemoryError expected; kernel-OOM would be 137)
+
+### cgroup OOM ramp: allocate 200MB steps, touch pages, until killed
+step 1: allocating 200MB (total ~200MB)...
+step 1: done, memory.current=918417408
+step 2: allocating 200MB (total ~400MB)...
+step 2: done, memory.current=1128271872
+step 3: allocating 200MB (total ~600MB)...
+step 3: done, memory.current=1338511360
+step 4: allocating 200MB (total ~800MB)...
+step 4: done, memory.current=1511596032
+step 5: allocating 200MB (total ~1000MB)...
+step 5: done, memory.current=1520320512
+step 6: allocating 200MB (total ~1200MB)...
+step 6: done, memory.current=1531465728
+step 7: allocating 200MB (total ~1400MB)...
+step 7: done, memory.current=1631834112
+step 8: allocating 200MB (total ~1600MB)...
+/home/user/envcheck/probe_environment.sh: line 560:  3430 Killed                  python3 -u - <<'PY' 2>&1
+import time
+def cur():
+    with open("/sys/fs/cgroup/user/memory.current") as f: return f.read().strip()
+bufs=[]
+for step in range(1, 13):
+    print(f"step {step}: allocating 200MB (total ~{step*200}MB)...", flush=True)
+    b = bytearray(200 * 1024 * 1024)
+    for i in range(0, len(b), 4096): b[i] = 1
+    bufs.append(b)
+    print(f"step {step}: done, memory.current={cur()}", flush=True)
+    time.sleep(0.2)
+print("survived all steps (unexpected if cap < 2.4GB)", flush=True)
+PY
+
+oom-ramp-exit=137   (137 = SIGKILL by cgroup OOM killer; 0 = survived)
+memory.events after: low 0
+high 0
+max 0
+oom 0
+oom_kill 1
+oom_group_kill 0
+memory.current after: 122916864
+
+### post-checks
+ 14:18:43 up 1 min,  0 users,  load average: 0.65, 0.18, 0.06
+process count: 99
+
+# section rc=0   FINISHED: 2026-09-04T14:18:43Z

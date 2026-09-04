@@ -1,0 +1,42 @@
+### Heartbeat server checks (background process from another tool call)
+{"uptime_s": 405, "mem_current": 367886336, "pid": 3614, "path": "/ping1"}
+{"uptime_s": 405, "mem_current": 368246784, "pid": 3614, "path": "/ping2"}
+{"uptime_s": 405, "mem_current": 367980544, "pid": 3614, "path": "/ping3"}
+
+### heartbeat log:
+11:21:29 SERVER STARTED pid=3614 port=8765
+
+### process alive?
+    PID COMMAND             ELAPSED
+   3610 bash                  00:19
+
+### cpu.stat after ~15s of heavy CPU (2-core burn, concurrent with server)
+usage_usec 45087846
+user_usec 31103589
+system_usec 13984257
+nr_periods 0
+nr_throttled 0
+throttled_usec 0
+nr_bursts 0
+burst_usec 0
+--- cpu.stat after burn:
+usage_usec 74934738
+user_usec 60950481
+system_usec 13984257
+nr_periods 0
+nr_throttled 0
+throttled_usec 0
+nr_bursts 0
+burst_usec 0
+
+### server still responsive during burn?
+{"uptime_s": 420, "mem_current": 368250880, "pid": 3614, "path": "/afterburn"}
+
+### GitHub SSH banner (outbound SSH test)
+SSH-2.0-cb4a187
+
+### nohup test status
+3598 bash -c sleep 90; echo "survived and completed at $(date -u +%H:%M:%S)" > /home/user/envcheck/notes/nohup_result.txt
+3601 sleep 90
+3635 /bin/bash -l -c { echo '### Heartbeat server checks (background process from another tool call)' sleep 2 for i in 1 2 3; do   curl -s --max-time 5 "http://127.0.0.1:8765/ping$i"; echo done echo; echo '### heartbeat log:'; cat /home/user/envcheck/notes/heartbeat.log echo; echo '### process alive?'; ps -p 3610 -o pid,comm,etime 2>/dev/null || echo "NOT FOUND" echo; echo '### cpu.stat after ~15s of heavy CPU (2-core burn, concurrent with server)' cat /sys/fs/cgroup/user/cpu.stat python3 - <<'EOF' & import time t0=time.time() while time.time()-t0 < 15:     sum(range(1000000)) EOF burn1=$! python3 - <<'EOF' & import time t0=time.time() while time.time()-t0 < 15:     sum(range(1000000)) EOF burn2=$! wait $burn1 $burn2 echo '--- cpu.stat after burn:'; cat /sys/fs/cgroup/user/cpu.stat echo; echo '### server still responsive during burn?' curl -s --max-time 5 "http://127.0.0.1:8765/afterburn"; echo echo; echo '### GitHub SSH banner (outbound SSH test)' timeout 6 bash -c 'exec 3<>/dev/tcp/github.com/22; IFS= read -r -t 5 line <&3; echo "$line"' 2>&1 echo; echo '### nohup test status'; pgrep -fa 'sleep 90' || echo "sleep 90 no longer running"; cat /home/user/envcheck/notes/nohup_result.txt 2>/dev/null || echo "(result file not yet written)" } > /home/user/envcheck/notes/20_background.txt 2>&1; cat /home/user/envcheck/notes/20_background.txt
+(result file not yet written)

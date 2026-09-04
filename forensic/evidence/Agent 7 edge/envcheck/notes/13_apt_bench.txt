@@ -1,0 +1,29 @@
+### apt with passwordless sudo
+--- sources:
+debian.sources
+nodesource.sources
+
+--- sudo apt-get update (timed):
+Fetched 342 kB in 0s (2415 kB/s)
+Reading package lists...
+
+real	0m0.783s
+user	0m0.648s
+sys	0m0.085s
+
+--- sudo apt-get install -y sqlite3 (small, timed):
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 38546 files and directories currently installed.)
+Preparing to unpack .../sqlite3_3.46.1-7+deb13u1_amd64.deb ...
+Unpacking sqlite3 (3.46.1-7+deb13u1) ...
+Setting up sqlite3 (3.46.1-7+deb13u1) ...
+
+real	0m2.101s
+user	0m1.118s
+sys	0m0.156s
+
+--- verify:
+3.46.1 2024-08-13 09:16:08 c9c2ab54ba1f5f46360f1b4f35d849cd3f080e6fc2b6c60e91b16c63f69aalt1 (64-bit)
+
+--- sudo ping test (does sudo grant the missing cap?):
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=113 time=0.674 ms

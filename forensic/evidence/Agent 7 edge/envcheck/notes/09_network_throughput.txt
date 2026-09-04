@@ -1,0 +1,15 @@
+### Large download tests (single stream)
+--- Cloudflare 100MB (https://speed.cloudflare.com/__down?bytes=100000000)
+http=403 bytes=1 ttfb=0.085567s total=0.085614s avg=11B/s
+--- GitHub codeload cpython tarball (~30MB) (https://codeload.github.com/python/cpython/tar.gz/refs/tags/v3.13.5)
+http=200 bytes=29982213 ttfb=0.309662s total=3.785437s avg=7920409B/s
+--- HF gpt2 config.json (tiny) (https://huggingface.co/gpt2/resolve/main/config.json)
+http=200 bytes=665 ttfb=0.107498s total=0.107624s avg=6178B/s
+
+### Parallel aggregate (4 x 25MB Cloudflare)
+4x25MB parallel wall time: 0.45s
+
+### TCP port 8080/8443 quick probes
+pypi.org:8080 -> 1.5ms
+pypi.org:8443 -> 1.7ms
+github.com:8443 -> 2.0ms

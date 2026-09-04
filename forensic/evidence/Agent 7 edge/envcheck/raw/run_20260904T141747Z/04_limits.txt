@@ -1,0 +1,87 @@
+################################################################
+# SECTION: 04_limits.txt   (probe run run_20260904T141747Z)
+# STARTED : 2026-09-04T14:17:50Z
+################################################################
+### ulimit -a
+real-time non-blocking time  (microseconds, -R) unlimited
+core file size              (blocks, -c) 0
+data seg size               (kbytes, -d) unlimited
+scheduling priority                 (-e) 0
+file size                   (blocks, -f) unlimited
+pending signals                     (-i) 7917
+max locked memory           (kbytes, -l) 8192
+max memory size             (kbytes, -m) unlimited
+open files                          (-n) 1024
+pipe size                (512 bytes, -p) 8
+POSIX message queues         (bytes, -q) 819200
+real-time priority                  (-r) 0
+stack size                  (kbytes, -s) 8192
+cpu time                   (seconds, -t) unlimited
+max user processes                  (-u) 7917
+virtual memory              (kbytes, -v) unlimited
+file locks                          (-x) unlimited
+
+### /proc/self/limits
+Limit                     Soft Limit           Hard Limit           Units     
+Max cpu time              unlimited            unlimited            seconds   
+Max file size             unlimited            unlimited            bytes     
+Max data size             unlimited            unlimited            bytes     
+Max stack size            8388608              unlimited            bytes     
+Max core file size        0                    0                    bytes     
+Max resident set          unlimited            unlimited            bytes     
+Max processes             7917                 7917                 processes 
+Max open files            1024                 524288               files     
+Max locked memory         8388608              8388608              bytes     
+Max address space         unlimited            unlimited            bytes     
+Max file locks            unlimited            unlimited            locks     
+Max pending signals       7917                 7917                 signals   
+Max msgqueue size         819200               819200               bytes     
+Max nice priority         0                    0                    
+Max realtime priority     0                    0                    
+Max realtime timeout      unlimited            unlimited            us        
+
+### cgroup limits (dir: /sys/fs/cgroup/user)
+memory.max = 1947172864
+memory.current = 241033216
+memory.swap.max = max
+cpu.max = max 100000
+cpu.weight = 50
+cpuset.cpus.effective = 0-1
+pids.max = max
+pids.current = 5
+
+### cpu.stat
+usage_usec 4009690
+user_usec 2159391
+system_usec 1850299
+nr_periods 0
+nr_throttled 0
+throttled_usec 0
+nr_bursts 0
+burst_usec 0
+
+### memory.events
+low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+
+### memory.stat (selected)
+anon 1417216
+file 121409536
+file_mapped 1892352
+file_dirty 253952
+file_writeback 0
+anon_thp 0
+file_thp 0
+inactive_file 41562112
+active_file 79613952
+slab_reclaimable 116915832
+slab_unreclaimable 199792
+slab 117115624
+pgfault 175171
+pgmajfault 401
+
+# section rc=0   FINISHED: 2026-09-04T14:17:50Z
