@@ -1,0 +1,1 @@
+now zip all of these files ?  &  save the zip as Agent 2 [brave.zip](http://brave.zip) , with all the files u have created , explaining, what the zip has, & what every file does, &  when it was created , exact time & date & in sequence, which file was created when & also with the exact prompts i gave u , each time, &  any imp metadata, that can be helpful
