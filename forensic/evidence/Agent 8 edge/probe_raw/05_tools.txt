@@ -1,0 +1,172 @@
+===== UTC: 2026-09-04T14:14:23Z =====
+
+===== python3 =====
+/usr/local/bin/python3
+Python 3.13.14
+
+===== pip =====
+/usr/local/bin/pip
+pip 26.1.2 from /usr/local/lib/python3.13/site-packages/pip (python 3.13)
+
+===== pip3 =====
+/usr/local/bin/pip3
+pip 26.1.2 from /usr/local/lib/python3.13/site-packages/pip (python 3.13)
+
+===== node =====
+/usr/bin/node
+v20.20.2
+
+===== npm =====
+/usr/bin/npm
+10.8.2
+
+===== git =====
+/usr/bin/git
+git version 2.47.3
+
+===== curl =====
+/usr/bin/curl
+curl 8.14.1 (x86_64-pc-linux-gnu) libcurl/8.14.1 OpenSSL/3.5.6 zlib/1.3.1 brotli/1.1.0 zstd/1.5.7 libidn2/2.3.8 libpsl/0.21.2 libssh2/1.11.1 nghttp2/1.64.0 nghttp3/1.8.0 librtmp/2.3 OpenLDAP/2.6.10
+Release-Date: 2025-06-04, security patched: 8.14.1-2+deb13u4
+Protocols: dict file ftp ftps gopher gophers http https imap imaps ipfs ipns ldap ldaps mqtt pop3 pop3s rtmp rtsp scp sftp smb smbs smtp smtps telnet tftp ws wss
+
+===== wget =====
+/usr/bin/wget
+GNU Wget 1.25.0 built on linux-gnu.
+
+-cares +digest -gpgme +https +ipv6 +iri +large-file -metalink +nls 
+
+===== ffmpeg =====
+NOT FOUND
+
+===== docker =====
+NOT FOUND
+
+===== make =====
+/usr/bin/make
+GNU Make 4.4.1
+Built for x86_64-pc-linux-gnu
+Copyright (C) 1988-2023 Free Software Foundation, Inc.
+
+===== gcc =====
+/usr/bin/gcc
+gcc (Debian 14.2.0-19) 14.2.0
+Copyright (C) 2024 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+
+===== g++ =====
+/usr/bin/g++
+g++ (Debian 14.2.0-19) 14.2.0
+Copyright (C) 2024 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+
+===== clang =====
+NOT FOUND
+
+===== jq =====
+/usr/bin/jq
+jq-1.7
+
+===== apt =====
+/usr/bin/apt
+apt 3.0.3 (amd64)
+
+===== apk =====
+NOT FOUND
+
+===== yum =====
+NOT FOUND
+
+===== conda =====
+NOT FOUND
+
+===== cargo =====
+NOT FOUND
+
+===== rustc =====
+NOT FOUND
+
+===== go =====
+NOT FOUND
+
+===== java =====
+/usr/bin/java
+openjdk 11 2018-09-25
+OpenJDK Runtime Environment 18.9 (build 11+28)
+OpenJDK 64-Bit Server VM 18.9 (build 11+28, mixed mode)
+
+===== ruby =====
+NOT FOUND
+
+===== php =====
+NOT FOUND
+
+===== perl =====
+/usr/bin/perl
+
+This is perl 5, version 40, subversion 1 (v5.40.1) built for x86_64-linux-gnu-thread-multi
+(with 48 registered patches, see perl -V for more detail)
+
+===== unzip =====
+/usr/bin/unzip
+caution:  both -n and -o specified; ignoring -o
+UnZip 6.00 of 20 April 2009, by Debian. Original by Info-ZIP.
+
+caution:  both -n and -o specified; ignoring -o
+UnZip 6.00 of 20 April 2009, by Debian. Original by Info-ZIP.
+
+
+===== tar =====
+/usr/bin/tar
+tar (GNU tar) 1.35
+Copyright (C) 2023 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+
+===== gzip =====
+/usr/bin/gzip
+gzip 1.13
+Copyright (C) 2023 Free Software Foundation, Inc.
+Copyright (C) 1993 Jean-loup Gailly.
+
+===== bzip2 =====
+/usr/bin/bzip2
+bzip2, a block-sorting file compressor.  Version 1.0.8, 13-Jul-2019.
+   
+   Copyright (C) 1996-2019 by Julian Seward.
+
+===== xz =====
+/usr/bin/xz
+xz (XZ Utils) 5.8.1
+liblzma 5.8.1
+
+===== ssh =====
+/usr/bin/ssh
+unknown option -- -
+usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address]
+           [-c cipher_spec] [-D [bind_address:]port] [-E log_file]
+Bad escape character 'rsion'.
+
+===== scp =====
+/usr/bin/scp
+scp: unknown option -- -
+usage: scp [-346ABCOpqRrsTv] [-c cipher] [-D sftp_server_path] [-F ssh_config]
+           [-i identity_file] [-J destination] [-l limit] [-o ssh_option]
+scp: unknown option -- e
+usage: scp [-346ABCOpqRrsTv] [-c cipher] [-D sftp_server_path] [-F ssh_config]
+           [-i identity_file] [-J destination] [-l limit] [-o ssh_option]
+
+===== rsync =====
+NOT FOUND
+
+===== sqlite3 =====
+NOT FOUND
+
+===== python3 -c sys =====
+/usr/local/bin/python3
+3.13.14 (main, Jul 14 2026, 04:45:36) [GCC 14.2.0]
+/usr/local
+
+===== java -version =====
+openjdk version "11" 2018-09-25
+OpenJDK Runtime Environment 18.9 (build 11+28)
+OpenJDK 64-Bit Server VM 18.9 (build 11+28, mixed mode)
