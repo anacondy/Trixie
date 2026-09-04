@@ -1,0 +1,781 @@
+=== PHASE 2 – Controlled extraction ===
+Start: Fri Sep  4 17:36:00 UTC 2026
+
+------------------------------------------------------------
+Extracting: Agent 1 chrome.zip -> trixie_extract_20260904_172945/extract/Agent 1 chrome
+Wall-clock start: 2026-09-04T17:36:00,309345890+00:00
+Pre-check for traversal / absolute paths:
+  No traversal/absolute paths in listing
+Archive:  Agent 1 chrome.zip
+  inflating: trixie_extract_20260904_172945/extract/Agent 1 chrome/01_runtime.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 1 chrome/02_tooling.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 1 chrome/03_filesystem.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 1 chrome/04_network.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 1 chrome/05_benchmarks.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 1 chrome/06_other.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 1 chrome/probe_environment.sh  
+  inflating: trixie_extract_20260904_172945/extract/Agent 1 chrome/MANIFEST.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 1 chrome/environment_characterization.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 1 chrome/metadata.txt  
+Wall-clock end: 2026-09-04T17:36:00,318693799+00:00
+Computing SHA256SUMS of extracted files...
+  Wrote trixie_extract_20260904_172945/extract/Agent 1 chrome/EXTRACTED_SHA256SUMS.txt with 11 entries
+Symlink check:
+  Symlink count: 0
+Executable/script check:
+   528682      8 -rw-r--r--   1 user     user         5909 Sep  4 14:33 trixie_extract_20260904_172945/extract/Agent\ 1\ chrome/probe_environment.sh
+  Executable/script count: 1
+Path traversal verification:
+  All files under target confirmed (extracted to isolated dir)
+Nested zip check:
+  Total extracted size bytes: 25691
+  Size OK (<50MB)
+
+------------------------------------------------------------
+Extracting: Agent 2 brave.zip -> trixie_extract_20260904_172945/extract/Agent 2 brave
+Wall-clock start: 2026-09-04T17:36:00,359600291+00:00
+Pre-check for traversal / absolute paths:
+  No traversal/absolute paths in listing
+Archive:  Agent 2 brave.zip
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/PACKING_RECORD.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/environment_characterization.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/00_ZIP_INDEX.md  
+   creating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/SHA256SUMS  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/MANIFEST.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/README.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/make_manifest.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/probe_bench.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/probe.sh  
+   creating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/raw/
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/raw/16_misc.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/raw/15_memory.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/raw/14_installs.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/raw/13_disk_bench.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/raw/12_cpu_bench.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/raw/11_net_ports.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/raw/10_net_throughput.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/raw/09_net_matrix.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/raw/08_filesystem.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/raw/07_python_packages.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/raw/06_tools.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/raw/05_environment.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/raw/04_cgroup.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/raw/03_user_limits.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/raw/02_isolation.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/envchar/raw/01_runtime.txt  
+   creating: trixie_extract_20260904_172945/extract/Agent 2 brave/_envchar/
+  inflating: trixie_extract_20260904_172945/extract/Agent 2 brave/_envchar/session_marker.txt  
+Wall-clock end: 2026-09-04T17:36:00,372225658+00:00
+Computing SHA256SUMS of extracted files...
+  Wrote trixie_extract_20260904_172945/extract/Agent 2 brave/EXTRACTED_SHA256SUMS.txt with 27 entries
+Symlink check:
+  Symlink count: 0
+Executable/script check:
+   528697     16 -rw-r--r--   1 user     user        14177 Sep  4 15:10 trixie_extract_20260904_172945/extract/Agent\ 2\ brave/envchar/probe.sh
+   528695      4 -rw-r--r--   1 user     user         3416 Sep  4 15:10 trixie_extract_20260904_172945/extract/Agent\ 2\ brave/envchar/make_manifest.py
+   528696     24 -rw-r--r--   1 user     user        23185 Sep  4 15:10 trixie_extract_20260904_172945/extract/Agent\ 2\ brave/envchar/probe_bench.py
+  Executable/script count: 3
+Path traversal verification:
+  All files under target confirmed (extracted to isolated dir)
+Nested zip check:
+  Total extracted size bytes: 269826
+  Size OK (<50MB)
+
+------------------------------------------------------------
+Extracting: Agent 3 brave.zip -> trixie_extract_20260904_172945/extract/Agent 3 brave
+Wall-clock start: 2026-09-04T17:36:00,411210407+00:00
+Pre-check for traversal / absolute paths:
+  No traversal/absolute paths in listing
+Archive:  Agent 3 brave.zip
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/SHA256SUMS_ALL.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/environment_characterization.md  
+   creating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/
+   creating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/verification_manifest.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/SHA256SUMS  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/16_env_services.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/15_background_heartbeat.log  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/15_background.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/14_memory.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/13_installs.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/12_disk_bench.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/11_cpu_bench.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/10_throughput.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/09_net_matrix.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/08_latency.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/07_dns.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/06_persistence.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/05_filesystem.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/04_tooling.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/03_limits.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/02_isolation.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/raw_run2/01_runtime.txt  
+ extracting: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/persistence_marker.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/bench.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/envchar/probe_environment.sh  
+  inflating: trixie_extract_20260904_172945/extract/Agent 3 brave/00_README.md  
+Wall-clock end: 2026-09-04T17:36:00,421962341+00:00
+Computing SHA256SUMS of extracted files...
+  Wrote trixie_extract_20260904_172945/extract/Agent 3 brave/EXTRACTED_SHA256SUMS.txt with 26 entries
+Symlink check:
+  Symlink count: 0
+Executable/script check:
+   528743      4 -rw-r--r--   1 user     user         1651 Sep  4 15:10 trixie_extract_20260904_172945/extract/Agent\ 3\ brave/envchar/bench.py
+   528744     28 -rw-r--r--   1 user     user        24955 Sep  4 15:10 trixie_extract_20260904_172945/extract/Agent\ 3\ brave/envchar/probe_environment.sh
+  Executable/script count: 2
+Path traversal verification:
+  All files under target confirmed (extracted to isolated dir)
+Nested zip check:
+  Total extracted size bytes: 118905
+  Size OK (<50MB)
+
+------------------------------------------------------------
+Extracting: Agent 4 chrome.zip -> trixie_extract_20260904_172945/extract/Agent 4 chrome
+Wall-clock start: 2026-09-04T17:36:00,462136465+00:00
+Pre-check for traversal / absolute paths:
+  No traversal/absolute paths in listing
+Archive:  Agent 4 chrome.zip
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/README_START_HERE.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/session1/bg_start.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/session1/cpu_bench.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/session1/cpu_bench2.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/session1/disk_bench.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/session1/mem_progress.log  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/session1/memtest.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/session1/net_throughput.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/session1/net_workload.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/session1/portscan.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/session1/tcp_bench.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/environment_characterization.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/probe.sh  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/probe_background.sh  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/diff_run.sh  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/normalize.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/legacy_raw/cpu.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/legacy_raw/cpu2.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/legacy_raw/disk.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/legacy_raw/dns.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/legacy_raw/net_workload.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/legacy_raw/ports.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/legacy_raw/scale.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/legacy_raw/tcp.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/legacy_raw/throughput.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/legacy_raw/tools.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/.probe_log  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/.probe_status  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/00_meta.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/01_runtime.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/02_isolation.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/03_limits.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/04_users.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/05_tools.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/06_pkg_and_compile.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/06b_pip_freeze_sorted.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/07_filesystem.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/08_persistence.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/.persist/writer.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/09_net_matrix.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/README.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/10_net_dns.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/11_net_latency.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/12_net_throughput.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/13_net_egress_proof.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/14_bench_cpu.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/15_bench_disk.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/16_bench_installs.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/17_mem_pressure.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/18_background.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/.bg_ticks  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/.bg_pid  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/.bg_ticks.setsid  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/19_services.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/20_accelerators.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/00_meta.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/01_runtime.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/02_isolation.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/03_limits.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/04_users.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/05_tools.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/06_pkg_and_compile.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/06b_pip_freeze_sorted.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/07_filesystem.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/08_persistence.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/09_net_matrix.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/10_net_dns.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/11_net_latency.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/12_net_throughput.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/13_net_egress_proof.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/14_bench_cpu.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/15_bench_disk.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/16_bench_installs.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/17_mem_pressure.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/18_background.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/19_services.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/20_accelerators.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/MANIFEST.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/manifest.json  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/.run_id  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/session1/README.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/MANIFEST.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/make_manifest.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/SHA256SUMS.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/SHA256SUMS.normalized.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/SHA256SUMS.normalized.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/raw/normalized/SHA256SUMS.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/.probe_manifest.log  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/.v3_log  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/.v3_status  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/.bg_pid  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/.bg_ticks  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/.bg_ticks.setsid  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/.persist/writer.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/00_meta.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/01_runtime.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/02_isolation.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/03_limits.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/04_users.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/05_tools.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/06_pkg_and_compile.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/06b_pip_freeze_sorted.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/07_filesystem.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/08_persistence.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/09_net_matrix.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/10_net_dns.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/11_net_latency.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/12_net_throughput.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/13_net_egress_proof.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/14_bench_cpu.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/15_bench_disk.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/16_bench_installs.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/17_mem_pressure.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/18_background.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/19_services.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/20_accelerators.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/00_meta.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/01_runtime.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/02_isolation.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/03_limits.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/04_users.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/05_tools.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/06_pkg_and_compile.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/06b_pip_freeze_sorted.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/07_filesystem.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/08_persistence.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/09_net_matrix.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/10_net_dns.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/11_net_latency.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/12_net_throughput.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/13_net_egress_proof.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/14_bench_cpu.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/15_bench_disk.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/16_bench_installs.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/17_mem_pressure.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/18_background.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/19_services.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/20_accelerators.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/MANIFEST.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/SHA256SUMS.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/normalized/SHA256SUMS.normalized.norm  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/.run_id  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/MANIFEST.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/SHA256SUMS.normalized.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/SHA256SUMS.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/run_v2/manifest.json  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/PROMPTS.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/TIMELINE.csv  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/ZIP_METADATA.json  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/make_bundle_zip.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 4 chrome/envcheck/verify_zip.py  
+Wall-clock end: 2026-09-04T17:36:00,485738461+00:00
+Computing SHA256SUMS of extracted files...
+  Wrote trixie_extract_20260904_172945/extract/Agent 4 chrome/EXTRACTED_SHA256SUMS.txt with 152 entries
+Symlink check:
+  Symlink count: 0
+Executable/script check:
+   528752      4 -rw-r--r--   1 user     user         2335 Sep  4 13:44 trixie_extract_20260904_172945/extract/Agent\ 4\ chrome/envcheck/session1/cpu_bench.py
+   528753      4 -rw-r--r--   1 user     user         2895 Sep  4 13:44 trixie_extract_20260904_172945/extract/Agent\ 4\ chrome/envcheck/session1/cpu_bench2.py
+   528754      4 -rw-r--r--   1 user     user         2728 Sep  4 13:44 trixie_extract_20260904_172945/extract/Agent\ 4\ chrome/envcheck/session1/disk_bench.py
+   528756      4 -rw-r--r--   1 user     user         1039 Sep  4 13:44 trixie_extract_20260904_172945/extract/Agent\ 4\ chrome/envcheck/session1/memtest.py
+   528757      4 -rw-r--r--   1 user     user         2829 Sep  4 13:44 trixie_extract_20260904_172945/extract/Agent\ 4\ chrome/envcheck/session1/net_throughput.py
+   528758      4 -rw-r--r--   1 user     user         1373 Sep  4 13:44 trixie_extract_20260904_172945/extract/Agent\ 4\ chrome/envcheck/session1/net_workload.py
+   528759      4 -rw-r--r--   1 user     user         1301 Sep  4 13:44 trixie_extract_20260904_172945/extract/Agent\ 4\ chrome/envcheck/session1/portscan.py
+   528760      4 -rw-r--r--   1 user     user         2100 Sep  4 13:44 trixie_extract_20260904_172945/extract/Agent\ 4\ chrome/envcheck/session1/tcp_bench.py
+   528762     60 -rwxr-xr-x   1 user     user        59897 Sep  4 14:19 trixie_extract_20260904_172945/extract/Agent\ 4\ chrome/envcheck/probe.sh
+   528764      4 -rwxr-xr-x   1 user     user         3796 Sep  4 14:16 trixie_extract_20260904_172945/extract/Agent\ 4\ chrome/envcheck/diff_run.sh
+   528763      4 -rwxr-xr-x   1 user     user         1720 Sep  4 13:48 trixie_extract_20260904_172945/extract/Agent\ 4\ chrome/envcheck/probe_background.sh
+   528765      8 -rwxr-xr-x   1 user     user         6130 Sep  4 14:18 trixie_extract_20260904_172945/extract/Agent\ 4\ chrome/envcheck/normalize.py
+   528836      8 -rwxr-xr-x   1 user     user         7916 Sep  4 14:27 trixie_extract_20260904_172945/extract/Agent\ 4\ chrome/envcheck/make_manifest.py
+   528906     32 -rw-r--r--   1 user     user        30118 Sep  4 14:39 trixie_extract_20260904_172945/extract/Agent\ 4\ chrome/envcheck/make_bundle_zip.py
+   528907      4 -rw-r--r--   1 user     user         4038 Sep  4 14:38 trixie_extract_20260904_172945/extract/Agent\ 4\ chrome/envcheck/verify_zip.py
+  Executable/script count: 15
+Path traversal verification:
+  All files under target confirmed (extracted to isolated dir)
+Nested zip check:
+  Total extracted size bytes: 798943
+  Size OK (<50MB)
+
+------------------------------------------------------------
+Extracting: Agent 5 chrome.zip -> trixie_extract_20260904_172945/extract/Agent 5 chrome
+Wall-clock start: 2026-09-04T17:36:00,533460839+00:00
+Pre-check for traversal / absolute paths:
+  No traversal/absolute paths in listing
+Archive:  Agent 5 chrome.zip
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/ARCHIVE_MANIFEST.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/environment_characterization.md  
+   creating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/env_probe.sh  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/bench_cpu.py  
+   creating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/
+   creating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/01_runtime.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/02_isolation.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/03_identity_limits.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/04_tooling.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/05_python_env.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/06_filesystem.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/07_dns.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/08_net_latency.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/09_net_matrix.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/10_net_anomalies.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/11_bench_cpu.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/12_bench_disk.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/13_bench_install.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/14_memory_oom.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/15_processes.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/16_env_config.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/MANIFEST.json  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/SHA256SUMS.txt  
+   creating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/01_runtime.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/02_isolation.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/03_identity_limits.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/04_tooling.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/05_python_env.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/06_filesystem.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/07_dns.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/08_net_latency.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/09_net_matrix.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/10_net_anomalies.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/11_bench_cpu.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/12_bench_disk.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/13_bench_install.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/14_memory_oom.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/15_processes.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/16_env_config.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/MANIFEST.json  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/SHA256SUMS.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/diff_runs.sh  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/README.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/ERRATA.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/env-probe/KIT_SHA256SUMS.txt  
+   creating: trixie_extract_20260904_172945/extract/Agent 5 chrome/envcheck/
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/envcheck/cpubench.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/envcheck/hello  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/envcheck/hello.c  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/envcheck/pypkgs_tail.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/envcheck/t.cpp  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/envcheck/tcpp  
+  inflating: trixie_extract_20260904_172945/extract/Agent 5 chrome/PERSISTENCE_MARKER.txt  
+Wall-clock end: 2026-09-04T17:36:00,559990662+00:00
+Computing SHA256SUMS of extracted files...
+  Wrote trixie_extract_20260904_172945/extract/Agent 5 chrome/EXTRACTED_SHA256SUMS.txt with 52 entries
+Symlink check:
+  Symlink count: 0
+Executable/script check:
+   528913     28 -rwxr-xr-x   1 user     user        28418 Sep  4 13:49 trixie_extract_20260904_172945/extract/Agent\ 5\ chrome/env-probe/env_probe.sh
+   528914      8 -rwxr-xr-x   1 user     user         4304 Sep  4 13:46 trixie_extract_20260904_172945/extract/Agent\ 5\ chrome/env-probe/bench_cpu.py
+   528954      4 -rwxr-xr-x   1 user     user         3477 Sep  4 13:52 trixie_extract_20260904_172945/extract/Agent\ 5\ chrome/env-probe/diff_runs.sh
+   528959      4 -rw-r--r--   1 user     user         1918 Sep  4 13:43 trixie_extract_20260904_172945/extract/Agent\ 5\ chrome/envcheck/cpubench.py
+  Executable/script count: 4
+Path traversal verification:
+  All files under target confirmed (extracted to isolated dir)
+Nested zip check:
+  Total extracted size bytes: 319202
+  Size OK (<50MB)
+
+------------------------------------------------------------
+Extracting: Agent 6 brave.zip -> trixie_extract_20260904_172945/extract/Agent 6 brave
+Wall-clock start: 2026-09-04T17:36:00,600609061+00:00
+Pre-check for traversal / absolute paths:
+  No traversal/absolute paths in listing
+Archive:  Agent 6 brave.zip
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/00_README_zip_contents.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/compare_canonical_vs_fullrun.txt  
+   creating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/manifest.json  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/sha256sums.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/epilogue.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/15_process_demo.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/14_final.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/bg_ticks.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/13_bg_misc.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/12b_pip2.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/12_pip.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/11_disk.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/10b_net_throughput2.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/10_net_throughput.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/09_net_matrix.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/07_cgroup_sudo.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/06_compilers_pkgs.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/05_cpu_mem.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/04_fs.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/03_tools.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/02_identity.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/01_runtime.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_C_full_FULL_PASS/00_run_header.txt  
+   creating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/manifest.json  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/sha256sums.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/epilogue.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/15_process_demo.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/14_final.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/bg_ticks.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/13_bg_misc.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/12b_pip2.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/12_pip.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/11_disk.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/10b_net_throughput2.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/10_net_throughput.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/09_net_matrix.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/07_cgroup_sudo.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/06_compilers_pkgs.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/05_cpu_mem.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/04_fs.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/03_tools.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/02_identity.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/01_runtime.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_B_smoke7_QUICK_PASS/00_run_header.txt  
+   creating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/manifest.json  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/sha256sums.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/epilogue.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/15_process_demo.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/14_final.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/bg_ticks.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/13_bg_misc.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/12b_pip2.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/12_pip.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/11_disk.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/10b_net_throughput2.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/10_net_throughput.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/09_net_matrix.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/07_cgroup_sudo.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/06_compilers_pkgs.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/05_cpu_mem.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/04_fs.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/03_tools.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/02_identity.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/01_runtime.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/rerun_A_smoke6_QUICK/00_run_header.txt  
+   creating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/sha256sums.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/manifest.json  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/bg_ticks.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/15_process_demo.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/14_final.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/13_bg_misc.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/12b_pip2.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/12_pip.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/11_disk.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/10b_net_throughput2.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/10_net_throughput.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/09_net_matrix.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/07_cgroup_sudo.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/06_compilers_pkgs.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/05_cpu_mem.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/04_fs.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/03_tools.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/02_identity.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/01_runtime.txt  
+ extracting: trixie_extract_20260904_172945/extract/Agent 6 brave/envprobe/.persist_marker  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/cross_turn_check.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/compare_run.sh  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/environment_probe.sh  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/RAW_VERBATIM_APPENDIX.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 6 brave/environment_characterization.md  
+Wall-clock end: 2026-09-04T17:36:00,625935656+00:00
+Computing SHA256SUMS of extracted files...
+  Wrote trixie_extract_20260904_172945/extract/Agent 6 brave/EXTRACTED_SHA256SUMS.txt with 91 entries
+Symlink check:
+  Symlink count: 0
+Executable/script check:
+   529058      4 -rwxr-xr-x   1 user     user         3361 Sep  4 14:06 trixie_extract_20260904_172945/extract/Agent\ 6\ brave/compare_run.sh
+   529059     48 -rwxr-xr-x   1 user     user        46431 Sep  4 14:06 trixie_extract_20260904_172945/extract/Agent\ 6\ brave/environment_probe.sh
+  Executable/script count: 2
+Path traversal verification:
+  All files under target confirmed (extracted to isolated dir)
+Nested zip check:
+  Total extracted size bytes: 388443
+  Size OK (<50MB)
+
+------------------------------------------------------------
+Extracting: Agent 7 edge.zip -> trixie_extract_20260904_172945/extract/Agent 7 edge
+Wall-clock start: 2026-09-04T17:36:00,666102727+00:00
+Pre-check for traversal / absolute paths:
+  No traversal/absolute paths in listing
+Archive:  Agent 7 edge.zip
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/environment_characterization.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/WORKSPACE_INDEX.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/ZIP_CONTENTS_MANIFEST.txt  
+   creating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/diskbench.sh  
+   creating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/01_system.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/02_isolation.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/02b_isolation.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/03_tools.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/04_limits_sudo_apt.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/05_fs.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/06_fs_tests.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/07_network_dns_ports.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/08_network_latency.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/09_network_throughput.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/10_cpu_bench.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/11_disk_bench.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/12_pip_bench.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/13_apt_bench.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/14_pkg_installs.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/15_network_extra.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/15b_network_fixed.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/16_memory.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/16b_memory_extra.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/17_compile_system.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/18_ffmpeg_apt.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/19_services_nohup.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/20_background.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/21_final_checks.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/22_venv_nohup.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/23_preinstalled.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/heartbeat.log  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/notes/nohup_result.txt  
+   creating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/
+   creating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/00_meta.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/01_runtime.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/02_isolation.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/03_tools.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/04_limits.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/05_filesystem.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/06_fs_tests.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/07_dns.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/08_http_latency.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/09_net_matrix.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/10_download_throughput.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/11_cpu_bench.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/12_disk_bench.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/13_pkg_installs.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/14_memory_pressure.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/15_services_processes.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/16_envconfig.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/MANIFEST.sha256  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/MANIFEST.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T141747Z/probe_environment.sh  
+   creating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/01_system.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/02_isolation.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/02b_isolation.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/03_tools.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/04_limits_sudo_apt.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/05_fs.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/06_fs_tests.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/07_network_dns_ports.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/08_network_latency.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/09_network_throughput.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/10_cpu_bench.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/11_disk_bench.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/12_pip_bench.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/13_apt_bench.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/14_pkg_installs.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/15_network_extra.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/15b_network_fixed.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/16_memory.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/16b_memory_extra.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/17_compile_system.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/18_ffmpeg_apt.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/19_services_nohup.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/20_background.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/21_final_checks.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/22_venv_nohup.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/23_preinstalled.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/nohup_result.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/MANIFEST.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/raw/run_20260904T1116Z_original/MANIFEST.sha256  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/probe_environment.sh  
+  inflating: trixie_extract_20260904_172945/extract/Agent 7 edge/envcheck/README.md  
+Wall-clock end: 2026-09-04T17:36:00,681357248+00:00
+Computing SHA256SUMS of extracted files...
+  Wrote trixie_extract_20260904_172945/extract/Agent 7 edge/EXTRACTED_SHA256SUMS.txt with 84 entries
+Symlink check:
+  Symlink count: 0
+Executable/script check:
+   529068      4 -rw-r--r--   1 user     user         1649 Sep  4 14:17 trixie_extract_20260904_172945/extract/Agent\ 7\ edge/envcheck/diskbench.sh
+   529119     36 -rwxr-xr-x   1 user     user        33205 Sep  4 14:20 trixie_extract_20260904_172945/extract/Agent\ 7\ edge/envcheck/raw/run_20260904T141747Z/probe_environment.sh
+   529150     36 -rw-r--r--   1 user     user        33472 Sep  4 14:20 trixie_extract_20260904_172945/extract/Agent\ 7\ edge/envcheck/probe_environment.sh
+  Executable/script count: 3
+Path traversal verification:
+  All files under target confirmed (extracted to isolated dir)
+Nested zip check:
+  Total extracted size bytes: 331182
+  Size OK (<50MB)
+
+------------------------------------------------------------
+Extracting: Agent 8 edge.zip -> trixie_extract_20260904_172945/extract/Agent 8 edge
+Wall-clock start: 2026-09-04T17:36:00,717030639+00:00
+Pre-check for traversal / absolute paths:
+  No traversal/absolute paths in listing
+Archive:  Agent 8 edge.zip
+  inflating: trixie_extract_20260904_172945/extract/Agent 8 edge/README_ZIP.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 8 edge/VERIFICATION_MANIFEST.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 8 edge/environment_characterization.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 8 edge/probe_environment.sh  
+   creating: trixie_extract_20260904_172945/extract/Agent 8 edge/probe_raw/
+  inflating: trixie_extract_20260904_172945/extract/Agent 8 edge/probe_raw/01_runtime.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 8 edge/probe_raw/02_isolation.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 8 edge/probe_raw/03_identity_limits.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 8 edge/probe_raw/04_cpu_mem.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 8 edge/probe_raw/05_tools.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 8 edge/probe_raw/06_python_pkgs.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 8 edge/probe_raw/07_filesystem.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 8 edge/probe_raw/08_env.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 8 edge/probe_raw/09_net_matrix.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 8 edge/probe_raw/10_benches.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 8 edge/probe_raw/11_pip_sample.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 8 edge/probe_raw/00_MANIFEST.txt  
+Wall-clock end: 2026-09-04T17:36:00,726285372+00:00
+Computing SHA256SUMS of extracted files...
+  Wrote trixie_extract_20260904_172945/extract/Agent 8 edge/EXTRACTED_SHA256SUMS.txt with 17 entries
+Symlink check:
+  Symlink count: 0
+Executable/script check:
+   529157     16 -rwxr-xr-x   1 user     user        13694 Sep  4 14:14 trixie_extract_20260904_172945/extract/Agent\ 8\ edge/probe_environment.sh
+  Executable/script count: 1
+Path traversal verification:
+  All files under target confirmed (extracted to isolated dir)
+Nested zip check:
+  Total extracted size bytes: 85660
+  Size OK (<50MB)
+
+------------------------------------------------------------
+Extracting: Agent 9 edge.zip -> trixie_extract_20260904_172945/extract/Agent 9 edge
+Wall-clock start: 2026-09-04T17:36:00,759536307+00:00
+Pre-check for traversal / absolute paths:
+  No traversal/absolute paths in listing
+Archive:  Agent 9 edge.zip
+Agent 9 edge comprehensive environment-characterization evidence archive; packed UTC 2026-09-04T14:31:49.449915Z
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/00_READ_ME_FIRST.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/documentation/01_USER_PROMPTS_EXACT.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/documentation/02_IMPORTANT_METADATA.json  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/documentation/03_DELETED_OR_EPHEMERAL_ARTIFACTS.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/documentation/04_CONVERSATION_AND_ARTIFACT_SEQUENCE.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/documentation/05_FILE_CATALOG.csv  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/documentation/06_CREATION_TIMELINE.csv  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/documentation/07_ARCHIVE_FILE_LIST.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/documentation/08_ARCHIVE_BUILD_LOG.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/documentation/SHA256SUMS.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/.environment_characterization_persistence_probe  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/.npm/_cacache/content-v2/sha512/e3/50/a27e483a7bc4f2952a5db53a5e2d532abd20445734edb47bc4443ef8d7ea6767c00dbf4d34e0c44be3740a3c394af5c1af369e8d6566540656c65d8c719e  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/.npm/_cacache/content-v2/sha512/fb/ca/2f552916ba7548a39fc87ddb7ddecb4f58408b2e3cfee63c6b256be164bf40c5245d799269512d2650f028ad83a0970d4dcb87d4612f1b9d379408956292  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/.npm/_cacache/index-v5/28/af/3f5b8e1c4db46b2c24d0264a2bb8ab473f22a4f13707d911085e0a717fb7  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/.npm/_cacache/index-v5/98/20/8cf39748e26add3139706a657e8908982a79143e5c985f1a3fd09031cf57  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/.npm/_logs/2026-09-04T14_16_00_165Z-debug-0.log  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/.npm/_logs/2026-09-04T14_17_59_900Z-debug-0.log  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/.npm/_logs/2026-09-04T14_18_56_360Z-debug-0.log  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/.npm/_logs/2026-09-04T14_20_04_341Z-debug-0.log  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/.npm/_logs/2026-09-04T14_20_59_757Z-debug-0.log  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/.npm/_update-notifier-last-checked  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/.sudo_as_admin_successful  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/build_agent9_archive.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/apt_install_notes.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/apt_install_results.json  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/apt_install_test.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/background_process_test.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/cloudflare_upload.tsv  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/cloudflare_upload_error.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/curl_latency.tsv  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/curl_latency_errors.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/dns_getaddrinfo.tsv  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/dns_udp.tsv  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/environment_variable_names.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/filesystem_survey.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/final_runtime_state.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/git_network_notes.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/git_network_results.json  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/git_network_tests.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/google_download_retry.tsv  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/google_download_retry_error.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/google_download_retry_headers.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/install_compile_notes.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/install_compile_results.json  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/install_compile_tests.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/isolation_extra.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/large_download_errors.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/large_download_notes.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/large_downloads.tsv  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/limit_adjustment_test.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/memory_pressure_result.json  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/memory_pressure_test.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/microbenchmark_notes.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/microbenchmark_results.json  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/microbenchmarks.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/network_config_ping.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/network_socket_tests.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/persistence_recheck.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/pip_list.json  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/pip_list_stderr.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/resource_detail.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/runtime_packages.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/sudo_ping_ipv6.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/system_survey.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/tcp_ports.tsv  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/tool_inventory.py  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/envchar_work/tool_inventory.tsv  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_characterization.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/README.md  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/probe_environment.sh  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/SHA256SUMS  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/manifest.json  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/manifest.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/persistence_sentinel.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/probe_environment.sh  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/01_runtime.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/02_isolation.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/03_resources.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/04_tooling.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/05_packages.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/06_filesystem.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/07_dns.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/08_http_latency.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/09_net_matrix.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/10_throughput.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/11_benchmarks.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/12_install_compile.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/13_memory_process.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/14_persistence.txt  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence_20260904T142002Z-2576.zip  
+  inflating: trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence_20260904T142002Z-2576.zip.sha256  
+Wall-clock end: 2026-09-04T17:36:00,787952647+00:00
+Computing SHA256SUMS of extracted files...
+  Wrote trixie_extract_20260904_172945/extract/Agent 9 edge/EXTRACTED_SHA256SUMS.txt with 92 entries
+Symlink check:
+  Symlink count: 0
+Executable/script check:
+   529214     44 -rw-r--r--   1 user     user        43380 Sep  4 14:31 trixie_extract_20260904_172945/extract/Agent\ 9\ edge/Agent\ 9\ edge/payload/home/user/build_agent9_archive.py
+   529218      4 -rw-r--r--   1 user     user         1860 Sep  4 14:15 trixie_extract_20260904_172945/extract/Agent\ 9\ edge/Agent\ 9\ edge/payload/home/user/envchar_work/apt_install_test.py
+   529231      4 -rw-r--r--   1 user     user         1394 Sep  4 14:15 trixie_extract_20260904_172945/extract/Agent\ 9\ edge/Agent\ 9\ edge/payload/home/user/envchar_work/git_network_tests.py
+   529237      4 -rw-r--r--   1 user     user         2966 Sep  4 14:15 trixie_extract_20260904_172945/extract/Agent\ 9\ edge/Agent\ 9\ edge/payload/home/user/envchar_work/install_compile_tests.py
+   529244      4 -rw-r--r--   1 user     user         1559 Sep  4 14:15 trixie_extract_20260904_172945/extract/Agent\ 9\ edge/Agent\ 9\ edge/payload/home/user/envchar_work/memory_pressure_test.py
+   529247      8 -rw-r--r--   1 user     user         5479 Sep  4 14:15 trixie_extract_20260904_172945/extract/Agent\ 9\ edge/Agent\ 9\ edge/payload/home/user/envchar_work/microbenchmarks.py
+   529249      4 -rw-r--r--   1 user     user         3709 Sep  4 14:15 trixie_extract_20260904_172945/extract/Agent\ 9\ edge/Agent\ 9\ edge/payload/home/user/envchar_work/network_socket_tests.py
+   529258      4 -rw-r--r--   1 user     user         3187 Sep  4 14:15 trixie_extract_20260904_172945/extract/Agent\ 9\ edge/Agent\ 9\ edge/payload/home/user/envchar_work/tool_inventory.py
+   529263     28 -rwxr-xr-x   1 user     user        27124 Sep  4 14:19 trixie_extract_20260904_172945/extract/Agent\ 9\ edge/Agent\ 9\ edge/payload/home/user/environment_evidence/probe_environment.sh
+   529270     28 -rwxr-xr-x   1 user     user        27124 Sep  4 14:20 trixie_extract_20260904_172945/extract/Agent\ 9\ edge/Agent\ 9\ edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/probe_environment.sh
+  Executable/script count: 10
+Path traversal verification:
+  All files under target confirmed (extracted to isolated dir)
+Nested zip check:
+-rw-r--r-- 1 user user 61K Sep  4 14:21 trixie_extract_20260904_172945/extract/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence_20260904T142002Z-2576.zip
+  Total extracted size bytes: 727299
+  Size OK (<50MB)
+
+End: Fri Sep  4 17:36:00 UTC 2026

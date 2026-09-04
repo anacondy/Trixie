@@ -1,0 +1,383 @@
+=== PHASE 3 – Cross-check (re-run with proper quoting) ===
+Generated: Fri Sep  4 17:53:19 UTC 2026
+
+
+------------------------------------------------------------
+File: Agent 1 chrome.zip
+Size: 10863
+Outer SHA computed: 52880dad6738d951ad51a255347297ea54905b282e1456f70ef97e576266dee7
+Outer SHA claimed: (none published)
+Extracted to: trixie_extract_20260904_172945/extract/Agent 1 chrome
+Internal SHA files (1):
+  EXTRACTED_SHA256SUMS.txt
+
+  Manifest/README/INDEX files (1):
+    MANIFEST.txt
+
+------------------------------------------------------------
+File: Agent 2 brave.zip
+Size: 78729
+Outer SHA computed: 55302d915b3c07b1f11bed29738c458ae78e349a417b9dae22281c2cd6d444fa
+Outer SHA claimed: 55302d915b3c07b1f11bed29738c458ae78e349a417b9dae22281c2cd6d444fa
+Outer SHA match: OK
+Extracted to: trixie_extract_20260904_172945/extract/Agent 2 brave
+Internal SHA files (2):
+  EXTRACTED_SHA256SUMS.txt
+  envchar/SHA256SUMS
+
+  Checking envchar/SHA256SUMS:
+    84ad2e7cb7492f433920c713379f9c46a9eac50465942bb287f701067cdea076  raw/01_runtime.txt
+    d7c1492d5275ab36383a8f47646710ae129105ab09fbf5b992e53571bedc76d3  raw/02_isolation.txt
+    cb0e582089b80c83f0ccc63a4b71cbb5a86cf9a12af5b5bc8f9c776e0a234fe0  raw/03_user_limits.txt
+    e8e9e62f91c571857ee18d3c9587131dd07e78a35b5015bad69e27b9672ac65a  raw/04_cgroup.txt
+    d71f80040ba286f02f90bccaad898b69629c8047261e558689e0fed2d3491721  raw/05_environment.txt
+    Attempting verification via python:
+      Result: 19 OK, 0 FAIL, 0 MISSING/UNRESOLVED
+      Internal SHA check: PASS
+
+  Manifest/README/INDEX files (3):
+    00_ZIP_INDEX.md
+    envchar/MANIFEST.txt
+    envchar/README.md
+
+------------------------------------------------------------
+File: Agent 3 brave.zip
+Size: 47044
+Outer SHA computed: 066b4eb2764eea3f7543ad575a637f3c8d83e7d742ab81385d2fc17c09e8e62d
+Outer SHA claimed: 066b4eb2764eea3f7543ad575a637f3c8d83e7d742ab81385d2fc17c09e8e62d
+Outer SHA match: OK
+Extracted to: trixie_extract_20260904_172945/extract/Agent 3 brave
+Internal SHA files (3):
+  EXTRACTED_SHA256SUMS.txt
+  SHA256SUMS_ALL.txt
+  envchar/raw_run2/SHA256SUMS
+
+  Checking SHA256SUMS_ALL.txt:
+    6f5ee76014f396a8642ff0b3fbfdd3b6dd2f767db4cf7357b355bce12a4391bd  ./00_README.md
+    5d6d5a900068703187a4b08b2dacc89c465bbb2308d0f0311392169686acf469  ./envchar/bench.py
+    d9ad05e428b9ea0cc6a14fde4301f30eeb0dde5c71a8dc61f21e950041445f20  ./envchar/persistence_marker.txt
+    c325bea39d5e02599ee435f05f812deffef5ae29b8eb321e143f1377d871dc12  ./envchar/probe_environment.sh
+    74483d5e5cd579068cb1fbf855a514770bd034d58f2b5a3e6a58ed9209610203  ./envchar/raw_run2/01_runtime.txt
+    Attempting verification via python:
+      Result: 24 OK, 0 FAIL, 0 MISSING/UNRESOLVED
+      Internal SHA check: PASS
+
+  Checking envchar/raw_run2/SHA256SUMS:
+    74483d5e5cd579068cb1fbf855a514770bd034d58f2b5a3e6a58ed9209610203  ./01_runtime.txt
+    972f5e6bbb343634df3935ee41059d31435b99d0f967496be67a9dc474704f2a  ./02_isolation.txt
+    82ccf4c5928309bad7341e949ee25363720ee1168d7fe57660631b485f75bdc6  ./03_limits.txt
+    4527e155df8752d8e1cad2e9f77c3ba5b85880b568941dfd99c1234b0dabd36c  ./04_tooling.txt
+    3c958c652efa07b2385f2b21c09d91349b360a2eef716489b3e621cc9611623d  ./05_filesystem.txt
+    Attempting verification via python:
+      Result: 17 OK, 0 FAIL, 0 MISSING/UNRESOLVED
+      Internal SHA check: PASS
+
+  Manifest/README/INDEX files (1):
+    00_README.md
+
+------------------------------------------------------------
+File: Agent 4 chrome.zip
+Size: 282299
+Outer SHA computed: 0f01d761ded3ddf9ec755bc7ce289029e093e172748f72a179e7054da769662b
+Outer SHA claimed: 0f01d761ded3ddf9ec755bc7ce289029e093e172748f72a179e7054da769662b
+Outer SHA match: OK
+Extracted to: trixie_extract_20260904_172945/extract/Agent 4 chrome
+Internal SHA files (9):
+  EXTRACTED_SHA256SUMS.txt
+  envcheck/raw/SHA256SUMS.normalized.txt
+  envcheck/raw/SHA256SUMS.txt
+  envcheck/raw/normalized/SHA256SUMS.norm
+  envcheck/raw/normalized/SHA256SUMS.normalized.norm
+  envcheck/run_v2/SHA256SUMS.normalized.txt
+  envcheck/run_v2/SHA256SUMS.txt
+  envcheck/run_v2/normalized/SHA256SUMS.norm
+  envcheck/run_v2/normalized/SHA256SUMS.normalized.norm
+
+  Checking envcheck/raw/SHA256SUMS.normalized.txt:
+    3ff0b57fc417791a89921b39fa29ab24493f251f1a5c184d980bc5a682dc9927  normalized/00_meta.norm
+    a446ad3b807184ce115a4ba56cec0b86e9f9e231dc9a2e784535ee99fdde6901  normalized/01_runtime.norm
+    7d7849f098fa69648e1055d6e30676b856e09a8b28392e67b34bd30aac68b360  normalized/02_isolation.norm
+    395758c58466bcc265c6f60d7f5c56f06ef6ac0f8f608cdcf48a0465d48b44e9  normalized/03_limits.norm
+    1f8b767c1fc36ff6e057940ba0380ee69aef381f5960c2e026ed9d8f1a134263  normalized/04_users.norm
+    Attempting verification via python:
+      Result: 22 OK, 0 FAIL, 0 MISSING/UNRESOLVED
+      Internal SHA check: PASS
+
+  Checking envcheck/raw/SHA256SUMS.txt:
+    bac85898ec2098937f8e3cfea178e73068afdaf685f00c1bc51400bcac500597  00_meta.txt
+    1d0169fdf91c5165233b06d0829ebc60f255c5ebe547ec5ad7faf96659fabdb5  01_runtime.txt
+    a654f3034a927ea58a6dcd8283b5be62e8e510450ad1c23987a82bb0b43a12b9  02_isolation.txt
+    44ae85442ad3c0e9a0739cb636e89b2cd901c14441611fa0cfdd4d731361f4fc  03_limits.txt
+    0ffeb5913a1a72356e1cbc3c07a7eab2f7076fd41050dddd069bd3a77923cbe8  04_users.txt
+    Attempting verification via python:
+      Result: 22 OK, 0 FAIL, 0 MISSING/UNRESOLVED
+      Internal SHA check: PASS
+
+  Checking envcheck/raw/normalized/SHA256SUMS.norm:
+    <HEX> 00_meta.txt
+    <HEX> 01_runtime.txt
+    <HEX> 02_isolation.txt
+    <HEX> 03_limits.txt
+    <HEX> 04_users.txt
+    Not standard sha format, skipping verification
+
+  Checking envcheck/raw/normalized/SHA256SUMS.normalized.norm:
+    <HEX> normalized/00_meta.norm
+    <HEX> normalized/01_runtime.norm
+    <HEX> normalized/02_isolation.norm
+    <HEX> normalized/03_limits.norm
+    <HEX> normalized/04_users.norm
+    Not standard sha format, skipping verification
+
+  Checking envcheck/run_v2/SHA256SUMS.normalized.txt:
+    1cffc6098e20158f022d1d3de063ff8a17a6067056dfe092da51e0ea49421567  normalized/00_meta.norm
+    e6dffc3f66015a5c908fdf0fea3695a2cc8af70715f8edb784d1839d1beb6b88  normalized/01_runtime.norm
+    75fc469d3dc1c9d7f6eb6a948549977b254ff5f12c1b17b95c9b3b3960cb6f6f  normalized/02_isolation.norm
+    e9a6c3d22cff8d3c371e58ab153d689ba411f07c14ca046601038e4b928a6c46  normalized/03_limits.norm
+    54c661bd5d25c0fcc15103b6beed3d4e3a5747210efef7bd373eaf8e0d75cb13  normalized/04_users.norm
+    Attempting verification via python:
+      Result: 22 OK, 0 FAIL, 0 MISSING/UNRESOLVED
+      Internal SHA check: PASS
+
+  Checking envcheck/run_v2/SHA256SUMS.txt:
+    dc51e23384c59896671df5a9643f55fd71bbd7213faa8a6fd6ace308c19f7d64  00_meta.txt
+    a18a164fd854e08b56cf27f4a21e0d0ed00a4bfd907109ddfa8108f16089c73a  01_runtime.txt
+    8f4f700cd74973cd09db6d50ef06a1d27e5eb4fe014ac3fa2ac08da295476f9f  02_isolation.txt
+    24438cac4ea6c2dc4073587de1c1fd38b8b6daad992a5e7024673d5e29efc7b9  03_limits.txt
+    73f4238eedd5c6544ca72ab1c2164646b592395e8e5a18114f7ae64ce4f06681  04_users.txt
+    Attempting verification via python:
+      Result: 22 OK, 0 FAIL, 0 MISSING/UNRESOLVED
+      Internal SHA check: PASS
+
+  Checking envcheck/run_v2/normalized/SHA256SUMS.norm:
+    <HEX>  00_meta.txt
+    <HEX>  01_runtime.txt
+    <HEX>  02_isolation.txt
+    <HEX>  03_limits.txt
+    <HEX>  04_users.txt
+    Not standard sha format, skipping verification
+
+  Checking envcheck/run_v2/normalized/SHA256SUMS.normalized.norm:
+    <HEX>  normalized/00_meta.norm
+    <HEX>  normalized/01_runtime.norm
+    <HEX>  normalized/02_isolation.norm
+    <HEX>  normalized/03_limits.norm
+    <HEX>  normalized/04_users.norm
+    Not standard sha format, skipping verification
+
+  Manifest/README/INDEX files (9):
+    README_START_HERE.md
+    envcheck/README.md
+    envcheck/raw/MANIFEST.txt
+    envcheck/raw/manifest.json
+    envcheck/raw/normalized/MANIFEST.norm
+    envcheck/run_v2/MANIFEST.txt
+    envcheck/run_v2/manifest.json
+    envcheck/run_v2/normalized/MANIFEST.norm
+    envcheck/session1/README.md
+
+------------------------------------------------------------
+File: Agent 5 chrome.zip
+Size: 119842
+Outer SHA computed: cfd0179b38fe6e6edce5b56205a38a3b5d6660b6f3fa88b46e54530fda151466
+Outer SHA claimed: cfd0179b38fe6e6edce5b56205a38a3b5d6660b6f3fa88b46e54530fda151466
+Outer SHA match: OK
+Extracted to: trixie_extract_20260904_172945/extract/Agent 5 chrome
+Internal SHA files (4):
+  EXTRACTED_SHA256SUMS.txt
+  env-probe/KIT_SHA256SUMS.txt
+  env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/SHA256SUMS.txt
+  env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/SHA256SUMS.txt
+
+  Checking env-probe/KIT_SHA256SUMS.txt:
+    fb7297d000b1c9929e05084494aa997ff2710f2e0efa8b18e5140e1970d6b7c8  env_probe.sh
+    4cd11eddfdc591ba212580f198f880cd88d90ee403bb1e7f5697ce99d5d65e57  bench_cpu.py
+    37305499d0c976b2e5ab5c7b7b3e96e0892af3830b7187d0abf493a22ead58bd  diff_runs.sh
+    351fb7ff73866e0edb259417480206878b979a2fa06ee0ef43ce5b9a48a5e662  README.md
+    b6b6d93285eed22ddfb7bc0f323de69613511a36b323dbbef713ba0db4f44341  ERRATA.md
+    Attempting verification via python:
+      Result: 5 OK, 0 FAIL, 0 MISSING/UNRESOLVED
+      Internal SHA check: PASS
+
+  Checking env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/SHA256SUMS.txt:
+    0bbf735f4906a2df0d0f1d61365e2ac49dbb5b20f2d14fcd55c0cf43caf79731  01_runtime.txt
+    b1a94bf5eca39970bed5b975cbf2e015aba216b833a5415049670ea057fbaebb  02_isolation.txt
+    df0bbea986f7cf8f727f3dab6ca4d9dd1cbc1717341923ed7bac8c755bf16045  03_identity_limits.txt
+    afcd45de95bf0b0ae4fabe88dca8f70e9992c8ca9b91ef0d9efbc4714556b860  04_tooling.txt
+    446211a89a4d44508302e60cf0c1cbfb2910bf4206d0eaaa9ff5f55cfd506c00  05_python_env.txt
+    Attempting verification via python:
+      Result: 16 OK, 0 FAIL, 0 MISSING/UNRESOLVED
+      Internal SHA check: PASS
+
+  Checking env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/SHA256SUMS.txt:
+    53ca434aca1ff58f143ef35d4ae327389a264c7184c819d23613ca8aa37d5ed5  01_runtime.txt
+    2198ca71f8ee389b2b8312ce2ac9ef3f2e691b70e953ea31a16f61bb0e90eaba  02_isolation.txt
+    51795b65225d1e2cd41727e6f6ed4a1d393f6349f74673c57db50eacaf07aeb2  03_identity_limits.txt
+    cc09516afae0272a14fdc28f5ae50b4877d9d1c1b2f730d990a81e763a2d6dd1  04_tooling.txt
+    31443ce87067d3e4c4b391b5f81e629c009a52f1f767a3516a247dba929e1648  05_python_env.txt
+    Attempting verification via python:
+      Result: 16 OK, 0 FAIL, 0 MISSING/UNRESOLVED
+      Internal SHA check: PASS
+
+  Manifest/README/INDEX files (3):
+    env-probe/README.md
+    env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/MANIFEST.json
+    env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/MANIFEST.json
+
+------------------------------------------------------------
+File: Agent 6 brave.zip
+Size: 153569
+Outer SHA computed: dea4ec47ac81a2e65606778aa4da6895cbce03094d2f47845d4b8fc25e7e53d0
+Outer SHA claimed: dea4ec47ac81a2e65606778aa4da6895cbce03094d2f47845d4b8fc25e7e53d0
+Outer SHA match: OK
+Extracted to: trixie_extract_20260904_172945/extract/Agent 6 brave
+Internal SHA files (5):
+  EXTRACTED_SHA256SUMS.txt
+  envprobe/sha256sums.txt
+  rerun_A_smoke6_QUICK/sha256sums.txt
+  rerun_B_smoke7_QUICK_PASS/sha256sums.txt
+  rerun_C_full_FULL_PASS/sha256sums.txt
+
+  Checking envprobe/sha256sums.txt:
+    973bb258c943aacb33276c0927ab8c4a994785785699e2e459b9ca1557a98b1a  .persist_marker
+    41490d0ec9cff99079f450ca7064056caef5ffb40b35aa0ff4b2779b16d1a624  01_runtime.txt
+    715d6551dde1c300df0a2d6ea5191202fe90f59e4506e3c73fe83c1d276b4ea4  02_identity.txt
+    9a2fa02d5f9d6b22653d7ff95e5b5270ff92ed6bb46a4c6fc738b23d4b90a438  03_tools.txt
+    10eac5bf48afb9b88643361daf049b005968d6545ea16ff6918ea6cf36481858  04_fs.txt
+    Attempting verification via python:
+      Result: 18 OK, 0 FAIL, 0 MISSING/UNRESOLVED
+      Internal SHA check: PASS
+
+  Checking rerun_A_smoke6_QUICK/sha256sums.txt:
+    942414255d43cc077d85cb92b7d83bd1b52fb690e7523c0e918c4f758ec42bd8  00_run_header.txt
+    8f770d48ea7222fc4fa45bd2fd3197011b1c3d09844c3cd3deec601f264e1b97  01_runtime.txt
+    9c2796ff98f453fcf804e18f2ead91b315be370de324ada76f2bcebfd9def247  02_identity.txt
+    e6ca47607d5862f7a313f28d6246da883e653e1ff787aca46fe1bd98a4b7f7d4  03_tools.txt
+    d4a3729d2427eea81ea092a2d06623c9488b91dd62a4ed1c186856fdf7a4b3e4  04_fs.txt
+    Attempting verification via python:
+      Result: 18 OK, 0 FAIL, 0 MISSING/UNRESOLVED
+      Internal SHA check: PASS
+
+  Checking rerun_B_smoke7_QUICK_PASS/sha256sums.txt:
+    f61e2427f3aa166bb266770bd5845149131199ec6df0c85e7dc2cfa7ab19f7cf  00_run_header.txt
+    18798341594dfa6acd10aedb0f09c684c87661f549969f4412914b721bf64590  01_runtime.txt
+    310144f8dbff63f6dd4bae7d71dfc21faa7fd68dbfea39d39c5754d8f60692d1  02_identity.txt
+    88bdd2eeae8bf7f8d6bda3011e5ef1985808f276fee1836b4f70fcf9c07331d7  03_tools.txt
+    7758170e216679c6ad269e7b3926c8940d54dde9fe7bc5aa4c755cd988c6f116  04_fs.txt
+    Attempting verification via python:
+      Result: 18 OK, 0 FAIL, 0 MISSING/UNRESOLVED
+      Internal SHA check: PASS
+
+  Checking rerun_C_full_FULL_PASS/sha256sums.txt:
+    f8a83a6354d17351d8c174f522160e0007eb177fcd35a181e7632058e1a1d075  00_run_header.txt
+    ea4b74f0f72d447cbd02041cc7d10f0e9cd89850eb39384db32185b834617071  01_runtime.txt
+    d15b1101fa3e47a8ea481bda073570d42d292669daf7499ca9a67f673c76ae1a  02_identity.txt
+    2ab5da195cf99b01eb4dc49be138d432c8a20c2a3838727f79d31d613f4ef35c  03_tools.txt
+    c8a10c8fb870c557ec4becadef8eeac01a3913f31979a144c34cccd0545fe80e  04_fs.txt
+    Attempting verification via python:
+      Result: 18 OK, 0 FAIL, 0 MISSING/UNRESOLVED
+      Internal SHA check: PASS
+
+  Manifest/README/INDEX files (5):
+    00_README_zip_contents.md
+    envprobe/manifest.json
+    rerun_A_smoke6_QUICK/manifest.json
+    rerun_B_smoke7_QUICK_PASS/manifest.json
+    rerun_C_full_FULL_PASS/manifest.json
+
+------------------------------------------------------------
+File: Agent 7 edge.zip
+Size: 130614
+Outer SHA computed: 5c0f02b35a2f43c633a92e16fed9daa5bf77cd018bfed8fdb084734aa4eac13c
+Outer SHA claimed: 5c0f02b35a2f43c633a92e16fed9daa5bf77cd018bfed8fdb084734aa4eac13c
+Outer SHA match: OK
+Extracted to: trixie_extract_20260904_172945/extract/Agent 7 edge
+Internal SHA files (3):
+  EXTRACTED_SHA256SUMS.txt
+  envcheck/raw/run_20260904T1116Z_original/MANIFEST.sha256
+  envcheck/raw/run_20260904T141747Z/MANIFEST.sha256
+
+  Checking envcheck/raw/run_20260904T1116Z_original/MANIFEST.sha256:
+    2cc7ff3a2e05ec0c99473000c611f1aa7c7e544c560859dcd04f64e1794ca88f  01_system.txt
+    ce890959a62a916de59a40ce842306b3b801ad508ead8e57a868ca61971cac59  02_isolation.txt
+    ad7e905df8a8a578cd96d79964c7f62e400a3fb629092305b393259677d605e7  02b_isolation.txt
+    f032444238cb3210d05c67fcc48885d638c9365102bdac5d07fb0715e5aebac0  03_tools.txt
+    51eb72ca38fd20079dbac8fd85eedce1449210000b388034c4704e2556267164  04_limits_sudo_apt.txt
+    Attempting verification via python:
+      Result: 27 OK, 0 FAIL, 0 MISSING/UNRESOLVED
+      Internal SHA check: PASS
+
+  Checking envcheck/raw/run_20260904T141747Z/MANIFEST.sha256:
+    7618011866aa76165ff76638a83db7537e569ec58b052a092dd35dde1e16d038  00_meta.txt
+    4ab030fc31b37a101022eb45a9557b8eccbd80310171633dd00401d5cc85b462  01_runtime.txt
+    d37ec068f46b7ce20787dedb5a2f9a692f12b9992e18c66988b24446c15382e7  02_isolation.txt
+    f67de0428267e3b07f742fff64a8b754ecf376eaabd332ef08513da221c97dd3  03_tools.txt
+    1fd1ab2ccd56132078f3de5abc169f7b8d74733d83b2662e10d7982fb6b68561  04_limits.txt
+    Attempting verification via python:
+      Result: 17 OK, 0 FAIL, 0 MISSING/UNRESOLVED
+      Internal SHA check: PASS
+
+  Manifest/README/INDEX files (5):
+    envcheck/README.md
+    envcheck/raw/run_20260904T1116Z_original/MANIFEST.sha256
+    envcheck/raw/run_20260904T1116Z_original/MANIFEST.txt
+    envcheck/raw/run_20260904T141747Z/MANIFEST.sha256
+    envcheck/raw/run_20260904T141747Z/MANIFEST.txt
+
+------------------------------------------------------------
+File: Agent 8 edge.zip
+Size: 30820
+Outer SHA computed: 7fe13f8118d625420a55a2ea14a66b61715acc4be9bf7249666ba2193841c898
+Outer SHA claimed: 7fe13f8118d625420a55a2ea14a66b61715acc4be9bf7249666ba2193841c898
+Outer SHA match: OK
+Extracted to: trixie_extract_20260904_172945/extract/Agent 8 edge
+Internal SHA files (1):
+  EXTRACTED_SHA256SUMS.txt
+
+  Manifest/README/INDEX files (1):
+    README_ZIP.md
+
+------------------------------------------------------------
+File: Agent 9 edge.zip
+Size: 247182
+Outer SHA computed: 2007bbee89d81a92d4b3fecdf5c06c6f7ba2f53f86c599dbfc18da4c2e3e10a2
+Outer SHA claimed: (none published)
+Extracted to: trixie_extract_20260904_172945/extract/Agent 9 edge
+Internal SHA files (4):
+  Agent 9 edge/documentation/SHA256SUMS.txt
+  Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/SHA256SUMS
+  Agent 9 edge/payload/home/user/environment_evidence_20260904T142002Z-2576.zip.sha256
+  EXTRACTED_SHA256SUMS.txt
+
+  Checking Agent 9 edge/documentation/SHA256SUMS.txt:
+    ce943c86fbc1ab6ea7387063ab8d27d0cdd878dc5659496b4bdd2484de19cc11  00_READ_ME_FIRST.md
+    c90cf89ae8ea8363e46c742b82fb360bf01709b5add74fb587857808f5057d8e  documentation/01_USER_PROMPTS_EXACT.txt
+    f393c76461c02cd551bcbc7cb85771e8781fb2206fca98548d5e11e8f497a0fa  documentation/02_IMPORTANT_METADATA.json
+    3448422049418d42d4cab323bdfabd76ee0ce27f9d5e66aee945be42bccfca19  documentation/03_DELETED_OR_EPHEMERAL_ARTIFACTS.md
+    a492b28f0d3eacdfbc54efed94ac34d6840eab8a5955ddeaa78c20d5e5d792ac  documentation/04_CONVERSATION_AND_ARTIFACT_SEQUENCE.md
+    Attempting verification via python:
+      Result: 8 OK, 0 FAIL, 82 MISSING/UNRESOLVED
+      Internal SHA check: PARTIAL/UNRESOLVED
+
+  Checking Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/SHA256SUMS:
+    19987b39b38e3e34add290f36c967bdfc46d3c0a0eb5aceea83af07be5661cee  raw/01_runtime.txt
+    8db0daaffa8b6179c6a1315551bf8dc05a8db86c8675e949509689127c51b66b  raw/02_isolation.txt
+    9565b8723414c2761776843ec198b58a5f0dbee4a5e21cac40258fc82de8e93b  raw/03_resources.txt
+    64d9df26f6559143314f711651470ea6d9246c37e0b329afe15c2eace9cb8b2d  raw/04_tooling.txt
+    74a33c35e785b74bd56a8427e1ed351c6d771dbd1aecd7a60df90350097eeb38  raw/05_packages.txt
+    Attempting verification via python:
+      Result: 14 OK, 0 FAIL, 0 MISSING/UNRESOLVED
+      Internal SHA check: PASS
+
+  Checking Agent 9 edge/payload/home/user/environment_evidence_20260904T142002Z-2576.zip.sha256:
+    e8215900f3136be5bfddbd74233d9c05b48dc7bfff250802f77ffa5e53dfdb9d  /home/user/environment_evidence_20260904T142002Z-2576.zip
+    Attempting verification via python:
+      Result: 1 OK, 0 FAIL, 0 MISSING/UNRESOLVED
+      Internal SHA check: PASS
+
+  Manifest/README/INDEX files (4):
+    Agent 9 edge/00_READ_ME_FIRST.md
+    Agent 9 edge/payload/home/user/environment_evidence/README.md
+    Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/manifest.json
+    Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/manifest.txt
+

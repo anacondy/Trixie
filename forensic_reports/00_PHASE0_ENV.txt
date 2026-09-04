@@ -1,0 +1,37 @@
+=== PHASE 0 – Environment lock ===
+date -u:
+Fri Sep  4 17:29:45 UTC 2026
+
+uname -a:
+Linux e2b.local 6.1.158+ #1 SMP PREEMPT_DYNAMIC Mon May 11 18:48:24 UTC 2026 x86_64 GNU/Linux
+
+whoami:
+user
+
+pwd:
+/home/user/Trixie
+
+df -h .:
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        21G  816M   20G   4% /
+
+free -h:
+               total        used        free      shared  buff/cache   available
+Mem:           3.8Gi       227Mi       3.7Gi       1.0Mi       113Mi       3.6Gi
+Swap:             0B          0B          0B
+
+id:
+uid=1001(user) gid=1001(user) groups=1001(user),27(sudo),100(users)
+
+=== Tool availability ===
+zip: /usr/bin/zip
+Copyright (c) 1990-2008 Info-ZIP - Type 'zip "-L"' for software license.
+unzip: /usr/bin/unzip
+caution:  both -n and -o specified; ignoring -o
+sha256sum: /usr/bin/sha256sum
+sha256sum (GNU coreutils) 9.1
+find: /usr/bin/find
+find (GNU findutils) 4.9.0
+file: MISSING
+python3: /usr/bin/python3
+Python 3.11.2
