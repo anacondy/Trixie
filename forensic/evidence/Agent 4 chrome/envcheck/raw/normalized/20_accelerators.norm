@@ -1,0 +1,32 @@
+================================================================
+ probe.sh v1.<NUM> section: 20_accelerators.txt
+ host: e2b.local kernel: <VER>+ arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user: user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ ls /dev/nvidia* /dev/dri /dev/infiniband 2>&1 | head -3
+ls: cannot access '/dev/nvidia*': No such file or directory
+ls: cannot access '/dev/dri': No such file or directory
+ls: cannot access '/dev/infiniband': No such file or directory
+
+$ ls /sys/bus/pci/devices/ 2>&1 | head -5; echo '--- class scan ---'; found=0; for d in /sys/bus/pci/devices/*; do [ -r "$d/class" ] || continue; c=$(cat $d/class); case "$c" in 0x03*) echo " display ctrl $d $(cat $d/vendor): $(cat $d/device)"; found=1;; esac; done; [ $found -eq 0 ] && echo ' no PCI display controller'
+ls: cannot access '/sys/bus/pci/devices/': No such file or directory
+--- class scan ---
+ no PCI display controller
+
+$ grep -icE 'nvidia|drm' /proc/devices | xargs echo 'drm/nvidia major devices in /proc/devices:'
+drm/nvidia major devices in /proc/devices: 0
+
+$ echo 'lspci: ABSENT'
+lspci: ABSENT
+
+$ echo '--- opencl/cuda libs ---'; ls /usr/local/cuda /opt/cuda 2>&1 | head -2; ldconfig -p 2>/dev/null | grep -icE 'cuda|opencl|nvidia' | xargs echo ' cuda/opencl shared objects:'
+--- opencl/cuda libs ---
+ls: cannot access '/usr/local/cuda': No such file or directory
+ls: cannot access '/opt/cuda': No such file or directory
+ cuda/opencl shared objects: 0
+
+$ python3 -c "import importlib.util as u;print(' torch:', 'present' if u.find_spec('torch') else 'ABSENT')"
+ torch: ABSENT
+

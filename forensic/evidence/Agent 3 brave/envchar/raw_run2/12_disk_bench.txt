@@ -1,0 +1,22 @@
+# ============================================================
+# probe_environment.sh :: 12 disk benchmarks (dd 100 MiB, small-file churn)
+# run_id: raw_run2   mode: stress
+# host: e2b.local   user: user(1000)
+# date_utc: 2026-09-04T13:47:20Z
+# ============================================================
+
+$ dd ext4 write 100MiB conv=fdatasync
+104857600 bytes (105 MB, 100 MiB) copied, 0.13466 s, 779 MB/s
+$ drop caches + read back
+104857600 bytes (105 MB, 100 MiB) copied, 0.0540982 s, 1.9 GB/s
+$ read back again (warm cache)
+104857600 bytes (105 MB, 100 MiB) copied, 0.0215483 s, 4.9 GB/s
+$ O_DIRECT write
+104857600 bytes (105 MB, 100 MiB) copied, 0.0625701 s, 1.7 GB/s
+$ O_DIRECT read
+104857600 bytes (105 MB, 100 MiB) copied, 0.0359726 s, 2.9 GB/s
+$ tmpfs /tmp write+read 100MiB
+104857600 bytes (105 MB, 100 MiB) copied, 0.0363511 s, 2.9 GB/s
+104857600 bytes (105 MB, 100 MiB) copied, 0.0230524 s, 4.5 GB/s
+$ small-file churn: 500 x (create 4KiB + fsync + delete) on ext4
+500 create+fsync+delete: 317 ms total (0.63 ms/file)

@@ -1,0 +1,8 @@
+# Ignore large extraction trees - keep only reports
+trixie_extract_*/
+trixie_extract_*
+.last_extract_dir
+uploads/
+*.png
+__pycache__/
+*.pyc

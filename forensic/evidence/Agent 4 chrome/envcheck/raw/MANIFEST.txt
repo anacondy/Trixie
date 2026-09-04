@@ -1,0 +1,80 @@
+====================================================================
+ VERIFICATION MANIFEST — probe.sh transcripts (manifest v1.1.0)
+====================================================================
+run_id          : 20260904T142012Z-22063
+timestamp_utc   : 2026-09-04T14:27:21Z
+sandbox_id      : i0m9mhony51frr3osghn0
+template_id     : nlhz8vlwyupq845jsdg9
+host            : e2b.local | Debian GNU/Linux 13 (trixie) | 6.1.158+ x86_64
+invoked by      : user @ /home/user/envcheck
+python          : 3.13.14
+environment vars: E2B_EVENTS_ADDRESS=http://192.0.2.1, E2B_SANDBOX=true, E2B_SANDBOX_ID=i0m9mhony51frr3osghn0, E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+contents        : 22 transcripts, 92,986 bytes
+
+--------------------------------------------------------------------
+SHA-256 of verbatim transcripts   (expect these to differ on another host)
+--------------------------------------------------------------------
+  FILE                                  BYTES  SHA256
+  00_meta.txt                            1520  bac85898ec2098937f8e3cfea178e73068afdaf685f00c1bc51400bcac500597
+  01_runtime.txt                         5990  1d0169fdf91c5165233b06d0829ebc60f255c5ebe547ec5ad7faf96659fabdb5
+  02_isolation.txt                       9956  a654f3034a927ea58a6dcd8283b5be62e8e510450ad1c23987a82bb0b43a12b9
+  03_limits.txt                          3027  44ae85442ad3c0e9a0739cb636e89b2cd901c14441611fa0cfdd4d731361f4fc
+  04_users.txt                           2254  0ffeb5913a1a72356e1cbc3c07a7eab2f7076fd41050dddd069bd3a77923cbe8
+  05_tools.txt                           8790  617438cc75eec6166f397e0293984b1bdd28afa7a48848b3fbc9fa71dd2fb73d
+  06_pkg_and_compile.txt                 5093  c053f688e4f4b073594e118ccbce9799401233584f9d6a6de62df92bf95a698f
+  06b_pip_freeze_sorted.txt              3199  b0c24c82f6067fcb8a1286b52712f9137c9fdc8f6fb9507b0f0a101f4cb976e5
+  07_filesystem.txt                      7294  67f28153310d5a4c744dab11c0b1b07a4207229cbe89cdc7c2bd69c6c3d61420
+  08_persistence.txt                     2870  1faaeff285322e00d8981ec2c7867d142a94b41c3f62d1b28b8cf7c00542e682
+  09_net_matrix.txt                      9413  a3d749bfb7c49d9a5dd18e22c7d8da7e7032f714644d66ba701f7d00ce9789e2
+  10_net_dns.txt                         2749  8e6319abbd307bffdf196d8915be68947132512df445239e15c8fa089360f8cd
+  11_net_latency.txt                     2433  f3d3251722855522065ab862b20849b5a2f99dd2a64e77daaf2866f1fa62331c
+  12_net_throughput.txt                  3103  929c208ea1111cb39e064292aaac550b4d4288c6222beed12a01ea582131994f
+  13_net_egress_proof.txt                1932  485d344d6087ddb3bffe509fb7d328070221f0311ac89c5407a3d584a56c6fa1
+  14_bench_cpu.txt                       2245  42b632d7d6a0f3532142a0e20ba921e8b7e3d7fd75b9e30377ba320e4a4df0a7
+  15_bench_disk.txt                      3708  b2355350d4d1e8d1423c4e1377f692c17e1a61b2aa33163dbc8e7b61725659be
+  16_bench_installs.txt                  2412  fc316575bfc6f9d68b12edb25fb62bc29a9da8c32e7734166fcc79fd42955cf5
+  17_mem_pressure.txt                    2840  f1b8a7ba178f567abc43f467e1998597c3d3320a9d2dc6bafde6db43e2a560de
+  18_background.txt                      2091  f79b123b34d4acc4f7a016b1856580942450b5cb6a6cc25d1b14ef90f8def3dc
+  19_services.txt                        8270  5e0bddc85fc9e628eec73d6314e241c6f51c57bf8894d5eed7c2dfc70b993140
+  20_accelerators.txt                    1797  e30e4dabfb71d15aa748cc4bd4afdf59dc2aa4e9f503e5ac8603bf54b25a717c
+
+--------------------------------------------------------------------
+SHA-256 of NORMALIZED transcripts (these should MATCH across equivalent runs)
+--------------------------------------------------------------------
+  FILE                                           HASH  status
+  00_meta.txt                        3ff0b57fc417791a  normalized available
+  01_runtime.txt                     a446ad3b807184ce  normalized available
+  02_isolation.txt                   7d7849f098fa6964  normalized available
+  03_limits.txt                      395758c58466bcc2  normalized available
+  04_users.txt                       1f8b767c1fc36ff6  normalized available
+  05_tools.txt                       44eb1d6f00250fb2  normalized available
+  06_pkg_and_compile.txt             f996e79734c2263b  normalized available
+  06b_pip_freeze_sorted.txt          ba25655aea967e2b  normalized available
+  07_filesystem.txt                  8bc08b5210ef4d13  normalized available
+  08_persistence.txt                 fac544ae2408af91  normalized available
+  09_net_matrix.txt                  17a4bb65d6cf3f84  normalized available
+  10_net_dns.txt                     ab1bf4ef3994b67d  normalized available
+  11_net_latency.txt                 c4e848d40ae67739  normalized available
+  12_net_throughput.txt              52ec9c14f81a761e  normalized available
+  13_net_egress_proof.txt            10216f7750e95653  normalized available
+  14_bench_cpu.txt                   511470b7c80e9d00  normalized available
+  15_bench_disk.txt                  a7a83945c68dead1  normalized available
+  16_bench_installs.txt              dcf3c907be5d1f47  normalized available
+  17_mem_pressure.txt                ca28b53721d7297b  normalized available
+  18_background.txt                  b0f4fe85cad818cb  normalized available
+  19_services.txt                    e886c75eae3f658e  normalized available
+  20_accelerators.txt                cac1c0655ffc0eb7  normalized available
+
+--------------------------------------------------------------------
+HOW TO VERIFY THIS RUN
+--------------------------------------------------------------------
+  cd <this dir>
+  sha256sum -c SHA256SUMS.txt                 # verbatim integrity
+  sha256sum -c SHA256SUMS.normalized.txt      # masked integrity
+
+Reproduce and compare against your own run (from the directory ABOVE this one):
+  ./probe.sh /path/to/your_run --with-oom
+  python3 ./make_manifest.py /path/to/your_run
+  ./diff_run.sh <this dir> /path/to/your_run     # 0 differing transcripts => same environment
+
+Excluded from the manifest (not evidence): .bg_pid, .bg_ticks*, .run_id, .persist/, normalized/, MANIFEST.txt, manifest.json, SHA256SUMS*.txt

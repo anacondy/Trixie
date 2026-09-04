@@ -1,0 +1,14 @@
+=== DNS resolution (Python) ===
+google.com: 0.0048 seconds
+github.com: 0.0102 seconds
+pypi.org: 0.0011 seconds
+huggingface.co: 0.0010 seconds
+
+=== HTTP latency (curl HEAD, total time) ===
+https://www.google.com: 0.021 s
+https://github.com: 0.044 s
+https://pypi.org: 0.036 s
+https://huggingface.co: 0.056 s
+
+=== Download throughput ===
+Downloaded 102400 bytes in 0.669s, speed 0.153 MB/s

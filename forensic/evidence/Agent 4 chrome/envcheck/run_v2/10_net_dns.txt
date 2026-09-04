@@ -1,0 +1,38 @@
+================================================================
+ probe.sh v1.0.0   section: 10_net_dns.txt
+ run_id:    20260904T140458Z-11960
+ started:   2026-09-04T14:11:39Z
+ sandbox:   i0m9mhony51frr3osghn0
+ template:  nlhz8vlwyupq845jsdg9
+ host:      e2b.local   kernel: 6.1.158+   arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user:      user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ python3 dns.py 3
+  host                                   status      n   min ms   med ms   p95 ms   max ms
+  google.com                             OK          3     0.99     1.49     2.36     2.36
+  www.google.com                         OK          3     0.69     0.90     1.12     1.12
+  github.com                             OK          3     1.17     8.06    10.62    10.62
+  pypi.org                               OK          3     0.71     0.77     1.07     1.07
+  files.pythonhosted.org                 OK          3     1.41     8.80     9.58     9.58
+  huggingface.co                         OK          3     1.32     1.41    21.11    21.11
+  cdn.huggingface.co                     gaierror    3    10.56    21.65    49.40    49.40
+  registry.npmjs.org                     OK          3     0.90     1.04     9.86     9.86
+  objects.githubusercontent.com          OK          3     1.03     1.14     1.61     1.61
+  raw.githubusercontent.com              OK          3     0.56     0.74     0.90     0.90
+  cdn.jsdelivr.net                       OK          3     1.24     1.54     1.73     1.73
+  security.debian.org                    OK          3     1.07     1.10     1.16     1.16
+  deb.debian.org                         OK          3     0.93     0.95     1.18     1.18
+  archive.ubuntu.com                     OK          3     1.12     1.37     1.89     1.89
+  crates.io                              OK          3     0.92     1.20     1.31     1.31
+  gcr.io                                 OK          3     1.18     1.98     2.72     2.72
+  quay.io                                OK          3     0.78     1.35     1.37     1.37
+  docker.io                              OK          3     1.00     1.08     1.13     1.13
+  kaggle.com                             OK          3     1.13     1.15     1.29     1.29
+  www.kaggle.com                         OK          3     0.55     0.61     1.17     1.17
+  example.com                            OK          3     0.68     1.14     1.30     1.30
+  nonexistent-host-zzz-12345.invalid     gaierror    3     2.04     2.37    29.09    29.09
+
+  cold-cache behaviour: the tail values are uncached lookups through the egress resolver;
+  medians ~<2 ms mean answers are served from a local cache, NOT from a remote recursive resolver.

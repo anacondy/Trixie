@@ -1,0 +1,74 @@
+== gcc hello world ==
+compiled-binary-ok
+gcc compile+run: OK
+gcc (Debian 14.2.0-19) 14.2.0
+
+== python dev headers ==
+sysconfig include: /usr/local/include/python3.13
+/usr/local/include/python3.13/Python.h
+Python.h PRESENT -> C-ext builds possible
+/usr/local/include/python3.13
+
+== headers sample ==
+present: /usr/include/stdio.h
+present: /usr/include/openssl/ssl.h
+
+== make ==
+GNU Make 4.4.1
+
+== apt (via passwordless sudo) ==
+/usr/bin/apt-get
+sudo->root: uid=0
+CapEff:	000001ffffffffff
+Seccomp:	0
+Seccomp_filters:	0
+-- apt-get update (timed, quiet) --
+Hit:5 https://deb.nodesource.com/node_20.x nodistro InRelease
+Fetched 342 kB in 0s (2111 kB/s)
+Reading package lists...
+apt-get update rc=0, 0.7 s
+
+== apt-cache: is ffmpeg available? ==
+ffmpeg:
+  Installed: (none)
+  Candidate: 7:7.1.5-0+deb13u1
+  Version table:
+
+== DEMO: install a small system package (sqlite3 CLI) ==
+Preparing to unpack .../sqlite3_3.46.1-7+deb13u1_amd64.deb ...
+Unpacking sqlite3 (3.46.1-7+deb13u1) ...
+Setting up sqlite3 (3.46.1-7+deb13u1) ...
+apt install sqlite3: 2.2 s
+3.46.1 2024-08-13 09:16:08 c9c2ab54ba1f5f46360f1b4f35d849cd3f080e6fc2b6c60e91b16c63f69aalt1 (64-bit)
+sqlite3 now available
+
+== other pkg mgrs ==
+apk: absent
+yum: absent
+dnf: absent
+pacman: absent
+zypper: absent
+conda: absent
+mamba: absent
+brew: absent
+dpkg: /usr/bin/dpkg
+rpm: absent
+
+== dpkg arch ==
+amd64
+
+== systemd units (sanity) ==
+  UNIT                                        LOAD   ACTIVE SUB     DESCRIPTION
+● chronyd-restricted.service                  loaded failed failed  NTP client (restricted)
+  code-interpreter.service                    loaded active running Code Interpreter Server
+  dbus.service                                loaded active running D-Bus System Message Bus
+  envd.service                                loaded active running Env Daemon Service
+  getty@tty1.service                          loaded active running Getty on tty1
+  jupyter.service                             loaded active running Jupyter Server
+  nfs-blkmap.service                          loaded active running pNFS block layout mapping daemon
+● nftables.service                            loaded failed failed  nftables
+  rpc-statd-notify.service                    loaded active exited  Notify NFS peers of a restart
+  rpcbind.service                             loaded active running RPC bind portmap service
+  ssh.service                                 loaded active running OpenBSD Secure Shell server
+  systemd-journal-flush.service               loaded active exited  Flush Journal to Persistent Storage
+  systemd-journald.service                    loaded active running Journal Service

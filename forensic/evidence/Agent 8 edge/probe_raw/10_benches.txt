@@ -1,0 +1,14 @@
+===== UTC: 2026-09-04T14:14:30Z =====
+=== CPU sum(range(10**7)) ===
+sum=49999995000000 seconds=0.205221
+=== heavier loop 5e6 ===
+x=41666654166667500000 seconds=0.648524
+=== numpy ===
+numpy_sum=49999995000000.0 seconds=0.039778
+=== disk 80MiB seq write+fsync+read /home/user ===
+write_bytes=83886080 write_s=0.097030 write_MBps=864.534
+read_bytes=83886080 read_s=0.013864 read_MBps=6050.696 (likely page cache)
+
+===== gcc hello =====
+real 0.189 user 0.036 sys 0.019
+compile_run_ok

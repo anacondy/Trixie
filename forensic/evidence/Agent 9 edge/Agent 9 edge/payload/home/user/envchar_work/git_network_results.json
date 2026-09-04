@@ -1,0 +1,20 @@
+[
+  {
+    "test": "git_https_ls_remote",
+    "status": "ok",
+    "seconds": 0.75038808,
+    "rc": 0
+  },
+  {
+    "test": "git_native_9418_ls_remote",
+    "status": "error",
+    "seconds": 30.007783413,
+    "rc": -1
+  },
+  {
+    "test": "ssh_github_banner",
+    "status": "transport_reached",
+    "seconds": 0.478603111,
+    "rc": 255
+  }
+]

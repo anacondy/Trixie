@@ -1,0 +1,412 @@
+# envchar raw transcript
+# file: 16_misc.txt
+# title: Background processes, bind, listeners, traceroute, ping
+# generated_utc: 2026-09-04T13:45:05Z
+# host: e2b.local
+# sandbox: i4i7wdij5c7gh9absvtu8
+# template: nlhz8vlwyupq845jsdg9
+# probe: /home/user/envchar/probe.sh
+# NOTE: This file is a verbatim command transcript. Do not summarize.
+
+================================================================
+=== ss -tulpn
+=== CMD: ss -tulpn
+=== UTC: 2026-09-04T13:45:49Z
+================================================================
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0            0.0.0.0:111        0.0.0.0:*          
+udp   UNCONN 0      0                  *:111              *:*          
+tcp   LISTEN 0      100        127.0.0.1:35769      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:47945      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:34675      0.0.0.0:*          
+tcp   LISTEN 0      4096         0.0.0.0:111        0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:35769      0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:47945      0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:34675      0.0.0.0:*          
+tcp   LISTEN 0      128        127.0.0.1:8888       0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:8888       0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:44461      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:35105      0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:39379      0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:41435      0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:43501      0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:35105      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:44461      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:39379      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:41435      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:43501      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:60465      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:53335      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:60493      0.0.0.0:*          
+tcp   LISTEN 0      2048         0.0.0.0:49999      0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:60465      0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:60493      0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:53335      0.0.0.0:*          
+tcp   LISTEN 0      4096            [::]:111           [::]:*          
+tcp   LISTEN 0      4096               *:22               *:*          
+tcp   LISTEN 0      128            [::1]:8888          [::]:*          
+tcp   LISTEN 0      4096               *:49983            *:*          
+=== EXIT: 0  WALL_S: 0.0556 ===
+
+================================================================
+=== ps aux head
+=== CMD: bash -c ps aux | head -80
+=== UTC: 2026-09-04T13:45:49Z
+================================================================
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.4  23024 10032 ?        Ss   13:41   0:00 /sbin/init
+root           2  0.0  0.0      0     0 ?        S    13:41   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   13:41   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   13:41   0:00 [rcu_par_gp]
+root           5  0.0  0.0      0     0 ?        I<   13:41   0:00 [slub_flushwq]
+root           6  0.0  0.0      0     0 ?        I<   13:41   0:00 [netns]
+root           7  0.0  0.0      0     0 ?        I    13:41   0:00 [kworker/0:0-mm_percpu_wq]
+root           8  0.0  0.0      0     0 ?        I<   13:41   0:00 [kworker/0:0H-events_highpri]
+root           9  0.0  0.0      0     0 ?        I    13:41   0:00 [kworker/u4:0-flush-254:0]
+root          10  0.0  0.0      0     0 ?        I<   13:41   0:00 [mm_percpu_wq]
+root          11  0.0  0.0      0     0 ?        I    13:41   0:00 [rcu_tasks_kthread]
+root          12  0.0  0.0      0     0 ?        I    13:41   0:00 [rcu_tasks_rude_kthread]
+root          13  0.0  0.0      0     0 ?        I    13:41   0:00 [rcu_tasks_trace_kthread]
+root          14  0.0  0.0      0     0 ?        S    13:41   0:00 [ksoftirqd/0]
+root          15  0.0  0.0      0     0 ?        I    13:41   0:00 [rcu_preempt]
+root          16  0.0  0.0      0     0 ?        S    13:41   0:00 [migration/0]
+root          17  0.0  0.0      0     0 ?        I    13:41   0:00 [kworker/0:1-cgroup_bpf_destroy]
+root          18  0.0  0.0      0     0 ?        S    13:41   0:00 [cpuhp/0]
+root          19  0.0  0.0      0     0 ?        S    13:41   0:00 [cpuhp/1]
+root          20  0.0  0.0      0     0 ?        S    13:41   0:00 [migration/1]
+root          21  0.0  0.0      0     0 ?        S    13:41   0:00 [ksoftirqd/1]
+root          22  0.0  0.0      0     0 ?        I    13:41   0:00 [kworker/1:0-events]
+root          23  0.0  0.0      0     0 ?        I<   13:41   0:00 [kworker/1:0H-events_highpri]
+root          25  0.0  0.0      0     0 ?        I    13:41   0:00 [kworker/u4:1-ext4-rsv-conversion]
+root          26  0.0  0.0      0     0 ?        S    13:41   0:00 [kdevtmpfs]
+root          27  0.0  0.0      0     0 ?        I<   13:41   0:00 [inet_frag_wq]
+root          28  0.0  0.0      0     0 ?        S    13:41   0:00 [kauditd]
+root          29  0.0  0.0      0     0 ?        S    13:41   0:00 [khungtaskd]
+root          30  0.0  0.0      0     0 ?        S    13:41   0:00 [oom_reaper]
+root          31  0.0  0.0      0     0 ?        I    13:41   0:00 [kworker/u4:2-writeback]
+root          32  0.0  0.0      0     0 ?        I<   13:41   0:00 [writeback]
+root          33  0.0  0.0      0     0 ?        S    13:41   0:00 [kcompactd0]
+root          34  0.0  0.0      0     0 ?        SN   13:41   0:00 [ksmd]
+root          35  0.0  0.0      0     0 ?        SN   13:41   0:00 [khugepaged]
+root          36  0.0  0.0      0     0 ?        I<   13:41   0:00 [kintegrityd]
+root          37  0.0  0.0      0     0 ?        I<   13:41   0:00 [kblockd]
+root          38  0.0  0.0      0     0 ?        I<   13:41   0:00 [blkcg_punt_bio]
+root          39  0.0  0.0      0     0 ?        I    13:41   0:00 [kworker/1:1-cgroup_free]
+root          40  0.0  0.0      0     0 ?        S    13:41   0:00 [watchdogd]
+root          41  0.0  0.0      0     0 ?        I<   13:41   0:00 [rpciod]
+root          42  0.0  0.0      0     0 ?        I<   13:41   0:00 [xprtiod]
+root          43  0.0  0.0      0     0 ?        I    13:41   0:00 [kworker/u4:3-flush-254:0]
+root          47  0.0  0.0      0     0 ?        I    13:41   0:00 [kworker/u4:4-writeback]
+root          53  0.0  0.0      0     0 ?        I<   13:41   0:00 [kworker/1:1H-kblockd]
+root          68  0.0  0.0      0     0 ?        S    13:41   0:00 [kswapd0]
+root          71  0.0  0.0      0     0 ?        I<   13:41   0:00 [nfsiod]
+root          72  0.0  0.0      0     0 ?        I<   13:41   0:00 [kworker/0:1H-kblockd]
+root          74  0.0  0.0      0     0 ?        I<   13:41   0:00 [xfsalloc]
+root          76  0.0  0.0      0     0 ?        I<   13:41   0:00 [xfs_mru_cache]
+root          79  0.0  0.0      0     0 ?        I<   13:41   0:00 [kthrotld]
+root          82  0.0  0.0      0     0 ?        I    13:41   0:00 [kworker/0:2-events]
+root          84  0.0  0.0      0     0 ?        S    13:41   0:00 [irq/24-ACPI:Ged]
+root         117  0.0  0.0      0     0 ?        S    13:41   0:00 [hwrng]
+root         141  0.0  0.0      0     0 ?        I<   13:41   0:00 [iscsi_conn_clea]
+root         165  0.0  0.0      0     0 ?        I<   13:41   0:00 [mld]
+root         166  0.0  0.0      0     0 ?        I<   13:41   0:00 [ipv6_addrconf]
+root         173  0.0  0.0   1004     4 ?        S    13:41   0:00 bpfilter_umh
+root         174  0.0  0.0      0     0 ?        I<   13:41   0:00 [kstrp]
+root         179  0.0  0.0      0     0 ?        I<   13:41   0:00 [zswap-shrink]
+root         180  0.0  0.0      0     0 ?        I<   13:41   0:00 [kworker/u5:0]
+root         257  0.0  0.0      0     0 ?        S    13:41   0:00 [jbd2/vda-8]
+root         258  0.0  0.0      0     0 ?        I<   13:41   0:00 [ext4-rsv-conver]
+root         290  0.0  0.2  29440  5724 ?        Ss   13:41   0:00 /usr/lib/systemd/systemd-journald
+root         300  0.0  0.0      0     0 ?        I    13:41   0:00 [kworker/1:2-events]
+root         305  0.0  0.0      0     0 ?        I    13:41   0:00 [kworker/1:3-events]
+systemd+     308  0.0  0.3  20752  6860 ?        Ss   13:41   0:00 /usr/lib/systemd/systemd-networkd
+_rpc         336  0.0  0.0   6560   896 ?        Ss   13:41   0:00 /usr/sbin/rpcbind -f -w
+message+     340  0.0  0.1   6940  3276 ?        Ss   13:41   0:00 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root         341  0.0  0.2  18384  4156 ?        Ss   13:41   0:00 /usr/lib/systemd/systemd-logind
+root         359  0.7  1.0 1272548 20780 ?       S<Lsl 13:41   0:02 /usr/bin/envd
+root         387  0.0  0.2  11760  5216 ?        Ss   13:41   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+root         392  0.0  0.0      0     0 ?        I    13:41   0:00 [kworker/0:3-events]
+root         393  0.0  0.0      0     0 ?        I    13:41   0:00 [kworker/0:4-events]
+root         421  0.0  0.0   5168   888 tty1     Ss+  13:41   0:00 /sbin/agetty -o -- \u --noreset --noclear - linux
+root         422  0.0  0.0   5248   200 ?        Ss   13:41   0:00 /usr/sbin/blkmapd
+root         437  0.7  4.4 256320 90280 ?        Ssl  13:41   0:01 /usr/local/bin/python3.13 /usr/local/bin/jupyter-server --IdentityProvider.token=
+root         463  0.3  2.8 371148 57500 ?        Ssl  13:41   0:00 /root/.server/.venv/bin/python /root/.server/.venv/bin/uvicorn main:app --host 0.0.0.0 --port 49999 --workers 1 --no-access-log --no-use-colors --timeout-keep-alive 640
+root         470  0.0  0.0  11716  1284 ?        S<   13:41   0:00 socat -d -d -d TCP4-LISTEN:8888,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:8888
+root         475  0.2  3.2 771316 65868 ?        Ssl  13:41   0:00 /usr/local/bin/python3.13 -Xfrozen_modules=off -m ipykernel_launcher -f /root/.local/share/jupyter/runtime/kernel-6bd8c74e-fd89-448c-9e6a-22de9783e8b5.json
+=== EXIT: 0  WALL_S: 0.0276 ===
+
+================================================================
+=== ps -e count
+=== CMD: bash -c ps -e --no-headers | wc -l
+=== UTC: 2026-09-04T13:45:49Z
+================================================================
+97
+=== EXIT: 0  WALL_S: 0.0105 ===
+
+================================================================
+=== ip -br addr
+=== CMD: ip -br addr
+=== UTC: 2026-09-04T13:45:49Z
+================================================================
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+eth0             UP             169.254.0.21/30 fe80::fc:ff:fe00:5/64 
+=== EXIT: 0  WALL_S: 0.0152 ===
+
+================================================================
+=== ip route
+=== CMD: ip route
+=== UTC: 2026-09-04T13:45:49Z
+================================================================
+default via 169.254.0.22 dev eth0 
+169.254.0.20/30 dev eth0 proto kernel scope link src 169.254.0.21 
+=== EXIT: 0  WALL_S: 0.0045 ===
+
+================================================================
+=== resolv.conf
+=== CMD: cat /etc/resolv.conf
+=== UTC: 2026-09-04T13:45:49Z
+================================================================
+nameserver 8.8.8.8=== EXIT: 0  WALL_S: 0.0037 ===
+
+================================================================
+=== sudo ping 8.8.8.8
+=== CMD: sudo ping -c 3 -W 2 8.8.8.8
+=== UTC: 2026-09-04T13:45:49Z
+================================================================
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=113 time=0.705 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=113 time=0.573 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=113 time=0.567 ms
+
+--- 8.8.8.8 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2026ms
+rtt min/avg/max/mdev = 0.567/0.615/0.705/0.063 ms
+=== EXIT: 0  WALL_S: 2.0893 ===
+
+================================================================
+=== unprivileged ping
+=== CMD: ping -c 1 -W 1 8.8.8.8
+=== UTC: 2026-09-04T13:45:51Z
+================================================================
+ping: socktype: SOCK_RAW
+ping: socket: Operation not permitted
+ping: => missing cap_net_raw+p capability or setuid?
+=== EXIT: 2  WALL_S: 0.0042 ===
+
+================================================================
+=== ensure traceroute
+=== CMD: bash -c command -v traceroute >/dev/null || sudo env DEBIAN_FRONTEND=noninteractive apt-get install -y traceroute
+=== UTC: 2026-09-04T13:45:51Z
+================================================================
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  traceroute
+0 upgraded, 1 newly installed, 0 to remove and 37 not upgraded.
+Need to get 54.6 kB of archives.
+After this operation, 164 kB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian trixie/main amd64 traceroute amd64 1:2.1.6-1 [54.6 kB]
+Fetched 54.6 kB in 0s (1593 kB/s)
+Selecting previously unselected package traceroute.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 38554 files and directories currently installed.)
+Preparing to unpack .../traceroute_1%3a2.1.6-1_amd64.deb ...
+Unpacking traceroute (1:2.1.6-1) ...
+Setting up traceroute (1:2.1.6-1) ...
+update-alternatives: using /usr/bin/traceroute.db to provide /usr/bin/traceroute (traceroute) in auto mode
+update-alternatives: using /usr/bin/traceroute6.db to provide /usr/bin/traceroute6 (traceroute6) in auto mode
+update-alternatives: using /usr/bin/lft.db to provide /usr/bin/lft (lft) in auto mode
+update-alternatives: using /usr/bin/traceproto.db to provide /usr/bin/traceproto (traceproto) in auto mode
+update-alternatives: using /usr/sbin/tcptraceroute.db to provide /usr/sbin/tcptraceroute (tcptraceroute) in auto mode
+=== EXIT: 0  WALL_S: 1.7893 ===
+
+================================================================
+=== sudo traceroute 8.8.8.8
+=== CMD: sudo traceroute -n -w 1 -q 1 -m 12 8.8.8.8
+=== UTC: 2026-09-04T13:45:53Z
+================================================================
+traceroute to 8.8.8.8 (8.8.8.8), 12 hops max, 60 byte packets
+ 1  169.254.0.22  0.378 ms
+ 2  10.12.0.176  0.340 ms
+ 3  *
+ 4  *
+ 5  *
+ 6  *
+ 7  *
+ 8  *
+ 9  *
+10  *
+11  *
+12  *
+=== EXIT: 0  WALL_S: 1.0131 ===
+
+================================================================
+=== sudo traceroute github
+=== CMD: sudo traceroute -n -w 1 -q 1 -m 12 github.com
+=== UTC: 2026-09-04T13:45:54Z
+================================================================
+traceroute to github.com (140.82.116.3), 12 hops max, 60 byte packets
+ 1  169.254.0.22  0.262 ms
+ 2  10.12.0.176  0.232 ms
+ 3  142.251.49.8  5.826 ms
+ 4  *
+ 5  *
+ 6  *
+ 7  *
+ 8  *
+ 9  *
+10  *
+11  *
+12  *
+=== EXIT: 0  WALL_S: 1.0152 ===
+
+================================================================
+=== sudo tcp traceroute github 443
+=== CMD: sudo traceroute -T -p 443 -n -w 1 -q 1 -m 8 github.com
+=== UTC: 2026-09-04T13:45:55Z
+================================================================
+traceroute to github.com (140.82.116.3), 8 hops max, 60 byte packets
+ 1  169.254.0.22  0.235 ms
+ 2  140.82.116.3  0.207 ms
+=== EXIT: 0  WALL_S: 0.0242 ===
+
+================================================================
+=== background sleep
+=== CMD: bash -c 
+    rm -f /tmp/envchar_bg.log
+    nohup bash -c "echo start \$(date -u +%Y-%m-%dT%H:%M:%SZ) \$\$ >> /tmp/envchar_bg.log; sleep 3; echo end \$(date -u +%Y-%m-%dT%H:%M:%SZ) \$\$ >> /tmp/envchar_bg.log" >/dev/null 2>&1 &
+    echo spawned $!
+    sleep 4
+    cat /tmp/envchar_bg.log
+    rm -f /tmp/envchar_bg.log
+  
+=== UTC: 2026-09-04T13:45:55Z
+================================================================
+spawned 2767
+start 2026-09-04T13:45:55Z 2767
+end 2026-09-04T13:45:58Z 2767
+=== EXIT: 0  WALL_S: 4.0136 ===
+
+================================================================
+=== bind 18080
+=== CMD: python3 -c import socket; s=socket.socket(); s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1); s.bind(("0.0.0.0",18080)); s.listen(1); print("bind 0.0.0.0:18080 OK"); s.close()
+=== UTC: 2026-09-04T13:45:59Z
+================================================================
+bind 0.0.0.0:18080 OK
+=== EXIT: 0  WALL_S: 0.0284 ===
+
+================================================================
+=== bind 80 user
+=== CMD: python3 -c import socket; s=socket.socket(); s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+try:
+    s.bind(("0.0.0.0",80)); print("bind :80 OK")
+except Exception as e:
+    print(type(e).__name__, e)
+s.close()
+=== UTC: 2026-09-04T13:45:59Z
+================================================================
+PermissionError [Errno 13] Permission denied
+=== EXIT: 0  WALL_S: 0.0256 ===
+
+================================================================
+=== sudo bind 80
+=== CMD: sudo python3 -c import socket; s=socket.socket(); s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1); s.bind(("0.0.0.0",80)); s.listen(1); print("sudo bind 0.0.0.0:80 OK"); s.close()
+=== UTC: 2026-09-04T13:45:59Z
+================================================================
+sudo bind 0.0.0.0:80 OK
+=== EXIT: 0  WALL_S: 0.0291 ===
+
+================================================================
+=== entropy
+=== CMD: cat /proc/sys/kernel/random/entropy_avail
+=== UTC: 2026-09-04T13:45:59Z
+================================================================
+256
+=== EXIT: 0  WALL_S: 0.0043 ===
+
+================================================================
+=== dmesg tail
+=== CMD: bash -c sudo dmesg -T | tail -n 80
+=== UTC: 2026-09-04T13:45:59Z
+================================================================
+[Fri Sep  4 13:41:27 2026] systemd[1]: systemd-network-generator.service: Main process exited, code=exited, status=1/FAILURE
+[Fri Sep  4 13:41:27 2026] systemd[1]: systemd-network-generator.service: Failed with result 'exit-code'.
+[Fri Sep  4 13:41:27 2026] systemd[1]: Failed to start systemd-network-generator.service - Generate Network Units from Kernel Command Line.
+[Fri Sep  4 13:41:27 2026] systemd[1]: Finished systemd-sysctl.service - Apply Kernel Variables.
+[Fri Sep  4 13:41:27 2026] systemd[1]: Finished systemd-random-seed.service - Load/Save OS Random Seed.
+[Fri Sep  4 13:41:27 2026] systemd[1]: first-boot-complete.target - First Boot Complete skipped, unmet condition check ConditionFirstBoot=yes
+[Fri Sep  4 13:41:27 2026] systemd[1]: Finished systemd-tmpfiles-setup-dev-early.service - Create Static Device Nodes in /dev gracefully.
+[Fri Sep  4 13:41:27 2026] systemd[1]: systemd-sysusers.service - Create System Users skipped, no trigger condition checks were met.
+[Fri Sep  4 13:41:27 2026] systemd[1]: Starting systemd-tmpfiles-setup-dev.service - Create Static Device Nodes in /dev...
+[Fri Sep  4 13:41:27 2026] systemd-journald[290]: Collecting audit messages is enabled.
+[Fri Sep  4 13:41:27 2026] systemd[1]: Started systemd-journald.service - Journal Service.
+[Fri Sep  4 13:41:27 2026] audit: type=1130 audit(1784829937.518:2): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-journald comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:41:27 2026] audit: type=1130 audit(1784829937.518:3): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=nftables comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=failed'
+[Fri Sep  4 13:41:27 2026] audit: type=1334 audit(1784829937.518:4): prog-id=20 op=LOAD
+[Fri Sep  4 13:41:27 2026] audit: type=1130 audit(1784829937.526:5): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-tmpfiles-setup-dev comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:41:27 2026] systemd-journald[290]: Received client request to flush runtime journal.
+[Fri Sep  4 13:41:27 2026] systemd-journald[290]: File /var/log/journal/67549745dd1a4564be928e47dca271fd/system.journal corrupted or uncleanly shut down, renaming and replacing.
+[Fri Sep  4 13:41:27 2026] audit: type=1130 audit(1784829937.546:6): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-journal-flush comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:41:27 2026] audit: type=1130 audit(1784829937.570:7): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-tmpfiles-setup comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:41:27 2026] audit: type=1334 audit(1784829937.586:8): prog-id=21 op=LOAD
+[Fri Sep  4 13:41:27 2026] audit: type=1300 audit(1784829937.586:8): arch=c000003e syscall=321 success=yes exit=20 a0=5 a1=7fffdd888ed0 a2=94 a3=7fd6434a563e items=0 ppid=1 pid=308 auid=4294967295 uid=998 gid=998 euid=998 suid=998 fsuid=998 egid=998 sgid=998 fsgid=998 tty=(none) ses=4294967295 comm="systemd-network" exe="/usr/lib/systemd/systemd-networkd" subj=kernel key=(null)
+[Fri Sep  4 13:41:27 2026] audit: type=1327 audit(1784829937.586:8): proctitle="/usr/lib/systemd/systemd-networkd"
+[Fri Sep  4 13:41:36 2026] random: crng reseeded due to virtual machine fork
+[Fri Sep  4 13:41:49 2026] kauditd_printk_skb: 38 callbacks suppressed
+[Fri Sep  4 13:41:49 2026] audit: type=1130 audit(1788529309.302:41): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=dpkg-db-backup comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:41:49 2026] audit: type=1131 audit(1788529309.302:42): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=dpkg-db-backup comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:05 2026] audit: type=1334 audit(1788529505.918:43): prog-id=29 op=LOAD
+[Fri Sep  4 13:45:05 2026] audit: type=1334 audit(1788529505.918:44): prog-id=30 op=LOAD
+[Fri Sep  4 13:45:05 2026] audit: type=1334 audit(1788529505.918:45): prog-id=31 op=LOAD
+[Fri Sep  4 13:45:05 2026] audit: type=1130 audit(1788529505.982:46): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-hostnamed comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:06 2026] audit: type=1334 audit(1788529506.178:47): prog-id=32 op=LOAD
+[Fri Sep  4 13:45:06 2026] audit: type=1334 audit(1788529506.178:48): prog-id=33 op=LOAD
+[Fri Sep  4 13:45:06 2026] audit: type=1334 audit(1788529506.178:49): prog-id=34 op=LOAD
+[Fri Sep  4 13:45:06 2026] audit: type=1130 audit(1788529506.246:50): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-timedated comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:07 2026] audit: type=1101 audit(1788529507.110:51): pid=1809 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:accounting grantors=pam_permit acct="user" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:07 2026] audit: type=1123 audit(1788529507.110:52): pid=1809 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='cwd="/home/user/envchar" cmd="true" exe="/usr/bin/sudo" terminal=? res=success'
+[Fri Sep  4 13:45:35 2026] kauditd_printk_skb: 5 callbacks suppressed
+[Fri Sep  4 13:45:35 2026] audit: type=1131 audit(1788529535.990:58): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-hostnamed comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:36 2026] audit: type=1334 audit(1788529536.062:59): prog-id=29 op=UNLOAD
+[Fri Sep  4 13:45:36 2026] audit: type=1131 audit(1788529536.318:60): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=kernel msg='unit=systemd-timedated comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:36 2026] audit: type=1334 audit(1788529536.334:61): prog-id=34 op=UNLOAD
+[Fri Sep  4 13:45:36 2026] audit: type=1334 audit(1788529536.334:62): prog-id=33 op=UNLOAD
+[Fri Sep  4 13:45:36 2026] audit: type=1334 audit(1788529536.334:63): prog-id=32 op=UNLOAD
+[Fri Sep  4 13:45:39 2026] audit: type=1101 audit(1788529539.558:64): pid=2540 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:accounting grantors=pam_permit acct="user" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:39 2026] audit: type=1123 audit(1788529539.558:65): pid=2540 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='cwd="/home/user/envchar" cmd=7368202D63206563686F2033203E202F70726F632F7379732F766D2F64726F705F636163686573 exe="/usr/bin/sudo" terminal=? res=success'
+[Fri Sep  4 13:45:39 2026] audit: type=1110 audit(1788529539.558:66): pid=2540 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:setcred grantors=pam_permit acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:39 2026] audit: type=1105 audit(1788529539.558:67): pid=2540 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:session_open grantors=pam_limits,pam_permit,pam_umask,pam_unix acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:39 2026] sh (2542): drop_caches: 3
+[Fri Sep  4 13:45:40 2026] sh (2546): drop_caches: 3
+[Fri Sep  4 13:45:40 2026] sh (2550): drop_caches: 3
+[Fri Sep  4 13:45:41 2026] kauditd_printk_skb: 18 callbacks suppressed
+[Fri Sep  4 13:45:41 2026] audit: type=1106 audit(1788529541.686:86): pid=2551 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:session_close grantors=pam_limits,pam_permit,pam_umask,pam_unix acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:41 2026] audit: type=1104 audit(1788529541.686:87): pid=2551 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:setcred grantors=pam_permit acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:41 2026] audit: type=1101 audit(1788529541.694:88): pid=2572 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:accounting grantors=pam_permit acct="user" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:41 2026] audit: type=1123 audit(1788529541.694:89): pid=2572 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='cwd="/home/user/envchar" cmd=656E762044454249414E5F46524F4E54454E443D6E6F6E696E746572616374697665206170742D67657420696E7374616C6C202D792074726565 exe="/usr/bin/sudo" terminal=? res=success'
+[Fri Sep  4 13:45:41 2026] audit: type=1110 audit(1788529541.694:90): pid=2572 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:setcred grantors=pam_permit acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:41 2026] audit: type=1105 audit(1788529541.694:91): pid=2572 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:session_open grantors=pam_limits,pam_permit,pam_umask,pam_unix acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:43 2026] audit: type=1106 audit(1788529543.926:92): pid=2572 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:session_close grantors=pam_limits,pam_permit,pam_umask,pam_unix acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:43 2026] audit: type=1104 audit(1788529543.926:93): pid=2572 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:setcred grantors=pam_permit acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:49 2026] audit: type=1101 audit(1788529549.622:94): pid=2681 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:accounting grantors=pam_permit acct="user" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:49 2026] audit: type=1123 audit(1788529549.622:95): pid=2681 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='cwd="/home/user/envchar" cmd=70696E67202D632033202D57203220382E382E382E38 exe="/usr/bin/sudo" terminal=? res=success'
+[Fri Sep  4 13:45:49 2026] audit: type=1110 audit(1788529549.622:96): pid=2681 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:setcred grantors=pam_permit acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:49 2026] audit: type=1105 audit(1788529549.622:97): pid=2681 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:session_open grantors=pam_limits,pam_permit,pam_umask,pam_unix acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:51 2026] audit: type=1106 audit(1788529551.654:98): pid=2681 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:session_close grantors=pam_limits,pam_permit,pam_umask,pam_unix acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:51 2026] audit: type=1104 audit(1788529551.654:99): pid=2681 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:setcred grantors=pam_permit acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:51 2026] audit: type=1101 audit(1788529551.702:100): pid=2695 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:accounting grantors=pam_permit acct="user" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:51 2026] audit: type=1123 audit(1788529551.702:101): pid=2695 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='cwd="/home/user/envchar" cmd=656E762044454249414E5F46524F4E54454E443D6E6F6E696E746572616374697665206170742D67657420696E7374616C6C202D79207472616365726F757465 exe="/usr/bin/sudo" terminal=? res=success'
+[Fri Sep  4 13:45:51 2026] audit: type=1110 audit(1788529551.702:102): pid=2695 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:setcred grantors=pam_permit acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:51 2026] audit: type=1105 audit(1788529551.702:103): pid=2695 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:session_open grantors=pam_limits,pam_permit,pam_umask,pam_unix acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:55 2026] kauditd_printk_skb: 12 callbacks suppressed
+[Fri Sep  4 13:45:55 2026] audit: type=1106 audit(1788529555.534:116): pid=2749 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:session_close grantors=pam_limits,pam_permit,pam_umask,pam_unix acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:55 2026] audit: type=1104 audit(1788529555.534:117): pid=2749 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:setcred grantors=pam_permit acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:55 2026] audit: type=1101 audit(1788529555.558:118): pid=2757 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:accounting grantors=pam_permit acct="user" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:55 2026] audit: type=1123 audit(1788529555.558:119): pid=2757 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='cwd="/home/user/envchar" cmd=7472616365726F757465202D54202D7020343433202D6E202D772031202D712031202D6D2038206769746875622E636F6D exe="/usr/bin/sudo" terminal=? res=success'
+[Fri Sep  4 13:45:55 2026] audit: type=1110 audit(1788529555.558:120): pid=2757 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:setcred grantors=pam_permit acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:55 2026] audit: type=1105 audit(1788529555.558:121): pid=2757 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:session_open grantors=pam_limits,pam_permit,pam_umask,pam_unix acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:55 2026] audit: type=1106 audit(1788529555.574:122): pid=2757 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:session_close grantors=pam_limits,pam_permit,pam_umask,pam_unix acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:55 2026] audit: type=1104 audit(1788529555.574:123): pid=2757 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:setcred grantors=pam_permit acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:59 2026] audit: type=1101 audit(1788529559.706:124): pid=2791 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:accounting grantors=pam_permit acct="user" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[Fri Sep  4 13:45:59 2026] audit: type=1123 audit(1788529559.706:125): pid=2791 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='cwd="/home/user/envchar" cmd=707974686F6E33202D6320696D706F727420736F636B65743B20733D736F636B65742E736F636B657428293B20732E736574736F636B6F707428736F636B65742E534F4C5F534F434B45542C736F636B65742E534F5F5245555345414444522C31293B20732E62696E64282822302E302E302E30222C383029293B20732E6C697374656E2831293B207072696E7428227375646F2062696E6420302E302E302E303A3830204F4B22293B20732E636C6F73652829 exe="/usr/bin/sudo" terminal=? res=success'
+=== EXIT: 0  WALL_S: 0.0166 ===

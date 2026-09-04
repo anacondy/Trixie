@@ -1,0 +1,143 @@
+preexisting_tree_path=None
+
+## apt source file /etc/apt/sources.list.d/debian.sources
+Types: deb
+# http://snapshot.debian.org/archive/debian/20260713T000000Z
+URIs: http://deb.debian.org/debian
+Suites: trixie trixie-updates
+Components: main
+Signed-By: /usr/share/keyrings/debian-archive-keyring.pgp
+
+Types: deb
+# http://snapshot.debian.org/archive/debian-security/20260713T000000Z
+URIs: http://deb.debian.org/debian-security
+Suites: trixie-security
+Components: main
+Signed-By: /usr/share/keyrings/debian-archive-keyring.pgp
+
+
+## apt source file /etc/apt/sources.list.d/nodesource.sources
+Types: deb
+URIs: https://deb.nodesource.com/node_20.x
+Suites: nodistro
+Components: main
+Architectures: amd64
+Signed-By: /usr/share/keyrings/nodesource.gpg
+
+
+## apt_get_update
+status=ok rc=0 elapsed=0.926034 s
+command=['sudo', 'apt-get', '-o', 'Acquire::Retries=0', 'update']
+--- output ---
+Hit:1 http://deb.debian.org/debian trixie InRelease
+Get:2 http://deb.debian.org/debian trixie-updates InRelease [47.3 kB]
+Get:3 http://deb.debian.org/debian-security trixie-security InRelease [43.4 kB]
+Get:4 http://deb.debian.org/debian-security trixie-security/main amd64 Packages [251 kB]
+Hit:5 https://deb.nodesource.com/node_20.x nodistro InRelease
+Fetched 342 kB in 0s (2572 kB/s)
+Reading package lists...
+
+
+## apt_install_tree
+status=ok rc=0 elapsed=2.071882 s
+command=['sudo', 'apt-get', '-o', 'Acquire::Retries=0', 'install', '-y', '--no-install-recommends', 'tree']
+--- output ---
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  tree
+0 upgraded, 1 newly installed, 0 to remove and 37 not upgraded.
+Need to get 59.4 kB of archives.
+After this operation, 132 kB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian trixie/main amd64 tree amd64 2.2.1-1 [59.4 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+debconf: unable to initialize frontend: Teletype
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Noninteractive
+Fetched 59.4 kB in 0s (1502 kB/s)
+Selecting previously unselected package tree.
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 38546 files and directories currently installed.)
+Preparing to unpack .../tree_2.2.1-1_amd64.deb ...
+Unpacking tree (2.2.1-1) ...
+Setting up tree (2.2.1-1) ...
+
+
+## apt_tree_verify
+status=ok rc=0 elapsed=0.001539 s
+command=['tree', '--version']
+--- output ---
+tree v2.2.1 © 1996 - 2024 by Steve Baker, Thomas Moore, Francesc Rocher, Florian Sesser, Kyosuke Tokoro
+
+
+## apt_purge_tree
+status=ok rc=0 elapsed=1.332933 s
+command=['sudo', 'apt-get', 'purge', '-y', 'tree']
+--- output ---
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages will be REMOVED:
+  tree*
+0 upgraded, 0 newly installed, 1 to remove and 37 not upgraded.
+After this operation, 132 kB disk space will be freed.
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 38552 files and directories currently installed.)
+Removing tree (2.2.1-1) ...
+
+
+## apt_autoremove_dry_run
+status=ok rc=0 elapsed=0.931085 s
+command=['sudo', 'apt-get', '-s', 'autoremove']
+--- output ---
+Reading package lists...
+Building dependency tree...
+Reading state information...
+0 upgraded, 0 newly installed, 0 to remove and 37 not upgraded.
+

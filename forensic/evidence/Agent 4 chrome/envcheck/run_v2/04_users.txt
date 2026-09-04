@@ -1,0 +1,58 @@
+================================================================
+ probe.sh v1.0.0   section: 04_users.txt
+ run_id:    20260904T140458Z-11960
+ started:   2026-09-04T14:04:58Z
+ sandbox:   i0m9mhony51frr3osghn0
+ template:  nlhz8vlwyupq845jsdg9
+ host:      e2b.local   kernel: 6.1.158+   arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user:      user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ id; whoami; groups; echo HOME=$HOME SHELL=$SHELL
+uid=1000(user) gid=1000(user) groups=1000(user),27(sudo),100(users)
+user
+user sudo users
+HOME=/home/user SHELL=/bin/bash
+
+$ sudo -n true 2>&1; echo "sudo -n true exit=$?"
+sudo -n true exit=0
+
+$ sudo -n id 2>&1
+uid=0(root) gid=0(root) groups=0(root)
+
+$ sudo -n grep CapEff /proc/self/status 2>&1
+CapEff:	000001ffffffffff
+
+$ sudo -n touch /etc/.probe_wtest 2>&1 && sudo -n rm -f /etc/.probe_wtest && echo 'ROOT WRITE /etc: OK (test file removed)'
+ROOT WRITE /etc: OK (test file removed)
+
+$ touch /root/.probe_wtest 2>&1 || echo 'user write /root: DENIED (expected)'
+touch: cannot touch '/root/.probe_wtest': Permission denied
+user write /root: DENIED (expected)
+
+$ grep -hE 'NOPASSWD|%sudo|^root' /etc/sudoers 2>/dev/null || sudo -n cat /etc/sudoers 2>/dev/null | grep -E 'NOPASSWD|%sudo|^root|use_pty|env_reset'
+Defaults	env_reset
+Defaults	use_pty
+#Defaults:%sudo env_keep += "http_proxy https_proxy ftp_proxy all_proxy no_proxy"
+#Defaults:%sudo env_keep += "EDITOR"
+#Defaults:%sudo env_keep += "GREP_COLOR"
+#Defaults:%sudo env_keep += "GIT_AUTHOR_* GIT_COMMITTER_*"
+#Defaults:%sudo env_keep += "EMAIL DEBEMAIL DEBFULLNAME"
+#Defaults:%sudo env_keep += "SSH_AGENT_PID SSH_AUTH_SOCK"
+#Defaults:%sudo env_keep += "GPG_AGENT_INFO"
+root	ALL=(ALL:ALL) ALL
+%sudo	ALL=(ALL:ALL) ALL
+user ALL=(ALL:ALL) NOPASSWD: ALL
+user ALL=(ALL:ALL) NOPASSWD: ALL
+
+$ getent passwd 1000; echo '--- non-system users ---'; awk -F: '$3>=1000 && $3<65536 {print $1, $3, $4, $7}' /etc/passwd | sort
+user:x:1000:1000::/home/user:/bin/bash
+--- non-system users ---
+nobody 65534 65534 /usr/sbin/nologin
+user 1000 1000 /bin/bash
+
+$ id nobody 2>&1; sudo -n -u nobody id 2>&1
+uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)
+uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)
+

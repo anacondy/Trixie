@@ -1,0 +1,28 @@
+################################################################
+# SECTION: 11_cpu_bench.txt   (probe run run_20260904T141747Z)
+# STARTED : 2026-09-04T14:18:07Z
+################################################################
+### Python 3.x CPU micro-benchmarks
+python 3.13.14
+sum(range(10**7))          : 0.1460s  (68.5 M elem/s, result=49999995000000)
+genexpr sum(i*i 1e6)       : 0.0495s
+empty for-loop 2e6 iters  : 0.0565s
+math missing?
+2x sum(range(1e7)) 2 procs : 0.1872s wall
+
+### Node (if present)
+v20.20.2
+node sum(1e7) loop: 0.0964s 103.7M ops/s
+
+### gcc (if present)
+gcc -O0            : compile 0.459s | 1e9 adds + 3e8 fp divs: 2.776s
+gcc -O2            : compile 0.054s | 1e9 adds + 3e8 fp divs: 0.293s
+gcc -O3            : compile 0.069s | 1e9 adds + 3e8 fp divs: 0.342s
+gcc -O3 -march=native: compile 0.103s | 1e9 adds + 3e8 fp divs: 0.173s
+
+### numpy (if present)
+numpy 2.3.5
+matmul 1000x1000 float64  : 0.0255s (39.3 GFLOP/s naive)
+sum of 1e7 floats         : 0.0101s (0.99 G elem/s)
+
+# section rc=0   FINISHED: 2026-09-04T14:18:13Z

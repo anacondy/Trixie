@@ -1,0 +1,67 @@
+# Python implementation and selected imports
+executable= /usr/local/bin/python3
+version= 3.13.14 (main, Jul 14 2026, 04:45:36) [GCC 14.2.0]
+implementation= CPython
+prefix= /usr/local
+base_prefix= /usr/local
+platform= Linux-6.1.158+-x86_64-with-glibc2.41
+libc= ('glibc', '2.41')
+numpy=installed; version=2.3.5; origin=/usr/local/lib/python3.13/site-packages/numpy/__init__.py
+pandas=installed; version=2.2.3; origin=/usr/local/lib/python3.13/site-packages/pandas/__init__.py
+scipy=installed; version=1.17.1; origin=/usr/local/lib/python3.13/site-packages/scipy/__init__.py
+requests=installed; version=2.33.0; origin=/usr/local/lib/python3.13/site-packages/requests/__init__.py
+httpx=installed; version=0.28.1; origin=/usr/local/lib/python3.13/site-packages/httpx/__init__.py
+aiohttp=installed; version=3.14.1; origin=/usr/local/lib/python3.13/site-packages/aiohttp/__init__.py
+pyarrow=not installed
+polars=not installed
+torch=not installed
+tensorflow=not installed
+sklearn=installed; version=1.6.1; origin=/usr/local/lib/python3.13/site-packages/sklearn/__init__.py
+matplotlib=installed; version=3.10.9; origin=/usr/local/lib/python3.13/site-packages/matplotlib/__init__.py
+PIL=installed; version=12.3.0; origin=/usr/local/lib/python3.13/site-packages/PIL/__init__.py
+bs4=installed; version=4.15.0; origin=/usr/local/lib/python3.13/site-packages/bs4/__init__.py
+lxml=installed; version=6.1.1; origin=/usr/local/lib/python3.13/site-packages/lxml/__init__.py
+jupyter=installed; version=unknown; origin=/usr/local/lib/python3.13/site-packages/jupyter.py
+notebook=not installed
+
+# pip configuration (location/keys only; values omitted)
+env_var:
+env:
+global:
+  /etc/xdg/pip/pip.conf, exists: False
+  /etc/pip.conf, exists: False
+site:
+  /usr/local/pip.conf, exists: False
+user:
+  /home/user/.pip/pip.conf, exists: False
+  /home/user/.config/pip/pip.conf, exists: False
+
+# npm global top-level packages
+/usr/lib
++-- corepack@0.34.6
++-- ijavascript@5.2.1
+`-- npm@10.8.2
+
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 12.0.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.2
+npm notice To update run: npm install -g npm@12.0.2
+npm notice
+
+# corepack shims
+Unknown Syntax Error: Command not found; did you mean one of:
+
+  0. corepack -h
+  1. corepack -v
+  2. corepack cache clean
+  3. corepack disable [--install-directory #0] ...
+  4. corepack enable [--install-directory #0] ...
+  5. corepack install <-g,--global> [--cache-only] ...
+  6. corepack install
+  7. corepack pack [--json] [-o,--output #0] ...
+  8. corepack up
+  9. corepack use <pattern>
+ 10. corepack hydrate [--activate] <fileName>
+ 11. corepack prepare [--activate] [--json] [-o,--output] ...
+
+While running list

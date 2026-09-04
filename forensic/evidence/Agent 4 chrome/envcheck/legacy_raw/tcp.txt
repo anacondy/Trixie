@@ -1,0 +1,25 @@
+endpoint                                        res  n  min ms  med ms  max ms
+google.com                                       OK  7    1.44    1.65    4.50
+1.1.1.1 (tcp80)                                  OK  7    0.30    0.35    0.42
+8.8.8.8:53 (dns)                                 OK  7    0.18    0.28    0.50
+github.com:443                                   OK  7    1.17    1.35    8.95
+pypi.org:443                                     OK  7    1.08    1.22    1.30
+huggingface.co:443                               OK  7    1.39    1.91   24.19
+registry.npmjs.org:443                           OK  7    1.21    1.41   20.34
+files.pythonhosted.org:443                       OK  7    1.47    1.65    9.83
+objects.githubusercontent.com:443                OK  7    1.19    1.63    1.78
+cdn.jsdelivr.net:443                             OK  7    1.48   20.78   29.13
+
+=== full TLS handshake (connect + handshake + close) ===
+Traceback (most recent call last):
+  File "/home/user/envcheck/tcp_bench.py", line 44, in <module>
+    print(f"{h:32} {ver:9} tcp_med={statistics.median(tcp):6.2f}ms  tls_med={statistics.median(hs):6.2f}ms  total_med={statistics.median(tot):6.2f}ms  total_min={min(tot):6.2f}ms")
+                   ^^^^^^^
+TypeError: unsupported format string passed to method.__format__
+=== full TLS handshake breakdown (median of 5) ===
+google.com                 TLSv1.3    TLS_AES_256_GCM_SHA384   tcp=  1.56  tls_hsk=   3.34  total=  5.10 ms
+github.com                 TLSv1.3    TLS_AES_128_GCM_SHA256   tcp=  1.30  tls_hsk=  15.71  total= 16.71 ms
+pypi.org                   TLSv1.3    TLS_AES_128_GCM_SHA256   tcp=  1.16  tls_hsk=  16.31  total= 17.50 ms
+huggingface.co             TLSv1.3    TLS_AES_128_GCM_SHA256   tcp=  1.68  tls_hsk=  15.72  total= 19.12 ms
+registry.npmjs.org         TLSv1.2    ECDHE-ECDSA-AES128-GCM   tcp=  1.51  tls_hsk=  56.58  total= 58.41 ms
+cdn.jsdelivr.net           TLSv1.3    TLS_AES_256_GCM_SHA384   tcp=  1.63  tls_hsk=  39.62  total= 41.23 ms

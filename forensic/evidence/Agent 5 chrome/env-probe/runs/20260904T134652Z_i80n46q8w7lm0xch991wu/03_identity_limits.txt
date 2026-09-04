@@ -1,0 +1,106 @@
+############################################################
+# IDENTITY & RESOURCE LIMITS
+# probe_version=1.1.0
+# run_utc=20260904T134652Z  sandbox=i80n46q8w7lm0xch991wu
+# generated=2026-09-04T13:46:52Z
+############################################################
+
+$ whoami
+user
+[exit=0]
+
+$ id
+uid=1000(user) gid=1000(user) groups=1000(user),27(sudo),100(users)
+[exit=0]
+
+$ sudo -n true && echo SUDO_NOPASSWD_OK || echo SUDO_UNAVAILABLE
+SUDO_NOPASSWD_OK
+[exit=0]
+
+$ sudo -n id
+uid=0(root) gid=0(root) groups=0(root)
+[exit=0]
+
+$ ulimit -a
+real-time non-blocking time  (microseconds, -R) unlimited
+core file size              (blocks, -c) 0
+data seg size               (kbytes, -d) unlimited
+scheduling priority                 (-e) 0
+file size                   (blocks, -f) unlimited
+pending signals                     (-i) 7917
+max locked memory           (kbytes, -l) 8192
+max memory size             (kbytes, -m) unlimited
+open files                          (-n) 1024
+pipe size                (512 bytes, -p) 8
+POSIX message queues         (bytes, -q) 819200
+real-time priority                  (-r) 0
+stack size                  (kbytes, -s) 8192
+cpu time                   (seconds, -t) unlimited
+max user processes                  (-u) 7917
+virtual memory              (kbytes, -v) unlimited
+file locks                          (-x) unlimited
+[exit=0]
+
+$ nproc
+2
+[exit=0]
+
+$ free -m
+               total        used        free      shared  buff/cache   available
+Mem:            1984         495        1308           1         365        1489
+Swap:              0           0           0
+[exit=0]
+
+$ head -5 /proc/meminfo
+MemTotal:        2032608 kB
+MemFree:         1339684 kB
+MemAvailable:    1525196 kB
+Buffers:           60572 kB
+Cached:           178692 kB
+[exit=0]
+
+$ cat /proc/swaps
+Filename				Type		Size		Used		Priority
+[exit=0]
+
+$ cat /proc/sys/vm/overcommit_memory
+0
+[exit=0]
+
+$ cat /proc/sys/vm/overcommit_ratio
+50
+[exit=0]
+
+$ cat /proc/sys/kernel/threads-max
+15835
+[exit=0]
+
+$ cat /proc/sys/kernel/pid_max
+4194304
+[exit=0]
+
+--- cgroup v2 limit files (absent => no cgroup cap; VM-level only) ---
+$ cat /sys/fs/cgroup/memory.max
+cat: /sys/fs/cgroup/memory.max: No such file or directory
+[exit=1]
+
+$ cat /sys/fs/cgroup/memory.high
+cat: /sys/fs/cgroup/memory.high: No such file or directory
+[exit=1]
+
+$ cat /sys/fs/cgroup/memory.current
+cat: /sys/fs/cgroup/memory.current: No such file or directory
+[exit=1]
+
+$ cat /sys/fs/cgroup/cpu.max
+cat: /sys/fs/cgroup/cpu.max: No such file or directory
+[exit=1]
+
+$ cat /sys/fs/cgroup/pids.max
+cat: /sys/fs/cgroup/pids.max: No such file or directory
+[exit=1]
+
+$ cat /sys/fs/cgroup/io.max
+cat: /sys/fs/cgroup/io.max: No such file or directory
+[exit=1]
+

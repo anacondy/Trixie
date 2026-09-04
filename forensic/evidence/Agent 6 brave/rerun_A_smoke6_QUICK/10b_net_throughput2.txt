@@ -1,0 +1,19 @@
+== Throughput round 2 (fixed) 13:57:12Z ==
+  [QUICK] extra cloudflare repeats skipped
+-- huggingface with -L (gpt2 pytorch_model.bin, 5 MiB range) --
+  HF gpt2 model.bin range5MiB                  5.00 MiB     8.75 MiB/s  total   0.57s  ttfb    275 ms  code=206
+-- hetzner retry + raw DNS checks (blocklist detection) --
+  hetzner 100MB.bin retry                  FAILED: curl: (6) Could not resolve host: speed.hetzner.de
+0|0|0.001212|0.000000|000
+  speed.hetzner.de             rcode=0 answers=0 ips=[] 1.1 ms
+  random123.hetzner.de         rcode=3 answers=0 ips=[] 155.3 ms
+  www.hetzner.com              rcode=0 answers=1 ips=['0.4.213.133'] 1.2 ms
+  www.python.org               rcode=0 answers=5 ips=['0.33.9.100', '104.111.110.3', '101.116.0.192', '101.128.223.192'] 1.1 ms
+  pypi.org                     rcode=0 answers=4 ips=['0.4.151.101', '0.4.151.101', '0.4.151.101', '0.4.151.101'] 0.6 ms
+  download.hetzner.de          rcode=0 answers=1 ips=['0.4.213.239'] 1.4 ms
+  dl.google.com                rcode=0 answers=4 ips=['0.4.192.179', '0.4.192.179', '0.4.192.179', '0.4.192.179'] 3.1 ms
+  speedtest.net                rcode=0 answers=4 ips=['0.4.151.101', '0.4.151.101', '0.4.151.101', '0.4.151.101'] 1.2 ms
+
+== HF multi-connection throughput (4 parallel 5MiB ranges) ==
+  1 x 5MiB parallel: 0.49s wall, aggregate 5242880 bytes -> 10.2 MiB/s (files 1)
+  [QUICK] pypi-wheel/OVH/apt sections skipped

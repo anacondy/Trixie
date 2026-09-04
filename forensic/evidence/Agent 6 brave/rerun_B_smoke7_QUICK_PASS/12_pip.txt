@@ -1,0 +1,36 @@
+== pip/package-manager capability suite ==
+== global site-packages perms (default pip target for /usr/local python) ==
+drwxrwxrwx  41 root root  4096 Jul 23 15:09 /usr/local/lib/python3.13
+drwxrwxrwx 369 root root 12288 Jul 23 18:05 /usr/local/lib/python3.13/site-packages
+site-packages WRITABLE by user
+
+== python 3.13 build flags ==
+Py_GIL_DISABLED: 0
+SOABI: cpython-313-x86_64-linux-gnu
+
+== venv creation + timing ==
+  venv created in 1.97s
+
+== wheel installs (timed, quiet) ==
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    print(f'  {pkg:16s} rc=1 in {(1788530292.268493345-1788530291.958931674):6.2f}s')
+               ^^^
+NameError: name 'pkg' is not defined
+
+== sdist builds ==
+  [QUICK] sdist builds skipped
+
+== import + version sanity ==
+Traceback (most recent call last):
+  File "<stdin>", line 8, in <module>
+ModuleNotFoundError: No module named 'rich'
+
+== numpy micro-benches (from /usr/local python? use venv numpy) ==
+  (run-1 artifact: benches below run inside the venv python)
+
+-- json/orjson/numpy micro-benches (as available) --
+  json.dumps x200k   =   424.1 ms
+
+== pip --user install test (outside venv, default interpreter) ==
+  [QUICK] skipped

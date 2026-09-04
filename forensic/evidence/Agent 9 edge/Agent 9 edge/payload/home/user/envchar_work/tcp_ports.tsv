@@ -1,0 +1,25 @@
+host	port	iteration	status	elapsed_ms	peer	error
+google.com	80	1	connected	1.407	172.253.117.139	
+google.com	80	2	connected	1.578	172.253.117.139	
+google.com	443	1	connected	1.666	142.250.99.101	
+google.com	443	2	connected	1.363	74.125.195.138	
+8.8.8.8	53	1	connected	0.265	8.8.8.8	
+8.8.8.8	53	2	connected	0.303	8.8.8.8	
+8.8.8.8	443	1	connected	0.198	8.8.8.8	
+8.8.8.8	443	2	connected	0.229	8.8.8.8	
+github.com	22	1	connected	1.255	140.82.116.3	
+github.com	22	2	connected	1.307	140.82.116.3	
+github.com	80	1	connected	1.144	140.82.116.4	
+github.com	80	2	connected	1.254	140.82.116.3	
+github.com	443	1	connected	1.457	140.82.116.3	
+github.com	443	2	connected	11.575	140.82.116.4	
+github.com	9418	1	connected	1.497	140.82.116.4	
+github.com	9418	2	connected	9.823	140.82.116.3	
+pypi.org	80	1	connected	1.409	151.101.64.223	
+pypi.org	80	2	connected	0.963	151.101.192.223	
+pypi.org	443	1	connected	1.073	151.101.0.223	
+pypi.org	443	2	connected	1.296	151.101.64.223	
+huggingface.co	80	1	connected	21.032	18.173.252.86	
+huggingface.co	80	2	connected	1.608	18.173.252.100	
+huggingface.co	443	1	connected	1.388	3.163.189.114	
+huggingface.co	443	2	connected	2.209	18.173.252.65	

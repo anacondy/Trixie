@@ -1,0 +1,831 @@
+=== PHASE 4 – Structural & content sanity ===
+Generated: Fri Sep  4 17:53:19 UTC 2026
+
+Total files (extracted): 542
+Total dirs: 48
+Total bytes: 2865116
+Unified list: trixie_extract_20260904_172945/01_ALL_FILES.txt
+
+Duplicate filenames across different Agent zips (collision risk): 27
+  00_meta.txt: Agent 4 chrome, Agent 7 edge
+  01_runtime.txt: Agent 1 chrome, Agent 2 brave, Agent 3 brave, Agent 4 chrome, Agent 5 chrome, Agent 6 brave, Agent 7 edge, Agent 8 edge, Agent 9 edge
+  02_isolation.txt: Agent 2 brave, Agent 3 brave, Agent 4 chrome, Agent 5 chrome, Agent 7 edge, Agent 8 edge, Agent 9 edge
+  03_identity_limits.txt: Agent 5 chrome, Agent 8 edge
+  03_limits.txt: Agent 3 brave, Agent 4 chrome
+  03_tools.txt: Agent 6 brave, Agent 7 edge
+  04_tooling.txt: Agent 3 brave, Agent 5 chrome, Agent 9 edge
+  05_filesystem.txt: Agent 3 brave, Agent 7 edge
+  05_tools.txt: Agent 4 chrome, Agent 8 edge
+  06_filesystem.txt: Agent 5 chrome, Agent 9 edge
+  07_dns.txt: Agent 3 brave, Agent 5 chrome, Agent 7 edge, Agent 9 edge
+  07_filesystem.txt: Agent 4 chrome, Agent 8 edge
+  08_http_latency.txt: Agent 7 edge, Agent 9 edge
+  09_net_matrix.txt: Agent 2 brave, Agent 3 brave, Agent 4 chrome, Agent 5 chrome, Agent 6 brave, Agent 7 edge, Agent 8 edge, Agent 9 edge
+  10_net_throughput.txt: Agent 2 brave, Agent 6 brave
+  10_throughput.txt: Agent 3 brave, Agent 9 edge
+  11_cpu_bench.txt: Agent 3 brave, Agent 7 edge
+  12_disk_bench.txt: Agent 3 brave, Agent 7 edge
+  MANIFEST.txt: Agent 1 chrome, Agent 2 brave, Agent 4 chrome, Agent 7 edge
+  README.md: Agent 2 brave, Agent 4 chrome, Agent 5 chrome, Agent 7 edge, Agent 9 edge
+  SHA256SUMS: Agent 2 brave, Agent 3 brave, Agent 9 edge
+  SHA256SUMS.txt: Agent 4 chrome, Agent 5 chrome, Agent 9 edge
+  environment_characterization.md: Agent 1 chrome, Agent 2 brave, Agent 3 brave, Agent 4 chrome, Agent 5 chrome, Agent 6 brave, Agent 7 edge, Agent 8 edge, Agent 9 edge
+  make_manifest.py: Agent 2 brave, Agent 4 chrome
+  manifest.json: Agent 4 chrome, Agent 6 brave, Agent 9 edge
+  probe.sh: Agent 2 brave, Agent 4 chrome
+  probe_environment.sh: Agent 1 chrome, Agent 3 brave, Agent 7 edge, Agent 8 edge, Agent 9 edge
+
+=== First 30 lines of top-level README / INDEX / MANIFEST ===
+
+--- Agent 1 chrome ---
+
+  File: MANIFEST.txt (626 bytes)
+    01: Timestamp: 2026-09-04T13:44:06Z (Asia/Calcutta)
+    02: Sandbox ID: iim386kr3aoo4j3svsogz
+    03: Template ID: nlhz8vlwyupq845jsdg9
+    04: 
+    05: SHA-256 checksums:
+    06: 0fb1cd957e6af33e36e286cd7a1b1fadbdcc986b0da84085bb3fe0f10e9e66ab  01_runtime.txt
+    07: 8d6f864cba4b5984a791be0411f25412adf33126a99453dc77fe3180a656e612  02_tooling.txt
+    08: 3b4afc8f962786d382a349c3d1f7089fba8765ea25d889e9418e162d1056668c  03_filesystem.txt
+    09: 0b6edec8aa11442907960b520cb913f7c983094637182018c7e308a378e75cf3  04_network.txt
+    10: 20e95fcf98bec1b3e8e356a97d2f3ddef8dbb43221898e7f01beaa0d866881f4  05_benchmarks.txt
+    11: 25b6532fc9dac22c4937f3ab0a1090379034ca564c5f967e703b43abd2b7b439  06_other.txt
+
+  File: environment_characterization.md (6530 bytes)
+    01: # Environment Characterization Report
+    02: 
+    03: **Date:** 2025-09-04 (Asia/Calcutta)
+    04: **User:** user (uid=1000, gid=1000)
+    05: 
+    06: ## Executive Summary
+    07: 
+    08: This sandbox runs Debian 13 (trixie) on an x86_64 host with kernel 6.1.158, glibc, and cgroup v2 isolation; it is effectively a container without Docker installed. Python 3.13, pip, Node 20, and gcc are available, and pure‑Python package installs succeed. Disk I/O is very fast for zero‑filled data, 
+    09: 
+    10: ---
+    11: ## 1. Runtime & Isolation
+    12: 
+    13: | Item | Detail |
+    14: |---|---|
+    15: | **OS** | Debian GNU/Linux 13 (trixie) |
+    16: | **Kernel** | 6.1.158+ (SMP PREEMPT_DYNAMIC) |
+    17: | **Architecture** | x86_64 |
+    18: | **Libc** | glibc (standard Debian) |
+    19: | **Container/VMI** | cgroup v2 present, `/.dockerenv` absent; capabilities minimal (`CapEff: 000001ffffffffff`). Effectively containerized but not Docker. |
+    20: | **Current user** | `user`, uid=1000, gid=1000, groups: `user`, `sudo`, `users` |
+    21: | **Root/sudo** | `sudo` works without password; user is not root |
+    22: | **Resource limits** (`ulimit -a`) | max memory unlimited, open files = 1024, max user processes = 7917, cpu time unlimited, virtual memory unlimited |
+    23: 
+    24: ---
+    25: ## 2. Tooling & Language Runtimes
+    26: 
+    27: | Tool | Version | Availability |
+    28: |---|---|---|
+    29: | python3 | 3.13.14 | ✅ /usr/local/bin/python3 |
+    30: | pip | 26.1.2 | ✅ |
+
+--- Agent 2 brave ---
+
+  File: 00_ZIP_INDEX.md (17046 bytes)
+    01: # Agent 2 brave.zip — contents, provenance, prompts
+    02: 
+    03: **Archive name:** `Agent 2 brave.zip`  
+    04: **Packed (UTC):** 2026-09-04 15:10 UTC  
+    05: **Packed (IST / Asia/Calcutta):** 2026-09-04 20:40 IST  
+    06: **Packed by:** Arena.ai Agent Mode (this conversation)  
+    07: **Host at pack time:** `e2b.local` · Linux 6.1.158+ x86_64 · Debian 13 (trixie)
+    08: 
+    09: **Important about timestamps:** workspace snapshots rewrite filesystem mtimes. Every file currently `stat`s as `2026-09-04 15:10:09 UTC` (restore of this sandbox). **Do not use `ls`/`stat` mtime as creation time.** Logical creation times below come from (a) content headers inside the files (`generat
+    10: 
+    11: Timezone used throughout: **UTC**, with **IST = UTC+5:30** in parentheses.
+    12: 
+    13: ---
+    14: 
+    15: ## What this zip is
+    16: 
+    17: A complete dump of **every deliverable this agent created** while characterizing the Arena/E2B sandbox for a long-running research + data pipeline:
+    18: 
+    19: 1. A human-readable Markdown report (LLM-summarized; secondary).
+    20: 2. A third-party **probe script** that re-runs the same checks.
+    21: 3. **16 verbatim raw `.txt` transcripts** (primary evidence — command output, no summarization).
+    22: 4. A **verification manifest** with sandbox/template IDs and SHA-256 of every raw file.
+    23: 5. A persistence marker from the first session.
+    24: 6. This index (prompts, sequence, metadata).
+    25: 
+    26: **Trust order:** `envchar/raw/*.txt` + `envchar/SHA256SUMS` > `envchar/MANIFEST.txt` > `environment_characterization.md`.
+    27: 
+    28: Verify:
+    29: 
+    30: ```bash
+
+  File: envchar/README.md (1643 bytes)
+    01: # envchar probe
+    02: 
+    03: Third-party re-runnable environment characterization.
+    04: 
+    05: ## Run
+    06: 
+    07: ```bash
+    08: cd envchar
+    09: chmod +x probe.sh
+    10: ./probe.sh
+    11: ```
+    12: 
+    13: Writes verbatim transcripts to `raw/*.txt`, then `MANIFEST.txt` and `SHA256SUMS`.
+    14: 
+    15: Optional:
+    16: 
+    17: ```bash
+    18: ENVCHAR_SKIP_DOWNLOADS=1 ENVCHAR_SKIP_MEMORY=1 ./probe.sh
+    19: ENVCHAR_OUT=/tmp/myraw ./probe.sh
+    20: ```
+    21: 
+    22: ## Verify a published run
+    23: 
+    24: ```bash
+    25: cd envchar
+    26: sha256sum -c SHA256SUMS
+    27: ```
+    28: 
+    29: ## Diff against another machine / sandbox
+    30: 
+
+  File: environment_characterization.md (24072 bytes)
+    01: # Environment Characterization Report
+    02: 
+    03: This Markdown file is a **human summary**. Primary evidence is the verbatim probe transcripts — no LLM layer:
+    04: 
+    05: | Role | Path |
+    06: |---|---|
+    07: | Probe (re-run this) | [`envchar/probe.sh`](envchar/probe.sh) + [`envchar/probe_bench.py`](envchar/probe_bench.py) |
+    08: | How to run / diff | [`envchar/README.md`](envchar/README.md) |
+    09: | This run’s manifest | [`envchar/MANIFEST.txt`](envchar/MANIFEST.txt) |
+    10: | `sha256sum -c` file | [`envchar/SHA256SUMS`](envchar/SHA256SUMS) |
+    11: | Raw transcripts | [`envchar/raw/`](envchar/raw/) (`01_runtime.txt` … `16_misc.txt`) |
+    12: 
+    13: **Published run (probe, not the earlier exploratory session):**  
+    14: sandbox `i4i7wdij5c7gh9absvtu8` · template `nlhz8vlwyupq845jsdg9` · `generated_utc=2026-09-04T13:45:05Z` · `raw_combo_sha256=891ecbd96758ea79019d8ae2b02829e713b3042d20f0f4cac313fa89bedd8e06`
+    15: 
+    16: Third party: `cd envchar && sha256sum -c SHA256SUMS && ./probe.sh` then `diff -ru raw/ <their-raw>/`.
+    17: 
+    18: ---
+    19: 
+    20: **Exploratory session (pre-probe, 09:53–09:59 UTC):** sandbox `i0v44lh3n78xffvhm6u5u`, same template. Numbers below mix that session with the published probe run; **when they disagree, trust `envchar/raw/`**.  
+    21: **Method:** live commands (`uname`, `/proc`, `python3` `perf_counter`, `curl -w`, `pip`/`apt` installs, sequential I/O).
+    22: 
+    23: ---
+    24: 
+    25: ## Executive summary
+    26: 
+    27: This is a **fresh E2B Firecracker-style KVM microVM** (not a Docker container): Debian 13 (trixie) on Linux 6.1.158+, **2 vCPUs** (Intel Xeon @ 2.60 GHz, 1 core / 2 threads, AVX-512), **~2 GiB RAM with no swap**, and a **25 GiB virtio root disk (~20 GiB free)**. The unprivileged user `user` (uid 100
+    28: 
+    29: ---
+    30: 
+
+--- Agent 3 brave ---
+
+  File: 00_README.md (12891 bytes)
+    01: # Agent 3 brave.zip — Contents Manifest & Provenance
+    02: 
+    03: **Archive:** `Agent 3 brave.zip`
+    04: **Packaged:** 2026-09-04, ~15:08 UTC
+    05: **Produced by:** Arena.ai Agent Mode (E2B sandbox microVM) during a 3-prompt conversation on 2026-09-04
+    06: **Subject:** full characterization of the sandbox environment (runtime, isolation, tooling, filesystem, network, benchmarks) with verbatim raw evidence and reproducible probe script.
+    07: 
+    08: ---
+    09: 
+    10: ## 1. What this zip contains (inventory)
+    11: 
+    12: | # | Path in zip | What it is / what it does | Created (UTC, 2026-09-04) |
+    13: |---|---|---|---|
+    14: | 1 | `00_README.md` | This file. Manifest, provenance, timeline, verbatim prompts, metadata. | ~15:08 (packaging) |
+    15: | 2 | `SHA256SUMS_ALL.txt` | SHA-256 of every file in the zip (except itself). Verify: `sha256sum -c SHA256SUMS_ALL.txt` | ~15:08 (packaging) |
+    16: | 3 | `environment_characterization.md` | **The main deliverable.** Full environment report: executive summary; runtime/isolation; tooling tables; filesystem & persistence; network (DNS/latency/throughput/ports); micro-benchmarks; limits & verdicts; Appendix A (run-1 raw excerpts) and Appendix B (ru
+    17: | 4 | `envchar/probe_environment.sh` | **The reproducible probe.** Self-contained bash script that re-runs every check and writes verbatim raw transcripts directly (no post-processing). Flags: `--stress` (install + memory-OOM tests), `--light` (skip >50 MB transfers), `--outdir DIR`. Also emits `SHA
+    18: | 5 | `envchar/bench.py` | Standalone CPU micro-benchmark (sum(loop), math loop, sha256, numpy BLAS GFLOP/s, multiprocessing scaling). Same logic embedded in the probe script; kept as a separate runnable file. | ~10:12–10:14 |
+    19: | 6 | `envchar/persistence_marker.txt` | Persistence test artifact from run 1. Its content carries its own exact creation timestamp: `marker written at 2026-09-04T10:14:40Z`. | 10:14:40 (exact) |
+    20: | 7–22 | `envchar/raw_run2/01_runtime.txt` … `16_env_services.txt` | **Run-2 verbatim raw transcripts** (16 category files), one per check category: 01 runtime, 02 isolation, 03 limits, 04 tooling, 05 filesystem, 06 persistence, 07 DNS, 08 latency, 09 outbound-port matrix, 10 throughput, 11 CPU benc
+    21: | 23 | `envchar/raw_run2/15_background_heartbeat.log` | Actual output of the background heartbeat process launched by the probe (35 ticks in 7 s). | 13:47:3x |
+    22: | 24 | `envchar/raw_run2/SHA256SUMS` | Machine-checkable checksums of all run-2 raw files (`sha256sum -c` inside that dir → 17/17 OK, verified twice during the session). | 13:47:36 |
+    23: | 25 | `envchar/raw_run2/verification_manifest.txt` | **Per-run verification manifest:** start/finish timestamps (13:46:52Z–13:47:36Z), sandbox ID `iq0hfwsxhi5bhzqv4auur`, template ID `nlhz8vlwyupq845jsdg9`, kernel, user, SHA-256 of every raw file, SHA-256 of the probe script itself, and diffing cav
+    24: 
+    25: ---
+    26: 
+    27: ## 2. Creation sequence (chronological, exact where possible)
+    28: 
+    29: > **Why not file mtimes:** the sandbox VM was snapshot-restored twice mid-conversation (before ~13:45 and before ~15:07 UTC). Restores reset on-disk mtimes, so current mtimes are meaningless as creation times. The timeline below is reconstructed from timestamps embedded in the files themselves (mark
+    30: 
+
+  File: environment_characterization.md (22040 bytes)
+    01: # Environment Characterization Report
+    02: 
+    03: **Date:** 2026-09-04 (all measurements taken this session; sandbox clock is UTC)
+    04: **Host:** `e2b.local` — E2B sandbox microVM (sandbox ID `iptxurfwauu23eb0ooerk`, template `nlhz8vlwyupq845jsdg9`)
+    05: **Method:** every number below was measured live in this sandbox (`time`, `dd`, `curl -w`, Python `time.perf_counter`, allocation-until-OOM). Nothing is estimated unless explicitly marked.
+    06: 
+    07: ---
+    08: 
+    09: ## Executive Summary
+    10: 
+    11: This is a **Firecracker-class microVM (E2B sandbox) running Debian 13.6 "trixie" on kernel 6.1.158+**, with **2 vCPUs (Xeon @ 2.60 GHz, AVX-512), 1.94 GiB RAM of which a cgroup hard-caps our workload at ~1.81 GiB, no swap, and a 25 GB ext4 rootfs (20 GB free)**. Networking is outstanding and unusual
+    12: 
+    13: ---
+    14: 
+    15: ## 1. Runtime & Isolation
+    16: 
+    17: ### 1.1 OS / Kernel / Architecture
+    18: 
+    19: | Property | Value |
+    20: |---|---|
+    21: | OS | Debian GNU/Linux 13.6 (trixie) |
+    22: | Kernel | `6.1.158+ #1 SMP PREEMPT_DYNAMIC` (built 2026-07-17; `+` = custom/local build) |
+    23: | Architecture | x86_64 |
+    24: | libc | glibc 2.41 (Debian GLIBC 2.41-12+deb13u3) |
+    25: | CPU | Intel(R) Xeon(R) @ 2.60 GHz, **2 logical CPUs** (`nproc`=2, cpuset `0-1`), flags incl. `avx512f avx2 fma aes` |
+    26: | RAM | 1.94 GiB total (`MemTotal 2 032 608 kB`), **no swap** |
+    27: | Clock/TZ | UTC (Etc/UTC), NTP-consistent |
+    28: 
+    29: ### 1.2 Virtualization / sandbox signals
+    30: 
+
+--- Agent 4 chrome ---
+
+  File: PROMPTS.md (7109 bytes)
+    01: # Prompts — verbatim record
+    02: 
+    03: Scope of this file: the user prompts that produced everything in this archive, and an explicit
+    04: statement of which ones I hold **verbatim** versus **reconstructed**. I have not silently
+    05: paraphrased a prompt and labelled it verbatim; the distinction is marked per entry.
+    06: 
+    07: Precision note: the requester's messages arrived as HTML-escaped text (`&amp;` for `&`). Prompts
+    08: reproduced below are de-escaped, which is the only normalization applied. Quotation-mark
+    09: characters and wording are otherwise unchanged for entries marked VERBATIM.
+    10: 
+    11: ---
+    12: 
+    13: ## Prompt 1 — the original task  ·  STATUS: reconstructed (condensed), not verbatim
+    14: 
+    15: The conversation history available to me for this turn was compacted into a session summary, so
+    16: the exact wording of the first message is not recoverable from my context. What follows is the
+    17: task specification as recorded in that summary — faithful in content, not in phrasing.
+    18: 
+    19: > Setting up a long-running research + data pipeline (mixed CPU work, network I/O, package
+    20: > installs, file processing) and need serious environment characterization before committing real
+    21: > code or data. Required checks:
+    22: >
+    23: > 1. **Runtime & isolation** — exact OS/kernel/arch/libc; containerization/VM/sandbox signals
+    24: >    (cgroup, `/.dockerenv`, mount info, process tree, capabilities, seccomp); user/uid/gid/sudo/
+    25: >    root; resource limits (ulimit, cgroup memory/cpu, pids).
+    26: > 2. **Tooling** — availability and versions of python3, pip, node, npm, git, curl, wget, ffmpeg,
+    27: >    docker, make, gcc/clang, jq, etc.; which package managers work and can actually install;
+    28: >    whether pure-python packages, system packages, and compilation work.
+    29: > 3. **Filesystem & persistence** — cwd/home/`/tmp` behaviour, free disk and inodes, read-only
+    30: >    mounts/protected paths, write+read+delete tests in several locations, whether files survive
+
+  File: README_START_HERE.md (38801 bytes)
+    01: # Agent 4 chrome — environment characterization archive
+    02: 
+    03: Built 2026-09-04 14:39:43.262976 UTC  (2026-09-04 20:09:43.263001 IST) by `envcheck/make_bundle_zip.py`.
+    04: Timeline covers 148 evidence files (654,111 bytes at build time); the archive also carries the 3 build outputs (this file, TIMELINE.csv, ZIP_METADATA.json), so `unzip -l` shows a few more entries than the timeline lists. The authoritative totals are printed by the build and recorded in ZIP_METADATA.
+    05: 
+    06: **Read order:** this file -> `environment_characterization.md` (the report) -> `envcheck/raw/*.txt` (the verbatim evidence) -> `envcheck/raw/MANIFEST.txt` (hashes).
+    07: 
+    08: Four files are duplicated by design: `README_START_HERE.md`, `TIMELINE.csv`, `PROMPTS.md` and `ZIP_METADATA.json` sit at the archive root for discoverability and are the same bytes as `envcheck/BUNDLE_README.md`, `envcheck/TIMELINE.csv`, `envcheck/PROMPTS.md` and `envcheck/ZIP_METADATA.json` in the 
+    09: 
+    10: ## What this archive contains
+    11: 
+    12: | Group | Files | Purpose |
+    13: |---|---|---|
+    14: | Report | 1 | the human-readable deliverable; every table/claim points into raw/ by file name |
+    15: | Probe + tooling | 6 | re-run the measurements, mask volatile values, rebuild the manifest, diff two runs, rebuild this archive |
+    16: | Verbatim evidence (canonical run) | 31 | 22 numbered transcripts + the per-run manifest and its SHA256SUMS lists; nothing edited by hand |
+    17: | Masked copies for diffing | 25 | normalized .norm files whose hashes are the ones expected to MATCH between equivalent runs |
+    18: | Second independent run | 56 | a complete second capture, ~16 min earlier, kept so the cross-run comparison is auditable |
+    19: | First-pass artifacts (superseded) | 21 | earlier narrower captures and the ad-hoc harnesses, retained for provenance with README notes |
+    20: | Docs, prompts, timeline, logs | 7 | bundle guide, prompt log, machine-readable timeline, build metadata, run exit logs |
+    21: 
+    22: ## Metadata
+    23: 
+    24: ```
+    25: sandbox_id     : i0m9mhony51frr3osghn0
+    26: template_id    : gujonb0q163l15z30yc7  (this build's env; the measured run recorded nlhz8vlwyupq845jsdg9)
+    27: host / os      : e2b.local | Debian GNU/Linux 13 (trixie)
+    28: kernel / arch  : Linux 6.1.158+ x86_64 | x86_64
+    29: python         : 3.13.14   invoked by: user
+    30: probe run_id   : 20260904T142012Z-22063  (EXIT=0, 245 s)
+
+  File: envcheck/README.md (8139 bytes)
+    01: # `envcheck/` — reproducible environment-characterization evidence bundle
+    02: 
+    03: Companion to `../environment_characterization.md`. The report is the summary; **this directory is the
+    04: evidence**: verbatim command transcripts with no summarization layer, produced by a script you can run
+    05: yourself and diff against mine.
+    06: 
+    07: ```
+    08: envcheck/
+    09: ├── probe.sh                <- THE PROBE. Run this to regenerate every transcript.
+    10: ├── probe_background.sh     <- 2nd-invocation detached-process survival check
+    11: ├── diff_run.sh             <- compares two runs, masking values that legitimately vary
+    12: ├── normalize.py            <- the masking rules used by diff_run.sh + the manifest
+    13: ├── make_manifest.py        <- rebuilds MANIFEST.txt / manifest.json / SHA256SUMS*.txt (idempotent)
+    14: ├── session1/               <- one-off ad-hoc scripts from the interactive session (provenance)
+    15: ├── run_v2/                 <- a second, independent full run kept for cross-run comparison
+    16: ├── legacy_raw/             <- the earlier partial `tee` captures (superseded by raw/)
+    17: └── raw/                    <- CANONICAL OUTPUT (numbered transcripts + manifest)
+    18:     ├── 00_meta.txt            run identity: id, timestamp, template, kernel
+    19:     ├── 01_runtime.txt         OS / kernel / arch / libc / cpu / meminfo / mitigations
+    20:     ├── 02_isolation.txt       container-vs-VM evidence, cgroups, caps, seccomp, namespaces, mounts
+    21:     ├── 03_limits.txt          ulimits, rlimits, threads/pids, sysctls, swap
+    22:     ├── 04_users.txt           uid/gid/groups, sudo escalation + capability proof, sudoers
+    23:     ├── 05_tools.txt           ~110 binaries: path + `--version` line, or ABSENT
+    24:     ├── 06_pkg_and_compile.txt pip/apt/npm config, package inventory, REAL gcc C-extension build, venv
+    25:     ├── 06b_pip_freeze_sorted.txt  sorted name==version list (diff-friendly)
+    26:     ├── 07_filesystem.txt      per-path write/read/delete/exec, mount table, fs features
+    27:     │                          (fallocate, xattr, flock, mmap, O_DIRECT, inotify, epoll, io_uring)
+    28:     ├── 08_persistence.txt     persistence markers + tmpfiles sweep ages + timer schedule
+    29:     ├── 09_net_matrix.txt      TCP port matrix, ICMP, IPv6, UDP (DNS/NTP/QUIC), TLS issuer (MITM check)
+    30:     ├── 10_net_dns.txt         getaddrinfo timing, 22 hosts x N reps
+
+  File: envcheck/session1/README.md (1958 bytes)
+    01: # session1 — provenance of the first (interactive) characterization pass
+    02: 
+    03: These are the ad-hoc one-off scripts from the exploratory session that produced
+    04: `../../environment_characterization.md`. They are kept **only** so the specific numbers quoted in
+    05: §5–§7 of the report can be traced to the exact code that printed them; they are superseded by
+    06: `../probe.sh`, which is parameterised, self-manifesting and re-runnable.
+    07: 
+    08: | file | produced | cited in report |
+    09: |---|---|---|
+    10: | ~~`dns_bench.py`~~ | **deleted during cleanup of the first session** — its stdout survives verbatim in `../legacy_raw/dns.txt`, but the script itself is gone; `../probe.sh` section `10_net_dns.txt` is the re-runnable equivalent | §5 Latency |
+    11: | `tcp_bench.py` | TCP connect medians + per-host TLS handshake split | §5 Latency |
+    12: | `portscan.py` | outbound TCP port matrix | §5 Blocks/anomalies |
+    13: | `net_throughput.py` | single-stream medians, stream scaling, upload | §5 Throughput |
+    14: | `net_workload.py` | 40x PyPI JSON API at 1/8/16/32 workers | §5 Throughput |
+    15: | `disk_bench.py` | 100 MiB ext4/tmpfs + many-small-files | §6 Disk I/O |
+    16: | `cpu_bench.py` / `cpu_bench2.py` | pure-python + numpy/pandas CPU | §6 CPU |
+    17: | `memtest.py` + `mem_progress.log` | OOM drive; log survived the SIGKILL | §7 memory pressure |
+    18: | `bg_start.txt` | start stamp for the nohup/setsid survival test | §7 background |
+    19: 
+    20: Notes on honesty: `cpu_bench.py` (first draft) aborted on a `gzip_compress` NameError and its
+    21: `sum(range(10**7))`/sieve numbers were re-taken by `cpu_bench2.py`; `net_throughput.py`'s upload block
+    22: never executed because a Cloudflare 429 aborted it — those upload figures come from the separate
+    23: `curl --data-binary` runs recorded in §5 (see `legacy_raw/throughput.txt` for the partial `tee` capture of that pass). `disk_bench.py` measured warm reads only; the cold/O_DIRECT
+    24: numbers in the report were added by a follow-up `drop_caches` + `pread` script not kept here.
+
+  File: environment_characterization.md (89786 bytes)
+    01: # Environment Characterization — Arena.ai / E2B Sandbox
+    02: 
+    03: **Measured:** 2026-09-04, 10:08–10:47 UTC, with three full reproducible re-runs of the probe at 13:54 / 13:59 / 14:20 UTC (Asia/Kolkata host region reported as Jaipur, IN)
+    04: **Method:** all numbers below are directly measured with the commands in the Appendix. Benchmarks use `time.perf_counter()`, medians over 3–6 reps unless noted. Nothing here is inferred unless labelled *inferred*.
+    05: **Evidence:** every figure is backed by a verbatim transcript in `envcheck/raw/` (22 files, ~93 KB, SHA-256 manifested, produced by `envcheck/probe.sh` which you can re-run and diff — see Appendix B). If a number in the body disagrees with a transcript, the transcript is right.
+    06: 
+    07: ---
+    08: 
+    09: ## 1. Executive Summary
+    10: 
+    11: This is a **2 vCPU / 1.81 GiB Firecracker microVM running Debian 13.6 (trixie)** with **full passwordless root**, a genuinely capable toolchain (Python 3.13 + numpy/pandas/scipy/sklearn, gcc 14, node 20, working apt), and **extremely fast, unthrottled network egress** (330–390 MB/s sustained downloa
+    12: 
+    13: Three findings should shape your architecture before you write any code:
+    14: 
+    15: 1. **All outbound TCP is accepted by a transparent egress proxy.** Connections to *any* IP and *any* port complete the handshake (an unroutable documentation IP "connected" in 3.9 ms); real failures only surface later as timeouts or resets. Your retry/health logic must never treat "socket connected"
+    16: 2. **Memory exhaustion is a hard SIGKILL, not a `MemoryError`.** At ~1.63 GiB cgroup current (limit 1.81 GiB) with **zero swap**, the kernel killed the process (exit 137) and its buffered output was lost. Budget for ~1.5 GiB of live heap per pipeline, process-wide, and write progress to disk increme
+    17: 3. **Background processes survive across calls, but are not cleaned up when a foreground call times out.** Orphaned CPU-bound processes kept running for 7+ minutes and pinned load ~1.2; you must kill by explicit PID.
+    18: 
+    19: **Fast:** network (multiple Gbps), page-cached file reads (~3 GB/s), bulk sequential disk, `pip`/`apt` installs (<3 s each), numpy/BLAS math (230 GFLOP/s fp32, AVX-512), HTTP/2 and HTTP/3 both working.
+    20: **Slow / constrained:** CPU parallelism (hard ceiling of 2×), `npm install` with default audit (one run hung 150 s), per-file `fsync` (~1 ms/op → ~1k durable files/s), single-process HTTPS request latency (~100 ms, needs concurrency), any memory-heavy step.
+    21: **Hard limits:** 1.81 GiB RAM + no swap; 2 vCPU; `nofile` soft limit **1024**; no IPv6; no ICMP; no Docker; only TCP 80/443 (plus some UDP) reliably usable; **`/tmp` is tmpfs (consumes your RAM) and is swept by `systemd-tmpfiles` after 10 days**; background timers (`fstrim`, `apt-daily`) do run and 
+    22: 
+    23: ---
+    24: 
+    25: ## 2. Runtime & Isolation
+    26: 
+    27: | Property | Value |
+    28: |---|---|
+    29: | OS | Debian GNU/Linux 13 (trixie), `DEBIAN_VERSION_FULL=13.6`, `VERSION_CODENAME=trixie` |
+    30: | Kernel | `Linux e2b.local 6.1.158+ #1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026` |
+
+--- Agent 5 chrome ---
+
+  File: ARCHIVE_MANIFEST.md (20697 bytes)
+    01: # Agent 5 chrome.zip — Archive Manifest & Provenance Record
+    02: 
+    03: **Archive name:** `Agent 5 chrome.zip`
+    04: **Assembled:** 2026-09-04 14:04:16 UTC (2026-09-04 19:34:16 IST)
+    05: **Subject:** Environment characterization of an E2B Firecracker microVM
+    06: **Assembled by:** Arena.ai Agent Mode
+    07: 
+    08: ---
+    09: 
+    10: ## 1. What this archive is
+    11: 
+    12: A complete, self-verifying evidence package from a three-phase environment
+    13: characterization exercise. It contains:
+    14: 
+    15: - **2 analysis documents** (the report, and an errata correcting it)
+    16: - **3 executable tools** (probe script, benchmark module, diff tool)
+    17: - **32 raw verbatim command transcripts** across 2 independent probe runs
+    18: - **4 integrity manifests** (SHA-256 per run + for the tool kit)
+    19: - **This provenance record**
+    20: 
+    21: The defining feature of this package is that **it corrects itself.** Phase 2 re-ran
+    22: Phase 1's claims as an archived script and **falsified two of them**. Both the original
+    23: report and the correction are included, so the reasoning chain is auditable end to end.
+    24: 
+    25: ---
+    26: 
+    27: ## 2. Directory tree
+    28: 
+    29: ```
+    30: Agent 5 chrome.zip
+
+  File: env-probe/README.md (5212 bytes)
+    01: # env-probe — reproducible sandbox environment characterization
+    02: 
+    03: Raw-evidence probe kit. Produces **verbatim command transcripts** (no summarisation
+    04: layer), a **SHA-256 manifest**, and a **diff tool** so a third party can run the same
+    05: script and compare results against ours.
+    06: 
+    07: ## Contents
+    08: 
+    09: | File | Purpose |
+    10: |---|---|
+    11: | `env_probe.sh` | Main probe. Emits 16 numbered `.txt` transcripts + `MANIFEST.json` + `SHA256SUMS.txt`. |
+    12: | `bench_cpu.py` | CPU / numpy / pandas / parallel-scaling microbenchmarks (invoked by section 11). |
+    13: | `diff_runs.sh` | Compares two runs: integrity check, host-identity table, per-section diff. |
+    14: | `runs/<UTC>_<sandbox_id>/` | One directory per run. |
+    15: 
+    16: ## Usage
+    17: 
+    18: ```bash
+    19: chmod +x env_probe.sh diff_runs.sh
+    20: 
+    21: ./env_probe.sh              # standard run, ~2.5 min
+    22: QUICK=1 ./env_probe.sh      # skip 2 GiB write, sdist compile, sustained-CPU (~90 s)
+    23: FULL=1  ./env_probe.sh      # + unbounded npm-audit reproduction (can take ~15 min)
+    24: OUTDIR=/some/path ./env_probe.sh
+    25: 
+    26: ./diff_runs.sh                          # auto-diff the two most recent runs
+    27: ./diff_runs.sh runs/<runA> runs/<runB>  # explicit
+    28: ```
+    29: 
+    30: Verify any run's integrity:
+
+  File: environment_characterization.md (37516 bytes)
+    01: # Environment Characterization Report
+    02: 
+    03: **Target:** E2B sandbox `iyl5sbten1irtm0cfue4p` (template `nlhz8vlwyupq845jsdg9`)
+    04: **Date of measurement:** 2026-09-04, 11:10–11:41 UTC
+    05: **Measured by:** direct in-sandbox instrumentation (no vendor documentation used)
+    06: 
+    07: > ### ⚠️ SUPERSEDED IN PART — read `env-probe/ERRATA.md` first
+    08: >
+    09: > A second, scripted run (`env-probe` v1.1.1, 2026-09-04 13:46–13:51 UTC, sandbox
+    10: > `i80n46q8w7lm0xch991wu`) **falsified two conclusions below** and answered one open question:
+    11: >
+    12: > 1. **§4.5 "ICMP is completely blocked" is WRONG.** ICMP works via `sudo` (github.com
+    13: >    11.25 ms). The cause is local: `ping` lacks setuid *and* `net.ipv4.ping_group_range`
+    14: >    = `1 0` (empty). Fixable with one sysctl.
+    15: > 2. **§4.5 "npm audit black-holed (420 s)" is TRANSIENT, not structural.** Run 2 measured
+    16: >    the same endpoint at **HTTP 200 in 0.057 s** and `npm install` (default flags) at
+    17: >    **0.986 s** — a 427× swing. The run-1 measurement was real but reflected upstream
+    18: >    congestion, not a platform block.
+    19: > 3. **Persistence (§3.4) is RESOLVED:** `/home/user` **does** survive across sessions and
+    20: >    across sandbox IDs; `/tmp` does not; file mtimes are rewritten on restore.
+    21: >
+    22: > Raw verbatim transcripts, the probe script, and SHA-256 manifests are in
+    23: > `/home/user/env-probe/`. Everything else in this report was independently reproduced.
+    24: 
+    25: ---
+    26: 
+    27: ## Executive Summary
+    28: 
+    29: This is a **Firecracker/KVM microVM running Debian 13 (trixie)** with **2 vCPU, 1.94 GiB RAM, and 25 GB of ext4 disk (~20 GB free)** — not a Docker container. You have **passwordless root via sudo**, an unrestricted capability bounding set, and **no seccomp filtering**, so apt, compilation, and priv
+    30: 
+
+--- Agent 6 brave ---
+
+  File: 00_README_zip_contents.md (25300 bytes)
+    01: # 📦 Agent 6 brave.zip — Contents Guide, File-by-File Explanation, Chronology & Metadata
+    02: 
+    03: **Produced by:** Arena.ai Agent Mode (interactive agent session) · **Date:** 2026-09-04 (Thursday)
+    04: **Subject:** Full evidence pack for a live environment-characterization study of the Linux microVM sandbox (E2B infrastructure) that hosts this conversation.
+    05: **Zip created:** 2026-09-04 ≈14:08 UTC (≈19:38 IST) · 90 files (94 zip entries incl. 4 folders) · ≈344 KB staged → ≈150 KB compressed
+    06: **Integrity sidecar (sibling of this zip):** `Agent 6 brave.zip.sha256`
+    07: 
+    08: > All times in this document are UTC unless marked **IST** (Asia/Kolkata = UTC+5:30, the user's timezone). Where a time is *measured from file content or filesystem metadata* it is exact to the shown precision; where it is inferred from session sequencing it is marked **≈** and the evidence basis is
+    09: 
+    10: ---
+    11: 
+    12: ## 1. What this zip contains (tree)
+    13: 
+    14: ```
+    15: Agent 6 brave.zip
+    16: ├── 00_README_zip_contents.md              ← this file (start here)
+    17: ├── environment_characterization.md        ← the main report (deliverable of prompt 1)
+    18: ├── RAW_VERBATIM_APPENDIX.md               ← all raw probe transcripts, byte-for-byte, html-escaped only
+    19: ├── environment_probe.sh                   ← reproducible probe battery (re-run it yourself)
+    20: ├── compare_run.sh                         ← structural diff helper (canonical vs your re-run)
+    21: ├── cross_turn_check.txt                   ← live persistence experiment evidence
+    22: ├── compare_canonical_vs_fullrun.txt       ← recorded compare_run.sh output: RESULT: PASS
+    23: ├── envprobe/                              ← canonical run-1 raw evidence (20 files, incl. manifest + sha256sums)
+    24: └── rerun_*/                               ← three independent re-runs of environment_probe.sh:
+    25:     ├── rerun_A_smoke6_QUICK/              ← QUICK-mode test run        (13:56:59–13:57:25Z)
+    26:     ├── rerun_B_smoke7_QUICK_PASS/         ← QUICK-mode final PASS run  (13:57:55–13:58:21Z)
+    27:     └── rerun_C_full_FULL_PASS/            ← FULL-mode final PASS run   (13:58:33–13:59:27Z)
+    28:         (each rerun folder = its own complete evidence set + own manifest.json + sha256sums.txt)
+    29: ```
+    30: 
+
+  File: RAW_VERBATIM_APPENDIX.md (52576 bytes)
+    01: # Raw Probe Transcripts — Verbatim Appendix (v2)
+    02: 
+    03: **Purpose:** primary evidence for `environment_characterization.md`. Every block below is the byte-for-byte content of a raw probe file from `/home/user/envprobe/`, html-escaped only for safe rendering (no summarisation, no editing).
+    04: 
+    05: **Integrity:** files were hashed at run-1 end and re-verified after snapshot restore (turn 2) — byte-identical:
+    06: ```bash
+    07: cd /home/user/envprobe && sha256sum -c sha256sums.txt
+    08: ```
+    09: 
+    10: **Run-1 metadata** (see `manifest.json` for full provenance):
+    11: 
+    12: - Run window: `2026-09-04T11:15:36Z` → `2026-09-04T11:23:05Z` (parsed from file contents; mtimes reflect snapshot materialization, not write time)
+    13: - Sandbox ID: `idxwgcmp6a9ioo1823yuk` · Template ID: `nlhz8vlwyupq845jsdg9` · boot_id: `2bb79165-136a-4b63-829d-17027b0a8e40` (template-constant: identical on a second VM instance)
+    14: - Verification session (manifest generated `2026-09-04T13:45:39Z`): sandbox `i9nxb4qydn3qmwway6hd3`, template `nlhz8vlwyupq845jsdg9` — same files, new VM instance; only /home/user persisted (measured)
+    15: - File count: 18 · total bytes: 45032
+    16: 
+    17: ## File index (bytes · SHA-256)
+    18: 
+    19: | file | bytes | sha256 |
+    20: |---|---:|---|
+    21: | `01_runtime.txt` | 4416 | `41490d0ec9cff99079f450ca7064056caef5ffb40b35aa0ff4b2779b16d1a624` |
+    22: | `02_identity.txt` | 5648 | `715d6551dde1c300df0a2d6ea5191202fe90f59e4506e3c73fe83c1d276b4ea4` |
+    23: | `03_tools.txt` | 3609 | `9a2fa02d5f9d6b22653d7ff95e5b5270ff92ed6bb46a4c6fc738b23d4b90a438` |
+    24: | `04_fs.txt` | 2829 | `10eac5bf48afb9b88643361daf049b005968d6545ea16ff6918ea6cf36481858` |
+    25: | `05_cpu_mem.txt` | 1176 | `1a8e8f4d5b1c884c1613de30a61d8ab59cf111c93d8dc21e4b8c811d3da9a0b5` |
+    26: | `06_compilers_pkgs.txt` | 2652 | `2fc038ac0fd666c78a0fed7c4a38ec7248d76db8e576afe194db81d77b3625b0` |
+    27: | `07_cgroup_sudo.txt` | 4543 | `d81e818da04ef3a44a567e72b8aabaeb442288de6098739f880a1e0a5b51cd3b` |
+    28: | `09_net_matrix.txt` | 4200 | `2df76c1306f1052abe3f8f95666ef76f3c929b441ad53e1e51ec964d99a4de57` |
+    29: | `10_net_throughput.txt` | 2836 | `b36f15f978bfb78951777850e11129a99f4d2cc281a090806b3c7a149600b7b0` |
+    30: | `10b_net_throughput2.txt` | 1614 | `748b98e7270e9594529c481871e9809743f0bb12814ccca0bbfb33a24535a982` |
+
+  File: environment_characterization.md (28103 bytes)
+    01: # Environment Characterization Report
+    02: 
+    03: **Target:** Research/data-pipeline sandbox — Linux microVM (E2B infra)
+    04: **Probed:** 2026-09-04, ~11:15–11:24 UTC (VM boot 11:11:19 UTC, `uptime` 5–13 min during probes)
+    05: **Sandbox ID:** `idxwgcmp6a9ioo1823yuk` (env: `E2B_SANDBOX=true`, template `nlhz8vlwyupq845jsdg9`)
+    06: **Method:** All numbers below were measured live with the tools named in each row (wire-level DNS queries, socket-level connect timers, `curl -w` timing fields, `perf_counter` medians-of-3, `dd`/`os.write` with fsync). Raw probe transcripts: `/home/user/envprobe/*.txt` (see Appendix).
+    07: 
+    08: ---
+    09: 
+    10: ## Executive Summary
+    11: 
+    12: This is **not a container**: it is a full KVM-backed Linux microVM running systemd (Debian 13, kernel 6.1.158) in which the agent user has **passwordless sudo to unrestricted root** (all 40 capabilities, no seccomp), so apt, pip, npm, git, and native compilation all work out of the box. Compute is s
+    13: 
+    14: ---
+    15: 
+    16: ## 1. Runtime & Isolation
+    17: 
+    18: | Attribute | Measured value |
+    19: |---|---|
+    20: | OS | Debian GNU/Linux 13 (trixie), full `13.6` |
+    21: | Kernel | `6.1.158+` SMP PREEMPT_DYNAMIC x86_64 (custom build, dated 2026-07-17) |
+    22: | libc | glibc `2.41-12+deb13u3` |
+    23: | Hostname / clock | `e2b.local`; UTC. Note: `boot_id` was **identical across two separate VM instances** (measured) — it is template-constant, so it cannot serve as per-boot identity |
+    24: | Virtualization | **KVM, full virtualization** (`systemd-detect-virt: kvm`, `hypervisor` flag, "Hypervisor vendor: KVM"). PID 1 = systemd `/sbin/init` |
+    25: | Container markers | None: no `/.dockerenv`, no `/run/.containerenv`; not Docker/Podman (binaries absent) |
+    26: | cgroups | v2, systemd-managed; our processes in slice `0::/user` (controllers: cpuset, cpu, io, memory, pids) |
+    27: | Physical host | Google Cloud **us-west1 (The Dalles, OR)**, egress IP `34.143.70.112`, AS396982 |
+    28: | Root services (own cgroups) | systemd, `envd` (E2B daemon), `jupyter-server` (:8888), `uvicorn` code-interpreter API (:49999), sshd, node kernel (ijskernel), rpcbind. `chronyd-restricted` + `nftables` units show *failed* (cosmetic) |
+    29: 
+    30: **Isolation summary (measured):** unprivileged `user` (uid/gid 1000, groups `sudo`,`users`) with `CapEff=0` and no seccomp; but `sudo -n` grants **root with full capability set `0x1ffffffffff` (all 40 caps), `Seccomp: 0`, `Seccomp_filters: 0`, `NoNewPrivs: 0`** — e.g. `echo 3 > /proc/sys/vm/drop_cac
+
+--- Agent 7 edge ---
+
+  File: WORKSPACE_INDEX.md (29049 bytes)
+    01: # WORKSPACE INDEX — "Agent 7 edge" deliverable
+    02: 
+    03: **Generated:** 2026-09-04T14:26:14Z (inside the sandbox that produced all artefacts)
+    04: 
+    05: This index explains the archive end to end: what it contains, what every file does, when every file was created (exact UTC, in sequence), the exact prompts that drove each phase, and the environment metadata needed to interpret the measurements.
+    06: 
+    07: ---
+    08: 
+    09: ## 1. What the zip contains
+    10: 
+    11: ```
+    12: Agent 7 edge.zip
+    13: ├── environment_characterization.md        # main report (the summarisation layer)
+    14: ├── WORKSPACE_INDEX.md                     # THIS file (inside + outside the zip)
+    15: ├── ZIP_CONTENTS_MANIFEST.txt              # sha256 + size of every entry in the zip
+    16: ├── Agent 7 edge.zip.sha256                # sidecar sha256 of the zip (outside the zip)
+    17: └── envcheck/
+    18:     ├── probe_environment.sh               # reproducible probe (live v2)
+    19:     ├── README.md                          # runner's guide
+    20:     ├── diskbench.sh                       # scratch script behind the disk benchmark
+    21:     ├── notes/                             # 26 verbatim transcripts of run #1 + heartbeat.log + nohup_result.txt
+    22:     └── raw/
+    23:         ├── run_20260904T1116Z_original/   # run #1: published byte-copies (26 txt) + backfilled MANIFEST.txt/.sha256 + nohup_result.txt
+    24:         └── run_20260904T141747Z/          # run #2 (canonical): 17 section transcripts + MANIFEST.txt/.sha256 + archived exact probe script
+    25: ```
+    26: 
+    27: **81 files** are tracked in the creation sequence (section 3) — every file produced during this engagement, nothing else (system caches `.npm`/`.cache` etc. excluded, `_file_times.txt` collection scratch excluded). The zip adds this index plus `ZIP_CONTENTS_MANIFEST.txt`: **83 files / 88 zip entries
+    28: 
+    29: ---
+    30: 
+
+  File: envcheck/README.md (5134 bytes)
+    01: # envcheck — reproducible environment probe
+    02: 
+    03: This directory contains the probe, its raw (verbatim) output, and the verification
+    04: manifests behind `environment_characterization.md` (one level up).
+    05: 
+    06: ```
+    07: envcheck/
+    08: ├── probe_environment.sh         # the probe: writes verbatim transcripts + SHA-256 manifest
+    09: ├── README.md                    # this file
+    10: ├── raw/
+    11: │   ├── run_20260904T1116Z_original/   # historic run, produced manually BEFORE the probe existed
+    12: │   │   ├── 01_system.txt ... 23_preinstalled.txt   (26 verbatim transcripts + nohup_result.txt)
+    13: │   │   ├── MANIFEST.txt        # backfilled (may be informational; hashes are real, see note)
+    14: │   │   └── MANIFEST.sha256     # machine-checkable: sha256sum -c MANIFEST.sha256
+    15: │   └── run_20260904T141747Z/   # canonical run, produced by probe_environment.sh --full
+    16: │       ├── 00_meta.txt ... 16_envconfig.txt           (17 verbatim section transcripts)
+    17: │       ├── MANIFEST.txt        # run identity + per-file hashes (hash-anchored at capture)
+    18: │       └── MANIFEST.sha256     # machine-checkable: sha256sum -c MANIFEST.sha256   -> all OK
+    19: └── notes/                      # the original historic transcripts (unchanged, kept for lineage)
+    20: ```
+    21: 
+    22: ## Verify the published evidence
+    23: 
+    24: ```bash
+    25: cd raw/run_20260904T141747Z && sha256sum -c MANIFEST.sha256   # expect all "OK"
+    26: cd raw/run_20260904T1116Z_original && sha256sum -c MANIFEST.sha256  # backfilled, all OK
+    27: ```
+    28: 
+    29: ## Reproduce
+    30: 
+
+  File: environment_characterization.md (30755 bytes)
+    01: # Environment Characterization Report
+    02: 
+    03: **Date:** 2026-09-04 (UTC) · **Method:** live measurement inside the environment (~20 separate exec sessions, one background-process test, real downloads/installs/benchmarks)
+    04: **Sandbox identifiers:** `E2B_SANDBOX_ID=i07vrt7m23evfzhmemmqh` (as recorded at capture; a later session in the same VM showed a rotated ID `ilvohmgrk3rcbvrgm79be` — **`boot_id 2bb79165-136a-4b63-829d-17027b0a8e40` is the stable VM identity**), template `nlhz8vlwyupq845jsdg9`, build `f34a5416-ef30-4
+    05: **Raw logs:** `envcheck/raw/run_20260904T1116Z_original/*.txt` (26 verbatim transcripts + `nohup_result.txt` background-survival artifact, historic run) and `envcheck/raw/run_20260904T141747Z/*.txt` (17 sections, canonical script-generated run) — verbatim transcripts, the primary evidence for this r
+    06: 
+    07: ---
+    08: 
+    09: ## 0. Evidence integrity & reproducibility (for third parties)
+    10: 
+    11: Everything in this report derives from **verbatim command transcripts**, published as primary evidence; this document is only the summarisation layer on top of them.
+    12: 
+    13: **1. Verify file integrity** (machine-checkable, per run):
+    14: 
+    15: ```bash
+    16: cd envcheck/raw/run_20260904T141747Z && sha256sum -c MANIFEST.sha256          # 17 transcripts: OK
+    17: cd envcheck/raw/run_20260904T1116Z_original && sha256sum -c MANIFEST.sha256   # backfilled: OK
+    18: ```
+    19: 
+    20: **2. Reproduce with the probe** (the exact script that produced run #2):
+    21: 
+    22: ```bash
+    23: bash envcheck/probe_environment.sh --full
+    24: # → creates envcheck/raw/run_<UTC>/ with 17 numbered section transcripts + MANIFEST.txt/sha256
+    25: # --full  adds apt installs (sqlite3, ffmpeg) and the deliberately-OOMing memory ramp
+    26: #         (kills only the allocating child; script and other processes survive).
+    27: # Run without --full for a non-destructive pass.
+    28: ```
+    29: 
+    30: Run #2 (canonical) was invoked as `bash probe_environment.sh --full` and finished with **manifest self-check PASS** (exit 0, 56 s wall). The exact script that produced it is archived at `envcheck/raw/run_20260904T141747Z/probe_environment.sh` (sha256 **`c0ced58296a72444707fc17b919c29d8908bac0fd4381a
+
+--- Agent 8 edge ---
+
+  File: README_ZIP.md (9616 bytes)
+    01: # Agent 8 edge.zip — contents, prompts, timeline, metadata
+    02: 
+    03: **Archive filename:** `Agent 8 edge.zip`  
+    04: **Packed (UTC):** 2026-09-04T14:20:33Z (this README written immediately before zip; zip mtime will be a few seconds later)  
+    05: **Packed timezone context:** sandbox clock UTC; user local timezone Asia/Calcutta (IST, UTC+5:30)  
+    06: **Purpose:** Environment characterization of an Arena.ai / E2B Agent Mode sandbox so a long-running research + data pipeline can be planned against real limits.
+    07: 
+    08: This file is **inside the zip**. It records *what* is packed, *why* each file exists, *when* it was created (filesystem mtime, UTC), *in what order*, the **exact user prompts** that produced the work, and extra metadata.
+    09: 
+    10: ---
+    11: 
+    12: ## Exact user prompts (verbatim, in conversation order)
+    13: 
+    14: ### Prompt 1 — first message (characterization request)
+    15: 
+    16: > I’m setting up a long-running research + data pipeline that will involve mixed CPU work, network I/O, package installs, and some file processing. Before I commit any real code or data, I need a clear picture of what this environment can actually sustain.  
+    17: >   
+    18: > Please treat this as serious environment characterization work. Do the following thoroughly and keep notes as you go (you can use temporary files or just track things in memory, but be systematic).  
+    19: >   
+    20: > Required checks  
+    21: >   
+    22: > **1. Runtime & Isolation**  
+    23: > (OS, kernel, arch, libc, container/VM signals, user, limits)  
+    24: >   
+    25: > **2. Tooling & Language Runtimes**  
+    26: > (python3, pip, node, npm, git, curl, wget, ffmpeg, docker, make, gcc/clang, jq, package managers, install/compile)  
+    27: >   
+    28: > **3. Filesystem & Persistence**  
+    29: > (cwd, home, /tmp, disk, inodes, write tests, persistence)  
+    30: >   
+
+  File: VERIFICATION_MANIFEST.md (3813 bytes)
+    01: # Verification manifest — environment probe
+    02: 
+    03: This is the **run record**. Raw transcripts (no LLM rewrite) live in `probe_raw/`. The script that produced them is `probe_environment.sh`. A third party should run that script and `diff -u` against `probe_raw/*.txt` (expect drift in timestamps, sandbox ID, and micro-benchmarks).
+    04: 
+    05: ## Run identity
+    06: 
+    07: | Field | Value |
+    08: |--------|--------|
+    09: | UTC end | **2026-09-04T14:14:32Z** (manifest append 2026-09-04T14:14:38Z) |
+    10: | Hostname | `e2b.local` |
+    11: | `E2B_SANDBOX` | `true` |
+    12: | `E2B_SANDBOX_ID` | `iitws4rrop6j50j2hed7r` |
+    13: | `E2B_TEMPLATE_ID` | `nlhz8vlwyupq845jsdg9` |
+    14: | uname | `Linux e2b.local 6.1.158+ #1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026 x86_64 GNU/Linux` |
+    15: 
+    16: **Note:** An earlier ad-hoc characterization in this conversation used sandbox ID `i87c7gwotry240rbx1u77` (same template). Sandbox IDs are per-boot; **template ID is the image**.
+    17: 
+    18: ## How to reproduce
+    19: 
+    20: ```bash
+    21: bash probe_environment.sh /tmp/probe_raw_rerun
+    22: diff -u probe_raw/01_runtime.txt /tmp/probe_raw_rerun/01_runtime.txt
+    23: sha256sum -c <<'EOF'
+    24: # paste hashes below after stripping filenames from this table
+    25: EOF
+    26: ```
+    27: 
+    28: Compare `00_MANIFEST.txt` fields `E2B_TEMPLATE_ID` and `uname`. Do **not** expect `E2B_SANDBOX_ID`, UTC stamps, or bench timings to match bit-for-bit.
+    29: 
+    30: ## SHA-256 of artifacts (this run)
+
+  File: environment_characterization.md (13251 bytes)
+    01: # Environment Characterization Report
+    02: 
+    03: **Raw evidence (preferred):** `probe_raw/*.txt` produced by `probe_environment.sh`. Run identity + SHA-256: `VERIFICATION_MANIFEST.md` and `probe_raw/00_MANIFEST.txt`. This Markdown is a **summary**; do not treat it as the primary record.
+    04: 
+    05: **Date measured:** 2026-09-04 (first pass ~11:19–11:21; scripted re-probe **14:14:32Z**)  
+    06: **Hostname:** `e2b.local`  
+    07: **Sandbox ID:** `i87c7gwotry240rbx1u77`  
+    08: **Template ID:** `nlhz8vlwyupq845jsdg9`  
+    09: **Method:** live commands (`uname`, `lscpu`, `curl`, Python `perf_counter`, `pip`, `gcc`, `df`, etc.)
+    10: 
+    11: ---
+    12: 
+    13: ## Executive summary
+    14: 
+    15: This is a **KVM virtual machine** (not a Docker container) running **Debian 13 (trixie)** on **2× Intel Xeon @ 2.60 GHz** with **~1.9 GiB RAM, no swap**, and **~20 GiB free** on a 25 GiB ext4 root disk. User `user` (uid 1000) has **passwordless sudo** and a rich Python 3.13 + Node 20 + gcc toolchain
+    16: 
+    17: ---
+    18: 
+    19: ## 1. Runtime & isolation
+    20: 
+    21: | Item | Value |
+    22: |------|--------|
+    23: | OS | Debian GNU/Linux 13 (trixie), `DEBIAN_VERSION_FULL=13.6` |
+    24: | Kernel | `6.1.158+` `#1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026` |
+    25: | Arch | `x86_64`, 64-bit |
+    26: | libc | GNU C Library **2.41** (`ldd (Debian GLIBC 2.41-12+deb13u3) 2.41`) |
+    27: | Virtualization | `systemd-detect-virt`: **kvm**; CPU flag `hypervisor`; Hypervisor vendor **KVM**, type **full** |
+    28: | CPU | Intel(R) Xeon(R) Processor @ 2.60 GHz, **2 logical CPUs** (1 core, 2 threads), AVX-512 present, BogoMIPS 5200 |
+    29: | Memory | **MemTotal 1 982 MiB** (2032608 kB); **SwapTotal 0** |
+    30: | Disk | `/dev/root` ext4 **25G**, ~**20G avail** (17% used) |
+
+--- Agent 9 edge ---
+
+  File: Agent 9 edge/payload/home/user/environment_evidence/README.md (3732 bytes)
+    01: # Reproducible environment-probe evidence
+    02: 
+    03: This directory publishes the direct command transcripts, the exact probe source, and a verification manifest for each run. The `.txt` files under `raw/` are generated by the shell script directly from command stdout/stderr; they are not reconstructed from the Markdown characterization report.
+    04: 
+    05: ## Canonical full run
+    06: 
+    07: **Run:** `20260904T142002Z-2576`  
+    08: **UTC interval:** `2026-09-04T14:20:02.722079460Z` to `2026-09-04T14:21:11.259311599Z`  
+    09: **Sandbox ID:** `ixwcucmrk55t9qy240sxo`  
+    10: **Template ID:** `nlhz8vlwyupq845jsdg9`  
+    11: **Probe script SHA-256:** `870774e553380dd881964cfb09cc74871349e8b3b3ac2d00a53214022568046b`
+    12: 
+    13: **Download the complete bundle:** [`environment_evidence_20260904T142002Z-2576.zip`](../environment_evidence_20260904T142002Z-2576.zip)  
+    14: **Bundle SHA-256:** `e8215900f3136be5bfddbd74233d9c05b48dc7bfff250802f77ffa5e53dfdb9d`
+    15: 
+    16: ### Raw verbatim transcripts
+    17: 
+    18: 1. [`01_runtime.txt`](runs/20260904T142002Z-2576/raw/01_runtime.txt)
+    19: 2. [`02_isolation.txt`](runs/20260904T142002Z-2576/raw/02_isolation.txt)
+    20: 3. [`03_resources.txt`](runs/20260904T142002Z-2576/raw/03_resources.txt)
+    21: 4. [`04_tooling.txt`](runs/20260904T142002Z-2576/raw/04_tooling.txt)
+    22: 5. [`05_packages.txt`](runs/20260904T142002Z-2576/raw/05_packages.txt)
+    23: 6. [`06_filesystem.txt`](runs/20260904T142002Z-2576/raw/06_filesystem.txt)
+    24: 7. [`07_dns.txt`](runs/20260904T142002Z-2576/raw/07_dns.txt)
+    25: 8. [`08_http_latency.txt`](runs/20260904T142002Z-2576/raw/08_http_latency.txt)
+    26: 9. [`09_net_matrix.txt`](runs/20260904T142002Z-2576/raw/09_net_matrix.txt)
+    27: 10. [`10_throughput.txt`](runs/20260904T142002Z-2576/raw/10_throughput.txt)
+    28: 11. [`11_benchmarks.txt`](runs/20260904T142002Z-2576/raw/11_benchmarks.txt)
+    29: 12. [`12_install_compile.txt`](runs/20260904T142002Z-2576/raw/12_install_compile.txt)
+    30: 13. [`13_memory_process.txt`](runs/20260904T142002Z-2576/raw/13_memory_process.txt)

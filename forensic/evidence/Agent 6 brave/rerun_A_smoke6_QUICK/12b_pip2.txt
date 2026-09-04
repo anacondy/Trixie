@@ -1,0 +1,19 @@
+== pip wheel install rerun with FULL output ==
+  (run-1 debugging artifact; consolidated probe in 12_pip.txt)
+== numpy: linux wheel direct download then install ==
+  consolidated in 12_pip.txt
+== numpy bench (fixed syntax) ==
+  consolidated in 12_pip.txt
+
+== hetzner DNS follow-up (rcode/an/type) ==
+  speed.hetzner.de             rcode=0 answers=0 ips=[] 1.8 ms
+  www.hetzner.com              rcode=0 answers=1 ips=['0.4.213.133'] 1.5 ms
+  www.python.org               rcode=0 answers=5 ips=['0.33.9.100', '104.111.110.3', '101.116.0.192', '101.64.223.192'] 1.5 ms
+  pypi.org                     rcode=0 answers=4 ips=['0.4.151.101', '0.4.151.101', '0.4.151.101', '0.4.151.101'] 1.0 ms
+  dl.google.com                rcode=0 answers=4 ips=['0.4.192.179', '0.4.192.179', '0.4.192.179', '0.4.192.179'] 1.1 ms
+
+== HF multi-connection throughput (4 parallel 5MiB ranges) ==
+  1 x 5MiB parallel: 0.61s wall, aggregate 5242880 bytes -> 8.2 MiB/s (files 1)
+
+== net hostname sanity ==
+e2b.local

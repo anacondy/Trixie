@@ -1,0 +1,98 @@
+################################################################
+# SECTION: 05_filesystem.txt   (probe run run_20260904T141747Z)
+# STARTED : 2026-09-04T14:17:50Z
+################################################################
+### df -hT
+Filesystem     Type      Size  Used Avail Use% Mounted on
+/dev/root      ext4       25G  4.1G   20G  17% /
+devtmpfs       devtmpfs  990M     0  990M   0% /dev
+tmpfs          tmpfs     993M     0  993M   0% /dev/shm
+tmpfs          tmpfs     397M  320K  397M   1% /run
+tmpfs          tmpfs     993M   96K  993M   1% /tmp
+tmpfs          tmpfs     5.0M     0  5.0M   0% /run/lock
+
+### df -i (inodes)
+Filesystem      Inodes  IUsed   IFree IUse% Mounted on
+/dev/root      6759792 136334 6623458    3% /
+devtmpfs        253363    137  253226    1% /dev
+tmpfs           254076      1  254075    1% /dev/shm
+tmpfs           819200    434  818766    1% /run
+tmpfs          1048576     13 1048563    1% /tmp
+tmpfs           254076      2  254074    1% /run/lock
+
+### mounts
+/dev/vda on / type ext4 (rw,relatime,discard)
+devtmpfs on /dev type devtmpfs (rw,relatime,size=1013452k,nr_inodes=253363,mode=755)
+proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
+sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
+securityfs on /sys/kernel/security type securityfs (rw,nosuid,nodev,noexec,relatime)
+selinuxfs on /sys/fs/selinux type selinuxfs (rw,nosuid,noexec,relatime)
+tmpfs on /dev/shm type tmpfs (rw,nosuid,nodev)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=600,ptmxmode=000)
+tmpfs on /run type tmpfs (rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755)
+cgroup2 on /sys/fs/cgroup type cgroup2 (rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot)
+pstore on /sys/fs/pstore type pstore (rw,nosuid,nodev,noexec,relatime)
+bpf on /sys/fs/bpf type bpf (rw,nosuid,nodev,noexec,relatime,mode=700)
+systemd-1 on /proc/sys/fs/binfmt_misc type autofs (rw,relatime,fd=36,pgrp=1,timeout=0,minproto=5,maxproto=5,direct)
+mqueue on /dev/mqueue type mqueue (rw,nosuid,nodev,noexec,relatime)
+debugfs on /sys/kernel/debug type debugfs (rw,nosuid,nodev,noexec,relatime)
+tracefs on /sys/kernel/tracing type tracefs (rw,nosuid,nodev,noexec,relatime)
+hugetlbfs on /dev/hugepages type hugetlbfs (rw,nosuid,nodev,relatime,pagesize=2M)
+tmpfs on /tmp type tmpfs (rw,nosuid,nodev,nr_inodes=1048576)
+tmpfs on /run/lock type tmpfs (rw,nosuid,nodev,noexec,relatime,size=5120k)
+fusectl on /sys/fs/fuse/connections type fusectl (rw,nosuid,nodev,noexec,relatime)
+ramfs on /run/credentials/systemd-journald.service type ramfs (ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700)
+ramfs on /run/credentials/systemd-networkd.service type ramfs (ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700)
+tmpfs on /etc/ssl/certs type tmpfs (rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755)
+sunrpc on /run/rpc_pipefs type rpc_pipefs (rw,relatime)
+ramfs on /run/credentials/getty@tty1.service type ramfs (ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700)
+
+### tmp/shm/run details
+drwxrwxrwt  2 root root   40 Jul 23 18:05 /dev/shm
+drwxr-xr-x 17 root root  520 Jul 23 18:05 /run
+drwxrwxrwt 10 root root  200 Sep  4 14:17 /tmp
+drwxrwxrwt  3 root root 4096 Jul 23 18:05 /var/tmp
+Filesystem     Type  1K-blocks    Used Available Use% Mounted on
+tmpfs          tmpfs   1016304      96   1016208   1% /tmp
+/dev/root      ext4   25253920 4228344  20710076  17% /
+tmpfs          tmpfs   1016304       0   1016304   0% /dev/shm
+
+### filesystem types of key paths
+/home/user -> ext2/ext3 6313480 blocksize
+/tmp -> tmpfs 254076 blocksize
+/var/tmp -> ext2/ext3 6313480 blocksize
+/dev/shm -> tmpfs 254076 blocksize
+/etc/ssl/certs -> tmpfs 101631 blocksize
+
+### workspace dirs
+ls: cannot access '/workspace': No such file or directory
+drwx------ 4 user user 128 Sep  4 14:17 /home/user
+
+### root listing
+total 37
+drwxr-xr-x  19 root root  4096 Jul 23 18:05 .
+drwxr-xr-x  19 root root  4096 Jul 23 18:05 ..
+-rw-r--r--   1 root root   107 Jul 23 18:05 .e2b
+lrwxrwxrwx   1 root root     7 Jul  4 09:05 bin -> usr/bin
+drwxr-xr-x   2 root root    60 Jul  4 09:05 boot
+drwxrwxrwx   2 root root    60 Jul 23 18:05 code
+drwxr-xr-x   8 root root  2620 Jul 23 18:05 dev
+drwxr-xr-x  69 root root  4096 Jul 23 18:05 etc
+drwxr-xr-x   3 root root    60 Jul 23 15:09 home
+lrwxrwxrwx   1 root root     7 Jul  4 09:05 lib -> usr/lib
+lrwxrwxrwx   1 root root     9 Jul  4 09:05 lib64 -> usr/lib64
+drwx------   2 root root 12288 Jul 23 15:09 lost+found
+drwxr-xr-x   2 root root    60 Jul 13 00:00 media
+drwxr-xr-x   2 root root    60 Jul 13 00:00 mnt
+drwxr-xr-x   2 root root    60 Jul 13 00:00 opt
+dr-xr-xr-x 152 root root     0 Jul 23 18:05 proc
+drwx------  11 root root  4096 Jul 23 18:05 root
+drwxr-xr-x  17 root root   520 Jul 23 18:05 run
+lrwxrwxrwx   1 root root     8 Jul  4 09:05 sbin -> usr/sbin
+drwxr-xr-x   2 root root    60 Jul 13 00:00 srv
+dr-xr-xr-x  12 root root     0 Jul 23 18:05 sys
+drwxrwxrwt  10 root root   200 Sep  4 14:17 tmp
+drwxr-xr-x  12 root root  4096 Jul 23 15:09 usr
+drwxr-xr-x  11 root root  4096 Jul 23 15:09 var
+
+# section rc=0   FINISHED: 2026-09-04T14:17:50Z

@@ -1,0 +1,24 @@
+benchmark                                     min s    med s  notes
+sum(range(10**7))                             0.181    0.229  49,999,995,000,000
+sum(i*i for i in range(10**7))  [genexpr]     0.845    0.855  
+sum(map(abs, 10M range))                      0.376    0.381  
+json.loads 1.0MB                              0.012    0.014  
+gzip.compress 1.0MB lvl9                      0.063    0.063  
+
+=== numpy/scipy ===
+numpy 2.3.5
+threadpoolctl n/a: TypeError
+np.sum(np.arange(10**7))                      0.039    0.044  49,999,995,000,000
+matmul 4096x4096 fp64                         1.061    1.086  -> 126.6 GFLOP/s
+matmul 3072x3072 fp32                         0.249    0.252  -> 230.3 GFLOP/s
+np.sum 10M float64                            0.007    0.007
+sum 50M float64 (400MB stream)                0.037    0.038  -> 10.5 GB/s
+np.sort 50M float64                           0.846    0.873
+sha256 of 400MB                               0.475    0.487  -> 821 MB/s
+
+=== pandas / polars ===
+pandas groupby 2M rows,100 keys               0.027    0.029
+  csv size: 44.339522 MB
+pandas read_csv 2M rows                       0.294    0.319
+polars: not installed
+scipy: 1.17.1

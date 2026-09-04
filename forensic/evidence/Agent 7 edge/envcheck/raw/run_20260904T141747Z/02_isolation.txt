@@ -1,0 +1,65 @@
+################################################################
+# SECTION: 02_isolation.txt   (probe run run_20260904T141747Z)
+# STARTED : 2026-09-04T14:17:47Z
+################################################################
+### PID 1 and process tree head
+systemd
+    PID    PPID COMMAND         COMMAND
+      1       0 systemd         /sbin/init
+      2       0 kthreadd        [kthreadd]
+      3       2 rcu_gp          [rcu_gp]
+      4       2 rcu_par_gp      [rcu_par_gp]
+      5       2 slub_flushwq    [slub_flushwq]
+      6       2 netns           [netns]
+      7       2 kworker/0:0-eve [kworker/0:0-events]
+      8       2 kworker/0:0H-ev [kworker/0:0H-events_highpri]
+      9       2 kworker/u4:0-ex [kworker/u4:0-ext4-rsv-conversion]
+     10       2 mm_percpu_wq    [mm_percpu_wq]
+     11       2 rcu_tasks_kthre [rcu_tasks_kthread]
+
+### container marker files
+/.dockerenv absent
+/run/.containerenv absent
+/.flatpak-info absent
+
+### cgroup
+cgroup2fs
+self: 0::/user
+pid1: 0::/init.scope
+
+### namespace ids
+user:[4026531837]
+mnt:[4026531841]
+pid:[4026531836]
+cgroup:[4026531835]
+
+### uid/gid maps
+         0          0 4294967295
+         0          0 4294967295
+
+### capabilities (effective process)
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+
+### seccomp / no_new_privs
+Seccomp:	0
+Seccomp_filters:	0
+
+### virtualization detect
+kvm
+
+### boot_id
+2bb79165-136a-4b63-829d-17027b0a8e40
+
+### sudo (passwordless non-interactive?)
+/usr/bin/sudo
+sudo -n true rc=0
+
+### write probes
+touch: cannot touch '/sys/fs/cgroup/probe_write_test': Permission denied
+touch: cannot touch '/proc/sys/kernel/hostname': Permission denied
+
+# section rc=1   FINISHED: 2026-09-04T14:17:47Z

@@ -1,0 +1,21 @@
+################################################################
+# SECTION: 00_meta.txt   (probe run run_20260904T141747Z)
+# STARTED : 2026-09-04T14:17:47Z
+################################################################
+runid          : run_20260904T141747Z
+started_utc    : 20260904T141747Z
+hostname       : e2b.local
+kernel         : 6.1.158+
+uname          : Linux e2b.local 6.1.158+ #1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026 x86_64 GNU/Linux
+arch           : x86_64 / bits=64
+os             : Debian GNU/Linux 13 (trixie)
+user/uid/gid   : user/1000/1000
+e2b_sandbox_id : ilvohmgrk3rcbvrgm79be
+e2b_template_id: nlhz8vlwyupq845jsdg9
+boot_id        : 2bb79165-136a-4b63-829d-17027b0a8e40
+flags          : full=1 skip_apt=0 skip_oom=0
+probe_script   : /home/user/envcheck/probe_environment.sh
+probe_sha256   : c0ced58296a72444707fc17b919c29d8908bac0fd4381a0529e9b9aac7e4857e
+output_dir     : /home/user/envcheck/raw/run_20260904T141747Z
+
+# section rc=0   FINISHED: 2026-09-04T14:17:47Z

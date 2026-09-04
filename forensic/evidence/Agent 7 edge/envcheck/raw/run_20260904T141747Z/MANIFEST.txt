@@ -1,0 +1,39 @@
+PROBE RUN MANIFEST
+==================
+RUNID             : run_20260904T141747Z
+STARTED_UTC       : 1788531479.981254710
+FINISHED_UTC      : 2026-09-04T14:18:43Z
+HOSTNAME          : e2b.local
+KERNEL            : 6.1.158+
+ARCH              : x86_64
+OS                : Debian GNU/Linux 13 (trixie)
+USER/UID/GID      : user/1000/1000
+E2B_SANDBOX_ID    : ilvohmgrk3rcbvrgm79be
+E2B_TEMPLATE_ID   : nlhz8vlwyupq845jsdg9
+BOOT_ID           : 2bb79165-136a-4b63-829d-17027b0a8e40
+EGRESS_IP         : 136.67.146.242
+FLAGS             : 
+PROBE_SCRIPT_SHA256: c0ced58296a72444707fc17b919c29d8908bac0fd4381a0529e9b9aac7e4857e
+
+FILES (name, size_bytes, sha256)
+-------------------------------
+00_meta.txt                         997 7618011866aa76165ff76638a83db7537e569ec58b052a092dd35dde1e16d038
+01_runtime.txt                     2824 4ab030fc31b37a101022eb45a9557b8eccbd80310171633dd00401d5cc85b462
+02_isolation.txt                   1757 d37ec068f46b7ce20787dedb5a2f9a692f12b9992e18c66988b24446c15382e7
+03_tools.txt                       8236 f67de0428267e3b07f742fff64a8b754ecf376eaabd332ef08513da221c97dd3
+04_limits.txt                      3150 1fd1ab2ccd56132078f3de5abc169f7b8d74733d83b2662e10d7982fb6b68561
+05_filesystem.txt                  5108 21a1bbae56c1841f87bbc8dc82c84d31ed933784249230f42b5405842f6568b9
+06_fs_tests.txt                    1349 b6a97dd7dd515ec11e6b0c5a1ada24999b03ff701ab5f8308ef37115ed1a5600
+07_dns.txt                         1180 ae595f819d1a0ec7debfe274fc830602981e7e1e60d02b72c7298480ec79029c
+08_http_latency.txt                1794 8818a111bbf1604b3c831b17938ae827927b881d47f47e1ae2e6a6899b588f0f
+09_net_matrix.txt                  2018 aea2598195b66e1d68addb75dcb663010c124f5141277ffbc366551991b8b0ad
+10_download_throughput.txt         1764 ea61dfd9df455340e1f8d7d3624b3180c77d7700452f4529d15d6dfdb0d35284
+11_cpu_bench.txt                   1050 3a4cb7195b0e2eecaf60a86f703b26d58b832ca841f8f5a36c476cf1707ceb4c
+12_disk_bench.txt                  1347 f0f89c1ca58523195770520160e4802439f7991c15ca843cdd7174fe00a0b5a8
+13_pkg_installs.txt                1379 20830d745dd5df85fb8f2d58cd0a33e10510c6f9a7131d74a744c22df8fbf9af
+14_memory_pressure.txt             2115 03556c46ed3149fac2c3d4c7adf5abc92e5c9af0a22936818a0dcd91730599f6
+15_services_processes.txt          4603 af97d7beafc246c9ba54928e78326def4a139c76149c9ede5e4dcc41aa25990f
+16_envconfig.txt                   1125 a7b4ceb8e5b138ed91e5f764fc821b3a906147cab0b62a72d1a26a99e2d00901
+-------------------------------
+MANIFEST.sha256 is the machine-checkable file:  sha256sum -c MANIFEST.sha256
+This MANIFEST.txt is its human-readable copy (same hashes).

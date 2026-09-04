@@ -1,0 +1,52 @@
+################################################################
+# SECTION: 13_pkg_installs.txt   (probe run run_20260904T141747Z)
+# STARTED : 2026-09-04T14:18:18Z
+################################################################
+### pip: index reachability
+idna (3.19)
+Available versions: 3.19, 3.18, 3.17, 3.16, 3.15, 3.14, 3.13, 3.12, 3.11, 3.10, 3.9, 3.8, 3.7, 3.6, 3.5, 3.4, 3.3, 3.2, 3.1, 3.0, 2.10, 2.9, 2.8, 2.7, 2.6, 2.5, 2.4, 2.3, 2.2, 2.1, 2.0, 1.1, 1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2
+  INSTALLED: 3.18
+
+### pip: fresh-venv install of idna (purge python, tiny) -- timed
+real	0m0.559s
+user	0m0.410s
+sys	0m0.040s
+idna 3.19
+
+### pip: fresh-venv install of numpy (17MB wheel) -- timed
+real	0m3.635s
+user	0m2.085s
+sys	0m0.189s
+numpy 2.5.2
+
+### npm: install typescript into tmp prefix -- timed
+real	0m1.574s
+user	0m0.948s
+sys	0m0.257s
+23M	/tmp/probe_tmp_85521355/npmtest/node_modules
+
+### git: shallow clone pypa/pip -- timed
+real	0m1.085s
+user	0m0.237s
+sys	0m0.117s
+27M	/tmp/probe_tmp_85521355/pipclone
+
+### apt
+--- apt-get update (timed):
+
+real	0m0.798s
+user	0m0.575s
+sys	0m0.095s
+--- apt-get install sqlite3 (timed):
+
+real	0m2.135s
+user	0m1.055s
+sys	0m0.171s
+--- apt-get install ffmpeg (timed):
+
+real	0m9.103s
+user	0m5.288s
+sys	0m1.570s
+ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers
+
+# section rc=0   FINISHED: 2026-09-04T14:18:40Z

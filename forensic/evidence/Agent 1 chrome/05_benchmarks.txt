@@ -1,0 +1,19 @@
+=== Pure Python CPU: sum(range(10**7)) ===
+time: 0.145 seconds
+
+=== Pure Python loop: sum(i*i for i in range(10**7)) ===
+time: 0.719 seconds
+
+=== NumPy sum ===
+time: 0.007 seconds
+
+=== Disk sequential read/write 50 MB ===
+Write duration: 0.040 seconds, speed 1314.62 MB/s
+Read duration: 0.025 seconds, speed 2077.78 MB/s
+
+=== Small package install (pip) ===
+Installing collected packages: faker
+Successfully installed faker-40.38.0
+
+[notice] A new release of pip is available: 26.1.2 -> 26.2.1
+[notice] To update, run: pip install --upgrade pip

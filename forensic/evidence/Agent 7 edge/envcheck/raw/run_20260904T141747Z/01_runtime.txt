@@ -1,0 +1,65 @@
+################################################################
+# SECTION: 01_runtime.txt   (probe run run_20260904T141747Z)
+# STARTED : 2026-09-04T14:17:47Z
+################################################################
+### uname -a
+Linux e2b.local 6.1.158+ #1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026 x86_64 GNU/Linux
+
+### /etc/os-release
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.6
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+
+### architecture
+x86_64
+64
+
+### libc
+ldd (Debian GLIBC 2.41-12+deb13u3) 2.41
+Copyright (C) 2024 Free Software Foundation, Inc.
+
+### CPU
+model name	: Intel(R) Xeon(R) Processor @ 2.60GHz
+nproc=2
+SIMD/special flags: aes avx avx2 avx512_bitalg avx512_vbmi2 avx512_vnni avx512_vpopcntdq avx512bw avx512cd avx512dq avx512f avx512ifma avx512vbmi avx512vl fma sha_ni ssse3 vaes 
+
+### lscpu (selected)
+Architecture:                            x86_64
+CPU(s):                                  2
+On-line CPU(s) list:                     0,1
+Model name:                              Intel(R) Xeon(R) Processor @ 2.60GHz
+Thread(s) per core:                      2
+Core(s) per socket:                      1
+Socket(s):                               1
+Hypervisor vendor:                       KVM
+Virtualization type:                     full
+NUMA node0 CPU(s):                       0,1
+
+### hypervisor flag
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault invpcid_single ssbd ibrs ibpb stibp ibrs_enhanced fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves arat avx512vbmi umip avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid fsrm md_clear arch_capabilities
+
+### clocksource
+kvm-clock
+
+### memory
+               total        used        free      shared  buff/cache   available
+Mem:            1984         497        1309           1         363        1487
+Swap:              0           0           0
+MemTotal:        2032608 kB
+MemFree:         1340680 kB
+MemAvailable:    1523620 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+
+### uptime / date
+ 14:17:47 up 0 min,  0 users,  load average: 0.12, 0.03, 0.01
+Fri Sep  4 14:17:47 UTC 2026
+
+# section rc=0   FINISHED: 2026-09-04T14:17:47Z

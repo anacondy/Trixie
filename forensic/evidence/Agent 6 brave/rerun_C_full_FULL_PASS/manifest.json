@@ -1,0 +1,109 @@
+{
+  "manifest": "environment-probe-run-manifest",
+  "schema_version": 1,
+  "run": {
+    "started_utc": "2026-09-04T13:58:33Z",
+    "ended_utc": "2026-09-04T13:59:27Z",
+    "producer": "environment_probe.sh (independent re-run)",
+    "note": "numeric values expected to differ between runs; compare structure with compare_run.sh"
+  },
+  "sandbox": {
+    "hostname": "e2b.local",
+    "boot_id": "2bb79165-136a-4b63-829d-17027b0a8e40",
+    "E2B_SANDBOX": "true",
+    "E2B_SANDBOX_ID": "i9nxb4qydn3qmwway6hd3",
+    "E2B_TEMPLATE_ID": "nlhz8vlwyupq845jsdg9"
+  },
+  "files": [
+    {
+      "path": "00_run_header.txt",
+      "bytes": 264,
+      "sha256": "f8a83a6354d17351d8c174f522160e0007eb177fcd35a181e7632058e1a1d075"
+    },
+    {
+      "path": "01_runtime.txt",
+      "bytes": 4418,
+      "sha256": "ea4b74f0f72d447cbd02041cc7d10f0e9cd89850eb39384db32185b834617071"
+    },
+    {
+      "path": "02_identity.txt",
+      "bytes": 5836,
+      "sha256": "d15b1101fa3e47a8ea481bda073570d42d292669daf7499ca9a67f673c76ae1a"
+    },
+    {
+      "path": "03_tools.txt",
+      "bytes": 3656,
+      "sha256": "2ab5da195cf99b01eb4dc49be138d432c8a20c2a3838727f79d31d613f4ef35c"
+    },
+    {
+      "path": "04_fs.txt",
+      "bytes": 3377,
+      "sha256": "c8a10c8fb870c557ec4becadef8eeac01a3913f31979a144c34cccd0545fe80e"
+    },
+    {
+      "path": "05_cpu_mem.txt",
+      "bytes": 933,
+      "sha256": "5fe1e424ab7d75ec70ec97cdddb7793b0f17ce1d01c780f5a3618820436e4ff3"
+    },
+    {
+      "path": "06_compilers_pkgs.txt",
+      "bytes": 2522,
+      "sha256": "46ca8d6ca0f274f3343377c5319ba2b7f5f7c55e67b0c33760d9d429a7c89cb1"
+    },
+    {
+      "path": "07_cgroup_sudo.txt",
+      "bytes": 3572,
+      "sha256": "2c0a32e21ee83b0cf41178aa36825f27902e35241a1bd789c5f0ca1d73880641"
+    },
+    {
+      "path": "09_net_matrix.txt",
+      "bytes": 4198,
+      "sha256": "d59c892a4ad15186755f18b4c63acac6ea6274fad4d8d33c1f18823164910855"
+    },
+    {
+      "path": "10_net_throughput.txt",
+      "bytes": 1533,
+      "sha256": "d81c3d30d066cae5d2b58239969832f5251000bb95982316df13dca95885b01a"
+    },
+    {
+      "path": "10b_net_throughput2.txt",
+      "bytes": 1912,
+      "sha256": "1435450a63c64a0028b7dcd3f79f2be0c4389f13c5e7c3e3b750cd1046d8ecd6"
+    },
+    {
+      "path": "11_disk.txt",
+      "bytes": 1501,
+      "sha256": "9c262b547817d91b1717fecd40ba498e6154fe3d37f8531695b36e610427f00e"
+    },
+    {
+      "path": "12_pip.txt",
+      "bytes": 1911,
+      "sha256": "123f0a4362deeb0f628818f450c377a1dd1522ea1c33682f9f4b94b45f704c06"
+    },
+    {
+      "path": "12b_pip2.txt",
+      "bytes": 989,
+      "sha256": "1d172a8e5e9930ac2c2816b841b1be568f6b486ca7d0c97e3d79b75b5aee77b4"
+    },
+    {
+      "path": "13_bg_misc.txt",
+      "bytes": 2249,
+      "sha256": "6d0660bc617eef3242d3362d8877e4f815f05651f984da1394c206ea7d6377f1"
+    },
+    {
+      "path": "14_final.txt",
+      "bytes": 1826,
+      "sha256": "1e958e96cb7b2262d7f9dace1608492db64e5adb7f239b9890167cd6ccbe54c7"
+    },
+    {
+      "path": "15_process_demo.txt",
+      "bytes": 567,
+      "sha256": "cb52b55cc275226f90ea05a11aff3e27d837b63d471a34e59169b28a7999a3e5"
+    },
+    {
+      "path": "bg_ticks.txt",
+      "bytes": 63,
+      "sha256": "f8a65db56195998c2cc85eae7dbb856f9862bd610e456ccfcbc41d223b111938"
+    }
+  ]
+}

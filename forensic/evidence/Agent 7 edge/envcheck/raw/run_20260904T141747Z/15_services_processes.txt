@@ -1,0 +1,72 @@
+################################################################
+# SECTION: 15_services_processes.txt   (probe run run_20260904T141747Z)
+# STARTED : 2026-09-04T14:18:43Z
+################################################################
+### process count
+99 processes
+
+### process tree head
+    PID    PPID COMMAND         COMMAND
+      1       0 systemd         /sbin/init
+      2       0 kthreadd        [kthreadd]
+      3       2 rcu_gp          [rcu_gp]
+      4       2 rcu_par_gp      [rcu_par_gp]
+      5       2 slub_flushwq    [slub_flushwq]
+      6       2 netns           [netns]
+      7       2 kworker/0:0-eve [kworker/0:0-events]
+      8       2 kworker/0:0H-ev [kworker/0:0H-events_highpri]
+      9       2 kworker/u4:0-wr [kworker/u4:0-writeback]
+     10       2 mm_percpu_wq    [mm_percpu_wq]
+     11       2 rcu_tasks_kthre [rcu_tasks_kthread]
+     12       2 rcu_tasks_rude_ [rcu_tasks_rude_kthread]
+     13       2 rcu_tasks_trace [rcu_tasks_trace_kthread]
+     14       2 ksoftirqd/0     [ksoftirqd/0]
+
+### listening sockets (ss -ltn)
+State  Recv-Q Send-Q Local Address:Port  Peer Address:Port
+LISTEN 0      100        127.0.0.1:35769      0.0.0.0:*   
+LISTEN 0      5       169.254.0.21:47945      0.0.0.0:*   
+LISTEN 0      5       169.254.0.21:34675      0.0.0.0:*   
+LISTEN 0      4096         0.0.0.0:111        0.0.0.0:*   
+LISTEN 0      5       169.254.0.21:35769      0.0.0.0:*   
+LISTEN 0      100        127.0.0.1:47945      0.0.0.0:*   
+LISTEN 0      100        127.0.0.1:34675      0.0.0.0:*   
+LISTEN 0      128        127.0.0.1:8888       0.0.0.0:*   
+LISTEN 0      5       169.254.0.21:8888       0.0.0.0:*   
+LISTEN 0      100        127.0.0.1:44461      0.0.0.0:*   
+LISTEN 0      5       169.254.0.21:35105      0.0.0.0:*   
+LISTEN 0      100        127.0.0.1:39379      0.0.0.0:*   
+LISTEN 0      100        127.0.0.1:41435      0.0.0.0:*   
+LISTEN 0      100        127.0.0.1:43501      0.0.0.0:*   
+LISTEN 0      100        127.0.0.1:35105      0.0.0.0:*   
+LISTEN 0      5       169.254.0.21:44461      0.0.0.0:*   
+LISTEN 0      5       169.254.0.21:39379      0.0.0.0:*   
+LISTEN 0      5       169.254.0.21:41435      0.0.0.0:*   
+LISTEN 0      5       169.254.0.21:43501      0.0.0.0:*   
+
+### systemd services
+is-system-running: degraded
+  UNIT                     LOAD   ACTIVE SUB     DESCRIPTION
+  code-interpreter.service loaded active running Code Interpreter Server
+  dbus.service             loaded active running D-Bus System Message Bus
+  envd.service             loaded active running Env Daemon Service
+  getty@tty1.service       loaded active running Getty on tty1
+  jupyter.service          loaded active running Jupyter Server
+  nfs-blkmap.service       loaded active running pNFS block layout mapping daemon
+  rpcbind.service          loaded active running RPC bind portmap service
+  ssh.service              loaded active running OpenBSD Secure Shell server
+  systemd-journald.service loaded active running Journal Service
+  systemd-logind.service   loaded active running User Login Management
+  systemd-networkd.service loaded active running Network Configuration
+
+### kernel log tail (dmesg)
+[   84.355892] audit: type=1105 audit(1788531523.395:88): pid=3453 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:session_open grantors=pam_limits,pam_permit,pam_umask,pam_unix acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[   84.359088] audit: type=1106 audit(1788531523.399:89): pid=3453 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:session_close grantors=pam_limits,pam_permit,pam_umask,pam_unix acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[   84.359117] audit: type=1104 audit(1788531523.399:90): pid=3453 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:setcred grantors=pam_permit acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[   84.368923] audit: type=1101 audit(1788531523.411:91): pid=3456 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:accounting grantors=pam_permit acct="user" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[   84.369164] audit: type=1123 audit(1788531523.411:92): pid=3456 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='cwd="/home/user" cmd="dmesg" exe="/usr/bin/sudo" terminal=? res=success'
+
+### background-process survival probe (nohup, 90s)
+spawned nohup pid=3460 (will finish ~90s after this section; check /tmp/probe_tmp_85521355/nohup_result.txt in a later probe/run or externally)
+
+# section rc=0   FINISHED: 2026-09-04T14:18:43Z

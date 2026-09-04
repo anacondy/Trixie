@@ -1,0 +1,9 @@
+Agent 9 edge archive build log
+build_start_utc=2026-09-04T14:31:48.936310Z
+source_file_count=81
+catalog_record_count=86
+staging_root=/home/user/.agent9_archive_staging
+output=/home/user/Agent 9 edge.zip
+copy_mode=shutil.copy2 (source mtimes preserved in staging)
+zip_mode=ZIP_DEFLATED with mirrored payload paths
+status_before_pack=all source copies and documentation generated

@@ -1,0 +1,16 @@
+host                                   status      n   min ms   med ms   max ms  mean ms
+google.com                             OK          5     1.11     1.30     2.43     1.49
+www.google.com                         OK          5     0.76     0.77     0.84     0.79
+github.com                             OK          5     1.03     1.18    27.69     6.46
+pypi.org                               OK          5     0.77     0.77     0.95     0.81
+files.pythonhosted.org                 OK          5     1.01     8.43    10.80     6.26
+huggingface.co                         OK          5     1.21     1.32    30.92    11.04
+registry.npmjs.org                     OK          5     0.72     0.93     1.33     1.03
+objects.githubusercontent.com          OK          5     0.92     1.24     1.58     1.22
+cdn.jsdelivr.net                       OK          5     1.28     1.37    10.57     4.90
+archive.ubuntu.com                     OK          5     0.95     1.48   137.17    28.51
+security.debian.org                    OK          5     1.08     1.26     1.43     1.25
+example.com                            OK          5     1.56    21.13    28.04    18.49
+nonexistent-host-zzz-12345.invalid     gaierror    5     2.13     2.48     2.91     2.56
+
+IPv6 outbound TCP:53 -> OSError [Errno 101] Network is unreachable

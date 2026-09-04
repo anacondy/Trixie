@@ -1,0 +1,30 @@
+REF dir : /home/user/envprobe  (20 files)
+NEW dir : /tmp/full_run  (21 files)
+common  : 19 files
+only in REF : ['.persist_marker']
+only in NEW : ['00_run_header.txt', 'epilogue.txt']
+
+== 01_runtime.txt: anchors OK  (14 anchors, 3 differing raw lines [expected: timestamps/numbers])
+== 02_identity.txt: anchors OK  (18 anchors, 32 differing raw lines [expected: timestamps/numbers])
+== 03_tools.txt: anchors OK  (4 anchors, 102 differing raw lines [expected: timestamps/numbers])
+== 04_fs.txt: anchors OK  (12 anchors, 89 differing raw lines [expected: timestamps/numbers])
+== 05_cpu_mem.txt: anchors OK  (6 anchors, 30 differing raw lines [expected: timestamps/numbers])
+== 06_compilers_pkgs.txt: anchors OK  (10 anchors, 65 differing raw lines [expected: timestamps/numbers])
+== 07_cgroup_sudo.txt: anchors OK  (9 anchors, 70 differing raw lines [expected: timestamps/numbers])
+== 09_net_matrix.txt: anchors OK  (6 anchors, 40 differing raw lines [expected: timestamps/numbers])
+== 10_net_throughput.txt: anchors OK  (6 anchors, 56 differing raw lines [expected: timestamps/numbers])
+== 10b_net_throughput2.txt: anchors OK  (1 anchors, 23 differing raw lines [expected: timestamps/numbers])
+== 11_disk.txt: anchors OK  (9 anchors, 8 differing raw lines [expected: timestamps/numbers])
+== 12_pip.txt: anchors OK  (9 anchors, 42 differing raw lines [expected: timestamps/numbers])
+== 12b_pip2.txt: anchors OK  (6 anchors, 49 differing raw lines [expected: timestamps/numbers])
+== 13_bg_misc.txt: anchors OK  (9 anchors, 77 differing raw lines [expected: timestamps/numbers])
+== 14_final.txt: anchors OK  (8 anchors, 53 differing raw lines [expected: timestamps/numbers])
+== 15_process_demo.txt: anchors OK  (2 anchors, 12 differing raw lines [expected: timestamps/numbers])
+== bg_ticks.txt: anchors OK  (0 anchors, 13 differing raw lines [expected: timestamps/numbers])
+== manifest.json: anchors OK  (0 anchors, 170 differing raw lines [expected: timestamps/numbers])
+== sha256sums.txt: anchors OK  (0 anchors, 18 differing raw lines [expected: timestamps/numbers])
+
+NOTE: file-set differences above. 0*.txt + bg_ticks.txt is the canonical set;
+      extra/missing files should be reviewed before comparing.
+RESULT: PASS — identical structure (file set + normalized section anchors).
+        Numeric differences are expected per-run variance, not regressions.

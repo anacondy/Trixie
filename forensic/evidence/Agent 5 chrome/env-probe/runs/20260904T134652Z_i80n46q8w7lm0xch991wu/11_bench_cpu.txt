@@ -1,0 +1,47 @@
+############################################################
+# BENCHMARK: CPU (pure python, numpy, pandas, scaling)
+# probe_version=1.1.0
+# run_utc=20260904T134652Z  sandbox=i80n46q8w7lm0xch991wu
+# generated=2026-09-04T13:47:33Z
+############################################################
+
+Method: time.perf_counter(), best-of-3 unless noted. Units: milliseconds.
+$ python3 /home/user/env-probe/bench_cpu.py
+python=3.13.14 impl=CPython exe=/usr/local/bin/python3
+perf_counter resolution=1e-09 s
+
+=== PURE PYTHON ===
+sum(range(10**7))                            best=    229.10 ms  median=    235.01 ms  n=3
+pure-python loop 10**7 (x+=i*i)              best=    608.69 ms  median=    639.04 ms  n=3
+recursive fib(27)                            best=     20.35 ms  median=     21.58 ms  n=3
+json.dumps 50k dicts                         best=     36.26 ms  median=     37.92 ms  n=3
+json.loads 50k dicts                         best=     42.92 ms  median=     44.72 ms  n=3
+sha256 of 10 MiB                             best=      7.19 ms  median=      7.27 ms  n=3
+regex findall on 1M chars                    best=     44.91 ms  median=     45.27 ms  n=3
+
+=== NUMPY (BLAS-backed) ===
+numpy=2.3.5
+  BLAS: api=openblas threads=2 layer=pthreads
+numpy 1000x1000 matmul float64               best=     23.25 ms  median=     27.22 ms  n=3
+                                              -> 86.0 GFLOP/s
+numpy 2000x2000 matmul float64               best=    163.00 ms  median=    168.54 ms  n=2
+                                              -> 98.2 GFLOP/s
+numpy sum 1e7 float64                        best=      7.07 ms  median=      8.62 ms  n=3
+numpy sort 1e7 float64                       best=    142.00 ms  median=    154.10 ms  n=2
+numpy FFT 2**22                              best=    281.70 ms  median=    290.44 ms  n=2
+
+=== PANDAS ===
+pandas=2.2.3
+pandas groupby.mean 1e6 rows                 best=     30.67 ms  median=     31.18 ms  n=3
+pandas sort_values 1e6 rows                  best=     69.21 ms  median=     74.20 ms  n=3
+pandas to_csv 1e6 rows                       best=   2127.96 ms  median=   2127.96 ms  n=1
+pandas read_csv 1e6 rows                     best=    173.30 ms  median=    174.05 ms  n=2
+parquet                                      UNAVAILABLE (ImportError: pyarrow/fastparquet missing)
+
+=== PARALLEL SCALING (multiprocessing) ===
+1 proc x 8,000,000 iters:  0.495 s  aggregate=  16.15 M-iter/s
+2 proc x 8,000,000 iters:  0.538 s  aggregate=  29.77 M-iter/s
+4 proc x 8,000,000 iters:  1.030 s  aggregate=  31.06 M-iter/s
+cpu_count=2  sched_affinity=2
+[exit=0]
+

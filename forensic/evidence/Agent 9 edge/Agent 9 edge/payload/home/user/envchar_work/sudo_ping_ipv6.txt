@@ -1,0 +1,81 @@
+timestamp=2026-09-04T12:13:02,080782593+00:00
+-- sudo/root ICMP probes: 5 packets, 2 s timeout
+### sudo ping google.com
+PING google.com (172.253.117.101) 56(84) bytes of data.
+64 bytes from 172.253.117.101: icmp_seq=1 ttl=113 time=0.577 ms
+64 bytes from 172.253.117.101: icmp_seq=2 ttl=113 time=0.438 ms
+64 bytes from 172.253.117.101: icmp_seq=3 ttl=113 time=0.622 ms
+64 bytes from 172.253.117.101: icmp_seq=4 ttl=113 time=0.597 ms
+64 bytes from 172.253.117.101: icmp_seq=5 ttl=113 time=0.541 ms
+
+--- google.com ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4099ms
+rtt min/avg/max/mdev = 0.438/0.555/0.622/0.064 ms
+### sudo ping 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=113 time=0.630 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=113 time=0.550 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=113 time=0.463 ms
+64 bytes from 8.8.8.8: icmp_seq=4 ttl=113 time=0.403 ms
+64 bytes from 8.8.8.8: icmp_seq=5 ttl=113 time=0.408 ms
+
+--- 8.8.8.8 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4085ms
+rtt min/avg/max/mdev = 0.403/0.490/0.630/0.087 ms
+### sudo ping github.com
+PING github.com (20.29.134.23) 56(84) bytes of data.
+64 bytes from 20.29.134.23: icmp_seq=1 ttl=115 time=9.81 ms
+64 bytes from 20.29.134.23: icmp_seq=2 ttl=115 time=9.76 ms
+64 bytes from 20.29.134.23: icmp_seq=3 ttl=115 time=9.67 ms
+64 bytes from 20.29.134.23: icmp_seq=4 ttl=115 time=9.70 ms
+64 bytes from 20.29.134.23: icmp_seq=5 ttl=115 time=9.81 ms
+
+--- github.com ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4008ms
+rtt min/avg/max/mdev = 9.666/9.749/9.812/0.058 ms
+### sudo ping pypi.org
+PING pypi.org (151.101.128.223) 56(84) bytes of data.
+64 bytes from 151.101.128.223: icmp_seq=1 ttl=60 time=7.82 ms
+64 bytes from 151.101.128.223: icmp_seq=2 ttl=60 time=7.77 ms
+64 bytes from 151.101.128.223: icmp_seq=3 ttl=60 time=7.80 ms
+64 bytes from 151.101.128.223: icmp_seq=4 ttl=60 time=7.74 ms
+64 bytes from 151.101.128.223: icmp_seq=5 ttl=60 time=7.89 ms
+
+--- pypi.org ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4008ms
+rtt min/avg/max/mdev = 7.738/7.802/7.894/0.053 ms
+### sudo ping huggingface.co
+PING huggingface.co (3.163.189.74) 56(84) bytes of data.
+64 bytes from 3.163.189.74: icmp_seq=1 ttl=250 time=6.71 ms
+64 bytes from 3.163.189.74: icmp_seq=2 ttl=250 time=6.50 ms
+64 bytes from 3.163.189.74: icmp_seq=3 ttl=250 time=6.57 ms
+64 bytes from 3.163.189.74: icmp_seq=4 ttl=250 time=6.51 ms
+64 bytes from 3.163.189.74: icmp_seq=5 ttl=250 time=6.41 ms
+
+--- huggingface.co ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4007ms
+rtt min/avg/max/mdev = 6.405/6.538/6.714/0.101 ms
+-- IPv6 connectivity probes
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 state UNKNOWN qlen 1000
+    inet6 ::1/128 scope host proto kernel_lo 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 state UP qlen 1000
+    inet6 fe80::fc:ff:fe00:5/64 scope link proto kernel_ll 
+       valid_lft forever preferred_lft forever
+fe80::/64 dev eth0 proto kernel metric 256 pref medium
+### curl -6 google.com
+curl: (7) Failed to connect to google.com port 443 after 1 ms: Could not connect to server
+code=000 remote= connect=0.000000 total=0.001573
+curl_rc=7
+### curl -6 github.com
+curl: (6) Could not resolve host: github.com
+code=000 remote= connect=0.000000 total=0.001166
+curl_rc=6
+### curl -6 pypi.org
+curl: (7) Failed to connect to pypi.org port 443 after 1 ms: Could not connect to server
+code=000 remote= connect=0.000000 total=0.001097
+curl_rc=7
+### curl -6 huggingface.co
+curl: (7) Failed to connect to huggingface.co port 443 after 4 ms: Could not connect to server
+code=000 remote= connect=0.000000 total=0.004128
+curl_rc=7

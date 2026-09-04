@@ -1,0 +1,23 @@
+################################################################
+# SECTION: 07_dns.txt   (probe run run_20260904T141747Z)
+# STARTED : 2026-09-04T14:17:50Z
+################################################################
+### /etc/resolv.conf
+nameserver 8.8.8.8
+### python socket.gethostbyname timing (5 samples/host)
+host                                   resolved     min     med     max  [ms]
+google.com                      172.253.117.113     0.9     1.3     2.9
+github.com                         140.82.116.3     0.8     1.2    26.8
+pypi.org                        151.101.192.223     0.8     0.9     1.1
+huggingface.co                     3.163.189.37     1.2    16.9    22.6
+files.pythonhosted.org          151.101.192.223     1.4     8.3    10.4
+objects.githubusercontent.com   185.199.110.133     0.8     1.4     1.4
+registry.npmjs.org                  104.16.8.34     0.8     0.9     1.3
+api.ipify.org                     104.26.12.205     1.0     1.2    10.6
+
+### raw UDP:53 to public resolvers (hand-built query)
+UDP:53 8.8.8.8 -> 1.4 ms, 124 bytes
+UDP:53 1.1.1.1 -> 9.5 ms, 44 bytes
+UDP:53 9.9.9.9 -> 7.1 ms, 44 bytes
+
+# section rc=0   FINISHED: 2026-09-04T14:17:51Z

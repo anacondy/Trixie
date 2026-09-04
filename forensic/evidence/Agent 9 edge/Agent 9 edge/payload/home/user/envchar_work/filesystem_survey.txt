@@ -1,0 +1,93 @@
+timestamp=2026-09-04T12:12:06,937042370+00:00
+cwd=/home/user HOME=/home/user TMPDIR=<unset>
+-- df capacity
+Filesystem     Type   Size  Used Avail Use% Mounted on
+/dev/root      ext4    25G  4.1G   20G  17% /
+/dev/root      ext4    25G  4.1G   20G  17% /
+tmpfs          tmpfs  993M   12K  993M   1% /tmp
+/dev/root      ext4    25G  4.1G   20G  17% /
+tmpfs          tmpfs  993M     0  993M   0% /dev/shm
+-- df bytes
+Filesystem       1B-blocks       Used   Available Use% Mounted on
+/dev/root      25860014080 4329758720 21207183360  17% /
+/dev/root      25860014080 4329758720 21207183360  17% /
+tmpfs           1040695296      12288  1040683008   1% /tmp
+/dev/root      25860014080 4329758720 21207183360  17% /
+tmpfs           1040695296          0  1040695296   0% /dev/shm
+-- df inodes
+Filesystem      Inodes  IUsed   IFree IUse% Mounted on
+/dev/root      6759792 136309 6623483    3% /
+/dev/root      6759792 136309 6623483    3% /
+tmpfs          1048576     12 1048564    1% /tmp
+/dev/root      6759792 136309 6623483    3% /
+tmpfs           254076      1  254075    1% /dev/shm
+-- directory metadata
+[/]
+mode=drwxr-xr-x (755) owner=root:root size=4096 fs_dev=65024 inode=2
+/ /dev/vda ext4 rw,relatime,discard
+[/home]
+mode=drwxr-xr-x (755) owner=root:root size=60 fs_dev=65024 inode=16
+/ /dev/vda ext4 rw,relatime,discard
+[/home/user]
+mode=drwx------ (700) owner=user:user size=128 fs_dev=65024 inode=522760
+/ /dev/vda ext4 rw,relatime,discard
+[/tmp]
+mode=drwxrwxrwt (1777) owner=root:root size=200 fs_dev=30 inode=1
+/tmp tmpfs tmpfs rw,nosuid,nodev,nr_inodes=1048576
+[/var/tmp]
+mode=drwxrwxrwt (1777) owner=root:root size=4096 fs_dev=65024 inode=30420
+/ /dev/vda ext4 rw,relatime,discard
+[/dev/shm]
+mode=drwxrwxrwt (1777) owner=root:root size=40 fs_dev=22 inode=1
+/dev/shm tmpfs tmpfs rw,nosuid,nodev
+[/root]
+mode=drwx------ (700) owner=root:root size=4096 fs_dev=65024 inode=32345
+/ /dev/vda ext4 rw,relatime,discard
+[/usr/local]
+mode=drwxrwxrwx (777) owner=root:root size=4096 fs_dev=65024 inode=24
+/ /dev/vda ext4 rw,relatime,discard
+[/proc]
+mode=dr-xr-xr-x (555) owner=root:root size=0 fs_dev=20 inode=1
+/proc proc proc rw,nosuid,nodev,noexec,relatime
+[/sys]
+mode=dr-xr-xr-x (555) owner=root:root size=0 fs_dev=21 inode=1
+/sys sysfs sysfs rw,nosuid,nodev,noexec,relatime
+-- read-only mounts
+/run/credentials/systemd-journald.service ramfs ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+/run/credentials/systemd-networkd.service ramfs ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+/run/credentials/getty@tty1.service ramfs ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+-- user write/read/delete tests
+/home/user	WRITE_READ_DELETE_OK	bytes=40 verify=True
+/tmp	WRITE_READ_DELETE_OK	bytes=40 verify=True
+/var/tmp	WRITE_READ_DELETE_OK	bytes=40 verify=True
+/dev/shm	WRITE_READ_DELETE_OK	bytes=40 verify=True
+/	FAILED	PermissionError: [Errno 13] Permission denied: '/.envchar_rw_a4ffdc74237c484db46917253622f541'
+/root	FAILED	PermissionError: [Errno 13] Permission denied: '/root/.envchar_rw_69b14ac5c9174de6afdcf9f16b9f9020'
+/usr/local	WRITE_READ_DELETE_OK	bytes=40 verify=True
+/proc	FAILED	FileNotFoundError: [Errno 2] No such file or directory: '/proc/.envchar_rw_30f0a206d9684fdaa712c314a5063e7a'
+/sys	FAILED	PermissionError: [Errno 13] Permission denied: '/sys/.envchar_rw_e79da859e5a846e4b43b18fa34ef7a76'
+-- sudo/root write/read/delete tests (selected protected locations)
+/root ROOT_WRITE_READ_DELETE_OK
+/usr/local ROOT_WRITE_READ_DELETE_OK
+/etc ROOT_WRITE_READ_DELETE_OK
+/sys ROOT_TEST_FAILED rc=2 error=sh: 1: cannot create /sys/.envchar_sudo_test_1647: Permission denied 
+/proc ROOT_TEST_FAILED rc=2 error=sh: 1: cannot create /proc/.envchar_sudo_test_1647: Directory nonexistent 
+-- sentinel creation
+workspace_sentinel=/home/user/.environment_characterization_persistence_probe token=probe-1788523926935155052-1647
+tmp_sentinel=/tmp/.environment_characterization_persistence_probe token=probe-1788523926935155052-1647
+-- workspace top-level usage
+150K	/home/user
+-- root top-level usage (same filesystem; one level)
+0	/boot
+0	/code
+0	/media
+0	/mnt
+0	/opt
+0	/srv
+12K	/lost+found
+150K	/home
+2.1M	/etc
+46M	/var
+166M	/root
+3.9G	/usr
+4.1G	/

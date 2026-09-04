@@ -1,0 +1,78 @@
+timestamp=2026-09-04T12:12:32,344273914+00:00
+-- proxy environment (names/status only; values not printed)
+HTTP_PROXY=unset
+HTTPS_PROXY=unset
+ALL_PROXY=unset
+NO_PROXY=unset
+http_proxy=unset
+https_proxy=unset
+all_proxy=unset
+no_proxy=unset
+-- resolv.conf
+nameserver 8.8.8.8-- hosts
+127.0.0.1        localhost
+::1              localhost ip6-localhost ip6-loopback
+fe00::           ip6-localnet
+ff00::           ip6-mcastprefix
+ff02::1          ip6-allnodes
+ff02::2          ip6-allrouters
+127.0.1.1        e2b.local
+192.0.2.1        events.e2b.local
+-- interfaces
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+eth0             UP             169.254.0.21/30 fe80::fc:ff:fe00:5/64 
+-- routes
+default via 169.254.0.22 dev eth0 
+169.254.0.20/30 dev eth0 proto kernel scope link src 169.254.0.21 
+fe80::/64 dev eth0 proto kernel metric 256 pref medium
+-- ping probes: 4 packets, 2 s per-packet timeout
+### ping google.com
+ping: socktype: SOCK_RAW
+ping: socket: Operation not permitted
+ping: => missing cap_net_raw+p capability or setuid?
+ping_rc=2
+### ping 8.8.8.8
+ping: socktype: SOCK_RAW
+ping: socket: Operation not permitted
+ping: => missing cap_net_raw+p capability or setuid?
+ping_rc=2
+### ping github.com
+ping: socktype: SOCK_RAW
+ping: socket: Operation not permitted
+ping: => missing cap_net_raw+p capability or setuid?
+ping_rc=2
+### ping pypi.org
+ping: socktype: SOCK_RAW
+ping: socket: Operation not permitted
+ping: => missing cap_net_raw+p capability or setuid?
+ping_rc=2
+### ping huggingface.co
+ping: socktype: SOCK_RAW
+ping: socket: Operation not permitted
+ping: => missing cap_net_raw+p capability or setuid?
+ping_rc=2
+-- HTTP captive/plain-HTTP probes (headers only)
+### http://google.com/generate_204
+HTTP/1.1 204 No Content
+Content-Length: 0
+Cross-Origin-Resource-Policy: cross-origin
+Date: Fri, 04 Sep 2026 12:12:32 GMT
+
+### http://example.com/
+HTTP/1.1 200 OK
+Date: Fri, 04 Sep 2026 12:12:32 GMT
+Content-Type: text/html
+Transfer-Encoding: chunked
+Connection: keep-alive
+Server: cloudflare
+Last-Modified: Wed, 02 Sep 2026 22:14:26 GMT
+Allow: GET, HEAD
+Accept-Ranges: bytes
+Age: 3678
+cf-cache-status: HIT
+CF-RAY: a35ce72eea31cf9b-SJC
+### http://github.com/
+HTTP/1.1 301 Moved Permanently
+Content-Length: 0
+Location: https://github.com/
+

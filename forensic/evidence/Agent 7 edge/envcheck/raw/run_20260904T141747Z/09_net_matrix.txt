@@ -1,0 +1,59 @@
+################################################################
+# SECTION: 09_net_matrix.txt   (probe run run_20260904T141747Z)
+# STARTED : 2026-09-04T14:17:51Z
+################################################################
+### TCP connect matrix (ms to establish; 6s timeout per probe)
+host:port -> connect RTT
+google.com:443 -> 1.5 ms
+github.com:22 -> 1.3 ms
+github.com:80 -> 1.9 ms
+github.com:443 -> 1.8 ms
+github.com:9418 -> 1.3 ms
+raw.githubusercontent.com:443 -> 1.3 ms
+api.github.com:443 -> 11.6 ms
+codeload.github.com:443 -> 13.2 ms
+pypi.org:443 -> 1.5 ms
+pypi.org:80 -> 1.2 ms
+files.pythonhosted.org:443 -> 1.4 ms
+huggingface.co:443 -> 28.1 ms
+registry.npmjs.org:443 -> 1.3 ms
+8.8.8.8:53 -> 0.4 ms
+8.8.8.8:443 -> 0.4 ms
+1.1.1.1:53 -> 0.4 ms
+192.0.2.1:80 -> 0.4 ms
+192.0.2.1:443 -> 0.4 ms
+192.0.2.1:4444 -> 0.4 ms
+
+### ICMP (may need root/CAP_NET_RAW)
+ping: socktype: SOCK_RAW
+ping: socket: Operation not permitted
+ping: => missing cap_net_raw+p capability or setuid?
+--- with sudo:
+2 packets transmitted, 2 received, 0% packet loss, time 1017ms
+rtt min/avg/max/mdev = 0.481/0.532/0.583/0.051 ms
+
+### IPv6
+v6 https://www.google.com http=000 total=0.001659s
+
+### interface / MTU / routes / egress IP
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    inet 127.0.0.1/8 scope host lo
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    inet 169.254.0.21/30 brd 169.254.0.23 scope global eth0
+default via 169.254.0.22 dev eth0 
+169.254.0.20/30 dev eth0 proto kernel scope link src 169.254.0.21 
+egress ip: 136.67.146.242
+### egress geo (ipinfo.io)
+{
+  "ip": "136.67.146.242",
+  "hostname": "242.146.67.136.bc.googleusercontent.com",
+  "city": "The Dalles",
+  "region": "Oregon",
+  "country": "US",
+  "loc": "45.5946,-121.1787",
+  "org": "AS396982 Google LLC",
+  "postal": "97058",
+  "timezone": "America/Los_Angeles",
+  "readme": "https://ipinfo.io/missingauth"
+}
+# section rc=0   FINISHED: 2026-09-04T14:17:53Z

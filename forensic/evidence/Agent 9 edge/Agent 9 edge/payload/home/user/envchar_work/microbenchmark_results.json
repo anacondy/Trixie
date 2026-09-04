@@ -1,0 +1,69 @@
+[
+  {
+    "benchmark": "CPython sum(range(10**7)) median",
+    "seconds": 0.194683256,
+    "amount": 10000000,
+    "units": "integers",
+    "rate_per_second": 51365485.689226404,
+    "detail": "5 runs; individual_s=[0.180746969, 0.194683256, 0.193473138, 0.198714753, 0.195832628]; process pinned to one vCPU",
+    "result": 49999995000000
+  },
+  {
+    "benchmark": "CPython explicit integer loop median",
+    "seconds": 2.079108477,
+    "amount": 10000000,
+    "units": "iterations",
+    "rate_per_second": 4809753.8491254,
+    "detail": "3 runs; per iteration: shift, XOR, add, mask; individual_s=[2.079108477, 2.434230218, 2.07196849]; one vCPU",
+    "result": 50516936365248
+  },
+  {
+    "benchmark": "NumPy vector expression median",
+    "seconds": 0.085346377,
+    "amount": 10000000,
+    "units": "elements",
+    "rate_per_second": 117169589.98739924,
+    "detail": "numpy=2.3.5; sum((a*a)%97), preallocated input, 3 runs; individual_s=[0.119912155, 0.085346377, 0.085140648]",
+    "result": 480000219
+  },
+  {
+    "benchmark": "ext4 sequential write + fsync",
+    "seconds": 0.106182717,
+    "amount": 104857600,
+    "units": "bytes",
+    "rate_per_second": 987520407.8644927,
+    "detail": "/home/user, 100 MiB, repeated random 4 MiB block, unbuffered Python writes; includes final fsync"
+  },
+  {
+    "benchmark": "ext4 sequential read (cache-drop advisory)",
+    "seconds": 0.035717615,
+    "amount": 104857600,
+    "units": "bytes",
+    "rate_per_second": 2935739130.3982644,
+    "detail": "/home/user, 100 MiB, 4 MiB readinto; POSIX_FADV_DONTNEED issued before read"
+  },
+  {
+    "benchmark": "ext4 sequential read (warm page cache)",
+    "seconds": 0.020580337,
+    "amount": 104857600,
+    "units": "bytes",
+    "rate_per_second": 5095038045.295371,
+    "detail": "immediate second read, 4 MiB readinto"
+  },
+  {
+    "benchmark": "ext4 direct-I/O sequential read run 1",
+    "seconds": 0.02636675,
+    "amount": 104857600,
+    "units": "bytes",
+    "rate_per_second": 3976887557.245394,
+    "detail": "dd bs=4M iflag=direct; process-launch overhead included"
+  },
+  {
+    "benchmark": "ext4 direct-I/O sequential read run 2",
+    "seconds": 0.024663355,
+    "amount": 104857600,
+    "units": "bytes",
+    "rate_per_second": 4251554583.7133675,
+    "detail": "dd bs=4M iflag=direct; process-launch overhead included"
+  }
+]

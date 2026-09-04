@@ -1,0 +1,56 @@
+=== Sandbox/Template/Boot ID Comparison ===
+
+--- Agent 1 chrome ---
+Sandbox IDs found (2): iim386kr3aoo4j3svsogz, ijwc38wq18p7cu57ydxvn
+Template IDs found (1): nlhz8vlwyupq845jsdg9
+Boot IDs found (0): 
+Timestamps found (1): 2026-09-04T13:44:06Z
+
+--- Agent 2 brave ---
+Sandbox IDs found (3): i0v44lh3n78xffvhm6u5u, i4i7wdij5c7gh9absvtu8, i54yseeebo34z5jxzvoju
+Template IDs found (1): nlhz8vlwyupq845jsdg9
+Boot IDs found (1): 2bb79165136a4b63829d17027b0a8e40
+Timestamps found (222): 2026-09-04T09:59:50Z, 2026-09-04T13:45:05Z, 2026-09-04T13:45:06Z, 2026-09-04T13:45:07Z, 2026-09-04T13:45:09Z, 2026-09-04T13:45:10Z, 2026-09-04T13:45:11Z, 2026-09-04T13:45:12Z, 2026-09-04T13:45:21Z, 2026-09-04T13:45:22Z
+
+--- Agent 3 brave ---
+Sandbox IDs found (2): iptxurfwauu23eb0ooerk, iq0hfwsxhi5bhzqv4auur
+Template IDs found (1): nlhz8vlwyupq845jsdg9
+Boot IDs found (0): 
+Timestamps found (22): 2026-09-04T10:14:40Z, 2026-09-04T13:46:52Z, 2026-09-04T13:46:59Z, 2026-09-04T13:47:00Z, 2026-09-04T13:47:06Z, 2026-09-04T13:47:13Z, 2026-09-04T13:47:17Z, 2026-09-04T13:47:20Z, 2026-09-04T13:47:27Z, 2026-09-04T13:47:29Z
+
+--- Agent 4 chrome ---
+Sandbox IDs found (2): i0m9mhony51frr3osghn0, im7pcmogyi4h8g6mpiqba
+Template IDs found (2): gujonb0q163l15z30yc7, nlhz8vlwyupq845jsdg9
+Boot IDs found (0): 
+Timestamps found (57): 2026-09-04T14:04:58Z, 2026-09-04T14:05:00Z, 2026-09-04T14:05:05Z, 2026-09-04T14:05:06Z, 2026-09-04T14:09:05Z, 2026-09-04T14:11:39Z, 2026-09-04T14:11:40Z, 2026-09-04T14:12:03Z, 2026-09-04T14:12:29Z, 2026-09-04T14:12:44Z
+
+--- Agent 5 chrome ---
+Sandbox IDs found (2): i80n46q8w7lm0xch991wu, iyl5sbten1irtm0cfue4p
+Template IDs found (1): nlhz8vlwyupq845jsdg9
+Boot IDs found (1): 2bb79165-136a-4b63-829d-17027b0a8e40
+Timestamps found (46): 2026-09-04T11:40:29Z, 2026-09-04T13:46:52Z, 2026-09-04T13:46:53Z, 2026-09-04T13:47:00Z, 2026-09-04T13:47:01Z, 2026-09-04T13:47:04Z, 2026-09-04T13:47:29Z, 2026-09-04T13:47:33Z, 2026-09-04T13:47:43Z, 2026-09-04T13:47:51Z
+
+--- Agent 6 brave ---
+Sandbox IDs found (2): i9nxb4qydn3qmwway6hd3, idxwgcmp6a9ioo1823yuk
+Template IDs found (1): nlhz8vlwyupq845jsdg9
+Boot IDs found (1): 2bb79165-136a-4b63-829d-17027b0a8e40
+Timestamps found (124): 2026-09-04T11:11:19Z, 2026-09-04T11:15:36Z, 2026-09-04T11:15:45Z, 2026-09-04T11:15:50Z, 2026-09-04T11:22:05Z, 2026-09-04T11:22:10Z, 2026-09-04T11:22:15Z, 2026-09-04T11:22:20Z, 2026-09-04T11:22:25Z, 2026-09-04T11:22:30Z
+
+--- Agent 7 edge ---
+Sandbox IDs found (2): i07vrt7m23evfzhmemmqh, ilvohmgrk3rcbvrgm79be
+Template IDs found (1): nlhz8vlwyupq845jsdg9
+Boot IDs found (1): 2bb79165-136a-4b63-829d-17027b0a8e40
+Timestamps found (120): 2026-09-04T11:16:10Z, 2026-09-04T11:22:56Z, 2026-09-04T14:17:31Z, 2026-09-04T14:17:47Z, 2026-09-04T14:17:50Z, 2026-09-04T14:17:51Z, 2026-09-04T14:17:53Z, 2026-09-04T14:18:07Z, 2026-09-04T14:18:13Z, 2026-09-04T14:18:18Z
+
+--- Agent 8 edge ---
+Sandbox IDs found (2): i87c7gwotry240rbx1u77, iitws4rrop6j50j2hed7r
+Template IDs found (1): nlhz8vlwyupq845jsdg9
+Boot IDs found (1): 2bb79165136a4b63829d17027b0a8e40
+Timestamps found (17): 2026-09-04T14:14:23Z, 2026-09-04T14:14:25Z, 2026-09-04T14:14:27Z, 2026-09-04T14:14:30Z, 2026-09-04T14:14:31Z, 2026-09-04T14:14:32Z, 2026-09-04T14:14:38Z, 2026-09-04T14:20:33Z
+
+--- Agent 9 edge ---
+Sandbox IDs found (1): ixwcucmrk55t9qy240sxo
+Template IDs found (1): nlhz8vlwyupq845jsdg9
+Boot IDs found (0): 
+Timestamps found (201): 2026-09-04T12:11:04.583543938Z, 2026-09-04T12:11:20.477149742Z, 2026-09-04T12:11:21Z, 2026-09-04T12:12:06.937042370Z, 2026-09-04T12:12:32.344273914Z, 2026-09-04T12:12:32Z, 2026-09-04T12:13:02.080782593Z, 2026-09-04T12:13:02Z, 2026-09-04T12:15:37Z, 2026-09-04T12:16:40.349253785Z
+

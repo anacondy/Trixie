@@ -1,0 +1,81 @@
+# envchar raw transcript
+# file: 09_net_matrix.txt
+# title: DNS resolution and TCP connect latency matrix
+# generated_utc: 2026-09-04T13:45:05Z
+# host: e2b.local
+# sandbox: i4i7wdij5c7gh9absvtu8
+# template: nlhz8vlwyupq845jsdg9
+# probe: /home/user/envchar/probe_bench.py
+# NOTE: This file is a verbatim measurement transcript. Do not summarize.
+
+
+================================================================
+=== DNS getaddrinfo 5 samples
+=== UTC: 2026-09-04T13:45:25Z
+================================================================
+host                           n   min_ms  mean_ms   max_ms addrs/error
+google.com                     5      1.2      2.5      4.2 addrs=['108.177.98.100', '108.177.98.101', '108.177.98.102', '108.177.98.113', '108.177.98.138', '108.177.98.139'] err=None
+www.google.com                 5      0.8      0.9      1.0 addrs=['142.251.150.119', '142.251.151.119', '142.251.152.119', '142.251.153.119', '142.251.154.119', '142.251.155.119'] err=None
+github.com                     5      1.2      5.1     11.7 addrs=['140.82.116.3', '140.82.116.4'] err=None
+pypi.org                       5      0.8      0.9      1.0 addrs=['151.101.0.223', '151.101.128.223', '151.101.192.223', '151.101.64.223', '2a04:4e42:200::223', '2a04:4e42:400::223'] err=None
+huggingface.co                 5     22.7     25.8     30.6 addrs=['2600:9000:263e:2200:17:b174:6d00:93a1', '2600:9000:263e:3200:17:b174:6d00:93a1', '2600:9000:263e:3c00:17:b174:6d00:93a1', '2600:9000:263e:4200:17:b174:6d00:93a1', '2600:9000:263e:5200:17:b174:6d00:93a1', '2600:9000:263e:5400:17:b174:6d00:93a1'] err=None
+8.8.8.8                        5      0.0      0.0      0.0 addrs=['8.8.8.8'] err=None
+cloudflare.com                 5      1.8      8.2     10.7 addrs=['104.16.132.229', '104.16.133.229', '2606:4700::6810:84e5', '2606:4700::6810:85e5'] err=None
+files.pythonhosted.org         5      1.3      5.1     10.0 addrs=['167.82.48.223', '2a04:4e42:f000::223'] err=None
+registry.npmjs.org             5      0.8      1.0      1.5 addrs=['104.16.0.34', '104.16.1.34', '104.16.10.34', '104.16.11.34', '104.16.2.34', '104.16.3.34'] err=None
+cdn.jsdelivr.net               5      1.3     11.7     25.6 addrs=['104.17.207.5', '104.17.208.5', '2606:4700::6811:cf05', '2606:4700::6811:d005'] err=None
+www.wikipedia.org              5      1.3     17.0     40.6 addrs=['198.35.26.224', '2620:0:863:ed1a::1'] err=None
+
+================================================================
+=== TCP connect 5 samples
+=== UTC: 2026-09-04T13:45:25Z
+================================================================
+host                          port   min_ms  mean_ms   max_ms err
+google.com                     443      1.0      1.4      1.7 None
+www.google.com                 443      0.8      0.9      1.0 None
+github.com                     443      0.8      1.2      1.3 None
+github.com                      22      1.3      1.5      1.7 None
+github.com                      80      1.0      1.4      2.2 None
+pypi.org                       443      0.9      1.0      1.0 None
+pypi.org                        80      0.9      1.0      1.2 None
+huggingface.co                 443      1.3      1.5      2.0 None
+8.8.8.8                        443      0.1      0.1      0.2 None
+8.8.8.8                         53      0.1      0.1      0.1 None
+1.1.1.1                        443      0.2      0.4      0.7 None
+1.1.1.1                         80      0.3      0.5      1.1 None
+1.1.1.1                         53      0.1      0.2      0.2 None
+files.pythonhosted.org         443      1.0      1.3      1.6 None
+registry.npmjs.org             443      0.9      1.0      1.2 None
+cdn.jsdelivr.net               443      1.4      8.5     25.6 None
+smtp.gmail.com                  25      0.9      1.4      2.0 None
+smtp.gmail.com                 587      1.0      5.0     19.0 None
+example.com                    443      1.3      5.2     11.4 None
+
+================================================================
+=== IPv6 connect
+=== UTC: 2026-09-04T13:45:26Z
+================================================================
+IPv6 google.com ('2607:f8b0:400e:c06::64', 443, 0, 0) FAIL 0.0ms OSError: [Errno 101] Network is unreachable
+IPv6 resolve github.com FAIL gaierror: [Errno -5] No address associated with hostname
+IPv6 pypi.org ('2a04:4e42:600::223', 443, 0, 0) FAIL 0.0ms OSError: [Errno 101] Network is unreachable
+IPv6 huggingface.co ('2600:9000:263e:2200:17:b174:6d00:93a1', 443, 0, 0) FAIL 0.0ms OSError: [Errno 101] Network is unreachable
+
+================================================================
+=== UDP 53 DNS query
+=== UTC: 2026-09-04T13:45:26Z
+================================================================
+UDP/53 8.8.8.8: ok=True 0.8ms extra=124 from=('8.8.8.8', 53)
+UDP/53 1.1.1.1: ok=True 7.5ms extra=44 from=('1.1.1.1', 53)
+
+================================================================
+=== UDP 123 NTP
+=== UTC: 2026-09-04T13:45:26Z
+================================================================
+NTP OK 1.7ms 48B from ('216.239.35.12', 123)
+
+================================================================
+=== UDP 443 probe
+=== UTC: 2026-09-04T13:45:26Z
+================================================================
+UDP/443 1.1.1.1 FAIL 3003.2ms TimeoutError: timed out
+UDP/443 8.8.8.8 FAIL 3003.2ms TimeoutError: timed out

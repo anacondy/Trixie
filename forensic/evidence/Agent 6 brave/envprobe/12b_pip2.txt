@@ -1,0 +1,51 @@
+== pip wheel install rerun with FULL output ==
+--- pip install rich ---
+Collecting rich
+  Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+Collecting markdown-it-py>=2.2.0 (from rich)
+  Downloading markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting pygments<3.0.0,>=2.13.0 (from rich)
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+  >>> rich took 1.41s
+--- pip install orjson ---
+Collecting orjson
+  Downloading orjson-3.12.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (41 kB)
+Downloading orjson-3.12.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (131 kB)
+Installing collected packages: orjson
+Successfully installed orjson-3.12.0
+  >>> orjson took 0.67s
+
+== numpy: linux wheel direct download then install ==
+wheel: 
+curl: option : blank argument where content is expected
+curl: try 'curl --help' or 'curl --manual' for more information
+WARNING: Requirement '/tmp/np.whl' looks like a filename, but the file does not exist
+ERROR: Invalid wheel filename (wrong number of parts): 'np'
+  >>> numpy install took 1788520849.4144053s
+  >>> download+install total 0.29s
+
+== numpy bench (fixed syntax) ==
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'numpy'
+
+== HF multi-connection throughput (4 parallel 5MiB ranges) ==
+  File "<string>", line 1
+    print(f'  4x5MiB parallel: {1788520850.657532453-1788520849.741720654:.2f}s wall, aggregate 20971520 bytes -> {20971520/1048576/(1788520850.658753473-1788520849.741720654):.1f} MiB/s (file count 4))
+          ^
+SyntaxError: unterminated f-string literal (detected at line 1)
+
+== hetzner DNS follow-up (rcode/an/type) ==
+  speed.hetzner.de             rcode=0 answers=0 ips=[] 1.7 ms
+  speed.hetzner.de             rcode=0 answers=0 ips=[] 155.6 ms
+  random123.hetzner.de         rcode=3 answers=0 ips=[] 215.8 ms
+  www.hetzner.com              rcode=0 answers=1 ips=['0.4.213.133'] 179.8 ms
+  www.python.org               rcode=0 answers=5 ips=['0.33.9.100', '104.111.110.3', '101.116.0.192', '101.64.223.192'] 10.5 ms
+  pypi.org                     rcode=0 answers=4 ips=['0.4.151.101', '0.4.151.101', '0.4.151.101', '0.4.151.101'] 0.8 ms
+  download.hetzner.de          rcode=0 answers=1 ips=['0.4.213.239'] 155.9 ms
+  dl.google.com                rcode=0 answers=4 ips=['0.4.74.125', '0.4.74.125', '0.4.74.125', '0.4.74.125'] 2.5 ms
+  speedtest.net                rcode=0 answers=4 ips=['0.4.151.101', '0.4.151.101', '0.4.151.101', '0.4.151.101'] 1.4 ms
+  speed.hetzner.de             rcode=0 answers=0 ips=[] 1.2 ms
+
+== net hostname sanity ==
+e2b.local

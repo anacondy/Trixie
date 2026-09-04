@@ -1,0 +1,81 @@
+===== UTC: 2026-09-04T14:14:27Z =====
+
+===== DNS getent =====
+--- google.com ---
+2607:f8b0:400e:c0a::64 google.com
+2607:f8b0:400e:c0a::8a google.com
+2607:f8b0:400e:c0a::8b google.com
+2607:f8b0:400e:c0a::65 google.com
+real 0.005
+--- github.com ---
+140.82.116.4    github.com
+real 0.016
+--- pypi.org ---
+2a04:4e42:200::223 pypi.org
+2a04:4e42:400::223 pypi.org
+2a04:4e42:600::223 pypi.org
+2a04:4e42::223  pypi.org
+real 0.003
+--- huggingface.co ---
+2600:9000:2732:4c00:17:b174:6d00:93a1 huggingface.co
+2600:9000:2732:d800:17:b174:6d00:93a1 huggingface.co
+2600:9000:2732:3400:17:b174:6d00:93a1 huggingface.co
+2600:9000:2732:6c00:17:b174:6d00:93a1 huggingface.co
+2600:9000:2732:8c00:17:b174:6d00:93a1 huggingface.co
+2600:9000:2732:6600:17:b174:6d00:93a1 huggingface.co
+2600:9000:2732:8a00:17:b174:6d00:93a1 huggingface.co
+2600:9000:2732:a400:17:b174:6d00:93a1 huggingface.co
+real 0.019
+--- 8.8.8.8 ---
+8.8.8.8         dns.google
+real 0.003
+
+===== ping -c 3 (expect fail without cap_net_raw) =====
+ping: socktype: SOCK_RAW
+ping: socket: Operation not permitted
+ping: => missing cap_net_raw+p capability or setuid?
+
+===== curl HTTPS timings =====
+--- https://google.com ---
+dns:0.005087s connect:0.005774s tls:0.039461s ttfb:0.083899s total:0.085149s size:83434 http:200 ip:142.251.154.119
+--- https://github.com ---
+dns:0.020407s connect:0.020691s tls:0.046958s ttfb:0.059064s total:0.129670s size:576143 http:200 ip:20.29.134.23
+--- https://pypi.org ---
+dns:0.001612s connect:0.001915s tls:0.023037s ttfb:0.033098s total:0.034969s size:27965 http:200 ip:151.101.64.223
+--- https://huggingface.co ---
+dns:0.024639s connect:0.025009s tls:0.046319s ttfb:0.074721s total:0.096023s size:182056 http:200 ip:99.86.101.56
+
+===== curl -4 / -6 google =====
+ipv4 total:0.029154 http:301
+ipv6 total:0.001833 http:000 err:Failed to connect to google.com port 443 after 1 ms: Could not connect to server
+
+===== TCP connect samples (python) =====
+8.8.8.8:443  samples_ms=[0.38, 0.19, 0.21, 0.18, 0.18]  min=0.18 avg=0.23 max=0.38
+google.com:443  samples_ms=[2.05, 1.64, 1.69, 1.47, 1.4]  min=1.40 avg=1.65 max=2.05
+github.com:443  samples_ms=[12.42, 20.84, 1.52, 1.63, 1.44]  min=1.44 avg=7.57 max=20.84
+pypi.org:443  samples_ms=[1.28, 1.14, 1.23, 1.31, 1.25]  min=1.14 avg=1.24 max=1.31
+huggingface.co:443  samples_ms=[1.79, 26.26, 1.7, 1.44, 15.96]  min=1.44 avg=9.43 max=26.26
+
+===== large download =====
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 5648k    0 5648k    0     0  4464k      0 --:--:--  0:00:01 --:--:-- 5478k100 10.6M    0 10.6M    0     0  5273k      0 --:--:--  0:00:02 --:--:-- 5949k
+http:200 size:11119139 speed:5399986B/s total:2.059105s
+-rw-r--r-- 1 user user 11M Sep  4 14:14 /tmp/probe_large.bin
+
+===== port probe 1.1.1.1 =====
+1.1.1.1:22 connect_ex=0 1ms
+1.1.1.1:53 connect_ex=0 0ms
+1.1.1.1:80 connect_ex=0 1ms
+1.1.1.1:443 connect_ex=0 0ms
+1.1.1.1:587 connect_ex=0 0ms
+1.1.1.1:993 connect_ex=0 0ms
+1.1.1.1:3306 connect_ex=0 0ms
+1.1.1.1:5432 connect_ex=0 0ms
+1.1.1.1:8080 connect_ex=0 0ms
+1.1.1.1:8443 connect_ex=0 0ms
+--- TEST-NET 192.0.2.1:9 ---
+192.0.2.1:9 connect_ex=0 0ms
+--- github.com:22 ---
+github:22 connected 2.2482569999979773

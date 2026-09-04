@@ -1,0 +1,39 @@
+== disk backend ==
+  /sys/block/loop0/queue/rotational -> 1 (0=SSD,1=HDD)
+  /sys/block/loop1/queue/rotational -> 1 (0=SSD,1=HDD)
+  /sys/block/loop2/queue/rotational -> 1 (0=SSD,1=HDD)
+  /sys/block/loop3/queue/rotational -> 1 (0=SSD,1=HDD)
+  /sys/block/loop4/queue/rotational -> 1 (0=SSD,1=HDD)
+  /sys/block/loop5/queue/rotational -> 1 (0=SSD,1=HDD)
+  /sys/block/loop6/queue/rotational -> 1 (0=SSD,1=HDD)
+  /sys/block/loop7/queue/rotational -> 1 (0=SSD,1=HDD)
+  /sys/block/vda/queue/rotational -> 1 (0=SSD,1=HDD)
+21 1 254:0 / / rw,relatime shared:1 - ext4 /dev/root rw,discard
+  [QUICK] reduced sizes
+
+== sequential write 32 MiB (python, 1 MiB blocks, buffered+fsync) ==
+  write 32MiB: 1457 MiB/s wall (0.02s) ; fsync 0.033s ; total w/ fsync 0.05s
+
+== dd O_DIRECT write 32 MiB ==
+33554432 bytes (34 MB, 32 MiB) copied, 0.0240688 s, 1.4 GB/s
+
+== warm read (page cache) ==
+  read warm: 5136 MiB/s (0.01s)
+
+== COLD read (after sudo drop_caches) ==
+  dropped caches
+  read cold:  1600 MiB/s (0.02s)
+
+== dd O_DIRECT read 32 MiB ==
+33554432 bytes (34 MB, 32 MiB) copied, 0.0249009 s, 1.3 GB/s
+  (bench files removed)
+
+== tmpfs (RAM) 64 MiB write+read in /tmp and /dev/shm ==
+  /tmp: write 3212 MiB/s, read 5145 MiB/s (incl fsync on write)
+  /dev/shm: write 3443 MiB/s, read 4899 MiB/s (incl fsync on write)
+
+== small-file inode ops: create/delete 4k files (ext4) ==
+  create 4000 files: 159,887 files/s ; delete: 404,017 files/s
+
+== page-cache pressure note: df after benches ==
+/dev/root        25G  4.1G   20G  17% /

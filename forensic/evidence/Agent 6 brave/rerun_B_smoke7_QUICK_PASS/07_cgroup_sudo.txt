@@ -1,0 +1,86 @@
+== cgroup v2 tree (delegated view) ==
+total 0
+dr-xr-xr-x 13 root root 0 Jul 23 18:05 .
+drwxr-xr-x 10 root root 0 Sep  4 13:47 ..
+-r--r--r--  1 root root 0 Sep  4 13:47 cgroup.controllers
+-rw-r--r--  1 root root 0 Sep  4 13:47 cgroup.max.depth
+-rw-r--r--  1 root root 0 Sep  4 13:47 cgroup.max.descendants
+-rw-r--r--  1 root root 0 Sep  4 13:47 cgroup.procs
+-r--r--r--  1 root root 0 Sep  4 13:47 cgroup.stat
+-rw-r--r--  1 root root 0 Jul 23 18:05 cgroup.subtree_control
+-rw-r--r--  1 root root 0 Sep  4 13:47 cgroup.threads
+-r--r--r--  1 root root 0 Sep  4 13:47 cpu.stat
+-r--r--r--  1 root root 0 Sep  4 13:47 cpuset.cpus.effective
+
+== /sys/fs/cgroup/user/* limits ==
+cgroup.procs:     6385 6392 6393 
+cgroup.controllers:cpuset cpu io memory pids 
+memory.max:       1947172864 
+memory.current:   169828352 
+memory.high:      1947172864 
+memory.swap.max:  max 
+memory.peak:      576217088 
+cpu.max:          max 100000 
+cpu.stat:         usage_usec 61335058 user_usec 50586360 system_usec 10748697 
+pids.max:         max 
+pids.current:     6 
+io.max:           
+
+== our position in cgroup tree ==
+0::/user
+
+== which python / symlinks ==
+/usr/local/bin/python3
+/usr/bin/python3
+/bin/python3
+/usr/local/bin/pip
+/usr/local/bin/pip3
+lrwxrwxrwx 1 root root    10 Jul 14 04:47 /usr/local/bin/python3 -> python3.13
+lrwxrwxrwx 1 root root    17 Jul 14 04:47 /usr/local/bin/python3-config -> python3.13-config
+-rwxrwxrwx 1 root root 18440 Jul 14 04:47 /usr/local/bin/python3.13
+-rwxrwxrwx 1 root root  3127 Jul 14 04:47 /usr/local/bin/python3.13-config
+
+== locale / arch / uptime ==
+LANG=
+LANGUAGE=
+LC_CTYPE="POSIX"
+LANG=unset LC_ALL=unset
+amd64
+ 13:58:02 up 14 min,  0 users,  load average: 0.18, 0.12, 0.04
+
+== systemd user session? ==
+Failed to connect to user scope bus via local transport: $DBUS_SESSION_BUS_ADDRESS and $XDG_RUNTIME_DIR not defined (consider using --machine=<user>@.host --user to connect to bus of other user)
+
+== listening sockets (ss) ==
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+LISTEN 0      100        127.0.0.1:35769      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:47945      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:34675      0.0.0.0:*          
+LISTEN 0      4096         0.0.0.0:111        0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:35769      0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:47945      0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:34675      0.0.0.0:*          
+LISTEN 0      128        127.0.0.1:8888       0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:8888       0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:44461      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:35105      0.0.0.0:*          
+
+== events endpoint reachability (192.0.2.1) ==
+  http_code=404 time=0.000981s
+
+== nproc / cpu info cache ==
+2
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           46 bits physical, 48 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  2
+On-line CPU(s) list:                     0,1
+Vendor ID:                               GenuineIntel
+Model name:                              Intel(R) Xeon(R) Processor @ 2.60GHz
+CPU family:                              6
+Model:                                   106
+Thread(s) per core:                      2
+Core(s) per socket:                      1
+Socket(s):                               1
+Stepping:                                6

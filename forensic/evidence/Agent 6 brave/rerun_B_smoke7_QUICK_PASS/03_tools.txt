@@ -1,0 +1,101 @@
+== tool availability + versions (probed 2026-09-04T13:57:55Z) ==
+python3        Python 3.13.14
+python3.13     Python 3.13.14
+pip            pip 26.1.2 from /usr/local/lib/python3.13/site-packages/pip (python 3.13)
+pip3           pip 26.1.2 from /usr/local/lib/python3.13/site-packages/pip (python 3.13)
+node           v20.20.2
+npm            10.8.2
+npx            10.8.2
+yarn           MISSING
+pnpm           MISSING
+bun            MISSING
+deno           MISSING
+git            git version 2.47.3
+curl           curl 8.14.1 (x86_64-pc-linux-gnu) libcurl/8.14.1 OpenSSL/3.5.6 zlib/1.3.1 brotli/1.1.0 zstd/1.5.7 libidn2/2.3.8 libpsl/0.21.2 libssh2/1.11.1 nghttp2/1.64.0 nghttp3/1.8.0 librtmp/2.3 OpenLDAP/2.6.10
+wget           GNU Wget 1.25.0 built on linux-gnu.
+aria2c         MISSING
+ffmpeg         MISSING
+docker         MISSING
+podman         MISSING
+make           GNU Make 4.4.1
+gcc            gcc (Debian 14.2.0-19) 14.2.0
+g++            g++ (Debian 14.2.0-19) 14.2.0
+cc             cc (Debian 14.2.0-19) 14.2.0
+clang          MISSING
+cmake          MISSING
+ninja          MISSING
+pkg-config     1.8.1
+jq             jq-1.7
+yq             MISSING
+unzip          UnZip 6.00 of 20 April 2009, by Debian. Original by Info-ZIP.
+zip            Copyright (c) 1990-2008 Info-ZIP - Type 'zip "-L"' for software license.
+tar            tar (GNU tar) 1.35
+xz             xz (XZ Utils) 5.8.1
+gzip           gzip 1.13
+bzip2          (runs, no --version output)
+zstd           MISSING
+rsync          MISSING
+openssl        OpenSSL 3.5.6 7 Apr 2026 (Library: OpenSSL 3.5.6 7 Apr 2026)
+ssh            (runs, no --version output)
+scp            (runs, no --version output)
+socat          socat by Gerhard Rieger and contributors - see www.dest-unreach.org
+ncat           MISSING
+dig            MISSING
+nslookup       MISSING
+host           MISSING
+getent         getent (Debian GLIBC 2.41-12+deb13u3) 2.41
+ping           ping from iputils 20240905
+traceroute     MISSING
+mtr            MISSING
+htop           MISSING
+strace         MISSING
+ltrace         MISSING
+perf           MISSING
+file           file-5.46
+sqlite3        3.46.1 2024-08-13 09:16:08 c9c2ab54ba1f5f46360f1b4f35d849cd3f080e6fc2b6c60e91b16c63f69aalt1 (64-bit)
+redis-cli      MISSING
+go             MISSING
+rustc          MISSING
+cargo          MISSING
+java           openjdk 11 2018-09-25
+javac          javac 11
+ruby           MISSING
+perl           Summary of my perl5 (revision 5 version 40 subversion 1) configuration:
+php            MISSING
+Rscript        Rscript (R) version 4.5.0 (2025-04-11)
+julia          MISSING
+autoconf       autoconf (GNU Autoconf) 2.72
+automake       automake (GNU automake) 1.17
+libtool        MISSING
+bison          MISSING
+flex           MISSING
+screen         MISSING
+tmux           MISSING
+vim            MISSING
+nano           MISSING
+xxd            MISSING
+bc             MISSING
+time           (runs, no --version output)
+timeout        timeout (GNU coreutils) 9.7
+setsid         setsid from util-linux 2.41
+flock          flock from util-linux 2.41
+vmstat         vmstat from procps-ng 4.0.4
+iostat         MISSING
+ifconfig       MISSING
+ip             ip utility, iproute2-6.15.0, libbpf 1.5.0
+busybox        (runs, no --version output)
+
+== language runtime details ==
+python: 3.13.14 (main, Jul 14 2026, 04:45:36) [GCC 14.2.0]
+impl: CPython | bits: 64
+pip 26.1.2 from /usr/local/lib/python3.13/site-packages/pip (python 3.13)
+node: v20.20.2
+npm: 10.8.2
+git version 2.47.3
+
+== docker daemon reachable? ==
+timeout: failed to run command 'docker': No such file or directory
+
+== registry defaults ==
+no pip/npm registry env overrides
+https://registry.npmjs.org/

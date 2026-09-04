@@ -1,0 +1,810 @@
+=== PHASE 1 – Inventory ===
+Generated: Fri Sep  4 17:32:11 UTC 2026
+PWD: /home/user/Trixie
+
+------------------------------------------------------------
+File: Agent 1 chrome.zip
+Size bytes: 10863
+SHA-256: 52880dad6738d951ad51a255347297ea54905b282e1456f70ef97e576266dee7
+
+unzip -l listing:
+Archive:  Agent 1 chrome.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     1511  2026-09-04 14:33   01_runtime.txt
+      704  2026-09-04 14:33   02_tooling.txt
+      620  2026-09-04 14:33   03_filesystem.txt
+      387  2026-09-04 14:33   04_network.txt
+      545  2026-09-04 14:33   05_benchmarks.txt
+      849  2026-09-04 14:33   06_other.txt
+     5909  2026-09-04 14:33   probe_environment.sh
+      626  2026-09-04 14:33   MANIFEST.txt
+     6530  2026-09-04 14:33   environment_characterization.md
+     2396  2026-09-04 14:33   metadata.txt
+---------                     -------
+    20077                     10 files
+
+Summary:
+  Entry count (approx): 10
+  Total uncompressed size: 20077
+  Directory entries: 0
+  Presence of .sh files: 1
+  Presence of .py files: 0
+  Presence of .bin files: 0
+  Presence of .exe files: 0
+  Full list of suspicious:
+     5909  2026-09-04 14:33   probe_environment.sh
+
+------------------------------------------------------------
+File: Agent 2 brave.zip
+Size bytes: 78729
+SHA-256: 55302d915b3c07b1f11bed29738c458ae78e349a417b9dae22281c2cd6d444fa
+
+unzip -l listing:
+Archive:  Agent 2 brave.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      615  2026-09-04 15:12   PACKING_RECORD.txt
+    24072  2026-09-04 15:10   environment_characterization.md
+    17046  2026-09-04 15:11   00_ZIP_INDEX.md
+        0  2026-09-04 15:12   envchar/
+     1631  2026-09-04 15:10   envchar/SHA256SUMS
+     3170  2026-09-04 15:10   envchar/MANIFEST.txt
+     1643  2026-09-04 15:10   envchar/README.md
+     3416  2026-09-04 15:10   envchar/make_manifest.py
+    23185  2026-09-04 15:10   envchar/probe_bench.py
+    14177  2026-09-04 15:10   envchar/probe.sh
+        0  2026-09-04 15:12   envchar/raw/
+    34183  2026-09-04 15:10   envchar/raw/16_misc.txt
+     3195  2026-09-04 15:10   envchar/raw/15_memory.txt
+     4487  2026-09-04 15:10   envchar/raw/14_installs.txt
+     1382  2026-09-04 15:10   envchar/raw/13_disk_bench.txt
+     2689  2026-09-04 15:10   envchar/raw/12_cpu_bench.txt
+     2688  2026-09-04 15:10   envchar/raw/11_net_ports.txt
+    15595  2026-09-04 15:10   envchar/raw/10_net_throughput.txt
+     5350  2026-09-04 15:10   envchar/raw/09_net_matrix.txt
+     5987  2026-09-04 15:10   envchar/raw/08_filesystem.txt
+    11269  2026-09-04 15:10   envchar/raw/07_python_packages.txt
+    15001  2026-09-04 15:10   envchar/raw/06_tools.txt
+     2706  2026-09-04 15:10   envchar/raw/05_environment.txt
+    12003  2026-09-04 15:10   envchar/raw/04_cgroup.txt
+    14325  2026-09-04 15:10   envchar/raw/03_user_limits.txt
+    25126  2026-09-04 15:10   envchar/raw/02_isolation.txt
+     8495  2026-09-04 15:10   envchar/raw/01_runtime.txt
+        0  2026-09-04 15:12   _envchar/
+      122  2026-09-04 15:10   _envchar/session_marker.txt
+---------                     -------
+   253558                     29 files
+
+Summary:
+  Entry count (approx): 29
+  Total uncompressed size: 253558
+  Directory entries: 3
+  Presence of .sh files: 1
+  Presence of .py files: 2
+  Presence of .bin files: 0
+  Presence of .exe files: 0
+  Full list of suspicious:
+     3416  2026-09-04 15:10   envchar/make_manifest.py
+    23185  2026-09-04 15:10   envchar/probe_bench.py
+    14177  2026-09-04 15:10   envchar/probe.sh
+
+------------------------------------------------------------
+File: Agent 3 brave.zip
+Size bytes: 47044
+SHA-256: 066b4eb2764eea3f7543ad575a637f3c8d83e7d742ab81385d2fc17c09e8e62d
+
+unzip -l listing:
+Archive:  Agent 3 brave.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     2405  2026-09-04 15:10   SHA256SUMS_ALL.txt
+    22040  2026-09-04 15:10   environment_characterization.md
+        0  2026-09-04 15:10   envchar/
+        0  2026-09-04 15:10   envchar/raw_run2/
+     2681  2026-09-04 15:10   envchar/raw_run2/verification_manifest.txt
+     1447  2026-09-04 15:10   envchar/raw_run2/SHA256SUMS
+     3688  2026-09-04 15:10   envchar/raw_run2/16_env_services.txt
+      683  2026-09-04 15:10   envchar/raw_run2/15_background_heartbeat.log
+      513  2026-09-04 15:10   envchar/raw_run2/15_background.txt
+     1349  2026-09-04 15:10   envchar/raw_run2/14_memory.txt
+     1173  2026-09-04 15:10   envchar/raw_run2/13_installs.txt
+     1030  2026-09-04 15:10   envchar/raw_run2/12_disk_bench.txt
+      992  2026-09-04 15:10   envchar/raw_run2/11_cpu_bench.txt
+     1440  2026-09-04 15:10   envchar/raw_run2/10_throughput.txt
+     1695  2026-09-04 15:10   envchar/raw_run2/09_net_matrix.txt
+     1306  2026-09-04 15:10   envchar/raw_run2/08_latency.txt
+     1131  2026-09-04 15:10   envchar/raw_run2/07_dns.txt
+      735  2026-09-04 15:10   envchar/raw_run2/06_persistence.txt
+     3718  2026-09-04 15:10   envchar/raw_run2/05_filesystem.txt
+     8667  2026-09-04 15:10   envchar/raw_run2/04_tooling.txt
+     2576  2026-09-04 15:10   envchar/raw_run2/03_limits.txt
+     6144  2026-09-04 15:10   envchar/raw_run2/02_isolation.txt
+     1725  2026-09-04 15:10   envchar/raw_run2/01_runtime.txt
+       39  2026-09-04 15:10   envchar/persistence_marker.txt
+     1651  2026-09-04 15:10   envchar/bench.py
+    24955  2026-09-04 15:10   envchar/probe_environment.sh
+    12891  2026-09-04 15:09   00_README.md
+---------                     -------
+   106674                     27 files
+
+Summary:
+  Entry count (approx): 27
+  Total uncompressed size: 106674
+  Directory entries: 2
+  Presence of .sh files: 1
+  Presence of .py files: 1
+  Presence of .bin files: 0
+  Presence of .exe files: 0
+  Full list of suspicious:
+     1651  2026-09-04 15:10   envchar/bench.py
+    24955  2026-09-04 15:10   envchar/probe_environment.sh
+
+------------------------------------------------------------
+File: Agent 4 chrome.zip
+Size bytes: 282299
+SHA-256: 0f01d761ded3ddf9ec755bc7ce289029e093e172748f72a179e7054da769662b
+
+unzip -l listing:
+Archive:  Agent 4 chrome.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+    38801  2026-09-04 14:39   README_START_HERE.md
+        9  2026-09-04 13:44   envcheck/session1/bg_start.txt
+     2335  2026-09-04 13:44   envcheck/session1/cpu_bench.py
+     2895  2026-09-04 13:44   envcheck/session1/cpu_bench2.py
+     2728  2026-09-04 13:44   envcheck/session1/disk_bench.py
+      835  2026-09-04 13:44   envcheck/session1/mem_progress.log
+     1039  2026-09-04 13:44   envcheck/session1/memtest.py
+     2829  2026-09-04 13:44   envcheck/session1/net_throughput.py
+     1373  2026-09-04 13:44   envcheck/session1/net_workload.py
+     1301  2026-09-04 13:44   envcheck/session1/portscan.py
+     2100  2026-09-04 13:44   envcheck/session1/tcp_bench.py
+    89786  2026-09-04 14:38   environment_characterization.md
+    59897  2026-09-04 14:19   envcheck/probe.sh
+     1720  2026-09-04 13:48   envcheck/probe_background.sh
+     3796  2026-09-04 14:16   envcheck/diff_run.sh
+     6130  2026-09-04 14:18   envcheck/normalize.py
+     1041  2026-09-04 13:54   envcheck/legacy_raw/cpu.txt
+     1181  2026-09-04 13:54   envcheck/legacy_raw/cpu2.txt
+     1530  2026-09-04 13:54   envcheck/legacy_raw/disk.txt
+     1314  2026-09-04 13:54   envcheck/legacy_raw/dns.txt
+      475  2026-09-04 13:54   envcheck/legacy_raw/net_workload.txt
+     2481  2026-09-04 13:54   envcheck/legacy_raw/ports.txt
+      465  2026-09-04 13:54   envcheck/legacy_raw/scale.txt
+     1998  2026-09-04 13:54   envcheck/legacy_raw/tcp.txt
+     2718  2026-09-04 13:54   envcheck/legacy_raw/throughput.txt
+     3299  2026-09-04 13:54   envcheck/legacy_raw/tools.txt
+      403  2026-09-04 14:12   envcheck/.probe_log
+       60  2026-09-04 14:12   envcheck/.probe_status
+     1520  2026-09-04 14:24   envcheck/raw/00_meta.txt
+     5990  2026-09-04 14:20   envcheck/raw/01_runtime.txt
+     9956  2026-09-04 14:20   envcheck/raw/02_isolation.txt
+     3027  2026-09-04 14:20   envcheck/raw/03_limits.txt
+     2254  2026-09-04 14:20   envcheck/raw/04_users.txt
+     8790  2026-09-04 14:20   envcheck/raw/05_tools.txt
+     5093  2026-09-04 14:20   envcheck/raw/06_pkg_and_compile.txt
+     3199  2026-09-04 14:20   envcheck/raw/06b_pip_freeze_sorted.txt
+     7294  2026-09-04 14:20   envcheck/raw/07_filesystem.txt
+     2870  2026-09-04 14:20   envcheck/raw/08_persistence.txt
+       34  2026-09-04 14:20   envcheck/raw/.persist/writer.txt
+     9413  2026-09-04 14:22   envcheck/raw/09_net_matrix.txt
+     8139  2026-09-04 14:26   envcheck/README.md
+     2749  2026-09-04 14:22   envcheck/raw/10_net_dns.txt
+     2433  2026-09-04 14:22   envcheck/raw/11_net_latency.txt
+     3103  2026-09-04 14:23   envcheck/raw/12_net_throughput.txt
+     1932  2026-09-04 14:23   envcheck/raw/13_net_egress_proof.txt
+     2245  2026-09-04 14:23   envcheck/raw/14_bench_cpu.txt
+     3708  2026-09-04 14:24   envcheck/raw/15_bench_disk.txt
+     2412  2026-09-04 14:24   envcheck/raw/16_bench_installs.txt
+     2840  2026-09-04 14:24   envcheck/raw/17_mem_pressure.txt
+     2091  2026-09-04 14:24   envcheck/raw/18_background.txt
+      180  2026-09-04 14:24   envcheck/raw/.bg_ticks
+       17  2026-09-04 14:24   envcheck/raw/.bg_pid
+      900  2026-09-04 14:24   envcheck/raw/.bg_ticks.setsid
+     8270  2026-09-04 14:24   envcheck/raw/19_services.txt
+     1797  2026-09-04 14:24   envcheck/raw/20_accelerators.txt
+     1174  2026-09-04 14:24   envcheck/raw/normalized/00_meta.norm
+     5167  2026-09-04 14:24   envcheck/raw/normalized/01_runtime.norm
+     7759  2026-09-04 14:24   envcheck/raw/normalized/02_isolation.norm
+     2512  2026-09-04 14:24   envcheck/raw/normalized/03_limits.norm
+     2119  2026-09-04 14:24   envcheck/raw/normalized/04_users.norm
+     5097  2026-09-04 14:24   envcheck/raw/normalized/05_tools.norm
+     4722  2026-09-04 14:24   envcheck/raw/normalized/06_pkg_and_compile.norm
+     3098  2026-09-04 14:24   envcheck/raw/normalized/06b_pip_freeze_sorted.norm
+     5389  2026-09-04 14:24   envcheck/raw/normalized/07_filesystem.norm
+     2465  2026-09-04 14:24   envcheck/raw/normalized/08_persistence.norm
+     7467  2026-09-04 14:24   envcheck/raw/normalized/09_net_matrix.norm
+     1557  2026-09-04 14:24   envcheck/raw/normalized/10_net_dns.norm
+     1672  2026-09-04 14:24   envcheck/raw/normalized/11_net_latency.norm
+     2557  2026-09-04 14:24   envcheck/raw/normalized/12_net_throughput.norm
+     1326  2026-09-04 14:24   envcheck/raw/normalized/13_net_egress_proof.norm
+     1440  2026-09-04 14:24   envcheck/raw/normalized/14_bench_cpu.norm
+     2928  2026-09-04 14:24   envcheck/raw/normalized/15_bench_disk.norm
+     2048  2026-09-04 14:24   envcheck/raw/normalized/16_bench_installs.norm
+     2403  2026-09-04 14:24   envcheck/raw/normalized/17_mem_pressure.norm
+     1933  2026-09-04 14:24   envcheck/raw/normalized/18_background.norm
+     6704  2026-09-04 14:24   envcheck/raw/normalized/19_services.norm
+     1639  2026-09-04 14:24   envcheck/raw/normalized/20_accelerators.norm
+     6107  2026-09-04 14:27   envcheck/raw/MANIFEST.txt
+     8083  2026-09-04 14:27   envcheck/raw/manifest.json
+       23  2026-09-04 14:24   envcheck/raw/.run_id
+     1958  2026-09-04 13:59   envcheck/session1/README.md
+     3267  2026-09-04 14:24   envcheck/raw/normalized/MANIFEST.norm
+     7916  2026-09-04 14:27   envcheck/make_manifest.py
+     1851  2026-09-04 14:27   envcheck/raw/SHA256SUMS.txt
+     2115  2026-09-04 14:27   envcheck/raw/SHA256SUMS.normalized.txt
+      795  2026-09-04 14:24   envcheck/raw/normalized/SHA256SUMS.normalized.norm
+      531  2026-09-04 14:24   envcheck/raw/normalized/SHA256SUMS.norm
+      166  2026-09-04 14:09   envcheck/.probe_manifest.log
+      389  2026-09-04 14:24   envcheck/.v3_log
+       60  2026-09-04 14:24   envcheck/.v3_status
+       17  2026-09-04 14:25   envcheck/run_v2/.bg_pid
+      180  2026-09-04 14:25   envcheck/run_v2/.bg_ticks
+      720  2026-09-04 14:25   envcheck/run_v2/.bg_ticks.setsid
+       34  2026-09-04 14:25   envcheck/run_v2/.persist/writer.txt
+     1704  2026-09-04 14:25   envcheck/run_v2/00_meta.txt
+     5990  2026-09-04 14:25   envcheck/run_v2/01_runtime.txt
+     9948  2026-09-04 14:25   envcheck/run_v2/02_isolation.txt
+     3027  2026-09-04 14:25   envcheck/run_v2/03_limits.txt
+     2254  2026-09-04 14:25   envcheck/run_v2/04_users.txt
+     8790  2026-09-04 14:25   envcheck/run_v2/05_tools.txt
+     5093  2026-09-04 14:25   envcheck/run_v2/06_pkg_and_compile.txt
+     3199  2026-09-04 14:25   envcheck/run_v2/06b_pip_freeze_sorted.txt
+     7294  2026-09-04 14:25   envcheck/run_v2/07_filesystem.txt
+     2870  2026-09-04 14:25   envcheck/run_v2/08_persistence.txt
+     9413  2026-09-04 14:25   envcheck/run_v2/09_net_matrix.txt
+     2749  2026-09-04 14:25   envcheck/run_v2/10_net_dns.txt
+     2433  2026-09-04 14:25   envcheck/run_v2/11_net_latency.txt
+     3098  2026-09-04 14:25   envcheck/run_v2/12_net_throughput.txt
+     1932  2026-09-04 14:25   envcheck/run_v2/13_net_egress_proof.txt
+     2245  2026-09-04 14:25   envcheck/run_v2/14_bench_cpu.txt
+     3708  2026-09-04 14:25   envcheck/run_v2/15_bench_disk.txt
+     2505  2026-09-04 14:25   envcheck/run_v2/16_bench_installs.txt
+     2838  2026-09-04 14:25   envcheck/run_v2/17_mem_pressure.txt
+     2091  2026-09-04 14:25   envcheck/run_v2/18_background.txt
+     8270  2026-09-04 14:25   envcheck/run_v2/19_services.txt
+     1797  2026-09-04 14:25   envcheck/run_v2/20_accelerators.txt
+     1499  2026-09-04 14:25   envcheck/run_v2/normalized/00_meta.norm
+     5812  2026-09-04 14:25   envcheck/run_v2/normalized/01_runtime.norm
+     9685  2026-09-04 14:25   envcheck/run_v2/normalized/02_isolation.norm
+     2932  2026-09-04 14:25   envcheck/run_v2/normalized/03_limits.norm
+     2139  2026-09-04 14:25   envcheck/run_v2/normalized/04_users.norm
+     8750  2026-09-04 14:25   envcheck/run_v2/normalized/05_tools.norm
+     4967  2026-09-04 14:25   envcheck/run_v2/normalized/06_pkg_and_compile.norm
+     3461  2026-09-04 14:25   envcheck/run_v2/normalized/06b_pip_freeze_sorted.norm
+     7182  2026-09-04 14:25   envcheck/run_v2/normalized/07_filesystem.norm
+     2725  2026-09-04 14:25   envcheck/run_v2/normalized/08_persistence.norm
+     9350  2026-09-04 14:25   envcheck/run_v2/normalized/09_net_matrix.norm
+     2678  2026-09-04 14:25   envcheck/run_v2/normalized/10_net_dns.norm
+     2335  2026-09-04 14:25   envcheck/run_v2/normalized/11_net_latency.norm
+     2896  2026-09-04 14:25   envcheck/run_v2/normalized/12_net_throughput.norm
+     1819  2026-09-04 14:25   envcheck/run_v2/normalized/13_net_egress_proof.norm
+     2091  2026-09-04 14:25   envcheck/run_v2/normalized/14_bench_cpu.norm
+     3418  2026-09-04 14:25   envcheck/run_v2/normalized/15_bench_disk.norm
+     2354  2026-09-04 14:25   envcheck/run_v2/normalized/16_bench_installs.norm
+     2595  2026-09-04 14:25   envcheck/run_v2/normalized/17_mem_pressure.norm
+     1975  2026-09-04 14:25   envcheck/run_v2/normalized/18_background.norm
+     8120  2026-09-04 14:25   envcheck/run_v2/normalized/19_services.norm
+     1666  2026-09-04 14:25   envcheck/run_v2/normalized/20_accelerators.norm
+     4359  2026-09-04 14:25   envcheck/run_v2/normalized/MANIFEST.norm
+      553  2026-09-04 14:25   envcheck/run_v2/normalized/SHA256SUMS.norm
+      817  2026-09-04 14:25   envcheck/run_v2/normalized/SHA256SUMS.normalized.norm
+       23  2026-09-04 14:25   envcheck/run_v2/.run_id
+     5966  2026-09-04 14:25   envcheck/run_v2/MANIFEST.txt
+     2115  2026-09-04 14:25   envcheck/run_v2/SHA256SUMS.normalized.txt
+     1851  2026-09-04 14:25   envcheck/run_v2/SHA256SUMS.txt
+     8083  2026-09-04 14:25   envcheck/run_v2/manifest.json
+     7109  2026-09-04 14:33   PROMPTS.md
+    46436  2026-09-04 14:39   TIMELINE.csv
+     3209  2026-09-04 14:39   ZIP_METADATA.json
+    30118  2026-09-04 14:39   envcheck/make_bundle_zip.py
+     4038  2026-09-04 14:38   envcheck/verify_zip.py
+---------                     -------
+   742557                     151 files
+
+Summary:
+  Entry count (approx): 151
+  Total uncompressed size: 742557
+  Directory entries: 0
+  Presence of .sh files: 3
+  Presence of .py files: 12
+  Presence of .bin files: 0
+  Presence of .exe files: 0
+  Full list of suspicious:
+     2335  2026-09-04 13:44   envcheck/session1/cpu_bench.py
+     2895  2026-09-04 13:44   envcheck/session1/cpu_bench2.py
+     2728  2026-09-04 13:44   envcheck/session1/disk_bench.py
+     1039  2026-09-04 13:44   envcheck/session1/memtest.py
+     2829  2026-09-04 13:44   envcheck/session1/net_throughput.py
+     1373  2026-09-04 13:44   envcheck/session1/net_workload.py
+     1301  2026-09-04 13:44   envcheck/session1/portscan.py
+     2100  2026-09-04 13:44   envcheck/session1/tcp_bench.py
+    59897  2026-09-04 14:19   envcheck/probe.sh
+     1720  2026-09-04 13:48   envcheck/probe_background.sh
+     3796  2026-09-04 14:16   envcheck/diff_run.sh
+     6130  2026-09-04 14:18   envcheck/normalize.py
+     7916  2026-09-04 14:27   envcheck/make_manifest.py
+    30118  2026-09-04 14:39   envcheck/make_bundle_zip.py
+     4038  2026-09-04 14:38   envcheck/verify_zip.py
+
+------------------------------------------------------------
+File: Agent 5 chrome.zip
+Size bytes: 119842
+SHA-256: cfd0179b38fe6e6edce5b56205a38a3b5d6660b6f3fa88b46e54530fda151466
+
+unzip -l listing:
+Archive:  Agent 5 chrome.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+    20697  2026-09-04 14:04   ARCHIVE_MANIFEST.md
+    37516  2026-09-04 13:55   environment_characterization.md
+        0  2026-09-04 13:56   env-probe/
+    28418  2026-09-04 13:49   env-probe/env_probe.sh
+     4304  2026-09-04 13:46   env-probe/bench_cpu.py
+        0  2026-09-04 13:49   env-probe/runs/
+        0  2026-09-04 13:49   env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/
+     1996  2026-09-04 13:46   env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/01_runtime.txt
+     8507  2026-09-04 13:46   env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/02_isolation.txt
+     2711  2026-09-04 13:46   env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/03_identity_limits.txt
+     3520  2026-09-04 13:46   env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/04_tooling.txt
+     6290  2026-09-04 13:47   env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/05_python_env.txt
+     7566  2026-09-04 13:47   env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/06_filesystem.txt
+     2230  2026-09-04 13:47   env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/07_dns.txt
+     2477  2026-09-04 13:47   env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/08_net_latency.txt
+     5939  2026-09-04 13:47   env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/09_net_matrix.txt
+     3743  2026-09-04 13:47   env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/10_net_anomalies.txt
+     2586  2026-09-04 13:47   env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/11_bench_cpu.txt
+     3271  2026-09-04 13:47   env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/12_bench_disk.txt
+     5638  2026-09-04 13:48   env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/13_bench_install.txt
+     2346  2026-09-04 13:48   env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/14_memory_oom.txt
+     7508  2026-09-04 13:49   env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/15_processes.txt
+     2854  2026-09-04 13:49   env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/16_env_config.txt
+     2887  2026-09-04 13:49   env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/MANIFEST.json
+     1340  2026-09-04 13:49   env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/SHA256SUMS.txt
+        0  2026-09-04 13:51   env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/
+     1996  2026-09-04 13:49   env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/01_runtime.txt
+     8507  2026-09-04 13:49   env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/02_isolation.txt
+     2711  2026-09-04 13:49   env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/03_identity_limits.txt
+     3520  2026-09-04 13:49   env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/04_tooling.txt
+     6316  2026-09-04 13:49   env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/05_python_env.txt
+     7566  2026-09-04 13:49   env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/06_filesystem.txt
+     2230  2026-09-04 13:49   env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/07_dns.txt
+     2477  2026-09-04 13:49   env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/08_net_latency.txt
+     5937  2026-09-04 13:50   env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/09_net_matrix.txt
+     3743  2026-09-04 13:50   env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/10_net_anomalies.txt
+     2588  2026-09-04 13:50   env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/11_bench_cpu.txt
+     3270  2026-09-04 13:50   env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/12_bench_disk.txt
+     5188  2026-09-04 13:50   env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/13_bench_install.txt
+     2769  2026-09-04 13:50   env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/14_memory_oom.txt
+     7500  2026-09-04 13:51   env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/15_processes.txt
+     2900  2026-09-04 13:51   env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/16_env_config.txt
+     2811  2026-09-04 13:51   env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/MANIFEST.json
+     1340  2026-09-04 13:51   env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/SHA256SUMS.txt
+     3477  2026-09-04 13:52   env-probe/diff_runs.sh
+     5212  2026-09-04 13:53   env-probe/README.md
+     8625  2026-09-04 13:54   env-probe/ERRATA.md
+      389  2026-09-04 13:56   env-probe/KIT_SHA256SUMS.txt
+        0  2026-09-04 13:43   envcheck/
+     1918  2026-09-04 13:43   envcheck/cpubench.py
+    16560  2026-09-04 13:43   envcheck/hello
+      212  2026-09-04 13:43   envcheck/hello.c
+     1746  2026-09-04 13:43   envcheck/pypkgs_tail.txt
+      218  2026-09-04 13:43   envcheck/t.cpp
+    17216  2026-09-04 13:43   envcheck/tcpp
+      121  2026-09-04 13:51   PERSISTENCE_MARKER.txt
+---------                     -------
+   293407                     56 files
+
+Summary:
+  Entry count (approx): 56
+  Total uncompressed size: 293407
+  Directory entries: 5
+  Presence of .sh files: 2
+  Presence of .py files: 2
+  Presence of .bin files: 0
+  Presence of .exe files: 0
+  Full list of suspicious:
+    28418  2026-09-04 13:49   env-probe/env_probe.sh
+     4304  2026-09-04 13:46   env-probe/bench_cpu.py
+     3477  2026-09-04 13:52   env-probe/diff_runs.sh
+     1918  2026-09-04 13:43   envcheck/cpubench.py
+
+------------------------------------------------------------
+File: Agent 6 brave.zip
+Size bytes: 153569
+SHA-256: dea4ec47ac81a2e65606778aa4da6895cbce03094d2f47845d4b8fc25e7e53d0
+
+unzip -l listing:
+Archive:  Agent 6 brave.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+    25300  2026-09-04 14:07   00_README_zip_contents.md
+     2361  2026-09-04 14:06   compare_canonical_vs_fullrun.txt
+        0  2026-09-04 14:06   rerun_C_full_FULL_PASS/
+     3270  2026-09-04 14:06   rerun_C_full_FULL_PASS/manifest.json
+     1477  2026-09-04 14:06   rerun_C_full_FULL_PASS/sha256sums.txt
+     1594  2026-09-04 14:06   rerun_C_full_FULL_PASS/epilogue.txt
+      567  2026-09-04 14:06   rerun_C_full_FULL_PASS/15_process_demo.txt
+     1826  2026-09-04 14:06   rerun_C_full_FULL_PASS/14_final.txt
+       63  2026-09-04 14:06   rerun_C_full_FULL_PASS/bg_ticks.txt
+     2249  2026-09-04 14:06   rerun_C_full_FULL_PASS/13_bg_misc.txt
+      989  2026-09-04 14:06   rerun_C_full_FULL_PASS/12b_pip2.txt
+     1911  2026-09-04 14:06   rerun_C_full_FULL_PASS/12_pip.txt
+     1501  2026-09-04 14:06   rerun_C_full_FULL_PASS/11_disk.txt
+     1912  2026-09-04 14:06   rerun_C_full_FULL_PASS/10b_net_throughput2.txt
+     1533  2026-09-04 14:06   rerun_C_full_FULL_PASS/10_net_throughput.txt
+     4198  2026-09-04 14:06   rerun_C_full_FULL_PASS/09_net_matrix.txt
+     3572  2026-09-04 14:06   rerun_C_full_FULL_PASS/07_cgroup_sudo.txt
+     2522  2026-09-04 14:06   rerun_C_full_FULL_PASS/06_compilers_pkgs.txt
+      933  2026-09-04 14:06   rerun_C_full_FULL_PASS/05_cpu_mem.txt
+     3377  2026-09-04 14:06   rerun_C_full_FULL_PASS/04_fs.txt
+     3656  2026-09-04 14:06   rerun_C_full_FULL_PASS/03_tools.txt
+     5836  2026-09-04 14:06   rerun_C_full_FULL_PASS/02_identity.txt
+     4418  2026-09-04 14:06   rerun_C_full_FULL_PASS/01_runtime.txt
+      264  2026-09-04 14:06   rerun_C_full_FULL_PASS/00_run_header.txt
+        0  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/
+     3270  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/manifest.json
+     1477  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/sha256sums.txt
+     1594  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/epilogue.txt
+      567  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/15_process_demo.txt
+     1828  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/14_final.txt
+       42  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/bg_ticks.txt
+     2251  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/13_bg_misc.txt
+      989  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/12b_pip2.txt
+     1198  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/12_pip.txt
+     1512  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/11_disk.txt
+     1336  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/10b_net_throughput2.txt
+     1033  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/10_net_throughput.txt
+     3609  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/09_net_matrix.txt
+     3571  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/07_cgroup_sudo.txt
+     2522  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/06_compilers_pkgs.txt
+      968  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/05_cpu_mem.txt
+     3377  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/04_fs.txt
+     3656  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/03_tools.txt
+     5844  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/02_identity.txt
+     4418  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/01_runtime.txt
+      266  2026-09-04 14:06   rerun_B_smoke7_QUICK_PASS/00_run_header.txt
+        0  2026-09-04 14:06   rerun_A_smoke6_QUICK/
+     3270  2026-09-04 14:06   rerun_A_smoke6_QUICK/manifest.json
+     1477  2026-09-04 14:06   rerun_A_smoke6_QUICK/sha256sums.txt
+     1594  2026-09-04 14:06   rerun_A_smoke6_QUICK/epilogue.txt
+      567  2026-09-04 14:06   rerun_A_smoke6_QUICK/15_process_demo.txt
+     1828  2026-09-04 14:06   rerun_A_smoke6_QUICK/14_final.txt
+       42  2026-09-04 14:06   rerun_A_smoke6_QUICK/bg_ticks.txt
+     2251  2026-09-04 14:06   rerun_A_smoke6_QUICK/13_bg_misc.txt
+      988  2026-09-04 14:06   rerun_A_smoke6_QUICK/12b_pip2.txt
+     1198  2026-09-04 14:06   rerun_A_smoke6_QUICK/12_pip.txt
+     1512  2026-09-04 14:06   rerun_A_smoke6_QUICK/11_disk.txt
+     1410  2026-09-04 14:06   rerun_A_smoke6_QUICK/10b_net_throughput2.txt
+     1033  2026-09-04 14:06   rerun_A_smoke6_QUICK/10_net_throughput.txt
+     3610  2026-09-04 14:06   rerun_A_smoke6_QUICK/09_net_matrix.txt
+     3570  2026-09-04 14:06   rerun_A_smoke6_QUICK/07_cgroup_sudo.txt
+     2522  2026-09-04 14:06   rerun_A_smoke6_QUICK/06_compilers_pkgs.txt
+      968  2026-09-04 14:06   rerun_A_smoke6_QUICK/05_cpu_mem.txt
+     3324  2026-09-04 14:06   rerun_A_smoke6_QUICK/04_fs.txt
+     3656  2026-09-04 14:06   rerun_A_smoke6_QUICK/03_tools.txt
+     5844  2026-09-04 14:06   rerun_A_smoke6_QUICK/02_identity.txt
+     4418  2026-09-04 14:06   rerun_A_smoke6_QUICK/01_runtime.txt
+      266  2026-09-04 14:06   rerun_A_smoke6_QUICK/00_run_header.txt
+        0  2026-09-04 14:06   envprobe/
+     1475  2026-09-04 14:06   envprobe/sha256sums.txt
+     8391  2026-09-04 14:06   envprobe/manifest.json
+      273  2026-09-04 14:06   envprobe/bg_ticks.txt
+      625  2026-09-04 14:06   envprobe/15_process_demo.txt
+     1853  2026-09-04 14:06   envprobe/14_final.txt
+     2432  2026-09-04 14:06   envprobe/13_bg_misc.txt
+     2649  2026-09-04 14:06   envprobe/12b_pip2.txt
+     2132  2026-09-04 14:06   envprobe/12_pip.txt
+     1512  2026-09-04 14:06   envprobe/11_disk.txt
+     1614  2026-09-04 14:06   envprobe/10b_net_throughput2.txt
+     2836  2026-09-04 14:06   envprobe/10_net_throughput.txt
+     4200  2026-09-04 14:06   envprobe/09_net_matrix.txt
+     4543  2026-09-04 14:06   envprobe/07_cgroup_sudo.txt
+     2652  2026-09-04 14:06   envprobe/06_compilers_pkgs.txt
+     1176  2026-09-04 14:06   envprobe/05_cpu_mem.txt
+     2829  2026-09-04 14:06   envprobe/04_fs.txt
+     3609  2026-09-04 14:06   envprobe/03_tools.txt
+     5648  2026-09-04 14:06   envprobe/02_identity.txt
+     4416  2026-09-04 14:06   envprobe/01_runtime.txt
+       33  2026-09-04 14:06   envprobe/.persist_marker
+     2603  2026-09-04 14:06   cross_turn_check.txt
+     3361  2026-09-04 14:06   compare_run.sh
+    46431  2026-09-04 14:06   environment_probe.sh
+    52576  2026-09-04 14:06   RAW_VERBATIM_APPENDIX.md
+    28103  2026-09-04 14:06   environment_characterization.md
+---------                     -------
+   353977                     94 files
+
+Summary:
+  Entry count (approx): 94
+  Total uncompressed size: 353977
+  Directory entries: 4
+  Presence of .sh files: 2
+  Presence of .py files: 0
+  Presence of .bin files: 0
+  Presence of .exe files: 0
+  Full list of suspicious:
+     3361  2026-09-04 14:06   compare_run.sh
+    46431  2026-09-04 14:06   environment_probe.sh
+
+------------------------------------------------------------
+File: Agent 7 edge.zip
+Size bytes: 130614
+SHA-256: 5c0f02b35a2f43c633a92e16fed9daa5bf77cd018bfed8fdb084734aa4eac13c
+
+unzip -l listing:
+Archive:  Agent 7 edge.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+    30755  2026-09-04 14:21   environment_characterization.md
+    29049  2026-09-04 14:26   WORKSPACE_INDEX.md
+     9408  2026-09-04 14:26   ZIP_CONTENTS_MANIFEST.txt
+        0  2026-09-04 14:20   envcheck/
+     1649  2026-09-04 14:17   envcheck/diskbench.sh
+        0  2026-09-04 14:24   envcheck/notes/
+     1314  2026-09-04 14:17   envcheck/notes/01_system.txt
+     4018  2026-09-04 14:17   envcheck/notes/02_isolation.txt
+     3018  2026-09-04 14:17   envcheck/notes/02b_isolation.txt
+     7258  2026-09-04 14:17   envcheck/notes/03_tools.txt
+     2262  2026-09-04 14:17   envcheck/notes/04_limits_sudo_apt.txt
+     4812  2026-09-04 14:17   envcheck/notes/05_fs.txt
+     1247  2026-09-04 14:17   envcheck/notes/06_fs_tests.txt
+     1232  2026-09-04 14:17   envcheck/notes/07_network_dns_ports.txt
+     1529  2026-09-04 14:17   envcheck/notes/08_network_latency.txt
+      693  2026-09-04 14:17   envcheck/notes/09_network_throughput.txt
+      706  2026-09-04 14:17   envcheck/notes/10_cpu_bench.txt
+      698  2026-09-04 14:17   envcheck/notes/11_disk_bench.txt
+      709  2026-09-04 14:17   envcheck/notes/12_pip_bench.txt
+     1343  2026-09-04 14:17   envcheck/notes/13_apt_bench.txt
+     2079  2026-09-04 14:17   envcheck/notes/14_pkg_installs.txt
+     1792  2026-09-04 14:17   envcheck/notes/15_network_extra.txt
+     1320  2026-09-04 14:17   envcheck/notes/15b_network_fixed.txt
+     1827  2026-09-04 14:17   envcheck/notes/16_memory.txt
+     1546  2026-09-04 14:17   envcheck/notes/16b_memory_extra.txt
+     3400  2026-09-04 14:17   envcheck/notes/17_compile_system.txt
+      776  2026-09-04 14:17   envcheck/notes/18_ffmpeg_apt.txt
+     2329  2026-09-04 14:17   envcheck/notes/19_services_nohup.txt
+     2540  2026-09-04 14:17   envcheck/notes/20_background.txt
+     2423  2026-09-04 14:17   envcheck/notes/21_final_checks.txt
+      200  2026-09-04 14:17   envcheck/notes/22_venv_nohup.txt
+      734  2026-09-04 14:17   envcheck/notes/23_preinstalled.txt
+       70  2026-09-04 14:17   envcheck/notes/heartbeat.log
+       35  2026-09-04 14:17   envcheck/notes/nohup_result.txt
+        0  2026-09-04 14:19   envcheck/raw/
+        0  2026-09-04 14:20   envcheck/raw/run_20260904T141747Z/
+      997  2026-09-04 14:17   envcheck/raw/run_20260904T141747Z/00_meta.txt
+     2824  2026-09-04 14:17   envcheck/raw/run_20260904T141747Z/01_runtime.txt
+     1757  2026-09-04 14:17   envcheck/raw/run_20260904T141747Z/02_isolation.txt
+     8236  2026-09-04 14:17   envcheck/raw/run_20260904T141747Z/03_tools.txt
+     3150  2026-09-04 14:17   envcheck/raw/run_20260904T141747Z/04_limits.txt
+     5108  2026-09-04 14:17   envcheck/raw/run_20260904T141747Z/05_filesystem.txt
+     1349  2026-09-04 14:17   envcheck/raw/run_20260904T141747Z/06_fs_tests.txt
+     1180  2026-09-04 14:17   envcheck/raw/run_20260904T141747Z/07_dns.txt
+     1794  2026-09-04 14:17   envcheck/raw/run_20260904T141747Z/08_http_latency.txt
+     2018  2026-09-04 14:17   envcheck/raw/run_20260904T141747Z/09_net_matrix.txt
+     1764  2026-09-04 14:18   envcheck/raw/run_20260904T141747Z/10_download_throughput.txt
+     1050  2026-09-04 14:18   envcheck/raw/run_20260904T141747Z/11_cpu_bench.txt
+     1347  2026-09-04 14:18   envcheck/raw/run_20260904T141747Z/12_disk_bench.txt
+     1379  2026-09-04 14:18   envcheck/raw/run_20260904T141747Z/13_pkg_installs.txt
+     2115  2026-09-04 14:18   envcheck/raw/run_20260904T141747Z/14_memory_pressure.txt
+     4603  2026-09-04 14:18   envcheck/raw/run_20260904T141747Z/15_services_processes.txt
+     1125  2026-09-04 14:18   envcheck/raw/run_20260904T141747Z/16_envconfig.txt
+     1424  2026-09-04 14:18   envcheck/raw/run_20260904T141747Z/MANIFEST.sha256
+     2633  2026-09-04 14:18   envcheck/raw/run_20260904T141747Z/MANIFEST.txt
+    33205  2026-09-04 14:20   envcheck/raw/run_20260904T141747Z/probe_environment.sh
+        0  2026-09-04 14:19   envcheck/raw/run_20260904T1116Z_original/
+     1314  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/01_system.txt
+     4018  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/02_isolation.txt
+     3018  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/02b_isolation.txt
+     7258  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/03_tools.txt
+     2262  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/04_limits_sudo_apt.txt
+     4812  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/05_fs.txt
+     1247  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/06_fs_tests.txt
+     1232  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/07_network_dns_ports.txt
+     1529  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/08_network_latency.txt
+      693  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/09_network_throughput.txt
+      706  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/10_cpu_bench.txt
+      698  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/11_disk_bench.txt
+      709  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/12_pip_bench.txt
+     1343  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/13_apt_bench.txt
+     2079  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/14_pkg_installs.txt
+     1792  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/15_network_extra.txt
+     1320  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/15b_network_fixed.txt
+     1827  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/16_memory.txt
+     1546  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/16b_memory_extra.txt
+     3400  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/17_compile_system.txt
+      776  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/18_ffmpeg_apt.txt
+     2329  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/19_services_nohup.txt
+     2540  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/20_background.txt
+     2423  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/21_final_checks.txt
+      200  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/22_venv_nohup.txt
+      734  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/23_preinstalled.txt
+       35  2026-09-04 14:17   envcheck/raw/run_20260904T1116Z_original/nohup_result.txt
+     6195  2026-09-04 14:19   envcheck/raw/run_20260904T1116Z_original/MANIFEST.txt
+     2289  2026-09-04 14:19   envcheck/raw/run_20260904T1116Z_original/MANIFEST.sha256
+    33472  2026-09-04 14:20   envcheck/probe_environment.sh
+     5134  2026-09-04 14:21   envcheck/README.md
+---------                     -------
+   300759                     88 files
+
+Summary:
+  Entry count (approx): 88
+  Total uncompressed size: 300759
+  Directory entries: 5
+  Presence of .sh files: 5
+  Presence of .py files: 0
+  Presence of .bin files: 0
+  Presence of .exe files: 0
+  Full list of suspicious:
+     1649  2026-09-04 14:17   envcheck/diskbench.sh
+     1424  2026-09-04 14:18   envcheck/raw/run_20260904T141747Z/MANIFEST.sha256
+    33205  2026-09-04 14:20   envcheck/raw/run_20260904T141747Z/probe_environment.sh
+     2289  2026-09-04 14:19   envcheck/raw/run_20260904T1116Z_original/MANIFEST.sha256
+    33472  2026-09-04 14:20   envcheck/probe_environment.sh
+
+------------------------------------------------------------
+File: Agent 8 edge.zip
+Size bytes: 30820
+SHA-256: 7fe13f8118d625420a55a2ea14a66b61715acc4be9bf7249666ba2193841c898
+
+unzip -l listing:
+Archive:  Agent 8 edge.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     9616  2026-09-04 14:21   README_ZIP.md
+     3813  2026-09-04 14:15   VERIFICATION_MANIFEST.md
+    13251  2026-09-04 14:15   environment_characterization.md
+    13694  2026-09-04 14:14   probe_environment.sh
+        0  2026-09-04 14:14   probe_raw/
+     1556  2026-09-04 14:14   probe_raw/01_runtime.txt
+    11077  2026-09-04 14:14   probe_raw/02_isolation.txt
+     1966  2026-09-04 14:14   probe_raw/03_identity_limits.txt
+     7646  2026-09-04 14:14   probe_raw/04_cpu_mem.txt
+     3996  2026-09-04 14:14   probe_raw/05_tools.txt
+      615  2026-09-04 14:14   probe_raw/06_python_pkgs.txt
+     1637  2026-09-04 14:14   probe_raw/07_filesystem.txt
+      343  2026-09-04 14:14   probe_raw/08_env.txt
+     3501  2026-09-04 14:14   probe_raw/09_net_matrix.txt
+      480  2026-09-04 14:14   probe_raw/10_benches.txt
+      260  2026-09-04 14:14   probe_raw/11_pip_sample.txt
+     1576  2026-09-04 14:14   probe_raw/00_MANIFEST.txt
+---------                     -------
+    75027                     17 files
+
+Summary:
+  Entry count (approx): 17
+  Total uncompressed size: 75027
+  Directory entries: 1
+  Presence of .sh files: 1
+  Presence of .py files: 0
+  Presence of .bin files: 0
+  Presence of .exe files: 0
+  Full list of suspicious:
+    13694  2026-09-04 14:14   probe_environment.sh
+
+------------------------------------------------------------
+File: Agent 9 edge.zip
+Size bytes: 247182
+SHA-256: 2007bbee89d81a92d4b3fecdf5c06c6f7ba2f53f86c599dbfc18da4c2e3e10a2
+
+unzip -l listing:
+Archive:  Agent 9 edge.zip
+Agent 9 edge comprehensive environment-characterization evidence archive; packed UTC 2026-09-04T14:31:49.449915Z
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     4749  2026-09-04 14:31   Agent 9 edge/00_READ_ME_FIRST.md
+     5561  2026-09-04 14:31   Agent 9 edge/documentation/01_USER_PROMPTS_EXACT.txt
+     1676  2026-09-04 14:31   Agent 9 edge/documentation/02_IMPORTANT_METADATA.json
+     1518  2026-09-04 14:31   Agent 9 edge/documentation/03_DELETED_OR_EPHEMERAL_ARTIFACTS.md
+     1839  2026-09-04 14:31   Agent 9 edge/documentation/04_CONVERSATION_AND_ARTIFACT_SEQUENCE.md
+    56364  2026-09-04 14:31   Agent 9 edge/documentation/05_FILE_CATALOG.csv
+    36971  2026-09-04 14:31   Agent 9 edge/documentation/06_CREATION_TIMELINE.csv
+    13216  2026-09-04 14:31   Agent 9 edge/documentation/07_ARCHIVE_FILE_LIST.txt
+      378  2026-09-04 14:31   Agent 9 edge/documentation/08_ARCHIVE_BUILD_LOG.txt
+    11723  2026-09-04 14:31   Agent 9 edge/documentation/SHA256SUMS.txt
+       31  2026-09-04 14:15   Agent 9 edge/payload/home/user/.environment_characterization_persistence_probe
+     3730  2026-09-04 14:18   Agent 9 edge/payload/home/user/.npm/_cacache/content-v2/sha512/e3/50/a27e483a7bc4f2952a5db53a5e2d532abd20445734edb47bc4443ef8d7ea6767c00dbf4d34e0c44be3740a3c394af5c1af369e8d6566540656c65d8c719e
+    36183  2026-09-04 14:18   Agent 9 edge/payload/home/user/.npm/_cacache/content-v2/sha512/fb/ca/2f552916ba7548a39fc87ddb7ddecb4f58408b2e3cfee63c6b256be164bf40c5245d799269512d2650f028ad83a0970d4dcb87d4612f1b9d379408956292
+      674  2026-09-04 14:18   Agent 9 edge/payload/home/user/.npm/_cacache/index-v5/28/af/3f5b8e1c4db46b2c24d0264a2bb8ab473f22a4f13707d911085e0a717fb7
+      695  2026-09-04 14:20   Agent 9 edge/payload/home/user/.npm/_cacache/index-v5/98/20/8cf39748e26add3139706a657e8908982a79143e5c985f1a3fd09031cf57
+      717  2026-09-04 14:16   Agent 9 edge/payload/home/user/.npm/_logs/2026-09-04T14_16_00_165Z-debug-0.log
+      717  2026-09-04 14:18   Agent 9 edge/payload/home/user/.npm/_logs/2026-09-04T14_17_59_900Z-debug-0.log
+     1552  2026-09-04 14:18   Agent 9 edge/payload/home/user/.npm/_logs/2026-09-04T14_18_56_360Z-debug-0.log
+      717  2026-09-04 14:20   Agent 9 edge/payload/home/user/.npm/_logs/2026-09-04T14_20_04_341Z-debug-0.log
+     1318  2026-09-04 14:20   Agent 9 edge/payload/home/user/.npm/_logs/2026-09-04T14_20_59_757Z-debug-0.log
+        0  2026-09-04 14:16   Agent 9 edge/payload/home/user/.npm/_update-notifier-last-checked
+        0  2026-09-04 14:15   Agent 9 edge/payload/home/user/.sudo_as_admin_successful
+    43380  2026-09-04 14:31   Agent 9 edge/payload/home/user/build_agent9_archive.py
+     4651  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/apt_install_notes.txt
+      784  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/apt_install_results.json
+     1860  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/apt_install_test.py
+      629  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/background_process_test.txt
+      179  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/cloudflare_upload.tsv
+        0  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/cloudflare_upload_error.txt
+     1410  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/curl_latency.tsv
+        0  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/curl_latency_errors.txt
+     3987  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/dns_getaddrinfo.tsv
+      224  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/dns_udp.tsv
+      107  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/environment_variable_names.txt
+     4189  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/filesystem_survey.txt
+      222  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/final_runtime_state.txt
+      818  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/git_network_notes.txt
+      339  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/git_network_results.json
+     1394  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/git_network_tests.py
+      161  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/google_download_retry.tsv
+        0  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/google_download_retry_error.txt
+      543  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/google_download_retry_headers.txt
+     2037  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/install_compile_notes.txt
+     1720  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/install_compile_results.json
+     2966  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/install_compile_tests.py
+     6559  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/isolation_extra.txt
+        0  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/large_download_errors.txt
+      988  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/large_download_notes.txt
+     1079  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/large_downloads.tsv
+      108  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/limit_adjustment_test.txt
+     1699  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/memory_pressure_result.json
+     1559  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/memory_pressure_test.py
+      283  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/microbenchmark_notes.txt
+     2336  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/microbenchmark_results.json
+     5479  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/microbenchmarks.py
+     2274  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/network_config_ping.txt
+     3709  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/network_socket_tests.py
+      833  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/persistence_recheck.txt
+     7867  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/pip_list.json
+        0  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/pip_list_stderr.txt
+     8380  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/resource_detail.txt
+     2712  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/runtime_packages.txt
+     3806  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/sudo_ping_ipv6.txt
+    93595  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/system_survey.txt
+     1193  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/tcp_ports.tsv
+     3187  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/tool_inventory.py
+     2601  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/tool_inventory.tsv
+    26826  2026-09-04 14:22   Agent 9 edge/payload/home/user/environment_characterization.md
+     3732  2026-09-04 14:21   Agent 9 edge/payload/home/user/environment_evidence/README.md
+    27124  2026-09-04 14:19   Agent 9 edge/payload/home/user/environment_evidence/probe_environment.sh
+     1227  2026-09-04 14:21   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/SHA256SUMS
+     2444  2026-09-04 14:21   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/manifest.json
+     1734  2026-09-04 14:21   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/manifest.txt
+       82  2026-09-04 14:20   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/persistence_sentinel.txt
+    27124  2026-09-04 14:20   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/probe_environment.sh
+     2522  2026-09-04 14:20   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/01_runtime.txt
+    43161  2026-09-04 14:20   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/02_isolation.txt
+    10070  2026-09-04 14:20   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/03_resources.txt
+    12979  2026-09-04 14:20   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/04_tooling.txt
+     6183  2026-09-04 14:20   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/05_packages.txt
+     8071  2026-09-04 14:20   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/06_filesystem.txt
+     8574  2026-09-04 14:20   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/07_dns.txt
+     5004  2026-09-04 14:20   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/08_http_latency.txt
+     3513  2026-09-04 14:20   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/09_net_matrix.txt
+     6062  2026-09-04 14:20   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/10_throughput.txt
+     3625  2026-09-04 14:20   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/11_benchmarks.txt
+     5865  2026-09-04 14:21   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/12_install_compile.txt
+     2852  2026-09-04 14:21   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/13_memory_process.txt
+     2068  2026-09-04 14:21   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/raw/14_persistence.txt
+    62153  2026-09-04 14:21   Agent 9 edge/payload/home/user/environment_evidence_20260904T142002Z-2576.zip
+      124  2026-09-04 14:21   Agent 9 edge/payload/home/user/environment_evidence_20260904T142002Z-2576.zip.sha256
+---------                     -------
+   675295                     91 files
+
+Summary:
+  Entry count (approx): 92
+  Total uncompressed size: 675295
+  Directory entries: 0
+  Presence of .sh files: 3
+  Presence of .py files: 8
+  Presence of .bin files: 0
+  Presence of .exe files: 0
+  Full list of suspicious:
+    43380  2026-09-04 14:31   Agent 9 edge/payload/home/user/build_agent9_archive.py
+     1860  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/apt_install_test.py
+     1394  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/git_network_tests.py
+     2966  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/install_compile_tests.py
+     1559  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/memory_pressure_test.py
+     5479  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/microbenchmarks.py
+     3709  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/network_socket_tests.py
+     3187  2026-09-04 14:15   Agent 9 edge/payload/home/user/envchar_work/tool_inventory.py
+    27124  2026-09-04 14:19   Agent 9 edge/payload/home/user/environment_evidence/probe_environment.sh
+    27124  2026-09-04 14:20   Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/probe_environment.sh
+      124  2026-09-04 14:21   Agent 9 edge/payload/home/user/environment_evidence_20260904T142002Z-2576.zip.sha256
+

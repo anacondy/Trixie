@@ -1,0 +1,17 @@
+# ============================================================
+# probe_environment.sh :: 11 CPU micro-benchmarks (python3, best-of-3)
+# run_id: raw_run2   mode: stress
+# host: e2b.local   user: user(1000)
+# date_utc: 2026-09-04T13:47:17Z
+# ============================================================
+
+python 3.13.14  pid=2389
+sum(range(10**7))                               179.9 ms   (result=49999995000000)
+loop 1e6: sqrt+mul+div                          145.1 ms   (result=666664169.778)
+str join 1e5 ints                                10.4 ms   (result=588889)
+sha256 100MB                                    130.9 ms   (result=4a1208e65257)
+numpy 2.3.5
+np.sum(np.arange(1e8))                          358.7 ms   (result=4999999950000000)
+np.dot 1500x1500 (BLAS)                          71.8 ms   (result=844096629.3125666)
+                                           -> ~  94.0 GFLOP/s effective
+mp Pool(2) 2x3e6 vs sequential             par=  230.3 ms  seq=  410.8 ms  speedup=1.78x

@@ -1,0 +1,14 @@
+===== UTC: 2026-09-04T14:14:27Z =====
+===== env | sort =====
+E2B_EVENTS_ADDRESS=http://192.0.2.1
+E2B_SANDBOX=true
+E2B_SANDBOX_ID=iitws4rrop6j50j2hed7r
+E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+HOME=/home/user
+LOGNAME=user
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+PWD=/home/user
+SHELL=/bin/bash
+SHLVL=1
+USER=user
+_=/usr/bin/env

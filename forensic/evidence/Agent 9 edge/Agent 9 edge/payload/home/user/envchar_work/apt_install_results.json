@@ -1,0 +1,37 @@
+[
+  {
+    "test": "apt_get_update",
+    "status": "ok",
+    "seconds": 0.926033727,
+    "rc": 0,
+    "command": "sudo apt-get -o Acquire::Retries=0 update"
+  },
+  {
+    "test": "apt_install_tree",
+    "status": "ok",
+    "seconds": 2.071881785,
+    "rc": 0,
+    "command": "sudo apt-get -o Acquire::Retries=0 install -y --no-install-recommends tree"
+  },
+  {
+    "test": "apt_tree_verify",
+    "status": "ok",
+    "seconds": 0.001539479,
+    "rc": 0,
+    "command": "tree --version"
+  },
+  {
+    "test": "apt_purge_tree",
+    "status": "ok",
+    "seconds": 1.332932821,
+    "rc": 0,
+    "command": "sudo apt-get purge -y tree"
+  },
+  {
+    "test": "apt_autoremove_dry_run",
+    "status": "ok",
+    "seconds": 0.931085159,
+    "rc": 0,
+    "command": "sudo apt-get -s autoremove"
+  }
+]

@@ -1,0 +1,54 @@
+{
+  "test_bytes": 536870912,
+  "page_size": 4096,
+  "snapshots": [
+    {
+      "label": "before",
+      "monotonic_s": 389.80226877,
+      "memory.current": "438661120",
+      "memory.peak": "689025024",
+      "memory.max": "1947172864",
+      "memory.high": "1947172864",
+      "memory.swap.current": "0",
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+      "ru_maxrss_KiB": 11040
+    },
+    {
+      "label": "allocated_and_touched",
+      "monotonic_s": 390.295597616,
+      "memory.current": "976494592",
+      "memory.peak": "976494592",
+      "memory.max": "1947172864",
+      "memory.high": "1947172864",
+      "memory.swap.current": "0",
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+      "ru_maxrss_KiB": 535400
+    },
+    {
+      "label": "held_for_1s",
+      "monotonic_s": 391.296299175,
+      "memory.current": "976711680",
+      "memory.peak": "976711680",
+      "memory.max": "1947172864",
+      "memory.high": "1947172864",
+      "memory.swap.current": "0",
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+      "ru_maxrss_KiB": 535400
+    },
+    {
+      "label": "freed_in_process",
+      "monotonic_s": 391.814933046,
+      "memory.current": "438784000",
+      "memory.peak": "976711680",
+      "memory.max": "1947172864",
+      "memory.high": "1947172864",
+      "memory.swap.current": "0",
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+      "ru_maxrss_KiB": 535400
+    }
+  ],
+  "allocation_seconds": 0.454650635,
+  "explicit_page_touch_seconds": 0.038380751,
+  "verification_checksum": 0,
+  "verification_seconds": 0.000231832
+}

@@ -1,0 +1,146 @@
+================================================================
+ probe.sh v1.0.0   section: 09_net_matrix.txt
+ run_id:    20260904T142012Z-22063
+ started:   2026-09-04T14:20:20Z
+ sandbox:   i0m9mhony51frr3osghn0
+ template:  nlhz8vlwyupq845jsdg9
+ host:      e2b.local   kernel: 6.1.158+   arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user:      user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ cat /etc/resolv.conf; echo '--- nsswitch ---'; grep hosts /etc/nsswitch.conf; echo '--- hosts file ---'; cat /etc/hosts
+nameserver 8.8.8.8--- nsswitch ---
+hosts:          files dns
+--- hosts file ---
+127.0.0.1        localhost
+::1              localhost ip6-localhost ip6-loopback
+fe00::           ip6-localnet
+ff00::           ip6-mcastprefix
+ff02::1          ip6-allnodes
+ff02::2          ip6-allrouters
+127.0.1.1        e2b.local
+192.0.2.1        events.e2b.local
+
+$ ip addr 2>&1 | sed 's/  */ /g'; echo '--- routes ---'; ip route 2>&1; echo '--- neigh ---'; ip neigh 2>&1
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+ link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+ inet 127.0.0.1/8 scope host lo
+ valid_lft forever preferred_lft forever
+ inet6 ::1/128 scope host proto kernel_lo 
+ valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+ link/ether 02:fc:00:00:00:05 brd ff:ff:ff:ff:ff:ff
+ inet 169.254.0.21/30 brd 169.254.0.23 scope global eth0
+ valid_lft forever preferred_lft forever
+ inet6 fe80::fc:ff:fe00:5/64 scope link proto kernel_ll 
+ valid_lft forever preferred_lft forever
+--- routes ---
+default via 169.254.0.22 dev eth0 
+169.254.0.20/30 dev eth0 proto kernel scope link src 169.254.0.21 
+--- neigh ---
+169.254.0.22 dev eth0 lladdr 02:fc:00:00:00:06 REACHABLE 
+
+$ ip link show 2>&1 | grep -E '^[0-9]+:|mtu' ; cat /sys/class/net/*/mtu 2>/dev/null | tr '\n' ' '; echo; cat /sys/class/net/eth0/operstate 2>/dev/null
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+1500 65536 
+up
+
+$ cat /proc/net/dev
+Inter-|   Receive                                                |  Transmit
+ face |bytes    packets errs drop fifo frame compressed multicast|bytes    packets errs drop fifo colls carrier compressed
+    lo:  172768    1837    0    0    0     0          0         0   172768    1837    0    0    0     0       0          0
+  eth0: 5070729528  414791    0    0    0     0          0         0 323599326  137227    0    0    0     0       0          0
+
+$ sudo -n iptables -S 2>&1 | head -5; echo '--- nft ---'; sudo -n nft list ruleset 2>&1 | head -10
+-P INPUT ACCEPT
+-P FORWARD ACCEPT
+-P OUTPUT ACCEPT
+--- nft ---
+
+$ echo '--- proxy env ---'; env | grep -iE 'proxy|no_proxy|ssl_cert|requests_ca|node_extra' || echo '(none set)'; echo '--- ca bundle ---'; ls /etc/ssl/certs/*.pem 2>/dev/null | wc -l | xargs echo 'certs in /etc/ssl/certs:'; grep -c 'BEGIN CERTIFICATE' /etc/ssl/certs/ca-certificates.crt 2>/dev/null
+--- proxy env ---
+(none set)
+--- ca bundle ---
+certs in /etc/ssl/certs: 150
+151
+
+$ python3 port/protocol matrix
+  format: HOST:PORT  VERDICT  connect_ms  detail
+  NOTE: a sandboxed egress proxy can answer the TCP handshake for EVERY destination/port,
+        so 'OPEN' below does NOT imply a reachable service. The detail column (first bytes,
+        or the post-connect error) is the only real signal.
+  github.com:22                   CONNECTED    10.67  b'SSH-2.0-cb4a187\r\n'
+  github.com:80                   CONNECTED     1.20  b'<no bytes: TimeoutError>'
+  github.com:443                  CONNECTED     1.77  b'<no bytes: TimeoutError>'
+  github.com:3000                 CONNECTED     9.82  b'<no bytes: TimeoutError>'
+  github.com:5432                 CONNECTED     1.77  b'<no bytes: TimeoutError>'
+  github.com:8080                 CONNECTED    11.79  b'<no bytes: TimeoutError>'
+  github.com:9999                 CONNECTED     1.85  b'<no bytes: TimeoutError>'
+  example.com:21                  CONNECTED    11.92  b'<no bytes: TimeoutError>'
+  example.com:22                  CONNECTED    25.86  b'<no bytes: TimeoutError>'
+  example.com:25                  CONNECTED    25.95  b'<no bytes: TimeoutError>'
+  example.com:53                  CONNECTED     3.52  b'<no bytes: TimeoutError>'
+  example.com:80                  CONNECTED    11.31  b'<no bytes: TimeoutError>'
+  example.com:110                 CONNECTED     1.73  b'<no bytes: TimeoutError>'
+  example.com:143                 CONNECTED     1.56  b'<no bytes: TimeoutError>'
+  example.com:443                 CONNECTED     3.16  b'<no bytes: TimeoutError>'
+  example.com:445                 CONNECTED    11.14  b'<no bytes: TimeoutError>'
+  example.com:465                 CONNECTED     1.51  b'<no bytes: TimeoutError>'
+  example.com:587                 CONNECTED     1.81  b'<no bytes: TimeoutError>'
+  example.com:993                 CONNECTED     1.97  b'<no bytes: TimeoutError>'
+  example.com:995                 CONNECTED     1.78  b'<no bytes: TimeoutError>'
+  example.com:1433                CONNECTED     1.82  b'<no bytes: TimeoutError>'
+  example.com:1521                CONNECTED     1.52  b'<no bytes: TimeoutError>'
+  example.com:3306                CONNECTED     3.16  b'<no bytes: TimeoutError>'
+  example.com:3389                CONNECTED     2.23  b'<no bytes: TimeoutError>'
+  example.com:5432                CONNECTED     1.57  b'<no bytes: TimeoutError>'
+  example.com:5672                CONNECTED     1.77  b'<no bytes: TimeoutError>'
+  example.com:5984                CONNECTED     1.79  b'<no bytes: TimeoutError>'
+  example.com:6379                CONNECTED     1.29  b'<no bytes: TimeoutError>'
+  example.com:7001                CONNECTED     1.66  b'<no bytes: TimeoutError>'
+  example.com:8000                CONNECTED     1.59  b'<no bytes: TimeoutError>'
+  example.com:8080                CONNECTED     1.50  b'<no bytes: TimeoutError>'
+  example.com:8443                CONNECTED     1.71  b'<no bytes: TimeoutError>'
+  example.com:9092                CONNECTED     1.59  b'<no bytes: TimeoutError>'
+  example.com:9200                CONNECTED     1.85  b'<no bytes: TimeoutError>'
+  example.com:11211               CONNECTED     1.71  b'<no bytes: TimeoutError>'
+  example.com:27017               CONNECTED     1.87  b'<no bytes: TimeoutError>'
+  1.1.1.1:53                      CONNECTED     0.38  b'<no bytes: TimeoutError>'
+  1.1.1.1:80                      CONNECTED     0.33  b'<no bytes: TimeoutError>'
+  1.1.1.1:123                     CONNECTED     0.28  b'<no bytes: TimeoutError>'
+  1.1.1.1:443                     CONNECTED     0.30  b'<no bytes: TimeoutError>'
+  1.1.1.1:853                     CONNECTED     0.29  b'<no bytes: TimeoutError>'
+  1.1.1.1:2053                    CONNECTED     0.41  b'<no bytes: TimeoutError>'
+  1.1.1.1:54321                   CONNECTED     0.31  b'<no bytes: TimeoutError>'
+  8.8.8.8:53                      CONNECTED     0.50  b''
+  8.8.8.8:443                     CONNECTED     0.28  b'<no bytes: TimeoutError>'
+  8.8.8.8:853                     CONNECTED     0.33  b'<no bytes: TimeoutError>'
+  speed.cloudflare.com:80         CONNECTED    35.00  b'<no bytes: TimeoutError>'
+  speed.cloudflare.com:443        CONNECTED    19.57  b'<no bytes: TimeoutError>'
+  speed.cloudflare.com:8080       CONNECTED     2.18  b'<no bytes: TimeoutError>'
+
+  --- ICMP ---
+  ping_group_range: 1	0
+  SOCK_RAW ICMP:      DENIED (errno 1 Operation not permitted)
+  `ping 1.1.1.1`: exit=2 ping: => missing cap_net_raw+p capability or setuid?
+
+  --- IPv6 ---
+  AAAA for google.com:  2607:f8b0:400e:c02::65
+  IPv6 TCP connect:     BLOCKED (errno 101 Network is unreachable)
+
+  --- UDP ---
+  UDP DNS query example.com      -> 8.8.8.8:53    OK 61 bytes in    0.87 ms
+  UDP DNS query example.com      -> 1.1.1.1:53    OK 61 bytes in    9.35 ms
+  UDP DNS query example.com      -> 208.67.222.222:53    OK 61 bytes in    8.19 ms
+  UDP DNS query example.com      -> 169.254.0.22:53    TimeoutError after  5005.6 ms
+  UDP NTP mode3                  -> 162.159.200.1:123   OK 48 bytes in    7.19 ms
+  UDP QUIC Initial-ish           -> 1.1.1.1:443   TimeoutError after  5005.2 ms
+
+  --- TLS leaf cert issuer (MITM check) ---
+  google.com                 TLSv1.3   subject=*.google.com           issuer_org=Google Trust Services            issuer_cn=WR2                                  valid_to=Nov  2 08:37:34 2026 GMT
+  github.com                 TLSv1.3   subject=*.github.com           issuer_org=Sectigo Limited                  issuer_cn=Sectigo Public Server Authenticati   valid_to=Nov 27 23:59:59 2026 GMT
+  pypi.org                   TLSv1.3   subject=pypi.org               issuer_org=GlobalSign nv-sa                 issuer_cn=GlobalSign Atlas R3 DV TLS CA 2025   valid_to=Jan 29 04:33:07 2027 GMT
+  huggingface.co             TLSv1.3   subject=huggingface.co         issuer_org=Amazon                           issuer_cn=Amazon RSA 2048 M01                  valid_to=Feb 27 23:59:59 2027 GMT
+  registry.npmjs.org         TLSv1.2   subject=npmjs.org              issuer_org=Google Trust Services            issuer_cn=WE1                                  valid_to=Nov 22 02:49:24 2026 GMT

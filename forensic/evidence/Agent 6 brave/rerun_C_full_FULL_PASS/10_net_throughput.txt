@@ -1,0 +1,35 @@
+== Throughput: real downloads (curl -w, HTTP/1.1, timed 13:58:45Z) ==
+-- cloudflare __down 50 MiB, 3 run(s) --
+  cloudflare 50MiB run1                       50.00 MiB   200.73 MiB/s  total   0.25s  ttfb     63 ms  code=200
+  cloudflare 50MiB run2                       50.00 MiB   180.70 MiB/s  total   0.28s  ttfb     73 ms  code=200
+  cloudflare 50MiB run3                       50.00 MiB   187.17 MiB/s  total   0.27s  ttfb     63 ms  code=200
+  hetzner 100MB.bin                        FAILED: curl: (6) Could not resolve host: speed.hetzner.de
+0|0|0.001222|0.000000|000
+  codeload git/git v2.47.3 tgz                10.84 MiB     5.20 MiB/s  total   2.09s  ttfb    320 ms  code=200
+  HF gpt2 model.bin (range 5MB)                5.00 MiB    12.96 MiB/s  total   0.39s  ttfb    204 ms  code=206
+
+== upload test: cloudflare __up 20MiB ==
+  upload: speed=62037657B/s total=0.338045s code=200
+
+== egress location probe (ipinfo; non-fatal) ==
+{
+  "ip": "136.67.146.242",
+  "hostname": "242.146.67.136.bc.googleusercontent.com",
+  "city": "The Dalles",
+  "region": "Oregon",
+  "country": "US",
+  "loc": "45.5946,-121.1787",
+  "org": "AS396982 Google LLC",
+  "postal": "97058",
+  "timezone": "America/Los_Angeles",
+  "readme": "https://ipinfo.io/missingauth"
+}
+
+== ssh handshake egress test (port 22, github) ==
+git@github.com: Permission denied (publickey).
+
+== git clone (shallow, https) ==
+  clone ok, 28 KiB in 0.41s
+
+== node/npm registry install test (express, small tree) ==
+  npm install express@4: rc=0 in 3.16s, tree 2.2 MiB

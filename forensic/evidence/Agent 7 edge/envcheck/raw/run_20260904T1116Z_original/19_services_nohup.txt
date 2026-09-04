@@ -1,0 +1,44 @@
+### Listening ports / sockets (as user)
+State  Recv-Q Send-Q Local Address:Port  Peer Address:Port
+LISTEN 0      100        127.0.0.1:35769      0.0.0.0:*   
+LISTEN 0      5       169.254.0.21:47945      0.0.0.0:*   
+LISTEN 0      5       169.254.0.21:34675      0.0.0.0:*   
+LISTEN 0      4096         0.0.0.0:111        0.0.0.0:*   
+LISTEN 0      5       169.254.0.21:35769      0.0.0.0:*   
+LISTEN 0      100        127.0.0.1:47945      0.0.0.0:*   
+LISTEN 0      100        127.0.0.1:34675      0.0.0.0:*   
+LISTEN 0      128        127.0.0.1:8888       0.0.0.0:*   
+LISTEN 0      5       169.254.0.21:8888       0.0.0.0:*   
+LISTEN 0      100        127.0.0.1:44461      0.0.0.0:*   
+LISTEN 0      5       169.254.0.21:35105      0.0.0.0:*   
+LISTEN 0      100        127.0.0.1:39379      0.0.0.0:*   
+LISTEN 0      100        127.0.0.1:41435      0.0.0.0:*   
+LISTEN 0      100        127.0.0.1:43501      0.0.0.0:*   
+
+### effective caps as root via sudo
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+
+### /proc/1/environ via sudo
+/bin/bash: line 6: /proc/1/environ: Permission denied
+
+### service briefs
+● envd.service - Env Daemon Service
+     Loaded: loaded (/etc/systemd/system/envd.service; enabled; preset: enabled)
+     Active: active (running) since Thu 2026-07-23 18:05:37 UTC; 1 month 12 days ago
+ Invocation: 3fa22da638b044ff9fbef2dbdda41208
+    Process: 335 ExecStartPre=/bin/sh -c mountpoint -q /etc/ssl/certs || { mkdir -p /run/e2b/certs && { tar -C /run/e2b/certs -xf /usr/local/share/e2b/ssl-certs.tar 2>/dev/null || cp -a /etc/ssl/certs/. /run/e2b/certs/ 2>/dev/null; }; mount --bind /run/e2b/certs /etc/ssl/certs; } && ([ -s /etc/ssl/certs/ca-certificates.crt ] || update-ca-certificates) (code=exited, status=0/SUCCESS)
+   Main PID: 359 (envd)
+● code-interpreter.service - Code Interpreter Server
+     Loaded: loaded (/etc/systemd/system/code-interpreter.service; static)
+     Active: active (running) since Thu 2026-07-23 18:05:41 UTC; 1 month 12 days ago
+ Invocation: ba57e5f0a2d84c24abb7ac58f8086972
+       Docs: https://github.com/e2b-dev/code-interpreter
+    Process: 440 ExecStartPre=/root/.jupyter/jupyter-healthcheck.sh (code=exited, status=0/SUCCESS)
+
+### nohup background survival test (start sleep 90 in background now)
+started pid 3598
+
+### process count
+91

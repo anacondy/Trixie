@@ -1,0 +1,107 @@
+### pid1
+systemd
+-- tree:
+    PID    PPID COMMAND         COMMAND
+      1       0 systemd         /sbin/init
+      2       0 kthreadd        [kthreadd]
+      3       2 rcu_gp          [rcu_gp]
+      4       2 rcu_par_gp      [rcu_par_gp]
+      5       2 slub_flushwq    [slub_flushwq]
+      6       2 netns           [netns]
+      7       2 kworker/0:0-eve [kworker/0:0-events]
+      8       2 kworker/0:0H-ev [kworker/0:0H-events_highpri]
+      9       2 kworker/u4:0-ex [kworker/u4:0-ext4-rsv-conversion]
+     10       2 mm_percpu_wq    [mm_percpu_wq]
+     11       2 rcu_tasks_kthre [rcu_tasks_kthread]
+     12       2 rcu_tasks_rude_ [rcu_tasks_rude_kthread]
+     13       2 rcu_tasks_trace [rcu_tasks_trace_kthread]
+     14       2 ksoftirqd/0     [ksoftirqd/0]
+     15       2 rcu_preempt     [rcu_preempt]
+     16       2 migration/0     [migration/0]
+     17       2 kworker/0:1-cgr [kworker/0:1-cgroup_offline]
+     18       2 cpuhp/0         [cpuhp/0]
+     19       2 cpuhp/1         [cpuhp/1]
+
+### cgroup v2 limits
+memory.max = (absent)
+memory.current = (absent)
+cpu.max = (absent)
+cpu.weight = (absent)
+cpuset.cpus.effective = 0-1
+pids.max = (absent)
+pids.current = (absent)
+
+### capabilities
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+-- decoded:
+xargs: capsh: No such file or directory
+
+### seccomp
+Seccomp:	0
+Seccomp_filters:	0
+
+### ulimits
+real-time non-blocking time  (microseconds, -R) unlimited
+core file size              (blocks, -c) 0
+data seg size               (kbytes, -d) unlimited
+scheduling priority                 (-e) 0
+file size                   (blocks, -f) unlimited
+pending signals                     (-i) 7917
+max locked memory           (kbytes, -l) 8192
+max memory size             (kbytes, -m) unlimited
+open files                          (-n) 1024
+pipe size                (512 bytes, -p) 8
+POSIX message queues         (bytes, -q) 819200
+real-time priority                  (-r) 0
+stack size                  (kbytes, -s) 8192
+cpu time                   (seconds, -t) unlimited
+max user processes                  (-u) 7917
+virtual memory              (kbytes, -v) unlimited
+file locks                          (-x) unlimited
+
+### /proc/self/limits
+Limit                     Soft Limit           Hard Limit           Units     
+Max cpu time              unlimited            unlimited            seconds   
+Max file size             unlimited            unlimited            bytes     
+Max data size             unlimited            unlimited            bytes     
+Max stack size            8388608              unlimited            bytes     
+Max core file size        0                    0                    bytes     
+Max resident set          unlimited            unlimited            bytes     
+Max processes             7917                 7917                 processes 
+Max open files            1024                 524288               files     
+Max locked memory         8388608              8388608              bytes     
+Max address space         unlimited            unlimited            bytes     
+Max file locks            unlimited            unlimited            locks     
+Max pending signals       7917                 7917                 signals   
+Max msgqueue size         819200               819200               bytes     
+Max nice priority         0                    0                    
+Max realtime priority     0                    0                    
+Max realtime timeout      unlimited            unlimited            us        
+
+### container marker files
+
+### hostname
+e2b.local
+e2b.local
+### swap
+Filename				Type		Size		Used		Priority
+---
+
+### env vars
+E2B_EVENTS_ADDRESS=http://192.0.2.1
+E2B_SANDBOX=true
+E2B_SANDBOX_ID=i07vrt7m23evfzhmemmqh
+E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+HOME=/home/user
+LOGNAME=user
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+PS1=\w $ 
+PWD=/home/user
+SHELL=/bin/bash
+SHLVL=1
+USER=user
+_=/usr/bin/env

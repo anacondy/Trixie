@@ -1,0 +1,26 @@
+################################################################
+# SECTION: 10_download_throughput.txt   (probe run run_20260904T141747Z)
+# STARTED : 2026-09-04T14:17:53Z
+################################################################
+### locating a real PyPI wheel (numpy 2.3.5, cp313 manylinux x86_64) via JSON API
+wheel: https://files.pythonhosted.org/packages/f5/10/ca162f45a102738958dcec8023062dad0cbc17d1ab99d68c4e4a6c45fb2b/numpy-2.3.5-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+--- PyPI/Fastly numpy wheel (~17MB) (https://files.pythonhosted.org/packages/f5/10/ca162f45a102738958dcec8023062dad0cbc17d1ab99d68c4e4a6c45fb2b/numpy-2.3.5-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl)
+http=200 bytes=16597430 ttfb=0.034085s total=0.157818s avg=105168168B/s
+--- GitHub release asset (~114MB) (https://github.com/prometheus/prometheus/releases/download/v3.2.1/prometheus-3.2.1.linux-amd64.tar.gz)
+http=200 bytes=114163078 ttfb=0.180801s total=0.574919s avg=198572456B/s
+--- codeload.github.com cpython tarball (~30MB, expected slow) (https://codeload.github.com/python/cpython/tar.gz/refs/tags/v3.13.5)
+http=200 bytes=29982213 ttfb=0.383225s total=4.357972s avg=6879854B/s
+--- HuggingFace gpt2 pytorch_model.bin, 50MB range request
+http=206 bytes=52428800 ttfb=0.200884s total=0.792333s avg=66170158B/s
+
+### parallel: 4 x 10MB ranges from the wheel host
+4x10MB parallel wall=0.16s -> ~40MB/(wall) MB/s
+
+### parallel: 4 x codeload tarball (~30MB each, per-connection limit check)
+4x codeload wall=4.41s
+
+### uploads
+cloudflare __up 10MB: http=200 sent=10485760 total=0.278230s upload_speed=37687380B/s
+httpbin POST 5MB: http=200 sent=5242880 total=2.829186s upload_speed=1853140B/s
+
+# section rc=0   FINISHED: 2026-09-04T14:18:07Z

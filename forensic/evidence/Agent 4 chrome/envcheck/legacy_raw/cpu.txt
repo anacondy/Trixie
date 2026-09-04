@@ -1,0 +1,18 @@
+benchmark                                 min s    med s  result/side-notes
+sum(range(10**7))                         0.217    0.245  49,999,995,000,000
+sum(i*i for i in range(10**7))            0.838    0.840  generator+square
+float math loop 3M iters                  0.383    0.384  -0.4
+sieve primes < 5e6 (slice-assign)         0.040    0.041  348,513 primes
+recursive fib(30)                         0.107    0.107  832040
+json.loads 4.7MB payload                  0.012    0.012  1.0 MB
+Traceback (most recent call last):
+  File "/home/user/envcheck/cpu_bench.py", line 37, in <module>
+    a,b,_ = timed(lambda: gzip_compress(s))
+            ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/envcheck/cpu_bench.py", line 5, in timed
+    t0=time.perf_counter(); r=fn(); ts.append(time.perf_counter()-t0)
+                              ~~^^
+  File "/home/user/envcheck/cpu_bench.py", line 37, in <lambda>
+    a,b,_ = timed(lambda: gzip_compress(s))
+                          ^^^^^^^^^^^^^
+NameError: name 'gzip_compress' is not defined
