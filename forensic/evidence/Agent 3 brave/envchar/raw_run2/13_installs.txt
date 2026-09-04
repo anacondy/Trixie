@@ -1,0 +1,51 @@
+# ============================================================
+# probe_environment.sh :: 13 package-install tests (STRESS mode only)
+# run_id: raw_run2   mode: stress
+# host: e2b.local   user: user(1000)
+# date_utc: 2026-09-04T13:47:20Z
+# ============================================================
+
+$ apt-get update (timed)
+
+real	0m0.908s
+user	0m0.628s
+sys	0m0.109s
+
+$ apt-get install --reinstall file ripgrep (timed; --reinstall so re-runs still download)
+
+real	0m2.242s
+user	0m1.136s
+sys	0m0.216s
+
+$ pip install --no-cache-dir --target <tmp> six (timed)
+real	0m0.917s
+user	0m0.624s
+sys	0m0.083s
+
+$ pip download numpy wheel (timed)
+
+[notice] A new release of pip is available: 26.1.2 -> 26.2.1
+[notice] To update, run: pip install --upgrade pip
+
+real	0m0.923s
+user	0m0.604s
+sys	0m0.118s
+-rw-r--r-- 1 user user 16709995 Sep  4 13:47 numpy-2.5.2-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+
+$ npm install left-pad in empty dir (timed)
+real	0m0.648s
+user	0m0.357s
+sys	0m0.147s
+
+$ git clone --depth 1 octocat/Hello-World (timed)
+
+real	0m0.583s
+user	0m0.066s
+sys	0m0.022s
+
+$ gcc compile+run (timed)
+
+real	0m0.343s
+user	0m0.053s
+sys	0m0.025s
+ok s=666666166.46

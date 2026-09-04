@@ -1,0 +1,24 @@
+# ============================================================
+# probe_environment.sh :: 07 DNS resolution timing
+# run_id: raw_run2   mode: stress
+# host: e2b.local   user: user(1000)
+# date_utc: 2026-09-04T13:46:59Z
+# ============================================================
+
+$ python3 getaddrinfo timing (5x per domain, ms) + raw UDP/53 probes
+getaddrinfo (ms per lookup):
+  google.com               6.0     1.5     1.0     1.1     1.3   avg 2.2
+  github.com               1.0     1.3     1.1    11.8    10.5   avg 5.1
+  pypi.org                 1.0     0.8     0.7     0.8     1.1   avg 0.9
+  huggingface.co          17.6    16.0     1.8    18.2     1.2   avg 11.0
+  cloudflare.com           1.6     1.3     1.3     1.4     0.8   avg 1.3
+  amazon.com               7.5     1.2     1.3     1.1     1.4   avg 2.5
+resolved IPs:
+  google.com           -> 74.125.142.101
+  github.com           -> 140.82.116.4
+  pypi.org             -> 151.101.128.223
+  huggingface.co       -> 3.165.160.11
+raw UDP/53 to 8.8.8.8 (3x, ms):
+  google.com           0.8 1.2 1.2
+  github.com           1.1 8.1 1.5
+  huggingface.co       1.3 1.0 1.0

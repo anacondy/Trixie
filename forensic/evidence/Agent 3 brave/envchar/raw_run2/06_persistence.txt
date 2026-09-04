@@ -1,0 +1,14 @@
+# ============================================================
+# probe_environment.sh :: 06 persistence markers
+# run_id: raw_run2   mode: stress
+# host: e2b.local   user: user(1000)
+# date_utc: 2026-09-04T13:46:59Z
+# ============================================================
+
+NOTE: true cross-session persistence cannot be tested by a single script run.
+This writes run-unique markers to persistent ($HOME) and volatile (/tmp) locations
+and reads them back; compare across runs/sessions externally.
+
+$ write+read markers
+/home/user/.probe_persistence_marker.txt -> marker run=raw_run2 written=2026-09-04T13:46:59Z host=e2b.local
+/tmp/.probe_persistence_marker.txt -> marker run=raw_run2 written=2026-09-04T13:46:59Z host=e2b.local

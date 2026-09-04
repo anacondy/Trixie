@@ -1,0 +1,39 @@
+# ============================================================
+# probe_environment.sh :: 14 memory pressure: allocate+touch 100MB chunks until OOM (STRESS only)
+# run_id: raw_run2   mode: stress
+# host: e2b.local   user: user(1000)
+# date_utc: 2026-09-04T13:47:27Z
+# ============================================================
+
+expect: child python3 OOM-killed (exit 137) at cgroup memory.max; this is the intended result
+allocated   100 MB ok
+allocated   200 MB ok
+allocated   300 MB ok
+allocated   400 MB ok
+allocated   500 MB ok
+allocated   600 MB ok
+allocated   700 MB ok
+allocated   800 MB ok
+allocated   900 MB ok
+allocated  1000 MB ok
+allocated  1100 MB ok
+allocated  1200 MB ok
+allocated  1300 MB ok
+allocated  1400 MB ok
+allocated  1500 MB ok
+allocated  1600 MB ok
+probe_environment.sh: line 430:  2541 Killed                  python3 -u - <<'PY'
+chunks=[]; total=0
+try:
+    while True:
+        b=bytearray(100*1024*1024)
+        for i in range(0,len(b),4096): b[i]=1
+        chunks.append(b); total+=100
+        print(f"allocated {total:5d} MB ok")
+except MemoryError:
+    print(f"MemoryError at ~{total} MB")
+PY
+
+python exit code: 137 (137 = OOM-killed at cgroup hard limit)
+               total        used        free      shared  buff/cache   available
+Mem:           1.9Gi       375Mi       1.6Gi       1.1Mi        29Mi       1.6Gi
