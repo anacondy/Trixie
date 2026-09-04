@@ -1,0 +1,147 @@
+# envchar raw transcript
+# file: 08_filesystem.txt
+# title: Filesystem, disk space, write tests
+# generated_utc: 2026-09-04T13:45:05Z
+# host: e2b.local
+# sandbox: i4i7wdij5c7gh9absvtu8
+# template: nlhz8vlwyupq845jsdg9
+# probe: /home/user/envchar/probe.sh
+# NOTE: This file is a verbatim command transcript. Do not summarize.
+
+================================================================
+=== df -hT
+=== CMD: df -hT
+=== UTC: 2026-09-04T13:45:22Z
+================================================================
+Filesystem     Type      Size  Used Avail Use% Mounted on
+/dev/root      ext4       25G  4.1G   20G  17% /
+devtmpfs       devtmpfs  990M     0  990M   0% /dev
+tmpfs          tmpfs     993M     0  993M   0% /dev/shm
+tmpfs          tmpfs     397M  328K  397M   1% /run
+tmpfs          tmpfs     993M   32K  993M   1% /tmp
+tmpfs          tmpfs     5.0M     0  5.0M   0% /run/lock
+=== EXIT: 0  WALL_S: 0.0037 ===
+
+================================================================
+=== df -i
+=== CMD: df -i
+=== UTC: 2026-09-04T13:45:22Z
+================================================================
+Filesystem      Inodes  IUsed   IFree IUse% Mounted on
+/dev/root      6759792 136348 6623444    3% /
+devtmpfs        253363    137  253226    1% /dev
+tmpfs           254076      1  254075    1% /dev/shm
+tmpfs           819200    440  818760    1% /run
+tmpfs          1048576     16 1048560    1% /tmp
+tmpfs           254076      2  254074    1% /run/lock
+=== EXIT: 0  WALL_S: 0.0038 ===
+
+================================================================
+=== lsblk
+=== CMD: lsblk -a
+=== UTC: 2026-09-04T13:45:22Z
+================================================================
+NAME  MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+loop0   7:0    0    0B  0 loop 
+loop1   7:1    0    0B  0 loop 
+loop2   7:2    0    0B  0 loop 
+loop3   7:3    0    0B  0 loop 
+loop4   7:4    0    0B  0 loop 
+loop5   7:5    0    0B  0 loop 
+loop6   7:6    0    0B  0 loop 
+loop7   7:7    0    0B  0 loop 
+vda   254:0    0 25.8G  0 disk /
+=== EXIT: 0  WALL_S: 0.1120 ===
+
+================================================================
+=== findmnt -D
+=== CMD: findmnt -D
+=== UTC: 2026-09-04T13:45:22Z
+================================================================
+SOURCE            FSTYPE     SIZE  USED  AVAIL USE% TARGET
+/dev/vda          ext4      24.1G    4G  19.7G  17% /
+devtmpfs          devtmpfs 989.7M     0 989.7M   0% /dev
+tmpfs             tmpfs    992.5M     0 992.5M   0% /dev/shm
+tmpfs             tmpfs      397M  328K 396.7M   0% /run
+tmpfs             tmpfs    992.5M   32K 992.5M   0% /tmp
+tmpfs             tmpfs        5M     0     5M   0% /run/lock
+tmpfs[/e2b/certs] tmpfs      397M  328K 396.7M   0% /etc/ssl/certs
+=== EXIT: 0  WALL_S: 0.0041 ===
+
+================================================================
+=== du top
+=== CMD: du -sh /usr /var /home /opt /tmp /root /usr/local
+=== UTC: 2026-09-04T13:45:22Z
+================================================================
+3.9G	/usr
+46M	/var
+269K	/home
+0	/opt
+32K	/tmp
+4.0K	/root
+=== EXIT: 1  WALL_S: 2.5386 ===
+
+================================================================
+=== ls -la /home/user
+=== CMD: ls -la /home/user
+=== UTC: 2026-09-04T13:45:25Z
+================================================================
+total 36
+drwx------ 6 user user  4096 Sep  4 13:45 .
+drwxr-xr-x 3 root root    60 Jul 23 15:09 ..
+drwxr-xr-x 3 user user    60 Sep  4 13:45 .cache
+drwxr-xr-x 3 user user    60 Sep  4 13:45 .config
+-rw-r--r-- 1 user user     0 Sep  4 13:41 .sudo_as_admin_successful
+-rw-r--r-- 1 user user   165 Sep  4 13:41 .wget-hsts
+drwxr-xr-x 2 user user    60 Sep  4 13:41 _envchar
+drwxr-xr-x 5 user user  4096 Sep  4 13:45 envchar
+-rw-r--r-- 1 user user 23133 Sep  4 13:41 environment_characterization.md
+=== EXIT: 0  WALL_S: 0.0042 ===
+
+================================================================
+=== ls -ld tmp paths
+=== CMD: ls -ld /tmp /var/tmp /home/user /usr/local
+=== UTC: 2026-09-04T13:45:25Z
+================================================================
+drwx------  6 user user 4096 Sep  4 13:45 /home/user
+drwxrwxrwt 11 root root  220 Sep  4 13:45 /tmp
+drwxrwxrwx 11 root root 4096 Jul 23 15:09 /usr/local
+drwxrwxrwt  5 root root 4096 Sep  4 13:45 /var/tmp
+=== EXIT: 0  WALL_S: 0.0036 ===
+
+================================================================
+=== write tests
+=== CMD: bash -c 
+    set +e
+    echo "test-home" > /home/user/.envchar_w && cat /home/user/.envchar_w && rm /home/user/.envchar_w && echo HOME=OK || echo HOME=FAIL
+    echo "test-tmp" > /tmp/.envchar_w && cat /tmp/.envchar_w && rm /tmp/.envchar_w && echo TMP=OK || echo TMP=FAIL
+    echo "test-vartmp" > /var/tmp/.envchar_w && cat /var/tmp/.envchar_w && rm /var/tmp/.envchar_w && echo VARTMP=OK || echo VARTMP=FAIL
+    echo "test-usrlocal" > /usr/local/.envchar_w && echo USRLOCAL=OK && rm -f /usr/local/.envchar_w || echo USRLOCAL=FAIL
+    echo "test-root" > /envchar_w 2>&1 && echo ROOT=OK || echo ROOT=FAIL
+    echo "test-opt" > /opt/.envchar_w 2>&1 && echo OPT=OK || echo OPT=FAIL
+    echo "test-etc" > /etc/.envchar_w 2>&1 && echo ETC=OK || echo ETC=FAIL
+    touch /bin/envchar 2>&1 || true
+    touch /usr/bin/envchar 2>&1 || true
+    ls -ld /usr/local/lib/python3.13/site-packages
+    touch /usr/local/lib/python3.13/site-packages/.wtest && echo SITEPACKAGES=OK && rm -f /usr/local/lib/python3.13/site-packages/.wtest || echo SITEPACKAGES=FAIL
+  
+=== UTC: 2026-09-04T13:45:25Z
+================================================================
+test-home
+HOME=OK
+test-tmp
+TMP=OK
+test-vartmp
+VARTMP=OK
+USRLOCAL=OK
+bash: line 7: /envchar_w: Permission denied
+ROOT=FAIL
+bash: line 8: /opt/.envchar_w: Permission denied
+OPT=FAIL
+bash: line 9: /etc/.envchar_w: Permission denied
+ETC=FAIL
+touch: cannot touch '/bin/envchar': Permission denied
+touch: cannot touch '/usr/bin/envchar': Permission denied
+drwxrwxrwx 369 root root 12288 Jul 23 18:05 /usr/local/lib/python3.13/site-packages
+SITEPACKAGES=OK
+=== EXIT: 0  WALL_S: 0.0179 ===

@@ -1,0 +1,64 @@
+# envchar raw transcript
+# file: 11_net_ports.txt
+# title: Outbound TCP port probe
+# generated_utc: 2026-09-04T13:45:05Z
+# host: e2b.local
+# sandbox: i4i7wdij5c7gh9absvtu8
+# template: nlhz8vlwyupq845jsdg9
+# probe: /home/user/envchar/probe_bench.py
+# NOTE: This file is a verbatim measurement transcript. Do not summarize.
+
+
+================================================================
+=== TCP connect one-shot
+=== UTC: 2026-09-04T13:45:35Z
+================================================================
+result   label            host                    port       ms extra
+OPEN     dns-tcp          1.1.1.1                   53      0.3
+OPEN     http             1.1.1.1                   80      0.2
+OPEN     https            1.1.1.1                  443      0.3
+OPEN     dot              1.1.1.1                  853      0.2
+OPEN     dns-tcp          8.8.8.8                   53      0.1
+OPEN     https            8.8.8.8                  443      0.2
+OPEN     ssh              github.com                22      1.7
+OPEN     http             github.com                80      1.4
+OPEN     https            github.com               443     10.7
+OPEN     git-daemon       github.com              9418      1.0
+OPEN     smtp             smtp.gmail.com            25      1.3
+OPEN     smtps            smtp.gmail.com           465      1.5
+OPEN     smtp-sub         smtp.gmail.com           587      1.1
+OPEN     http             pypi.org                  80      1.0
+OPEN     https            pypi.org                 443      1.0
+OPEN     https            huggingface.co           443      1.5
+OPEN     ssh-scanme       scanme.nmap.org           22     34.0
+OPEN     http-scanme      scanme.nmap.org           80      1.7
+OPEN     https-ex         example.com              443      1.4
+
+================================================================
+=== TLS certificate subjects
+=== UTC: 2026-09-04T13:45:35Z
+================================================================
+--- www.google.com ---
+subject=CN=www.google.com
+issuer=C=US, O=Google Trust Services, CN=WR2
+notBefore=Aug 10 08:39:49 2026 GMT
+notAfter=Nov  2 08:39:48 2026 GMT
+
+--- github.com ---
+subject=CN=github.com
+issuer=C=GB, O=Sectigo Limited, CN=Sectigo Public Server Authentication CA DV E36
+notBefore=Sep  1 00:00:00 2026 GMT
+notAfter=Nov 29 23:59:59 2026 GMT
+
+--- pypi.org ---
+subject=CN=pypi.org
+issuer=C=BE, O=GlobalSign nv-sa, CN=GlobalSign Atlas R3 DV TLS CA 2025 Q4
+notBefore=Dec 28 04:33:08 2025 GMT
+notAfter=Jan 29 04:33:07 2027 GMT
+
+--- huggingface.co ---
+subject=CN=huggingface.co
+issuer=C=US, O=Amazon, CN=Amazon RSA 2048 M01
+notBefore=Aug 14 00:00:00 2026 GMT
+notAfter=Feb 27 23:59:59 2027 GMT
+

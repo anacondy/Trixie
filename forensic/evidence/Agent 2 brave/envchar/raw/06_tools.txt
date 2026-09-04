@@ -1,0 +1,432 @@
+# envchar raw transcript
+# file: 06_tools.txt
+# title: Tool availability and versions
+# generated_utc: 2026-09-04T13:45:05Z
+# host: e2b.local
+# sandbox: i4i7wdij5c7gh9absvtu8
+# template: nlhz8vlwyupq845jsdg9
+# probe: /home/user/envchar/probe.sh
+# NOTE: This file is a verbatim command transcript. Do not summarize.
+
+================================================================
+=== which list
+=== CMD: bash -c 
+    for cmd in python3 python pip pip3 python3.13 node npm npx yarn pnpm git curl wget ffmpeg docker podman make gcc g++ clang clang++ jq rustc cargo go java javac ruby php perl R conda mamba uv pixi poetry pipx cmake ninja meson pkg-config ldd strace gdb lsof ss ip iptables nft nc ncat socat openssl ssh scp rsync tar unzip zip gzip bzip2 xz zstd 7z tmux screen htop vim nano emacs awk sed grep find xargs parallel pigz aria2c httpie apt apt-get dpkg; do
+      if command -v "$cmd" >/dev/null 2>&1; then
+        loc=$(command -v "$cmd")
+        printf "YES\t%s\t%s\n" "$cmd" "$loc"
+      else
+        printf "NO\t%s\n" "$cmd"
+      fi
+    done
+  
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+YES	python3	/usr/local/bin/python3
+YES	python	/usr/local/bin/python
+YES	pip	/usr/local/bin/pip
+YES	pip3	/usr/local/bin/pip3
+YES	python3.13	/usr/local/bin/python3.13
+YES	node	/usr/bin/node
+YES	npm	/usr/bin/npm
+YES	npx	/usr/bin/npx
+NO	yarn
+NO	pnpm
+YES	git	/usr/bin/git
+YES	curl	/usr/bin/curl
+YES	wget	/usr/bin/wget
+NO	ffmpeg
+NO	docker
+NO	podman
+YES	make	/usr/bin/make
+YES	gcc	/usr/bin/gcc
+YES	g++	/usr/bin/g++
+NO	clang
+NO	clang++
+YES	jq	/usr/bin/jq
+NO	rustc
+NO	cargo
+NO	go
+YES	java	/usr/bin/java
+YES	javac	/usr/bin/javac
+NO	ruby
+NO	php
+YES	perl	/usr/bin/perl
+YES	R	/usr/bin/R
+NO	conda
+NO	mamba
+NO	uv
+NO	pixi
+NO	poetry
+NO	pipx
+NO	cmake
+NO	ninja
+NO	meson
+YES	pkg-config	/usr/bin/pkg-config
+YES	ldd	/usr/bin/ldd
+NO	strace
+NO	gdb
+NO	lsof
+YES	ss	/usr/bin/ss
+YES	ip	/usr/bin/ip
+NO	iptables
+NO	nft
+NO	nc
+NO	ncat
+YES	socat	/usr/bin/socat
+YES	openssl	/usr/bin/openssl
+YES	ssh	/usr/bin/ssh
+YES	scp	/usr/bin/scp
+NO	rsync
+YES	tar	/usr/bin/tar
+YES	unzip	/usr/bin/unzip
+YES	zip	/usr/bin/zip
+YES	gzip	/usr/bin/gzip
+YES	bzip2	/usr/bin/bzip2
+YES	xz	/usr/bin/xz
+NO	zstd
+NO	7z
+NO	tmux
+NO	screen
+NO	htop
+NO	vim
+NO	nano
+NO	emacs
+YES	awk	/usr/bin/awk
+YES	sed	/usr/bin/sed
+YES	grep	/usr/bin/grep
+YES	find	/usr/bin/find
+YES	xargs	/usr/bin/xargs
+NO	parallel
+NO	pigz
+NO	aria2c
+NO	httpie
+YES	apt	/usr/bin/apt
+YES	apt-get	/usr/bin/apt-get
+YES	dpkg	/usr/bin/dpkg
+=== EXIT: 0  WALL_S: 0.0222 ===
+
+================================================================
+=== python3 --version
+=== CMD: python3 --version
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+Python 3.13.14
+=== EXIT: 0  WALL_S: 0.0041 ===
+
+================================================================
+=== pip --version
+=== CMD: pip --version
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+pip 26.1.2 from /usr/local/lib/python3.13/site-packages/pip (python 3.13)
+=== EXIT: 0  WALL_S: 0.2432 ===
+
+================================================================
+=== node --version
+=== CMD: node --version
+=== UTC: 2026-09-04T13:45:10Z
+================================================================
+v20.20.2
+=== EXIT: 0  WALL_S: 0.0096 ===
+
+================================================================
+=== npm --version
+=== CMD: npm --version
+=== UTC: 2026-09-04T13:45:10Z
+================================================================
+10.8.2
+=== EXIT: 0  WALL_S: 0.2266 ===
+
+================================================================
+=== git --version
+=== CMD: git --version
+=== UTC: 2026-09-04T13:45:10Z
+================================================================
+git version 2.47.3
+=== EXIT: 0  WALL_S: 0.0501 ===
+
+================================================================
+=== curl --version
+=== CMD: curl --version
+=== UTC: 2026-09-04T13:45:10Z
+================================================================
+curl 8.14.1 (x86_64-pc-linux-gnu) libcurl/8.14.1 OpenSSL/3.5.6 zlib/1.3.1 brotli/1.1.0 zstd/1.5.7 libidn2/2.3.8 libpsl/0.21.2 libssh2/1.11.1 nghttp2/1.64.0 nghttp3/1.8.0 librtmp/2.3 OpenLDAP/2.6.10
+Release-Date: 2025-06-04, security patched: 8.14.1-2+deb13u4
+Protocols: dict file ftp ftps gopher gophers http https imap imaps ipfs ipns ldap ldaps mqtt pop3 pop3s rtmp rtsp scp sftp smb smbs smtp smtps telnet tftp ws wss
+Features: alt-svc AsynchDNS brotli GSS-API HSTS HTTP2 HTTP3 HTTPS-proxy IDN IPv6 Kerberos Largefile libz NTLM PSL SPNEGO SSL threadsafe TLS-SRP UnixSockets zstd
+=== EXIT: 0  WALL_S: 0.0252 ===
+
+================================================================
+=== wget --version
+=== CMD: wget --version
+=== UTC: 2026-09-04T13:45:10Z
+================================================================
+GNU Wget 1.25.0 built on linux-gnu.
+
+-cares +digest -gpgme +https +ipv6 +iri +large-file -metalink +nls 
++ntlm +opie +psl +ssl/gnutls 
+
+Wgetrc: 
+    /etc/wgetrc (system)
+Locale: 
+    /usr/share/locale 
+Compile: 
+    gcc -DHAVE_CONFIG_H -DSYSTEM_WGETRC="/etc/wgetrc" 
+    -DLOCALEDIR="/usr/share/locale" -I. -I../../src -I../lib 
+    -I../../lib -Wdate-time -D_FORTIFY_SOURCE=2 
+    -I/usr/include/p11-kit-1 -DHAVE_LIBGNUTLS -DNDEBUG -g -O2 
+    -Werror=implicit-function-declaration 
+    -ffile-prefix-map=/build/reproducible-path/wget-1.25.0=. 
+    -fstack-protector-strong -fstack-clash-protection -Wformat 
+    -Werror=format-security -fcf-protection -DNO_SSLv2 
+Link: 
+    gcc -I/usr/include/p11-kit-1 -DHAVE_LIBGNUTLS -DNDEBUG -g -O2 
+    -Werror=implicit-function-declaration 
+    -ffile-prefix-map=/build/reproducible-path/wget-1.25.0=. 
+    -fstack-protector-strong -fstack-clash-protection -Wformat 
+    -Werror=format-security -fcf-protection -DNO_SSLv2 -Wl,-z,relro 
+    -Wl,-z,now -lpcre2-8 -luuid -lidn2 -lnettle -lgnutls -lz -lpsl 
+    ../lib/libgnu.a 
+
+Copyright (C) 2015 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later
+<http://www.gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Originally written by Hrvoje Niksic <hniksic@xemacs.org>.
+Please send bug reports and questions to <bug-wget@gnu.org>.
+=== EXIT: 0  WALL_S: 0.0161 ===
+
+================================================================
+=== make --version
+=== CMD: make --version
+=== UTC: 2026-09-04T13:45:10Z
+================================================================
+GNU Make 4.4.1
+Built for x86_64-pc-linux-gnu
+Copyright (C) 1988-2023 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+=== EXIT: 0  WALL_S: 0.0125 ===
+
+================================================================
+=== gcc --version
+=== CMD: gcc --version
+=== UTC: 2026-09-04T13:45:10Z
+================================================================
+gcc (Debian 14.2.0-19) 14.2.0
+Copyright (C) 2024 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+=== EXIT: 0  WALL_S: 0.0181 ===
+
+================================================================
+=== g++ --version
+=== CMD: g++ --version
+=== UTC: 2026-09-04T13:45:10Z
+================================================================
+g++ (Debian 14.2.0-19) 14.2.0
+Copyright (C) 2024 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+=== EXIT: 0  WALL_S: 0.0197 ===
+
+================================================================
+=== jq --version
+=== CMD: jq --version
+=== UTC: 2026-09-04T13:45:10Z
+================================================================
+jq-1.7
+=== EXIT: 0  WALL_S: 0.0261 ===
+
+================================================================
+=== java --version
+=== CMD: java --version
+=== UTC: 2026-09-04T13:45:10Z
+================================================================
+openjdk 11 2018-09-25
+OpenJDK Runtime Environment 18.9 (build 11+28)
+OpenJDK 64-Bit Server VM 18.9 (build 11+28, mixed mode)
+=== EXIT: 0  WALL_S: 0.3128 ===
+
+================================================================
+=== javac --version
+=== CMD: javac --version
+=== UTC: 2026-09-04T13:45:11Z
+================================================================
+javac 11
+=== EXIT: 0  WALL_S: 0.3044 ===
+
+================================================================
+=== perl --version
+=== CMD: perl --version
+=== UTC: 2026-09-04T13:45:11Z
+================================================================
+
+This is perl 5, version 40, subversion 1 (v5.40.1) built for x86_64-linux-gnu-thread-multi
+(with 48 registered patches, see perl -V for more detail)
+
+Copyright 1987-2025, Larry Wall
+
+Perl may be copied only under the terms of either the Artistic License or the
+GNU General Public License, which may be found in the Perl 5 source kit.
+
+Complete documentation for Perl, including FAQ lists, should be found on
+this system using "man perl" or "perldoc perl".  If you have access to the
+Internet, point your browser at https://www.perl.org/, the Perl Home Page.
+
+=== EXIT: 0  WALL_S: 0.0045 ===
+
+================================================================
+=== R --version
+=== CMD: R --version
+=== UTC: 2026-09-04T13:45:11Z
+================================================================
+R version 4.5.0 (2025-04-11) -- "How About a Twenty-Six"
+Copyright (C) 2025 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under the terms of the
+GNU General Public License versions 2 or 3.
+For more information about these matters see
+https://www.gnu.org/licenses/.
+
+=== EXIT: 0  WALL_S: 0.1562 ===
+
+================================================================
+=== openssl --version
+=== CMD: openssl --version
+=== UTC: 2026-09-04T13:45:11Z
+================================================================
+OpenSSL 3.5.6 7 Apr 2026 (Library: OpenSSL 3.5.6 7 Apr 2026)
+=== EXIT: 0  WALL_S: 0.0301 ===
+
+================================================================
+=== ssh --version
+=== CMD: ssh --version
+=== UTC: 2026-09-04T13:45:11Z
+================================================================
+unknown option -- -
+usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address]
+           [-c cipher_spec] [-D [bind_address:]port] [-E log_file]
+           [-e escape_char] [-F configfile] [-I pkcs11] [-i identity_file]
+           [-J destination] [-L address] [-l login_name] [-m mac_spec]
+           [-O ctl_cmd] [-o option] [-P tag] [-p port] [-R address]
+           [-S ctl_path] [-W host:port] [-w local_tun[:remote_tun]]
+           destination [command [argument ...]]
+       ssh [-Q query_option]
+=== EXIT: 255  WALL_S: 0.0216 ===
+
+================================================================
+=== tar --version
+=== CMD: tar --version
+=== UTC: 2026-09-04T13:45:11Z
+================================================================
+tar (GNU tar) 1.35
+Copyright (C) 2023 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Written by John Gilmore and Jay Fenlason.
+=== EXIT: 0  WALL_S: 0.0037 ===
+
+================================================================
+=== gzip --version
+=== CMD: gzip --version
+=== UTC: 2026-09-04T13:45:11Z
+================================================================
+gzip 1.13
+Copyright (C) 2023 Free Software Foundation, Inc.
+Copyright (C) 1993 Jean-loup Gailly.
+This is free software.  You may redistribute copies of it under the terms of
+the GNU General Public License <https://www.gnu.org/licenses/gpl.html>.
+There is NO WARRANTY, to the extent permitted by law.
+
+Written by Jean-loup Gailly.
+=== EXIT: 0  WALL_S: 0.0052 ===
+
+================================================================
+=== xz --version
+=== CMD: xz --version
+=== UTC: 2026-09-04T13:45:11Z
+================================================================
+xz (XZ Utils) 5.8.1
+liblzma 5.8.1
+=== EXIT: 0  WALL_S: 0.0102 ===
+
+================================================================
+=== pkg-config --version
+=== CMD: pkg-config --version
+=== UTC: 2026-09-04T13:45:11Z
+================================================================
+1.8.1
+=== EXIT: 0  WALL_S: 0.0131 ===
+
+================================================================
+=== java -version
+=== CMD: java -version
+=== UTC: 2026-09-04T13:45:11Z
+================================================================
+openjdk version "11" 2018-09-25
+OpenJDK Runtime Environment 18.9 (build 11+28)
+OpenJDK 64-Bit Server VM 18.9 (build 11+28, mixed mode)
+=== EXIT: 0  WALL_S: 0.0503 ===
+
+================================================================
+=== g++ --version
+=== CMD: g++ --version
+=== UTC: 2026-09-04T13:45:11Z
+================================================================
+g++ (Debian 14.2.0-19) 14.2.0
+Copyright (C) 2024 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+=== EXIT: 0  WALL_S: 0.0038 ===
+
+================================================================
+=== apt --version
+=== CMD: apt --version
+=== UTC: 2026-09-04T13:45:11Z
+================================================================
+apt 3.0.3 (amd64)
+=== EXIT: 0  WALL_S: 0.0293 ===
+
+================================================================
+=== apt sources.list.d
+=== CMD: ls -la /etc/apt/sources.list.d
+=== UTC: 2026-09-04T13:45:11Z
+================================================================
+total 12
+drwxr-xr-x 2 root root   60 Jul 23 15:10 .
+drwxr-xr-x 8 root root 4096 Jul 23 15:09 ..
+-rw-r--r-- 1 root root  437 Jul 13 00:00 debian.sources
+-rw-r--r-- 1 root root  155 Jul 23 15:10 nodesource.sources
+=== EXIT: 0  WALL_S: 0.0039 ===
+
+================================================================
+=== debian.sources
+=== CMD: cat /etc/apt/sources.list.d/debian.sources
+=== UTC: 2026-09-04T13:45:11Z
+================================================================
+Types: deb
+# http://snapshot.debian.org/archive/debian/20260713T000000Z
+URIs: http://deb.debian.org/debian
+Suites: trixie trixie-updates
+Components: main
+Signed-By: /usr/share/keyrings/debian-archive-keyring.pgp
+
+Types: deb
+# http://snapshot.debian.org/archive/debian-security/20260713T000000Z
+URIs: http://deb.debian.org/debian-security
+Suites: trixie-security
+Components: main
+Signed-By: /usr/share/keyrings/debian-archive-keyring.pgp
+=== EXIT: 0  WALL_S: 0.0038 ===

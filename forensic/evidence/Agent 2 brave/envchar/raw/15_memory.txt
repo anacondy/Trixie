@@ -1,0 +1,59 @@
+# envchar raw transcript
+# file: 15_memory.txt
+# title: Memory pressure allocation
+# generated_utc: 2026-09-04T13:45:05Z
+# host: e2b.local
+# sandbox: i4i7wdij5c7gh9absvtu8
+# template: nlhz8vlwyupq845jsdg9
+# probe: /home/user/envchar/probe_bench.py
+# NOTE: This file is a verbatim measurement transcript. Do not summarize.
+
+
+================================================================
+=== 50 MiB bytearray chunks until MemAvailable < 80 MiB
+=== UTC: 2026-09-04T13:45:48Z
+================================================================
+MemTotal_kB=2032608
+MemAvailable_kB_before=1574680
+MemFree_kB_before=1493944
+chunk=01 approx_MB=50 rss_kB=99460 MemFree_kB=1456396 MemAvailable_kB=1537092
+chunk=02 approx_MB=100 rss_kB=150676 MemFree_kB=1405240 MemAvailable_kB=1485936
+chunk=03 approx_MB=150 rss_kB=201628 MemFree_kB=1354084 MemAvailable_kB=1434780
+chunk=04 approx_MB=200 rss_kB=252844 MemFree_kB=1302928 MemAvailable_kB=1383624
+chunk=05 approx_MB=250 rss_kB=304060 MemFree_kB=1251520 MemAvailable_kB=1332216
+chunk=06 approx_MB=300 rss_kB=355276 MemFree_kB=1200364 MemAvailable_kB=1281060
+chunk=07 approx_MB=350 rss_kB=406492 MemFree_kB=1149208 MemAvailable_kB=1229904
+chunk=08 approx_MB=400 rss_kB=457708 MemFree_kB=1098052 MemAvailable_kB=1178748
+chunk=09 approx_MB=450 rss_kB=508924 MemFree_kB=1046896 MemAvailable_kB=1127592
+chunk=10 approx_MB=500 rss_kB=560140 MemFree_kB=995488 MemAvailable_kB=1076184
+chunk=11 approx_MB=550 rss_kB=611356 MemFree_kB=944332 MemAvailable_kB=1025028
+chunk=12 approx_MB=600 rss_kB=662572 MemFree_kB=893176 MemAvailable_kB=973872
+chunk=13 approx_MB=650 rss_kB=713788 MemFree_kB=842020 MemAvailable_kB=922716
+chunk=14 approx_MB=700 rss_kB=765004 MemFree_kB=790864 MemAvailable_kB=871560
+chunk=15 approx_MB=750 rss_kB=816220 MemFree_kB=739456 MemAvailable_kB=820152
+chunk=16 approx_MB=800 rss_kB=867436 MemFree_kB=688300 MemAvailable_kB=768996
+chunk=17 approx_MB=850 rss_kB=918652 MemFree_kB=637144 MemAvailable_kB=717840
+chunk=18 approx_MB=900 rss_kB=969868 MemFree_kB=585988 MemAvailable_kB=666684
+chunk=19 approx_MB=950 rss_kB=1021084 MemFree_kB=534580 MemAvailable_kB=615276
+chunk=20 approx_MB=1000 rss_kB=1072300 MemFree_kB=483424 MemAvailable_kB=564120
+chunk=21 approx_MB=1050 rss_kB=1123516 MemFree_kB=431764 MemAvailable_kB=512460
+chunk=22 approx_MB=1100 rss_kB=1174732 MemFree_kB=380608 MemAvailable_kB=461304
+chunk=23 approx_MB=1150 rss_kB=1225948 MemFree_kB=329452 MemAvailable_kB=410148
+chunk=24 approx_MB=1200 rss_kB=1277164 MemFree_kB=278044 MemAvailable_kB=358796
+chunk=25 approx_MB=1250 rss_kB=1328116 MemFree_kB=226888 MemAvailable_kB=307640
+chunk=26 approx_MB=1300 rss_kB=1379332 MemFree_kB=175228 MemAvailable_kB=255980
+chunk=27 approx_MB=1350 rss_kB=1430336 MemFree_kB=127812 MemAvailable_kB=195640
+chunk=28 approx_MB=1400 rss_kB=1481052 MemFree_kB=103352 MemAvailable_kB=125092
+chunk=29 approx_MB=1450 rss_kB=1528892 MemFree_kB=88704 MemAvailable_kB=101116
+chunk=30 approx_MB=1500 rss_kB=1574980 MemFree_kB=98280 MemAvailable_kB=71296
+stopping: MemAvailable < 80MB
+MemAvailable_kB_after=1582288
+MemFree_kB_after=1608972
+cgroup_user_memory.peak=1644376064
+cgroup_user_memory.events=
+low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0

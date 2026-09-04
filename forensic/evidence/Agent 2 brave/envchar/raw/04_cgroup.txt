@@ -1,0 +1,342 @@
+# envchar raw transcript
+# file: 04_cgroup.txt
+# title: cgroup v2 memory/cpu/pids
+# generated_utc: 2026-09-04T13:45:05Z
+# host: e2b.local
+# sandbox: i4i7wdij5c7gh9absvtu8
+# template: nlhz8vlwyupq845jsdg9
+# probe: /home/user/envchar/probe.sh
+# NOTE: This file is a verbatim command transcript. Do not summarize.
+
+================================================================
+=== cgroup root listing
+=== CMD: ls -la /sys/fs/cgroup
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+total 0
+dr-xr-xr-x 13 root root 0 Jul 23 18:05 .
+drwxr-xr-x 10 root root 0 Jul 23 18:05 ..
+-r--r--r--  1 root root 0 Jul 23 18:05 cgroup.controllers
+-rw-r--r--  1 root root 0 Sep  4 13:45 cgroup.max.depth
+-rw-r--r--  1 root root 0 Sep  4 13:45 cgroup.max.descendants
+-rw-r--r--  1 root root 0 Jul 23 18:05 cgroup.procs
+-r--r--r--  1 root root 0 Sep  4 13:45 cgroup.stat
+-rw-r--r--  1 root root 0 Jul 23 18:05 cgroup.subtree_control
+-rw-r--r--  1 root root 0 Sep  4 13:45 cgroup.threads
+-r--r--r--  1 root root 0 Sep  4 13:45 cpu.stat
+-r--r--r--  1 root root 0 Sep  4 13:45 cpuset.cpus.effective
+-r--r--r--  1 root root 0 Sep  4 13:45 cpuset.mems.effective
+drwxr-xr-x  2 root root 0 Jul 23 18:05 dev-hugepages.mount
+drwxr-xr-x  2 root root 0 Jul 23 18:05 dev-mqueue.mount
+drwxr-xr-x  2 root root 0 Jul 23 18:05 init.scope
+-rw-r--r--  1 root root 0 Sep  4 13:45 io.cost.model
+-rw-r--r--  1 root root 0 Sep  4 13:45 io.cost.qos
+-r--r--r--  1 root root 0 Sep  4 13:45 io.stat
+-r--r--r--  1 root root 0 Sep  4 13:45 memory.numa_stat
+--w-------  1 root root 0 Sep  4 13:45 memory.reclaim
+-r--r--r--  1 root root 0 Sep  4 13:45 memory.stat
+drwxr-xr-x  2 root root 0 Jul 23 18:05 ptys
+drwxr-xr-x  2 root root 0 Jul 23 18:05 socats
+drwxr-xr-x  2 root root 0 Jul 23 18:05 sys-fs-fuse-connections.mount
+drwxr-xr-x  2 root root 0 Jul 23 18:05 sys-kernel-debug.mount
+drwxr-xr-x  2 root root 0 Jul 23 18:05 sys-kernel-tracing.mount
+drwxr-xr-x 21 root root 0 Sep  4 13:45 system.slice
+drwxr-xr-x  2 root root 0 Jul 23 18:05 user
+drwxr-xr-x  2 root root 0 Jul 23 18:05 user.slice
+=== EXIT: 0  WALL_S: 0.0033 ===
+
+================================================================
+=== cgroup.controllers
+=== CMD: cat /sys/fs/cgroup/cgroup.controllers
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+cpuset cpu io memory hugetlb pids
+=== EXIT: 0  WALL_S: 0.0035 ===
+
+================================================================
+=== user listing
+=== CMD: ls -la /sys/fs/cgroup/user
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+total 0
+drwxr-xr-x  2 root root 0 Sep  4 13:45 .
+dr-xr-xr-x 13 root root 0 Jul 23 18:05 ..
+-r--r--r--  1 root root 0 Sep  4 13:45 cgroup.controllers
+-r--r--r--  1 root root 0 Sep  4 13:45 cgroup.events
+-rw-r--r--  1 root root 0 Sep  4 13:41 cgroup.freeze
+--w-------  1 root root 0 Sep  4 13:45 cgroup.kill
+-rw-r--r--  1 root root 0 Sep  4 13:45 cgroup.max.depth
+-rw-r--r--  1 root root 0 Sep  4 13:45 cgroup.max.descendants
+-rw-r--r--  1 root root 0 Sep  4 13:45 cgroup.procs
+-r--r--r--  1 root root 0 Sep  4 13:45 cgroup.stat
+-rw-r--r--  1 root root 0 Sep  4 13:45 cgroup.subtree_control
+-rw-r--r--  1 root root 0 Sep  4 13:45 cgroup.threads
+-rw-r--r--  1 root root 0 Sep  4 13:45 cgroup.type
+-rw-r--r--  1 root root 0 Sep  4 13:45 cpu.idle
+-rw-r--r--  1 root root 0 Sep  4 13:45 cpu.max
+-rw-r--r--  1 root root 0 Sep  4 13:45 cpu.max.burst
+-r--r--r--  1 root root 0 Sep  4 13:45 cpu.stat
+-rw-r--r--  1 root root 0 Jul 23 18:05 cpu.weight
+-rw-r--r--  1 root root 0 Sep  4 13:45 cpu.weight.nice
+-rw-r--r--  1 root root 0 Sep  4 13:45 cpuset.cpus
+-r--r--r--  1 root root 0 Sep  4 13:45 cpuset.cpus.effective
+-rw-r--r--  1 root root 0 Sep  4 13:45 cpuset.cpus.partition
+-rw-r--r--  1 root root 0 Sep  4 13:45 cpuset.mems
+-r--r--r--  1 root root 0 Sep  4 13:45 cpuset.mems.effective
+-rw-r--r--  1 root root 0 Sep  4 13:45 io.bfq.weight
+-rw-r--r--  1 root root 0 Sep  4 13:45 io.max
+-r--r--r--  1 root root 0 Sep  4 13:45 io.stat
+-rw-r--r--  1 root root 0 Jul 23 18:05 io.weight
+-r--r--r--  1 root root 0 Sep  4 13:45 memory.current
+-r--r--r--  1 root root 0 Sep  4 13:45 memory.events
+-r--r--r--  1 root root 0 Sep  4 13:45 memory.events.local
+-rw-r--r--  1 root root 0 Jul 23 18:05 memory.high
+-rw-r--r--  1 root root 0 Sep  4 13:45 memory.low
+-rw-r--r--  1 root root 0 Jul 23 18:05 memory.max
+-rw-r--r--  1 root root 0 Sep  4 13:45 memory.min
+-r--r--r--  1 root root 0 Sep  4 13:45 memory.numa_stat
+-rw-r--r--  1 root root 0 Sep  4 13:45 memory.oom.group
+-r--r--r--  1 root root 0 Sep  4 13:45 memory.peak
+--w-------  1 root root 0 Sep  4 13:45 memory.reclaim
+-r--r--r--  1 root root 0 Sep  4 13:45 memory.stat
+-r--r--r--  1 root root 0 Sep  4 13:45 memory.swap.current
+-r--r--r--  1 root root 0 Sep  4 13:45 memory.swap.events
+-rw-r--r--  1 root root 0 Sep  4 13:45 memory.swap.high
+-rw-r--r--  1 root root 0 Sep  4 13:45 memory.swap.max
+-r--r--r--  1 root root 0 Sep  4 13:45 memory.zswap.current
+-rw-r--r--  1 root root 0 Sep  4 13:45 memory.zswap.max
+-r--r--r--  1 root root 0 Sep  4 13:45 pids.current
+-r--r--r--  1 root root 0 Sep  4 13:45 pids.events
+-rw-r--r--  1 root root 0 Sep  4 13:45 pids.max
+-r--r--r--  1 root root 0 Sep  4 13:45 pids.peak
+=== EXIT: 0  WALL_S: 0.0036 ===
+
+================================================================
+=== user/memory.max
+=== CMD: cat /sys/fs/cgroup/user/memory.max
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+1947172864
+=== EXIT: 0  WALL_S: 0.0039 ===
+
+================================================================
+=== user/memory.high
+=== CMD: cat /sys/fs/cgroup/user/memory.high
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+1947172864
+=== EXIT: 0  WALL_S: 0.0038 ===
+
+================================================================
+=== user/memory.low
+=== CMD: cat /sys/fs/cgroup/user/memory.low
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+0
+=== EXIT: 0  WALL_S: 0.0033 ===
+
+================================================================
+=== user/memory.min
+=== CMD: cat /sys/fs/cgroup/user/memory.min
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+0
+=== EXIT: 0  WALL_S: 0.0032 ===
+
+================================================================
+=== user/memory.current
+=== CMD: cat /sys/fs/cgroup/user/memory.current
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+187559936
+=== EXIT: 0  WALL_S: 0.0039 ===
+
+================================================================
+=== user/memory.peak
+=== CMD: cat /sys/fs/cgroup/user/memory.peak
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+193298432
+=== EXIT: 0  WALL_S: 0.0035 ===
+
+================================================================
+=== user/memory.swap.max
+=== CMD: cat /sys/fs/cgroup/user/memory.swap.max
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+max
+=== EXIT: 0  WALL_S: 0.0034 ===
+
+================================================================
+=== user/memory.swap.current
+=== CMD: cat /sys/fs/cgroup/user/memory.swap.current
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+0
+=== EXIT: 0  WALL_S: 0.0031 ===
+
+================================================================
+=== user/memory.events
+=== CMD: cat /sys/fs/cgroup/user/memory.events
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+=== EXIT: 0  WALL_S: 0.0036 ===
+
+================================================================
+=== user/memory.stat
+=== CMD: cat /sys/fs/cgroup/user/memory.stat
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+anon 479232
+file 70352896
+kernel 116432896
+kernel_stack 16384
+pagetables 73728
+sec_pagetables 0
+percpu 0
+sock 0
+vmalloc 0
+shmem 229376
+zswap 0
+zswapped 0
+file_mapped 1572864
+file_dirty 126976
+file_writeback 0
+swapcached 0
+anon_thp 0
+file_thp 0
+shmem_thp 0
+inactive_anon 438272
+active_anon 233472
+inactive_file 18395136
+active_file 51728384
+unevictable 0
+slab_reclaimable 115766208
+slab_unreclaimable 90424
+slab 115856632
+workingset_refault_anon 0
+workingset_refault_file 0
+workingset_activate_anon 0
+workingset_activate_file 0
+workingset_restore_anon 0
+workingset_restore_file 0
+workingset_nodereclaim 0
+pgscan 0
+pgsteal 0
+pgscan_kswapd 0
+pgscan_direct 0
+pgsteal_kswapd 0
+pgsteal_direct 0
+pgfault 247557
+pgmajfault 130
+pgrefill 0
+pgactivate 6153
+pgdeactivate 0
+pglazyfree 0
+pglazyfreed 0
+zswpin 0
+zswpout 0
+thp_fault_alloc 0
+thp_collapse_alloc 0
+=== EXIT: 0  WALL_S: 0.0033 ===
+
+================================================================
+=== user/cpu.max
+=== CMD: cat /sys/fs/cgroup/user/cpu.max
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+max 100000
+=== EXIT: 0  WALL_S: 0.0037 ===
+
+================================================================
+=== user/cpu.weight
+=== CMD: cat /sys/fs/cgroup/user/cpu.weight
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+50
+=== EXIT: 0  WALL_S: 0.0034 ===
+
+================================================================
+=== user/cpu.stat
+=== CMD: cat /sys/fs/cgroup/user/cpu.stat
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+usage_usec 3947926
+user_usec 2070101
+system_usec 1877825
+nr_periods 0
+nr_throttled 0
+throttled_usec 0
+nr_bursts 0
+burst_usec 0
+=== EXIT: 0  WALL_S: 0.0041 ===
+
+================================================================
+=== user/pids.max
+=== CMD: cat /sys/fs/cgroup/user/pids.max
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+max
+=== EXIT: 0  WALL_S: 0.0041 ===
+
+================================================================
+=== user/pids.current
+=== CMD: cat /sys/fs/cgroup/user/pids.current
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+2
+=== EXIT: 0  WALL_S: 0.0041 ===
+
+================================================================
+=== user/pids.peak
+=== CMD: cat /sys/fs/cgroup/user/pids.peak
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+6
+=== EXIT: 0  WALL_S: 0.0032 ===
+
+================================================================
+=== user/cpuset.cpus
+=== CMD: cat /sys/fs/cgroup/user/cpuset.cpus
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+
+=== EXIT: 0  WALL_S: 0.0041 ===
+
+================================================================
+=== user/cpuset.cpus.effective
+=== CMD: cat /sys/fs/cgroup/user/cpuset.cpus.effective
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+0-1
+=== EXIT: 0  WALL_S: 0.0043 ===
+
+================================================================
+=== user/cpuset.mems.effective
+=== CMD: cat /sys/fs/cgroup/user/cpuset.mems.effective
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+0
+=== EXIT: 0  WALL_S: 0.0037 ===
+
+================================================================
+=== root cpu.max
+=== CMD: cat /sys/fs/cgroup/cpu.max
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+cat: /sys/fs/cgroup/cpu.max: No such file or directory
+=== EXIT: 1  WALL_S: 0.0041 ===
+
+================================================================
+=== root memory.max
+=== CMD: cat /sys/fs/cgroup/memory.max
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+cat: /sys/fs/cgroup/memory.max: No such file or directory
+=== EXIT: 1  WALL_S: 0.0034 ===

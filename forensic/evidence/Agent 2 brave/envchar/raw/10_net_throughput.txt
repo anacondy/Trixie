@@ -1,0 +1,195 @@
+# envchar raw transcript
+# file: 10_net_throughput.txt
+# title: HTTPS throughput (curl -w and python urllib)
+# generated_utc: 2026-09-04T13:45:05Z
+# host: e2b.local
+# sandbox: i4i7wdij5c7gh9absvtu8
+# template: nlhz8vlwyupq845jsdg9
+# probe: /home/user/envchar/probe_bench.py
+# NOTE: This file is a verbatim measurement transcript. Do not summarize.
+
+
+================================================================
+=== curl github_jq_linux64
+=== UTC: 2026-09-04T13:45:32Z
+================================================================
+=== CMD: curl -L --http1.1 -o /tmp/envchar_dl_github_jq_linux64.bin -w http_code=%{http_code} size=%{size_download} speed_Bps=%{speed_download} namelookup=%{time_namelookup} connect=%{time_connect} tls=%{time_appconnect} ttfb=%{time_starttransfer} total=%{time_total} ip=%{remote_ip} num_redirects=%{num_redirects} ctype=%{content_type} err=%{errormsg}\n -A envchar-probe/1.0 --max-time 120 https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+
+100 2265k  100 2265k    0     0  8509k      0 --:--:-- --:--:-- --:--:-- 8509k
+http_code=200 size=2319424 speed_Bps=8714069 namelookup=0.002805 connect=0.003398 tls=0.050817 ttfb=0.196630 total=0.266170 ip=185.199.110.133 num_redirects=1 ctype=application/octet-stream err=
+=== EXIT: 0  WALL_S: 0.2799 ===
+saved_bytes=2319424 sha256=5942c9b0934e510ee61eb3e30273f1b3fe2590df93933a93d7c58b81d19c8ff5
+
+================================================================
+=== curl pypi_simple_pip
+=== UTC: 2026-09-04T13:45:32Z
+================================================================
+=== CMD: curl -L --http1.1 -o /tmp/envchar_dl_pypi_simple_pip.bin -w http_code=%{http_code} size=%{size_download} speed_Bps=%{speed_download} namelookup=%{time_namelookup} connect=%{time_connect} tls=%{time_appconnect} ttfb=%{time_starttransfer} total=%{time_total} ip=%{remote_ip} num_redirects=%{num_redirects} ctype=%{content_type} err=%{errormsg}\n -A envchar-probe/1.0 --max-time 120 https://pypi.org/simple/pip/
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  104k  100  104k    0     0  1953k      0 --:--:-- --:--:-- --:--:-- 1979k
+http_code=200 size=107453 speed_Bps=2000204 namelookup=0.001647 connect=0.002091 tls=0.034499 ttfb=0.043522 total=0.053721 ip=151.101.0.223 num_redirects=0 ctype=text/html err=
+=== EXIT: 0  WALL_S: 0.0646 ===
+saved_bytes=107453 sha256=e271fdeb4f48c8fbfdbd417f11cff2147fc70bfb24c907d6e60544ca892c5c5c
+
+================================================================
+=== curl cloudflare_1MB
+=== UTC: 2026-09-04T13:45:32Z
+================================================================
+=== CMD: curl -L --http1.1 -o /tmp/envchar_dl_cloudflare_1MB.bin -w http_code=%{http_code} size=%{size_download} speed_Bps=%{speed_download} namelookup=%{time_namelookup} connect=%{time_connect} tls=%{time_appconnect} ttfb=%{time_starttransfer} total=%{time_total} ip=%{remote_ip} num_redirects=%{num_redirects} ctype=%{content_type} err=%{errormsg}\n -A envchar-probe/1.0 --max-time 120 https://speed.cloudflare.com/__down?bytes=1000000
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  976k  100  976k    0     0  3885k      0 --:--:-- --:--:-- --:--:-- 3890k
+http_code=200 size=1000000 speed_Bps=3978294 namelookup=0.048728 connect=0.049113 tls=0.093255 ttfb=0.142970 total=0.251364 ip=162.159.140.220 num_redirects=0 ctype=application/octet-stream err=
+=== EXIT: 0  WALL_S: 0.2642 ===
+saved_bytes=1000000 sha256=ba4b3010e2d91c08bd1987998d82b89b52ae1bdbc360f066607c7ee5a9c5830e
+
+================================================================
+=== curl cloudflare_10MB
+=== UTC: 2026-09-04T13:45:32Z
+================================================================
+=== CMD: curl -L --http1.1 -o /tmp/envchar_dl_cloudflare_10MB.bin -w http_code=%{http_code} size=%{size_download} speed_Bps=%{speed_download} namelookup=%{time_namelookup} connect=%{time_connect} tls=%{time_appconnect} ttfb=%{time_starttransfer} total=%{time_total} ip=%{remote_ip} num_redirects=%{num_redirects} ctype=%{content_type} err=%{errormsg}\n -A envchar-probe/1.0 --max-time 120 https://speed.cloudflare.com/__down?bytes=10000000
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 9765k  100 9765k    0     0  29.3M      0 --:--:-- --:--:-- --:--:-- 29.4M
+http_code=200 size=10000000 speed_Bps=30811513 namelookup=0.017586 connect=0.017940 tls=0.059817 ttfb=0.104461 total=0.324554 ip=162.159.140.220 num_redirects=0 ctype=application/octet-stream err=
+=== EXIT: 0  WALL_S: 0.3362 ===
+saved_bytes=10000000 sha256=dd2881660e1039abe3380e6563cea3cd323487fa8e7c99b49d75a8f298617b51
+
+================================================================
+=== curl cloudflare_50MB
+=== UTC: 2026-09-04T13:45:33Z
+================================================================
+=== CMD: curl -L --http1.1 -o /tmp/envchar_dl_cloudflare_50MB.bin -w http_code=%{http_code} size=%{size_download} speed_Bps=%{speed_download} namelookup=%{time_namelookup} connect=%{time_connect} tls=%{time_appconnect} ttfb=%{time_starttransfer} total=%{time_total} ip=%{remote_ip} num_redirects=%{num_redirects} ctype=%{content_type} err=%{errormsg}\n -A envchar-probe/1.0 --max-time 120 https://speed.cloudflare.com/__down?bytes=50000000
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 47.6M  100 47.6M    0     0  63.5M      0 --:--:-- --:--:-- --:--:-- 63.5M
+http_code=200 size=50000000 speed_Bps=66678579 namelookup=0.017458 connect=0.017694 tls=0.059057 ttfb=0.106036 total=0.749866 ip=172.66.0.218 num_redirects=0 ctype=application/octet-stream err=
+=== EXIT: 0  WALL_S: 0.7593 ===
+saved_bytes=50000000 sha256=c9784a881ea283d672c4fa0698115026adcee6ba41f1ac0ae7dcfeb619a0f914
+
+================================================================
+=== curl nodejs_headers
+=== UTC: 2026-09-04T13:45:33Z
+================================================================
+=== CMD: curl -L --http1.1 -o /tmp/envchar_dl_nodejs_headers.bin -w http_code=%{http_code} size=%{size_download} speed_Bps=%{speed_download} namelookup=%{time_namelookup} connect=%{time_connect} tls=%{time_appconnect} ttfb=%{time_starttransfer} total=%{time_total} ip=%{remote_ip} num_redirects=%{num_redirects} ctype=%{content_type} err=%{errormsg}\n -A envchar-probe/1.0 --max-time 120 https://nodejs.org/dist/v20.20.2/node-v20.20.2-headers.tar.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  1 8273k    1 99368    0     0   486k      0  0:00:17 --:--:--  0:00:17  485k
+100 8273k  100 8273k    0     0  18.3M      0 --:--:-- --:--:-- --:--:-- 18.3M
+http_code=200 size=8472492 speed_Bps=19237650 namelookup=0.010053 connect=0.010355 tls=0.040478 ttfb=0.172451 total=0.440412 ip=104.16.213.131 num_redirects=0 ctype=application/gzip err=
+=== EXIT: 0  WALL_S: 0.4499 ===
+saved_bytes=8472492 sha256=6de0e836efa9f32512e61db3dfd08b3d97a015b7e828d1a5efdf281a56a692d9
+
+================================================================
+=== curl hf_bert_config
+=== UTC: 2026-09-04T13:45:34Z
+================================================================
+=== CMD: curl -L --http1.1 -o /tmp/envchar_dl_hf_bert_config.bin -w http_code=%{http_code} size=%{size_download} speed_Bps=%{speed_download} namelookup=%{time_namelookup} connect=%{time_connect} tls=%{time_appconnect} ttfb=%{time_starttransfer} total=%{time_total} ip=%{remote_ip} num_redirects=%{num_redirects} ctype=%{content_type} err=%{errormsg}\n -A envchar-probe/1.0 --max-time 120 https://huggingface.co/bert-base-uncased/raw/main/config.json
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100    86  100    86    0     0    803      0 --:--:-- --:--:-- --:--:--   811
+
+100   570  100   570    0     0   3035      0 --:--:-- --:--:-- --:--:--  3035
+http_code=200 size=570 speed_Bps=3035 namelookup=0.001851 connect=0.002248 tls=0.025699 ttfb=0.187482 total=0.187759 ip=3.163.189.37 num_redirects=1 ctype=text/plain; charset=utf-8 err=
+=== EXIT: 0  WALL_S: 0.2039 ===
+saved_bytes=570 sha256=7160e1553ad2ca51d8c1cb066be533db31826e12d173824c1bb0cb1a4f187d20
+
+================================================================
+=== curl hf_bert_tokenizer
+=== UTC: 2026-09-04T13:45:34Z
+================================================================
+=== CMD: curl -L --http1.1 -o /tmp/envchar_dl_hf_bert_tokenizer.bin -w http_code=%{http_code} size=%{size_download} speed_Bps=%{speed_download} namelookup=%{time_namelookup} connect=%{time_connect} tls=%{time_appconnect} ttfb=%{time_starttransfer} total=%{time_total} ip=%{remote_ip} num_redirects=%{num_redirects} ctype=%{content_type} err=%{errormsg}\n -A envchar-probe/1.0 --max-time 120 https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  455k  100  455k    0     0  2050k      0 --:--:-- --:--:-- --:--:-- 2059k
+http_code=200 size=466062 speed_Bps=2100191 namelookup=0.001988 connect=0.002385 tls=0.020043 ttfb=0.127513 total=0.221914 ip=3.165.160.11 num_redirects=0 ctype=text/plain; charset=utf-8 err=
+=== EXIT: 0  WALL_S: 0.2320 ===
+saved_bytes=466062 sha256=ce64fce797c24f68df90b40a3f74f579b336a493db14bd583fd520ea0d8c9a98
+
+================================================================
+=== curl google_home
+=== UTC: 2026-09-04T13:45:34Z
+================================================================
+=== CMD: curl -L --http1.1 -o /tmp/envchar_dl_google_home.bin -w http_code=%{http_code} size=%{size_download} speed_Bps=%{speed_download} namelookup=%{time_namelookup} connect=%{time_connect} tls=%{time_appconnect} ttfb=%{time_starttransfer} total=%{time_total} ip=%{remote_ip} num_redirects=%{num_redirects} ctype=%{content_type} err=%{errormsg}\n -A envchar-probe/1.0 --max-time 120 https://www.google.com/
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 83635    0 83635    0     0  1381k      0 --:--:-- --:--:-- --:--:-- 1408k
+http_code=200 size=83635 speed_Bps=1414282 namelookup=0.001456 connect=0.001904 tls=0.019997 ttfb=0.057997 total=0.059136 ip=142.251.153.119 num_redirects=0 ctype=text/html; charset=ISO-8859-1 err=
+=== EXIT: 0  WALL_S: 0.0760 ===
+saved_bytes=83635 sha256=3b727e52a15e4c7378ad25687a08a66184f0e8606071c73748d29c4ad329a930
+
+================================================================
+=== curl github_home
+=== UTC: 2026-09-04T13:45:34Z
+================================================================
+=== CMD: curl -L --http1.1 -o /tmp/envchar_dl_github_home.bin -w http_code=%{http_code} size=%{size_download} speed_Bps=%{speed_download} namelookup=%{time_namelookup} connect=%{time_connect} tls=%{time_appconnect} ttfb=%{time_starttransfer} total=%{time_total} ip=%{remote_ip} num_redirects=%{num_redirects} ctype=%{content_type} err=%{errormsg}\n -A envchar-probe/1.0 --max-time 120 https://github.com/
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  562k    0  562k    0     0  9085k      0 --:--:-- --:--:-- --:--:-- 9223k
+http_code=200 size=576137 speed_Bps=9303486 namelookup=0.001477 connect=0.001820 tls=0.020785 ttfb=0.028481 total=0.061927 ip=140.82.116.4 num_redirects=0 ctype=text/html; charset=utf-8 err=
+=== EXIT: 0  WALL_S: 0.0737 ===
+saved_bytes=576137 sha256=a01015b04dc8d443fc73135aa69ae6d1464110424c0ee569386f82883a7676e2
+
+================================================================
+=== curl hf_home
+=== UTC: 2026-09-04T13:45:34Z
+================================================================
+=== CMD: curl -L --http1.1 -o /tmp/envchar_dl_hf_home.bin -w http_code=%{http_code} size=%{size_download} speed_Bps=%{speed_download} namelookup=%{time_namelookup} connect=%{time_connect} tls=%{time_appconnect} ttfb=%{time_starttransfer} total=%{time_total} ip=%{remote_ip} num_redirects=%{num_redirects} ctype=%{content_type} err=%{errormsg}\n -A envchar-probe/1.0 --max-time 120 https://huggingface.co/
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  177k  100  177k    0     0  3335k      0 --:--:-- --:--:-- --:--:-- 3354k
+http_code=200 size=182056 speed_Bps=3415748 namelookup=0.002217 connect=0.002666 tls=0.026189 ttfb=0.036436 total=0.053299 ip=3.165.160.11 num_redirects=0 ctype=text/html; charset=utf-8 err=
+=== EXIT: 0  WALL_S: 0.0648 ===
+saved_bytes=182056 sha256=fd198bb359bb58371b5f78c149a8e98f626cd1126433fb0205f024e34553c93c
+
+================================================================
+=== curl http2 pypi.org
+=== UTC: 2026-09-04T13:45:34Z
+================================================================
+=== CMD: curl -s -o /dev/null -w http=%{http_version} ttfb=%{time_starttransfer} total=%{time_total} size=%{size_download}\n --http2 https://pypi.org/
+http=2 ttfb=0.031617 total=0.033372 size=27965
+=== EXIT: 0  WALL_S: 0.0445 ===
+
+================================================================
+=== curl http1.1 pypi.org
+=== UTC: 2026-09-04T13:45:35Z
+================================================================
+=== CMD: curl -s -o /dev/null -w http=%{http_version} ttfb=%{time_starttransfer} total=%{time_total} size=%{size_download}\n --http1.1 https://pypi.org/
+http=1.1 ttfb=0.033835 total=0.035746 size=27965
+=== EXIT: 0  WALL_S: 0.0434 ===
+
+================================================================
+=== wget jq
+=== UTC: 2026-09-04T13:45:35Z
+================================================================
+=== CMD: wget -q -O /tmp/envchar_wget.bin https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64
+
+=== EXIT: 0  WALL_S: 0.2454 ===
+wget_bytes=2319424

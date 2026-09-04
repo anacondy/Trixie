@@ -1,0 +1,488 @@
+# envchar raw transcript
+# file: 02_isolation.txt
+# title: Container / VM / LSM / namespaces / E2B markers
+# generated_utc: 2026-09-04T13:45:05Z
+# host: e2b.local
+# sandbox: i4i7wdij5c7gh9absvtu8
+# template: nlhz8vlwyupq845jsdg9
+# probe: /home/user/envchar/probe.sh
+# NOTE: This file is a verbatim command transcript. Do not summarize.
+
+================================================================
+=== dockerenv ls
+=== CMD: ls -la /.dockerenv
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+ls: cannot access '/.dockerenv': No such file or directory
+=== EXIT: 2  WALL_S: 0.0039 ===
+
+================================================================
+=== e2b root marker
+=== CMD: ls -la /.e2b
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+-rw-r--r-- 1 root root 107 Jul 23 18:05 /.e2b
+=== EXIT: 0  WALL_S: 0.0041 ===
+
+================================================================
+=== e2b root cat
+=== CMD: cat /.e2b
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+ENV_ID=nlhz8vlwyupq845jsdg9
+TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+BUILD_ID=f34a5416-ef30-4cb7-8e18-0fdecd6eb529
+=== EXIT: 0  WALL_S: 0.0037 ===
+
+================================================================
+=== run e2b
+=== CMD: ls -la /run/e2b
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+total 12
+drwxr-xr-x  3 root root  120 Jul 23 18:05 .
+drwxr-xr-x 17 root root  520 Jul 23 18:05 ..
+-r--r--r--  1 root root    4 Jul 23 18:05 .E2B_SANDBOX
+-rw-r--r--  1 root root   21 Sep  4 13:41 .E2B_SANDBOX_ID
+-rw-r--r--  1 root root   20 Sep  4 13:41 .E2B_TEMPLATE_ID
+drwxr-xr-x  2 root root 6060 Jul 23 18:05 certs
+=== EXIT: 0  WALL_S: 0.0038 ===
+
+================================================================
+=== E2B_SANDBOX file
+=== CMD: cat /run/e2b/.E2B_SANDBOX
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+true=== EXIT: 0  WALL_S: 0.0037 ===
+
+================================================================
+=== E2B_SANDBOX_ID file
+=== CMD: cat /run/e2b/.E2B_SANDBOX_ID
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+i4i7wdij5c7gh9absvtu8=== EXIT: 0  WALL_S: 0.0073 ===
+
+================================================================
+=== E2B_TEMPLATE_ID file
+=== CMD: cat /run/e2b/.E2B_TEMPLATE_ID
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+nlhz8vlwyupq845jsdg9=== EXIT: 0  WALL_S: 0.0050 ===
+
+================================================================
+=== proc1 cgroup
+=== CMD: cat /proc/1/cgroup
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+0::/init.scope
+=== EXIT: 0  WALL_S: 0.0043 ===
+
+================================================================
+=== self cgroup
+=== CMD: cat /proc/self/cgroup
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+0::/user
+=== EXIT: 0  WALL_S: 0.0038 ===
+
+================================================================
+=== proc1 comm
+=== CMD: cat /proc/1/comm
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+systemd
+=== EXIT: 0  WALL_S: 0.0040 ===
+
+================================================================
+=== proc1 exe
+=== CMD: ls -l /proc/1/exe
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+ls: cannot read symbolic link '/proc/1/exe': Permission denied
+lrwxrwxrwx 1 root root 0 Jul 23 18:05 /proc/1/exe
+=== EXIT: 2  WALL_S: 0.0042 ===
+
+================================================================
+=== systemd-detect-virt
+=== CMD: systemd-detect-virt
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+kvm
+=== EXIT: 0  WALL_S: 0.0088 ===
+
+================================================================
+=== systemd-detect-virt --vm
+=== CMD: systemd-detect-virt --vm
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+kvm
+=== EXIT: 0  WALL_S: 0.0062 ===
+
+================================================================
+=== systemd-detect-virt --container
+=== CMD: systemd-detect-virt --container
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+none
+=== EXIT: 1  WALL_S: 0.0062 ===
+
+================================================================
+=== lscpu
+=== CMD: lscpu
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           46 bits physical, 48 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  2
+On-line CPU(s) list:                     0,1
+Vendor ID:                               GenuineIntel
+Model name:                              Intel(R) Xeon(R) Processor @ 2.60GHz
+CPU family:                              6
+Model:                                   106
+Thread(s) per core:                      2
+Core(s) per socket:                      1
+Socket(s):                               1
+Stepping:                                6
+BogoMIPS:                                5200.05
+Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault invpcid_single ssbd ibrs ibpb stibp ibrs_enhanced fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves arat avx512vbmi umip avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid fsrm md_clear arch_capabilities
+Hypervisor vendor:                       KVM
+Virtualization type:                     full
+L1d cache:                               48 KiB (1 instance)
+L1i cache:                               32 KiB (1 instance)
+L2 cache:                                1.3 MiB (1 instance)
+L3 cache:                                54 MiB (1 instance)
+NUMA node(s):                            1
+NUMA node0 CPU(s):                       0,1
+Vulnerability Gather data sampling:      Not affected
+Vulnerability Indirect target selection: Mitigation; Aligned branch/return thunks
+Vulnerability Itlb multihit:             Not affected
+Vulnerability L1tf:                      Not affected
+Vulnerability Mds:                       Not affected
+Vulnerability Meltdown:                  Not affected
+Vulnerability Mmio stale data:           Not affected
+Vulnerability Reg file data sampling:    Not affected
+Vulnerability Retbleed:                  Not affected
+Vulnerability Spec rstack overflow:      Not affected
+Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loop
+Vulnerability Srbds:                     Not affected
+Vulnerability Tsa:                       Not affected
+Vulnerability Tsx async abort:           Not affected
+Vulnerability Vmscape:                   Not affected
+=== EXIT: 0  WALL_S: 0.0235 ===
+
+================================================================
+=== dmi sys_vendor
+=== CMD: cat /sys/class/dmi/id/sys_vendor
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+cat: /sys/class/dmi/id/sys_vendor: No such file or directory
+=== EXIT: 1  WALL_S: 0.0039 ===
+
+================================================================
+=== dmi product_name
+=== CMD: cat /sys/class/dmi/id/product_name
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+cat: /sys/class/dmi/id/product_name: No such file or directory
+=== EXIT: 1  WALL_S: 0.0045 ===
+
+================================================================
+=== dmi bios_vendor
+=== CMD: cat /sys/class/dmi/id/bios_vendor
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+cat: /sys/class/dmi/id/bios_vendor: No such file or directory
+=== EXIT: 1  WALL_S: 0.0036 ===
+
+================================================================
+=== dmi bios_version
+=== CMD: cat /sys/class/dmi/id/bios_version
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+cat: /sys/class/dmi/id/bios_version: No such file or directory
+=== EXIT: 1  WALL_S: 0.0038 ===
+
+================================================================
+=== dev kvm/vda
+=== CMD: ls -l /dev/kvm /dev/vda /dev/vda /dev/root
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+ls: cannot access '/dev/kvm': No such file or directory
+ls: cannot access '/dev/root': No such file or directory
+brw------- 1 root root 254, 0 Jul 23 18:05 /dev/vda
+brw------- 1 root root 254, 0 Jul 23 18:05 /dev/vda
+=== EXIT: 2  WALL_S: 0.0041 ===
+
+================================================================
+=== self status caps/seccomp
+=== CMD: grep -E ^(Cap|Seccomp|NoNewPrivs|Name|Uid|Gid|NStgid) /proc/self/status
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+Name:	grep
+Uid:	1000	1000	1000	1000
+Gid:	1000	1000	1000	1000
+NStgid:	1720
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+=== EXIT: 0  WALL_S: 0.0039 ===
+
+================================================================
+=== self namespaces
+=== CMD: ls -l /proc/self/ns
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+total 0
+lrwxrwxrwx 1 user user 0 Sep  4 13:45 cgroup -> cgroup:[4026531835]
+lrwxrwxrwx 1 user user 0 Sep  4 13:45 ipc -> ipc:[4026531839]
+lrwxrwxrwx 1 user user 0 Sep  4 13:45 mnt -> mnt:[4026531841]
+lrwxrwxrwx 1 user user 0 Sep  4 13:45 net -> net:[4026531840]
+lrwxrwxrwx 1 user user 0 Sep  4 13:45 pid -> pid:[4026531836]
+lrwxrwxrwx 1 user user 0 Sep  4 13:45 pid_for_children -> pid:[4026531836]
+lrwxrwxrwx 1 user user 0 Sep  4 13:45 time -> time:[4026531834]
+lrwxrwxrwx 1 user user 0 Sep  4 13:45 time_for_children -> time:[4026531834]
+lrwxrwxrwx 1 user user 0 Sep  4 13:45 user -> user:[4026531837]
+lrwxrwxrwx 1 user user 0 Sep  4 13:45 uts -> uts:[4026531838]
+=== EXIT: 0  WALL_S: 0.0041 ===
+
+================================================================
+=== apparmor current
+=== CMD: cat /proc/self/attr/current
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+kernel === EXIT: 0  WALL_S: 0.0037 ===
+
+================================================================
+=== selinux enforce
+=== CMD: cat /sys/fs/selinux/enforce
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+0=== EXIT: 0  WALL_S: 0.0046 ===
+
+================================================================
+=== mountinfo
+=== CMD: cat /proc/self/mountinfo
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+21 1 254:0 / / rw,relatime shared:1 - ext4 /dev/root rw,discard
+22 21 0:5 / /dev rw,relatime shared:2 - devtmpfs devtmpfs rw,size=1013452k,nr_inodes=253363,mode=755
+23 21 0:20 / /proc rw,nosuid,nodev,noexec,relatime shared:5 - proc proc rw
+24 21 0:21 / /sys rw,nosuid,nodev,noexec,relatime shared:6 - sysfs sysfs rw
+25 24 0:6 / /sys/kernel/security rw,nosuid,nodev,noexec,relatime shared:7 - securityfs securityfs rw
+27 24 0:18 / /sys/fs/selinux rw,nosuid,noexec,relatime shared:8 - selinuxfs selinuxfs rw
+26 22 0:22 / /dev/shm rw,nosuid,nodev shared:3 - tmpfs tmpfs rw
+28 22 0:23 / /dev/pts rw,nosuid,noexec,relatime shared:4 - devpts devpts rw,gid=5,mode=600,ptmxmode=000
+29 21 0:24 / /run rw,nosuid,nodev shared:12 - tmpfs tmpfs rw,size=406524k,nr_inodes=819200,mode=755
+30 24 0:25 / /sys/fs/cgroup rw,nosuid,nodev,noexec,relatime shared:9 - cgroup2 cgroup2 rw,nsdelegate,memory_recursiveprot
+31 24 0:26 / /sys/fs/pstore rw,nosuid,nodev,noexec,relatime shared:10 - pstore pstore rw
+32 24 0:27 / /sys/fs/bpf rw,nosuid,nodev,noexec,relatime shared:11 - bpf bpf rw,mode=700
+33 23 0:28 / /proc/sys/fs/binfmt_misc rw,relatime shared:13 - autofs systemd-1 rw,fd=36,pgrp=1,timeout=0,minproto=5,maxproto=5,direct
+34 22 0:17 / /dev/mqueue rw,nosuid,nodev,noexec,relatime shared:14 - mqueue mqueue rw
+35 24 0:7 / /sys/kernel/debug rw,nosuid,nodev,noexec,relatime shared:15 - debugfs debugfs rw
+36 24 0:11 / /sys/kernel/tracing rw,nosuid,nodev,noexec,relatime shared:16 - tracefs tracefs rw
+37 22 0:29 / /dev/hugepages rw,nosuid,nodev,relatime shared:17 - hugetlbfs hugetlbfs rw,pagesize=2M
+38 21 0:30 / /tmp rw,nosuid,nodev shared:18 - tmpfs tmpfs rw,nr_inodes=1048576
+39 29 0:31 / /run/lock rw,nosuid,nodev,noexec,relatime shared:19 - tmpfs tmpfs rw,size=5120k
+40 24 0:32 / /sys/fs/fuse/connections rw,nosuid,nodev,noexec,relatime shared:20 - fusectl fusectl rw
+122 29 0:36 / /run/credentials/systemd-journald.service ro,nosuid,nodev,noexec,relatime,nosymfollow shared:53 - ramfs ramfs rw,mode=700
+64 29 0:33 / /run/credentials/systemd-networkd.service ro,nosuid,nodev,noexec,relatime,nosymfollow shared:21 - ramfs ramfs rw,mode=700
+186 21 0:24 /e2b/certs /etc/ssl/certs rw,nosuid,nodev shared:12 - tmpfs tmpfs rw,size=406524k,nr_inodes=819200,mode=755
+42 29 0:37 / /run/rpc_pipefs rw,relatime shared:70 - rpc_pipefs sunrpc rw
+105 29 0:39 / /run/credentials/getty@tty1.service ro,nosuid,nodev,noexec,relatime,nosymfollow shared:93 - ramfs ramfs rw,mode=700
+=== EXIT: 0  WALL_S: 0.0039 ===
+
+================================================================
+=== proc mounts
+=== CMD: cat /proc/mounts
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+/dev/root / ext4 rw,relatime,discard 0 0
+devtmpfs /dev devtmpfs rw,relatime,size=1013452k,nr_inodes=253363,mode=755 0 0
+proc /proc proc rw,nosuid,nodev,noexec,relatime 0 0
+sysfs /sys sysfs rw,nosuid,nodev,noexec,relatime 0 0
+securityfs /sys/kernel/security securityfs rw,nosuid,nodev,noexec,relatime 0 0
+selinuxfs /sys/fs/selinux selinuxfs rw,nosuid,noexec,relatime 0 0
+tmpfs /dev/shm tmpfs rw,nosuid,nodev 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,gid=5,mode=600,ptmxmode=000 0 0
+tmpfs /run tmpfs rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755 0 0
+cgroup2 /sys/fs/cgroup cgroup2 rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot 0 0
+pstore /sys/fs/pstore pstore rw,nosuid,nodev,noexec,relatime 0 0
+bpf /sys/fs/bpf bpf rw,nosuid,nodev,noexec,relatime,mode=700 0 0
+systemd-1 /proc/sys/fs/binfmt_misc autofs rw,relatime,fd=36,pgrp=1,timeout=0,minproto=5,maxproto=5,direct 0 0
+mqueue /dev/mqueue mqueue rw,nosuid,nodev,noexec,relatime 0 0
+debugfs /sys/kernel/debug debugfs rw,nosuid,nodev,noexec,relatime 0 0
+tracefs /sys/kernel/tracing tracefs rw,nosuid,nodev,noexec,relatime 0 0
+hugetlbfs /dev/hugepages hugetlbfs rw,nosuid,nodev,relatime,pagesize=2M 0 0
+tmpfs /tmp tmpfs rw,nosuid,nodev,nr_inodes=1048576 0 0
+tmpfs /run/lock tmpfs rw,nosuid,nodev,noexec,relatime,size=5120k 0 0
+fusectl /sys/fs/fuse/connections fusectl rw,nosuid,nodev,noexec,relatime 0 0
+ramfs /run/credentials/systemd-journald.service ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700 0 0
+ramfs /run/credentials/systemd-networkd.service ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700 0 0
+tmpfs /etc/ssl/certs tmpfs rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755 0 0
+sunrpc /run/rpc_pipefs rpc_pipefs rw,relatime 0 0
+ramfs /run/credentials/getty@tty1.service ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700 0 0
+=== EXIT: 0  WALL_S: 0.0041 ===
+
+================================================================
+=== findmnt
+=== CMD: findmnt
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+TARGET                                        SOURCE            FSTYPE     OPTIONS
+/                                             /dev/vda          ext4       rw,relatime,discard
+|-/dev                                        devtmpfs          devtmpfs   rw,relatime,size=1013452k,nr_inodes=253363,mode=755
+| |-/dev/shm                                  tmpfs             tmpfs      rw,nosuid,nodev
+| |-/dev/pts                                  devpts            devpts     rw,nosuid,noexec,relatime,gid=5,mode=600,ptmxmode=000
+| |-/dev/mqueue                               mqueue            mqueue     rw,nosuid,nodev,noexec,relatime
+| `-/dev/hugepages                            hugetlbfs         hugetlbfs  rw,nosuid,nodev,relatime,pagesize=2M
+|-/proc                                       proc              proc       rw,nosuid,nodev,noexec,relatime
+| `-/proc/sys/fs/binfmt_misc                  systemd-1         autofs     rw,relatime,fd=36,pgrp=1,timeout=0,minproto=5,maxproto=5,direct
+|-/sys                                        sysfs             sysfs      rw,nosuid,nodev,noexec,relatime
+| |-/sys/kernel/security                      securityfs        securityfs rw,nosuid,nodev,noexec,relatime
+| |-/sys/fs/selinux                           selinuxfs         selinuxfs  rw,nosuid,noexec,relatime
+| |-/sys/fs/cgroup                            cgroup2           cgroup2    rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot
+| |-/sys/fs/pstore                            pstore            pstore     rw,nosuid,nodev,noexec,relatime
+| |-/sys/fs/bpf                               bpf               bpf        rw,nosuid,nodev,noexec,relatime,mode=700
+| |-/sys/kernel/debug                         debugfs           debugfs    rw,nosuid,nodev,noexec,relatime
+| |-/sys/kernel/tracing                       tracefs           tracefs    rw,nosuid,nodev,noexec,relatime
+| `-/sys/fs/fuse/connections                  fusectl           fusectl    rw,nosuid,nodev,noexec,relatime
+|-/run                                        tmpfs             tmpfs      rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755
+| |-/run/lock                                 tmpfs             tmpfs      rw,nosuid,nodev,noexec,relatime,size=5120k
+| |-/run/rpc_pipefs                           sunrpc            rpc_pipefs rw,relatime
+| |-/run/credentials/systemd-networkd.service ramfs             ramfs      ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+| |-/run/credentials/getty@tty1.service       ramfs             ramfs      ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+| `-/run/credentials/systemd-journald.service ramfs             ramfs      ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+|-/tmp                                        tmpfs             tmpfs      rw,nosuid,nodev,nr_inodes=1048576
+`-/etc/ssl/certs                              tmpfs[/e2b/certs] tmpfs      rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755
+=== EXIT: 0  WALL_S: 0.0112 ===
+
+================================================================
+=== systemd running services
+=== CMD: systemctl list-units --type=service --state=running --no-pager
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+  UNIT                      LOAD   ACTIVE SUB     DESCRIPTION
+  code-interpreter.service  loaded active running Code Interpreter Server
+  dbus.service              loaded active running D-Bus System Message Bus
+  envd.service              loaded active running Env Daemon Service
+  getty@tty1.service        loaded active running Getty on tty1
+  jupyter.service           loaded active running Jupyter Server
+  nfs-blkmap.service        loaded active running pNFS block layout mapping daemon
+  rpcbind.service           loaded active running RPC bind portmap service
+  ssh.service               loaded active running OpenBSD Secure Shell server
+  systemd-hostnamed.service loaded active running Hostname Service
+  systemd-journald.service  loaded active running Journal Service
+  systemd-logind.service    loaded active running User Login Management
+  systemd-networkd.service  loaded active running Network Configuration
+  systemd-timedated.service loaded active running Time & Date Service
+
+Legend: LOAD   → Reflects whether the unit definition was properly loaded.
+        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.
+        SUB    → The low-level unit activation state, values depend on unit type.
+
+13 loaded units listed.
+=== EXIT: 0  WALL_S: 0.0074 ===
+
+================================================================
+=== envd.service
+=== CMD: systemctl cat envd.service
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+# /etc/systemd/system/envd.service
+[Unit]
+Description=Env Daemon Service
+# Start as early as possible on cold boot: envd only needs journald's socket
+# and a writable rootfs; networking is configured by the kernel (ip=) before
+# userspace. Default dependencies would gate it on sysinit/basic.target
+# (~0.5s), and the previous After=multi-user.target on chrony-wait (~8s).
+DefaultDependencies=no
+# Order after /tmp is finalized so envd doesn't answer before it's safe to stage
+# files there: updateEnvd uploads an update binary to /tmp during early boot.
+# On our base images (Ubuntu/Debian) /tmp is a plain rootfs dir, not a tmpfs
+# mount, and systemd-tmpfiles-setup.service runs `systemd-tmpfiles --remove`
+# with a `D /tmp` rule that wipes /tmp's contents at boot. That service is only
+# ordered After=local-fs.target, so gating envd on local-fs.target alone leaves
+# them unordered and the upload races the wipe (chmod/mv then fail ENOENT).
+# Ordering after systemd-tmpfiles-setup.service closes that race.
+After=systemd-journald.socket systemd-remount-fs.service local-fs.target systemd-tmpfiles-setup.service
+Wants=systemd-journald.socket
+Conflicts=shutdown.target
+Before=shutdown.target
+# Disable rate limiting; retry forever
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+User=root
+Group=root
+Environment=GOTRACEBACK=all
+LimitCORE=infinity
+# Seed the tmpfs from the tar packed as the build's last guest step — after all
+# build steps, start_cmd, and ready_cmd, with update-ca-certificates run first
+# (one sequential read); fall back to copying the cert dir, then to regenerating.
+#
+# Contract: the tar is the regenerated trust store captured at the end of the
+# build, so it equals what update-ca-certificates would produce at boot —
+# including CAs added in user layers or start/ready, registered or not. Seeding
+# from it gives a complete ca-certificates.crt, so update-ca-certificates is
+# skipped on cold boot (its scattered rootfs reads are the cost we avoid). It
+# therefore does NOT re-merge a persisted egress-proxy CA
+# (/usr/local/share/ca-certificates/e2b-ca.crt) into the bundle at boot. That CA
+# is (re)installed by envd's POST /init for the current proxy, which runs before
+# the orchestrator marks the sandbox running/routable — so the egress CA is
+# guaranteed present for the sandbox's routable lifetime. The only gap is guest
+# units that auto-start and egress over TLS before /init; that is accepted
+# (revisit if a template needs boot-time egress).
+ExecStartPre=/bin/sh -c 'mountpoint -q /etc/ssl/certs || { mkdir -p /run/e2b/certs && { tar -C /run/e2b/certs -xf /usr/local/share/e2b/ssl-certs.tar 2>/dev/null || cp -a /etc/ssl/certs/. /run/e2b/certs/ 2>/dev/null; }; mount --bind /run/e2b/certs /etc/ssl/certs; } && ([ -s /etc/ssl/certs/ca-certificates.crt ] || update-ca-certificates)'
+ExecStart=/usr/bin/envd
+Nice=-20
+IOSchedulingClass=realtime
+IOSchedulingPriority=4
+OOMPolicy=continue
+OOMScoreAdjust=-1000
+Environment="GOMEMLIMIT=512MiB"
+
+Delegate=yes
+MemoryMin=50M
+MemoryLow=100M
+CPUAccounting=yes
+CPUWeight=1000
+IOAccounting=yes
+IOWeight=10000
+
+[Install]
+WantedBy=multi-user.target
+=== EXIT: 0  WALL_S: 0.0075 ===
+
+================================================================
+=== jupyter.service
+=== CMD: systemctl cat jupyter.service
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+# /etc/systemd/system/jupyter.service
+[Unit]
+Description=Jupyter Server
+Documentation=https://jupyter-server.readthedocs.io
+Wants=code-interpreter.service
+StartLimitBurst=0
+
+[Service]
+Type=simple
+Environment=MATPLOTLIBRC=/root/.config/matplotlib/.matplotlibrc
+ExecStart=/usr/local/bin/jupyter server --IdentityProvider.token=""
+ExecStartPost=-/usr/bin/systemctl reset-failed code-interpreter
+Restart=on-failure
+RestartSec=1
+StandardOutput=null
+StandardError=journal
+=== EXIT: 0  WALL_S: 0.0072 ===
