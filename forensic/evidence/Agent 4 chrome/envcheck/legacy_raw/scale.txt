@@ -1,0 +1,5 @@
+streams=1   elapsed= 0.13s  aggregate=  83.6 MB/s (  669.0 Mbps)  per-stream med=  91.5 MB/s
+streams=2   elapsed= 0.13s  aggregate= 157.1 MB/s ( 1256.9 Mbps)  per-stream med=  85.2 MB/s
+streams=4   elapsed= 0.16s  aggregate= 259.2 MB/s ( 2073.6 Mbps)  per-stream med=  78.0 MB/s
+streams=8   elapsed= 0.20s  aggregate= 418.1 MB/s ( 3344.9 Mbps)  per-stream med=  68.4 MB/s
+streams=16  elapsed= 0.44s  aggregate= 382.9 MB/s ( 3063.5 Mbps)  per-stream med=  42.8 MB/s

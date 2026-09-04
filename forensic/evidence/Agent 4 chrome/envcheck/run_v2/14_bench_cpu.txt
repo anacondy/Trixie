@@ -1,0 +1,41 @@
+================================================================
+ probe.sh v1.0.0   section: 14_bench_cpu.txt
+ run_id:    20260904T140458Z-11960
+ started:   2026-09-04T14:12:29Z
+ sandbox:   i0m9mhony51frr3osghn0
+ template:  nlhz8vlwyupq845jsdg9
+ host:      e2b.local   kernel: 6.1.158+   arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user:      user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ python3 cpu.py 3
+  benchmark                                     min s    med s  notes
+  sum(range(10**7))                             0.131    0.132  = 49,999,995,000,000
+  sum(i*i for i in range(10**7))                0.635    0.638  
+  sum(map(abs, range(-5e6,5e6)))                0.329    0.333  
+  sieve primes < 5e6 (bytearray slice)          0.037    0.038  pure-python fast path
+  recursive fib(29)                             0.053    0.054  
+  json.loads 1.0MB                              0.009    0.010  
+  gzip.compress 1.0MB lvl9                      0.060    0.060  
+  sha256 100 MiB                                0.067    0.068  digest[:12]=2670169b8119
+
+  numeric libraries:
+  numpy 2.3.5
+  np.sum(np.arange(10**7))                      0.019    0.020  = 49,999,995,000,000
+  dot 1D                                        0.000    0.000
+  matmul 4096^2 fp64                            0.816    0.839  -> 163.9 GFLOP/s
+  matmul 4096^2 fp32                            0.397    0.424  -> 324.1 GFLOP/s
+  sum 20M fp64 (160MB stream)                   0.017    0.018  -> 8.7 GB/s
+  np.sort 20M fp64                              0.248    0.251
+  pandas groupby 2M rows                        0.022    0.025
+  pandas read_csv 44MB                          0.253    0.267
+
+  scaling:
+  os.cpu_count()=2  sched_getaffinity=2  gil_enabled=True
+  1 process (baseline)                          0.157
+  2 processes (same work each)                  0.198  speedup= 1.59x  eff= 79%
+  3 processes (same work each)                  0.288  speedup= 1.64x  eff= 55%
+  4 processes (same work each)                  0.342  speedup= 1.84x  eff= 46%
+  2 CPU-bound threads (GIL)                     0.367
+  8 CPU-bound threads (GIL)                     1.381   <- worse = GIL thrash, use processes

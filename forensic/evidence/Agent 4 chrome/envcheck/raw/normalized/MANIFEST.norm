@@ -1,0 +1,79 @@
+====================================================================
+ VERIFICATION MANIFEST — probe.sh transcripts (manifest v1.<NUM>)
+====================================================================
+run_id : <HEX>T<STAMP>-<PID>
+timestamp_utc : <TS>
+sandbox_id : <TOKEN>
+template_id : <TOKEN>
+host : e2b.local | Debian GNU/Linux 13 (trixie) | <VER>+ x86_64
+invoked by : user @ /home/user/envcheck
+python : <VER>
+environment vars: E2B_EVENTS_ADDRESS=http://<VER>.1, E2B_SANDBOX=true, E2B_SANDBOX_ID=<TOKEN>, E2B_TEMPLATE_ID=<TOKEN>
+contents : 22 transcripts, 93,<SZ>
+
+--------------------------------------------------------------------
+SHA-256 of verbatim transcripts (expect these to differ on another host)
+--------------------------------------------------------------------
+ FILE BYTES SHA256
+ 00_meta.txt 1704 <HEX>
+ 01_runtime.txt 5990 <HEX>
+ 02_isolation.txt 9948 <HEX>
+ 03_limits.txt 3027 <HEX>
+ 04_users.txt 2254 <HEX>
+ 05_tools.txt 8790 <HEX>
+ 06_pkg_and_compile.txt 5093 <HEX>
+ 06b_pip_freeze_sorted.txt 3199 <HEX>
+ 07_filesystem.txt 7294 <HEX>
+ 08_persistence.txt 2870 <HEX>
+ 09_net_matrix.txt 9413 <HEX>
+ 10_net_dns.txt 2749 <HEX>
+ 11_net_latency.txt 2433 <HEX>
+ 12_net_throughput.txt 3098 <HEX>
+ 13_net_egress_proof.txt 1932 <HEX>
+ 14_bench_cpu.txt 2245 <HEX>
+ 15_bench_disk.txt 3708 <HEX>
+ 16_bench_installs.txt 2505 <HEX>
+ 17_mem_pressure.txt 2838 <HEX>
+ 18_background.txt 2091 <HEX>
+ 19_services.txt 8270 <HEX>
+ 20_accelerators.txt 1797 <HEX>
+
+--------------------------------------------------------------------
+SHA-256 of NORMALIZED transcripts (these should MATCH across equivalent runs)
+--------------------------------------------------------------------
+ FILE HASH status
+ 00_meta.txt <HEX> normalized available
+ 01_runtime.txt <HEX> normalized available
+ 02_isolation.txt <HEX> normalized available
+ 03_limits.txt <HEX> normalized available
+ 04_users.txt <HEX> normalized available
+ 05_tools.txt <HEX> normalized available
+ 06_pkg_and_compile.txt <HEX> normalized available
+ 06b_pip_freeze_sorted.txt <HEX> normalized available
+ 07_filesystem.txt <HEX> normalized available
+ 08_persistence.txt <HEX> normalized available
+ 09_net_matrix.txt <HEX> normalized available
+ 10_net_dns.txt <HEX> normalized available
+ 11_net_latency.txt <HEX> normalized available
+ 12_net_throughput.txt <HEX> normalized available
+ 13_net_egress_proof.txt <HEX> normalized available
+ 14_bench_cpu.txt <HEX> normalized available
+ 15_bench_disk.txt <HEX> normalized available
+ 16_bench_installs.txt <HEX> normalized available
+ 17_mem_pressure.txt <HEX> normalized available
+ 18_background.txt <HEX> normalized available
+ 19_services.txt <HEX> normalized available
+ 20_accelerators.txt <HEX> normalized available
+
+--------------------------------------------------------------------
+HOW TO VERIFY THIS RUN
+--------------------------------------------------------------------
+ cd <this dir>
+ sha256sum -c SHA256SUMS.txt # verbatim integrity
+ sha256sum -c SHA256SUMS.normalized.txt # masked integrity
+
+Compare your own run against this one:
+ ./probe.sh /path/to/their_outdir
+ ./diff_run.sh <this dir> /path/to/their_outdir
+
+Excluded from the manifest (not evidence): .bg_pid, .bg_ticks*, .run_id, .persist/, normalized/, MANIFEST.txt, manifest.json, SHA256SUMS*.txt

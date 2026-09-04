@@ -1,0 +1,63 @@
+================================================================
+ probe.sh v1.<NUM> section: 03_limits.txt
+ host: e2b.local kernel: <VER>+ arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user: user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ ulimit -a
+real-time non-blocking time (microseconds, -R) unlimited
+core file size (blocks, -c) 0
+data seg size (kbytes, -d) unlimited
+scheduling priority (-e) 0
+file size (blocks, -f) unlimited
+pending signals (-i) 7917
+max locked memory (kbytes, -l) 8192
+max memory size (kbytes, -m) unlimited
+open files (-n) 1024
+pipe size (<SZ>, -p) 8
+POSIX message queues (bytes, -q) <BIGNUM>
+real-time priority (-r) 0
+stack size (kbytes, -s) 8192
+cpu time (seconds, -t) unlimited
+max user processes (-u) 7917
+virtual memory (kbytes, -v) unlimited
+file locks (-x) unlimited
+
+$ echo "soft_nofile=$(ulimit -Sn) hard_nofile=$(ulimit -Hn)"; echo "soft_nproc=$(ulimit -Su) hard_nproc=$(ulimit -Hu)"
+soft_nofile=1024 hard_nofile=<BIGNUM>
+soft_nproc=7917 hard_nproc=7917
+
+$ echo 'raise test:'; bash -c 'ulimit -n <BIGNUM> && echo " <BIGNUM> OK -> $(ulimit -n)"'; bash -c 'ulimit -n <BIGNUM> 2>/dev/null && echo " <BIGNUM> OK" || echo " <BIGNUM> rejected (hard cap)"'
+raise test:
+ <BIGNUM> OK -> <BIGNUM>
+ <BIGNUM> rejected (hard cap)
+
+$ cat /proc/sys/kernel/threads-max /proc/sys/kernel/pid_max /proc/sys/vm/max_map_count /proc/sys/user/max_user_namespaces 2>&1
+<BIGNUM>
+<BIGNUM>
+<BIGNUM>
+7917
+
+$ cat /proc/sys/vm/swappiness /proc/sys/vm/overcommit_memory /proc/sys/vm/dirty_ratio /proc/sys/vm/dirty_background_ratio 2>&1
+60
+0
+20
+10
+
+$ (swapon --show 2>/dev/null || cat /proc/swaps 2>/dev/null) | head -3; echo '--- /proc/meminfo ---'; awk '/SwapTotal|SwapFree/{print}' /proc/meminfo
+Filename				Type		Size		Used		Priority
+--- /proc/meminfo ---
+SwapTotal: <SZ>
+SwapFree: <SZ>
+
+$ ls /etc/security/limits.d/ 2>&1; cat /etc/security/limits.conf 2>/dev/null | grep -vE '^\s*#|^\s*$' | head -10; cat /etc/security/limits.d/* 2>/dev/null | grep -vE '^\s*#|^\s*$'
+10-coredump-debian.conf
+* soft core 0
+root soft core 0
+* hard core infinity
+root hard core infinity
+
+$ python3 -c 'import resource;print({n:resource.getrlimit(getattr(resource,n)) for n in ["RLIMIT_NOFILE","RLIMIT_NPROC","RLIMIT_STACK","RLIMIT_CORE","RLIMIT_MEMLOCK"]})' 2>&1 || echo 'python3/resource unavailable'
+{'RLIMIT_NOFILE': (1024, <BIGNUM>), 'RLIMIT_NPROC': (7917, 7917), 'RLIMIT_STACK': (<BIGNUM>, -1), 'RLIMIT_CORE': (0, 0), 'RLIMIT_MEMLOCK': (<BIGNUM>, <BIGNUM>)}
+

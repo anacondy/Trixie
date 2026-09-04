@@ -1,0 +1,25 @@
+
+### ext4 /home/user (/home/user/envcheck)
+  size on disk: 100 MB, read back 100 MB, sha256[:12]=22227ece3822
+  write_buffered   med=    95.4 ms  (min    77.7 / max   101.5)  =   1099 MB/s
+  fsync            med=    72.2 ms  (min    64.3 / max    73.2)
+  read_cached      med=    35.7 ms  (min    27.8 / max    52.5)  =   2941 MB/s
+  mmap_sha256      med=   118.4 ms  (min   112.1 / max   123.8)  =    886 MB/s
+
+### tmpfs /tmp (/tmp)
+  size on disk: 100 MB, read back 100 MB, sha256[:12]=3f19bf40b2d4
+  write_buffered   med=    40.7 ms  (min    39.7 / max    49.5)  =   2576 MB/s
+  fsync            med=     0.0 ms  (min     0.0 / max     0.0)
+  read_cached      med=    31.7 ms  (min    28.7 / max    41.4)  =   3308 MB/s
+  mmap_sha256      med=   104.4 ms  (min   103.1 / max   110.6)  =   1004 MB/s
+
+### tmpfs /dev/shm (/dev/shm)
+  size on disk: 100 MB, read back 100 MB, sha256[:12]=91fdd026d6ea
+  write_buffered   med=    36.0 ms  (min    34.8 / max    54.4)  =   2914 MB/s
+  fsync            med=     0.0 ms  (min     0.0 / max     0.0)
+  read_cached      med=    32.2 ms  (min    27.5 / max    32.2)  =   3254 MB/s
+  mmap_sha256      med=    97.6 ms  (min    97.1 / max   104.2)  =   1074 MB/s
+
+### Many-small-files (relevant for shard-heavy pipelines)
+  ext4 /home/user/envcheck     write 2000x1KB:  0.103s ( 19416 files/s) | read:  0.028s | write+fsync 100 files:  0.100s (  1.0 ms/op)
+  tmpfs /tmp/small             write 2000x1KB:  0.024s ( 82488 files/s) | read:  0.018s | write+fsync 100 files:  0.001s (  0.0 ms/op)

@@ -1,0 +1,77 @@
+================================================================
+ probe.sh v1.<NUM> section: 17_mem_pressure.txt
+ host: e2b.local kernel: <VER>+ arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user: user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ CG=/sys/fs/cgroup$(awk -F: '$1==0{print $3}' /proc/self/cgroup); echo 'limit/current/events:'; for f in memory.max memory.high memory.current memory.events memory.stat; do echo "-- $f"; cat $CG/$f 2>&1 | head -8; done
+limit/current/events:
+-- memory.max
+<HEX>
+-- memory.high
+<HEX>
+-- memory.current
+<HEX>
+-- memory.events
+low <N>
+high <N>
+max <N>
+oom <N>
+oom_kill <N>
+oom_group_kill <N>
+-- memory.stat
+anon <N>
+file <N>
+kernel <N>
+kernel_stack <N>
+pagetables <N>
+sec_pagetables <N>
+percpu <N>
+sock <N>
+
+$ echo 'memory.stat key fields:'; CG=/sys/fs/cgroup$(awk -F: '$1==0{print $3}' /proc/self/cgroup); grep -E '^(anon|file|slab|kernel_stack|pagetables|sock|shmem|dirty|writeback|inactive_anon|active_anon|workingset_refault)' $CG/memory.stat 2>&1 | sort
+memory.stat key fields:
+active_anon <N>
+anon <N>
+anon_thp <N>
+file <N>
+file_dirty <N>
+file_mapped <N>
+file_thp <N>
+file_writeback <N>
+inactive_anon <N>
+kernel_stack <N>
+pagetables <N>
+shmem <N>
+shmem_thp <N>
+slab <N>
+slab_reclaimable <N>
+slab_unreclaimable <N>
+sock <N>
+workingset_refault_anon <N>
+workingset_refault_file <N>
+
+$ echo 'swap:'; awk '/SwapTotal|SwapFree/{print}' /proc/meminfo
+swap:
+SwapTotal: <SZ>
+SwapFree: <SZ>
+
+$ python3 oom_probe.py (DRIVES TO OOM - child is SIGKILLed by design)
+ memory.max=<HEX> (<SZ>) start current=<SZ>
+ allocated <SZ> | cgroup current <SZ> | rss <SZ>
+ allocated <SZ> | cgroup current <SZ> | rss <SZ>
+ allocated <SZ> | cgroup current <SZ> | rss <SZ>
+ allocated <SZ> | cgroup current <SZ> | rss <SZ>
+ allocated <SZ> | cgroup current <SZ> | rss <SZ>
+ allocated <SZ> | cgroup current <SZ> | rss <SZ>
+ allocated <SZ> | cgroup current <SZ> | rss <SZ>
+ allocated <SZ> | cgroup current <SZ> | rss <SZ>
+ allocated <SZ> | cgroup current <SZ> | rss <SZ>
+ allocated <SZ> | cgroup current <SZ> | rss <SZ>
+ allocated <SZ> | cgroup current <SZ> | rss <SZ>
+
+ >>> process was SIGKILLed (exit 137) -> OOM killer, NOT a catchable MemoryError
+ >>> consequence: buffered stdout of a killed process is lost; flush progress to disk
+
+ post-test memory.events: low 0 high 0 current <N>|max <N> oom 0 oom_kill <N> oom_group_kill 0

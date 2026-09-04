@@ -1,0 +1,137 @@
+================================================================
+ probe.sh v1.<NUM> section: 05_tools.txt
+ host: e2b.local kernel: <VER>+ arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user: user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+# format: TOOL | PATH | version-first-line (or ABSENT)
+# raw command executed per line: $ <tool> --version
+7z | ABSENT | -
+apt | /usr/bin/apt | apt <VER> (amd64)
+apt-get | /usr/bin/apt-get | apt <VER> (amd64)
+ar | /usr/bin/ar | GNU ar (GNU Binutils for Debian) <NUM>
+awk | /usr/bin/awk | mawk <VER> <HEX>
+aws | ABSENT | -
+az | ABSENT | -
+bc | ABSENT | -
+blkid | ABSENT | -
+bun | ABSENT | -
+bwrap | ABSENT | -
+bzip2 | /usr/bin/bzip2 | bzip2, a block-sorting file compressor. Version <VER>, 13-Jul-2019.
+cc | /usr/bin/cc | cc (Debian <VER>-19) <VER>
+clang | ABSENT | -
+clang++ | ABSENT | -
+cmake | ABSENT | -
+conda | ABSENT | -
+convert | /usr/bin/convert | Version: ImageMagick <VER>-43 Q16 x86_64 <BIGNUM> https://imagemagick.org
+crontab | ABSENT | -
+crun | ABSENT | -
+curl | /usr/bin/curl | curl <VER> (x86_64-pc-linux-gnu) libcurl/<VER> OpenSSL/<VER> zlib/<VER> brotli/<VER> zstd/<VER> libidn2/<NUM>.
+deno | ABSENT | -
+dig | ABSENT | -
+docker | ABSENT | -
+dpkg | /usr/bin/dpkg | Debian 'dpkg' package management program version <VER> (amd64).
+dpkg-query | /usr/bin/dpkg-query | Debian dpkg-query package management program query tool version <VER> (amd64).
+duckdb | ABSENT | -
+ffmpeg | ABSENT | -
+ffprobe | ABSENT | -
+file | /usr/bin/file | file-<NUM>
+find | /usr/bin/find | find (GNU findutils) <VER>
+findmnt | /usr/bin/findmnt | findmnt from util-linux <NUM>
+g++ | /usr/bin/g++ | g++ (Debian <VER>-19) <VER>
+gawk | ABSENT | -
+gcc | /usr/bin/gcc | gcc (Debian <VER>-19) <VER>
+gcc-ar | /usr/bin/gcc-ar | GNU ar (GNU Binutils for Debian) <NUM>
+gcloud | ABSENT | -
+gdb | ABSENT | -
+git | /usr/bin/git | git version <VER>
+git-lfs | ABSENT | -
+grep | /usr/bin/grep | grep (GNU grep) <NUM>
+gzip | /usr/bin/gzip | gzip <NUM>
+helm | ABSENT | -
+host | ABSENT | -
+htop | ABSENT | -
+imagemagick | ABSENT | -
+iostat | ABSENT | -
+ip | /usr/bin/ip | Option "-version" is unknown, try "ip -help".
+iptables | ABSENT | -
+jq | /usr/bin/jq | jq-<NUM>
+kubectl | ABSENT | -
+ld | /usr/bin/ld | GNU ld (GNU Binutils for Debian) <NUM>
+lldb | ABSENT | -
+lsblk | /usr/bin/lsblk | lsblk from util-linux <NUM>
+lsof | ABSENT | -
+ltrace | ABSENT | -
+make | /usr/bin/make | GNU Make <VER>
+mamba | ABSENT | -
+mawk | /usr/bin/mawk | mawk <VER> <HEX>
+micromamba | ABSENT | -
+mongosh | ABSENT | -
+mysql | ABSENT | -
+nc | ABSENT | -
+ncat | ABSENT | -
+nerdctl | ABSENT | -
+netcat | ABSENT | -
+nft | ABSENT | -
+ninja | ABSENT | -
+nm | /usr/bin/nm | GNU nm (GNU Binutils for Debian) <NUM>
+node | /usr/bin/node | v20.<NUM>
+npm | /usr/bin/npm | <VER>
+npx | /usr/bin/npx | <VER>
+nslookup | ABSENT | -
+objdump | /usr/bin/objdump | GNU objdump (GNU Binutils for Debian) <NUM>
+openssl | /usr/bin/openssl | OpenSSL <VER> 7 Apr 2026 (Library: OpenSSL <VER> 7 Apr 2026)
+parallel | ABSENT | -
+perf | ABSENT | -
+pgrep | /usr/bin/pgrep | pgrep from procps-ng <VER>
+ping | /usr/bin/ping | ping: invalid option -- '-'
+pip | /usr/local/bin/pip | pip <VER> from /usr/local/lib/python3.13/site-packages/pip (python <NUM>)
+pip3 | /usr/local/bin/pip3 | pip <VER> from /usr/local/lib/python3.13/site-packages/pip (python <NUM>)
+pipx | ABSENT | -
+pkg-config | /usr/bin/pkg-config | <VER>
+pkill | /usr/bin/pkill | pkill from procps-ng <VER>
+pnpm | ABSENT | -
+podman | ABSENT | -
+ps | /usr/bin/ps | ps from procps-ng <VER>
+psql | ABSENT | -
+pv | ABSENT | -
+python | /usr/local/bin/python | Python <VER>
+python3 | /usr/local/bin/python3 | Python <VER>
+readelf | /usr/bin/readelf | GNU readelf (GNU Binutils for Debian) <NUM>
+redis-cli | ABSENT | -
+rg | ABSENT | -
+rsync | ABSENT | -
+runc | ABSENT | -
+sar | ABSENT | -
+scp | /usr/bin/scp | scp: unknown option -- -
+screen | ABSENT | -
+sed | /usr/bin/sed | sed (GNU sed) <NUM>
+sftp | /usr/bin/sftp | unknown option -- -
+sort | /usr/bin/sort | sort (GNU coreutils) <NUM>
+sqlite3 | ABSENT | -
+ss | /usr/bin/ss | ss utility, iproute2-<VER>
+ssh | /usr/bin/ssh | unknown option -- -
+strace | ABSENT | -
+strings | /usr/bin/strings | GNU strings (GNU Binutils for Debian) <NUM>
+systemctl | /usr/bin/systemctl | systemd 257 (<NUM>-1~deb13u1)
+tar | /usr/bin/tar | tar (GNU tar) <NUM>
+tcpdump | ABSENT | -
+terraform | ABSENT | -
+time | ABSENT | -
+tmux | ABSENT | -
+top | /usr/bin/top | top from procps-ng <VER>
+traceroute | ABSENT | -
+tshark | ABSENT | -
+unzip | /usr/bin/unzip | caution: both -n and -o specified; ignoring -o
+uv | ABSENT | -
+vault | ABSENT | -
+vmstat | /usr/bin/vmstat | vmstat from procps-ng <VER>
+watch | /usr/bin/watch | watch from procps-ng <VER>
+wget | /usr/bin/wget | GNU Wget <VER> built on linux-gnu.
+xargs | /usr/bin/xargs | xargs (GNU findutils) <VER>
+xz | /usr/bin/xz | xz (XZ Utils) <VER>
+yarn | ABSENT | -
+yq | ABSENT | -
+zip | /usr/bin/zip | Copyright (c) 1990-2008 Info-ZIP - Type 'zip "-L"' for software license.
+zstd | /usr/bin/zstd | *** Zstandard CLI (64-bit) v1.<NUM>, by Yann Collet ***

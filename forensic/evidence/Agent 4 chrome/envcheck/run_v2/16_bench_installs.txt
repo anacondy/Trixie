@@ -1,0 +1,33 @@
+================================================================
+ probe.sh v1.0.0   section: 16_bench_installs.txt
+ run_id:    20260904T140458Z-11960
+ started:   2026-09-04T14:12:47Z
+ sandbox:   i0m9mhony51frr3osghn0
+ template:  nlhz8vlwyupq845jsdg9
+ host:      e2b.local   kernel: 6.1.158+   arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user:      user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ python3 installs.py 3 /tmp/tmp.sQJiyTHE8O/npm
+  pip download --no-deps requests                 ok    0.37s  [notice] To update, run: pip install --upgrade pip
+  pip install --user rich (pure python)           ok    0.72s  [notice] To update, run: pip install --upgrade pip
+  pip install --user ujson (C++/meson)            ok    0.49s  [notice] To update, run: pip install --upgrade pip
+  npm install --no-audit --no-fund ms             ok    0.70s  
+  npm install ms (audit ON, attempt)           exit=0    0.43s  <-- audit path is the variable one
+  npm install ms (audit ON, attempt)           exit=0    0.39s  <-- audit path is the variable one
+  npm install ms (audit ON, attempt)           exit=0    0.39s  <-- audit path is the variable one
+$ echo '--- apt install of a real system package (timed) ---'; PKG=$(command -v zstd >/dev/null && echo libzstd1 || echo zstd); t0=$(date +%s%N); sudo -n apt-get install -y -qq $PKG >/dev/null 2>&1; echo "  $PKG: exit=$? in $(( ($(date +%s%N)-t0)/1000000 )) ms"
+--- apt install of a real system package (timed) ---
+  libzstd1: exit=0 in 831 ms
+
+$ echo '--- venv + install into it (isolation path) ---'; t0=$(date +%s%N); python3 -m venv /tmp/tmp.sQJiyTHE8O/v2 >/dev/null 2>&1; /tmp/tmp.sQJiyTHE8O/v2/bin/pip install -q numpy >/dev/null 2>&1; echo "  venv + pip install numpy: $(( ($(date +%s%N)-t0)/1000000 )) ms; result="; /tmp/tmp.sQJiyTHE8O/v2/bin/python -c 'import numpy;print("   ",numpy.__version__)' 2>&1
+--- venv + install into it (isolation path) ---
+  venv + pip install numpy: 1576 ms; result=
+    2.5.2
+
+$ echo '--- git clone over https (real-world bulk) ---'; t0=$(date +%s%N); git clone -q --depth 1 https://github.com/git/git /tmp/tmp.sQJiyTHE8O/gc 2>&1 | tail -2; echo "  shallow clone of git/git: $(( ($(date +%s%N)-t0)/1000000 )) ms, size $(du -sh /tmp/tmp.sQJiyTHE8O/gc 2>/dev/null | cut -f1)"
+--- git clone over https (real-world bulk) ---
+fatal: destination path '/tmp/tmp.sQJiyTHE8O/gc' already exists and is not an empty directory.
+  shallow clone of git/git: 30 ms, size 72M
+

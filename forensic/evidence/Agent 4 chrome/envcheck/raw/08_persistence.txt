@@ -1,0 +1,48 @@
+================================================================
+ probe.sh v1.0.0   section: 08_persistence.txt
+ run_id:    20260904T142012Z-22063
+ started:   2026-09-04T14:20:19Z
+ sandbox:   i0m9mhony51frr3osghn0
+ template:  nlhz8vlwyupq845jsdg9
+ host:      e2b.local   kernel: 6.1.158+   arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user:      user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ mkdir -p 'raw/.persist'; printf '%s %s\n' '20260904T142012Z-22063' $(date -u +%s) > 'raw/.persist/writer.txt'; echo '  marker written (diff against your own run to compare):'; cat 'raw/.persist/writer.txt'
+  marker written (diff against your own run to compare):
+20260904T142012Z-22063 1788531619
+
+$ printf '%s %s\n' "20260904T142012Z-22063" $(date -u +%s) > /tmp/probe_persist_20260904T142012Z-22063.tmp && echo '  /tmp marker written: /tmp/probe_persist_20260904T142012Z-22063.tmp'
+  /tmp marker written: /tmp/probe_persist_20260904T142012Z-22063.tmp
+
+$ printf '%s %s\n' "20260904T142012Z-22063" $(date -u +%s) > /var/tmp/probe_persist_20260904T142012Z-22063.tmp && echo '  /var/tmp marker written: /var/tmp/probe_persist_20260904T142012Z-22063.tmp'
+  /var/tmp marker written: /var/tmp/probe_persist_20260904T142012Z-22063.tmp
+
+$ echo 'tmpfiles ages (governs /tmp and /var/tmp sweeping):'; grep -hE '^\s*[qQvdD]\s+/(tmp|var/tmp)(\s|$)' /usr/lib/tmpfiles.d/*.conf /etc/tmpfiles.d/*.conf 2>/dev/null | sort -u
+tmpfiles ages (governs /tmp and /var/tmp sweeping):
+q /tmp 1777 root root 10d
+q /var/tmp 1777 root root 30d
+
+$ systemctl list-timers --all --no-legend 2>&1 | awk '{print $1,$2,$NF}' | sort; echo '---'; systemctl status systemd-tmpfiles-clean.timer --no-pager 2>&1 | grep -E 'Active|Loaded' | sed 's/^ *//'
+Fri 2026-09-04 apt-daily-upgrade.service
+Fri 2026-09-04 apt-daily.service
+Fri 2026-09-04 fstrim.service
+Sat 2026-09-05 dpkg-db-backup.service
+Sat 2026-09-05 systemd-tmpfiles-clean.service
+---
+Loaded: loaded (/usr/lib/systemd/system/systemd-tmpfiles-clean.timer; static)
+Active: active (waiting) since Thu 2026-07-23 18:05:37 UTC; 1 month 12 days ago
+
+$ echo 'workspace snapshot exclusions are a policy of the harness, not the guest fs; verifiable names:'; echo '  .venv node_modules dist build out target coverage __pycache__ .cache .next .pytest_cache .ruff_cache .local .output'
+workspace snapshot exclusions are a policy of the harness, not the guest fs; verifiable names:
+  .venv node_modules dist build out target coverage __pycache__ .cache .next .pytest_cache .ruff_cache .local .output
+
+$ df -h $PWD | tail -1; df -i $PWD | tail -1
+/dev/root        25G  4.1G   20G  18% /
+/dev/root      6759792 136558 6623234    3% /
+
+$ echo 'inode/dir durability probes:'; sync; cat /proc/sys/vm/dirty_ratio /proc/sys/vm/dirty_expire_centisecs 2>&1 | tr '\n' ' '; echo
+inode/dir durability probes:
+20 3000 
+

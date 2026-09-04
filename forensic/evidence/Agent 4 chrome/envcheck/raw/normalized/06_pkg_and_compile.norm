@@ -1,0 +1,111 @@
+================================================================
+ probe.sh v1.<NUM> section: 06_pkg_and_compile.txt
+ host: e2b.local kernel: <VER>+ arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user: user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ pip --version; echo '--- config ---'; pip config list 2>&1; echo '--- index/externally-managed ---'; ls /usr/local/lib/python3*/EXTERNALLY-MANAGED /usr/lib/python3*/EXTERNALLY-MANAGED 2>&1 | head -2
+pip <VER> from /usr/local/lib/python3.13/site-packages/pip (python <NUM>)
+--- config ---
+--- index/externally-managed ---
+ls: cannot access '/usr/local/lib/python3*/EXTERNALLY-MANAGED': No such file or directory
+/usr/lib/python3.13/EXTERNALLY-MANAGED
+
+$ python3 -c "import sys,sysconfig;print('exe',sys.executable);print('ver',sys.version.split()[0]);print('prefix',sys.prefix);print('base',sys.base_prefix);print('purelib',sysconfig.get_path('purelib'));print('user_site',sysconfig.get_path('purelib','posix_user'));print('CC',sysconfig.get_config_var('CC'));print('CFLAGS',sysconfig.get_config_var('CFLAGS'))"
+exe /usr/local/bin/python3
+ver <VER>
+prefix /usr/local
+base /usr/local
+purelib /usr/local/lib/python3.13/site-packages
+user_site /home/user/.local/lib/python3.13/site-packages
+CC gcc
+CFLAGS -fno-strict-overflow -Wsign-compare -DNDEBUG -g -O3 -Wall
+
+$ python3 -c "import importlib.util as u;print('\n'.join(f'{m:12} ' + ('PRESENT' if u.find_spec(m) else 'ABSENT') for m in ['numpy','pandas','scipy','sklearn','matplotlib','requests','httpx','aiohttp','psutil','yaml','pyarrow','polars','duckdb','torch','pytest','Cython','wheel','sqlite3','venv','ctypes']))"
+numpy PRESENT
+pandas PRESENT
+scipy PRESENT
+sklearn PRESENT
+matplotlib PRESENT
+requests PRESENT
+httpx PRESENT
+aiohttp PRESENT
+psutil PRESENT
+yaml PRESENT
+pyarrow ABSENT
+polars ABSENT
+duckdb ABSENT
+torch ABSENT
+pytest PRESENT
+Cython ABSENT
+wheel ABSENT
+sqlite3 PRESENT
+venv PRESENT
+ctypes PRESENT
+
+$ python3 -m pip list 2>/dev/null | tail -n +3 | wc -l | xargs echo 'pip installed distribution count:'
+pip installed distribution count: 181
+
+$ python3 -m pip list 2>/dev/null | tail -n +3 | awk '{print $1"=="$2}' | sort > <TMPDIR>/pkgs.txt && echo 'package list written; first 15:' && head -15 <TMPDIR>/pkgs.txt
+package list written; first 15:
+ImageIO==<VER>
+Jinja2==<VER>
+MarkupSafe==<VER>
+PyYAML==<VER>
+Pygments==<VER>
+Send2Trash==<VER>
+<TOKEN>==<VER>
+aiohttp==<VER>
+aiosignal==<VER>
+annotated-doc==<VER>
+annotated-types==<VER>
+anyio==<VER>
+argon2-cffi-bindings==<VER>
+argon2-cffi==<VER>
+arrow==<VER>
+
+# 06b_pip_freeze_sorted.txt = sorted name==version list for diffing
+$ cat /etc/os-release | grep ^ID=; ls /etc/apt/sources.list.d/ 2>&1; grep -hE '^(URIs|Suites|Types|deb )' /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null | head -10
+ID=debian
+debian.sources
+nodesource.sources
+Types: deb
+URIs: http://deb.debian.org/debian
+Suites: trixie trixie-updates
+Types: deb
+URIs: http://deb.debian.org/debian-security
+Suites: trixie-security
+Types: deb
+URIs: https://deb.nodesource.com/node_20.x
+Suites: nodistro
+
+$ sudo -n apt-get update -qq 2>&1 | tail -3; echo "apt-get update exit=$?"
+apt-get update exit=0
+
+$ for p in $([ -x /usr/bin/rg ] && echo 'skip') ; do :; done; if have_test=$(command -v rg || true); then echo 'ripgrep already present, testing zstd instead'; PKG=zstd; else PKG=ripgrep; fi; t0=$(date +%s%N); sudo -n apt-get install -y -qq $PKG >/dev/null 2>&1; rc=$?; t1=$(date +%s%N); echo "apt-get install $PKG: exit=$rc in $(( (t1-t0)/<BIGNUM> )) ms"; command -v $PKG || echo ' (binary not on PATH)'
+ripgrep already present, testing zstd instead
+apt-get install zstd: exit=0 in <T>
+/usr/bin/zstd
+
+$ echo '--- compile chain ---'; gcc --version | head -1; ld --version | head -1; python3 -c "import sysconfig,os;h=sysconfig.get_paths()['include'];print('headers dir',h,'exists',os.path.isdir(h));print('Python.h',os.path.exists(os.path.join(h,'Python.h')))"
+--- compile chain ---
+gcc (Debian <VER>-19) <VER>
+GNU ld (GNU Binutils for Debian) <NUM>
+headers dir /usr/local/include/python3.13 exists True
+Python.h True
+
+$ bash <TMPDIR>/cext/build.sh
+ compiled module result: <HEX>
+ gcc C-extension build+import: <T>
+
+$ node --version; npm --version 2>&1; npm config get registry 2>&1; python3 -c "print('venv module:', __import__('importlib.util',fromlist=['x']).find_spec('venv') is not None)"
+v20.<NUM>
+<VER>
+https://registry.npmjs.org/
+venv module: True
+
+$ t0=$(date +%s%N); python3 -m venv <TMPDIR>/venv 2>&1 | tail -2; t1=$(date +%s%N); echo " python3 -m venv: $(( (t1-t0)/<BIGNUM> )) ms"; <TMPDIR>/venv/bin/python -c 'import sys;print(" venv works:",sys.prefix!=sys.base_prefix)' 2>&1
+ python3 -m venv: <T>
+ venv works: True
+

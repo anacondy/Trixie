@@ -1,0 +1,13 @@
+cgroup memory.max=1857 MiB, start current=101 MiB
+  allocated  128 MiB  | cgroup current    229 MiB  | rss 137 MiB
+  allocated  256 MiB  | cgroup current    357 MiB  | rss 265 MiB
+  allocated  384 MiB  | cgroup current    485 MiB  | rss 393 MiB
+  allocated  512 MiB  | cgroup current    614 MiB  | rss 521 MiB
+  allocated  640 MiB  | cgroup current    742 MiB  | rss 649 MiB
+  allocated  768 MiB  | cgroup current    870 MiB  | rss 777 MiB
+  allocated  896 MiB  | cgroup current    998 MiB  | rss 905 MiB
+  allocated 1024 MiB  | cgroup current   1127 MiB  | rss 1033 MiB
+  allocated 1152 MiB  | cgroup current   1255 MiB  | rss 1161 MiB
+  allocated 1280 MiB  | cgroup current   1383 MiB  | rss 1289 MiB
+  allocated 1408 MiB  | cgroup current   1511 MiB  | rss 1417 MiB
+  allocated 1536 MiB  | cgroup current   1633 MiB  | rss 1545 MiB

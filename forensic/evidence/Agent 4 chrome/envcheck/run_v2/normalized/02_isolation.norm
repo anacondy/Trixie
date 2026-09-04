@@ -1,0 +1,215 @@
+================================================================
+ probe.sh v1.<NUM>   section: 02_isolation.txt
+ host:      e2b.local   kernel: <NUM>.158+   arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user:      user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ ls -la /.dockerenv /run/.containerenv 2>&1
+ls: cannot access '/.dockerenv': No such file or directory
+ls: cannot access '/run/.containerenv': No such file or directory
+  [exit=2]
+
+$ cat /proc/1/cgroup; echo '--- self ---'; cat /proc/self/cgroup
+0::/init.scope
+--- self ---
+0::/user
+
+$ grep -E 'cgroup' /proc/mounts
+cgroup2 /sys/fs/cgroup cgroup2 rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot 0 0
+
+$ cat /sys/fs/cgroup/cgroup.controllers 2>&1; cat /sys/fs/cgroup/cgroup.subtree_control 2>&1
+cpuset cpu io memory hugetlb pids
+cpuset cpu io memory pids
+
+$ ls /sys/fs/cgroup/ | sort
+cgroup.controllers
+cgroup.max.depth
+cgroup.max.descendants
+cgroup.procs
+cgroup.stat
+cgroup.subtree_control
+cgroup.threads
+cpu.stat
+cpuset.cpus.effective
+cpuset.mems.effective
+dev-hugepages.mount
+dev-mqueue.mount
+init.scope
+io.cost.model
+io.cost.qos
+io.stat
+memory.numa_stat
+memory.reclaim
+memory.stat
+ptys
+socats
+sys-fs-fuse-connections.mount
+sys-kernel-debug.mount
+sys-kernel-tracing.mount
+system.slice
+user
+user.slice
+
+$ CG=/sys/fs/cgroup$(awk -F: '$1==0{print $3}' /proc/self/cgroup); echo "cgroup dir: $CG"; for f in cpu.max cpu.weight cpuset.cpus.effective memory.max memory.high memory.current memory.swap.max pids.max io.max; do printf '%-<T> %s\n' $f "$(cat $CG/$f 2>&1 | head -1)"; done
+cgroup dir: /sys/fs/cgroup/user
+cpu.max                  max <BIGNUM>
+cpu.weight               50
+cpuset.cpus.effective    0-1
+memory.max               <BIGNUM>
+memory.high              <BIGNUM>
+memory.current           <BIGNUM>
+memory.swap.max          max
+pids.max                 max
+io.max
+
+$ CG=/sys/fs/cgroup$(awk -F: '$1==0{print $3}' /proc/self/cgroup); echo '--- cpu.stat ---'; cat $CG/cpu.stat 2>&1; echo '--- memory.events ---'; cat $CG/memory.events 2>&1
+--- cpu.stat ---
+usage_usec <BIGNUM>
+user_usec <BIGNUM>
+system_usec <BIGNUM>
+nr_periods 0
+nr_throttled 0
+throttled_usec 0
+nr_bursts 0
+burst_usec 0
+--- memory.events ---
+low 0
+high 0
+max 0
+oom 0
+oom_kill 1
+oom_group_kill 0
+
+$ grep -E 'Cap(Inh|Prm|Eff|Bnd|Amb)|NoNewPrivs|Seccomp' /proc/self/status
+CapInh:	<BIGNUM>
+CapPrm:	<BIGNUM>
+CapEff:	<BIGNUM>
+CapBnd:	<HEX>
+CapAmb:	<BIGNUM>
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+
+$ grep -E 'CapEff' <(sudo -n grep CapEff /proc/self/status 2>/dev/null) || echo 'sudo unavailable or no output'
+CapEff:	<HEX>
+
+$ for f in /proc/self/ns/*; do printf '%-<T> %s\n' $(basename $f) "$(readlink $f)"; done | sort
+cgroup                   cgroup:[<BIGNUM>]
+ipc                      ipc:[<BIGNUM>]
+mnt                      mnt:[<BIGNUM>]
+net                      net:[<BIGNUM>]
+pid                      pid:[<BIGNUM>]
+pid_for_children         pid:[<BIGNUM>]
+time                     time:[<BIGNUM>]
+time_for_children        time:[<BIGNUM>]
+user                     user:[<BIGNUM>]
+uts                      uts:[<BIGNUM>]
+
+$ ls /proc/self/ns -la | head -3
+total 0
+dr-x--x--x 2 user user 0 Sep  4 14:04 .
+dr-xr-xr-x 9 user user 0 Sep  4 14:04 ..
+
+$ cat /proc/mounts | sort
+/dev/root / ext4 rw,relatime,discard 0 0
+bpf /sys/fs/bpf bpf rw,nosuid,nodev,noexec,relatime,mode=700 0 0
+cgroup2 /sys/fs/cgroup cgroup2 rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot 0 0
+debugfs /sys/kernel/debug debugfs rw,nosuid,nodev,noexec,relatime 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,gid=5,mode=600,ptmxmode=000 0 0
+devtmpfs /dev devtmpfs rw,relatime,size=1013452k,nr_inodes=<BIGNUM>,mode=755 0 0
+fusectl /sys/fs/fuse/connections fusectl rw,nosuid,nodev,noexec,relatime 0 0
+hugetlbfs /dev/hugepages hugetlbfs rw,nosuid,nodev,relatime,pagesize=2M 0 0
+mqueue /dev/mqueue mqueue rw,nosuid,nodev,noexec,relatime 0 0
+proc /proc proc rw,nosuid,nodev,noexec,relatime 0 0
+pstore /sys/fs/pstore pstore rw,nosuid,nodev,noexec,relatime 0 0
+ramfs /run/credentials/getty@tty1.service ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700 0 0
+ramfs /run/credentials/systemd-journald.service ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700 0 0
+ramfs /run/credentials/systemd-networkd.service ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700 0 0
+securityfs /sys/kernel/security securityfs rw,nosuid,nodev,noexec,relatime 0 0
+selinuxfs /sys/fs/selinux selinuxfs rw,nosuid,noexec,relatime 0 0
+sunrpc /run/rpc_pipefs rpc_pipefs rw,relatime 0 0
+sysfs /sys sysfs rw,nosuid,nodev,noexec,relatime 0 0
+systemd-1 /proc/sys/fs/binfmt_misc autofs rw,relatime,fd=36,pgrp=1,timeout=0,minproto=5,maxproto=5,direct 0 0
+tmpfs /dev/shm tmpfs rw,nosuid,nodev 0 0
+tmpfs /etc/ssl/certs tmpfs rw,nosuid,nodev,size=406524k,nr_inodes=<BIGNUM>,mode=755 0 0
+tmpfs /run tmpfs rw,nosuid,nodev,size=406524k,nr_inodes=<BIGNUM>,mode=755 0 0
+tmpfs /run/lock tmpfs rw,nosuid,nodev,noexec,relatime,size=5120k 0 0
+tmpfs /tmp tmpfs rw,nosuid,nodev,nr_inodes=<BIGNUM> 0 0
+tracefs /sys/kernel/tracing tracefs rw,nosuid,nodev,noexec,relatime 0 0
+
+$ awk '($4 ~ /(^|,)ro(,|$)/) {print $2, $3, $4}' /proc/mounts | sort; echo '[end read-only list]'
+/run/credentials/getty@tty1.service ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+/run/credentials/systemd-journald.service ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+/run/credentials/systemd-networkd.service ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+[end read-only list]
+
+$ cat /proc/partitions; ls -la /dev/vda /dev/sda /dev/nvme0n1 2>&1 | head -4
+major minor  #blocks  name
+
+ 254        0   <BIGNUM> vda
+ls: cannot access '/dev/sda': No such file or directory
+ls: cannot access '/dev/nvme0n1': No such file or directory
+brw------- 1 root root 254, 0 Jul 23 18:05 /dev/vda
+
+$ ls /sys/class/dmi/id/ 2>&1 | head -5; cat /sys/class/dmi/id/product_name 2>&1; cat /sys/class/dmi/id/sys_vendor 2>&1
+ls: cannot access '/sys/class/dmi/id/': No such file or directory
+cat: /sys/class/dmi/id/product_name: No such file or directory
+cat: /sys/class/dmi/id/sys_vendor: No such file or directory
+  [exit=1]
+
+$ ps -eo pid,ppid,user,etime,rss,comm --sort=pid | head -30
+    PID    PPID USER         ELAPSED   RSS COMMAND
+      1       0 root           20:45  6412 systemd
+      2       0 root           20:45     0 kthreadd
+      3       2 root           20:45     0 rcu_gp
+      4       2 root           20:45     0 rcu_par_gp
+      5       2 root           20:45     0 slub_flushwq
+      6       2 root           20:45     0 netns
+      7       2 root           20:45     0 kworker/0:0-events
+      8       2 root           20:45     0 kworker/0:0H-events_highpri
+      9       2 root           20:45     0 kworker/u4:0-writeback
+     10       2 root           20:45     0 mm_percpu_wq
+     11       2 root           20:45     0 rcu_tasks_kthread
+     12       2 root           20:45     0 rcu_tasks_rude_kthread
+     13       2 root           20:45     0 rcu_tasks_trace_kthread
+     14       2 root           20:45     0 ksoftirqd/0
+     15       2 root           20:45     0 rcu_preempt
+     16       2 root           20:45     0 migration/0
+     18       2 root           20:45     0 cpuhp/0
+     19       2 root           20:45     0 cpuhp/1
+     20       2 root           20:45     0 migration/1
+     21       2 root           20:45     0 ksoftirqd/1
+     23       2 root           20:45     0 kworker/1:0H-events_highpri
+     26       2 root           20:45     0 kdevtmpfs
+     27       2 root           20:45     0 inet_frag_wq
+     28       2 root           20:45     0 kauditd
+     29       2 root           20:45     0 khungtaskd
+     30       2 root           20:45     0 oom_reaper
+     31       2 root           20:45     0 kworker/u4:2-flush-254:0
+     32       2 root           20:45     0 writeback
+     33       2 root           20:45     0 kcompactd0
+
+$ ps -eo comm= | grep -cE '^\[|kworker|ksoftirqd' ; echo '(count of kernel-ish threads visible in ps -> nonzero means own kernel = VM, not container)'
+14
+(count of kernel-ish threads visible in ps -> nonzero means own kernel = VM, not container)
+
+$ dmesg 2>&1 | tail -3 || echo 'dmesg not readable'
+[ 1245.<BIGNUM>] audit: type=1105 audit(<BIGNUM>.408:444): pid=<BIGNUM> uid=1000 auid=<BIGNUM> ses=<BIGNUM> subj=kernel msg='op=PAM:session_open grantors=pam_limits,pam_permit,pam_umask,pam_unix acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[ 1245.<BIGNUM>] audit: type=1106 audit(<BIGNUM>.412:445): pid=<BIGNUM> uid=1000 auid=<BIGNUM> ses=<BIGNUM> subj=kernel msg='op=PAM:session_close grantors=pam_limits,pam_permit,pam_umask,pam_unix acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[ 1245.<BIGNUM>] audit: type=1104 audit(<BIGNUM>.412:446): pid=<BIGNUM> uid=1000 auid=<BIGNUM> ses=<BIGNUM> subj=kernel msg='op=PAM:setcred grantors=pam_permit acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+
+$ cat /proc/net/fib_trie 2>/dev/null | head -2 > /dev/null && echo ok; ss -tulnp 2>/dev/null | head -5 || netstat -tuln | head -5
+ok
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0            <NUM>.<NUM>:111        <NUM>.<NUM>:*
+udp   UNCONN 0      0                  *:111              *:*
+tcp   LISTEN 0      100        <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      5       <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+
+$ cat /sys/fs/cgroup/cpu.max 2>/dev/null || echo 'no root cpu.max'
+no root cpu.max
+
+$ echo 'capsh: ABSENT (decode CapBnd <HEX> = full set)'
+capsh: ABSENT (decode CapBnd <HEX> = full set)
+

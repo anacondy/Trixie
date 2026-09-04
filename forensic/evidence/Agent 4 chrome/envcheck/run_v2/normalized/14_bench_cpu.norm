@@ -1,0 +1,37 @@
+================================================================
+ probe.sh v1.<NUM>   section: 14_bench_cpu.txt
+ host:      e2b.local   kernel: <NUM>.158+   arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user:      user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ python3 cpu.py 3
+  benchmark                                     min s    med s  notes
+  sum(range(10**7))                             <NUM>    <NUM>  = 49,999,995,000,000
+  sum(i*i for i in range(10**7))                <NUM>    <NUM>
+  sum(map(abs, range(-5e6,5e6)))                <NUM>    <NUM>
+  sieve primes < 5e6 (bytearray slice)          <NUM>    <NUM>  pure-python fast path
+  recursive fib(29)                             <NUM>    <NUM>
+  json.loads <SZ>                              <NUM>    <NUM>
+  gzip.compress <SZ> lvl9                      <NUM>    <NUM>
+  sha256 <SZ>                                <NUM>    <NUM>  digest[:12]=<HEX>
+
+  numeric libraries:
+  numpy <NUM>.5
+  np.sum(np.arange(10**7))                      <NUM>    <NUM>  = 49,999,995,000,000
+  dot 1D                                        <NUM>    <NUM>
+  matmul 4096^2 fp64                            <NUM>    <NUM>  -> <NUM> GFLOP/s
+  matmul 4096^2 fp32                            <NUM>    <NUM>  -> <NUM> GFLOP/s
+  sum 20M fp64 (<SZ> stream)                   <NUM>    <NUM>  -> <SZ>/s
+  np.sort 20M fp64                              <NUM>    <NUM>
+  pandas groupby 2M rows                        <NUM>    <NUM>
+  pandas read_csv <SZ>                          <NUM>    <NUM>
+
+  scaling:
+  os.cpu_count()=2  sched_getaffinity=2  gil_enabled=True
+  1 process (baseline)                          <NUM>
+  2 processes (same work each)                  <NUM>  speedup= 1.59x  eff= 79%
+  3 processes (same work each)                  <NUM>  speedup= 1.64x  eff= 55%
+  4 processes (same work each)                  <NUM>  speedup= 1.84x  eff= 46%
+  2 CPU-bound threads (GIL)                     <NUM>
+  8 CPU-bound threads (GIL)                     <NUM>   <- worse = GIL thrash, use processes
