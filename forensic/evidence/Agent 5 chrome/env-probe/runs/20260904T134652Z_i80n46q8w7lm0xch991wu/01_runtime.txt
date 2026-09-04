@@ -1,0 +1,68 @@
+############################################################
+# RUNTIME: OS / kernel / arch / libc
+# probe_version=1.1.0
+# run_utc=20260904T134652Z  sandbox=i80n46q8w7lm0xch991wu
+# generated=2026-09-04T13:46:52Z
+############################################################
+
+$ uname -a
+Linux e2b.local 6.1.158+ #1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026 x86_64 GNU/Linux
+[exit=0]
+
+$ cat /etc/os-release
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.6
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+[exit=0]
+
+$ arch
+x86_64
+[exit=0]
+
+$ dpkg --print-architecture
+amd64
+[exit=0]
+
+$ ldd --version
+ldd (Debian GLIBC 2.41-12+deb13u3) 2.41
+Copyright (C) 2024 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Written by Roland McGrath and Ulrich Drepper.
+[exit=0]
+
+$ getconf GNU_LIBPTHREAD_VERSION
+NPTL 2.41
+[exit=0]
+
+$ hostname
+e2b.local
+[exit=0]
+
+$ cat /proc/uptime
+190.65 369.87
+[exit=0]
+
+$ date -u
+Fri Sep  4 13:46:52 UTC 2026
+[exit=0]
+
+$ cat /proc/sys/kernel/random/boot_id
+2bb79165-136a-4b63-829d-17027b0a8e40
+[exit=0]
+
+$ cat /proc/cmdline
+clocksource=kvm-clock i8042.noaux i8042.nokbd init=/sbin/init ip=169.254.0.21::169.254.0.22:255.255.255.252:instance:eth0:off:tap0 ipv6.autoconf=1 ipv6.disable=0 loglevel=1 panic=1 pci=off quiet random.trust_cpu=on reboot=k rootflags=discard pci=off virtio_mmio.device=4K@0xc0001000:6 root=/dev/vda rw virtio_mmio.device=4K@0xc0002000:7 virtio_mmio.device=4K@0xc0003000:8 virtio_mmio.device=4K@0xc0004000:9
+[exit=0]
+
+$ cat /proc/version
+Linux version 6.1.158+ (root@runnervm3jd5f) (gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026
+[exit=0]
+

@@ -1,0 +1,77 @@
+############################################################
+# NETWORK ANOMALIES: ICMP, npm audit black-hole, POST
+# probe_version=1.1.0
+# run_utc=20260904T134652Z  sandbox=i80n46q8w7lm0xch991wu
+# generated=2026-09-04T13:47:29Z
+############################################################
+
+=== ICMP (expected: blocked for unprivileged uid, no cap_net_raw) ===
+$ timeout 12 ping -c 3 -W 3 8.8.8.8
+ping: socktype: SOCK_RAW
+ping: socket: Operation not permitted
+ping: => missing cap_net_raw+p capability or setuid?
+[exit=2]
+
+$ timeout 12 ping -c 3 -W 3 google.com
+ping: socktype: SOCK_RAW
+ping: socket: Operation not permitted
+ping: => missing cap_net_raw+p capability or setuid?
+[exit=2]
+
+$ sudo timeout 12 ping -c 3 -W 3 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=113 time=0.652 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=113 time=0.497 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=113 time=0.501 ms
+
+--- 8.8.8.8 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2025ms
+rtt min/avg/max/mdev = 0.497/0.550/0.652/0.072 ms
+[exit=0]
+
+$ getcap /usr/bin/ping
+env_probe.sh: line 49: getcap: command not found
+[exit=127]
+
+=== npm audit endpoint black-hole ===
+Run 1 (2026-09-04) observed: 'npm audit' = 420.658 s wall / 0.55 s CPU.
+Probe below is BOUNDED to 60 s unless FULL=1. TLS completes, body never arrives.
+$ curl -sS -o /dev/null -w 'audit-bulk POST http=%{http_code} connect=%{time_connect}s tls=%{time_appconnect}s ttfb=%{time_starttransfer}s total=%{time_total}s\n' --max-time 60 -X POST -H 'Content-Type: application/json' -d '{"lodash":["4.17.21"]}' https://registry.npmjs.org/-/npm/v1/security/advisories/bulk
+audit-bulk POST http=200 connect=0.001734s tls=0.033091s ttfb=0.069056s total=0.069172s
+[exit=0]
+
+$ curl -sS -o /dev/null -w 'registry GET  http=%{http_code} ttfb=%{time_starttransfer}s total=%{time_total}s\n' --max-time 60 https://registry.npmjs.org/lodash
+registry GET  http=200 ttfb=0.058036s total=0.080254s
+[exit=0]
+
+$ curl -sS -o /dev/null -w 'tarball GET   http=%{http_code} ttfb=%{time_starttransfer}s total=%{time_total}s size=%{size_download}\n' --max-time 60 https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz
+tarball GET   http=200 ttfb=0.062531s total=0.089090s size=318961
+[exit=0]
+
+$ npm config get registry; npm config get audit; npm config get fund
+https://registry.npmjs.org/
+true
+true
+[exit=0]
+
+=== Is POST blocked generally? (control group) ===
+$ curl -sS -o /dev/null -w 'POST httpbin.org      http=%{http_code} ttfb=%{time_starttransfer}s\n' --max-time 25 -X POST -d '{"a":1}' -H 'Content-Type: application/json' https://httpbin.org/post
+POST httpbin.org      http=200 ttfb=0.278204s
+[exit=0]
+
+$ curl -sS -o /dev/null -w 'POST postman-echo     http=%{http_code} ttfb=%{time_starttransfer}s\n' --max-time 25 -X POST -d '{"a":1}' -H 'Content-Type: application/json' https://postman-echo.com/post
+POST postman-echo     http=200 ttfb=0.173669s
+[exit=0]
+
+$ curl -sS -o /dev/null -w 'POST httpbingo.org    http=%{http_code} ttfb=%{time_starttransfer}s\n' --max-time 25 -X POST -d '{"a":1}' -H 'Content-Type: application/json' https://httpbingo.org/post
+POST httpbingo.org    http=200 ttfb=0.193794s
+[exit=0]
+
+$ curl -sS -o /dev/null -w 'PUT  httpbingo.org    http=%{http_code} ttfb=%{time_starttransfer}s\n' --max-time 25 -X PUT -d '{"a":1}' https://httpbingo.org/put
+PUT  httpbingo.org    http=200 ttfb=0.120358s
+[exit=0]
+
+$ curl -sS -o /dev/null -w 'POST api.github.com   http=%{http_code} ttfb=%{time_starttransfer}s (403=auth reject, request DID arrive)\n' --max-time 25 -X POST -d '{"query":"{viewer{login}}"}' https://api.github.com/graphql
+POST api.github.com   http=403 ttfb=0.036635s (403=auth reject, request DID arrive)
+[exit=0]
+

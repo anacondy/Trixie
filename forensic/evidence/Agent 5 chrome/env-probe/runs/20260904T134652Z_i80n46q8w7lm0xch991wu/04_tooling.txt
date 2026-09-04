@@ -1,0 +1,142 @@
+############################################################
+# TOOLING: availability matrix + versions
+# probe_version=1.1.0
+# run_utc=20260904T134652Z  sandbox=i80n46q8w7lm0xch991wu
+# generated=2026-09-04T13:46:52Z
+############################################################
+
+--- availability matrix (tool | present | resolved path) ---
+python3      YES  /usr/local/bin/python3
+python       YES  /usr/local/bin/python
+pip          YES  /usr/local/bin/pip
+pip3         YES  /usr/local/bin/pip3
+node         YES  /usr/bin/node
+npm          YES  /usr/bin/npm
+npx          YES  /usr/bin/npx
+yarn         NO
+pnpm         NO
+bun          NO
+deno         NO
+git          YES  /usr/bin/git
+curl         YES  /usr/bin/curl
+wget         YES  /usr/bin/wget
+ffmpeg       NO
+docker       NO
+podman       NO
+make         YES  /usr/bin/make
+cmake        NO
+gcc          YES  /usr/bin/gcc
+g++          YES  /usr/bin/g++
+clang        NO
+jq           YES  /usr/bin/jq
+rustc        NO
+cargo        NO
+go           NO
+java         YES  /usr/bin/java
+ruby         NO
+perl         YES  /usr/bin/perl
+php          NO
+sqlite3      NO
+psql         NO
+redis-cli    NO
+aws          NO
+gh           NO
+rsync        NO
+unzip        YES  /usr/bin/unzip
+zip          YES  /usr/bin/zip
+tar          YES  /usr/bin/tar
+openssl      YES  /usr/bin/openssl
+ssh          YES  /usr/bin/ssh
+nc           NO
+dig          NO
+nslookup     NO
+traceroute   NO
+ip           YES  /usr/bin/ip
+ss           YES  /usr/bin/ss
+iptables     NO
+htop         NO
+tmux         NO
+screen       NO
+vim          NO
+nano         NO
+uv           NO
+poetry       NO
+pipx         NO
+conda        NO
+mamba        NO
+apt          YES  /usr/bin/apt
+apt-get      YES  /usr/bin/apt-get
+dpkg         YES  /usr/bin/dpkg
+apk          NO
+yum          NO
+dnf          NO
+snap         NO
+brew         NO
+bc           NO
+sha256sum    YES  /usr/bin/sha256sum
+capsh        NO
+time         YES  time
+ping         YES  /usr/bin/ping
+
+--- versions ---
+$ python3 -VV
+Python 3.13.14 (main, Jul 14 2026, 04:45:36) [GCC 14.2.0]
+[exit=0]
+
+$ pip --version
+pip 26.1.2 from /usr/local/lib/python3.13/site-packages/pip (python 3.13)
+[exit=0]
+
+$ node --version
+v20.20.2
+[exit=0]
+
+$ npm --version
+10.8.2
+[exit=0]
+
+$ git --version
+git version 2.47.3
+[exit=0]
+
+$ curl --version
+curl 8.14.1 (x86_64-pc-linux-gnu) libcurl/8.14.1 OpenSSL/3.5.6 zlib/1.3.1 brotli/1.1.0 zstd/1.5.7 libidn2/2.3.8 libpsl/0.21.2 libssh2/1.11.1 nghttp2/1.64.0 nghttp3/1.8.0 librtmp/2.3 OpenLDAP/2.6.10
+Release-Date: 2025-06-04, security patched: 8.14.1-2+deb13u4
+Protocols: dict file ftp ftps gopher gophers http https imap imaps ipfs ipns ldap ldaps mqtt pop3 pop3s rtmp rtsp scp sftp smb smbs smtp smtps telnet tftp ws wss
+Features: alt-svc AsynchDNS brotli GSS-API HSTS HTTP2 HTTP3 HTTPS-proxy IDN IPv6 Kerberos Largefile libz NTLM PSL SPNEGO SSL threadsafe TLS-SRP UnixSockets zstd
+[exit=0]
+
+$ wget --version | head -1
+GNU Wget 1.25.0 built on linux-gnu.
+[exit=0]
+
+$ gcc --version | head -1
+gcc (Debian 14.2.0-19) 14.2.0
+[exit=0]
+
+$ g++ --version | head -1
+g++ (Debian 14.2.0-19) 14.2.0
+[exit=0]
+
+$ make --version | head -1
+GNU Make 4.4.1
+[exit=0]
+
+$ jq --version
+jq-1.7
+[exit=0]
+
+$ openssl version
+OpenSSL 3.5.6 7 Apr 2026 (Library: OpenSSL 3.5.6 7 Apr 2026)
+[exit=0]
+
+$ dpkg --version | head -1
+Debian 'dpkg' package management program version 1.22.22 (amd64).
+[exit=0]
+
+$ java -version
+openjdk version "11" 2018-09-25
+OpenJDK Runtime Environment 18.9 (build 11+28)
+OpenJDK 64-Bit Server VM 18.9 (build 11+28, mixed mode)
+[exit=0]
+

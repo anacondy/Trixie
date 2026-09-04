@@ -1,0 +1,140 @@
+############################################################
+# BENCHMARK: package install / compile timings
+# probe_version=1.1.1
+# run_utc=20260904T134940Z  sandbox=i80n46q8w7lm0xch991wu
+# generated=2026-09-04T13:50:32Z
+############################################################
+
+NOTE: these MUTATE the image. Packages are uninstalled afterwards where possible.
+$ pip uninstall -y -q tabulate duckdb polars ujson
+WARNING: Skipping tabulate as it is not installed.
+WARNING: Skipping duckdb as it is not installed.
+WARNING: Skipping polars as it is not installed.
+WARNING: Skipping ujson as it is not installed.
+[exit=0]
+
+$ pip install -q --no-cache-dir tabulate
+--- timing (bash TIMEFORMAT, real|user|sys) ---
+REAL=0.834 s  USER=0.577 s  SYS=0.052 s
+[exit=0]
+--- stdout (last 20 lines) ---
+--- stderr (last 10 lines) ---
+
+[notice] A new release of pip is available: 26.1.2 -> 26.2.1
+[notice] To update, run: pip install --upgrade pip
+
+$ pip install -q --no-cache-dir duckdb
+--- timing (bash TIMEFORMAT, real|user|sys) ---
+REAL=1.365 s  USER=1.053 s  SYS=0.107 s
+[exit=0]
+--- stdout (last 20 lines) ---
+--- stderr (last 10 lines) ---
+
+[notice] A new release of pip is available: 26.1.2 -> 26.2.1
+[notice] To update, run: pip install --upgrade pip
+
+$ pip install -q --no-cache-dir polars
+--- timing (bash TIMEFORMAT, real|user|sys) ---
+REAL=1.258 s  USER=1.040 s  SYS=0.057 s
+[exit=0]
+--- stdout (last 20 lines) ---
+--- stderr (last 10 lines) ---
+
+[notice] A new release of pip is available: 26.1.2 -> 26.2.1
+[notice] To update, run: pip install --upgrade pip
+
+$ pip install -q --no-cache-dir --no-binary :all: ujson
+--- timing (bash TIMEFORMAT, real|user|sys) ---
+REAL=7.227 s  USER=6.027 s  SYS=0.516 s
+[exit=0]
+--- stdout (last 20 lines) ---
+--- stderr (last 10 lines) ---
+
+[notice] A new release of pip is available: 26.1.2 -> 26.2.1
+[notice] To update, run: pip install --upgrade pip
+
+$ python3 -c 'import tabulate,duckdb,polars; print("installed:",tabulate.__version__,duckdb.__version__,polars.__version__)'
+installed: 0.10.0 1.5.5 1.44.1
+[exit=0]
+
+$ pip uninstall -y -q tabulate duckdb polars ujson
+[exit=0]
+
+--- compilation ---
+$ gcc -O2 -fopenmp /tmp/_probe_omp.c -o /tmp/_probe_omp
+--- timing (bash TIMEFORMAT, real|user|sys) ---
+REAL=0.052 s  USER=0.026 s  SYS=0.018 s
+[exit=0]
+--- stdout (last 20 lines) ---
+--- stderr (last 10 lines) ---
+
+$ /tmp/_probe_omp
+--- timing (bash TIMEFORMAT, real|user|sys) ---
+REAL=0.067 s  USER=0.131 s  SYS=0.000 s
+[exit=0]
+--- stdout (last 20 lines) ---
+sum=18.997896 threads=2
+--- stderr (last 10 lines) ---
+
+$ g++ -O2 -std=c++17 /tmp/_probe.cpp -o /tmp/_probe_cpp
+--- timing (bash TIMEFORMAT, real|user|sys) ---
+REAL=0.037 s  USER=0.028 s  SYS=0.009 s
+[exit=0]
+--- stdout (last 20 lines) ---
+--- stderr (last 10 lines) ---
+
+--- apt (system packages) ---
+$ sudo apt-get update -qq
+--- timing (bash TIMEFORMAT, real|user|sys) ---
+REAL=0.780 s  USER=0.526 s  SYS=0.089 s
+[exit=0]
+--- stdout (last 20 lines) ---
+--- stderr (last 10 lines) ---
+
+$ sudo DEBIAN_FRONTEND=noninteractive apt-get install --reinstall -y -qq jq
+--- timing (bash TIMEFORMAT, real|user|sys) ---
+REAL=1.981 s  USER=1.085 s  SYS=0.122 s
+[exit=0]
+--- stdout (last 20 lines) ---
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 38546 files and directories currently installed.)
+Preparing to unpack .../jq_1.7.1-6+deb13u3_amd64.deb ...
+Unpacking jq (1.7.1-6+deb13u3) over (1.7.1-6+deb13u3) ...
+Setting up jq (1.7.1-6+deb13u3) ...
+--- stderr (last 10 lines) ---
+
+--- npm: default flags vs --no-audit --no-fund ---
+Run 1 measured 421.098 s (default) vs 3.945 s (--no-audit --no-fund), cold cache.
+$ rm -rf /tmp/_np && mkdir -p /tmp/_np && echo '{"name":"p","version":"1.0.0"}' > /tmp/_np/package.json
+[exit=0]
+
+$ (cd /tmp/_np && npm install --silent --no-audit --no-fund express)
+--- timing (bash TIMEFORMAT, real|user|sys) ---
+REAL=1.704 s  USER=1.208 s  SYS=0.256 s
+[exit=0]
+--- stdout (last 20 lines) ---
+--- stderr (last 10 lines) ---
+
+[skipped npm-with-audit: set FULL=1 to reproduce the ~420 s hang]
+$ rm -rf /tmp/_np /tmp/_np2
+[exit=0]
+
+--- git clone ---
+$ rm -rf /tmp/_gc && git clone -q --depth 1 https://github.com/pallets/flask /tmp/_gc
+--- timing (bash TIMEFORMAT, real|user|sys) ---
+REAL=0.874 s  USER=0.137 s  SYS=0.036 s
+[exit=0]
+--- stdout (last 20 lines) ---
+--- stderr (last 10 lines) ---
+
+$ rm -rf /tmp/_gc2 && git clone -q --depth 1 https://github.com/numpy/numpy /tmp/_gc2
+--- timing (bash TIMEFORMAT, real|user|sys) ---
+REAL=2.025 s  USER=0.593 s  SYS=0.108 s
+[exit=0]
+--- stdout (last 20 lines) ---
+--- stderr (last 10 lines) ---
+
+$ du -sh /tmp/_gc /tmp/_gc2 2>/dev/null; rm -rf /tmp/_gc /tmp/_gc2
+3.3M	/tmp/_gc
+52M	/tmp/_gc2
+[exit=0]
+
