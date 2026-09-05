@@ -1,0 +1,20 @@
+ENV_ID=n93h7d3hf6qbdd07x3yo
+TEMPLATE_ID=n93h7d3hf6qbdd07x3yo
+BUILD_ID=62640bfa-cdcd-4733-a74d-1e50fa668e68
+
+E2B_TEMPLATE_ID=n93h7d3hf6qbdd07x3yo
+E2B_EVENTS_ADDRESS=http://192.0.2.1
+E2B_SANDBOX_ID=id1r8u2s5bq7z9u6cuvkc
+E2B_SANDBOX=true
+
+Linux e2b.local 6.1.158 #2 SMP PREEMPT_DYNAMIC Fri Mar 13 10:12:54 UTC 2026 x86_64 GNU/Linux
+
+PRETTY_NAME="Debian GNU/Linux 12 (bookworm)"
+
+4
+
+MemTotal:        4034208 kB
+
+3996811264
+
+{"generatedAt":"2026-09-05T10:27:47.252Z","e2b":{"file":{"ENV_ID":"n93h7d3hf6qbdd07x3yo","TEMPLATE_ID":"n93h7d3hf6qbdd07x3yo","BUILD_ID":"62640bfa-cdcd-4733-a74d-1e50fa668e68"},"filePresent":true,"envTemplateId":"n93h7d3hf6qbdd07x3yo","envSandboxId":"id1r8u2s5bq7z9u6cuvkc","envSandboxFlag":"true","eventsAddress":"http://192.0.2.1","templateId":"n93h7d3hf6qbdd07x3yo","referenceId":"nlhz8vlwyupq845jsdg9","matchesReference":false,"fileEnvConsistent":true},"machine":{"uname":"Linux e2b.local 6.1.158 #2 SMP PREEMPT_DYNAMIC Fri Mar 13 10:12:54 UTC 2026 x86_64 GNU/Linux","kernel":"6.1.158","hostname":"e2b.local","virt":"kvm","arch":"x64","cpuCount":4,"cpuModel":"Intel(R) Xeon(R) Processor @ 2.60GHz","memTotalHuman":"3.85 GiB (4,131,028,992 bytes)","uptimeSec":120,"runUser":"user","cwd":"/app","node":"v22.22.1"},"cgroup":{"userMemoryMaxRaw":"3996811264","userMemoryMaxHuman":"3.72 GiB (3,996,811,264 bytes)","rootMemoryMaxRaw":"(file not present)"},"database":{"set":true,"scheme":"postgresql","host":"127.0.0.1","port":"5432","database":"app_db","version":"PostgreSQL 15.16 (Debian 15.16-0+deb12u1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit","current":"app_db / postgres","error":null,"listeners5432":["LISTEN 0      244        127.0.0.1:5432       0.0.0.0:*          ","LISTEN 0      5       169.254.0.21:5432       0.0.0.0:*          ","LISTEN 0      244            [::1]:5432          [::]:*"],"inSameVm":true},"egress":{"target":"https://example.com","reachable":true,"status":200,"latencyMs":81,"error":null},"preview":{"host":"127.0.0.1:3000","proto":"http"},"persistence":{"projectMarker":{"path":"/app/.persistence-marker","exists":true,"content":"marker written 2026-09-04T21:10:22Z (shell: 824)"},"tmpMarker":{"path":"/tmp/.persistence-marker","exists":false,"content":null}}}

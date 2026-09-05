@@ -1,0 +1,21 @@
+$ cat /.e2b
+ENV_ID=n93h7d3hf6qbdd07x3yo
+TEMPLATE_ID=n93h7d3hf6qbdd07x3yo
+BUILD_ID=62640bfa-cdcd-4733-a74d-1e50fa668e68
+$ env | grep ^E2B_
+E2B_TEMPLATE_ID=n93h7d3hf6qbdd07x3yo
+E2B_EVENTS_ADDRESS=http://192.0.2.1
+E2B_SANDBOX_ID=iis3jg4f7u1165ee31fyu
+E2B_SANDBOX=true
+$ uname -a
+Linux e2b.local 6.1.158 #2 SMP PREEMPT_DYNAMIC Fri Mar 13 10:12:54 UTC 2026 x86_64 GNU/Linux
+$ grep PRETTY_NAME /etc/os-release
+PRETTY_NAME="Debian GNU/Linux 12 (bookworm)"
+$ nproc
+4
+$ grep MemTotal /proc/meminfo
+MemTotal:        4034208 kB
+$ cat /sys/fs/cgroup/user/memory.max
+3996811264
+$ curl -s http://localhost:3000/api/env
+{"ok":true,"generatedAt":"2026-09-05T10:16:20.572Z","probeDurationMs":122,"template":{"packageName":"nextjs-postgresql-template","scaffoldLabel":"Arena Next.js PostgreSQL Starter","expectedTemplateId":"nlhz8vlwyupq845jsdg9","actualTemplateId":"n93h7d3hf6qbdd07x3yo","match":false},"machine":{"uname":"Linux e2b.local 6.1.158 #2 SMP PREEMPT_DYNAMIC Fri Mar 13 10:12:54 UTC 2026 x86_64 GNU/Linux","hostname":"e2b.local","virtualization":"kvm","cpus":"4","memTotal":"MemTotal:        4034208 kB","cgroupUserMemoryMax":"3996811264","selfCgroup":"0::/user","node":"v22.22.1","next":"16.x","uptimeSec":0},"e2b":{"dotE2b":"ENV_ID=n93h7d3hf6qbdd07x3yo\nTEMPLATE_ID=n93h7d3hf6qbdd07x3yo\nBUILD_ID=62640bfa-cdcd-4733-a74d-1e50fa668e68","env":{"E2B_EVENTS_ADDRESS":"http://192.0.2.1","E2B_SANDBOX":"true","E2B_SANDBOX_ID":"iis3jg4f7u1165ee31fyu","E2B_TEMPLATE_ID":"n93h7d3hf6qbdd07x3yo"}},"database":{"url":{"set":true,"scheme":"postgresql","host":"127.0.0.1","port":"5432","database":"app_db","credentials":"[redacted — userinfo intentionally never serialized]"},"version":"PostgreSQL 15.16 (Debian 15.16-0+deb12u1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit","identity":"postgres@app_db","roundTripMs":2,"listenersOn5432":"3","sameVm":true},"network":{"egress":{"reachable":true,"status":200,"url":"https://api.github.com","latencyMs":87}},"previewSurface":{"headersSeenByServer":{"accept":"*/*","host":"localhost:3000","user-agent":"curl/7.88.1","x-forwarded-for":"::ffff:127.0.0.1","x-forwarded-host":"localhost:3000","x-forwarded-port":"3000","x-forwarded-proto":"http"}},"persistence":{"markerFile":"sandbox-recon-marker.txt","found":true,"contents":"recon-marker | written_by=agent_bash | at=2026-09-04T21:03:42Z | sandbox=iwnwmr61jm3tfobssk70z | template=n93h7d3hf6qbdd07x3yo"}}
