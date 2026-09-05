@@ -1,251 +1,93 @@
 ================================================================
-00_ROOT_INVENTORY.txt — Reorg burst 0
-Generated: Sat Sep  5 08:51:27 UTC 2026 (date -u captured at burst start)
-Refresh:   Sat Sep  5 08:52:00 UTC 2026 (approx; hashes taken immediately after)
+00_ROOT_INVENTORY.txt — regenerated Burst 16
+Generated: Sat Sep  5 09:51:54 UTC 2026
 Repository: /home/user/Trixie
 Branch:     arena/01a070c2-trixie
-HEAD:       1b7f760 Merge pull request #2 from anacondy/arena/01a06e63-trixie
-Working tree at capture: clean (nothing to commit)
-Remote:     origin  https://github.com/anacondy/Trixie.git
 ================================================================
 
-0. CAPTURE ENVIRONMENT
-----------------------
-date -u : Sat Sep  5 08:51:27 UTC 2026
-uname -a: Linux e2b.local 6.1.158+ #1 SMP PREEMPT_DYNAMIC Mon May 11 18:48:24 UTC 2026 x86_64 GNU/Linux
-pwd     : /home/user/Trixie
-git status:
-  On branch arena/01a070c2-trixie
-  nothing to commit, working tree clean
-git log --oneline -5:
-  1b7f760 Merge pull request #2 from anacondy/arena/01a06e63-trixie
-  (shallow history; only this commit is present on the working clone)
+Account mapping (locked; see ACCOUNTS.md):
+  account_a = chrome = acct1 = env runs 1,4,5
+  account_b = brave  = acct2 = env runs 2,3,6
+  account_c = edge   = acct3 = env runs 7,8,9
+Browser string in filenames is ground truth; account_* labels are aliases.
 
-This inventory is READ-ONLY with respect to archive bytes. No zip was extracted,
-executed, or modified during burst 0. Original SHA-256 values are preserved.
+Burst 12 re-hash after account_b <-> account_c swap: 0 SHA-256 deltas.
+Burst 13 Agent zip re-hash after git mv: 0 SHA-256 deltas.
 
-================================================================
-1. ACCOUNT MAPPING (final, documented)
-================================================================
-Browser-name mapping used for all round-2 family zips (Ceilings / Egress /
-Provenance / code-arena). Internal reports were inspected from the already-
-verified extract trees (read-only). Sandbox IDs differ per session; template
-and boot IDs largely do not, so they cannot disambiguate accounts. Browser
-token in the filename is therefore the stable discriminator.
-
-  account_a  = chrome
-  account_b  = edge
-  account_c  = brave
-
-Rationale:
-  - Default specified by the reorg brief when internal evidence is ambiguous.
-  - Provenance extracts confirm distinct E2B_SANDBOX_ID per browser zip:
-      chrome (Provenance 3): i9aekzbsq1tymcft2o0e1
-      edge   (Provenance 1): ia4a7jw0xcyn756c09iwm  (later i5ppm7iw8cfa89mb7ezsm after recreation)
-      brave  (Provenance 2): ibbwxrhn0lpoi9ybz9fru
-    Shared across those three: boot_id=2bb79165-136a-4b63-829d-17027b0a8e40
-                               TEMPLATE_ID=nlhz8vlwyupq845jsdg9
-    Therefore sandbox/template IDs do NOT map 1:1 onto account_a/b/c.
-  - Ceilings reports do not publish a unique sandbox_id in the scanned identity
-    claims; browser filename remains the assignment key.
-
-Planned destination of the 12 currently-loose root zips (moves happen in
-bursts 1-4; hashes below are the values that MUST be preserved):
-
-  Ceilings 1 chrome.zip                              -> zips/ceilings/account_a/
-  Ceilings 2 edge.zip                                -> zips/ceilings/account_b/
-  Ceilings 3 brave.zip                               -> zips/ceilings/account_c/
-  Egress 1 chrome.zip                                -> zips/egress/account_a/
-  Egress 2 brave.zip                                 -> zips/egress/account_c/
-  Egress 3 edge.zip                                  -> zips/egress/account_b/
-  Provenance 1 edge.zip                              -> zips/provenance/account_b/
-  Provenance 2 brave.zip                             -> zips/provenance/account_c/
-  Provenance 3 chrome.zip                            -> zips/provenance/account_a/
-  code-arena-sandbox-characterization 1 edge.zip     -> zips/code_arena/account_b/
-  characterize-code-arena-environment 2 brave.zip    -> zips/code_arena/account_c/
-  characterize-code-arena-environment 3 chrome.zip   -> zips/code_arena/account_a/
-
-Old Agent 1-9 environment zips already live under zips/ (repo-root of that
-directory). Planned final placement: zips/environment/  (not this burst).
-Those nine agents are NOT collapsed onto account_a/b/c because there are
-three chrome, three brave, and three edge agents (distinct sandbox IDs).
+Generation tags:
+  original  = characterizations/environment/*.md (not zips)
+  followup  = Agent *.zip + forensic/evidence/environment/ + forensic/reports/round1_environment/
+  new_sessions = ceilings / egress / provenance / code_arena zips
 
 ================================================================
-2. EVERY .zip IN REPOSITORY ROOT (size + SHA-256)
+1. zips/environment/  (followup)
 ================================================================
-All 12 files still sit at repo root at burst-0 time. Hashes computed with
-sha256sum (GNU coreutils). Sizes from stat -c '%s'.
-
-SIZE_BYTES  SHA-256                                                           FILENAME
-     19730  83faeeda79d70a6b83650b97050bd0a4cf5df8bd9c7932cd93705d7020b1a3b6  Ceilings 1 chrome.zip
-      8756  484e0d1bbe86dc0f505d2308febb295424acde1be7e7fa67b2e860e6c903ffa5  Ceilings 2 edge.zip
-     18542  16013673423dc7c59ccffa0fae16071d8bddd3b916cc6291828679a14b2231f0  Ceilings 3 brave.zip
-     22380  3c1a7f82d33c156f5cf05351fa4af69eb6ba5f1fde87a9dabd7b4e3b1fab50f7  Egress 1 chrome.zip
-     23093  72a2990c7540bcc0b4d1e7da963c3195d854c9f5703386b230192f7535eb2a82  Egress 2 brave.zip
-     55619  1ce470c36e838d38113d186ae6fd0cb0c8daa8a762719ce74c5c59a6b87182a9  Egress 3 edge.zip
-     39165  9f671397bff15f71038b7cfd409ae47fb3f17376daece1630c341c1d8bf0c250  Provenance 1 edge.zip
-      8071  df0f9fa71def077a63f554265f678163830dd5ec1443d2ad18046afd2d87aed6  Provenance 2 brave.zip
-      5743  32775e06fb465778c4e1b40c5b32ec3db5ebeaf8c4cb709d28219d5beae8e1f1  Provenance 3 chrome.zip
-     52550  b727292849412d1a6c15f5415facdeb6b76db0519c787304f54f10c7fb685e21  code-arena-sandbox-characterization 1 edge.zip
-     25451  90691ee3838f7187e88878f8fe805222a64f14a86191a18d16f0ee2bebef1acf  characterize-code-arena-environment 2 brave.zip
-     25532  c9b00727b8e0e0a0144ab26b37109ad4165c9dcdb0ad28907a94b95ee3c6c68a  characterize-code-arena-environment 3 chrome.zip
-
-Root-zip byte total: 274632
-
-These outer hashes match the previously recorded values in
-  ceilings_prov_egress_extract_20260904_214946/00_INVENTORY.txt
-for the nine Ceilings/Egress/Provenance archives. Cross-check at burst 0:
-  Ceilings 1 chrome.zip  SHA256_OUTER 83faeeda... MATCH
-  Ceilings 2 edge.zip    SHA256_OUTER 484e0d1b... MATCH
-(and likewise for the remaining seven of that family — hashes identical).
+SIZE_BYTES  SHA-256                                                           PATH
+     10863  52880dad6738d951ad51a255347297ea54905b282e1456f70ef97e576266dee7  zips/environment/account_a/Agent 1 chrome.zip
+    282299  0f01d761ded3ddf9ec755bc7ce289029e093e172748f72a179e7054da769662b  zips/environment/account_a/Agent 4 chrome.zip
+    119842  cfd0179b38fe6e6edce5b56205a38a3b5d6660b6f3fa88b46e54530fda151466  zips/environment/account_a/Agent 5 chrome.zip
+     78729  55302d915b3c07b1f11bed29738c458ae78e349a417b9dae22281c2cd6d444fa  zips/environment/account_b/Agent 2 brave.zip
+     47044  066b4eb2764eea3f7543ad575a637f3c8d83e7d742ab81385d2fc17c09e8e62d  zips/environment/account_b/Agent 3 brave.zip
+    153569  dea4ec47ac81a2e65606778aa4da6895cbce03094d2f47845d4b8fc25e7e53d0  zips/environment/account_b/Agent 6 brave.zip
+    130614  5c0f02b35a2f43c633a92e16fed9daa5bf77cd018bfed8fdb084734aa4eac13c  zips/environment/account_c/Agent 7 edge.zip
+     30820  7fe13f8118d625420a55a2ea14a66b61715acc4be9bf7249666ba2193841c898  zips/environment/account_c/Agent 8 edge.zip
+    247182  2007bbee89d81a92d4b3fecdf5c06c6f7ba2f53f86c599dbfc18da4c2e3e10a2  zips/environment/account_c/Agent 9 edge.zip
 
 ================================================================
-3. EVERY .zip UNDER zips/ (size + SHA-256)
+2. zips/ceilings/  (new_sessions)
 ================================================================
-Nine Agent environment archives. Currently sitting directly in zips/ (not yet
-under zips/environment/). Hashes match forensic_reports/00_INVENTORY.txt from
-the round-1 unpack (PR #2).
-
-SIZE_BYTES  SHA-256                                                           FILENAME
-     10863  52880dad6738d951ad51a255347297ea54905b282e1456f70ef97e576266dee7  zips/Agent 1 chrome.zip
-     78729  55302d915b3c07b1f11bed29738c458ae78e349a417b9dae22281c2cd6d444fa  zips/Agent 2 brave.zip
-     47044  066b4eb2764eea3f7543ad575a637f3c8d83e7d742ab81385d2fc17c09e8e62d  zips/Agent 3 brave.zip
-    282299  0f01d761ded3ddf9ec755bc7ce289029e093e172748f72a179e7054da769662b  zips/Agent 4 chrome.zip
-    119842  cfd0179b38fe6e6edce5b56205a38a3b5d6660b6f3fa88b46e54530fda151466  zips/Agent 5 chrome.zip
-    153569  dea4ec47ac81a2e65606778aa4da6895cbce03094d2f47845d4b8fc25e7e53d0  zips/Agent 6 brave.zip
-    130614  5c0f02b35a2f43c633a92e16fed9daa5bf77cd018bfed8fdb084734aa4eac13c  zips/Agent 7 edge.zip
-     30820  7fe13f8118d625420a55a2ea14a66b61715acc4be9bf7249666ba2193841c898  zips/Agent 8 edge.zip
-    247182  2007bbee89d81a92d4b3fecdf5c06c6f7ba2f53f86c599dbfc18da4c2e3e10a2  zips/Agent 9 edge.zip
-
-zips/ Agent-zip byte total: 1100962
-
-Browser grouping of environment agents (for later evidence placement, NOT
-collapsed in this burst):
-  chrome : Agent 1, Agent 4, Agent 5     (account_a family)
-  brave  : Agent 2, Agent 3, Agent 6     (account_c family)
-  edge   : Agent 7, Agent 8, Agent 9     (account_b family)
+     19730  83faeeda79d70a6b83650b97050bd0a4cf5df8bd9c7932cd93705d7020b1a3b6  zips/ceilings/account_a/Ceilings 1 chrome.zip
+     18542  16013673423dc7c59ccffa0fae16071d8bddd3b916cc6291828679a14b2231f0  zips/ceilings/account_b/Ceilings 3 brave.zip
+      8756  484e0d1bbe86dc0f505d2308febb295424acde1be7e7fa67b2e860e6c903ffa5  zips/ceilings/account_c/Ceilings 2 edge.zip
 
 ================================================================
-4. OTHER .zip PATHS OBSERVED (NOT moved, NOT hashed as canonical raw)
+3. zips/egress/  (new_sessions)
 ================================================================
-Nested / placeholder zip paths exist inside the two already-verified extract
-trees and inside forensic/evidence/Agent 9 edge. They are leftover extraction
-artefacts or payload copies, not the canonical raw archives. Left intact for
-human review. Burst 0 does not touch them.
-
-  ceilings_prov_egress_extract_20260904_214946/extract/{Ceilings,Egress,Provenance}_*.zip
-    (directory-named placeholders; sizes 60 / 128 / 4096 bytes — not the raw zips)
-  code_arena_extract_20260905_074645/extract/zips_Agent_*.zip
-    (directory-named placeholders)
-  code_arena_extract_20260905_074645/extract/forensic_evidence_Agent_9_edge_...-2576.zip
-  forensic/evidence/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence_20260904T142002Z-2576.zip
-    (nested payload zip, 62153 bytes — already present from round 1)
+     22380  3c1a7f82d33c156f5cf05351fa4af69eb6ba5f1fde87a9dabd7b4e3b1fab50f7  zips/egress/account_a/Egress 1 chrome.zip
+     23093  72a2990c7540bcc0b4d1e7da963c3195d854c9f5703386b230192f7535eb2a82  zips/egress/account_b/Egress 2 brave.zip
+     55619  1ce470c36e838d38113d186ae6fd0cb0c8daa8a762719ce74c5c59a6b87182a9  zips/egress/account_c/Egress 3 edge.zip
 
 ================================================================
-5. EXISTING TOP-LEVEL LAYOUT AT BURST 0 (before skeleton)
+4. zips/provenance/  (new_sessions)
 ================================================================
-  .gitignore
-  Ceilings {1,2,3} {chrome,edge,brave}.zip     (loose, 3 files)
-  Egress {1,2,3} {chrome,brave,edge}.zip       (loose, 3 files)
-  Provenance {1,2,3} {edge,brave,chrome}.zip   (loose, 3 files)
-  code-arena-sandbox-characterization 1 edge.zip
-  characterize-code-arena-environment {2,3} {brave,chrome}.zip
-  characterizations/   9 x environment_characterization {1..9} {browser}.md
-  prompts/             FORENSIC_UNPACK_PROMPT.md ORIGINALworkPROMPT.md
-                       VerificationPROMPT.md ZippingPROMPT.md
-  zips/                Agent {1..9} {browser}.zip
-  forensic/evidence/   Agent {1..9} {browser}/   (round-1 extracted trees)
-  forensic_reports/    round-1 unpack reports (legacy location, preserved)
-  ceilings_prov_egress_extract_20260904_214946/   (round-2 extract, preserved)
-  code_arena_extract_20260905_074645/             (round-2 extract, preserved)
-
-No README.md at repo root (to be added in burst 11).
-
-.gitignore at burst 0:
-  trixie_extract_*/
-  trixie_extract_*
-  .last_extract_dir
-  uploads/
-  *.png
-  __pycache__/
-  *.pyc
-  (burst 11 will add *extract*/ if still missing)
+      5743  32775e06fb465778c4e1b40c5b32ec3db5ebeaf8c4cb709d28219d5beae8e1f1  zips/provenance/account_a/Provenance 3 chrome.zip
+      8071  df0f9fa71def077a63f554265f678163830dd5ec1443d2ad18046afd2d87aed6  zips/provenance/account_b/Provenance 2 brave.zip
+     39165  9f671397bff15f71038b7cfd409ae47fb3f17376daece1630c341c1d8bf0c250  zips/provenance/account_c/Provenance 1 edge.zip
 
 ================================================================
-6. DIRECTORY SKELETON CREATED IN BURST 0
+5. zips/code_arena/  (new_sessions)
 ================================================================
-Only missing directories were created. Existing files were not moved,
-deleted, or overwritten. Empty leaves received a 0-byte .gitkeep so git
-tracks the structure.
-
-zips/
-  environment/                          # destination for Agent 1-9 (later)
-  provenance/account_{a,b,c}/
-  ceilings/account_{a,b,c}/
-  egress/account_{a,b,c}/
-  code_arena/account_{a,b,c}/
-  benchmarks/account_{a,b,c}/           # empty for now
-  persistence/account_{a,b,c}/          # empty for now
-
-characterizations/
-  environment/ provenance/ ceilings/ egress/ code_arena/
-  benchmarks/ persistence/
-  (existing environment_characterization {1..9} *.md remain at characterizations/
-   root; not moved this burst)
-
-prompts/
-  round1/ forensic/ round2/
-  (existing *.md remain at prompts/ root; not moved this burst)
-
-forensic/
-  reports/
-    round1_environment/
-    round2_ceilings_provenance_egress/
-    round2_code_arena/
-    summary/                            # this file lives here
-  evidence/
-    environment/                        # round-1 Agent trees remain as siblings
-                                        # forensic/evidence/Agent {1..9} * for now
-    provenance/account_{a,b,c}/
-    ceilings/account_{a,b,c}/
-    egress/account_{a,b,c}/
-    code_arena/account_{a,b,c}/
-    benchmarks/account_{a,b,c}/         # empty for now
-    persistence/account_{a,b,c}/        # empty for now
-
-Empty-for-now categories (benchmarks, persistence) exist on both the zip
-side and the evidence side so later drops have a home without another
-skeleton burst.
+     25532  c9b00727b8e0e0a0144ab26b37109ad4165c9dcdb0ad28907a94b95ee3c6c68a  zips/code_arena/account_a/characterize-code-arena-environment 3 chrome.zip
+     25451  90691ee3838f7187e88878f8fe805222a64f14a86191a18d16f0ee2bebef1acf  zips/code_arena/account_b/characterize-code-arena-environment 2 brave.zip
+     52550  b727292849412d1a6c15f5415facdeb6b76db0519c787304f54f10c7fb685e21  zips/code_arena/account_c/code-arena-sandbox-characterization 1 edge.zip
 
 ================================================================
-7. PRESERVATION / SAFETY NOTES
+6. Nested zip (inside followup Agent 9 evidence; not a canonical raw)
 ================================================================
-- No zip was opened with unzip, python zipfile extraction, or any other
-  unpacker during burst 0. Hashing used sha256sum on the outer files only.
-- No script, binary, or payload from any zip or extract tree was executed.
-- No package was installed. No system state outside the repository was
-  modified.
-- Symbolic links were not followed.
-- Raw zips, characterization .md files, and prompt files were not deleted
-  or overwritten.
-- Temporary extract trees
-    ceilings_prov_egress_extract_20260904_214946
-    code_arena_extract_20260905_074645
-  are left intact for human review.
-- Legacy forensic_reports/ (round-1) is left intact.
-- Subsequent bursts will git mv at most 3 root zips per commit, or copy
-  one evidence category/account tree per commit, then push. No force-push,
-  no merge, no PR unless requested.
+     62153  e8215900f3136be5bfddbd74233d9c05b48dc7bfff250802f77ffa5e53dfdb9d  forensic/evidence/environment/account_c/run9/Agent 9 edge/payload/home/user/environment_evidence_20260904T142002Z-2576.zip
 
 ================================================================
-8. NEXT BURSTS (planned, not executed here)
+7. Light-verification status (bursts 8–10, 15)
 ================================================================
-  Burst 1  git mv Ceilings 1/2/3  -> zips/ceilings/account_{a,b,c}/
-  Burst 2  git mv Egress 1/2/3    -> zips/egress/account_{a,c,b}/
-  Burst 3  git mv Provenance 1/2/3 -> zips/provenance/account_{b,c,a}/
-  Burst 4  git mv code-arena 1/2/3 -> zips/code_arena/account_{b,c,a}/
-  Burst 5-7  copy verified extract content into forensic/evidence/<cat>/account_x/
-  Burst 8-10 light verification of newly placed zips (unzip -l / -t / sha256sum)
-  Burst 11  README + ID_COMPARISON_ROUND2.md + .gitignore polish
+Ceilings 1/2/3     PASS  hash match, unzip -t OK, no traversal/symlink
+Egress 1/2/3       PASS
+Provenance 1/2/3   PASS
+code_arena 1/2/3   PASS  (burst 10 listing; burst 15 extract+scrub)
+Quarantine: none
+
+code_arena evidence: DATABASE_URL connection string in drizzle.config.json
+redacted to [REDACTED – scheme+host only] in all three accounts. See
+forensic/evidence/code_arena/account_*/SCRUB_REPORT.md.
+
+================================================================
+8. Empty reserved categories
+================================================================
+zips/benchmarks/account_{a,b,c}/
+zips/persistence/account_{a,b,c}/
+characterizations/{provenance,ceilings,egress,code_arena,benchmarks,persistence}/
+forensic/evidence/benchmarks/account_{a,b,c}/
+forensic/evidence/persistence/account_{a,b,c}/
+prompts/round2/ (README placeholder only)
+prompts/round3/ (README placeholder only)
 
 END OF 00_ROOT_INVENTORY.txt

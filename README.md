@@ -1,68 +1,77 @@
 # Trixie
 
-Forensic archive of Code Arena / E2B sandbox characterizations (environment, ceilings, provenance, egress, code-arena).
+Forensic archive of Code Arena / E2B sandbox characterizations.
 
-Working branch for this reorg: `arena/01a070c2-trixie`. Raw zips, characterization markdown, and prompt files are never overwritten. Outer SHA-256 values are recorded in `forensic/reports/summary/00_ROOT_INVENTORY.txt`.
+Working branch: `arena/01a070c2-trixie`. Raw zips, original characterisation markdown, and original prompt files are never overwritten. Outer SHA-256 values: `forensic/reports/summary/00_ROOT_INVENTORY.txt`. Per-zip index: `forensic/reports/summary/INDEX_ALL.tsv`.
 
 ## Account mapping
 
-Browser token in the filename is the stable discriminator (sandbox/template IDs are shared or per-session — see `forensic/reports/summary/ID_COMPARISON_ROUND2.md`).
+Browser string in filenames is ground truth; `account_*` labels are aliases. Full table: `ACCOUNTS.md`.
 
-| Account | Browser |
-|---|---|
-| `account_a` | chrome |
-| `account_b` | edge |
-| `account_c` | brave |
+| account | browser | acctN | env run numbers |
+|---|---|---|---|
+| account_a | chrome | 1 | 1, 4, 5 |
+| account_b | brave | 2 | 2, 3, 6 |
+| account_c | edge | 3 | 7, 8, 9 |
+
+## Two-axis taxonomy
+
+**Generation × category.** Environment spans two generations.
+
+| | environment | provenance | ceilings | egress | code_arena | benchmarks | persistence |
+|---|---|---|---|---|---|---|---|
+| **original** | `characterizations/environment/*.md` | — | — | — | — | — | — |
+| **followup** | Agent zips + `forensic/evidence/environment/` + `forensic/reports/round1_environment/` | — | — | — | — | — | — |
+| **new_sessions** | — | zips + evidence | zips + evidence | zips + evidence | zips + evidence | empty | empty |
 
 ## Layout
 
 ```
 zips/
-  environment/                 # reserved for Agent 1-9 (currently still zips/Agent *.zip)
+  environment/account_{a,b,c}/     # Agent 1-9 (followup)
   provenance/account_{a,b,c}/
   ceilings/account_{a,b,c}/
   egress/account_{a,b,c}/
   code_arena/account_{a,b,c}/
-  benchmarks/account_{a,b,c}/  # empty
-  persistence/account_{a,b,c}/ # empty
-characterizations/             # round-1 *.md remain at this root; category subdirs reserved
-  environment/ provenance/ ceilings/ egress/ code_arena/ benchmarks/ persistence/
+  benchmarks/account_{a,b,c}/      # empty
+  persistence/account_{a,b,c}/     # empty
+characterizations/
+  environment/                     # original *.md
+  provenance/ ceilings/ egress/ code_arena/ benchmarks/ persistence/   # empty
 prompts/
-  round1/ forensic/ round2/    # reserved; existing prompts remain at prompts/ root
+  round1/                          # ORIGINALwork / Verification / Zipping
+  forensic/                        # FORENSIC_UNPACK_PROMPT.md
+  round2/                          # placeholder README
+  round3/                          # placeholder README
 forensic/
   reports/
-    round1_environment/        # reserved (legacy files still in forensic_reports/)
+    round1_environment/            # followup unpack reports
     round2_ceilings_provenance_egress/
     round2_code_arena/
-    summary/
+    summary/                       # inventory, INDEX_ALL.tsv, ID comparison
   evidence/
-    environment/               # reserved; round-1 trees still at forensic/evidence/Agent *
-    provenance/account_{a,b,c}/
-    ceilings/account_{a,b,c}/
-    egress/account_{a,b,c}/
-    code_arena/account_{a,b,c}/  # empty (characterization zips not unpacked)
-    benchmarks/ persistence/     # empty
+    environment/account_{a,b,c}/runN/
+    provenance/ ceilings/ egress/ code_arena/account_{a,b,c}/
+    benchmarks/ persistence/       # empty
 ```
 
-Temporary `*_extract_YYYYMMDD_HHMMSS/` trees are left on disk for human review and are gitignored via `*extract*/` (already-tracked older extract trees stay in git).
+Temporary `*_extract_*` trees are left on disk for human review (`*extract*/` in `.gitignore`). Already-tracked older extract trees remain in git.
 
 ## Verification status
 
-Light checks only: outer SHA-256 vs burst-0 inventory, `unzip -l`, `unzip -t`, zipfile metadata (traversal / absolute path / symlink / nested zip > 10 MB / uncompressed > 50 MB). **No payload execution.**
+Light checks: outer SHA-256, `unzip -l`, `unzip -t`, zipfile metadata. **No payload execution.**
 
-| Family | Placement | Evidence copy | Light verify | Outer hashes |
+| Family | Placement | Evidence | Light verify | Outer hashes |
 |---|---|---|---|---|
-| Ceilings 1/2/3 | `zips/ceilings/account_{a,b,c}/` | `forensic/evidence/ceilings/…` | **PASS** (burst 8) | match inventory |
-| Egress 1/2/3 | `zips/egress/account_{a,c,b}/` | `forensic/evidence/egress/…` | **PASS** (burst 9) | match inventory |
-| Provenance 1/2/3 | `zips/provenance/account_{b,c,a}/` | `forensic/evidence/provenance/…` | **PASS** (burst 9) | match inventory |
-| code-arena 1/2/3 | `zips/code_arena/account_{b,c,a}/` | not unpacked (app skeletons) | **PASS** (burst 10) | match inventory |
-| Agent 1–9 environment | `zips/Agent *.zip` | `forensic/evidence/Agent *` (round 1) | prior PR #2 | match inventory |
-| benchmarks / persistence | skeleton only | skeleton only | n/a | n/a |
+| Environment Agent 1–9 | `zips/environment/account_{a,b,c}/` | `forensic/evidence/environment/…/runN` | PR #2 + burst 13 re-hash | match inventory |
+| Ceilings 1/2/3 | `zips/ceilings/…` | copied | **PASS** (burst 8) | match |
+| Egress 1/2/3 | `zips/egress/…` | copied | **PASS** (burst 9) | match |
+| Provenance 1/2/3 | `zips/provenance/…` | copied | **PASS** (burst 9) | match |
+| code_arena 1/2/3 | `zips/code_arena/…` | extracted + scrubbed | **PASS** (burst 10/15) | match |
+| benchmarks / persistence | skeleton | skeleton | n/a | n/a |
 
-Quarantine: **none**.
-
-Reports: `forensic/reports/round2_ceilings_provenance_egress/`, `forensic/reports/round2_code_arena/`, `forensic/reports/summary/`.
+Quarantine: **none**. code_arena `drizzle.config.json` DATABASE_URL redacted to `[REDACTED – scheme+host only]`.
 
 ## Safety
 
-Do not execute `.sh`, `.py`, `.c`, or binaries found inside zips or extract trees. Treat every zip as untrusted until outer hash + structure checks pass. Do not follow symlinks out of the repository.
+Do not execute `.sh`, `.py`, `.c`, or binaries found inside zips or extract trees.
