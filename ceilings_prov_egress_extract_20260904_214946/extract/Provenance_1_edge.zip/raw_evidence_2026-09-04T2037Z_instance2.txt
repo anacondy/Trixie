@@ -1,0 +1,1076 @@
+PROVENANCE RAW CAPTURE
+captured_at=2026-09-04T20:41:01Z
+instance_uptime_at_start=232.22
+NOTE: this is a re-capture, not the original session output.
+      Compare against sandbox_identity_provenance.md for the original readings.
+
+================ 1. IDENTITY ================
+
+$ cat /.e2b
+ENV_ID=nlhz8vlwyupq845jsdg9
+TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+BUILD_ID=f34a5416-ef30-4cb7-8e18-0fdecd6eb529
+[exit=0]
+
+$ env | grep -E "^E2B_"
+E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+E2B_EVENTS_ADDRESS=http://192.0.2.1
+E2B_SANDBOX_ID=i5ppm7iw8cfa89mb7ezsm
+E2B_SANDBOX=true
+[exit=0]
+
+$ tr "\0" "\n" < /proc/$$/environ | grep -E "^E2B_"
+E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+E2B_EVENTS_ADDRESS=http://192.0.2.1
+E2B_SANDBOX_ID=i5ppm7iw8cfa89mb7ezsm
+E2B_SANDBOX=true
+[exit=0]
+
+$ hostname
+e2b.local
+[exit=0]
+
+$ cat /etc/hosts
+127.0.0.1        localhost
+::1              localhost ip6-localhost ip6-loopback
+fe00::           ip6-localnet
+ff00::           ip6-mcastprefix
+ff02::1          ip6-allnodes
+ff02::2          ip6-allrouters
+127.0.1.1        e2b.local
+192.0.2.1        events.e2b.local
+[exit=0]
+
+$ grep -i e2b /etc/hosts
+127.0.1.1        e2b.local
+192.0.2.1        events.e2b.local
+[exit=0]
+
+$ cat /proc/sys/kernel/random/boot_id
+2bb79165-136a-4b63-829d-17027b0a8e40
+[exit=0]
+
+$ uptime -s
+2026-09-04 20:37:09
+[exit=0]
+
+$ cat /proc/uptime
+232.25 451.99
+[exit=0]
+
+$ uptime
+ 20:41:01 up 3 min,  0 users,  load average: 0.01, 0.03, 0.00
+[exit=0]
+
+$ cat /etc/machine-id
+67549745dd1a4564be928e47dca271fd
+[exit=0]
+
+$ cat /var/lib/dbus/machine-id
+67549745dd1a4564be928e47dca271fd
+[exit=0]
+
+$ ls -la /run/e2b
+total 12
+drwxr-xr-x  3 root root  120 Jul 23 18:05 .
+drwxr-xr-x 17 root root  520 Jul 23 18:05 ..
+-r--r--r--  1 root root    4 Jul 23 18:05 .E2B_SANDBOX
+-rw-r--r--  1 root root   21 Sep  4 20:37 .E2B_SANDBOX_ID
+-rw-r--r--  1 root root   20 Sep  4 20:37 .E2B_TEMPLATE_ID
+drwxr-xr-x  2 root root 6060 Jul 23 18:05 certs
+[exit=0]
+
+$ cat /run/e2b/.E2B_SANDBOX
+true[exit=0]
+
+$ cat /run/e2b/.E2B_SANDBOX_ID
+i5ppm7iw8cfa89mb7ezsm[exit=0]
+
+$ cat /run/e2b/.E2B_TEMPLATE_ID
+nlhz8vlwyupq845jsdg9[exit=0]
+
+$ ps -o pid,lstart,etimes,cmd -p 1
+    PID                  STARTED ELAPSED CMD
+      1 Fri Sep  4 20:37:09 2026     232 /sbin/init
+[exit=0]
+
+================ 2. IMAGE BUILD LINEAGE ================
+
+$ stat -c "%y %n" /* | sort
+2026-07-04 09:05:00.000000000 +0000 /bin
+2026-07-04 09:05:00.000000000 +0000 /boot
+2026-07-04 09:05:00.000000000 +0000 /lib
+2026-07-04 09:05:00.000000000 +0000 /lib64
+2026-07-04 09:05:00.000000000 +0000 /sbin
+2026-07-13 00:00:00.000000000 +0000 /media
+2026-07-13 00:00:00.000000000 +0000 /mnt
+2026-07-13 00:00:00.000000000 +0000 /opt
+2026-07-13 00:00:00.000000000 +0000 /srv
+2026-07-23 15:09:20.000000000 +0000 /lost+found
+2026-07-23 15:09:31.833258320 +0000 /usr
+2026-07-23 15:09:44.334200241 +0000 /var
+2026-07-23 15:09:58.374180193 +0000 /home
+2026-07-23 18:05:26.709167135 +0000 /root
+2026-07-23 18:05:37.190886857 +0000 /proc
+2026-07-23 18:05:37.190886857 +0000 /sys
+2026-07-23 18:05:37.762886857 +0000 /dev
+2026-07-23 18:05:37.976974292 +0000 /etc
+2026-07-23 18:05:38.500974292 +0000 /run
+2026-07-23 18:05:39.364974292 +0000 /code
+2026-09-04 20:37:18.972794959 +0000 /tmp
+[exit=0]
+
+$ stat -c "%y %s" /.e2b
+2026-07-23 18:05:37.836974292 +0000 107
+[exit=0]
+
+$ stat /.e2b
+  File: /.e2b
+  Size: 107       	Blocks: 1          IO Block: 4096   regular file
+Device: 254,0	Inode: 35189       Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2026-09-04 20:37:34.656794959 +0000
+Modify: 2026-07-23 18:05:37.836974292 +0000
+Change: 2026-07-23 18:05:37.836974292 +0000
+ Birth: 2026-07-23 18:05:37.832974292 +0000
+[exit=0]
+
+$ ls -la /etc/apt/sources.list*
+total 12
+drwxr-xr-x 2 root root   60 Jul 23 15:10 .
+drwxr-xr-x 8 root root 4096 Jul 23 15:09 ..
+-rw-r--r-- 1 root root  437 Jul 13 00:00 debian.sources
+-rw-r--r-- 1 root root  155 Jul 23 15:10 nodesource.sources
+[exit=0]
+
+$ grep -r snapshot.debian.org /etc/apt/sources.list*
+/etc/apt/sources.list.d/debian.sources:# http://snapshot.debian.org/archive/debian/20260713T000000Z
+/etc/apt/sources.list.d/debian.sources:# http://snapshot.debian.org/archive/debian-security/20260713T000000Z
+[exit=0]
+
+$ cat /etc/apt/sources.list
+cat: /etc/apt/sources.list: No such file or directory
+[exit=1]
+
+$ cat /etc/apt/sources.list.d/debian.sources
+Types: deb
+# http://snapshot.debian.org/archive/debian/20260713T000000Z
+URIs: http://deb.debian.org/debian
+Suites: trixie trixie-updates
+Components: main
+Signed-By: /usr/share/keyrings/debian-archive-keyring.pgp
+
+Types: deb
+# http://snapshot.debian.org/archive/debian-security/20260713T000000Z
+URIs: http://deb.debian.org/debian-security
+Suites: trixie-security
+Components: main
+Signed-By: /usr/share/keyrings/debian-archive-keyring.pgp
+[exit=0]
+
+$ cat /etc/apt/sources.list.d/nodesource.sources
+Types: deb
+URIs: https://deb.nodesource.com/node_20.x
+Suites: nodistro
+Components: main
+Architectures: amd64
+Signed-By: /usr/share/keyrings/nodesource.gpg
+[exit=0]
+
+$ dpkg-query -W --showformat="${Package} ${Version}\n" | wc -l
+650
+[exit=0]
+
+$ pip list --format=freeze | wc -l
+180
+[exit=0]
+
+$ pip list --format=freeze
+aiohappyeyeballs==2.7.1
+aiohttp==3.14.1
+aiosignal==1.4.0
+annotated-doc==0.0.4
+annotated-types==0.7.0
+anyio==4.14.2
+argon2-cffi==25.1.0
+argon2-cffi-bindings==25.1.0
+arrow==1.4.0
+asttokens==3.0.2
+attrs==26.1.0
+audioop-lts==0.2.2
+audioread==3.1.0
+bash_kernel==0.10.0
+beautifulsoup4==4.15.0
+bleach==6.4.0
+blis==1.3.3
+bokeh==3.9.1
+catalogue==2.0.10
+certifi==2026.7.22
+cffi==2.1.0
+charset-normalizer==3.4.9
+choreographer==1.3.0
+click==8.4.2
+cloudpathlib==0.24.0
+comm==0.2.3
+confection==1.3.3
+contourpy==1.3.3
+cycler==0.12.1
+cymem==2.0.13
+debugpy==1.8.21
+decorator==5.3.1
+defusedxml==0.7.1
+e2b-charts==1.0.0
+et_xmlfile==2.0.0
+executing==2.2.1
+fastjsonschema==2.21.2
+filetype==1.2.0
+fonttools==4.63.0
+fqdn==1.5.1
+frozenlist==1.8.0
+gensim==4.4.0
+h11==0.16.0
+httpcore==1.0.9
+httpx==0.28.1
+idna==3.18
+ImageIO==2.37.3
+iniconfig==2.3.0
+ipykernel==6.31.0
+ipython==9.15.0
+ipython_pygments_lexers==1.1.1
+isoduration==20.11.0
+jedi==0.20.0
+Jinja2==3.1.6
+joblib==1.5.3
+jsonpointer==3.1.1
+jsonschema==4.26.0
+jsonschema-specifications==2025.9.1
+jupyter_client==8.9.1
+jupyter_core==5.9.1
+jupyter-events==0.12.1
+jupyter_server==2.20.0
+jupyter_server_terminals==0.5.4
+jupyterlab_pygments==0.3.0
+kaleido==1.3.0
+kiwisolver==1.5.0
+lark==1.3.1
+lazy-loader==0.5
+librosa==0.11.0
+llvmlite==0.48.0
+logistro==2.0.1
+lxml==6.1.1
+markdown-it-py==4.2.0
+MarkupSafe==3.0.3
+matplotlib==3.10.9
+matplotlib-inline==0.2.2
+mdurl==0.1.2
+mistune==3.3.4
+mpmath==1.3.0
+msgpack==1.2.1
+multidict==6.7.1
+murmurhash==1.0.15
+narwhals==2.24.0
+nbclient==0.11.0
+nbconvert==7.17.1
+nbformat==5.10.4
+nest-asyncio==1.6.0
+networkx==3.6.1
+nltk==3.10.0
+numba==0.66.0
+numpy==2.3.5
+opencv-python==4.11.0.86
+openpyxl==3.1.5
+orjson==3.11.9
+packaging==26.2
+pandas==2.2.3
+pandocfilters==1.5.1
+parso==0.8.7
+pexpect==4.9.0
+pillow==12.3.0
+pip==26.1.2
+platformdirs==4.11.0
+plotly==6.0.1
+pluggy==1.6.0
+pooch==1.9.0
+preshed==3.0.13
+prometheus_client==0.25.0
+prompt_toolkit==3.0.52
+propcache==0.5.2
+psutil==7.2.2
+ptyprocess==0.7.0
+pure_eval==0.2.3
+pycparser==3.0
+pydantic==2.13.4
+pydantic_core==2.46.4
+Pygments==2.20.0
+pyparsing==3.3.2
+pytest==9.0.3
+python-dateutil==2.9.0.post0
+python-docx==1.1.2
+python-json-logger==4.1.0
+pytz==2025.2
+PyYAML==6.0.3
+pyzmq==27.1.0
+referencing==0.37.0
+regex==2026.7.19
+requests==2.33.0
+rfc3339-validator==0.1.4
+rfc3986-validator==0.1.1
+rfc3987-syntax==1.1.0
+rich==15.0.0
+rpds-py==2026.6.3
+scikit-image==0.25.2
+scikit-learn==1.6.1
+scipy==1.17.1
+seaborn==0.13.2
+Send2Trash==2.1.0
+setuptools==83.0.0
+shellingham==1.5.4
+simplejson==4.1.1
+six==1.17.0
+smart_open==8.0.1
+soundfile==0.13.1
+soupsieve==2.9.1
+soxr==1.1.0
+spacy==3.8.14
+spacy-legacy==3.0.12
+spacy-loggers==1.0.5
+srsly==2.5.3
+stack-data==0.6.3
+standard-aifc==3.13.0
+standard-chunk==3.13.0
+standard-sunau==3.13.0
+sympy==1.14.0
+terminado==0.18.1
+textblob==0.19.0
+thinc==8.3.13
+threadpoolctl==3.6.0
+tifffile==2026.7.14
+tinycss2==1.5.1
+tornado==6.5.7
+tqdm==4.69.0
+traitlets==5.15.1
+typer==0.27.0
+typing_extensions==4.16.0
+typing-inspection==0.4.2
+tzdata==2026.3
+uri-template==1.3.0
+urllib3==2.7.0
+wasabi==1.1.3
+wcwidth==0.8.2
+weasel==1.0.0
+webcolors==25.10.0
+webencodings==0.5.1
+websocket-client==1.9.0
+wrapt==2.2.2
+xarray==2025.4.0
+xlrd==2.0.2
+xyzservices==2026.3.0
+yarl==1.24.5
+[exit=0]
+
+$ which pip pip3 python python3
+/usr/local/bin/pip
+/usr/local/bin/pip3
+/usr/local/bin/python
+/usr/local/bin/python3
+[exit=0]
+
+$ python3 -V
+Python 3.13.14
+[exit=0]
+
+$ cat /etc/os-release
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.6
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+[exit=0]
+
+$ uname -a
+Linux e2b.local 6.1.158+ #1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026 x86_64 GNU/Linux
+[exit=0]
+
+$ cat /proc/cmdline
+clocksource=kvm-clock i8042.noaux i8042.nokbd init=/sbin/init ip=169.254.0.21::169.254.0.22:255.255.255.252:instance:eth0:off:tap0 ipv6.autoconf=1 ipv6.disable=0 loglevel=1 panic=1 pci=off quiet random.trust_cpu=on reboot=k rootflags=discard pci=off virtio_mmio.device=4K@0xc0001000:6 root=/dev/vda rw virtio_mmio.device=4K@0xc0002000:7 virtio_mmio.device=4K@0xc0003000:8 virtio_mmio.device=4K@0xc0004000:9
+[exit=0]
+
+$ ip -brief addr
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+eth0             UP             169.254.0.21/30 fe80::fc:ff:fe00:5/64 
+[exit=0]
+
+$ cat /sys/class/dmi/id/product_name
+cat: /sys/class/dmi/id/product_name: No such file or directory
+[exit=1]
+
+$ cat /sys/hypervisor/type
+cat: /sys/hypervisor/type: No such file or directory
+[exit=1]
+
+================ 3. SERVICE FOOTPRINT ================
+
+$ systemctl list-units --type=service --state=running --no-pager --no-legend
+  code-interpreter.service loaded active running Code Interpreter Server
+  dbus.service             loaded active running D-Bus System Message Bus
+  envd.service             loaded active running Env Daemon Service
+  getty@tty1.service       loaded active running Getty on tty1
+  jupyter.service          loaded active running Jupyter Server
+  nfs-blkmap.service       loaded active running pNFS block layout mapping daemon
+  rpcbind.service          loaded active running RPC bind portmap service
+  ssh.service              loaded active running OpenBSD Secure Shell server
+  systemd-journald.service loaded active running Journal Service
+  systemd-logind.service   loaded active running User Login Management
+  systemd-networkd.service loaded active running Network Configuration
+[exit=0]
+
+$ systemctl list-units --type=service --all --no-pager
+  UNIT                                         LOAD      ACTIVE   SUB     DESCRIPTION
+  apt-daily-upgrade.service                    loaded    inactive dead    Daily apt upgrade and clean activities
+  apt-daily.service                            loaded    inactive dead    Daily apt download activities
+● auditd.service                               not-found inactive dead    auditd.service
+  auth-rpcgss-module.service                   loaded    inactive dead    Kernel Module supporting RPCSEC_GSS
+  chrony.service                               loaded    inactive dead    chrony, an NTP client/server
+● chronyd-restricted.service                   loaded    failed   failed  NTP client (restricted)
+  code-interpreter.service                     loaded    active   running Code Interpreter Server
+● connman.service                              not-found inactive dead    connman.service
+  dbus.service                                 loaded    active   running D-Bus System Message Bus
+● display-manager.service                      not-found inactive dead    display-manager.service
+  dpkg-db-backup.service                       loaded    inactive dead    Daily dpkg database backup service
+  emergency.service                            loaded    inactive dead    Emergency Shell
+  envd.service                                 loaded    active   running Env Daemon Service
+  fstrim.service                               loaded    inactive dead    Discard unused blocks on filesystems from /etc/fstab
+  getty-static.service                         loaded    inactive dead    getty on tty2-tty6 if dbus and logind are not available
+  getty@tty1.service                           loaded    active   running Getty on tty1
+● gssproxy.service                             not-found inactive dead    gssproxy.service
+  initrd-cleanup.service                       loaded    inactive dead    Cleaning Up and Shutting Down Daemons
+  initrd-parse-etc.service                     loaded    inactive dead    Mountpoints Configured in the Real Root
+  initrd-switch-root.service                   loaded    inactive dead    Switch Root
+  initrd-udevadm-cleanup-db.service            loaded    inactive dead    Cleanup udev Database
+  jupyter.service                              loaded    active   running Jupyter Server
+  kmod-static-nodes.service                    loaded    inactive dead    Create List of Static Device Nodes
+  ldconfig.service                             loaded    inactive dead    Rebuild Dynamic Linker Cache
+  modprobe@configfs.service                    loaded    inactive dead    Load Kernel Module configfs
+  modprobe@drm.service                         loaded    inactive dead    Load Kernel Module drm
+  modprobe@efi_pstore.service                  loaded    inactive dead    Load Kernel Module efi_pstore
+  modprobe@fuse.service                        loaded    inactive dead    Load Kernel Module fuse
+● NetworkManager.service                       not-found inactive dead    NetworkManager.service
+  nfs-blkmap.service                           loaded    active   running pNFS block layout mapping daemon
+● nfs-server.service                           not-found inactive dead    nfs-server.service
+  nfs-utils.service                            loaded    inactive dead    NFS server and client services
+● nftables.service                             loaded    failed   failed  nftables
+● ntp.service                                  not-found inactive dead    ntp.service
+● ntpd.service                                 not-found inactive dead    ntpd.service
+● ntpdate.service                              not-found inactive dead    ntpdate.service
+● ntpsec.service                               not-found inactive dead    ntpsec.service
+● openntpd.service                             not-found inactive dead    openntpd.service
+● plymouth-quit-wait.service                   not-found inactive dead    plymouth-quit-wait.service
+● plymouth-start.service                       not-found inactive dead    plymouth-start.service
+  rc-local.service                             loaded    inactive dead    /etc/rc.local Compatibility
+  rescue.service                               loaded    inactive dead    Rescue Shell
+  rpc-gssd.service                             loaded    inactive dead    RPC security service for NFS client and server
+  rpc-statd-notify.service                     loaded    active   exited  Notify NFS peers of a restart
+  rpc-svcgssd.service                          loaded    inactive dead    RPC security service for NFS server
+  rpcbind.service                              loaded    active   running RPC bind portmap service
+● sntp.service                                 not-found inactive dead    sntp.service
+  ssh.service                                  loaded    active   running OpenBSD Secure Shell server
+  sshd-keygen.service                          loaded    inactive dead    Generate sshd host keys on first boot
+  sshd@sshd-keygen.service                     loaded    inactive dead    OpenBSD Secure Shell server per-connection daemon
+● syslog.service                               not-found inactive dead    syslog.service
+  systemd-ask-password-console.service         loaded    inactive dead    Dispatch Password Requests to Console
+  systemd-ask-password-wall.service            loaded    inactive dead    Forward Password Requests to Wall
+  systemd-battery-check.service                loaded    inactive dead    Check battery level during early boot
+● systemd-binfmt.service                       masked    inactive dead    systemd-binfmt.service
+  systemd-bsod.service                         loaded    inactive dead    Display Boot-Time Emergency Messages In Full Screen
+  systemd-confext.service                      loaded    inactive dead    Merge System Configuration Images into /etc/
+● systemd-firstboot.service                    masked    inactive dead    systemd-firstboot.service
+  systemd-fsck-root.service                    loaded    inactive dead    File System Check on Root Device
+  systemd-hibernate-clear.service              loaded    inactive dead    Clear Stale Hibernate Storage Info
+  systemd-hibernate-resume.service             loaded    inactive dead    Resume from hibernation
+  systemd-hostnamed.service                    loaded    inactive dead    Hostname Service
+  systemd-initctl.service                      loaded    inactive dead    initctl Compatibility Daemon
+  systemd-journal-catalog-update.service       loaded    inactive dead    Rebuild Journal Catalog
+  systemd-journal-flush.service                loaded    active   exited  Flush Journal to Persistent Storage
+  systemd-journald.service                     loaded    active   running Journal Service
+  systemd-logind.service                       loaded    active   running User Login Management
+  systemd-machine-id-commit.service            loaded    inactive dead    Save Transient machine-id to Disk
+● systemd-modules-load.service                 loaded    failed   failed  Load Kernel Modules
+● systemd-network-generator.service            loaded    failed   failed  Generate Network Units from Kernel Command Line
+  systemd-networkd-persistent-storage.service  loaded    active   exited  Enable Persistent Storage in systemd-networkd
+  systemd-networkd.service                     loaded    active   running Network Configuration
+  systemd-pcrlock-file-system.service          loaded    inactive dead    Lock File Systems to TPM PCR Policy
+  systemd-pcrlock-firmware-code.service        loaded    inactive dead    Lock Firmware Code to TPM PCR Policy
+  systemd-pcrlock-firmware-config.service      loaded    inactive dead    Lock Firmware Configuration to TPM PCR Policy
+  systemd-pcrlock-machine-id.service           loaded    inactive dead    Lock Machine ID to TPM PCR Policy
+  systemd-pcrlock-make-policy.service          loaded    inactive dead    Make TPM PCR Policy
+  systemd-pcrlock-secureboot-authority.service loaded    inactive dead    Lock UEFI SecureBoot Authority to TPM PCR Policy
+  systemd-pcrlock-secureboot-policy.service    loaded    inactive dead    Lock UEFI SecureBoot Policy to TPM PCR Policy
+  systemd-pcrmachine.service                   loaded    inactive dead    TPM PCR Machine ID Measurement
+  systemd-pcrphase-initrd.service              loaded    inactive dead    TPM PCR Barrier (initrd)
+  systemd-pcrphase-sysinit.service             loaded    inactive dead    TPM PCR Barrier (Initialization)
+  systemd-pcrphase.service                     loaded    inactive dead    TPM PCR Barrier (User)
+  systemd-pstore.service                       loaded    inactive dead    Platform Persistent Storage Archival
+  systemd-quotacheck-root.service              loaded    inactive dead    Root File System Quota Check
+  systemd-random-seed.service                  loaded    active   exited  Load/Save OS Random Seed
+  systemd-remount-fs.service                   loaded    active   exited  Remount Root and Kernel File Systems
+  systemd-soft-reboot.service                  loaded    inactive dead    Reboot System Userspace
+  systemd-sysctl.service                       loaded    active   exited  Apply Kernel Variables
+  systemd-sysext.service                       loaded    inactive dead    Merge System Extension Images into /usr/ and /opt/
+  systemd-sysusers.service                     loaded    inactive dead    Create System Users
+● systemd-timesyncd.service                    not-found inactive dead    systemd-timesyncd.service
+  systemd-tmpfiles-clean.service               loaded    inactive dead    Cleanup of Temporary Directories
+  systemd-tmpfiles-setup-dev-early.service     loaded    active   exited  Create Static Device Nodes in /dev gracefully
+  systemd-tmpfiles-setup-dev.service           loaded    active   exited  Create Static Device Nodes in /dev
+  systemd-tmpfiles-setup.service               loaded    active   exited  Create System Files and Directories
+  systemd-tpm2-setup-early.service             loaded    inactive dead    Early TPM SRK Setup
+  systemd-tpm2-setup.service                   loaded    inactive dead    TPM SRK Setup
+● systemd-udev-settle.service                  not-found inactive dead    systemd-udev-settle.service
+● systemd-udev-trigger.service                 not-found inactive dead    systemd-udev-trigger.service
+● systemd-udevd.service                        not-found inactive dead    systemd-udevd.service
+  systemd-update-done.service                  loaded    inactive dead    Update is Completed
+  systemd-user-sessions.service                loaded    active   exited  Permit User Sessions
+● systemd-vconsole-setup.service               not-found inactive dead    systemd-vconsole-setup.service
+
+Legend: LOAD   → Reflects whether the unit definition was properly loaded.
+        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.
+        SUB    → The low-level unit activation state, values depend on unit type.
+
+104 loaded units listed.
+To show all installed unit files use 'systemctl list-unit-files'.
+[exit=0]
+
+$ ss -tlnp
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+LISTEN 0      100        127.0.0.1:35769      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:47945      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:34675      0.0.0.0:*          
+LISTEN 0      4096         0.0.0.0:111        0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:35769      0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:47945      0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:34675      0.0.0.0:*          
+LISTEN 0      128        127.0.0.1:8888       0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:8888       0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:44461      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:35105      0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:39379      0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:41435      0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:43501      0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:35105      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:44461      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:39379      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:41435      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:43501      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:60465      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:53335      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:60493      0.0.0.0:*          
+LISTEN 0      2048         0.0.0.0:49999      0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:60465      0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:60493      0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:53335      0.0.0.0:*          
+LISTEN 0      4096            [::]:111           [::]:*          
+LISTEN 0      4096               *:22               *:*          
+LISTEN 0      128            [::1]:8888          [::]:*          
+LISTEN 0      4096               *:49983            *:*          
+[exit=0]
+
+$ cat /proc/net/tcp
+  sl  local_address rem_address   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode                                                     
+   0: 0100007F:8BB9 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13443 1 000000009067aa04 100 0 0 10 0                     
+   1: 1500FEA9:BB49 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13157 1 000000001e8c3964 100 0 0 10 0                     
+   2: 1500FEA9:8773 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13161 1 00000000d337e5fb 100 0 0 10 0                     
+   3: 00000000:006F 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 665 1 00000000ff884a55 100 0 0 10 0                       
+   4: 1500FEA9:8BB9 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13531 1 00000000bda0873c 100 0 0 10 0                     
+   5: 0100007F:BB49 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 12994 1 0000000099193d06 100 0 0 10 0                     
+   6: 0100007F:8773 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13453 1 00000000c2b674b7 100 0 0 10 0                     
+   7: 0100007F:22B8 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 12879 1 00000000a93599fa 100 0 0 10 0                     
+   8: 1500FEA9:22B8 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 12929 1 000000008002d493 100 0 0 10 0                     
+   9: 0100007F:ADAD 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13445 1 0000000027428b26 100 0 0 10 0                     
+  10: 1500FEA9:8921 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13181 1 00000000a52d5425 100 0 0 10 0                     
+  11: 0100007F:99D3 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13491 1 000000006c7aa6b5 100 0 0 10 0                     
+  12: 0100007F:A1DB 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13497 1 000000001fcb862e 100 0 0 10 0                     
+  13: 0100007F:A9ED 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13495 1 000000003a8a255a 100 0 0 10 0                     
+  14: 0100007F:8921 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13499 1 000000001fad1251 100 0 0 10 0                     
+  15: 1500FEA9:ADAD 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13165 1 00000000fd27b3d8 100 0 0 10 0                     
+  16: 1500FEA9:99D3 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13169 1 00000000f02eaf48 100 0 0 10 0                     
+  17: 1500FEA9:A1DB 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13174 1 000000002db67eac 100 0 0 10 0                     
+  18: 1500FEA9:A9ED 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13177 1 00000000a15c30df 100 0 0 10 0                     
+  19: 1500FEA9:EC31 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13185 1 00000000a22587a8 100 0 0 10 0                     
+  20: 1500FEA9:D057 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13188 1 000000009748cd79 100 0 0 10 0                     
+  21: 1500FEA9:EC4D 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13537 1 000000002c43ad85 100 0 0 10 0                     
+  22: 00000000:C34F 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13550 1 00000000c001fdf1 100 0 0 10 0                     
+  23: 0100007F:EC31 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13449 1 0000000009670303 100 0 0 10 0                     
+  24: 0100007F:EC4D 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13493 1 0000000026072cab 100 0 0 10 0                     
+  25: 0100007F:D057 00000000:0000 0A 00000000:00000000 00:00000000 00000000     0        0 13441 1 000000007ead40b0 100 0 0 10 0                     
+  26: 0100007F:E4A4 0100007F:8921 01 00000000:00000000 00:00000000 00000000     0        0 13502 1 000000005a407c38 20 4 20 10 -1                    
+  27: 0100007F:EC31 0100007F:CA22 01 00000000:00000000 00:00000000 00000000     0        0 13464 1 000000004d5669af 20 4 25 10 -1                    
+  28: 0100007F:ADAD 0100007F:A93A 01 00000000:00000000 00:00000000 00000000     0        0 12996 1 000000004008e745 20 4 26 10 -1                    
+  29: 0100007F:D057 0100007F:A2D2 01 00000000:00000000 00:00000000 00000000     0        0 13465 1 00000000fbac4eca 20 4 27 10 -1                    
+  30: 0100007F:A9ED 0100007F:CB3C 01 00000000:00000000 00:00000000 00000000     0        0 13544 1 0000000098193524 20 4 26 10 -1                    
+  31: 0100007F:ECDE 0100007F:EC4D 01 00000000:00000000 00:00000000 00000000     0        0 13540 1 0000000021a6dbb0 20 4 26 10 -1                    
+  32: 0100007F:CA22 0100007F:EC31 01 00000000:00000000 00:00000000 00000000     0        0 13459 1 0000000068711966 20 4 21 10 -1                    
+  33: 0100007F:9AE4 0100007F:8BB9 01 00000000:00000000 00:00000000 00000000     0        0 13462 1 000000006ecd140a 20 4 29 10 -1                    
+  34: 0100007F:A9ED 0100007F:CB34 01 00000000:00000000 00:00000000 00000000     0        0 13501 1 0000000005be8043 20 4 26 10 -1                    
+  35: 0100007F:A1DB 0100007F:96FE 01 00000000:00000000 00:00000000 00000000     0        0 13545 1 0000000094d35002 20 4 26 10 -1                    
+  36: 0100007F:8921 0100007F:E4A4 01 00000000:00000000 00:00000000 00000000     0        0 13503 1 000000001c00a058 20 4 26 10 -1                    
+  37: 0100007F:8BB9 0100007F:9AE4 01 00000000:00000000 00:00000000 00000000     0        0 13467 1 00000000168b93f0 20 4 26 10 -1                    
+  38: 0100007F:CB34 0100007F:A9ED 01 00000000:00000000 00:00000000 00000000     0        0 13500 1 000000002847e005 20 4 29 10 -1                    
+  39: 0100007F:A94A 0100007F:ADAD 01 00000000:00000000 00:00000000 00000000     0        0 13461 1 00000000babe4268 20 4 29 10 -1                    
+  40: 0100007F:EC4D 0100007F:ECDE 01 00000000:00000000 00:00000000 00000000     0        0 13541 1 00000000594d5d9a 20 4 27 10 -1                    
+  41: 0100007F:CB3C 0100007F:A9ED 01 00000000:00000000 00:00000000 00000000     0        0 13542 1 000000003078ca63 20 4 29 10 -1                    
+  42: 0100007F:D057 0100007F:A2B8 01 00000000:00000000 00:00000000 00000000     0        0 12992 1 00000000b7a63d19 20 4 24 10 -1                    
+  43: 0100007F:96FE 0100007F:A1DB 01 00000000:00000000 00:00000000 00000000     0        0 13543 1 00000000980da3e7 20 4 29 10 -1                    
+  44: 0100007F:A2D2 0100007F:D057 01 00000000:00000000 00:00000000 00000000     0        0 13460 1 00000000b4199696 20 4 26 10 -1                    
+  45: 0100007F:A2B8 0100007F:D057 01 00000000:00000000 00:00000000 00000000     0        0 12991 1 00000000802f8a52 20 4 25 10 -1                    
+  46: 0100007F:EC31 0100007F:CA1A 01 00000000:00000000 00:00000000 00000000     0        0 12998 1 00000000c6eac8e1 20 4 26 10 -1                    
+  47: 0100007F:CA1A 0100007F:EC31 01 00000000:00000000 00:00000000 00000000     0        0 12997 1 0000000073fa8696 20 4 18 10 -1                    
+  48: 0100007F:8921 0100007F:E4AE 01 00000000:00000000 00:00000000 00000000     0        0 13539 1 00000000de8b9d2e 20 4 27 10 -1                    
+  49: 0100007F:A93A 0100007F:ADAD 01 00000000:00000000 00:00000000 00000000     0        0 12995 1 0000000091d1a035 20 4 29 10 -1                    
+  50: 0100007F:E4AE 0100007F:8921 01 00000000:00000000 00:00000000 00000000     0        0 13538 1 00000000b30ab51e 20 4 22 10 -1                    
+  51: 0100007F:ADAD 0100007F:A94A 01 00000000:00000000 00:00000000 00000000     0        0 13466 1 0000000018de8db1 20 4 26 10 -1                    
+[exit=0]
+
+$ systemctl show envd -p FragmentPath
+FragmentPath=/etc/systemd/system/envd.service
+[exit=0]
+
+$ systemctl cat envd
+# /etc/systemd/system/envd.service
+[Unit]
+Description=Env Daemon Service
+# Start as early as possible on cold boot: envd only needs journald's socket
+# and a writable rootfs; networking is configured by the kernel (ip=) before
+# userspace. Default dependencies would gate it on sysinit/basic.target
+# (~0.5s), and the previous After=multi-user.target on chrony-wait (~8s).
+DefaultDependencies=no
+# Order after /tmp is finalized so envd doesn't answer before it's safe to stage
+# files there: updateEnvd uploads an update binary to /tmp during early boot.
+# On our base images (Ubuntu/Debian) /tmp is a plain rootfs dir, not a tmpfs
+# mount, and systemd-tmpfiles-setup.service runs `systemd-tmpfiles --remove`
+# with a `D /tmp` rule that wipes /tmp's contents at boot. That service is only
+# ordered After=local-fs.target, so gating envd on local-fs.target alone leaves
+# them unordered and the upload races the wipe (chmod/mv then fail ENOENT).
+# Ordering after systemd-tmpfiles-setup.service closes that race.
+After=systemd-journald.socket systemd-remount-fs.service local-fs.target systemd-tmpfiles-setup.service
+Wants=systemd-journald.socket
+Conflicts=shutdown.target
+Before=shutdown.target
+# Disable rate limiting; retry forever
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+User=root
+Group=root
+Environment=GOTRACEBACK=all
+LimitCORE=infinity
+# Seed the tmpfs from the tar packed as the build's last guest step — after all
+# build steps, start_cmd, and ready_cmd, with update-ca-certificates run first
+# (one sequential read); fall back to copying the cert dir, then to regenerating.
+#
+# Contract: the tar is the regenerated trust store captured at the end of the
+# build, so it equals what update-ca-certificates would produce at boot —
+# including CAs added in user layers or start/ready, registered or not. Seeding
+# from it gives a complete ca-certificates.crt, so update-ca-certificates is
+# skipped on cold boot (its scattered rootfs reads are the cost we avoid). It
+# therefore does NOT re-merge a persisted egress-proxy CA
+# (/usr/local/share/ca-certificates/e2b-ca.crt) into the bundle at boot. That CA
+# is (re)installed by envd's POST /init for the current proxy, which runs before
+# the orchestrator marks the sandbox running/routable — so the egress CA is
+# guaranteed present for the sandbox's routable lifetime. The only gap is guest
+# units that auto-start and egress over TLS before /init; that is accepted
+# (revisit if a template needs boot-time egress).
+ExecStartPre=/bin/sh -c 'mountpoint -q /etc/ssl/certs || { mkdir -p /run/e2b/certs && { tar -C /run/e2b/certs -xf /usr/local/share/e2b/ssl-certs.tar 2>/dev/null || cp -a /etc/ssl/certs/. /run/e2b/certs/ 2>/dev/null; }; mount --bind /run/e2b/certs /etc/ssl/certs; } && ([ -s /etc/ssl/certs/ca-certificates.crt ] || update-ca-certificates)'
+ExecStart=/usr/bin/envd
+Nice=-20
+IOSchedulingClass=realtime
+IOSchedulingPriority=4
+OOMPolicy=continue
+OOMScoreAdjust=-1000
+Environment="GOMEMLIMIT=512MiB"
+
+Delegate=yes
+MemoryMin=50M
+MemoryLow=100M
+CPUAccounting=yes
+CPUWeight=1000
+IOAccounting=yes
+IOWeight=10000
+
+[Install]
+WantedBy=multi-user.target
+[exit=0]
+
+$ systemctl show envd -p MainPID -p ActiveEnterTimestamp -p ActiveEnterTimestampMonotonic -p ExecMainStartTimestamp -p NRestarts
+MainPID=359
+NRestarts=0
+ExecMainStartTimestamp=Thu 2026-07-23 18:05:37 UTC
+ActiveEnterTimestamp=Thu 2026-07-23 18:05:37 UTC
+ActiveEnterTimestampMonotonic=701726
+[exit=0]
+
+$ systemctl show jupyter -p FragmentPath
+FragmentPath=/etc/systemd/system/jupyter.service
+[exit=0]
+
+$ systemctl cat jupyter
+# /etc/systemd/system/jupyter.service
+[Unit]
+Description=Jupyter Server
+Documentation=https://jupyter-server.readthedocs.io
+Wants=code-interpreter.service
+StartLimitBurst=0
+
+[Service]
+Type=simple
+Environment=MATPLOTLIBRC=/root/.config/matplotlib/.matplotlibrc
+ExecStart=/usr/local/bin/jupyter server --IdentityProvider.token=""
+ExecStartPost=-/usr/bin/systemctl reset-failed code-interpreter
+Restart=on-failure
+RestartSec=1
+StandardOutput=null
+StandardError=journal
+[exit=0]
+
+$ systemctl show jupyter -p MainPID -p ActiveEnterTimestamp -p ActiveEnterTimestampMonotonic -p ExecMainStartTimestamp -p NRestarts
+MainPID=437
+NRestarts=0
+ExecMainStartTimestamp=Thu 2026-07-23 18:05:39 UTC
+ActiveEnterTimestamp=Thu 2026-07-23 18:05:39 UTC
+ActiveEnterTimestampMonotonic=2525525
+[exit=0]
+
+$ systemctl show code-interpreter -p FragmentPath
+FragmentPath=/etc/systemd/system/code-interpreter.service
+[exit=0]
+
+$ systemctl cat code-interpreter
+# /etc/systemd/system/code-interpreter.service
+[Unit]
+Description=Code Interpreter Server
+Documentation=https://github.com/e2b-dev/code-interpreter
+Requires=jupyter.service
+After=jupyter.service
+PartOf=jupyter.service
+StartLimitBurst=0
+
+[Service]
+Type=simple
+WorkingDirectory=/root/.server
+ExecStartPre=/root/.jupyter/jupyter-healthcheck.sh
+ExecStart=/root/.server/.venv/bin/uvicorn main:app --host 0.0.0.0 --port 49999 --workers 1 --no-access-log --no-use-colors --timeout-keep-alive 640
+Restart=on-failure
+RestartSec=1
+StandardOutput=journal
+StandardError=journal
+[exit=0]
+
+$ systemctl show code-interpreter -p MainPID -p ActiveEnterTimestamp -p ActiveEnterTimestampMonotonic -p ExecMainStartTimestamp -p NRestarts
+MainPID=463
+NRestarts=0
+ExecMainStartTimestamp=Thu 2026-07-23 18:05:41 UTC
+ActiveEnterTimestamp=Thu 2026-07-23 18:05:41 UTC
+ActiveEnterTimestampMonotonic=4438461
+[exit=0]
+
+$ systemctl show dbus -p ActiveEnterTimestamp
+ActiveEnterTimestamp=Thu 2026-07-23 18:05:37 UTC
+[exit=0]
+
+$ systemctl list-jobs
+No jobs running.
+[exit=0]
+
+$ journalctl --list-boots --no-pager
+Hint: You are currently not seeing messages from other users and the system.
+      Users in groups 'adm', 'systemd-journal' can see all messages.
+      Pass -q to turn off this notice.
+IDX BOOT ID                          FIRST ENTRY                 LAST ENTRY
+  0 2bb79165136a4b63829d17027b0a8e40 Thu 2026-07-23 18:05:39 UTC Thu 2026-07-23 18:05:39 UTC
+[exit=0]
+
+$ journalctl -q -b --no-pager -o short-iso
+2026-07-23T18:05:39+00:00 e2b.local sudo[427]:     user : PWD=/home/user ; USER=root ; COMMAND=/usr/bin/systemctl start jupyter
+2026-07-23T18:05:39+00:00 e2b.local sudo[427]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)
+2026-07-23T18:05:39+00:00 e2b.local sudo[427]: pam_unix(sudo:session): session closed for user root
+[exit=0]
+
+$ timedatectl
+               Local time: Fri 2026-09-04 20:41:02 UTC
+           Universal time: Fri 2026-09-04 20:41:02 UTC
+                 RTC time: n/a
+                Time zone: Etc/UTC (UTC, +0000)
+System clock synchronized: no
+              NTP service: inactive
+          RTC in local TZ: no
+[exit=0]
+
+$ chronyc tracking
+506 Cannot talk to daemon
+[exit=1]
+
+$ /usr/bin/envd --version
+0.6.10
+[exit=0]
+
+$ cat /etc/inittab
+# Run system init
+::sysinit:/etc/init.d/rcS
+
+# Run the provision script, prefix the output with a log prefix
+::wait:/bin/sh -c '/usr/local/bin/provision.sh 2>&1 | sed "s/^/[external] /"'
+
+# Flush filesystem changes to disk
+::wait:/usr/bin/busybox sync
+::wait:fsfreeze --freeze /
+
+# Report the exit code of the provisioning script
+::wait:/bin/sh -c 'echo "E2B_PROVISIONING_EXIT:$(cat /provision.result || printf 1)"'
+
+# Wait forever to prevent the VM from exiting until the sandbox is paused and snapshot is taken
+::wait:/usr/bin/busybox sleep infinity[exit=0]
+
+$ ls -la /etc/systemd/system
+total 32
+drwxr-xr-x 18 root root 4096 Jul 23 18:05 .
+drwxr-xr-x  6 root root 4096 Jul 23 15:09 ..
+lrwxrwxrwx  1 root root    9 Jul 23 15:09 chrony-wait.service -> /dev/null
+lrwxrwxrwx  1 root root   38 Jul 23 15:09 chronyd.service -> /usr/lib/systemd/system/chrony.service
+-rw-r--r--  1 root root  519 Mar 23 13:13 code-interpreter.service
+lrwxrwxrwx  1 root root   37 Jul 23 15:09 ctrl-alt-del.target -> /usr/lib/systemd/system/reboot.target
+lrwxrwxrwx  1 root root   48 Jul 23 15:09 dbus-org.freedesktop.network1.service -> /usr/lib/systemd/system/systemd-networkd.service
+lrwxrwxrwx  1 root root    9 Jul 23 15:09 e2scrub_reap.service -> /dev/null
+-rw-r--r--  1 root root 3104 Jan  1  1970 envd.service
+drwxr-xr-x  2 root root   60 Jul 23 15:09 getty.target.wants
+-rw-r--r--  1 root root  428 Mar 23 13:13 jupyter.service
+drwxr-xr-x  2 root root   60 Jul 23 15:09 local-fs.target.wants
+drwxr-xr-x  2 root root 4096 Jul 23 15:09 multi-user.target.wants
+drwxr-xr-x  2 root root   60 Jul 23 15:09 nfs-client.target.wants
+drwxr-xr-x  2 root root   60 Jul 23 15:09 remote-fs.target.wants
+lrwxrwxrwx  1 root root    9 Jul 23 15:09 serial-getty@ttyS0.service -> /dev/null
+drwxr-xr-x  2 root root   60 Jul 23 15:09 serial-getty@ttyS0.service.d
+drwxr-xr-x  2 root root 4096 Jul 23 15:09 sockets.target.wants
+drwxr-xr-x  2 root root   60 Jul 23 15:09 ssh.service.wants
+drwxr-xr-x  2 root root   60 Jul 23 15:09 ssh.socket.wants
+lrwxrwxrwx  1 root root   35 Jul 23 15:09 sshd.service -> /usr/lib/systemd/system/ssh.service
+drwxr-xr-x  2 root root   60 Jul 23 15:09 sshd.service.wants
+drwxr-xr-x  2 root root   60 Jul 23 15:09 sshd@.service.wants
+drwxr-xr-x  2 root root 4096 Jul 23 15:09 sysinit.target.wants
+lrwxrwxrwx  1 root root    9 Jul 23 15:09 systemd-binfmt.service -> /dev/null
+lrwxrwxrwx  1 root root    9 Jul 23 15:09 systemd-firstboot.service -> /dev/null
+drwxr-xr-x  2 root root   60 Jul 23 15:09 systemd-journald.service.d
+drwxr-xr-x  2 root root   60 Jul 23 15:09 systemd-journald.service.wants
+lrwxrwxrwx  1 root root    9 Jul 23 15:09 systemd-networkd-wait-online.service -> /dev/null
+drwxr-xr-x  2 root root   60 Jul 23 15:09 systemd-networkd.service.d
+drwxr-xr-x  2 root root  128 Jul 23 15:09 timers.target.wants
+[exit=0]
+
+================ 4. SELF-DESCRIPTION ================
+
+$ grep -rIl -m1 -iE "arena|lmarena|e2b" /etc /opt /usr/local 2>/dev/null | head -50
+/etc/apt/trusted.gpg.d/debian-archive-bullseye-automatic.asc
+/etc/apt/trusted.gpg.d/debian-archive-trixie-security-automatic.asc
+/etc/ssh/moduli
+/etc/ssl/certs/ca-certificates.crt
+/etc/systemd/system/envd.service
+/etc/systemd/system/code-interpreter.service
+/etc/hostname
+/etc/hosts
+/etc/inittab
+/usr/local/include/python3.13/cpython/objimpl.h
+/usr/local/include/python3.13/internal/mimalloc/mimalloc/internal.h
+/usr/local/include/python3.13/internal/mimalloc/mimalloc/types.h
+/usr/local/include/python3.13/internal/mimalloc/mimalloc.h
+/usr/local/include/python3.13/internal/pycore_asdl.h
+/usr/local/include/python3.13/internal/pycore_ast.h
+/usr/local/include/python3.13/internal/pycore_ceval_state.h
+/usr/local/include/python3.13/internal/pycore_compile.h
+/usr/local/include/python3.13/internal/pycore_interp.h
+/usr/local/include/python3.13/internal/pycore_obmalloc.h
+/usr/local/include/python3.13/internal/pycore_optimizer.h
+/usr/local/include/python3.13/internal/pycore_parser.h
+/usr/local/include/python3.13/internal/pycore_pyarena.h
+/usr/local/include/python3.13/internal/pycore_pymem.h
+/usr/local/include/python3.13/internal/pycore_pymem_init.h
+/usr/local/include/python3.13/internal/pycore_runtime_init.h
+/usr/local/lib/R/site-library/jsonlite/doc/json-aaquickstart.html
+/usr/local/lib/R/site-library/jsonlite/doc/json-apis.html
+/usr/local/lib/R/site-library/jsonlite/doc/json-paging.html
+/usr/local/lib/R/site-library/vctrs/doc/type-size.html
+/usr/local/lib/python3.13/config-3.13-x86_64-linux-gnu/Makefile
+/usr/local/lib/python3.13/config-3.13-x86_64-linux-gnu/Setup
+/usr/local/lib/python3.13/config-3.13-x86_64-linux-gnu/Setup.stdlib
+/usr/local/lib/python3.13/encodings/cp874.py
+/usr/local/lib/python3.13/encodings/iso8859_11.py
+/usr/local/lib/python3.13/encodings/tis_620.py
+/usr/local/lib/python3.13/multiprocessing/heap.py
+/usr/local/lib/python3.13/site-packages/pip-26.1.2.dist-info/licenses/AUTHORS.txt
+/usr/local/lib/python3.13/site-packages/pip/_vendor/certifi/cacert.pem
+/usr/local/lib/python3.13/site-packages/pip/_vendor/idna/idnadata.py
+/usr/local/lib/python3.13/site-packages/pip/_vendor/idna/uts46data.py
+/usr/local/lib/python3.13/site-packages/pip/_vendor/pygments/unistring.py
+/usr/local/lib/python3.13/site-packages/pytz/__init__.py
+/usr/local/lib/python3.13/site-packages/pytz/zoneinfo/tzdata.zi
+/usr/local/lib/python3.13/site-packages/pytz/zoneinfo/zone.tab
+/usr/local/lib/python3.13/site-packages/pytz/zoneinfo/zone1970.tab
+/usr/local/lib/python3.13/site-packages/pytz-2025.2.dist-info/RECORD
+/usr/local/lib/python3.13/site-packages/tzdata/zones
+/usr/local/lib/python3.13/site-packages/tzdata/zoneinfo/tzdata.zi
+/usr/local/lib/python3.13/site-packages/tzdata/zoneinfo/zone.tab
+/usr/local/lib/python3.13/site-packages/tzdata/zoneinfo/zone1970.tab
+[exit=0]
+
+$ grep -rIl -iE "arena|lmarena" /etc /opt /usr/local 2>/dev/null | grep -viE "python3\.13|site-packages|/R/|include/"
+[exit=1]
+
+$ ls -la ~
+total 168
+drwx------ 2 user user  4096 Sep  4 20:41 .
+drwxr-xr-x 3 root root    60 Jul 23 15:09 ..
+-rw-r--r-- 1 user user   601 Sep  4 20:37 prov_probe.txt
+-rw-r--r-- 1 user user  4511 Sep  4 20:40 raw_capture.sh
+-rw-r--r-- 1 user user 44691 Sep  4 20:41 raw_evidence_2026-09-04T2037Z_instance2.txt
+-rw-r--r-- 1 user user 63482 Sep  4 20:40 sandbox_identity_provenance.md
+[exit=0]
+
+$ echo $HOME
+/home/user
+[exit=0]
+
+$ id
+uid=1000(user) gid=1000(user) groups=1000(user),27(sudo),100(users)
+[exit=0]
+
+$ ls -la /code
+total 4
+drwxrwxrwx  2 root root   60 Jul 23 18:05 .
+drwxr-xr-x 19 root root 4096 Jul 23 18:05 ..
+[exit=0]
+
+$ find /code -maxdepth 3
+/code
+[exit=0]
+
+$ ls -la /
+total 37
+drwxr-xr-x  19 root root  4096 Jul 23 18:05 .
+drwxr-xr-x  19 root root  4096 Jul 23 18:05 ..
+-rw-r--r--   1 root root   107 Jul 23 18:05 .e2b
+lrwxrwxrwx   1 root root     7 Jul  4 09:05 bin -> usr/bin
+drwxr-xr-x   2 root root    60 Jul  4 09:05 boot
+drwxrwxrwx   2 root root    60 Jul 23 18:05 code
+drwxr-xr-x   8 root root  2620 Jul 23 18:05 dev
+drwxr-xr-x  69 root root  4096 Jul 23 18:05 etc
+drwxr-xr-x   3 root root    60 Jul 23 15:09 home
+lrwxrwxrwx   1 root root     7 Jul  4 09:05 lib -> usr/lib
+lrwxrwxrwx   1 root root     9 Jul  4 09:05 lib64 -> usr/lib64
+drwx------   2 root root 12288 Jul 23 15:09 lost+found
+drwxr-xr-x   2 root root    60 Jul 13 00:00 media
+drwxr-xr-x   2 root root    60 Jul 13 00:00 mnt
+drwxr-xr-x   2 root root    60 Jul 13 00:00 opt
+dr-xr-xr-x 151 root root     0 Jul 23 18:05 proc
+drwx------  11 root root  4096 Jul 23 18:05 root
+drwxr-xr-x  17 root root   520 Jul 23 18:05 run
+lrwxrwxrwx   1 root root     8 Jul  4 09:05 sbin -> usr/sbin
+drwxr-xr-x   2 root root    60 Jul 13 00:00 srv
+dr-xr-xr-x  12 root root     0 Jul 23 18:05 sys
+drwxrwxrwt   9 root root   180 Sep  4 20:41 tmp
+drwxr-xr-x  12 root root  4096 Jul 23 15:09 usr
+drwxr-xr-x  11 root root  4096 Jul 23 15:09 var
+[exit=0]
+
+$ ls -la /opt
+total 4
+drwxr-xr-x  2 root root   60 Jul 13 00:00 .
+drwxr-xr-x 19 root root 4096 Jul 23 18:05 ..
+[exit=0]
+
+$ ls -la /usr/local/share
+total 4
+drwxrwxrwx  8 root root  128 Jul 23 18:05 .
+drwxrwxrwx 11 root root 4096 Jul 23 15:09 ..
+drwxrwxrwx  2 root root   60 Sep  4 20:37 ca-certificates
+drwxr-xr-x  2 root root   60 Jul 23 18:05 e2b
+drwxrwxrwx  2 root root   60 Jul 14 03:17 fonts
+drwxrwxrwx  5 root root  128 Jul 23 18:01 jupyter
+drwxrwxrwx  3 root root   60 Jul 14 04:47 man
+drwxrwxrwx  2 root root   60 Jul 23 18:00 xyzservices
+[exit=0]
+
+$ ls -la /usr/local/share/e2b
+total 620
+drwxr-xr-x 2 root root     60 Jul 23 18:05 .
+drwxrwxrwx 8 root root    128 Jul 23 18:05 ..
+-rw-r--r-- 1 root root 634880 Jul 23 18:05 ssl-certs.tar
+[exit=0]
+
+$ ls -la /usr/local/share/ca-certificates
+total 4
+drwxrwxrwx 2 root root  60 Sep  4 20:37 .
+drwxrwxrwx 8 root root 128 Jul 23 18:05 ..
+-rw-r--r-- 1 root root 595 Sep  4 20:37 e2b-ca.crt
+[exit=0]
+
+$ openssl x509 -in /usr/local/share/ca-certificates/e2b-ca.crt -noout -subject -issuer -dates
+subject=O=E2B, CN=E2B Proxy CA
+issuer=O=E2B, CN=E2B Proxy CA
+notBefore=Sep  4 11:38:43 2026 GMT
+notAfter=Sep  4 12:38:43 2027 GMT
+[exit=0]
+
+$ ls -la /provision.result /provision.sh /usr/local/bin/provision.sh
+ls: cannot access '/provision.result': No such file or directory
+ls: cannot access '/provision.sh': No such file or directory
+ls: cannot access '/usr/local/bin/provision.sh': No such file or directory
+[exit=2]
+
+$ ls -la /root
+ls: cannot open directory '/root': Permission denied
+[exit=2]
+
+================ 5. CLOCK MODEL ================
+CLOCK_REALTIME=1788554478.1506922  as_utc=2026-09-04T20:41:18.150692+00:00
+CLOCK_MONOTONIC=249.093782864  as_utc=1970-01-01T00:04:09.093783+00:00
+CLOCK_BOOTTIME=249.093789568  as_utc=1970-01-01T00:04:09.093790+00:00
+uptime_file= 249.09 465.60
+btime= 1788554229 as_utc= 2026-09-04T20:37:09+00:00
+btime == REALTIME - uptime ? True
+
+================ 6. STABILITY PROBE ================
+
+$ cat /home/user/prov_probe.txt
+# prov_probe.txt — stability probe, written in turn 1 (2026-09-04)
+date_utc=2026-09-04T19:30:28Z
+date_epoch=1788550228
+boot_id=2bb79165-136a-4b63-829d-17027b0a8e40
+E2B_SANDBOX_ID=ia4a7jw0xcyn756c09iwm
+E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+uptime_1=353.75
+stat_btime=1788549874
+hostname=e2b.local
+machine_id=67549745dd1a4564be928e47dca271fd
+envd_ActiveEnterTimestamp=Thu 2026-07-23 18:05:37 UTC
+jupyter_ActiveEnterTimestamp=Thu 2026-07-23 18:05:39 UTC
+# /.e2b verbatim >>>
+ENV_ID=nlhz8vlwyupq845jsdg9
+TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+BUILD_ID=f34a5416-ef30-4cb7-8e18-0fdecd6eb529
+# /.e2b verbatim <<<
+[exit=0]
+
+$ sha256sum /home/user/prov_probe.txt
+389002234ba1e84c379c623066f34e3a634f2dbffe9ce34a87f97d97c5b9acaa  /home/user/prov_probe.txt
+[exit=0]
+
+$ wc -c /home/user/prov_probe.txt
+601 /home/user/prov_probe.txt
+[exit=0]
+
+================ END OF CAPTURE ================
+captured_at_end=2026-09-04T20:41:18Z
+instance_uptime_at_end=249.10

@@ -1,0 +1,460 @@
+probe_run_start_utc=2026-09-04T14:20:02.722079460Z
+probe_mode=full
+probe_script=/home/user/environment_evidence/probe_environment.sh
+raw_file=04_tooling.txt
+
+$ command -v python3; python3 --version
+/usr/local/bin/python3
+Python 3.13.14
+[exit_code=0]
+
+$ command -v python; python --version
+/usr/local/bin/python
+Python 3.13.14
+[exit_code=0]
+
+$ command -v pip3; pip3 --version
+/usr/local/bin/pip3
+pip 26.1.2 from /usr/local/lib/python3.13/site-packages/pip (python 3.13)
+[exit_code=0]
+
+$ command -v pip; pip --version
+/usr/local/bin/pip
+pip 26.1.2 from /usr/local/lib/python3.13/site-packages/pip (python 3.13)
+[exit_code=0]
+
+$ command -v node; node --version
+/usr/bin/node
+v20.20.2
+[exit_code=0]
+
+$ command -v npm; npm --version
+/usr/bin/npm
+10.8.2
+[exit_code=0]
+
+$ command -v npx; npx --version
+/usr/bin/npx
+10.8.2
+[exit_code=0]
+
+$ command -v corepack; corepack --version
+/usr/bin/corepack
+0.34.6
+[exit_code=0]
+
+$ command -v git; git --version
+/usr/bin/git
+git version 2.47.3
+[exit_code=0]
+
+$ command -v curl; curl --version
+/usr/bin/curl
+curl 8.14.1 (x86_64-pc-linux-gnu) libcurl/8.14.1 OpenSSL/3.5.6 zlib/1.3.1 brotli/1.1.0 zstd/1.5.7 libidn2/2.3.8 libpsl/0.21.2 libssh2/1.11.1 nghttp2/1.64.0 nghttp3/1.8.0 librtmp/2.3 OpenLDAP/2.6.10
+Release-Date: 2025-06-04, security patched: 8.14.1-2+deb13u4
+Protocols: dict file ftp ftps gopher gophers http https imap imaps ipfs ipns ldap ldaps mqtt pop3 pop3s rtmp rtsp scp sftp smb smbs smtp smtps telnet tftp ws wss
+Features: alt-svc AsynchDNS brotli GSS-API HSTS HTTP2 HTTP3 HTTPS-proxy IDN IPv6 Kerberos Largefile libz NTLM PSL SPNEGO SSL threadsafe TLS-SRP UnixSockets zstd
+[exit_code=0]
+
+$ command -v wget; wget --version
+/usr/bin/wget
+GNU Wget 1.25.0 built on linux-gnu.
+
+-cares +digest -gpgme +https +ipv6 +iri +large-file -metalink +nls 
++ntlm +opie +psl +ssl/gnutls 
+
+Wgetrc: 
+    /etc/wgetrc (system)
+Locale: 
+    /usr/share/locale 
+Compile: 
+    gcc -DHAVE_CONFIG_H -DSYSTEM_WGETRC="/etc/wgetrc" 
+    -DLOCALEDIR="/usr/share/locale" -I. -I../../src -I../lib 
+    -I../../lib -Wdate-time -D_FORTIFY_SOURCE=2 
+    -I/usr/include/p11-kit-1 -DHAVE_LIBGNUTLS -DNDEBUG -g -O2 
+    -Werror=implicit-function-declaration 
+    -ffile-prefix-map=/build/reproducible-path/wget-1.25.0=. 
+    -fstack-protector-strong -fstack-clash-protection -Wformat 
+    -Werror=format-security -fcf-protection -DNO_SSLv2 
+Link: 
+    gcc -I/usr/include/p11-kit-1 -DHAVE_LIBGNUTLS -DNDEBUG -g -O2 
+    -Werror=implicit-function-declaration 
+    -ffile-prefix-map=/build/reproducible-path/wget-1.25.0=. 
+    -fstack-protector-strong -fstack-clash-protection -Wformat 
+    -Werror=format-security -fcf-protection -DNO_SSLv2 -Wl,-z,relro 
+    -Wl,-z,now -lpcre2-8 -luuid -lidn2 -lnettle -lgnutls -lz -lpsl 
+    ../lib/libgnu.a 
+
+Copyright (C) 2015 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later
+<http://www.gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Originally written by Hrvoje Niksic <hniksic@xemacs.org>.
+Please send bug reports and questions to <bug-wget@gnu.org>.
+[exit_code=0]
+
+$ command -v ffmpeg; ffmpeg -version
+bash: line 1: ffmpeg: command not found
+[exit_code=127]
+
+$ command -v ffprobe; ffprobe -version
+bash: line 1: ffprobe: command not found
+[exit_code=127]
+
+$ command -v docker; docker --version
+bash: line 1: docker: command not found
+[exit_code=127]
+
+$ command -v podman; podman --version
+bash: line 1: podman: command not found
+[exit_code=127]
+
+$ command -v make; make --version
+/usr/bin/make
+GNU Make 4.4.1
+Built for x86_64-pc-linux-gnu
+Copyright (C) 1988-2023 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+[exit_code=0]
+
+$ command -v gcc; gcc --version
+/usr/bin/gcc
+gcc (Debian 14.2.0-19) 14.2.0
+Copyright (C) 2024 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[exit_code=0]
+
+$ command -v g++; g++ --version
+/usr/bin/g++
+g++ (Debian 14.2.0-19) 14.2.0
+Copyright (C) 2024 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[exit_code=0]
+
+$ command -v clang; clang --version
+bash: line 1: clang: command not found
+[exit_code=127]
+
+$ command -v clang++; clang++ --version
+bash: line 1: clang++: command not found
+[exit_code=127]
+
+$ command -v cmake; cmake --version
+bash: line 1: cmake: command not found
+[exit_code=127]
+
+$ command -v ninja; ninja --version
+bash: line 1: ninja: command not found
+[exit_code=127]
+
+$ command -v pkg-config; pkg-config --version
+/usr/bin/pkg-config
+1.8.1
+[exit_code=0]
+
+$ command -v jq; jq --version
+/usr/bin/jq
+jq-1.7
+[exit_code=0]
+
+$ command -v apt; apt --version
+/usr/bin/apt
+apt 3.0.3 (amd64)
+[exit_code=0]
+
+$ command -v apt-get; apt-get --version
+/usr/bin/apt-get
+apt 3.0.3 (amd64)
+Supported modules:
+*Ver: Standard .deb
+*Pkg:  Debian dpkg interface (Priority 30)
+ Pkg:  Debian APT solver interface (Priority -1000)
+ Pkg:  Debian APT planner interface (Priority -1000)
+ S.L: 'deb' Debian binary tree
+ S.L: 'deb-src' Debian source tree
+ Idx: Debian Source Index
+ Idx: Debian Package Index
+ Idx: Debian Translation Index
+ Idx: Debian dpkg status file
+ Idx: Debian deb file
+ Idx: Debian dsc file
+ Idx: Debian control file
+ Idx: EDSP scenario file
+ Idx: EIPP scenario file
+[exit_code=0]
+
+$ command -v dpkg; dpkg --version
+/usr/bin/dpkg
+Debian 'dpkg' package management program version 1.22.22 (amd64).
+This is free software; see the GNU General Public License version 2 or
+later for copying conditions. There is NO warranty.
+[exit_code=0]
+
+$ command -v apk; apk --version
+bash: line 1: apk: command not found
+[exit_code=127]
+
+$ command -v yum; yum --version
+bash: line 1: yum: command not found
+[exit_code=127]
+
+$ command -v dnf; dnf --version
+bash: line 1: dnf: command not found
+[exit_code=127]
+
+$ command -v conda; conda --version
+bash: line 1: conda: command not found
+[exit_code=127]
+
+$ command -v mamba; mamba --version
+bash: line 1: mamba: command not found
+[exit_code=127]
+
+$ command -v micromamba; micromamba --version
+bash: line 1: micromamba: command not found
+[exit_code=127]
+
+$ command -v uv; uv --version
+bash: line 1: uv: command not found
+[exit_code=127]
+
+$ command -v pipx; pipx --version
+bash: line 1: pipx: command not found
+[exit_code=127]
+
+$ command -v poetry; poetry --version
+bash: line 1: poetry: command not found
+[exit_code=127]
+
+$ command -v go; go version
+bash: line 1: go: command not found
+[exit_code=127]
+
+$ command -v rustc; rustc --version
+bash: line 1: rustc: command not found
+[exit_code=127]
+
+$ command -v cargo; cargo --version
+bash: line 1: cargo: command not found
+[exit_code=127]
+
+$ command -v java; java -version
+/usr/bin/java
+openjdk version "11" 2018-09-25
+OpenJDK Runtime Environment 18.9 (build 11+28)
+OpenJDK 64-Bit Server VM 18.9 (build 11+28, mixed mode)
+[exit_code=0]
+
+$ command -v javac; javac -version
+/usr/bin/javac
+javac 11
+[exit_code=0]
+
+$ command -v R; R --version
+/usr/bin/R
+R version 4.5.0 (2025-04-11) -- "How About a Twenty-Six"
+Copyright (C) 2025 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under the terms of the
+GNU General Public License versions 2 or 3.
+For more information about these matters see
+https://www.gnu.org/licenses/.
+
+[exit_code=0]
+
+$ command -v ruby; ruby --version
+bash: line 1: ruby: command not found
+[exit_code=127]
+
+$ command -v perl; perl -v
+/usr/bin/perl
+
+This is perl 5, version 40, subversion 1 (v5.40.1) built for x86_64-linux-gnu-thread-multi
+(with 48 registered patches, see perl -V for more detail)
+
+Copyright 1987-2025, Larry Wall
+
+Perl may be copied only under the terms of either the Artistic License or the
+GNU General Public License, which may be found in the Perl 5 source kit.
+
+Complete documentation for Perl, including FAQ lists, should be found on
+this system using "man perl" or "perldoc perl".  If you have access to the
+Internet, point your browser at https://www.perl.org/, the Perl Home Page.
+
+[exit_code=0]
+
+$ command -v php; php --version
+bash: line 1: php: command not found
+[exit_code=127]
+
+$ command -v sqlite3; sqlite3 --version
+bash: line 1: sqlite3: command not found
+[exit_code=127]
+
+$ command -v tar; tar --version
+/usr/bin/tar
+tar (GNU tar) 1.35
+Copyright (C) 2023 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Written by John Gilmore and Jay Fenlason.
+[exit_code=0]
+
+$ command -v unzip; unzip -v
+/usr/bin/unzip
+UnZip 6.00 of 20 April 2009, by Debian. Original by Info-ZIP.
+
+Latest sources and executables are at ftp://ftp.info-zip.org/pub/infozip/ ;
+see ftp://ftp.info-zip.org/pub/infozip/UnZip.html for other sites.
+
+Compiled with gcc 14.2.0 for Unix (Linux ELF).
+
+UnZip special compilation options:
+        ACORN_FTYPE_NFS
+        COPYRIGHT_CLEAN (PKZIP 0.9x unreducing method not supported)
+        SET_DIR_ATTRIB
+        SYMLINKS (symbolic links supported, if RTL and file system permit)
+        TIMESTAMP
+        UNIXBACKUP
+        USE_EF_UT_TIME
+        USE_UNSHRINK (PKZIP/Zip 1.x unshrinking method supported)
+        USE_DEFLATE64 (PKZIP 4.x Deflate64(tm) supported)
+        UNICODE_SUPPORT [wide-chars, char coding: other] (handle UTF-8 paths)
+        LARGE_FILE_SUPPORT (large files over 2 GiB supported)
+        ZIP64_SUPPORT (archives using Zip64 for large files supported)
+        USE_BZIP2 (PKZIP 4.6+, using bzip2 lib version 1.0.8, 13-Jul-2019)
+        VMS_TEXT_CONV
+        WILD_STOP_AT_DIR
+        [decryption, version 2.11 of 05 Jan 2007]
+
+UnZip and ZipInfo environment options:
+           UNZIP:  [none]
+        UNZIPOPT:  [none]
+         ZIPINFO:  [none]
+      ZIPINFOOPT:  [none]
+[exit_code=0]
+
+$ command -v rsync; rsync --version
+bash: line 1: rsync: command not found
+[exit_code=127]
+
+$ command -v 7z; 7z
+bash: line 1: 7z: command not found
+[exit_code=127]
+
+$ command -v aria2c; aria2c --version
+bash: line 1: aria2c: command not found
+[exit_code=127]
+
+$ command -v ssh; ssh -V
+/usr/bin/ssh
+OpenSSH_10.0p2 Debian-7+deb13u4, OpenSSL 3.5.6 7 Apr 2026
+[exit_code=0]
+
+$ command -v openssl; openssl version
+/usr/bin/openssl
+OpenSSL 3.5.6 7 Apr 2026 (Library: OpenSSL 3.5.6 7 Apr 2026)
+[exit_code=0]
+
+$ command -v ping; ping -V
+/usr/bin/ping
+ping from iputils 20240905
+libcap: yes, IDN: yes, NLS: no, error.h: yes, getrandom(): yes, __fpending(): yes
+[exit_code=0]
+
+$ command -v dig; dig -v
+bash: line 1: dig: command not found
+[exit_code=127]
+
+$ command -v host; host -V
+bash: line 1: host: command not found
+[exit_code=127]
+
+$ command -v nslookup; nslookup -version
+bash: line 1: nslookup: command not found
+[exit_code=127]
+
+$ command -v nc; nc -h
+bash: line 1: nc: command not found
+[exit_code=127]
+
+$ command -v socat; socat -V
+/usr/bin/socat
+socat by Gerhard Rieger and contributors - see www.dest-unreach.org
+socat version 1.8.0.3 on 31 Mar 2025 20:50:04
+   running on Linux version #1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026, release 6.1.158+, machine x86_64
+features:
+  #define WITH_HELP 1
+  #define WITH_STATS 1
+  #define WITH_STDIO 1
+  #define WITH_FDNUM 1
+  #define WITH_FILE 1
+  #define WITH_CREAT 1
+  #define WITH_GOPEN 1
+  #define WITH_TERMIOS 1
+  #define WITH_PIPE 1
+  #define WITH_SOCKETPAIR 1
+  #define WITH_UNIX 1
+  #define WITH_ABSTRACT_UNIXSOCKET 1
+  #define WITH_IP4 1
+  #define WITH_IP6 1
+  #define WITH_RAWIP 1
+  #define WITH_GENERICSOCKET 1
+  #define WITH_INTERFACE 1
+  #define WITH_TCP 1
+  #define WITH_UDP 1
+  #define WITH_SCTP 1
+  #define WITH_DCCP 1
+  #define WITH_UDPLITE 1
+  #define WITH_LISTEN 1
+  #define WITH_POSIXMQ 1
+  #define WITH_SOCKS4 1
+  #define WITH_SOCKS4A 1
+  #define WITH_SOCKS5 1
+  #define WITH_VSOCK 1
+  #define WITH_NAMESPACES 1
+  #define WITH_PROXY 1
+  #define WITH_SYSTEM 1
+  #define WITH_SHELL 1
+  #define WITH_EXEC 1
+  #undef WITH_READLINE
+  #define WITH_TUN 1
+  #define WITH_PTY 1
+  #define WITH_OPENSSL 1
+  #undef WITH_FIPS
+  #define WITH_LIBWRAP 1
+  #define WITH_SYCLS 1
+  #define WITH_FILAN 1
+  #define WITH_RETRY 1
+  #undef WITH_DEVTESTS
+  #define WITH_MSGLEVEL 0 /*debug*/
+  #define WITH_DEFAULT_IPV 4
+[exit_code=0]
+
+$ command -v fio; fio --version
+bash: line 1: fio: command not found
+[exit_code=127]
+
+$ command -v hyperfine; hyperfine --version
+bash: line 1: hyperfine: command not found
+[exit_code=127]
+
+$ command -v stress-ng; stress-ng --version
+bash: line 1: stress-ng: command not found
+[exit_code=127]
+
+$ command -v pandoc; pandoc --version
+bash: line 1: pandoc: command not found
+[exit_code=127]

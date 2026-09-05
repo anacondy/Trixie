@@ -1,0 +1,7 @@
+timestamp=2026-09-04T12:15:37+0000
+python=3.13.14 implementation=CPython
+loadavg_before=0.08 0.08 0.03 1/139 2142
+CPU affinity before=[0, 1]; pinned benchmark process to=[0]
+disk_file size=104857600 blocks_512=204800
+loadavg_after=0.22 0.11 0.04 1/139 2144
+maxrss_process_KiB=267256

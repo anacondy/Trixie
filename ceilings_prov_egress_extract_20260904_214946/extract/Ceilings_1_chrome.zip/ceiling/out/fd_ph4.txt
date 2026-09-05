@@ -1,0 +1,2 @@
+/bin/bash: line 1: ulimit: open files: cannot modify limit: Operation not permitted
+rc=1

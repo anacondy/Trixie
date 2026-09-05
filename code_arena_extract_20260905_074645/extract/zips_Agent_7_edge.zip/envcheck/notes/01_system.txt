@@ -1,0 +1,62 @@
+### uname
+Linux e2b.local 6.1.158+ #1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026 x86_64 GNU/Linux
+
+### os-release
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.6
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+
+### arch
+x86_64
+64
+
+### libc
+ldd (Debian GLIBC 2.41-12+deb13u3) 2.41
+Copyright (C) 2024 Free Software Foundation, Inc.
+
+### cpu
+model name	: Intel(R) Xeon(R) Processor @ 2.60GHz
+nproc=2
+avx
+avx2
+avx512_bitalg
+avx512_vbmi2
+avx512_vnni
+avx512_vpopcntdq
+avx512bw
+avx512cd
+avx512dq
+avx512f
+avx512ifma
+avx512vbmi
+avx512vl
+fma
+ssse3
+
+### mem
+               total        used        free      shared  buff/cache   available
+Mem:            1984         490        1315           1         364        1494
+Swap:              0           0           0
+MemTotal:        2032608 kB
+MemFree:         1346744 kB
+MemAvailable:    1530544 kB
+SwapCached:            0 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+
+### cgroup
+cgroup2fs
+-- self cgroup:
+0::/user
+-- pid1 cgroup:
+0::/init.scope
+
+### cgroup mounts
+cgroup2 /sys/fs/cgroup cgroup2 rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot 0 0

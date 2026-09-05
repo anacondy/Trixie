@@ -1,0 +1,121 @@
+probe_run_start_utc=2026-09-04T14:20:02.722079460Z
+probe_mode=full
+probe_script=/home/user/environment_evidence/probe_environment.sh
+raw_file=12_install_compile.txt
+
+$ TMPBASE=/tmp/envprobe-installs.fEjdSZ python3 - <<'PY'
+import subprocess,time,os,json
+base=os.environ["TMPBASE"]
+def r(label,cmd,cwd=None):
+ t=time.perf_counter_ns();p=subprocess.run(cmd,cwd=cwd,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True);s=(time.perf_counter_ns()-t)/1e9
+ print("###",label,"seconds",f"{s:.9f}","rc",p.returncode);print(p.stdout)
+r("venv_create",["python3","-m","venv",base+"/venv"])
+r("pip_install",[base+"/venv/bin/python","-m","pip","install","--disable-pip-version-check","--no-cache-dir","pyfiglet==1.0.2"])
+r("pip_verify",[base+"/venv/bin/python","-c","import pyfiglet; print(pyfiglet.__version__)"])
+os.mkdir(base+"/npm");json.dump({"name":"envprobe","version":"1.0.0","private":True},open(base+"/npm/package.json","w"))
+r("npm_install",["npm","install","--ignore-scripts","--no-audit","--no-fund","is-number@7.0.0"],base+"/npm")
+js="const f=require("+repr("is-number")+"); console.log(f(42),f("+repr("x")+"))"
+r("npm_verify",["node","-e",js],base+"/npm")
+PY
+### venv_create seconds 1.912322108 rc 0
+
+### pip_install seconds 0.503399811 rc 0
+Collecting pyfiglet==1.0.2
+  Downloading pyfiglet-1.0.2-py3-none-any.whl.metadata (7.1 kB)
+Downloading pyfiglet-1.0.2-py3-none-any.whl (1.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 39.9 MB/s  0:00:00
+Installing collected packages: pyfiglet
+Successfully installed pyfiglet-1.0.2
+
+### pip_verify seconds 0.044843526 rc 0
+1.0.2
+
+### npm_install seconds 0.285483684 rc 0
+
+added 1 package in 226ms
+
+### npm_verify seconds 0.031803160 rc 0
+true false
+
+[exit_code=0]
+
+$ mkdir -p /tmp/envprobe-installs.fEjdSZ/c; cat > /tmp/envprobe-installs.fEjdSZ/c/probe.c <<'EOF'
+#include <stdio.h>
+#include <stdint.h>
+int main(void){uint64_t x=0;for(uint64_t i=0;i<1000000;i++)x=x*33u+i;printf("%llu\n",(unsigned long long)x);return 0;}
+EOF
+cat > /tmp/envprobe-installs.fEjdSZ/c/Makefile <<'EOF'
+CC ?= gcc
+CFLAGS ?= -O2 -Wall -Wextra
+probe: probe.c
+	$(CC) $(CFLAGS) -o $@ $<
+EOF
+python3 - <<'PY'
+import subprocess,time,os
+base="/tmp/envprobe-installs.fEjdSZ/c"
+for label,cmd in [("gcc",["gcc","-O2","-Wall","-Wextra","-o","probe-gcc","probe.c"]),("gcc_binary",[base+"/probe-gcc"]),("make",["make","CC=gcc"]),("make_binary",[base+"/probe"])]:
+ t=time.perf_counter_ns();p=subprocess.run(cmd,cwd=base,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True);s=(time.perf_counter_ns()-t)/1e9;print(label,"seconds",f"{s:.9f}","rc",p.returncode);print(p.stdout)
+PY
+gcc seconds 0.038848143 rc 0
+
+gcc_binary seconds 0.002192096 rc 0
+7346438449107812064
+
+make seconds 0.033581743 rc 0
+gcc -O2 -Wall -Wextra -o probe probe.c
+
+make_binary seconds 0.001915369 rc 0
+7346438449107812064
+
+[exit_code=0]
+
+$ export DEBIAN_FRONTEND=noninteractive; time sudo -n -E apt-get -o Acquire::Retries=0 update
+Hit:1 http://deb.debian.org/debian trixie InRelease
+Hit:2 http://deb.debian.org/debian trixie-updates InRelease
+Hit:3 http://deb.debian.org/debian-security trixie-security InRelease
+Hit:4 https://deb.nodesource.com/node_20.x nodistro InRelease
+Reading package lists...
+
+real	0m0.623s
+user	0m0.501s
+sys	0m0.045s
+[exit_code=0]
+
+$ export DEBIAN_FRONTEND=noninteractive; time sudo -n -E apt-get -o Acquire::Retries=0 install -y --no-install-recommends tree; tree --version
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  tree
+0 upgraded, 1 newly installed, 0 to remove and 37 not upgraded.
+Need to get 59.4 kB of archives.
+After this operation, 132 kB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian trixie/main amd64 tree amd64 2.2.1-1 [59.4 kB]
+Fetched 59.4 kB in 0s (1810 kB/s)
+Selecting previously unselected package tree.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 38546 files and directories currently installed.)
+Preparing to unpack .../tree_2.2.1-1_amd64.deb ...
+Unpacking tree (2.2.1-1) ...
+Setting up tree (2.2.1-1) ...
+
+real	0m1.574s
+user	0m0.921s
+sys	0m0.080s
+tree v2.2.1 (c) 1996 - 2024 by Steve Baker, Thomas Moore, Francesc Rocher, Florian Sesser, Kyosuke Tokoro
+[exit_code=0]
+
+$ export DEBIAN_FRONTEND=noninteractive; time sudo -n -E apt-get purge -y tree
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages will be REMOVED:
+  tree*
+0 upgraded, 0 newly installed, 1 to remove and 37 not upgraded.
+After this operation, 132 kB disk space will be freed.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 38552 files and directories currently installed.)
+Removing tree (2.2.1-1) ...
+
+real	0m0.974s
+user	0m0.874s
+sys	0m0.087s
+[exit_code=0]

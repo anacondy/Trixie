@@ -1,0 +1,24 @@
+== Throughput round 2 (fixed) 11:19:38Z ==
+-- cloudflare __down 50 MiB, 3 runs --
+  cloudflare 50MiB run1                       50.00 MiB    84.91 MiB/s  total   0.59s  ttfb    158 ms  code=200
+  cloudflare 50MiB run2                       50.00 MiB   102.99 MiB/s  total   0.49s  ttfb    129 ms  code=200
+  cloudflare 50MiB run3                       50.00 MiB   106.39 MiB/s  total   0.47s  ttfb     91 ms  code=200
+-- huggingface with -L (gpt2 pytorch_model.bin, 5 MiB range) --
+  HF gpt2 model.bin range5MiB                  5.00 MiB     9.96 MiB/s  total   0.50s  ttfb    255 ms  code=206
+-- GCS bucket 100 MiB (googleapis; same-cloud) --
+  GCS benchmark file 100MiB                    0.00 MiB     0.00 MiB/s  total   0.04s  ttfb     36 ms  code=404
+-- hetzner retry + raw DNS checks --
+  hetzner 100MB.bin retry                  FAILED: curl: (6) Could not resolve host: speed.hetzner.de
+0|0|0.128030|0.000000|000
+  raw DNS speed.hetzner.de: rcode=0 answers=0 in 155.0 ms
+  raw DNS www.hetzner.com: rcode=0 answers=1 in 1.3 ms
+  raw DNS pypi.org: rcode=0 answers=4 in 1.1 ms
+-- pypi JSON + files.pythonhosted.org direct wheel --
+  wheel: numpy-2.5.2-cp313-cp313-macosx_10_13_x86_64.whl
+  pypi numpy wheel (~18MiB)                   16.10 MiB    51.98 MiB/s  total   0.31s  ttfb     40 ms  code=200
+-- OVH (EU CDN) 100 MiB --
+  OVH 100Mb.dat                              100.00 MiB    14.51 MiB/s  total   6.89s  ttfb    860 ms  code=200
+-- npm install express result (re-measure) --
+  express tree present: 2.2 MiB (installed 11:19:04)
+-- APT effective rate (fresh update, timed) --
+  apt-get update: 0.83s

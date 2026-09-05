@@ -1,0 +1,49 @@
+envchar verification manifest
+============================
+generated_utc:     2026-09-04T13:45:05Z
+manifest_utc:      2026-09-04T13:47:06Z
+hostname:          e2b.local
+sandbox_id:        i4i7wdij5c7gh9absvtu8
+template_id:       nlhz8vlwyupq845jsdg9
+e2b_sandbox_flag:  true
+probe_dir:         /home/user/envchar
+raw_dir:           /home/user/envchar/raw
+n_raw_files:       16
+sha256sums_sha256: 6e8fd934cdaadccd93bf18e2862df7949031f30cf8dc1d7850fc8a53ac250fba
+raw_combo_sha256:  891ecbd96758ea79019d8ae2b02829e713b3042d20f0f4cac313fa89bedd8e06
+
+probe_sources:
+name                              bytes  sha256
+probe.sh                          14177  9e66ae5bfb3b1c309cda8c19bfacf18bc212b5d88d07addcaaef7fc70c54862b
+probe_bench.py                    23185  045b7417265541ab7bcfedccbf54ac3611b99e6488a3895fa7e3f5eae6f8e41f
+make_manifest.py                   3416  130c7609d4260fba1edb29b87d98ecc56e601a55c83e799dd752ad8925a115b9
+
+raw_files:
+name                              bytes  sha256
+01_runtime.txt                     8495  84ad2e7cb7492f433920c713379f9c46a9eac50465942bb287f701067cdea076
+02_isolation.txt                  25126  d7c1492d5275ab36383a8f47646710ae129105ab09fbf5b992e53571bedc76d3
+03_user_limits.txt                14325  cb0e582089b80c83f0ccc63a4b71cbb5a86cf9a12af5b5bc8f9c776e0a234fe0
+04_cgroup.txt                     12003  e8e9e62f91c571857ee18d3c9587131dd07e78a35b5015bad69e27b9672ac65a
+05_environment.txt                 2706  d71f80040ba286f02f90bccaad898b69629c8047261e558689e0fed2d3491721
+06_tools.txt                      15001  9d60429fa9f4ad2d28ea055983baf600825182c7b264ddb3bc59bddd7ba96d7b
+07_python_packages.txt            11269  d5b381ace5070639db4c814e68c3b5c74be1e947507c275fb677c1d6eb959d67
+08_filesystem.txt                  5987  ab9e4844049a5a0fd8b60eb2a478a728e13ae5e901584db3221d394f3b281cc5
+09_net_matrix.txt                  5350  1ec8a65c3a59d7bdcdf140448db864e8c9f43d723d0722fccbc307f8e4bfc297
+10_net_throughput.txt             15595  5069e0171d490feb53e022d18891eb11cc77f4886df75ff7a564148d6f7fe5cf
+11_net_ports.txt                   2688  b33254de1374860927b20aa192b70cf66c23906e84963052ee28870f89732df6
+12_cpu_bench.txt                   2689  ed7a3164eaa27dc27c5cb37d3dd6e2911be25715d5eb12c54815546dbcc4a87d
+13_disk_bench.txt                  1382  aac27dfd50e8c08d8b2c2030ed6b514b863eca2bce7f7d56e3d89adc4f762b52
+14_installs.txt                    4487  e8bbf6fff689a4131a5f055ac40bb37b266165345d5cc2a43315a7ecb370c9a7
+15_memory.txt                      3195  03ed585a41cb7499170408e7042d6bea43a65455e66541bfca236d1a528a589e
+16_misc.txt                       34183  fb6e701c6772144500cd9bf7dfedf8de6ee8a851bb62ddd847b40132c1f977ca
+
+Verify on a third-party copy:
+  cd envchar && sha256sum -c SHA256SUMS
+  ./probe.sh   # then diff -ru raw/ <their-raw>/
+
+Expected to CHANGE across runs (do not treat as failure):
+  timestamps, sandbox_id, uptime, PIDs, RSS, latency/throughput,
+  DNS addresses, cgroup memory.current/peak, dmesg, TLS notAfter.
+Expected to be STABLE on the same template:
+  OS/kernel/libc, vCPU count, memory.max, disk size, tool versions,
+  IPv6 unreachable, ping-needs-sudo, /tmp=tmpfs, nofile soft=1024.

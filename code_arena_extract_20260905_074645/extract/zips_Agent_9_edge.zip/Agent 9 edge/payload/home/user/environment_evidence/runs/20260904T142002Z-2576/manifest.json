@@ -1,0 +1,71 @@
+{
+  "hostname": "e2b.local",
+  "manifest_format": "environment-probe-v1",
+  "mode": "full",
+  "probe_script_copy": "probe_environment.sh",
+  "probe_script_sha256": "870774e553380dd881964cfb09cc74871349e8b3b3ac2d00a53214022568046b",
+  "probe_script_source": "/home/user/environment_evidence/probe_environment.sh",
+  "raw_files": [
+    {
+      "path": "raw/01_runtime.txt",
+      "sha256": "19987b39b38e3e34add290f36c967bdfc46d3c0a0eb5aceea83af07be5661cee"
+    },
+    {
+      "path": "raw/02_isolation.txt",
+      "sha256": "8db0daaffa8b6179c6a1315551bf8dc05a8db86c8675e949509689127c51b66b"
+    },
+    {
+      "path": "raw/03_resources.txt",
+      "sha256": "9565b8723414c2761776843ec198b58a5f0dbee4a5e21cac40258fc82de8e93b"
+    },
+    {
+      "path": "raw/04_tooling.txt",
+      "sha256": "64d9df26f6559143314f711651470ea6d9246c37e0b329afe15c2eace9cb8b2d"
+    },
+    {
+      "path": "raw/05_packages.txt",
+      "sha256": "74a33c35e785b74bd56a8427e1ed351c6d771dbd1aecd7a60df90350097eeb38"
+    },
+    {
+      "path": "raw/06_filesystem.txt",
+      "sha256": "659ac2741ea62ee9c53bd88178adcd9c971b8efbd2810ff77784cf06dc14d811"
+    },
+    {
+      "path": "raw/07_dns.txt",
+      "sha256": "d76c96ba9c0592b941ecd204c08fe5fe5a235cb3ada5f3290ea43685dc8645c4"
+    },
+    {
+      "path": "raw/08_http_latency.txt",
+      "sha256": "4d081b9237cac227eac9bd42ad57ad6a8b703e294687b5b1f5239ece76675fea"
+    },
+    {
+      "path": "raw/09_net_matrix.txt",
+      "sha256": "5fc74adae4b7f8b4e507c48a7054c101b256824702d88c5db4e3c0aedd44c23b"
+    },
+    {
+      "path": "raw/10_throughput.txt",
+      "sha256": "5c0966bf28d3d6f5619e442e4e20f463e8d1461e0995436754bc0f84fa8cec75"
+    },
+    {
+      "path": "raw/11_benchmarks.txt",
+      "sha256": "797adfde2729137dbdafb791b4d8655136e9323745c638d3146efd6ce7c5477b"
+    },
+    {
+      "path": "raw/12_install_compile.txt",
+      "sha256": "b6dfc36c0acd231ccfcffda76b4f027056cf0330e37709ca913ebbb832ecfa84"
+    },
+    {
+      "path": "raw/13_memory_process.txt",
+      "sha256": "5978de7180ee7c6869ef25643e5989010bb82a5e7bb8a2ba6399a60f9f704a54"
+    },
+    {
+      "path": "raw/14_persistence.txt",
+      "sha256": "b747ebe14b3cac5db1b6e66031e0f4d1b34904668398eb6ae59c52f950e3a51b"
+    }
+  ],
+  "run_end_utc": "2026-09-04T14:21:11.259311599Z",
+  "run_start_utc": "2026-09-04T14:20:02.722079460Z",
+  "run_tag": "20260904T142002Z-2576",
+  "sandbox_id": "ixwcucmrk55t9qy240sxo",
+  "template_id": "nlhz8vlwyupq845jsdg9"
+}

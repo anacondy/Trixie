@@ -1,0 +1,74 @@
+BACKFILLED RUN MANIFEST (historic run; predates probe_environment.sh)
+===========================================================
+RUNID             : run_20260904T1116Z_original
+STARTED_UTC       : 2026-09-04T11:16:10Z   (first probe transcript)
+FINISHED_UTC      : 2026-09-04T11:22:56Z   (last background-probe completion)
+HOSTNAME          : e2b.local
+KERNEL            : 6.1.158+
+ARCH              : x86_64
+OS                : Debian GNU/Linux 13 (trixie)
+USER/UID/GID      : user/1000/1000
+E2B_SANDBOX_ID    : i07vrt7m23evfzhmemmqh   (as recorded in env at capture time, verbatim from 02_isolation.txt)
+E2B_TEMPLATE_ID   : nlhz8vlwyupq845jsdg9
+BOOT_ID           : 2bb79165-136a-4b63-829d-17027b0a8e40   (matches probe run -> same VM boot)
+PROVENANCE        : manifest backfilled 2026-09-04T14:2xZ from the original transcripts;
+                    'capture' timestamps below are file mtimes (files were written at
+                    capture time). This run was produced manually, BEFORE the probe
+                    script existed; probe-environment-run_20260904T141747Z is the
+                    script-generated canonical run for reproducibility.
+
+MAPPING original transcript -> probe_environment.sh section
+-----------------------------------------------------------
+01_system.txt                    -> 01_runtime.txt
+02_isolation.txt, 02b_iso*.txt   -> 02_isolation.txt
+03_tools.txt                     -> 03_tools.txt
+04_limits_sudo_apt.txt           -> 04_limits.txt + 13_pkg_installs.txt (apt)
+05_fs.txt                        -> 05_filesystem.txt
+06_fs_tests.txt                  -> 06_fs_tests.txt
+07_network_dns_ports.txt         -> 07_dns.txt + 09_net_matrix.txt
+08_network_latency.txt           -> 08_http_latency.txt
+09_network_throughput.txt        -> 10_download_throughput.txt (partial; see 15b)
+10_cpu_bench.txt                 -> 11_cpu_bench.txt
+11_disk_bench.txt                -> 12_disk_bench.txt
+12_pip_bench.txt, 13_apt_bench.txt, 14_pkg_installs.txt -> 13_pkg_installs.txt
+15_network_extra.txt, 15b_*.txt  -> 10_download_throughput.txt
+16_memory.txt, 16b_*.txt         -> 14_memory_pressure.txt
+17_compile_system.txt            -> 11_cpu_bench.txt + 02_isolation.txt
+18_ffmpeg_apt.txt                -> 13_pkg_installs.txt
+19_services_nohup.txt, 20_background.txt, 21_final_checks.txt, 22_venv_nohup.txt
+                                  -> 15_services_processes.txt
+23_preinstalled.txt              -> 03_tools.txt (python inventory)
+
+FILES (name, capture-time-UTC, size_bytes, sha256)
+--------------------------------------------------
+01_system.txt              2026-09-04 14:17:31       1314 2cc7ff3a2e05ec0c99473000c611f1aa7c7e544c560859dcd04f64e1794ca88f
+02_isolation.txt           2026-09-04 14:17:31       4018 ce890959a62a916de59a40ce842306b3b801ad508ead8e57a868ca61971cac59
+02b_isolation.txt          2026-09-04 14:17:31       3018 ad7e905df8a8a578cd96d79964c7f62e400a3fb629092305b393259677d605e7
+03_tools.txt               2026-09-04 14:17:31       7258 f032444238cb3210d05c67fcc48885d638c9365102bdac5d07fb0715e5aebac0
+04_limits_sudo_apt.txt     2026-09-04 14:17:31       2262 51eb72ca38fd20079dbac8fd85eedce1449210000b388034c4704e2556267164
+05_fs.txt                  2026-09-04 14:17:31       4812 25af9ac23c0be6d967789636d0ef4696684b05b217ecf6af7ad83ae46cb2f3bf
+06_fs_tests.txt            2026-09-04 14:17:31       1247 1b0c672e86c62cf23818f3b3c9dda8d1b812713479a07860089db729e8448165
+07_network_dns_ports.txt   2026-09-04 14:17:31       1232 a768457f8124ec5c65f1b9d188f43090696f2aa9fcf678b03d2428c8f769ee97
+08_network_latency.txt     2026-09-04 14:17:31       1529 67378f964c8ae2a3f5e6295758fed85a918d8724f6a3e386a829ffb7ccb1fff8
+09_network_throughput.txt  2026-09-04 14:17:31        693 a466e1835dfacf70eebeb441eb3b7d2abc795c36b532e6a021eb08236dafaad5
+10_cpu_bench.txt           2026-09-04 14:17:31        706 a5b021dbe8a48ff4a0f7e0e0b779c84dcb58e23d632350cf6e93831bfe263781
+11_disk_bench.txt          2026-09-04 14:17:31        698 608adb14344678e0f125cebfeb4815c0e7565db40dc76cf99551c2b6b2a4d5cf
+12_pip_bench.txt           2026-09-04 14:17:31        709 c41b2e2d475021fca4ea7ec2c025f3681e0f20042fae511ec456d73ba5ec16ab
+13_apt_bench.txt           2026-09-04 14:17:31       1343 71988bf80a132f23a59fa5b443e202350d4b6b63031d71b407d72903cfb41889
+14_pkg_installs.txt        2026-09-04 14:17:31       2079 f85c42a4e629eef9a50017178178dd7593497d42d8056497eb40dffcaec62a59
+15_network_extra.txt       2026-09-04 14:17:31       1792 935e4f6c4134c21b6995458f2f21000dfb1d41eed7b786456decb5f5cb4c1928
+15b_network_fixed.txt      2026-09-04 14:17:31       1320 a7700735f8874be5ef4330ec5f9a0174961bf915a1167cc076866c4c8db9836d
+16_memory.txt              2026-09-04 14:17:31       1827 fad81df2ba40a90a355b75b7417bf05555f50fbb8f77beb50619e34fceb77dbd
+16b_memory_extra.txt       2026-09-04 14:17:31       1546 6ebe19d049c0505a66b0741b2620f34353a0c6ef0213b30bac6c2dd361f8c821
+17_compile_system.txt      2026-09-04 14:17:31       3400 9a598dfd7e65b34cabe1c8d355967181312db366493dbcee58cba77826f4e19a
+18_ffmpeg_apt.txt          2026-09-04 14:17:31        776 753d4e57d1c6222bf59304c97f5e154bf8dec3f6214d6dc343cda00334f03703
+19_services_nohup.txt      2026-09-04 14:17:31       2329 b716f1cae1aa4978b69fa0a21e2b012bd890835bc84a53bf4471efd6d3d63e04
+20_background.txt          2026-09-04 14:17:31       2540 41a3e06f805da31e12dbd59c7d1ac60e19dfe41a9e825b485830099423222721
+21_final_checks.txt        2026-09-04 14:17:31       2423 6458e5105f1077c7e5493d5774ba19c2af77216f560064c978d8f8472292eab9
+22_venv_nohup.txt          2026-09-04 14:17:31        200 e7e76f3694db070bece65cbf4a5ac6f37f30ae0d4da0ec2bd3c2c1302d933149
+23_preinstalled.txt        2026-09-04 14:17:31        734 5fb1c0099ad596e4f1e3ddad847f281892a6d9d0c34b9b037cbf8ef86a3133d3
+MANIFEST.txt               2026-09-04 14:19:16       5735 4f6981ea453bbcf68de3dc34e81c04b1e2c3457cc7189fac807fa45b84520447
+nohup_result.txt           2026-09-04 14:17:31         35 9e88c53f2fecd2a5e6527803b2c5f9f45c6e2ba2916848f07c1bb73980c69953
+--------------------------------------------------
+NOTE: this manifest is informational. The canonical machine-checkable
+      verification file is the probe run's MANIFEST.sha256.

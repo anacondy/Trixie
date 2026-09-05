@@ -1,0 +1,270 @@
+[21:50:46] Phase 2 — controlled one-at-a-time extraction start Fri Sep  4 21:50:46 UTC 2026
+[21:50:46] extracting as: user (uid=1001), NOT root
+[21:50:46] 
+[21:50:46] === ARCHIVE: Ceilings 1 chrome.zip ===
+[21:50:46] sanitised dir: extract/Ceilings_1_chrome.zip
+[21:50:46] cmd: mkdir -p "extract/Ceilings_1_chrome.zip"
+[21:50:46] cmd: unzip -o -d "extract/Ceilings_1_chrome.zip/" "/home/user/Trixie/Ceilings 1 chrome.zip"   (stdout/stderr -> _work/unzip_Ceilings_1_chrome.zip.log)
+[21:50:46] unzip exit_code=0 wall_clock_seconds=0.006
+  inflating: extract/Ceilings_1_chrome.zip/ceiling/out/fd_ph4.txt  
+  inflating: extract/Ceilings_1_chrome.zip/ceiling/out/fd_probe.json  
+[21:50:46] PATH_TRAVERSAL_CHECK: FAIL — files outside extract/Ceilings_1_chrome.zip:
+./_work/tree_after_Ceilings_1_chrome.zip.txt
+./_work/unzip_Ceilings_1_chrome.zip.log
+[21:50:46] UNZIP_TARGET_CHECK: PASS (every inflated/extracted line targets extract/Ceilings_1_chrome.zip/)
+[21:50:46] --- symlink check (find -type l -ls): ---
+[21:50:46] no symlinks found
+[21:50:46] EXTRACTED_SHA256SUMS.txt written (18 file entries)
+[21:50:46] --- scripts/executables flag (find -name *.sh/*.py/*.c/*.bin -o -perm /111): ---
+   529299      8 -rw-r--r--   1 user     user         4470 Sep  4 19:36 extract/Ceilings_1_chrome.zip/ceiling/scripts/mem_probe.py
+   529300      4 -rw-r--r--   1 user     user         1821 Sep  4 19:55 extract/Ceilings_1_chrome.zip/ceiling/scripts/fd_probe.py
+   529308      4 -rw-r--r--   1 user     user         1324 Sep  4 20:16 extract/Ceilings_1_chrome.zip/ceiling/scripts/burn.c
+   529301      4 -rw-r--r--   1 user     user         2906 Sep  4 19:37 extract/Ceilings_1_chrome.zip/ceiling/scripts/proc_probe.py
+   529302      4 -rw-r--r--   1 user     user          612 Sep  4 19:54 extract/Ceilings_1_chrome.zip/ceiling/scripts/kill_by_pattern.py
+   529303      4 -rw-r--r--   1 user     user          149 Sep  4 19:55 extract/Ceilings_1_chrome.zip/ceiling/scripts/dup_loop.py
+   529304      4 -rw-r--r--   1 user     user         1575 Sep  4 19:55 extract/Ceilings_1_chrome.zip/ceiling/scripts/forkcal.py
+   529305      4 -rw-r--r--   1 user     user         2530 Sep  4 20:03 extract/Ceilings_1_chrome.zip/ceiling/scripts/forktest.c
+   529306      4 -rw-r--r--   1 user     user         1722 Sep  4 19:55 extract/Ceilings_1_chrome.zip/ceiling/scripts/thrtest.c
+   529307      4 -rw-r--r--   1 user     user          420 Sep  4 20:03 extract/Ceilings_1_chrome.zip/ceiling/scripts/kill_pids_file.py
+[21:50:46] extracted counts: files=17 dirs=4 bytes=38678 (excluding EXTRACTED_SHA256SUMS.txt)
+[21:50:46] --- internal manifest/readme/notes: ---
+[21:50:46] none found
+[21:50:46] STATUS: EXTRACTED_OK
+[21:50:46] 
+[21:50:46] === ARCHIVE: Ceilings 2 edge.zip ===
+[21:50:46] sanitised dir: extract/Ceilings_2_edge.zip
+[21:50:46] cmd: mkdir -p "extract/Ceilings_2_edge.zip"
+[21:50:46] cmd: unzip -o -d "extract/Ceilings_2_edge.zip/" "/home/user/Trixie/Ceilings 2 edge.zip"   (stdout/stderr -> _work/unzip_Ceilings_2_edge.zip.log)
+[21:50:46] unzip exit_code=0 wall_clock_seconds=0.004
+Archive:  /home/user/Trixie/Ceilings 2 edge.zip
+  inflating: extract/Ceilings_2_edge.zip/sandbox_ceilings.md  
+[21:50:46] PATH_TRAVERSAL_CHECK: FAIL — files outside extract/Ceilings_2_edge.zip:
+./_work/tree_after_Ceilings_2_edge.zip.txt
+./_work/unzip_Ceilings_2_edge.zip.log
+[21:50:46] UNZIP_TARGET_CHECK: PASS (every inflated/extracted line targets extract/Ceilings_2_edge.zip/)
+[21:50:46] --- symlink check (find -type l -ls): ---
+[21:50:46] no symlinks found
+[21:50:46] EXTRACTED_SHA256SUMS.txt written (2 file entries)
+[21:50:46] --- scripts/executables flag (find -name *.sh/*.py/*.c/*.bin -o -perm /111): ---
+[21:50:46] none found
+[21:50:46] extracted counts: files=1 dirs=1 bytes=19824 (excluding EXTRACTED_SHA256SUMS.txt)
+[21:50:46] --- internal manifest/readme/notes: ---
+[21:50:46] none found
+[21:50:46] STATUS: EXTRACTED_OK
+[21:50:46] 
+[21:50:46] === ARCHIVE: Ceilings 3 brave.zip ===
+[21:50:46] sanitised dir: extract/Ceilings_3_brave.zip
+[21:50:46] cmd: mkdir -p "extract/Ceilings_3_brave.zip"
+[21:50:46] cmd: unzip -o -d "extract/Ceilings_3_brave.zip/" "/home/user/Trixie/Ceilings 3 brave.zip"   (stdout/stderr -> _work/unzip_Ceilings_3_brave.zip.log)
+[21:50:46] unzip exit_code=0 wall_clock_seconds=0.004
+  inflating: extract/Ceilings_3_brave.zip/probes/cpu_burn.py  
+  inflating: extract/Ceilings_3_brave.zip/probes/smt_penalty.py  
+[21:50:46] PATH_TRAVERSAL_CHECK: FAIL — files outside extract/Ceilings_3_brave.zip:
+./_work/tree_after_Ceilings_3_brave.zip.txt
+./_work/unzip_Ceilings_3_brave.zip.log
+[21:50:46] UNZIP_TARGET_CHECK: PASS (every inflated/extracted line targets extract/Ceilings_3_brave.zip/)
+[21:50:46] --- symlink check (find -type l -ls): ---
+[21:50:46] no symlinks found
+[21:50:46] EXTRACTED_SHA256SUMS.txt written (19 file entries)
+[21:50:46] --- scripts/executables flag (find -name *.sh/*.py/*.c/*.bin -o -perm /111): ---
+   529329      4 -rw-r--r--   1 user     user         2312 Sep  4 20:49 extract/Ceilings_3_brave.zip/probes/mem_bisect.py
+   529331      4 -rw-r--r--   1 user     user         1228 Sep  4 20:51 extract/Ceilings_3_brave.zip/probes/fd_test.py
+   529332      4 -rw-r--r--   1 user     user         2223 Sep  4 20:54 extract/Ceilings_3_brave.zip/probes/fork_test.py
+   529333      4 -rw-r--r--   1 user     user          729 Sep  4 20:51 extract/Ceilings_3_brave.zip/probes/thread_test.py
+   529336      4 -rw-r--r--   1 user     user         2062 Sep  4 21:10 extract/Ceilings_3_brave.zip/probes/fork_exec_test.py
+   529338      4 -rwxr-xr-x   1 user     user         1915 Sep  4 21:11 extract/Ceilings_3_brave.zip/probes/disk_test.sh
+   529340      4 -rwxr-xr-x   1 user     user         1767 Sep  4 21:13 extract/Ceilings_3_brave.zip/probes/disk_test2.sh
+   529342      4 -rwxr-xr-x   1 user     user          967 Sep  4 21:14 extract/Ceilings_3_brave.zip/probes/tmp_test.sh
+   529344      4 -rw-r--r--   1 user     user          721 Sep  4 21:15 extract/Ceilings_3_brave.zip/probes/cpu_burn.py
+   529345      4 -rw-r--r--   1 user     user          989 Sep  4 21:15 extract/Ceilings_3_brave.zip/probes/smt_penalty.py
+[21:50:46] extracted counts: files=18 dirs=2 bytes=35830 (excluding EXTRACTED_SHA256SUMS.txt)
+[21:50:46] --- internal manifest/readme/notes: ---
+[21:50:46] none found
+[21:50:46] STATUS: EXTRACTED_OK
+[21:50:46] 
+[21:50:46] === ARCHIVE: Provenance 1 edge.zip ===
+[21:50:46] sanitised dir: extract/Provenance_1_edge.zip
+[21:50:46] cmd: mkdir -p "extract/Provenance_1_edge.zip"
+[21:50:46] cmd: unzip -o -d "extract/Provenance_1_edge.zip/" "/home/user/Trixie/Provenance 1 edge.zip"   (stdout/stderr -> _work/unzip_Provenance_1_edge.zip.log)
+[21:50:46] unzip exit_code=0 wall_clock_seconds=0.004
+  inflating: extract/Provenance_1_edge.zip/raw_evidence_2026-09-04T2037Z_instance2.txt  
+  inflating: extract/Provenance_1_edge.zip/raw_capture.sh  
+[21:50:46] PATH_TRAVERSAL_CHECK: FAIL — files outside extract/Provenance_1_edge.zip:
+./_work/tree_after_Provenance_1_edge.zip.txt
+./_work/unzip_Provenance_1_edge.zip.log
+[21:50:46] UNZIP_TARGET_CHECK: PASS (every inflated/extracted line targets extract/Provenance_1_edge.zip/)
+[21:50:46] --- symlink check (find -type l -ls): ---
+[21:50:46] no symlinks found
+[21:50:46] EXTRACTED_SHA256SUMS.txt written (7 file entries)
+[21:50:46] --- scripts/executables flag (find -name *.sh/*.py/*.c/*.bin -o -perm /111): ---
+   529356      8 -rw-r--r--   1 user     user         4511 Sep  4 20:40 extract/Provenance_1_edge.zip/raw_capture.sh
+[21:50:46] extracted counts: files=6 dirs=1 bytes=123025 (excluding EXTRACTED_SHA256SUMS.txt)
+[21:50:46] --- internal manifest/readme/notes: ---
+extract/Provenance_1_edge.zip/README.md
+extract/Provenance_1_edge.zip/MANIFEST.sha256
+[21:50:46] STATUS: EXTRACTED_OK
+[21:50:46] 
+[21:50:46] === ARCHIVE: Provenance 2 brave.zip ===
+[21:50:46] sanitised dir: extract/Provenance_2_brave.zip
+[21:50:46] cmd: mkdir -p "extract/Provenance_2_brave.zip"
+[21:50:46] cmd: unzip -o -d "extract/Provenance_2_brave.zip/" "/home/user/Trixie/Provenance 2 brave.zip"   (stdout/stderr -> _work/unzip_Provenance_2_brave.zip.log)
+[21:50:46] unzip exit_code=0 wall_clock_seconds=0.003
+  inflating: extract/Provenance_2_brave.zip/sandbox_identity_provenance.md  
+  inflating: extract/Provenance_2_brave.zip/prov_probe.txt  
+[21:50:46] PATH_TRAVERSAL_CHECK: FAIL — files outside extract/Provenance_2_brave.zip:
+./_work/tree_after_Provenance_2_brave.zip.txt
+./_work/unzip_Provenance_2_brave.zip.log
+[21:50:46] UNZIP_TARGET_CHECK: PASS (every inflated/extracted line targets extract/Provenance_2_brave.zip/)
+[21:50:46] --- symlink check (find -type l -ls): ---
+[21:50:46] no symlinks found
+[21:50:46] EXTRACTED_SHA256SUMS.txt written (3 file entries)
+[21:50:46] --- scripts/executables flag (find -name *.sh/*.py/*.c/*.bin -o -perm /111): ---
+[21:50:46] none found
+[21:50:46] extracted counts: files=2 dirs=1 bytes=23281 (excluding EXTRACTED_SHA256SUMS.txt)
+[21:50:46] --- internal manifest/readme/notes: ---
+[21:50:46] none found
+[21:50:46] STATUS: EXTRACTED_OK
+[21:50:47] 
+[21:50:47] === ARCHIVE: Provenance 3 chrome.zip ===
+[21:50:47] sanitised dir: extract/Provenance_3_chrome.zip
+[21:50:47] cmd: mkdir -p "extract/Provenance_3_chrome.zip"
+[21:50:47] cmd: unzip -o -d "extract/Provenance_3_chrome.zip/" "/home/user/Trixie/Provenance 3 chrome.zip"   (stdout/stderr -> _work/unzip_Provenance_3_chrome.zip.log)
+[21:50:47] unzip exit_code=0 wall_clock_seconds=0.003
+  inflating: extract/Provenance_3_chrome.zip/prov_probe.txt  
+  inflating: extract/Provenance_3_chrome.zip/sandbox_provenance_report.md  
+[21:50:47] PATH_TRAVERSAL_CHECK: FAIL — files outside extract/Provenance_3_chrome.zip:
+./_work/tree_after_Provenance_3_chrome.zip.txt
+./_work/unzip_Provenance_3_chrome.zip.log
+[21:50:47] UNZIP_TARGET_CHECK: PASS (every inflated/extracted line targets extract/Provenance_3_chrome.zip/)
+[21:50:47] --- symlink check (find -type l -ls): ---
+[21:50:47] no symlinks found
+[21:50:47] EXTRACTED_SHA256SUMS.txt written (3 file entries)
+[21:50:47] --- scripts/executables flag (find -name *.sh/*.py/*.c/*.bin -o -perm /111): ---
+[21:50:47] none found
+[21:50:47] extracted counts: files=2 dirs=1 bytes=16437 (excluding EXTRACTED_SHA256SUMS.txt)
+[21:50:47] --- internal manifest/readme/notes: ---
+[21:50:47] none found
+[21:50:47] STATUS: EXTRACTED_OK
+[21:50:47] 
+[21:50:47] === ARCHIVE: Egress 1 chrome.zip ===
+[21:50:47] sanitised dir: extract/Egress_1_chrome.zip
+[21:50:47] cmd: mkdir -p "extract/Egress_1_chrome.zip"
+[21:50:47] cmd: unzip -o -d "extract/Egress_1_chrome.zip/" "/home/user/Trixie/Egress 1 chrome.zip"   (stdout/stderr -> _work/unzip_Egress_1_chrome.zip.log)
+[21:50:47] unzip exit_code=0 wall_clock_seconds=0.004
+  inflating: extract/Egress_1_chrome.zip/egress-tests/s2-dns.py  
+  inflating: extract/Egress_1_chrome.zip/egress-tests/s4-ports.py  
+[21:50:47] PATH_TRAVERSAL_CHECK: FAIL — files outside extract/Egress_1_chrome.zip:
+./_work/tree_after_Egress_1_chrome.zip.txt
+./_work/unzip_Egress_1_chrome.zip.log
+[21:50:47] UNZIP_TARGET_CHECK: PASS (every inflated/extracted line targets extract/Egress_1_chrome.zip/)
+[21:50:47] --- symlink check (find -type l -ls): ---
+[21:50:47] no symlinks found
+[21:50:47] EXTRACTED_SHA256SUMS.txt written (16 file entries)
+[21:50:47] --- scripts/executables flag (find -name *.sh/*.py/*.c/*.bin -o -perm /111): ---
+   529389      4 -rw-r--r--   1 user     user         1332 Sep  4 20:22 extract/Egress_1_chrome.zip/egress-tests/s1-connect.py
+   529390      4 -rw-r--r--   1 user     user         3395 Sep  4 20:22 extract/Egress_1_chrome.zip/egress-tests/s2-dns.py
+   529391      8 -rw-r--r--   1 user     user         5172 Sep  4 20:22 extract/Egress_1_chrome.zip/egress-tests/s4-ports.py
+[21:50:47] extracted counts: files=15 dirs=2 bytes=53312 (excluding EXTRACTED_SHA256SUMS.txt)
+[21:50:47] --- internal manifest/readme/notes: ---
+[21:50:47] none found
+[21:50:47] STATUS: EXTRACTED_OK
+[21:50:47] 
+[21:50:47] === ARCHIVE: Egress 2 brave.zip ===
+[21:50:47] sanitised dir: extract/Egress_2_brave.zip
+[21:50:47] cmd: mkdir -p "extract/Egress_2_brave.zip"
+[21:50:47] cmd: unzip -o -d "extract/Egress_2_brave.zip/" "/home/user/Trixie/Egress 2 brave.zip"   (stdout/stderr -> _work/unzip_Egress_2_brave.zip.log)
+[21:50:47] unzip exit_code=0 wall_clock_seconds=0.004
+  inflating: extract/Egress_2_brave.zip/egress-map/t3_ip_sni.py  
+  inflating: extract/Egress_2_brave.zip/egress-map/t4_ports.py  
+[21:50:47] PATH_TRAVERSAL_CHECK: FAIL — files outside extract/Egress_2_brave.zip:
+./_work/tree_after_Egress_2_brave.zip.txt
+./_work/unzip_Egress_2_brave.zip.log
+[21:50:47] UNZIP_TARGET_CHECK: PASS (every inflated/extracted line targets extract/Egress_2_brave.zip/)
+[21:50:47] --- symlink check (find -type l -ls): ---
+[21:50:47] no symlinks found
+[21:50:47] EXTRACTED_SHA256SUMS.txt written (21 file entries)
+[21:50:47] --- scripts/executables flag (find -name *.sh/*.py/*.c/*.bin -o -perm /111): ---
+   529415      4 -rw-r--r--   1 user     user         3135 Sep  4 20:26 extract/Egress_2_brave.zip/egress-map/t1_proxy.py
+   529416      4 -rw-r--r--   1 user     user         3859 Sep  4 20:26 extract/Egress_2_brave.zip/egress-map/t2_dns.py
+   529417      4 -rw-r--r--   1 user     user         3946 Sep  4 20:26 extract/Egress_2_brave.zip/egress-map/t3_ip_sni.py
+   529418      4 -rw-r--r--   1 user     user         3644 Sep  4 20:26 extract/Egress_2_brave.zip/egress-map/t4_ports.py
+[21:50:47] extracted counts: files=20 dirs=3 bytes=53873 (excluding EXTRACTED_SHA256SUMS.txt)
+[21:50:47] --- internal manifest/readme/notes: ---
+[21:50:47] none found
+[21:50:47] STATUS: EXTRACTED_OK
+[21:50:47] 
+[21:50:47] === ARCHIVE: Egress 3 edge.zip ===
+[21:50:47] sanitised dir: extract/Egress_3_edge.zip
+[21:50:47] cmd: mkdir -p "extract/Egress_3_edge.zip"
+[21:50:47] cmd: unzip -o -d "extract/Egress_3_edge.zip/" "/home/user/Trixie/Egress 3 edge.zip"   (stdout/stderr -> _work/unzip_Egress_3_edge.zip.log)
+[21:50:47] unzip exit_code=0 wall_clock_seconds=0.006
+  inflating: extract/Egress_3_edge.zip/netmap/s7_gaps.py  
+  inflating: extract/Egress_3_edge.zip/netmap/INDEX.md  
+[21:50:47] PATH_TRAVERSAL_CHECK: FAIL — files outside extract/Egress_3_edge.zip:
+./_work/tree_after_Egress_3_edge.zip.txt
+./_work/unzip_Egress_3_edge.zip.log
+[21:50:47] UNZIP_TARGET_CHECK: PASS (every inflated/extracted line targets extract/Egress_3_edge.zip/)
+[21:50:47] --- symlink check (find -type l -ls): ---
+[21:50:47] no symlinks found
+[21:50:47] EXTRACTED_SHA256SUMS.txt written (35 file entries)
+[21:50:47] --- scripts/executables flag (find -name *.sh/*.py/*.c/*.bin -o -perm /111): ---
+   529442      4 -rw-r--r--   1 user     user         3151 Sep  4 19:43 extract/Egress_3_edge.zip/netmap/s1_tcp.py
+   529443      8 -rw-r--r--   1 user     user         4816 Sep  4 19:43 extract/Egress_3_edge.zip/netmap/dnsprobe.py
+   529444      4 -rw-r--r--   1 user     user         2636 Sep  4 19:45 extract/Egress_3_edge.zip/netmap/s1b_rtt.py
+   529445      4 -rw-r--r--   1 user     user         1684 Sep  4 19:46 extract/Egress_3_edge.zip/netmap/s1c_connect_vs_ttfb.py
+   529446      4 -rw-r--r--   1 user     user         2165 Sep  4 19:48 extract/Egress_3_edge.zip/netmap/s1d_proof.py
+   529447      4 -rw-r--r--   1 user     user         2919 Sep  4 19:50 extract/Egress_3_edge.zip/netmap/s3_direct_ip.py
+   529448      4 -rw-r--r--   1 user     user         2922 Sep  4 19:50 extract/Egress_3_edge.zip/netmap/s1d_v2.py
+   529449      4 -rw-r--r--   1 user     user         3378 Sep  4 19:53 extract/Egress_3_edge.zip/netmap/s4_ports.py
+   529450      4 -rw-r--r--   1 user     user         2173 Sep  4 19:53 extract/Egress_3_edge.zip/netmap/s1e_rangemap.py
+   529451      4 -rw-r--r--   1 user     user         2850 Sep  4 19:54 extract/Egress_3_edge.zip/netmap/s4b_udp.py
+   529452      4 -rw-r--r--   1 user     user         2588 Sep  4 19:57 extract/Egress_3_edge.zip/netmap/s4c_udp_control.py
+   529453      4 -rw-r--r--   1 user     user          807 Sep  4 19:59 extract/Egress_3_edge.zip/netmap/s6_bw.sh
+   529455      4 -rw-r--r--   1 user     user         3177 Sep  4 20:34 extract/Egress_3_edge.zip/netmap/s5_tls_intercept.py
+   529456      4 -rw-r--r--   1 user     user         2227 Sep  4 20:34 extract/Egress_3_edge.zip/netmap/s5_sweep.py
+   529457      4 -rw-r--r--   1 user     user         2105 Sep  4 20:34 extract/Egress_3_edge.zip/netmap/s4d_tcpdns_portquiz.py
+   529458      4 -rw-r--r--   1 user     user         1537 Sep  4 20:34 extract/Egress_3_edge.zip/netmap/s7_gaps.py
+[21:50:47] extracted counts: files=34 dirs=3 bytes=172809 (excluding EXTRACTED_SHA256SUMS.txt)
+[21:50:47] --- internal manifest/readme/notes: ---
+extract/Egress_3_edge.zip/netmap/INDEX.md
+[21:50:47] STATUS: EXTRACTED_OK
+[21:50:47] 
+[21:50:47] Phase 2 end Fri Sep  4 21:50:47 UTC 2026
+[21:51:01] 
+[21:51:01] === CORRECTION 1 (21:5x UTC): corrected escape check ===
+[21:51:01] The initial PATH_TRAVERSAL_CHECK diffs were polluted by the auditor's own _work/ artifacts (unzip logs + tree snapshots written during the run), all INSIDE the isolated root.
+[21:51:01] Corrected check: new files excluding extract/<name>/ AND excluding _work/ must be empty. Also: every file under the isolated root must be under extract/ or _work/ or a top-level report.
+[21:51:01] CORRECTED_ESCAPE_CHECK Ceilings_1_chrome.zip: PASS (no file landed outside extract/Ceilings_1_chrome.zip/; _work/ artifacts are auditor logs inside the isolated root)
+[21:51:01] CORRECTED_ESCAPE_CHECK Ceilings_2_edge.zip: PASS (no file landed outside extract/Ceilings_2_edge.zip/; _work/ artifacts are auditor logs inside the isolated root)
+[21:51:01] CORRECTED_ESCAPE_CHECK Ceilings_3_brave.zip: PASS (no file landed outside extract/Ceilings_3_brave.zip/; _work/ artifacts are auditor logs inside the isolated root)
+[21:51:01] CORRECTED_ESCAPE_CHECK Provenance_1_edge.zip: PASS (no file landed outside extract/Provenance_1_edge.zip/; _work/ artifacts are auditor logs inside the isolated root)
+[21:51:01] CORRECTED_ESCAPE_CHECK Provenance_2_brave.zip: PASS (no file landed outside extract/Provenance_2_brave.zip/; _work/ artifacts are auditor logs inside the isolated root)
+[21:51:01] CORRECTED_ESCAPE_CHECK Provenance_3_chrome.zip: PASS (no file landed outside extract/Provenance_3_chrome.zip/; _work/ artifacts are auditor logs inside the isolated root)
+[21:51:01] CORRECTED_ESCAPE_CHECK Egress_1_chrome.zip: PASS (no file landed outside extract/Egress_1_chrome.zip/; _work/ artifacts are auditor logs inside the isolated root)
+[21:51:01] CORRECTED_ESCAPE_CHECK Egress_2_brave.zip: PASS (no file landed outside extract/Egress_2_brave.zip/; _work/ artifacts are auditor logs inside the isolated root)
+[21:51:01] CORRECTED_ESCAPE_CHECK Egress_3_edge.zip: PASS (no file landed outside extract/Egress_3_edge.zip/; _work/ artifacts are auditor logs inside the isolated root)
+[21:51:01] GLOBAL_ROOT_CHECK: files outside extract/ and _work/: ./00_INVENTORY.txt
+[21:51:01] 
+[21:51:01] === CORRECTION 2: regenerate EXTRACTED_SHA256SUMS.txt without self-entry, then self-verify ===
+[21:51:01] SUMS_SELF_VERIFY Ceilings_1_chrome.zip: FAIL (35 non-OK lines)
+[21:51:01] SUMS_SELF_VERIFY Ceilings_2_edge.zip: FAIL (3 non-OK lines)
+[21:51:01] SUMS_SELF_VERIFY Ceilings_3_brave.zip: FAIL (37 non-OK lines)
+[21:51:01] SUMS_SELF_VERIFY Egress_1_chrome.zip: FAIL (31 non-OK lines)
+[21:51:01] SUMS_SELF_VERIFY Egress_2_brave.zip: FAIL (41 non-OK lines)
+[21:51:01] SUMS_SELF_VERIFY Egress_3_edge.zip: FAIL (69 non-OK lines)
+[21:51:01] SUMS_SELF_VERIFY Provenance_1_edge.zip: FAIL (13 non-OK lines)
+[21:51:01] SUMS_SELF_VERIFY Provenance_2_brave.zip: FAIL (5 non-OK lines)
+[21:51:01] SUMS_SELF_VERIFY Provenance_3_chrome.zip: FAIL (5 non-OK lines)
+[21:51:01] Phase 2 corrections complete Fri Sep  4 21:51:01 UTC 2026
+[21:51:13] 
+[21:51:13] === CORRECTION 3: self-verify from isolated root (sums paths are root-relative per protocol find form) ===
+[21:51:13] SUMS_SELF_VERIFY(v2) Ceilings_1_chrome.zip: PASS (17 entries, all OK)
+[21:51:13] SUMS_SELF_VERIFY(v2) Ceilings_2_edge.zip: PASS (1 entries, all OK)
+[21:51:13] SUMS_SELF_VERIFY(v2) Ceilings_3_brave.zip: PASS (18 entries, all OK)
+[21:51:13] SUMS_SELF_VERIFY(v2) Egress_1_chrome.zip: PASS (15 entries, all OK)
+[21:51:13] SUMS_SELF_VERIFY(v2) Egress_2_brave.zip: PASS (20 entries, all OK)
+[21:51:13] SUMS_SELF_VERIFY(v2) Egress_3_edge.zip: PASS (34 entries, all OK)
+[21:51:13] SUMS_SELF_VERIFY(v2) Provenance_1_edge.zip: PASS (6 entries, all OK)
+[21:51:13] SUMS_SELF_VERIFY(v2) Provenance_2_brave.zip: PASS (2 entries, all OK)
+[21:51:13] SUMS_SELF_VERIFY(v2) Provenance_3_chrome.zip: PASS (2 entries, all OK)
+[21:51:13] note: 00_INVENTORY.txt at isolated-root top level is the protocol-required Phase 1 report (expected location, not an escape)

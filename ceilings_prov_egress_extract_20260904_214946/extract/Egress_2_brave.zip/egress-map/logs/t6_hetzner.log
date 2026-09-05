@@ -1,0 +1,9 @@
+=== diagnose hetzner failure ===
+DNS @8.8.8.8: len=97 rcode=0 answers=0
+DNS @1.1.1.1: len=97 rcode=0 answers=0
+getaddrinfo ERR: [Errno -5] No address associated with hostname
+TCP 2a01:4f8:0:1::1:443 ERR [Errno -9] Address family for hostname not supported
+TCP 88.198.248.254:443 -> 0
+--- curl -v (head) ---
+* Could not resolve host: speed.hetzner.de
+* shutting down connection #0

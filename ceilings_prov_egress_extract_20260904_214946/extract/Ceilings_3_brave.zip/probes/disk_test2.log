@@ -1,0 +1,33 @@
+##### ROOT FS (/): sudo dd, timed write + timed sync #####
+/dev/root      ext4  25253920 4230912  20707508  17% /
+=== root-1G: 1024 MiB urandom -> /probe_1g.bin (prefix:'sudo -n') ===
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 2.72608 s, 394 MB/s
+dd (page-cache write) wall=2.74s -> 374 MiB/s write-call speed
+file size: 1073741824 bytes
+sync (device flush) wall=0.39s
+EFFECTIVE end-to-end: 3.13s -> 327 MiB/s (urandom source + real disk)
+removed /probe_1g.bin
+
+=== root-5G: 5120 MiB urandom -> /probe_5g.bin (prefix:'sudo -n') ===
+5120+0 records out
+5368709120 bytes (5.4 GB, 5.0 GiB) copied, 14.5509 s, 369 MB/s
+dd (page-cache write) wall=14.59s -> 351 MiB/s write-call speed
+file size: 5368709120 bytes
+sync (device flush) wall=0.04s
+EFFECTIVE end-to-end: 14.63s -> 350 MiB/s (urandom source + real disk)
+removed /probe_5g.bin
+
+=== root-15G: 15360 MiB urandom -> /probe_15g.bin (prefix:'sudo -n') ===
+15360+0 records out
+16106127360 bytes (16 GB, 15 GiB) copied, 43.3383 s, 372 MB/s
+dd (page-cache write) wall=43.38s -> 354 MiB/s write-call speed
+file size: 16106127360 bytes
+sync (device flush) wall=0.07s
+EFFECTIVE end-to-end: 43.45s -> 354 MiB/s (urandom source + real disk)
+removed /probe_15g.bin
+
+##### ROOT PROBES COMPLETE #####
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        25G  4.1G   20G  17% /
+ls: cannot access '/probe_*.bin': No such file or directory

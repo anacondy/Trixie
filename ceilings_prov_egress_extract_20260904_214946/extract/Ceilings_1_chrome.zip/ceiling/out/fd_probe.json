@@ -1,0 +1,22 @@
+{
+ "phase1": {
+  "extra_fds": 1018,
+  "baseline": 7,
+  "total_at_fail": 1025,
+  "errno": 24,
+  "msg": "Too many open files"
+ },
+ "phase2": {
+  "target_soft": 65536,
+  "extra_fds_opened": 65533,
+  "errno": "Too"
+ },
+ "phase3": {
+  "target_soft": 524288,
+  "extra_fds_opened": 524285,
+  "errno": "Too"
+ },
+ "phase4": {
+  "shell_output": "/bin/bash: line 1: ulimit: open files: cannot modify limit: Operation not permitted\nrc=1"
+ }
+}

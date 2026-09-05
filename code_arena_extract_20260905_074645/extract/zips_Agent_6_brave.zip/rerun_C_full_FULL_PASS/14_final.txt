@@ -1,0 +1,51 @@
+== BG TICKER survival check (spawned in previous tool call) ==
+  process 8429 alive: yes
+   8429    7395       00:12 bash
+  ticks recorded: 3
+  first tick: 2026-09-04T13:59:14Z
+  last tick:  2026-09-04T13:59:24Z
+
+== persistence markers from round 1 ==
+  /home/user/.persist_marker_probe: PRESENT -> HOME marker 2026-09-04T13:58:35Z
+  /tmp/.persist_marker_probe: PRESENT -> TMP marker 2026-09-04T13:58:35Z
+
+== VM session state ==
+  uptime: up 15 minutes (started 2026-09-04 13:43:38)
+  boot_id: 2bb79165-136a-4b63-829d-17027b0a8e40
+  hostname: e2b.local
+  sandbox_id: i9nxb4qydn3qmwway6hd3  template_id: nlhz8vlwyupq845jsdg9
+  threads: 148
+
+== load + memory now ==
+0.26 0.16 0.06 1/145 8526
+               total        used        free      shared  buff/cache   available
+Mem:            1984         434        1498          18         207        1550
+
+== envprobe raw-notes inventory ==
+  .tickerpid                        5 B
+  00_run_header.txt               264 B
+  01_runtime.txt                 4418 B
+  02_identity.txt                5836 B
+  03_tools.txt                   3656 B
+  04_fs.txt                      3377 B
+  05_cpu_mem.txt                  933 B
+  06_compilers_pkgs.txt          2522 B
+  07_cgroup_sudo.txt             3572 B
+  09_net_matrix.txt              4198 B
+  10_net_throughput.txt          1533 B
+  10b_net_throughput2.txt        1912 B
+  11_disk.txt                    1501 B
+  12_pip.txt                     1911 B
+  12b_pip2.txt                    989 B
+  13_bg_misc.txt                 2249 B
+  14_final.txt                    888 B
+  bg_ticks.txt                     63 B
+
+== total workspace size ==
+84K	/tmp/full_run
+
+== /proc/1 sanity: container re-check ==
+  dockerenv+containerenv absent count (expect 2): 2
+
+== jupyter health (service on 8888/49999) ==
+  jupyter 127.0.0.1:8888 -> 200

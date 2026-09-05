@@ -1,0 +1,19 @@
+=== df -h ===
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        25G  4.1G   20G  17% /
+
+=== df -i ===
+Filesystem      Inodes  IUsed   IFree IUse% Mounted on
+/dev/root      6759792 136299 6623493    3% /
+
+=== free -h ===
+               total        used        free      shared  buff/cache   available
+Mem:           1.9Gi       461Mi       1.3Gi       1.1Mi       390Mi       1.5Gi
+Swap:             0B          0B          0B
+
+=== /proc/meminfo (first lines) ===
+MemTotal:        2032608 kB
+MemFree:         1349604 kB
+MemAvailable:    1559972 kB
+Buffers:           61132 kB
+Cached:           202276 kB

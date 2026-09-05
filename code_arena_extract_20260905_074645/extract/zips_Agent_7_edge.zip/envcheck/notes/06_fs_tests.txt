@@ -1,0 +1,21 @@
+### write/read/delete tests 11:16:54
+/tmp : WRITE+READ+DELETE OK (1048576 bytes, sha1=b4804ec8fb821c5c5036607352515465d5accb2d read_back=b4804ec8fb821c5c5036607352515465d5accb2d MATCH)
+/home/user : WRITE+READ+DELETE OK (1048576 bytes, sha1=2f89d2dac9eea2adcbfd260a9fd075e3045197dc read_back=2f89d2dac9eea2adcbfd260a9fd075e3045197dc MATCH)
+/home/user/envcheck : WRITE+READ+DELETE OK (1048576 bytes, sha1=65c54abcb9828a3f113126ced2942ffbb4fc5a38 read_back=65c54abcb9828a3f113126ced2942ffbb4fc5a38 MATCH)
+/var/tmp : WRITE+READ+DELETE OK (1048576 bytes, sha1=a190ab2c09646acb09b18e010004bb47e4f7f2b6 read_back=a190ab2c09646acb09b18e010004bb47e4f7f2b6 MATCH)
+/dev/shm : WRITE+READ+DELETE OK (1048576 bytes, sha1=c2769e72e891c2a906bae1bb7644850ba2fa6e10 read_back=c2769e72e891c2a906bae1bb7644850ba2fa6e10 MATCH)
+
+### 200MB write to /tmp + fsync
+209715200 bytes (210 MB, 200 MiB) copied, 0.104157 s, 2.0 GB/s
+-rw-r--r-- 1 user user 209715200 Sep  4 11:16 /tmp/big.bin
+
+### special filename
+OK
+
+### 100k small files in /tmp (inode/tmpfs stress)
+/bin/bash: line 13: bc: command not found
+created 20000 files in  s
+
+### read-only mount probe
+touch: cannot touch '/proc/version': Permission denied
+touch: cannot touch '/sys/kernel/config': Permission denied

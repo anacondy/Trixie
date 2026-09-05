@@ -1,0 +1,18 @@
+Archive:  /home/user/Trixie/zips/Agent 8 edge.zip
+  inflating: extract/zips_Agent_8_edge.zip/README_ZIP.md  
+  inflating: extract/zips_Agent_8_edge.zip/VERIFICATION_MANIFEST.md  
+  inflating: extract/zips_Agent_8_edge.zip/environment_characterization.md  
+  inflating: extract/zips_Agent_8_edge.zip/probe_environment.sh  
+   creating: extract/zips_Agent_8_edge.zip/probe_raw/
+  inflating: extract/zips_Agent_8_edge.zip/probe_raw/01_runtime.txt  
+  inflating: extract/zips_Agent_8_edge.zip/probe_raw/02_isolation.txt  
+  inflating: extract/zips_Agent_8_edge.zip/probe_raw/03_identity_limits.txt  
+  inflating: extract/zips_Agent_8_edge.zip/probe_raw/04_cpu_mem.txt  
+  inflating: extract/zips_Agent_8_edge.zip/probe_raw/05_tools.txt  
+  inflating: extract/zips_Agent_8_edge.zip/probe_raw/06_python_pkgs.txt  
+  inflating: extract/zips_Agent_8_edge.zip/probe_raw/07_filesystem.txt  
+  inflating: extract/zips_Agent_8_edge.zip/probe_raw/08_env.txt  
+  inflating: extract/zips_Agent_8_edge.zip/probe_raw/09_net_matrix.txt  
+  inflating: extract/zips_Agent_8_edge.zip/probe_raw/10_benches.txt  
+  inflating: extract/zips_Agent_8_edge.zip/probe_raw/11_pip_sample.txt  
+  inflating: extract/zips_Agent_8_edge.zip/probe_raw/00_MANIFEST.txt  

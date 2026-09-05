@@ -1,0 +1,31 @@
+### Fixed network probes (follow redirects)
+--- files.pythonhosted.org numpy wheel (Fastly CDN), follow redirects:
+http=404 bytes=0 total=0.128382s avg=0B/s
+candidate wheel: https://files.pythonhosted.org/packages/65/fb/2b23769462b34398d9326081fad5655198fcf18966fcb1f1e49db44fbf31/numpy-2.3.5-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+--- curl -L wheel (numpy cp313 manylinux, ~19MB):
+http=200 bytes=16897903 total=0.174222s avg=96990638B/s
+
+--- 4 parallel 10MB ranges from Fastly (same wheel, varied offsets):
+4x10MB parallel wall=0.18s
+
+--- GitHub release asset (prometheus ~100MB), follow redirects:
+http=200 bytes=114163078 total=0.701228s avg=162804505B/s
+
+--- HuggingFace gpt2 50MB range, follow redirects:
+http=206 bytes=52428800 total=0.875396s avg=59891523B/s
+
+--- HuggingFace xet/CAS gated? (meta-llama would 401; test llama3 config):
+http=401 bytes=131
+
+--- httpbin POST upload (5MB):
+http=200 sent=5242880 total=3.246002s upload_speed=1615180B/s
+
+--- npm registry latency/throughput:
+npmjs http=200 dns=0.001569 conn=0.002000 ttfb=0.094915 total=0.329897
+
+--- E2B_EVENTS_ADDRESS (192.0.2.1) proper probe:
+192.0.2.1:80 -> CONNECTED in 0.3 ms
+192.0.2.1:443 -> CONNECTED in 0.2 ms
+192.0.2.1:4444 -> CONNECTED in 0.2 ms
+192.0.2.1:8080 -> CONNECTED in 0.2 ms
+192.0.2.1:22 -> CONNECTED in 0.1 ms

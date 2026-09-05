@@ -1,0 +1,182 @@
+[
+ {
+  "host": "https://www.google.com/",
+  "code": 200,
+  "dns": 0.001261,
+  "tcp": 0.00164,
+  "tls": 0.021939,
+  "ttfb": 0.061965,
+  "total": 0.062893,
+  "size": 83260
+ },
+ {
+  "host": "https://pypi.org/",
+  "code": 200,
+  "dns": 0.001284,
+  "tcp": 0.001606,
+  "tls": 0.020404,
+  "ttfb": 0.029355,
+  "total": 0.0311,
+  "size": 27965
+ },
+ {
+  "host": "https://github.com/",
+  "code": 200,
+  "dns": 0.001697,
+  "tcp": 0.00193,
+  "tls": 0.019481,
+  "ttfb": 0.027943,
+  "total": 0.067214,
+  "size": 576116
+ },
+ {
+  "host": "https://www.amazon.co.jp/",
+  "code": 503,
+  "dns": 0.028071,
+  "tcp": 0.028371,
+  "tls": 0.045703,
+  "ttfb": 0.08383,
+  "total": 0.083915,
+  "size": 3869
+ },
+ {
+  "host": "https://www.uol.com.br/",
+  "code": 200,
+  "dns": 0.02227,
+  "tcp": 0.022543,
+  "tls": 0.042864,
+  "ttfb": 0.063566,
+  "total": 0.107056,
+  "size": 796798
+ },
+ {
+  "host": "https://www.telstra.com.au/",
+  "code": 200,
+  "dns": 0.018659,
+  "tcp": 0.018973,
+  "tls": 0.037001,
+  "ttfb": 0.075541,
+  "total": 0.101865,
+  "size": 365965
+ },
+ {
+  "host": "https://www.chinadaily.com.cn/",
+  "code": 200,
+  "dns": 0.073192,
+  "tcp": 0.073464,
+  "tls": 0.172182,
+  "ttfb": 0.221382,
+  "total": 0.27656,
+  "size": 120149
+ },
+ {
+  "host": "https://huggingface.co/",
+  "code": 200,
+  "dns": 0.021473,
+  "tcp": 0.021796,
+  "tls": 0.040553,
+  "ttfb": 0.06085,
+  "total": 0.07785,
+  "size": 183740
+ },
+ {
+  "host": "https://pastebin.com/",
+  "code": 200,
+  "dns": 0.001702,
+  "tcp": 0.002004,
+  "tls": 0.021944,
+  "ttfb": 0.230186,
+  "total": 0.231205,
+  "size": 43040
+ },
+ {
+  "host": "https://webhook.site/",
+  "code": 200,
+  "dns": 0.010196,
+  "tcp": 0.010467,
+  "tls": 0.326052,
+  "ttfb": 0.632084,
+  "total": 0.795354,
+  "size": 89478
+ },
+ {
+  "host": "https://transfer.sh/",
+  "code": "ERR",
+  "err": ""
+ },
+ {
+  "host": "https://ngrok.io/",
+  "code": 308,
+  "dns": 0.009102,
+  "tcp": 0.009424,
+  "tls": 0.064221,
+  "ttfb": 0.088929,
+  "total": 0.088961,
+  "size": 0
+ },
+ {
+  "host": "https://api.anthropic.com/",
+  "code": 404,
+  "dns": 0.009099,
+  "tcp": 0.009349,
+  "tls": 0.030602,
+  "ttfb": 0.044337,
+  "total": 0.044583,
+  "size": 132
+ },
+ {
+  "host": "https://openai.com/",
+  "code": 403,
+  "dns": 0.002254,
+  "tcp": 0.002502,
+  "tls": 0.022176,
+  "ttfb": 0.036982,
+  "total": 0.037153,
+  "size": 9616
+ },
+ {
+  "host": "https://files.pythonhosted.org/",
+  "code": 200,
+  "dns": 0.00965,
+  "tcp": 0.010012,
+  "tls": 0.028499,
+  "ttfb": 0.038829,
+  "total": 0.038953,
+  "size": 1853
+ },
+ {
+  "host": "https://raw.githubusercontent.com/",
+  "code": 301,
+  "dns": 0.001099,
+  "tcp": 0.001379,
+  "tls": 0.020397,
+  "ttfb": 0.027795,
+  "total": 0.027841,
+  "size": 0
+ },
+ {
+  "host": "https://registry.npmjs.org/",
+  "code": 200,
+  "dns": 0.001257,
+  "tcp": 0.001574,
+  "tls": 0.033795,
+  "ttfb": 0.054072,
+  "total": 0.054162,
+  "size": 2
+ },
+ {
+  "host": "https://scanme.nmap.org/",
+  "code": "ERR",
+  "err": ""
+ },
+ {
+  "host": "https://events.e2b.local/",
+  "code": "ERR",
+  "err": ""
+ },
+ {
+  "host": "https://192.0.2.1/",
+  "code": "ERR",
+  "err": ""
+ }
+]

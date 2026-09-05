@@ -1,0 +1,42 @@
+################################################################
+# SECTION: 16_envconfig.txt   (probe run run_20260904T141747Z)
+# STARTED : 2026-09-04T14:18:43Z
+################################################################
+### environment variables (sorted)
+E2B_EVENTS_ADDRESS=http://192.0.2.1
+E2B_SANDBOX=true
+E2B_SANDBOX_ID=ilvohmgrk3rcbvrgm79be
+E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+HOME=/home/user
+LOGNAME=user
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+PWD=/home/user
+SHELL=/bin/bash
+SHLVL=2
+USER=user
+_=/usr/bin/env
+
+### /.e2b (image provenance)
+ENV_ID=nlhz8vlwyupq845jsdg9
+TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+BUILD_ID=f34a5416-ef30-4cb7-8e18-0fdecd6eb529
+
+### /etc/resolv.conf
+nameserver 8.8.8.8
+### locale/timezone
+LANG=
+LANGUAGE=
+LC_CTYPE="POSIX"
+LC_NUMERIC="POSIX"
+
+### /etc/hosts
+127.0.0.1        localhost
+::1              localhost ip6-localhost ip6-loopback
+fe00::           ip6-localnet
+ff00::           ip6-mcastprefix
+ff02::1          ip6-allnodes
+ff02::2          ip6-allrouters
+127.0.1.1        e2b.local
+192.0.2.1        events.e2b.local
+
+# section rc=0   FINISHED: 2026-09-04T14:18:43Z

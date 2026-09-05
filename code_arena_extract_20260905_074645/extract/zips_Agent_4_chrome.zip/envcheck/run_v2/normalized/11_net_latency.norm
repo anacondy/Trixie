@@ -1,0 +1,35 @@
+================================================================
+ probe.sh v1.<NUM>   section: 11_net_latency.txt
+ host:      e2b.local   kernel: <NUM>.158+   arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user:      user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ python3 lat.py 3
+  TCP connect only (median of 3 fresh sockets; no TLS)
+  endpoint                                res  min ms  med ms  max ms
+  google.com:80                            OK    <NUM>    <NUM>    <NUM>
+  <NUM>.<NUM>:80                               OK    <NUM>    <NUM>    <NUM>
+  <NUM>.<NUM>:53                               OK    <NUM>    <NUM>    <NUM>
+  github.com:443                           OK   <NUM>   <NUM>   <NUM>
+  pypi.org:443                             OK    <NUM>    <NUM>    <NUM>
+  files.pythonhosted.org:443               OK    <NUM>    <NUM>    <NUM>
+  huggingface.co:443                       OK    <NUM>   <NUM>   <NUM>
+  registry.npmjs.org:443                   OK    <NUM>    <NUM>    <NUM>
+  cdn.jsdelivr.net:443                     OK    <NUM>    <NUM>   <NUM>
+  deb.debian.org:443                       OK    <NUM>    <NUM>    <NUM>
+  objects.<TOKEN>.com:443         OK    <NUM>    <NUM>    <NUM>
+
+  TLS: tcp / handshake / total (median of 3); negotiated version + cipher
+  host                           ver        tcp ms  tls ms  tot ms  cipher
+  google.com                     TLSv1.3      <NUM>    <NUM>    <NUM>  TLS_AES_256_GCM_SHA384
+  github.com                     TLSv1.3     <NUM>   <NUM>   <NUM>  TLS_AES_128_GCM_SHA256
+  pypi.org                       TLSv1.3      <NUM>   <NUM>   <NUM>  TLS_AES_128_GCM_SHA256
+  files.pythonhosted.org         TLSv1.3      <NUM>   <NUM>   <NUM>  TLS_AES_128_GCM_SHA256
+  huggingface.co                 TLSv1.3     <NUM>   <NUM>   <NUM>  TLS_AES_128_GCM_SHA256
+  registry.npmjs.org             TLSv1.2      <NUM>   <NUM>   <NUM>  ECDHE-ECDSA-AES128-GCM-SHA256
+  cdn.jsdelivr.net               TLSv1.3      <NUM>   <NUM>   <NUM>  TLS_AES_256_GCM_SHA384
+  deb.debian.org                 TLSv1.3      <NUM>   <NUM>   <NUM>  TLS_AES_128_GCM_SHA256
+
+  Interpretation aid: if tcp-connect medians to geographically distant CDNs are nearly identical,
+  the handshake is being terminated by a nearby proxy rather than the remote host.

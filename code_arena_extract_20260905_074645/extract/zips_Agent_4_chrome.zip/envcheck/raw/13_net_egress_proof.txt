@@ -1,0 +1,33 @@
+================================================================
+ probe.sh v1.0.0   section: 13_net_egress_proof.txt
+ run_id:    20260904T142012Z-22063
+ started:   2026-09-04T14:23:16Z
+ sandbox:   i0m9mhony51frr3osghn0
+ template:  nlhz8vlwyupq845jsdg9
+ host:      e2b.local   kernel: 6.1.158+   arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user:      user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ python3 proof.py
+  These addresses must NEVER answer a TCP SYN on the public internet.
+  A successful connect() therefore proves a local transparent proxy is terminating handshakes.
+
+  target                        verdict       ms  label
+  203.0.113.45:9999           CONNECTED     3.58  RFC5737 TEST-NET-3 (documentation, unroutable)
+                                                  then recv=TimeoutError
+  240.0.0.1:12345             CONNECTED     0.57  RFC1112 reserved Class-E (must not be routable)
+                                                  then recv=TimeoutError
+  192.0.2.1:80                CONNECTED     0.36  RFC5737 TEST-NET-1
+                                                  then recv=TimeoutError
+  10.255.255.1:54321       TIMEOUTERROR   8008.3  RFC1918 private, no local route
+  198.51.100.0:443            CONNECTED     0.44  RFC5737 TEST-NET-2
+                                                  then recv=TimeoutError
+  1.1.1.1:54321               CONNECTED     5.15  Cloudflare on an absurd port
+                                                  then recv=TimeoutError
+  github.com:5432             CONNECTED     1.28  GitHub on PostgreSQL port (no such service)
+                                                  then recv=TimeoutError
+
+  Verdict rule: if any unroutable/reserved target CONNECTS, then
+    (a) port scanning from inside this sandbox is meaningless, and
+    (b) application code must not treat 'socket connected' as reachability.

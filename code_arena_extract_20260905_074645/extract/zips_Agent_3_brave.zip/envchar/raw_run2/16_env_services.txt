@@ -1,0 +1,55 @@
+# ============================================================
+# probe_environment.sh :: 16 environment variables, listening sockets, sandbox plane
+# run_id: raw_run2   mode: stress
+# host: e2b.local   user: user(1000)
+# date_utc: 2026-09-04T13:47:36Z
+# ============================================================
+
+$ env | sort (token-like values redacted)
+E2B_EVENTS_ADDRESS=http://192.0.2.1
+E2B_SANDBOX=true
+E2B_SANDBOX_ID=iq0hfwsxhi5bhzqv4auur
+E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+HOME=/home/user
+LC_ALL=C
+LOGNAME=user
+OLDPWD=/tmp/tmp.3FqFvMiIsK/npm
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+PWD=/
+SHELL=/bin/bash
+SHLVL=2
+USER=user
+_=/usr/bin/env
+
+$ proxy vars
+none set
+
+$ listening sockets
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                                                  
+LISTEN 0      100        127.0.0.1:35769      0.0.0.0:*    users:(("python3.13",pid=475,fd=11))                    
+LISTEN 0      5       169.254.0.21:47945      0.0.0.0:*    users:(("socat",pid=513,fd=6))                          
+LISTEN 0      5       169.254.0.21:34675      0.0.0.0:*    users:(("socat",pid=514,fd=6))                          
+LISTEN 0      4096         0.0.0.0:111        0.0.0.0:*    users:(("rpcbind",pid=336,fd=4),("systemd",pid=1,fd=38))
+LISTEN 0      5       169.254.0.21:35769      0.0.0.0:*    users:(("socat",pid=512,fd=6))                          
+LISTEN 0      100        127.0.0.1:47945      0.0.0.0:*    users:(("python3.13",pid=475,fd=35))                    
+LISTEN 0      100        127.0.0.1:34675      0.0.0.0:*    users:(("python3.13",pid=475,fd=27))                    
+LISTEN 0      128        127.0.0.1:8888       0.0.0.0:*    users:(("jupyter-server",pid=437,fd=6))                 
+LISTEN 0      5       169.254.0.21:8888       0.0.0.0:*    users:(("socat",pid=470,fd=6))                          
+LISTEN 0      100        127.0.0.1:44461      0.0.0.0:*    users:(("python3.13",pid=475,fd=13))                    
+LISTEN 0      5       169.254.0.21:35105      0.0.0.0:*    users:(("socat",pid=521,fd=6))                          
+LISTEN 0      100        127.0.0.1:39379      0.0.0.0:*    users:(("node",pid=490,fd=30))                          
+LISTEN 0      100        127.0.0.1:41435      0.0.0.0:*    users:(("node",pid=490,fd=33))                          
+LISTEN 0      100        127.0.0.1:43501      0.0.0.0:*    users:(("node",pid=490,fd=32))                          
+LISTEN 0      100        127.0.0.1:35105      0.0.0.0:*    users:(("node",pid=490,fd=34))                          
+LISTEN 0      5       169.254.0.21:44461      0.0.0.0:*    users:(("socat",pid=515,fd=6))                          
+LISTEN 0      5       169.254.0.21:39379      0.0.0.0:*    users:(("socat",pid=516,fd=6))                          
+LISTEN 0      5       169.254.0.21:41435      0.0.0.0:*    users:(("socat",pid=517,fd=6))                          
+LISTEN 0      5       169.254.0.21:43501      0.0.0.0:*    users:(("socat",pid=518,fd=6))                          
+LISTEN 0      5       169.254.0.21:60465      0.0.0.0:*    users:(("socat",pid=523,fd=6))                          
+LISTEN 0      5       169.254.0.21:53335      0.0.0.0:*    users:(("socat",pid=525,fd=6))                          
+LISTEN 0      5       169.254.0.21:60493      0.0.0.0:*    users:(("socat",pid=524,fd=6))                          
+LISTEN 0      2048         0.0.0.0:49999      0.0.0.0:*    users:(("uvicorn",pid=463,fd=17))                       
+LISTEN 0      100        127.0.0.1:60465      0.0.0.0:*    users:(("python3.13",pid=475,fd=22))                    
+
+$ E2B control-plane probe (E2B_EVENTS_ADDRESS)
+http:404 total:0.000722s

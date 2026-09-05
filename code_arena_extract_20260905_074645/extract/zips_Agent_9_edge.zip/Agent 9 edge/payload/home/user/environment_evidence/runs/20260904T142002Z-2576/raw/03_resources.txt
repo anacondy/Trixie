@@ -1,0 +1,282 @@
+probe_run_start_utc=2026-09-04T14:20:02.722079460Z
+probe_mode=full
+probe_script=/home/user/environment_evidence/probe_environment.sh
+raw_file=03_resources.txt
+
+$ ulimit -a
+real-time non-blocking time  (microseconds, -R) unlimited
+core file size              (blocks, -c) 0
+data seg size               (kbytes, -d) unlimited
+scheduling priority                 (-e) 0
+file size                   (blocks, -f) unlimited
+pending signals                     (-i) 7917
+max locked memory           (kbytes, -l) 8192
+max memory size             (kbytes, -m) unlimited
+open files                          (-n) 1024
+pipe size                (512 bytes, -p) 8
+POSIX message queues         (bytes, -q) 819200
+real-time priority                  (-r) 0
+stack size                  (kbytes, -s) 8192
+cpu time                   (seconds, -t) unlimited
+max user processes                  (-u) 7917
+virtual memory              (kbytes, -v) unlimited
+file locks                          (-x) unlimited
+[exit_code=0]
+
+$ prlimit --pid $$
+RESOURCE   DESCRIPTION                             SOFT      HARD UNITS
+AS         address space limit                unlimited unlimited bytes
+CORE       max core file size                         0         0 bytes
+CPU        CPU time                           unlimited unlimited seconds
+DATA       max data size                      unlimited unlimited bytes
+FSIZE      max file size                      unlimited unlimited bytes
+LOCKS      max number of file locks held      unlimited unlimited locks
+MEMLOCK    max locked-in-memory address space   8388608   8388608 bytes
+MSGQUEUE   max bytes in POSIX mqueues            819200    819200 bytes
+NICE       max nice prio allowed to raise             0         0 
+NOFILE     max number of open files                1024    524288 files
+NPROC      max number of processes                 7917      7917 processes
+RSS        max resident set size              unlimited unlimited bytes
+RTPRIO     max real-time priority                     0         0 
+RTTIME     timeout for real-time tasks        unlimited unlimited microsecs
+SIGPENDING max number of pending signals           7917      7917 signals
+STACK      max stack size                       8388608 unlimited bytes
+[exit_code=0]
+
+$ nproc; nproc --all; lscpu
+2
+2
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           46 bits physical, 48 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  2
+On-line CPU(s) list:                     0,1
+Vendor ID:                               GenuineIntel
+Model name:                              Intel(R) Xeon(R) Processor @ 2.60GHz
+CPU family:                              6
+Model:                                   106
+Thread(s) per core:                      2
+Core(s) per socket:                      1
+Socket(s):                               1
+Stepping:                                6
+BogoMIPS:                                5200.05
+Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault invpcid_single ssbd ibrs ibpb stibp ibrs_enhanced fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves arat avx512vbmi umip avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid fsrm md_clear arch_capabilities
+Hypervisor vendor:                       KVM
+Virtualization type:                     full
+L1d cache:                               48 KiB (1 instance)
+L1i cache:                               32 KiB (1 instance)
+L2 cache:                                1.3 MiB (1 instance)
+L3 cache:                                54 MiB (1 instance)
+NUMA node(s):                            1
+NUMA node0 CPU(s):                       0,1
+Vulnerability Gather data sampling:      Not affected
+Vulnerability Indirect target selection: Mitigation; Aligned branch/return thunks
+Vulnerability Itlb multihit:             Not affected
+Vulnerability L1tf:                      Not affected
+Vulnerability Mds:                       Not affected
+Vulnerability Meltdown:                  Not affected
+Vulnerability Mmio stale data:           Not affected
+Vulnerability Reg file data sampling:    Not affected
+Vulnerability Retbleed:                  Not affected
+Vulnerability Spec rstack overflow:      Not affected
+Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loop
+Vulnerability Srbds:                     Not affected
+Vulnerability Tsa:                       Not affected
+Vulnerability Tsx async abort:           Not affected
+Vulnerability Vmscape:                   Not affected
+[exit_code=0]
+
+$ free -b; cat /proc/meminfo
+               total        used        free      shared  buff/cache   available
+Mem:      2081390592   500002816  1228369920     1343488   546930688  1581387776
+Swap:              0           0           0
+MemTotal:        2032608 kB
+MemFree:         1199580 kB
+MemAvailable:    1544324 kB
+Buffers:           64144 kB
+Cached:           328112 kB
+SwapCached:            0 kB
+Active:           264040 kB
+Inactive:         370188 kB
+Active(anon):        608 kB
+Inactive(anon):   242680 kB
+Active(file):     263432 kB
+Inactive(file):   127508 kB
+Unevictable:           8 kB
+Mlocked:               4 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Zswap:                 0 kB
+Zswapped:              0 kB
+Dirty:               440 kB
+Writeback:             0 kB
+AnonPages:        240152 kB
+Mapped:            90668 kB
+Shmem:              1312 kB
+KReclaimable:     141856 kB
+Slab:             163820 kB
+SReclaimable:     141856 kB
+SUnreclaim:        21964 kB
+KernelStack:        2320 kB
+PageTables:         3200 kB
+SecPageTables:         0 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     1016304 kB
+Committed_AS:     568496 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:        5560 kB
+VmallocChunk:          0 kB
+Percpu:              664 kB
+AnonHugePages:     10240 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+FileHugePages:         0 kB
+FilePmdMapped:         0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:       55296 kB
+DirectMap2M:     2041856 kB
+DirectMap1G:     2097152 kB
+[exit_code=0]
+
+$ CG=$(awk -F: '$1=="0"{print $3}' /proc/self/cgroup); echo "cgroup=$CG"; D="/sys/fs/cgroup$CG"; for f in cgroup.controllers cgroup.events cpu.max cpu.max.burst cpu.weight cpu.stat cpuset.cpus cpuset.cpus.effective cpuset.mems.effective memory.max memory.high memory.current memory.peak memory.swap.max memory.swap.current memory.events memory.stat pids.max pids.current pids.events io.max io.stat cpu.pressure memory.pressure io.pressure; do echo "[$f]"; cat "$D/$f" 2>&1; done
+cgroup=/user
+[cgroup.controllers]
+cpuset cpu io memory pids
+[cgroup.events]
+populated 1
+frozen 0
+[cpu.max]
+max 100000
+[cpu.max.burst]
+0
+[cpu.weight]
+50
+[cpu.stat]
+usage_usec 29261741
+user_usec 24905958
+system_usec 4355783
+nr_periods 0
+nr_throttled 0
+throttled_usec 0
+nr_bursts 0
+burst_usec 0
+[cpuset.cpus]
+
+[cpuset.cpus.effective]
+0-1
+[cpuset.mems.effective]
+0
+[memory.max]
+1947172864
+[memory.high]
+1947172864
+[memory.current]
+349786112
+[memory.peak]
+891387904
+[memory.swap.max]
+max
+[memory.swap.current]
+0
+[memory.events]
+low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+[memory.stat]
+anon 737280
+file 225759232
+kernel 122662912
+kernel_stack 32768
+pagetables 110592
+sec_pagetables 0
+percpu 0
+sock 0
+vmalloc 0
+shmem 233472
+zswap 0
+zswapped 0
+file_mapped 1630208
+file_dirty 102400
+file_writeback 0
+swapcached 0
+anon_thp 0
+file_thp 0
+shmem_thp 0
+inactive_anon 684032
+active_anon 237568
+inactive_file 49061888
+active_file 176463872
+unevictable 0
+slab_reclaimable 121384704
+slab_unreclaimable 190880
+slab 121575584
+workingset_refault_anon 0
+workingset_refault_file 0
+workingset_activate_anon 0
+workingset_activate_file 0
+workingset_restore_anon 0
+workingset_restore_file 0
+workingset_nodereclaim 0
+pgscan 0
+pgsteal 0
+pgscan_kswapd 0
+pgscan_direct 0
+pgsteal_kswapd 0
+pgsteal_direct 0
+pgfault 846441
+pgmajfault 818
+pgrefill 0
+pgactivate 104659
+pgdeactivate 0
+pglazyfree 0
+pglazyfreed 0
+zswpin 0
+zswpout 0
+thp_fault_alloc 518
+thp_collapse_alloc 0
+[pids.max]
+max
+[pids.current]
+3
+[pids.events]
+max 0
+[io.max]
+[io.stat]
+254:0 rbytes=851431424 wbytes=216109056 rios=30953 wios=1187 dbytes=0 dios=0
+[cpu.pressure]
+cat: /sys/fs/cgroup/user/cpu.pressure: No such file or directory
+[memory.pressure]
+cat: /sys/fs/cgroup/user/memory.pressure: No such file or directory
+[io.pressure]
+cat: /sys/fs/cgroup/user/io.pressure: No such file or directory
+[exit_code=1]
+
+$ for f in /proc/pressure/cpu /proc/pressure/memory /proc/pressure/io; do echo "[$f]"; cat "$f" 2>&1; done
+[/proc/pressure/cpu]
+cat: /proc/pressure/cpu: No such file or directory
+[/proc/pressure/memory]
+cat: /proc/pressure/memory: No such file or directory
+[/proc/pressure/io]
+cat: /proc/pressure/io: No such file or directory
+[exit_code=1]
+
+$ echo "before soft=$(ulimit -Sn) hard=$(ulimit -Hn)"; ulimit -Sn "$(ulimit -Hn)"; echo "after soft=$(ulimit -Sn) hard=$(ulimit -Hn)"
+before soft=1024 hard=524288
+after soft=524288 hard=524288
+[exit_code=0]
+
+$ command -v nvidia-smi && nvidia-smi
+[exit_code=1]

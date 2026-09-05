@@ -1,0 +1,11 @@
+=== STANDARDISED BANDWIDTH @ 99,000,000 bytes (max permitted; 100,000,000 -> 403) ===
+--- 3 SEQUENTIAL ---
+SEQ run1 http=200 bytes=99000000 time_total=0.602660s speed_download=164271728B/s
+SEQ run2 http=200 bytes=99000000 time_total=0.370959s speed_download=266875854B/s
+SEQ run3 http=200 bytes=99000000 time_total=0.380518s speed_download=260171660B/s
+--- 3 PARALLEL ---
+PAR run3 http=200 bytes=99000000 time_total=0.431447s speed_download=229460397B/s
+PAR run2 http=200 bytes=99000000 time_total=0.456280s speed_download=216972034B/s
+PAR run1 http=200 bytes=99000000 time_total=0.525833s speed_download=188272702B/s
+--- cross-check: hetzner 100MB.bin (substitute endpoint) ---
+HETZNER 100MB http=000 bytes=0 time_total=0.001405s speed_download=0B/s

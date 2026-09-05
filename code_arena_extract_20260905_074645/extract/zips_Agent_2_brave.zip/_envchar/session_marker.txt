@@ -1,0 +1,4 @@
+created_utc=2026-09-04T09:59:50Z
+sandbox_id=i0v44lh3n78xffvhm6u5u
+uptime_s=416.68
+purpose=cross-session persistence probe

@@ -1,0 +1,19 @@
+HTTP/2 206 
+accept-ranges: bytes
+content-disposition: attachment
+content-security-policy: default-src 'none'
+server: downloads
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-identity-content-length: 141157492
+x-xss-protection: 0
+date: Fri, 04 Sep 2026 12:14:03 GMT
+cache-control: no-transform,public,max-age=0
+last-modified: Thu, 03 Sep 2026 19:13:54 GMT
+etag: "6b4f836"
+content-type: application/x-debian-package
+vary: Accept-Encoding
+content-range: bytes 0-4999999/141157492
+content-length: 5000000
+age: 0
+

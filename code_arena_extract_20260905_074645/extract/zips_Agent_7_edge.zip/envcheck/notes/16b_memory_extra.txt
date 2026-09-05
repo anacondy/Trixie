@@ -1,0 +1,48 @@
+### Memory pressure, proper version (200MB steps, touch pages)
+baseline memory.current = 425467904
+/bin/bash: line 40:  2336 Killed                  python3 - <<'EOF'
+import time, resource
+def cur():
+    with open("/sys/fs/cgroup/user/memory.current") as f: return f.read().strip()
+bufs=[]
+for step in range(1, 13):
+    b = bytearray(200 * 1024 * 1024)
+    for i in range(0, len(b), 4096): b[i] = 1
+    bufs.append(b)
+    print(f"step {step}: +200MB (total ~{step*200}MB) -> memory.current={cur()} rss_max={resource.getrusage(resource.RUSAGE_SELF).ru_maxrss//1024}MB")
+    time.sleep(0.2)
+EOF
+
+exit=137
+memory.events after:
+low 0
+high 0
+max 0
+oom 0
+oom_kill 1
+oom_group_kill 0
+memory.current after: 7925760
+
+### tmpfs small-file comparison
+tmpfs create+write 20000 files: 0.26s (77619 files/s)
+tmpfs delete 20000 files      : 0.06s (344475 files/s)
+
+### site-packages writability (why pip works without sudo)
+drwxrwxrwx  41 root root  4096 Jul 23 15:09 /usr/local/lib/python3.13
+drwxrwxrwx 369 root root 12288 Sep  4 11:19 /usr/local/lib/python3.13/site-packages
+drwxr-xr-x 9 root root 4096 Jul 23 15:09 /usr/lib/python3/dist-packages
+
+### 192.0.2.1 HTTP behavior (internal endpoint)
+*   Trying 192.0.2.1:80...
+* Connected to 192.0.2.1 (192.0.2.1) port 80
+* using HTTP/1.x
+> GET / HTTP/1.1
+> Host: 192.0.2.1
+> User-Agent: curl/8.14.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 404 Not Found
+< Content-Type: application/json; charset=utf-8
+< Date: Fri, 04 Sep 2026 11:20:49 GMT
+GET https://192.0.2.1/ -> http=000 t=5.002366

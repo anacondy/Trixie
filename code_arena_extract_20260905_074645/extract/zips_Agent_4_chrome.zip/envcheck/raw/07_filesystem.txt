@@ -1,0 +1,113 @@
+================================================================
+ probe.sh v1.0.0   section: 07_filesystem.txt
+ run_id:    20260904T142012Z-22063
+ started:   2026-09-04T14:20:19Z
+ sandbox:   i0m9mhony51frr3osghn0
+ template:  nlhz8vlwyupq845jsdg9
+ host:      e2b.local   kernel: 6.1.158+   arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user:      user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ pwd; echo HOME=$HOME; echo; df -hT . /tmp /var/tmp /dev/shm 2>&1; echo '--- inodes ---'; df -i . /tmp /var/tmp /dev/shm 2>&1
+/home/user/envcheck
+HOME=/home/user
+
+Filesystem     Type   Size  Used Avail Use% Mounted on
+/dev/root      ext4    25G  4.1G   20G  18% /
+tmpfs          tmpfs  993M   14M  980M   2% /tmp
+/dev/root      ext4    25G  4.1G   20G  18% /
+tmpfs          tmpfs  993M     0  993M   0% /dev/shm
+--- inodes ---
+Filesystem      Inodes  IUsed   IFree IUse% Mounted on
+/dev/root      6759792 136557 6623235    3% /
+tmpfs          1048576   1174 1047402    1% /tmp
+/dev/root      6759792 136557 6623235    3% /
+tmpfs           254076      2  254074    1% /dev/shm
+
+$ findmnt -o TARGET,SOURCE,FSTYPE,OPTIONS 2>/dev/null | sort | head -30 || mount | sort | head -30
+/                                             /dev/vda          ext4       rw,relatime,discard
+TARGET                                        SOURCE            FSTYPE     OPTIONS
+`-/etc/ssl/certs                              tmpfs[/e2b/certs] tmpfs      rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755
+| `-/dev/hugepages                            hugetlbfs         hugetlbfs  rw,nosuid,nodev,relatime,pagesize=2M
+| `-/proc/sys/fs/binfmt_misc                  systemd-1         autofs     rw,relatime,fd=36,pgrp=1,timeout=0,minproto=5,maxproto=5,direct
+| `-/run/credentials/systemd-journald.service ramfs             ramfs      ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+| `-/sys/fs/fuse/connections                  fusectl           fusectl    rw,nosuid,nodev,noexec,relatime
+| |-/dev/mqueue                               mqueue            mqueue     rw,nosuid,nodev,noexec,relatime
+| |-/dev/pts                                  devpts            devpts     rw,nosuid,noexec,relatime,gid=5,mode=600,ptmxmode=000
+| |-/dev/shm                                  tmpfs             tmpfs      rw,nosuid,nodev
+| |-/run/credentials/getty@tty1.service       ramfs             ramfs      ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+| |-/run/credentials/systemd-networkd.service ramfs             ramfs      ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+| |-/run/lock                                 tmpfs             tmpfs      rw,nosuid,nodev,noexec,relatime,size=5120k
+| |-/run/rpc_pipefs                           sunrpc            rpc_pipefs rw,relatime
+| |-/sys/fs/bpf                               bpf               bpf        rw,nosuid,nodev,noexec,relatime,mode=700
+| |-/sys/fs/cgroup                            cgroup2           cgroup2    rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot
+| |-/sys/fs/pstore                            pstore            pstore     rw,nosuid,nodev,noexec,relatime
+| |-/sys/fs/selinux                           selinuxfs         selinuxfs  rw,nosuid,noexec,relatime
+| |-/sys/kernel/debug                         debugfs           debugfs    rw,nosuid,nodev,noexec,relatime
+| |-/sys/kernel/security                      securityfs        securityfs rw,nosuid,nodev,noexec,relatime
+| |-/sys/kernel/tracing                       tracefs           tracefs    rw,nosuid,nodev,noexec,relatime
+|-/dev                                        devtmpfs          devtmpfs   rw,relatime,size=1013452k,nr_inodes=253363,mode=755
+|-/proc                                       proc              proc       rw,nosuid,nodev,noexec,relatime
+|-/run                                        tmpfs             tmpfs      rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755
+|-/sys                                        sysfs             sysfs      rw,nosuid,nodev,noexec,relatime
+|-/tmp                                        tmpfs             tmpfs      rw,nosuid,nodev,nr_inodes=1048576
+
+$ stat -f -c 'fstype=%T namemax=%l' .
+fstype=ext2/ext3 namemax=255
+
+$ write/read/delete test in /home/user/envcheck
+  /home/user/envcheck    fs=ext2/ext3  readback OK  write+read+delete OK  exec=yes
+$ write/read/delete test in /tmp
+  /tmp                   fs=tmpfs      readback OK  write+read+delete OK  exec=yes
+$ write/read/delete test in /var/tmp
+  /var/tmp               fs=ext2/ext3  readback OK  write+read+delete OK  exec=yes
+$ write/read/delete test in /dev/shm
+  /dev/shm               fs=tmpfs      readback OK  write+read+delete OK  exec=yes
+$ write/read/delete test in /run
+./probe.sh: line 243: /run/.probe_rw_22063: Permission denied
+./probe.sh: line 252: /run/.probe_rw_22063: Permission denied
+  /run                   NOT writable by user (root can: yes)
+$ write/read/delete test in /opt
+./probe.sh: line 243: /opt/.probe_rw_22063: Permission denied
+./probe.sh: line 252: /opt/.probe_rw_22063: Permission denied
+  /opt                   NOT writable by user (root can: yes)
+$ write/read/delete test in /usr/local
+  /usr/local             fs=ext2/ext3  readback OK  write+read+delete OK  exec=yes
+$ write/read/delete test in /srv
+./probe.sh: line 243: /srv/.probe_rw_22063: Permission denied
+./probe.sh: line 252: /srv/.probe_rw_22063: Permission denied
+  /srv                   NOT writable by user (root can: yes)
+$ write/read/delete test in /root
+./probe.sh: line 243: /root/.probe_rw_22063: Permission denied
+./probe.sh: line 252: /root/.probe_rw_22063: Permission denied
+  /root                  NOT writable by user (root can: yes)
+$ write/read/delete test in /mnt
+./probe.sh: line 243: /mnt/.probe_rw_22063: Permission denied
+./probe.sh: line 252: /mnt/.probe_rw_22063: Permission denied
+  /mnt                   NOT writable by user (root can: yes)
+$ write/read/delete test in /media
+./probe.sh: line 243: /media/.probe_rw_22063: Permission denied
+./probe.sh: line 252: /media/.probe_rw_22063: Permission denied
+  /media                 NOT writable by user (root can: yes)
+$ write/read/delete test in /etc
+./probe.sh: line 243: /etc/.probe_rw_22063: Permission denied
+./probe.sh: line 252: /etc/.probe_rw_22063: Permission denied
+  /etc                   NOT writable by user (root can: yes)
+
+$ python3 fs_features.py /tmp/tmp.l9RQOSAXCw/fs
+  posix_fallocate (sparse)           OK   1 MiB sparse
+  hardlink (os.link)                 OK   1
+  symlink + readlink                 OK   /tmp/tmp.l9RQOSAXCw/fs/h1
+  xattr user.* (set/get/remove)      FAIL OSError 95 Operation not supported
+  flock advisory lock                OK   exclusive acquired
+  mmap ACCESS_READ                   OK   b'AB'
+  O_DIRECT open+write                FAIL OSError 22 Invalid argument
+  os.statvfs f_bavail                OK   0 GiB
+  NAME_MAX                           255
+  PATH_MAX                           4096
+  unicode filename create/read       OK   ok
+  filename length boundary           OK   max accepted = 255
+  inotify create event               OK   event bytes=32
+  epoll / selectors backend          OK   EpollSelector
+  io_uring_setup                     OK   io_uring_setup returned fd (allowed)

@@ -1,0 +1,61 @@
+# envchar raw transcript
+# file: 12_cpu_bench.txt
+# title: CPU microbenchmarks
+# generated_utc: 2026-09-04T13:45:05Z
+# host: e2b.local
+# sandbox: i4i7wdij5c7gh9absvtu8
+# template: nlhz8vlwyupq845jsdg9
+# probe: /home/user/envchar/probe_bench.py
+# NOTE: This file is a verbatim measurement transcript. Do not summarize.
+
+
+================================================================
+=== python benches (3 repeats, perf_counter)
+=== UTC: 2026-09-04T13:45:36Z
+================================================================
+sum(range(10**7))                          n=3 min_ms=  139.71 mean_ms=  142.80 max_ms=  144.77 result=49999995000000
+heavier python loop 2e6                    n=3 min_ms=  208.64 mean_ms=  223.62 max_ms=  248.41 result=2666664669333360448
+sin/sqrt 1e6                               n=3 min_ms=  172.58 mean_ms=  176.60 max_ms=  180.88 result=-681.3300730155917
+numpy arange(1e7).sum()                    n=3 min_ms=   22.95 mean_ms=   30.32 max_ms=   42.70 result=49999995000000
+numpy 800x800 matmul float64               n=3 min_ms=   23.93 mean_ms=   29.16 max_ms=   33.95 result=207.2658846972564
+numpy sort 5e6 float64                     n=3 min_ms=   46.34 mean_ms=   51.07 max_ms=   60.08 result=6.092990755268701e-07
+sha256 50MB in-memory                      n=3 min_ms=   32.68 mean_ms=   32.81 max_ms=   32.88 result='a27017450ed5f6ac'
+python 3.13.14 (main, Jul 14 2026, 04:45:36) [GCC 14.2.0]
+os.cpu_count=2
+
+================================================================
+=== compile and run C
+=== UTC: 2026-09-04T13:45:38Z
+================================================================
+
+================================================================
+=== gcc -O2
+=== UTC: 2026-09-04T13:45:38Z
+================================================================
+=== CMD: gcc -O2 -o /tmp/envchar_hello /tmp/envchar_hello.c -lm
+
+=== EXIT: 0  WALL_S: 0.4439 ===
+
+================================================================
+=== run hello
+=== UTC: 2026-09-04T13:45:38Z
+================================================================
+=== CMD: /tmp/envchar_hello
+ok 1.535344
+=== EXIT: 0  WALL_S: 0.0832 ===
+
+================================================================
+=== g++ -O2
+=== UTC: 2026-09-04T13:45:38Z
+================================================================
+=== CMD: g++ -O2 -std=c++17 -o /tmp/envchar_hello_cpp /tmp/envchar_hello.cpp
+
+=== EXIT: 0  WALL_S: 0.7433 ===
+
+================================================================
+=== run hello_cpp
+=== UTC: 2026-09-04T13:45:39Z
+================================================================
+=== CMD: /tmp/envchar_hello_cpp
+ok 500000500000
+=== EXIT: 0  WALL_S: 0.0034 ===

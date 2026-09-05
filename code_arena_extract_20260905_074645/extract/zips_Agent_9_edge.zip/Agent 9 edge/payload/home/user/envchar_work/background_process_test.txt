@@ -1,0 +1,8 @@
+Managed background-process test
+================================
+Command: Python 3.13 unbuffered infinite loop, one heartbeat every 2 seconds.
+Observed child PID: 2095.
+Observed heartbeats: 1 through 30; monotonic timestamps 345.075 through 403.083 seconds.
+Observed live interval represented by heartbeats: 58.008 seconds (about 60 seconds including the interval after heartbeat 30).
+The process remained running across multiple independent tool calls and during CPU/disk/memory tests. It was then intentionally terminated with the managed stop operation; final status: stopped.
+No maximum sandbox/job lifetime was established.

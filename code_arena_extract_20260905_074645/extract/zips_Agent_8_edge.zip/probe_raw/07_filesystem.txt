@@ -1,0 +1,40 @@
+===== UTC: 2026-09-04T14:14:27Z =====
+
+===== pwd =====
+/home/user
+
+===== df -hT =====
+Filesystem     Type      Size  Used Avail Use% Mounted on
+/dev/root      ext4       25G  4.1G   20G  17% /
+devtmpfs       devtmpfs  990M     0  990M   0% /dev
+tmpfs          tmpfs     993M     0  993M   0% /dev/shm
+tmpfs          tmpfs     397M  324K  397M   1% /run
+tmpfs          tmpfs     993M   24K  993M   1% /tmp
+tmpfs          tmpfs     5.0M     0  5.0M   0% /run/lock
+
+===== df -i =====
+Filesystem      Inodes  IUsed   IFree IUse% Mounted on
+/dev/root      6759792 136321 6623471    3% /
+devtmpfs        253363    137  253226    1% /dev
+tmpfs           254076      1  254075    1% /dev/shm
+tmpfs           819200    437  818763    1% /run
+tmpfs          1048576     14 1048562    1% /tmp
+tmpfs           254076      2  254074    1% /run/lock
+
+===== ls -la /home/user =====
+total 44
+drwx------ 3 user user  4096 Sep  4 14:14 .
+drwxr-xr-x 3 root root    60 Jul 23 15:09 ..
+-rw-r--r-- 1 user user     0 Sep  4 14:14 .sudo_as_admin_successful
+-rw-r--r-- 1 user user   163 Sep  4 14:14 .wget-hsts
+-rw-r--r-- 1 user user 12990 Sep  4 14:14 environment_characterization.md
+-rwxr-xr-x 1 user user 13694 Sep  4 14:14 probe_environment.sh
+drwxr-xr-x 2 user user  4096 Sep  4 14:14 probe_raw
+
+===== write/read/delete tests =====
+/home/user: WRITE+READ+DELETE OK data='ok'
+/tmp: WRITE+READ+DELETE OK data='ok'
+/var/tmp: WRITE+READ+DELETE OK data='ok'
+/opt: FAIL PermissionError: [Errno 13] Permission denied: '/opt/.envchar_test_1562'
+/usr/local: WRITE+READ+DELETE OK data='ok'
+/: FAIL PermissionError: [Errno 13] Permission denied: '/.envchar_test_1562'

@@ -1,0 +1,71 @@
+# ============================================================
+# probe_environment.sh :: 03 resource limits (ulimit + cgroup v2)
+# run_id: raw_run2   mode: stress
+# host: e2b.local   user: user(1000)
+# date_utc: 2026-09-04T13:46:52Z
+# ============================================================
+
+$ ulimit -a
+real-time non-blocking time  (microseconds, -R) unlimited
+core file size              (blocks, -c) 0
+data seg size               (kbytes, -d) unlimited
+scheduling priority                 (-e) 0
+file size                   (blocks, -f) unlimited
+pending signals                     (-i) 7917
+max locked memory           (kbytes, -l) 8192
+max memory size             (kbytes, -m) unlimited
+open files                          (-n) 1024
+pipe size                (512 bytes, -p) 8
+POSIX message queues         (bytes, -q) 819200
+real-time priority                  (-r) 0
+stack size                  (kbytes, -s) 8192
+cpu time                   (seconds, -t) unlimited
+max user processes                  (-u) 7917
+virtual memory              (kbytes, -v) unlimited
+file locks                          (-x) unlimited
+
+$ ulimit -Hn (hard fd limit)
+524288
+
+$ cat /proc/self/cgroup
+0::/user
+
+$ cgroup files (/sys/fs/cgroup and our scope)
+/sys/fs/cgroup/user/memory.max = 1947172864
+/sys/fs/cgroup/user/memory.high = 1947172864
+/sys/fs/cgroup/user/memory.current = 34766848
+/sys/fs/cgroup/user/memory.swap.max = max
+/sys/fs/cgroup/user/cpu.max = max 100000
+/sys/fs/cgroup/user/cpu.weight = 50
+/sys/fs/cgroup/user/pids.max = max
+/sys/fs/cgroup/user/pids.current = 3
+/sys/fs/cgroup/user/io.max = 
+/sys/fs/cgroup/init.scope/memory.max = max
+/sys/fs/cgroup/init.scope/memory.high = max
+/sys/fs/cgroup/init.scope/memory.current = 4235264
+/sys/fs/cgroup/init.scope/memory.swap.max = max
+/sys/fs/cgroup/init.scope/cpu.max = max 100000
+/sys/fs/cgroup/init.scope/cpu.weight = 100
+/sys/fs/cgroup/init.scope/pids.max = 2375
+/sys/fs/cgroup/init.scope/pids.current = 2
+/sys/fs/cgroup/init.scope/io.max = 
+/sys/fs/cgroup/system.slice/memory.max = max
+/sys/fs/cgroup/system.slice/memory.high = max
+/sys/fs/cgroup/system.slice/memory.current = 265367552
+/sys/fs/cgroup/system.slice/memory.swap.max = max
+/sys/fs/cgroup/system.slice/cpu.max = max 100000
+/sys/fs/cgroup/system.slice/cpu.weight = 100
+/sys/fs/cgroup/system.slice/pids.max = max
+/sys/fs/cgroup/system.slice/pids.current = 64
+/sys/fs/cgroup/system.slice/io.max = 
+
+$ cpuset
+cpus=0-1 mems=0
+
+$ head -6 /sys/fs/cgroup/cpu.stat
+usage_usec 29173818
+user_usec 19393268
+system_usec 9780549
+nr_periods 0
+nr_throttled 0
+throttled_usec 0

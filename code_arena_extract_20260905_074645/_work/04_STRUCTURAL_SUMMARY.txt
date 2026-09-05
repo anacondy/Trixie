@@ -1,0 +1,22 @@
+=== PHASE 4 — structural totals & collisions (Sat Sep  5 07:49:09 UTC 2026) ===
+01_ALL_EXTRACTED_FILES.txt entries (all files incl. 10 auditor sums files): 574
+data files (excl. sums): 564
+directories: 68
+data bytes: 3005121
+
+--- per-archive: data files / data bytes ---
+forensic_evidence_Agent_9_edge_Agent_9_edge_payload_home_user_environment_evidence_20260904T142002Z-2576: 21 files, 183790 bytes
+zips_Agent_1_chrome: 10 files, 20077 bytes
+zips_Agent_2_brave: 26 files, 253558 bytes
+zips_Agent_3_brave: 25 files, 106674 bytes
+zips_Agent_4_chrome: 151 files, 742557 bytes
+zips_Agent_5_chrome: 51 files, 293407 bytes
+zips_Agent_6_brave: 90 files, 353977 bytes
+zips_Agent_7_edge: 83 files, 300759 bytes
+zips_Agent_8_edge: 16 files, 75027 bytes
+zips_Agent_9_edge: 91 files, 675295 bytes
+
+--- filename collisions across archives (same relative path in >1 zip) ---
+envcheck/README.md  ->  zips_Agent_4_chrome.zip + zips_Agent_7_edge.zip
+environment_characterization.md  ->  zips_Agent_1_chrome.zip + zips_Agent_2_brave.zip + zips_Agent_3_brave.zip + zips_Agent_4_chrome.zip + zips_Agent_5_chrome.zip + zips_Agent_6_brave.zip + zips_Agent_7_edge.zip + zips_Agent_8_edge.zip
+probe_environment.sh  ->  zips_Agent_1_chrome.zip + zips_Agent_8_edge.zip

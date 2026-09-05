@@ -1,0 +1,36 @@
+### Memory pressure behavior (cgroup memory.max = $(cat /sys/fs/cgroup/user/memory.max) bytes)
+baseline memory.current = 439988224  memory.events: low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+Traceback (most recent call last):
+  File "<stdin>", line 7, in <module>
+AttributeError: module 'os' has no attribute 'getrusage'
+exit=1  (137 = SIGKILL by OOM; likely)
+after: memory.events: low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+after: memory.current = 439869440
+
+### dmesg check (kernel log available?)
+[  318.532618] kauditd_printk_skb: 8 callbacks suppressed
+[  318.532621] audit: type=1101 audit(1788520822.374:73): pid=2321 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:accounting grantors=pam_permit acct="user" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[  318.532749] audit: type=1123 audit(1788520822.374:74): pid=2321 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='cwd="/home/user" cmd="dmesg" exe="/usr/bin/sudo" terminal=? res=success'
+[  318.532807] audit: type=1110 audit(1788520822.374:75): pid=2321 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:setcred grantors=pam_permit acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+[  318.533084] audit: type=1105 audit(1788520822.374:76): pid=2321 uid=1000 auid=4294967295 ses=4294967295 subj=kernel msg='op=PAM:session_open grantors=pam_limits,pam_permit,pam_umask,pam_unix acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=? res=success'
+
+### OOM with a single big alloc
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    x=bytearray(3*10**9); print('survived')
+MemoryError
+exit=1
+
+### does the VM survive / did other procs die?
+ 11:20:22 up 5 min,  0 users,  load average: 0.20, 0.09, 0.02
+post-OOM memory.current = 439746560

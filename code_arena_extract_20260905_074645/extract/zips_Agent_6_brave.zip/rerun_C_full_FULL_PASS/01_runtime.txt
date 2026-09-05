@@ -1,0 +1,98 @@
+### probe 01 timestamp: 2026-09-04T13:58:33Z | sandbox-local: 2026-09-04T13:58:33 UTC
+
+== uname -a ==
+Linux e2b.local 6.1.158+ #1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026 x86_64 GNU/Linux
+
+== /etc/os-release ==
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.6
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+
+== /etc/debian_version ==
+13.6
+
+== libc ==
+ldd (Debian GLIBC 2.41-12+deb13u3) 2.41
+-rwxr-xr-x 1 root root 1995216 Apr 27 20:09 /lib/x86_64-linux-gnu/libc.so.6
+
+== container markers ==
+  ls: cannot access '/.dockerenv': No such file or directory
+no /run/.containerenv
+  /proc/1/cgroup   : 0::/init.scope 
+  /proc/self/cgroup: 0::/user 
+  /proc/1/comm     : systemd
+  /proc/1/cmdline  : /sbin/init 
+
+== virtualization hints ==
+kvm
+cpuinfo: 'hypervisor' flag present (VM guest)
+
+== /proc/mounts (full) ==
+/dev/root / ext4 rw,relatime,discard 0 0
+devtmpfs /dev devtmpfs rw,relatime,size=1013452k,nr_inodes=253363,mode=755 0 0
+proc /proc proc rw,nosuid,nodev,noexec,relatime 0 0
+sysfs /sys sysfs rw,nosuid,nodev,noexec,relatime 0 0
+securityfs /sys/kernel/security securityfs rw,nosuid,nodev,noexec,relatime 0 0
+selinuxfs /sys/fs/selinux selinuxfs rw,nosuid,noexec,relatime 0 0
+tmpfs /dev/shm tmpfs rw,nosuid,nodev 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,gid=5,mode=600,ptmxmode=000 0 0
+tmpfs /run tmpfs rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755 0 0
+cgroup2 /sys/fs/cgroup cgroup2 rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot 0 0
+pstore /sys/fs/pstore pstore rw,nosuid,nodev,noexec,relatime 0 0
+bpf /sys/fs/bpf bpf rw,nosuid,nodev,noexec,relatime,mode=700 0 0
+systemd-1 /proc/sys/fs/binfmt_misc autofs rw,relatime,fd=36,pgrp=1,timeout=0,minproto=5,maxproto=5,direct 0 0
+mqueue /dev/mqueue mqueue rw,nosuid,nodev,noexec,relatime 0 0
+debugfs /sys/kernel/debug debugfs rw,nosuid,nodev,noexec,relatime 0 0
+tracefs /sys/kernel/tracing tracefs rw,nosuid,nodev,noexec,relatime 0 0
+hugetlbfs /dev/hugepages hugetlbfs rw,nosuid,nodev,relatime,pagesize=2M 0 0
+tmpfs /tmp tmpfs rw,nosuid,nodev,nr_inodes=1048576 0 0
+tmpfs /run/lock tmpfs rw,nosuid,nodev,noexec,relatime,size=5120k 0 0
+fusectl /sys/fs/fuse/connections fusectl rw,nosuid,nodev,noexec,relatime 0 0
+ramfs /run/credentials/systemd-journald.service ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700 0 0
+ramfs /run/credentials/systemd-networkd.service ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700 0 0
+tmpfs /etc/ssl/certs tmpfs rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755 0 0
+sunrpc /run/rpc_pipefs rpc_pipefs rw,relatime 0 0
+ramfs /run/credentials/getty@tty1.service ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700 0 0
+
+== cgroup v2 ==
+controllers: cpuset cpu io memory hugetlb pids
+subtree:     cpuset cpu io memory pids
+
+== hostname / hosts / resolv.conf ==
+e2b.local
+127.0.0.1        localhost
+::1              localhost ip6-localhost ip6-loopback
+fe00::           ip6-localnet
+ff00::           ip6-mcastprefix
+ff02::1          ip6-allnodes
+ff02::2          ip6-allrouters
+127.0.1.1        e2b.local
+192.0.2.1        events.e2b.local
+nameserver 8.8.8.8
+== ipv6 ==
+IPv6 enabled
+00000000000000000000000000000001 01 80 10 80       lo
+fe8000000000000000fc00fffe000005 02 40 20 80     eth0
+
+== net dev ==
+Inter-|   Receive                                                |  Transmit
+ face |bytes    packets errs drop fifo frame compressed multicast|bytes    packets errs drop fifo colls carrier compressed
+    lo:  153684    1193    0    0    0     0          0         0   153684    1193    0    0    0     0       0          0
+  eth0: 310247945   38475    0    0    0     0          0         0 12776131   18321    0    0    0     0       0          0
+
+== route table (ipv4, hex) ==
+Iface	Destination	Gateway 	Flags	RefCnt	Use	Metric	Mask		MTU	Window	IRTT                                                       
+eth0	00000000	1600FEA9	0003	0	0	0	00000000	0	0	0                                                                               
+eth0	1400FEA9	00000000	0001	0	0	0	FCFFFFFF	0	0	0                                                                               
+
+== misc kernel info ==
+boot_id: 2bb79165-136a-4b63-829d-17027b0a8e40
+clocksource: kvm-clock
+timezone file: n/a

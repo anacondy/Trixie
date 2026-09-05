@@ -1,0 +1,43 @@
+probe_run_start_utc=2026-09-04T14:20:02.722079460Z
+probe_mode=full
+probe_script=/home/user/environment_evidence/probe_environment.sh
+raw_file=10_throughput.txt
+
+$ curl -4 -sS -L --range 0-4999999 --max-filesize 10000000 --connect-timeout 10 --max-time 120 -o /tmp/envprobe-downloads.AecEEk/google.bin -w "code=%{http_code} remote=%{remote_ip} dns=%{time_namelookup}s tcp=%{time_connect}s tls_ready=%{time_appconnect}s ttfb=%{time_starttransfer}s total=%{time_total}s bytes=%{size_download} speed_Bps=%{speed_download} redirects=%{num_redirects}\\n" https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb; stat -c "size=%s blocks=%b" /tmp/envprobe-downloads.AecEEk/google.bin; sha256sum /tmp/envprobe-downloads.AecEEk/google.bin; file /tmp/envprobe-downloads.AecEEk/google.bin
+code=206 remote=74.125.195.190 dns=0.001337s tcp=0.001556s tls_ready=0.011926s ttfb=0.019283s total=0.116815s bytes=5000000 speed_Bps=42802722 redirects=0
+size=5000000 blocks=9768
+fd9a4c4a18293f0d1c90b6731ed8358bbd3b5c3661b7476dcf60a169de061787  /tmp/envprobe-downloads.AecEEk/google.bin
+/tmp/envprobe-downloads.AecEEk/google.bin: Debian binary package (format 2.0), with control.tar.xz/, data compression xz
+[exit_code=0]
+
+$ curl -4 -sS -L --max-filesize 30000000 --connect-timeout 10 --max-time 120 -o /tmp/envprobe-downloads.AecEEk/git.tar.gz -w "code=%{http_code} remote=%{remote_ip} dns=%{time_namelookup}s tcp=%{time_connect}s tls_ready=%{time_appconnect}s ttfb=%{time_starttransfer}s total=%{time_total}s bytes=%{size_download} speed_Bps=%{speed_download} redirects=%{num_redirects}\\n" https://codeload.github.com/git/git/tar.gz/refs/tags/v2.46.0; stat -c "size=%s blocks=%b" /tmp/envprobe-downloads.AecEEk/git.tar.gz; sha256sum /tmp/envprobe-downloads.AecEEk/git.tar.gz; gzip -t /tmp/envprobe-downloads.AecEEk/git.tar.gz; echo gzip_rc=$?
+code=200 remote=140.82.116.10 dns=0.011991s tcp=0.012233s tls_ready=0.030268s ttfb=0.457945s total=1.956379s bytes=11255537 speed_Bps=5753249 redirects=0
+size=11255537 blocks=21984
+d9a72f1648406806d2cb3049b4a73f357e2dc8df5d2962ce6d24220f3861a221  /tmp/envprobe-downloads.AecEEk/git.tar.gz
+gzip_rc=0
+[exit_code=0]
+
+$ curl -4 -sS --max-time 30 -o /tmp/envprobe-downloads.AecEEk/numpy.json https://pypi.org/pypi/numpy/2.3.5/json; URL=$(jq -r '.urls[] | select(.packagetype=="bdist_wheel") | select(.filename|contains("cp313")) | select(.filename|contains("manylinux")) | select(.filename|contains("x86_64")) | .url' /tmp/envprobe-downloads.AecEEk/numpy.json | head -n1); echo "URL=$URL"; curl -4 -sS -L --max-filesize 30000000 --connect-timeout 10 --max-time 120 -o /tmp/envprobe-downloads.AecEEk/numpy.whl -w "code=%{http_code} remote=%{remote_ip} dns=%{time_namelookup}s tcp=%{time_connect}s tls_ready=%{time_appconnect}s ttfb=%{time_starttransfer}s total=%{time_total}s bytes=%{size_download} speed_Bps=%{speed_download} redirects=%{num_redirects}\\n" "$URL"; stat -c "size=%s blocks=%b" /tmp/envprobe-downloads.AecEEk/numpy.whl; sha256sum /tmp/envprobe-downloads.AecEEk/numpy.whl; python3 -m zipfile -t /tmp/envprobe-downloads.AecEEk/numpy.whl
+URL=https://files.pythonhosted.org/packages/f5/10/ca162f45a102738958dcec8023062dad0cbc17d1ab99d68c4e4a6c45fb2b/numpy-2.3.5-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+code=200 remote=151.101.0.223 dns=0.009214s tcp=0.009401s tls_ready=0.026857s ttfb=0.037105s total=0.159661s bytes=16597430 speed_Bps=103954190 redirects=0
+size=16597430 blocks=32424
+11e06aa0af8c0f05104d56450d6093ee639e15f24ecf62d417329d06e522e017  /tmp/envprobe-downloads.AecEEk/numpy.whl
+Done testing
+[exit_code=0]
+
+$ curl -4 -sS -L --max-filesize 10000000 --connect-timeout 10 --max-time 120 -o /tmp/envprobe-downloads.AecEEk/hf.bin -w "code=%{http_code} remote=%{remote_ip} dns=%{time_namelookup}s tcp=%{time_connect}s tls_ready=%{time_appconnect}s ttfb=%{time_starttransfer}s total=%{time_total}s bytes=%{size_download} speed_Bps=%{speed_download} redirects=%{num_redirects}\\n" "https://huggingface.co/sshleifer/tiny-gpt2/resolve/main/pytorch_model.bin?download=true"; stat -c "size=%s blocks=%b" /tmp/envprobe-downloads.AecEEk/hf.bin; sha256sum /tmp/envprobe-downloads.AecEEk/hf.bin; file /tmp/envprobe-downloads.AecEEk/hf.bin
+code=200 remote=34.36.28.89 dns=0.010635s tcp=0.011141s tls_ready=0.037597s ttfb=0.215118s total=0.511536s bytes=2514146 speed_Bps=4914895 redirects=1
+size=2514146 blocks=4912
+b706b24034032bdfe765ded5ab6403d201d295a995b790cb24c74becca5c04e6  /tmp/envprobe-downloads.AecEEk/hf.bin
+/tmp/envprobe-downloads.AecEEk/hf.bin: data
+[exit_code=0]
+
+$ curl -4 -sS -L --max-filesize 12000000 --connect-timeout 10 --max-time 120 -o /tmp/envprobe-downloads.AecEEk/cf.bin -w "code=%{http_code} remote=%{remote_ip} dns=%{time_namelookup}s tcp=%{time_connect}s tls_ready=%{time_appconnect}s ttfb=%{time_starttransfer}s total=%{time_total}s bytes=%{size_download} speed_Bps=%{speed_download} redirects=%{num_redirects}\\n" "https://speed.cloudflare.com/__down?bytes=10000000"; stat -c "size=%s blocks=%b" /tmp/envprobe-downloads.AecEEk/cf.bin; sha256sum /tmp/envprobe-downloads.AecEEk/cf.bin
+code=200 remote=172.66.0.218 dns=0.009569s tcp=0.009773s tls_ready=0.033928s ttfb=0.107256s total=0.200870s bytes=10000000 speed_Bps=49783442 redirects=0
+size=10000000 blocks=19536
+dd2881660e1039abe3380e6563cea3cd323487fa8e7c99b49d75a8f298617b51  /tmp/envprobe-downloads.AecEEk/cf.bin
+[exit_code=0]
+
+$ head -c 10000000 /dev/zero > /tmp/envprobe-downloads.AecEEk/upload.bin; curl -4 -sS --connect-timeout 10 --max-time 120 -X POST --data-binary @/tmp/envprobe-downloads.AecEEk/upload.bin -o /dev/null -w "code=%{http_code} remote=%{remote_ip} dns=%{time_namelookup}s tcp=%{time_connect}s tls_ready=%{time_appconnect}s ttfb=%{time_starttransfer}s total=%{time_total}s upload_bytes=%{size_upload} speed_upload_Bps=%{speed_upload} download_bytes=%{size_download}\\n" https://speed.cloudflare.com/__up
+code=200 remote=172.66.0.218 dns=0.018495s tcp=0.018725s tls_ready=0.042018s ttfb=0.051536s total=0.194362s upload_bytes=10000000 speed_upload_Bps=51450386 download_bytes=0
+[exit_code=0]

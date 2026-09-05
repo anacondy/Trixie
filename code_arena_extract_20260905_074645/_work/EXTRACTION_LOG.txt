@@ -1,0 +1,167 @@
+[07:47:34] Phase 2 — controlled one-at-a-time extraction start Sat Sep  5 07:47:34 UTC 2026 as user uid=1001 (NOT root)
+[07:47:34] 
+[07:47:34] === ARCHIVE: zips/Agent 1 chrome.zip ===
+[07:47:34] sanitised dir: extract/zips_Agent_1_chrome.zip
+[07:47:34] cmd: unzip -o -d "extract/zips_Agent_1_chrome.zip/" "/home/user/Trixie/zips/Agent 1 chrome.zip"  (stdout -> _work/unzip_zips_Agent_1_chrome.zip.log)
+[07:47:34] unzip exit_code=0 wall_clock_seconds=0.004
+[07:47:34] ESCAPE_CHECK: PASS
+[07:47:34] UNZIP_TARGET_CHECK: PASS
+[07:47:34] SYMLINKS: none
+[07:47:34] SCRIPTS/EXEC/ENV FLAG (1 entries):
+      529478      8 -rw-r--r--   1 user     user         5909 Sep  4 14:33 extract/zips_Agent_1_chrome.zip/probe_environment.sh
+[07:47:34] SUMS_SELF_VERIFY: PASS (10 entries)
+[07:47:34] extracted: files=10 bytes=20077
+[07:47:34] STATUS: EXTRACTED_OK
+[07:47:34] 
+[07:47:34] === ARCHIVE: zips/Agent 2 brave.zip ===
+[07:47:34] sanitised dir: extract/zips_Agent_2_brave.zip
+[07:47:34] cmd: unzip -o -d "extract/zips_Agent_2_brave.zip/" "/home/user/Trixie/zips/Agent 2 brave.zip"  (stdout -> _work/unzip_zips_Agent_2_brave.zip.log)
+[07:47:34] unzip exit_code=0 wall_clock_seconds=0.007
+[07:47:34] ESCAPE_CHECK: PASS
+[07:47:34] UNZIP_TARGET_CHECK: PASS
+[07:47:34] SYMLINKS: none
+[07:47:34] SCRIPTS/EXEC/ENV FLAG (3 entries):
+      529496     16 -rw-r--r--   1 user     user        14177 Sep  4 15:10 extract/zips_Agent_2_brave.zip/envchar/probe.sh
+      529494      4 -rw-r--r--   1 user     user         3416 Sep  4 15:10 extract/zips_Agent_2_brave.zip/envchar/make_manifest.py
+      529495     24 -rw-r--r--   1 user     user        23185 Sep  4 15:10 extract/zips_Agent_2_brave.zip/envchar/probe_bench.py
+[07:47:34] SUMS_SELF_VERIFY: PASS (26 entries)
+[07:47:34] extracted: files=26 bytes=253558
+[07:47:34] STATUS: EXTRACTED_OK
+[07:47:34] 
+[07:47:34] === ARCHIVE: zips/Agent 3 brave.zip ===
+[07:47:34] sanitised dir: extract/zips_Agent_3_brave.zip
+[07:47:34] cmd: unzip -o -d "extract/zips_Agent_3_brave.zip/" "/home/user/Trixie/zips/Agent 3 brave.zip"  (stdout -> _work/unzip_zips_Agent_3_brave.zip.log)
+[07:47:34] unzip exit_code=0 wall_clock_seconds=0.004
+[07:47:34] ESCAPE_CHECK: PASS
+[07:47:34] UNZIP_TARGET_CHECK: PASS
+[07:47:34] SYMLINKS: none
+[07:47:34] SCRIPTS/EXEC/ENV FLAG (2 entries):
+      529545      4 -rw-r--r--   1 user     user         1651 Sep  4 15:10 extract/zips_Agent_3_brave.zip/envchar/bench.py
+      529546     28 -rw-r--r--   1 user     user        24955 Sep  4 15:10 extract/zips_Agent_3_brave.zip/envchar/probe_environment.sh
+[07:47:34] SUMS_SELF_VERIFY: PASS (25 entries)
+[07:47:34] extracted: files=25 bytes=106674
+[07:47:34] STATUS: EXTRACTED_OK
+[07:47:34] 
+[07:47:34] === ARCHIVE: zips/Agent 4 chrome.zip ===
+[07:47:34] sanitised dir: extract/zips_Agent_4_chrome.zip
+[07:47:34] cmd: unzip -o -d "extract/zips_Agent_4_chrome.zip/" "/home/user/Trixie/zips/Agent 4 chrome.zip"  (stdout -> _work/unzip_zips_Agent_4_chrome.zip.log)
+[07:47:34] unzip exit_code=0 wall_clock_seconds=0.012
+[07:47:34] ESCAPE_CHECK: PASS
+[07:47:34] UNZIP_TARGET_CHECK: PASS
+[07:47:34] SYMLINKS: none
+[07:47:34] SCRIPTS/EXEC/ENV FLAG (15 entries):
+      529557      4 -rw-r--r--   1 user     user         2335 Sep  4 13:44 extract/zips_Agent_4_chrome.zip/envcheck/session1/cpu_bench.py
+      529558      4 -rw-r--r--   1 user     user         2895 Sep  4 13:44 extract/zips_Agent_4_chrome.zip/envcheck/session1/cpu_bench2.py
+      529559      4 -rw-r--r--   1 user     user         2728 Sep  4 13:44 extract/zips_Agent_4_chrome.zip/envcheck/session1/disk_bench.py
+      529561      4 -rw-r--r--   1 user     user         1039 Sep  4 13:44 extract/zips_Agent_4_chrome.zip/envcheck/session1/memtest.py
+      529562      4 -rw-r--r--   1 user     user         2829 Sep  4 13:44 extract/zips_Agent_4_chrome.zip/envcheck/session1/net_throughput.py
+      529563      4 -rw-r--r--   1 user     user         1373 Sep  4 13:44 extract/zips_Agent_4_chrome.zip/envcheck/session1/net_workload.py
+      529564      4 -rw-r--r--   1 user     user         1301 Sep  4 13:44 extract/zips_Agent_4_chrome.zip/envcheck/session1/portscan.py
+      529565      4 -rw-r--r--   1 user     user         2100 Sep  4 13:44 extract/zips_Agent_4_chrome.zip/envcheck/session1/tcp_bench.py
+      529567     60 -rwxr-xr-x   1 user     user        59897 Sep  4 14:19 extract/zips_Agent_4_chrome.zip/envcheck/probe.sh
+      529569      4 -rwxr-xr-x   1 user     user         3796 Sep  4 14:16 extract/zips_Agent_4_chrome.zip/envcheck/diff_run.sh
+      529568      4 -rwxr-xr-x   1 user     user         1720 Sep  4 13:48 extract/zips_Agent_4_chrome.zip/envcheck/probe_background.sh
+      529570      8 -rwxr-xr-x   1 user     user         6130 Sep  4 14:18 extract/zips_Agent_4_chrome.zip/envcheck/normalize.py
+      529641      8 -rwxr-xr-x   1 user     user         7916 Sep  4 14:27 extract/zips_Agent_4_chrome.zip/envcheck/make_manifest.py
+      529711     32 -rw-r--r--   1 user     user        30118 Sep  4 14:39 extract/zips_Agent_4_chrome.zip/envcheck/make_bundle_zip.py
+      529712      4 -rw-r--r--   1 user     user         4038 Sep  4 14:38 extract/zips_Agent_4_chrome.zip/envcheck/verify_zip.py
+[07:47:34] SUMS_SELF_VERIFY: PASS (151 entries)
+[07:47:34] extracted: files=151 bytes=742557
+[07:47:34] STATUS: EXTRACTED_OK
+[07:47:34] 
+[07:47:34] === ARCHIVE: zips/Agent 5 chrome.zip ===
+[07:47:34] sanitised dir: extract/zips_Agent_5_chrome.zip
+[07:47:34] cmd: unzip -o -d "extract/zips_Agent_5_chrome.zip/" "/home/user/Trixie/zips/Agent 5 chrome.zip"  (stdout -> _work/unzip_zips_Agent_5_chrome.zip.log)
+[07:47:34] unzip exit_code=0 wall_clock_seconds=0.006
+[07:47:34] ESCAPE_CHECK: PASS
+[07:47:34] UNZIP_TARGET_CHECK: PASS
+[07:47:34] SYMLINKS: none
+[07:47:34] SCRIPTS/EXEC/ENV FLAG (5 entries):
+      529721     28 -rwxr-xr-x   1 user     user        28418 Sep  4 13:49 extract/zips_Agent_5_chrome.zip/env-probe/env_probe.sh
+      529722      8 -rwxr-xr-x   1 user     user         4304 Sep  4 13:46 extract/zips_Agent_5_chrome.zip/env-probe/bench_cpu.py
+      529762      4 -rwxr-xr-x   1 user     user         3477 Sep  4 13:52 extract/zips_Agent_5_chrome.zip/env-probe/diff_runs.sh
+      529767      4 -rw-r--r--   1 user     user         1918 Sep  4 13:43 extract/zips_Agent_5_chrome.zip/envcheck/cpubench.py
+      529769      4 -rw-r--r--   1 user     user          212 Sep  4 13:43 extract/zips_Agent_5_chrome.zip/envcheck/hello.c
+[07:47:34] SUMS_SELF_VERIFY: PASS (51 entries)
+[07:47:34] extracted: files=51 bytes=293407
+[07:47:34] STATUS: EXTRACTED_OK
+[07:47:34] 
+[07:47:34] === ARCHIVE: zips/Agent 6 brave.zip ===
+[07:47:34] sanitised dir: extract/zips_Agent_6_brave.zip
+[07:47:34] cmd: unzip -o -d "extract/zips_Agent_6_brave.zip/" "/home/user/Trixie/zips/Agent 6 brave.zip"  (stdout -> _work/unzip_zips_Agent_6_brave.zip.log)
+[07:47:34] unzip exit_code=0 wall_clock_seconds=0.008
+[07:47:34] ESCAPE_CHECK: PASS
+[07:47:34] UNZIP_TARGET_CHECK: PASS
+[07:47:34] SYMLINKS: none
+[07:47:34] SCRIPTS/EXEC/ENV FLAG (2 entries):
+      529869      4 -rwxr-xr-x   1 user     user         3361 Sep  4 14:06 extract/zips_Agent_6_brave.zip/compare_run.sh
+      529870     48 -rwxr-xr-x   1 user     user        46431 Sep  4 14:06 extract/zips_Agent_6_brave.zip/environment_probe.sh
+[07:47:34] SUMS_SELF_VERIFY: PASS (90 entries)
+[07:47:34] extracted: files=90 bytes=353977
+[07:47:34] STATUS: EXTRACTED_OK
+[07:47:34] 
+[07:47:34] === ARCHIVE: zips/Agent 7 edge.zip ===
+[07:47:34] sanitised dir: extract/zips_Agent_7_edge.zip
+[07:47:34] cmd: unzip -o -d "extract/zips_Agent_7_edge.zip/" "/home/user/Trixie/zips/Agent 7 edge.zip"  (stdout -> _work/unzip_zips_Agent_7_edge.zip.log)
+[07:47:34] unzip exit_code=0 wall_clock_seconds=0.007
+[07:47:34] ESCAPE_CHECK: PASS
+[07:47:34] UNZIP_TARGET_CHECK: PASS
+[07:47:34] SYMLINKS: none
+[07:47:34] SCRIPTS/EXEC/ENV FLAG (3 entries):
+      529882      4 -rw-r--r--   1 user     user         1649 Sep  4 14:17 extract/zips_Agent_7_edge.zip/envcheck/diskbench.sh
+      529933     36 -rwxr-xr-x   1 user     user        33205 Sep  4 14:20 extract/zips_Agent_7_edge.zip/envcheck/raw/run_20260904T141747Z/probe_environment.sh
+      529964     36 -rw-r--r--   1 user     user        33472 Sep  4 14:20 extract/zips_Agent_7_edge.zip/envcheck/probe_environment.sh
+[07:47:34] SUMS_SELF_VERIFY: PASS (83 entries)
+[07:47:34] extracted: files=83 bytes=300759
+[07:47:34] STATUS: EXTRACTED_OK
+[07:47:34] 
+[07:47:34] === ARCHIVE: zips/Agent 8 edge.zip ===
+[07:47:34] sanitised dir: extract/zips_Agent_8_edge.zip
+[07:47:34] cmd: unzip -o -d "extract/zips_Agent_8_edge.zip/" "/home/user/Trixie/zips/Agent 8 edge.zip"  (stdout -> _work/unzip_zips_Agent_8_edge.zip.log)
+[07:47:34] unzip exit_code=0 wall_clock_seconds=0.004
+[07:47:34] ESCAPE_CHECK: PASS
+[07:47:34] UNZIP_TARGET_CHECK: PASS
+[07:47:34] SYMLINKS: none
+[07:47:34] SCRIPTS/EXEC/ENV FLAG (1 entries):
+      529974     16 -rwxr-xr-x   1 user     user        13694 Sep  4 14:14 extract/zips_Agent_8_edge.zip/probe_environment.sh
+[07:47:34] SUMS_SELF_VERIFY: PASS (16 entries)
+[07:47:34] extracted: files=16 bytes=75027
+[07:47:34] STATUS: EXTRACTED_OK
+[07:47:34] 
+[07:47:34] === ARCHIVE: zips/Agent 9 edge.zip ===
+[07:47:34] sanitised dir: extract/zips_Agent_9_edge.zip
+[07:47:34] cmd: unzip -o -d "extract/zips_Agent_9_edge.zip/" "/home/user/Trixie/zips/Agent 9 edge.zip"  (stdout -> _work/unzip_zips_Agent_9_edge.zip.log)
+[07:47:34] unzip exit_code=0 wall_clock_seconds=0.011
+[07:47:34] ESCAPE_CHECK: PASS
+[07:47:34] UNZIP_TARGET_CHECK: PASS
+[07:47:34] SYMLINKS: none
+[07:47:34] SCRIPTS/EXEC/ENV FLAG (10 entries):
+      530034     44 -rw-r--r--   1 user     user        43380 Sep  4 14:31 extract/zips_Agent_9_edge.zip/Agent\ 9\ edge/payload/home/user/build_agent9_archive.py
+      530038      4 -rw-r--r--   1 user     user         1860 Sep  4 14:15 extract/zips_Agent_9_edge.zip/Agent\ 9\ edge/payload/home/user/envchar_work/apt_install_test.py
+      530051      4 -rw-r--r--   1 user     user         1394 Sep  4 14:15 extract/zips_Agent_9_edge.zip/Agent\ 9\ edge/payload/home/user/envchar_work/git_network_tests.py
+      530057      4 -rw-r--r--   1 user     user         2966 Sep  4 14:15 extract/zips_Agent_9_edge.zip/Agent\ 9\ edge/payload/home/user/envchar_work/install_compile_tests.py
+      530064      4 -rw-r--r--   1 user     user         1559 Sep  4 14:15 extract/zips_Agent_9_edge.zip/Agent\ 9\ edge/payload/home/user/envchar_work/memory_pressure_test.py
+      530067      8 -rw-r--r--   1 user     user         5479 Sep  4 14:15 extract/zips_Agent_9_edge.zip/Agent\ 9\ edge/payload/home/user/envchar_work/microbenchmarks.py
+      530069      4 -rw-r--r--   1 user     user         3709 Sep  4 14:15 extract/zips_Agent_9_edge.zip/Agent\ 9\ edge/payload/home/user/envchar_work/network_socket_tests.py
+      530078      4 -rw-r--r--   1 user     user         3187 Sep  4 14:15 extract/zips_Agent_9_edge.zip/Agent\ 9\ edge/payload/home/user/envchar_work/tool_inventory.py
+      530083     28 -rwxr-xr-x   1 user     user        27124 Sep  4 14:19 extract/zips_Agent_9_edge.zip/Agent\ 9\ edge/payload/home/user/environment_evidence/probe_environment.sh
+      530090     28 -rwxr-xr-x   1 user     user        27124 Sep  4 14:20 extract/zips_Agent_9_edge.zip/Agent\ 9\ edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/probe_environment.sh
+[07:47:34] SUMS_SELF_VERIFY: PASS (91 entries)
+[07:47:34] extracted: files=91 bytes=675295
+[07:47:34] STATUS: EXTRACTED_OK
+[07:47:34] 
+[07:47:34] === ARCHIVE: forensic/evidence/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence_20260904T142002Z-2576.zip ===
+[07:47:34] sanitised dir: extract/forensic_evidence_Agent_9_edge_Agent_9_edge_payload_home_user_environment_evidence_20260904T142002Z-2576.zip
+[07:47:34] cmd: unzip -o -d "extract/forensic_evidence_Agent_9_edge_Agent_9_edge_payload_home_user_environment_evidence_20260904T142002Z-2576.zip/" "/home/user/Trixie/forensic/evidence/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence_20260904T142002Z-2576.zip"  (stdout -> _work/unzip_forensic_evidence_Agent_9_edge_Agent_9_edge_payload_home_user_environment_evidence_20260904T142002Z-2576.zip.log)
+[07:47:34] unzip exit_code=0 wall_clock_seconds=0.004
+[07:47:34] ESCAPE_CHECK: PASS
+[07:47:34] UNZIP_TARGET_CHECK: PASS
+[07:47:34] SYMLINKS: none
+[07:47:34] SCRIPTS/EXEC/ENV FLAG (2 entries):
+      530115     28 -rwxr-xr-x   1 user     user        27124 Sep  4 14:19 extract/forensic_evidence_Agent_9_edge_Agent_9_edge_payload_home_user_environment_evidence_20260904T142002Z-2576.zip/environment_evidence/probe_environment.sh
+      530122     28 -rwxr-xr-x   1 user     user        27124 Sep  4 14:20 extract/forensic_evidence_Agent_9_edge_Agent_9_edge_payload_home_user_environment_evidence_20260904T142002Z-2576.zip/environment_evidence/runs/20260904T142002Z-2576/probe_environment.sh
+[07:47:34] SUMS_SELF_VERIFY: PASS (21 entries)
+[07:47:34] extracted: files=21 bytes=183790
+[07:47:34] STATUS: EXTRACTED_OK
+[07:47:34] 
+[07:47:34] Phase 2 extraction complete Sat Sep  5 07:47:34 UTC 2026

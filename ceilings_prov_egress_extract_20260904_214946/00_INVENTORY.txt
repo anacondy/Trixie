@@ -1,0 +1,342 @@
+================================================================
+00_INVENTORY.txt — Phase 1 candidate archive inventory
+Generated: Fri Sep  4 21:49:57 UTC 2026
+Isolated root: /home/user/Trixie/ceilings_prov_egress_extract_20260904_214946
+Scope: three workstream families (Ceilings, Provenance, Egress), case-insensitive, minor spacing variations allowed.
+Out of scope (found but NOT part of the three families, NOT inventoried here):
+  - /home/user/Trixie/zips/Agent {1..9} *.zip (9 files)
+  - /home/user/Trixie/forensic/evidence/Agent 9 edge/Agent 9 edge/payload/home/user/environment_evidence_20260904T142002Z-2576.zip
+All checks below are read-only (no extraction, no execution).
+
+================================================================
+ARCHIVE: Ceilings 1 chrome.zip
+PATH: /home/user/Trixie/Ceilings 1 chrome.zip
+SIZE_BYTES: 19730
+SHA256_OUTER: 83faeeda79d70a6b83650b97050bd0a4cf5df8bd9c7932cd93705d7020b1a3b6
+--- unzip -l (full listing, no extraction) ---
+Archive:  Ceilings 1 chrome.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+    16830  2026-09-04 20:21   sandbox-ceiling-report.md
+        0  2026-09-04 19:36   ceiling/
+        0  2026-09-04 20:20   ceiling/scripts/
+     4470  2026-09-04 19:36   ceiling/scripts/mem_probe.py
+     1821  2026-09-04 19:55   ceiling/scripts/fd_probe.py
+     2906  2026-09-04 19:37   ceiling/scripts/proc_probe.py
+      612  2026-09-04 19:54   ceiling/scripts/kill_by_pattern.py
+      149  2026-09-04 19:55   ceiling/scripts/dup_loop.py
+     1575  2026-09-04 19:55   ceiling/scripts/forkcal.py
+     2530  2026-09-04 20:03   ceiling/scripts/forktest.c
+     1722  2026-09-04 19:55   ceiling/scripts/thrtest.c
+      420  2026-09-04 20:03   ceiling/scripts/kill_pids_file.py
+     1324  2026-09-04 20:16   ceiling/scripts/burn.c
+        0  2026-09-04 20:20   ceiling/out/
+     2923  2026-09-04 19:36   ceiling/out/memory_probes.json
+      793  2026-09-04 19:36   ceiling/out/memory_probes.tsv
+       41  2026-09-04 19:55   ceiling/out/fd_ph2.txt
+       42  2026-09-04 19:55   ceiling/out/fd_ph3.txt
+       89  2026-09-04 19:55   ceiling/out/fd_ph4.txt
+      431  2026-09-04 19:55   ceiling/out/fd_probe.json
+---------                     -------
+    38678                     20 files
+--- unzip -t (CRC integrity test, no extraction) ---
+    testing: ceiling/out/fd_probe.json   OK
+No errors detected in compressed data of Ceilings 1 chrome.zip.
+--- entry attribute scan (python3 zipfile, metadata only, nothing executed) ---
+file_entries: 17  dir_entries: 3
+total_uncompressed_bytes: 38678
+script_like_or_bin_extension_entries: ['ceiling/scripts/mem_probe.py (unix_mode=0o644)', 'ceiling/scripts/fd_probe.py (unix_mode=0o644)', 'ceiling/scripts/proc_probe.py (unix_mode=0o644)', 'ceiling/scripts/kill_by_pattern.py (unix_mode=0o644)', 'ceiling/scripts/dup_loop.py (unix_mode=0o644)', 'ceiling/scripts/forkcal.py (unix_mode=0o644)', 'ceiling/scripts/forktest.c (unix_mode=0o644)', 'ceiling/scripts/thrtest.c (unix_mode=0o644)', 'ceiling/scripts/kill_pids_file.py (unix_mode=0o644)', 'ceiling/scripts/burn.c (unix_mode=0o644)']
+executable_bit_entries: none
+nested_zip_entries: none
+path_traversal_absolute_backslash: none
+crc_bad_entry: none (all CRCs verified)
+
+================================================================
+ARCHIVE: Ceilings 2 edge.zip
+PATH: /home/user/Trixie/Ceilings 2 edge.zip
+SIZE_BYTES: 8756
+SHA256_OUTER: 484e0d1bbe86dc0f505d2308febb295424acde1be7e7fa67b2e860e6c903ffa5
+--- unzip -l (full listing, no extraction) ---
+Archive:  Ceilings 2 edge.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+    19824  2026-09-04 21:04   sandbox_ceilings.md
+---------                     -------
+    19824                     1 file
+--- unzip -t (CRC integrity test, no extraction) ---
+    testing: sandbox_ceilings.md      OK
+No errors detected in compressed data of Ceilings 2 edge.zip.
+--- entry attribute scan (python3 zipfile, metadata only, nothing executed) ---
+file_entries: 1  dir_entries: 0
+total_uncompressed_bytes: 19824
+script_like_or_bin_extension_entries: none
+executable_bit_entries: none
+nested_zip_entries: none
+path_traversal_absolute_backslash: none
+crc_bad_entry: none (all CRCs verified)
+
+================================================================
+ARCHIVE: Ceilings 3 brave.zip
+PATH: /home/user/Trixie/Ceilings 3 brave.zip
+SIZE_BYTES: 18542
+SHA256_OUTER: 16013673423dc7c59ccffa0fae16071d8bddd3b916cc6291828679a14b2231f0
+--- unzip -l (full listing, no extraction) ---
+Archive:  Ceilings 3 brave.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+    11943  2026-09-04 21:24   sandbox-ceilings.md
+        0  2026-09-04 21:21   probes/
+     2312  2026-09-04 20:49   probes/mem_bisect.py
+     1059  2026-09-04 20:49   probes/mem_bisect.log
+     1228  2026-09-04 20:51   probes/fd_test.py
+     2223  2026-09-04 20:54   probes/fork_test.py
+      729  2026-09-04 20:51   probes/thread_test.py
+      233  2026-09-04 20:51   probes/thread_test.log
+        0  2026-09-04 20:52   probes/fork_test.log
+     2062  2026-09-04 21:10   probes/fork_exec_test.py
+     2455  2026-09-04 21:10   probes/fork_exec_test.log
+     1915  2026-09-04 21:11   probes/disk_test.sh
+     2984  2026-09-04 21:12   probes/disk_test.log
+     1767  2026-09-04 21:13   probes/disk_test2.sh
+     1406  2026-09-04 21:14   probes/disk_test2.log
+      967  2026-09-04 21:14   probes/tmp_test.sh
+      837  2026-09-04 21:14   probes/tmp_test.log
+      721  2026-09-04 21:15   probes/cpu_burn.py
+      989  2026-09-04 21:15   probes/smt_penalty.py
+---------                     -------
+    35830                     19 files
+--- unzip -t (CRC integrity test, no extraction) ---
+    testing: probes/smt_penalty.py    OK
+No errors detected in compressed data of Ceilings 3 brave.zip.
+--- entry attribute scan (python3 zipfile, metadata only, nothing executed) ---
+file_entries: 18  dir_entries: 1
+total_uncompressed_bytes: 35830
+script_like_or_bin_extension_entries: ['probes/mem_bisect.py (unix_mode=0o644)', 'probes/fd_test.py (unix_mode=0o644)', 'probes/fork_test.py (unix_mode=0o644)', 'probes/thread_test.py (unix_mode=0o644)', 'probes/fork_exec_test.py (unix_mode=0o644)', 'probes/disk_test.sh (unix_mode=0o755)', 'probes/disk_test2.sh (unix_mode=0o755)', 'probes/tmp_test.sh (unix_mode=0o755)', 'probes/cpu_burn.py (unix_mode=0o644)', 'probes/smt_penalty.py (unix_mode=0o644)']
+executable_bit_entries: ['probes/disk_test.sh (unix_mode=0o755)', 'probes/disk_test2.sh (unix_mode=0o755)', 'probes/tmp_test.sh (unix_mode=0o755)']
+nested_zip_entries: none
+path_traversal_absolute_backslash: none
+crc_bad_entry: none (all CRCs verified)
+
+================================================================
+ARCHIVE: Provenance 1 edge.zip
+PATH: /home/user/Trixie/Provenance 1 edge.zip
+SIZE_BYTES: 39165
+SHA256_OUTER: 9f671397bff15f71038b7cfd409ae47fb3f17376daece1630c341c1d8bf0c250
+--- unzip -l (full listing, no extraction) ---
+Archive:  Provenance 1 edge.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     4441  2026-09-04 20:41   README.md
+      445  2026-09-04 20:42   MANIFEST.sha256
+    63482  2026-09-04 20:40   sandbox_identity_provenance.md
+      601  2026-09-04 20:37   prov_probe.txt
+    49545  2026-09-04 20:41   raw_evidence_2026-09-04T2037Z_instance2.txt
+     4511  2026-09-04 20:40   raw_capture.sh
+---------                     -------
+   123025                     6 files
+--- unzip -t (CRC integrity test, no extraction) ---
+    testing: raw_capture.sh           OK
+No errors detected in compressed data of Provenance 1 edge.zip.
+--- entry attribute scan (python3 zipfile, metadata only, nothing executed) ---
+file_entries: 6  dir_entries: 0
+total_uncompressed_bytes: 123025
+script_like_or_bin_extension_entries: ['raw_capture.sh (unix_mode=0o644)']
+executable_bit_entries: none
+nested_zip_entries: none
+path_traversal_absolute_backslash: none
+crc_bad_entry: none (all CRCs verified)
+
+================================================================
+ARCHIVE: Provenance 2 brave.zip
+PATH: /home/user/Trixie/Provenance 2 brave.zip
+SIZE_BYTES: 8071
+SHA256_OUTER: df0f9fa71def077a63f554265f678163830dd5ec1443d2ad18046afd2d87aed6
+--- unzip -l (full listing, no extraction) ---
+Archive:  Provenance 2 brave.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+    23039  2026-09-04 20:38   sandbox_identity_provenance.md
+      242  2026-09-04 20:38   prov_probe.txt
+---------                     -------
+    23281                     2 files
+--- unzip -t (CRC integrity test, no extraction) ---
+    testing: prov_probe.txt           OK
+No errors detected in compressed data of Provenance 2 brave.zip.
+--- entry attribute scan (python3 zipfile, metadata only, nothing executed) ---
+file_entries: 2  dir_entries: 0
+total_uncompressed_bytes: 23281
+script_like_or_bin_extension_entries: none
+executable_bit_entries: none
+nested_zip_entries: none
+path_traversal_absolute_backslash: none
+crc_bad_entry: none (all CRCs verified)
+
+================================================================
+ARCHIVE: Provenance 3 chrome.zip
+PATH: /home/user/Trixie/Provenance 3 chrome.zip
+SIZE_BYTES: 5743
+SHA256_OUTER: 32775e06fb465778c4e1b40c5b32ec3db5ebeaf8c4cb709d28219d5beae8e1f1
+--- unzip -l (full listing, no extraction) ---
+Archive:  Provenance 3 chrome.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      230  2026-09-04 20:39   prov_probe.txt
+    16207  2026-09-04 20:41   sandbox_provenance_report.md
+---------                     -------
+    16437                     2 files
+--- unzip -t (CRC integrity test, no extraction) ---
+    testing: sandbox_provenance_report.md   OK
+No errors detected in compressed data of Provenance 3 chrome.zip.
+--- entry attribute scan (python3 zipfile, metadata only, nothing executed) ---
+file_entries: 2  dir_entries: 0
+total_uncompressed_bytes: 16437
+script_like_or_bin_extension_entries: none
+executable_bit_entries: none
+nested_zip_entries: none
+path_traversal_absolute_backslash: none
+crc_bad_entry: none (all CRCs verified)
+
+================================================================
+ARCHIVE: Egress 1 chrome.zip
+PATH: /home/user/Trixie/Egress 1 chrome.zip
+SIZE_BYTES: 22380
+SHA256_OUTER: 3c1a7f82d33c156f5cf05351fa4af69eb6ba5f1fde87a9dabd7b4e3b1fab50f7
+--- unzip -l (full listing, no extraction) ---
+Archive:  Egress 1 chrome.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+    19694  2026-09-04 20:22   network-egress-policy-report.md
+        0  2026-09-04 20:22   egress-tests/
+     1286  2026-09-04 20:22   egress-tests/00-environment.txt
+     6397  2026-09-04 20:22   egress-tests/02-dns.txt
+     1975  2026-09-04 20:22   egress-tests/01-connect-blackhole.txt
+     1485  2026-09-04 20:22   egress-tests/03-direct-ip.txt
+     3708  2026-09-04 20:22   egress-tests/04-ports.txt
+     2082  2026-09-04 20:22   egress-tests/05-tls.txt
+     2282  2026-09-04 20:22   egress-tests/05b-issuer-sweep.txt
+      445  2026-09-04 20:22   egress-tests/06-bandwidth-cloudflare.txt
+     1927  2026-09-04 20:22   egress-tests/06-bandwidth.txt
+      756  2026-09-04 20:22   egress-tests/06b-bandwidth-pypi.txt
+     1376  2026-09-04 20:22   egress-tests/06c-down403-h3.txt
+     1332  2026-09-04 20:22   egress-tests/s1-connect.py
+     3395  2026-09-04 20:22   egress-tests/s2-dns.py
+     5172  2026-09-04 20:22   egress-tests/s4-ports.py
+---------                     -------
+    53312                     16 files
+--- unzip -t (CRC integrity test, no extraction) ---
+    testing: egress-tests/s4-ports.py   OK
+No errors detected in compressed data of Egress 1 chrome.zip.
+--- entry attribute scan (python3 zipfile, metadata only, nothing executed) ---
+file_entries: 15  dir_entries: 1
+total_uncompressed_bytes: 53312
+script_like_or_bin_extension_entries: ['egress-tests/s1-connect.py (unix_mode=0o644)', 'egress-tests/s2-dns.py (unix_mode=0o644)', 'egress-tests/s4-ports.py (unix_mode=0o644)']
+executable_bit_entries: none
+nested_zip_entries: none
+path_traversal_absolute_backslash: none
+crc_bad_entry: none (all CRCs verified)
+
+================================================================
+ARCHIVE: Egress 2 brave.zip
+PATH: /home/user/Trixie/Egress 2 brave.zip
+SIZE_BYTES: 23093
+SHA256_OUTER: 72a2990c7540bcc0b4d1e7da963c3195d854c9f5703386b230192f7535eb2a82
+--- unzip -l (full listing, no extraction) ---
+Archive:  Egress 2 brave.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  2026-09-04 20:26   egress-map/
+    19388  2026-09-04 20:26   egress-map/EGRESS_POLICY_MAP.md
+        0  2026-09-04 20:26   egress-map/logs/
+     3183  2026-09-04 20:26   egress-map/logs/t1.log
+      385  2026-09-04 20:26   egress-map/logs/t1_time.log
+     4446  2026-09-04 20:26   egress-map/logs/t2.log
+     3165  2026-09-04 20:26   egress-map/logs/t3.log
+     2754  2026-09-04 20:26   egress-map/logs/t4.log
+     1165  2026-09-04 20:26   egress-map/logs/t5_tls.log
+     1172  2026-09-04 20:26   egress-map/logs/t6_403.log
+      380  2026-09-04 20:26   egress-map/logs/t6_hetzner.log
+      407  2026-09-04 20:26   egress-map/logs/t6_ipv6.log
+      272  2026-09-04 20:26   egress-map/logs/t6_par.log
+      600  2026-09-04 20:26   egress-map/logs/t6_pip.log
+      276  2026-09-04 20:26   egress-map/logs/t6_seq.log
+      751  2026-09-04 20:26   egress-map/logs/t6_std.log
+      437  2026-09-04 20:26   egress-map/logs/t6_threshold.log
+      508  2026-09-04 20:26   egress-map/logs/t6_wheel.log
+     3135  2026-09-04 20:26   egress-map/t1_proxy.py
+     3859  2026-09-04 20:26   egress-map/t2_dns.py
+     3946  2026-09-04 20:26   egress-map/t3_ip_sni.py
+     3644  2026-09-04 20:26   egress-map/t4_ports.py
+---------                     -------
+    53873                     22 files
+--- unzip -t (CRC integrity test, no extraction) ---
+    testing: egress-map/t4_ports.py   OK
+No errors detected in compressed data of Egress 2 brave.zip.
+--- entry attribute scan (python3 zipfile, metadata only, nothing executed) ---
+file_entries: 20  dir_entries: 2
+total_uncompressed_bytes: 53873
+script_like_or_bin_extension_entries: ['egress-map/t1_proxy.py (unix_mode=0o644)', 'egress-map/t2_dns.py (unix_mode=0o644)', 'egress-map/t3_ip_sni.py (unix_mode=0o644)', 'egress-map/t4_ports.py (unix_mode=0o644)']
+executable_bit_entries: none
+nested_zip_entries: none
+path_traversal_absolute_backslash: none
+crc_bad_entry: none (all CRCs verified)
+
+================================================================
+ARCHIVE: Egress 3 edge.zip
+PATH: /home/user/Trixie/Egress 3 edge.zip
+SIZE_BYTES: 55619
+SHA256_OUTER: 1ce470c36e838d38113d186ae6fd0cb0c8daa8a762719ce74c5c59a6b87182a9
+--- unzip -l (full listing, no extraction) ---
+Archive:  Egress 3 edge.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  2026-09-04 20:35   netmap/
+        0  2026-09-04 20:01   netmap/results/
+    30795  2026-09-04 19:43   netmap/results/s2.json
+     5811  2026-09-04 19:44   netmap/results/s1.json
+     1193  2026-09-04 19:45   netmap/results/s1b.json
+     4378  2026-09-04 19:47   netmap/results/s5_mitm.json
+     3050  2026-09-04 19:47   netmap/results/s1c.json
+     2499  2026-09-04 19:49   netmap/results/s1d.json
+     5948  2026-09-04 19:51   netmap/results/s3.json
+     2747  2026-09-04 19:51   netmap/results/s1d_v2.json
+    11948  2026-09-04 19:53   netmap/results/s4_tcp.json
+     3454  2026-09-04 19:53   netmap/results/s1e.json
+     6419  2026-09-04 19:55   netmap/results/s5_sweep.json
+     2456  2026-09-04 19:56   netmap/results/s4b_udp.json
+     1974  2026-09-04 20:07   netmap/results/s4_portquiz.json
+     2545  2026-09-04 19:58   netmap/results/s4c_udp_control.json
+      472  2026-09-04 19:59   netmap/results/s6_cloudflare.txt
+      388  2026-09-04 20:01   netmap/results/s6_raw.txt
+     3151  2026-09-04 19:43   netmap/s1_tcp.py
+     4816  2026-09-04 19:43   netmap/dnsprobe.py
+     2636  2026-09-04 19:45   netmap/s1b_rtt.py
+     1684  2026-09-04 19:46   netmap/s1c_connect_vs_ttfb.py
+     2165  2026-09-04 19:48   netmap/s1d_proof.py
+     2919  2026-09-04 19:50   netmap/s3_direct_ip.py
+     2922  2026-09-04 19:50   netmap/s1d_v2.py
+     3378  2026-09-04 19:53   netmap/s4_ports.py
+     2173  2026-09-04 19:53   netmap/s1e_rangemap.py
+     2850  2026-09-04 19:54   netmap/s4b_udp.py
+     2588  2026-09-04 19:57   netmap/s4c_udp_control.py
+      807  2026-09-04 19:59   netmap/s6_bw.sh
+    39013  2026-09-04 20:07   netmap/egress-policy-map.md
+     3177  2026-09-04 20:34   netmap/s5_tls_intercept.py
+     2227  2026-09-04 20:34   netmap/s5_sweep.py
+     2105  2026-09-04 20:34   netmap/s4d_tcpdns_portquiz.py
+     1537  2026-09-04 20:34   netmap/s7_gaps.py
+     6584  2026-09-04 20:35   netmap/INDEX.md
+---------                     -------
+   172809                     36 files
+--- unzip -t (CRC integrity test, no extraction) ---
+    testing: netmap/INDEX.md          OK
+No errors detected in compressed data of Egress 3 edge.zip.
+--- entry attribute scan (python3 zipfile, metadata only, nothing executed) ---
+file_entries: 34  dir_entries: 2
+total_uncompressed_bytes: 172809
+script_like_or_bin_extension_entries: ['netmap/s1_tcp.py (unix_mode=0o644)', 'netmap/dnsprobe.py (unix_mode=0o644)', 'netmap/s1b_rtt.py (unix_mode=0o644)', 'netmap/s1c_connect_vs_ttfb.py (unix_mode=0o644)', 'netmap/s1d_proof.py (unix_mode=0o644)', 'netmap/s3_direct_ip.py (unix_mode=0o644)', 'netmap/s1d_v2.py (unix_mode=0o644)', 'netmap/s4_ports.py (unix_mode=0o644)', 'netmap/s1e_rangemap.py (unix_mode=0o644)', 'netmap/s4b_udp.py (unix_mode=0o644)', 'netmap/s4c_udp_control.py (unix_mode=0o644)', 'netmap/s6_bw.sh (unix_mode=0o644)', 'netmap/s5_tls_intercept.py (unix_mode=0o644)', 'netmap/s5_sweep.py (unix_mode=0o644)', 'netmap/s4d_tcpdns_portquiz.py (unix_mode=0o644)', 'netmap/s7_gaps.py (unix_mode=0o644)']
+executable_bit_entries: none
+nested_zip_entries: none
+path_traversal_absolute_backslash: none
+crc_bad_entry: none (all CRCs verified)
+
+=== END OF INVENTORY ===

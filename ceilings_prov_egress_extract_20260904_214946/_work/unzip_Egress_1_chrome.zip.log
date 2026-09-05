@@ -1,0 +1,17 @@
+Archive:  /home/user/Trixie/Egress 1 chrome.zip
+  inflating: extract/Egress_1_chrome.zip/network-egress-policy-report.md  
+   creating: extract/Egress_1_chrome.zip/egress-tests/
+  inflating: extract/Egress_1_chrome.zip/egress-tests/00-environment.txt  
+  inflating: extract/Egress_1_chrome.zip/egress-tests/02-dns.txt  
+  inflating: extract/Egress_1_chrome.zip/egress-tests/01-connect-blackhole.txt  
+  inflating: extract/Egress_1_chrome.zip/egress-tests/03-direct-ip.txt  
+  inflating: extract/Egress_1_chrome.zip/egress-tests/04-ports.txt  
+  inflating: extract/Egress_1_chrome.zip/egress-tests/05-tls.txt  
+  inflating: extract/Egress_1_chrome.zip/egress-tests/05b-issuer-sweep.txt  
+  inflating: extract/Egress_1_chrome.zip/egress-tests/06-bandwidth-cloudflare.txt  
+  inflating: extract/Egress_1_chrome.zip/egress-tests/06-bandwidth.txt  
+  inflating: extract/Egress_1_chrome.zip/egress-tests/06b-bandwidth-pypi.txt  
+  inflating: extract/Egress_1_chrome.zip/egress-tests/06c-down403-h3.txt  
+  inflating: extract/Egress_1_chrome.zip/egress-tests/s1-connect.py  
+  inflating: extract/Egress_1_chrome.zip/egress-tests/s2-dns.py  
+  inflating: extract/Egress_1_chrome.zip/egress-tests/s4-ports.py  

@@ -1,0 +1,130 @@
+=== Identity / recreation claim lines (read-only grep, quoted verbatim) — Fri Sep  4 21:51:39 UTC 2026 ===
+
+----- extract/Provenance_1_edge.zip/sandbox_identity_provenance.md -----
+1:# Sandbox Identity & Provenance Audit
+10:The draft was re-checked against live state, and again after the sandbox was recreated mid-audit. **Three claims did not hold.** All are corrected inline and recorded here so the audit trail stays honest.
+14:| 1 | `E2B_TEMPLATE_ID` is a fixed template identifier | Changed value mid-session | 19:39 UTC |
+15:| 2 | `uptime -s` is a fixed boot reference | Moved ~6 min within one boot | 19:39 UTC |
+16:| 3 | A changed `boot_id` is the unambiguous recreation signal | Sandbox recreated; `boot_id` unchanged | 20:37 UTC |
+18:### Correction 1 — `E2B_TEMPLATE_ID` is **not** stable within this session
+20:My first read at ~19:25 UTC returned `E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9`. A re-read at ~19:39 UTC returned `E2B_TEMPLATE_ID=wk9vh0w7zre9vbcia51p`. The value **changed mid-session**, across three consecutive reads, and the change is visible in the calling shell's own `/proc/<pid>/environ`.
+24:| `E2B_TEMPLATE_ID` (env) | `nlhz8vlwyupq845jsdg9` | `wk9vh0w7zre9vbcia51p` | **YES** |
+25:| `/run/e2b/.E2B_TEMPLATE_ID` | `nlhz8vlwyupq845jsdg9` | `wk9vh0w7zre9vbcia51p` | **YES** |
+26:| `E2B_SANDBOX_ID` (env) | `ia4a7jw0xcyn756c09iwm` | `ia4a7jw0xcyn756c09iwm` | no |
+27:| `/run/e2b/.E2B_SANDBOX_ID` | `ia4a7jw0xcyn756c09iwm` | `ia4a7jw0xcyn756c09iwm` | no |
+28:| `/.e2b` `TEMPLATE_ID` | `nlhz8vlwyupq845jsdg9` | `nlhz8vlwyupq845jsdg9` | no |
+30:| `boot_id` | `2bb79165-…-17027b0a8e40` | `2bb79165-…-17027b0a8e40` | no |
+31:| `/proc/sys/kernel/random/boot_id` | same | same | no |
+36:env E2B_TEMPLATE_ID       = wk9vh0w7zre9vbcia51p
+37:/run/e2b/.E2B_TEMPLATE_ID = wk9vh0w7zre9vbcia51p
+38:/.e2b TEMPLATE_ID         = nlhz8vlwyupq845jsdg9
+43:What this establishes: `E2B_TEMPLATE_ID` is injected **per session** by whatever launches my shell, not baked into the image. The `/run/e2b/.E2B_TEMPLATE_ID` file tracks it (mtime advanced `Sep 4 19:24` → `Sep 4 19:39`), while `/.e2b` — the build-time artifact — never moved. My original draft treated `E2B_TEMPLATE_ID` as a fixed template identifier. That was wrong.
+47:### Correction 2 — `uptime -s` is not fixed, even within a single boot
+49:`uptime -s` returned `2026-09-04 19:24:34` at ~19:26 UTC and `2026-09-04 19:30:50` at ~19:39 UTC, with `boot_id` unchanged throughout. That is direct observation that the reported boot time drifts.
+51:**MEASURED** — 12 samples over 24 s, one boot, `boot_id` constant:
+53:| Sample | `uptime -s` | `/proc/uptime[0]` | `btime` | `date -u` |
+59:Within the 24 s sampling window `uptime -s` was constant, but it had already moved once between the two earlier readings. `btime` moved with it (`1788549874` → `1788550250`), confirming `btime = CLOCK_REALTIME − uptime` rather than a recorded boot instant.
+61:This **strengthens** the §4.5 conclusion, which had been partly inferential: `uptime -s` demonstrably cannot be used as a boot timestamp in this sandbox.
+63:### Correction 3 — `boot_id` does **not** detect sandbox recreation. My report claimed it did.
+65:This was observed **after** the report was drafted, at 20:37–20:38 UTC, when the sandbox was recreated between turns. §6 of the original report stated:
+67:> **If `boot_id` changes**, the sandbox was recreated rather than resumed — that is the one unambiguous signal here.
+69:**That claim is false.** The sandbox *was* recreated and `boot_id` did *not* change.
+71:**MEASURED** — before vs after the recreation:
+75:| `E2B_SANDBOX_ID` | `ia4a7jw0xcyn756c09iwm` | `i5ppm7iw8cfa89mb7ezsm` | **CHANGED** |
+76:| `/run/e2b/.E2B_SANDBOX_ID` | `ia4a7jw0xcyn756c09iwm` | `i5ppm7iw8cfa89mb7ezsm` | **CHANGED** |
+77:| `/proc/uptime[0]` | ~861 s | ~52 s | **RESET** |
+78:| `uptime -s` | `2026-09-04 19:30:50` | `2026-09-04 20:37:09` | changed |
+81:| `boot_id` | `2bb79165-136a-4b63-829d-17027b0a8e40` | `2bb79165-136a-4b63-829d-17027b0a8e40` | **UNCHANGED** |
+88:| `E2B_TEMPLATE_ID` | `wk9vh0w7zre9vbcia51p` (19:39) | `nlhz8vlwyupq845jsdg9` | **REVERTED** |
+102:sandbox_identity_provenance.md mtime=2026-09-04 20:37:20.064794959 +0000 birth=2026-09-04 20:37:20.064794959 +0000
+107:1. **`boot_id` is preserved across sandbox recreation.** Inference B in §7.2 is now confirmed by measurement — but the operational advice built on it in §6 was wrong and is retracted here.
+108:2. **The reliable recreation signal is `E2B_SANDBOX_ID` together with a `/proc/uptime` reset.** Either alone is ambiguous; together they are unambiguous.
+109:3. **Workspace content survives recreation.** `prov_probe.txt` hashes identically. File *timestamps* do not survive — they are reset to the restore instant.
+110:4. **The snapshot-restore model (§4.5) is now directly confirmed.** Every restore replays bit-identically: same PIDs, same monotonic offsets, same July-23 wall stamps, while the kernel uptime counter restarts from zero.
+
+----- extract/Provenance_1_edge.zip/prov_probe.txt -----
+4:boot_id=2bb79165-136a-4b63-829d-17027b0a8e40
+5:E2B_SANDBOX_ID=ia4a7jw0xcyn756c09iwm
+6:E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+7:uptime_1=353.75
+15:TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+
+----- extract/Provenance_1_edge.zip/README.md -----
+3:Sandbox identity and provenance audit, packaged 2026-09-04.
+9:| `sandbox_identity_provenance.md` | **The report.** 12 sections, every line labelled MEASURED or INFERRED, exact commands, verbatim output. Start here. |
+10:| `prov_probe.txt` | Stability probe, written 19:30:28 UTC. Snapshot of boot_id, sandbox/template IDs, uptime and clock state at one instant. Left unmodified on purpose — one value in it is already stale, which is the point. |
+17:The report was re-checked against live state after drafting, and again after the sandbox was recreated mid-audit. **Three claims in the original draft were wrong.** They are corrected in the report and listed in its "Corrections found during re-verification" section. Summarised:
+21:| 1 | `E2B_TEMPLATE_ID` is a fixed template identifier | Changed value mid-session (`nlhz8…` → `wk9vh…`), then reverted on recreation |
+22:| 2 | `uptime -s` is a fixed boot reference | Moved ~6 minutes within a single boot; it is `CLOCK_REALTIME − uptime`, recomputed live |
+23:| 3 | A changed `boot_id` is the unambiguous signal of sandbox recreation | **Falsified.** The sandbox was recreated and `boot_id` did not change |
+36:## The recreation event (20:37 UTC)
+42:| `E2B_SANDBOX_ID` | `ia4a7jw0xcyn756c09iwm` | `i5ppm7iw8cfa89mb7ezsm` | **CHANGED** |
+43:| `/proc/uptime[0]` | ~861 s | ~52 s | **RESET** |
+45:| `boot_id` | `2bb79165-…-17027b0a8e40` | `2bb79165-…-17027b0a8e40` | **UNCHANGED** |
+53:1. **`E2B_SANDBOX_ID` is the reliable instance identifier**, together with a `/proc/uptime` reset. `boot_id` is not — it survives recreation.
+54:2. **Workspace content survives recreation; file timestamps do not.** Content is restored intact; birth and mtime are both reset to the restore instant.
+72:Everything the audit could not resolve is listed in §7.3 of the report — socket-to-process attribution (blank at uid 1000), `/root` contents (permission denied), the exact instants of the clock steps, and the semantics of `E2B_TEMPLATE_ID`. Eight commands failed outright; every failure is reproduced verbatim in both the report and the raw capture rather than substituted with a guess.
+
+----- extract/Provenance_2_brave.zip/sandbox_identity_provenance.md -----
+9:TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+13:### every env var matching `^E2B_`
+14:**MEASURED** `env | grep -E '^E2B_' | sort`
+16:E2B_EVENTS_ADDRESS=http://192.0.2.1
+17:E2B_SANDBOX=true
+18:E2B_SANDBOX_ID=ibbwxrhn0lpoi9ybz9fru
+19:E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+30:### `/proc/sys/kernel/random/boot_id`
+31:**MEASURED** `cat /proc/sys/kernel/random/boot_id`
+36:### `uptime -s` and `/proc/uptime`
+37:**MEASURED** `uptime -s; cat /proc/uptime`
+42:(later re-read of `/proc/uptime` during probe write: `31.34 49.81`)
+523:**MEASURED** current boot start: `uptime -s` → `2026-09-04 19:16:12`  
+524:**MEASURED** `/proc/uptime` at first sample ≈ `12.82` seconds since boot.
+617:::wait:/bin/sh -c 'echo "E2B_PROVISIONING_EXIT:$(cat /provision.result || printf 1)"'
+624:/usr/local/lib/python3.13/site-packages/e2b_charts
+625:/usr/local/lib/python3.13/site-packages/e2b_charts-1.0.0.dist-info
+680:BOOT_ID=$(cat /proc/sys/kernel/random/boot_id)
+681:SANDBOX_ID=$(printenv E2B_SANDBOX_ID)
+682:E2B_CONTENTS=$(cat /.e2b)
+684:printf '%s\n' "boot_id=$BOOT_ID" "E2B_SANDBOX_ID=$SANDBOX_ID" "=== /.e2b ===" "$E2B_CONTENTS" "=== timestamp ===" "$TS" > /home/user/prov_probe.txt
+690:boot_id=2bb79165-136a-4b63-829d-17027b0a8e40
+691:E2B_SANDBOX_ID=ibbwxrhn0lpoi9ybz9fru
+694:TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+
+----- extract/Provenance_2_brave.zip/prov_probe.txt -----
+1:boot_id=2bb79165-136a-4b63-829d-17027b0a8e40
+2:E2B_SANDBOX_ID=ibbwxrhn0lpoi9ybz9fru
+5:TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+
+----- extract/Provenance_3_chrome.zip/sandbox_provenance_report.md -----
+1:# Sandbox Identity and Provenance Report
+9:TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+13:### 1.2 Environment Variables matching `^E2B_`
+14:- **Command:** `env | grep '^E2B_'` `[MEASURED]`
+16:E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+17:E2B_EVENTS_ADDRESS=http://192.0.2.1
+18:E2B_SANDBOX_ID=i9aekzbsq1tymcft2o0e1
+19:E2B_SANDBOX=true
+33:### 1.4 Boot ID
+34:- **Command:** `cat /proc/sys/kernel/random/boot_id` `[MEASURED]`
+57:### 1.6 Uptime
+58:- **Command:** `uptime -s` `[MEASURED]`
+62:- **Command:** `cat /proc/uptime` `[MEASURED]`
+388:### 3.4 `ActiveEnterTimestamp` vs `/proc/uptime`
+397:- **Command:** `uptime -s` `[MEASURED]`
+401:- **Command:** `cat /proc/uptime` `[MEASURED]`
+480:::wait:/bin/sh -c 'echo "E2B_PROVISIONING_EXIT:$(cat /provision.result || printf 1)"'
+514:boot_id: 2bb79165-136a-4b63-829d-17027b0a8e40
+515:E2B_SANDBOX_ID: i9aekzbsq1tymcft2o0e1
+518:TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+
+----- extract/Provenance_3_chrome.zip/prov_probe.txt -----
+1:boot_id: 2bb79165-136a-4b63-829d-17027b0a8e40
+2:E2B_SANDBOX_ID: i9aekzbsq1tymcft2o0e1
+5:TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+
+----- extract/Ceilings_1_chrome.zip/sandbox-ceiling-report.md -----
+
+----- extract/Ceilings_2_edge.zip/sandbox_ceilings.md -----
+
+----- extract/Ceilings_3_brave.zip/sandbox-ceilings.md -----

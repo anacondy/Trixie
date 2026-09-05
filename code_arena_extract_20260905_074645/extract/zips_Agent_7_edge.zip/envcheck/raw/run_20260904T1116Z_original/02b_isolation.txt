@@ -1,0 +1,71 @@
+### /sys/fs/cgroup listing
+total 0
+dr-xr-xr-x 13 root root 0 Jul 23 18:05 .
+drwxr-xr-x 10 root root 0 Jul 23 18:05 ..
+-r--r--r--  1 root root 0 Jul 23 18:05 cgroup.controllers
+-rw-r--r--  1 root root 0 Sep  4 11:16 cgroup.max.depth
+-rw-r--r--  1 root root 0 Sep  4 11:16 cgroup.max.descendants
+-rw-r--r--  1 root root 0 Jul 23 18:05 cgroup.procs
+-r--r--r--  1 root root 0 Sep  4 11:16 cgroup.stat
+-rw-r--r--  1 root root 0 Jul 23 18:05 cgroup.subtree_control
+-rw-r--r--  1 root root 0 Sep  4 11:16 cgroup.threads
+-r--r--r--  1 root root 0 Sep  4 11:16 cpu.stat
+-r--r--r--  1 root root 0 Sep  4 11:16 cpuset.cpus.effective
+-r--r--r--  1 root root 0 Sep  4 11:16 cpuset.mems.effective
+drwxr-xr-x  2 root root 0 Jul 23 18:05 dev-hugepages.mount
+drwxr-xr-x  2 root root 0 Jul 23 18:05 dev-mqueue.mount
+drwxr-xr-x  2 root root 0 Jul 23 18:05 init.scope
+-rw-r--r--  1 root root 0 Sep  4 11:16 io.cost.model
+-rw-r--r--  1 root root 0 Sep  4 11:16 io.cost.qos
+-r--r--r--  1 root root 0 Sep  4 11:16 io.stat
+-r--r--r--  1 root root 0 Sep  4 11:16 memory.numa_stat
+
+### find memory.max anywhere below cgroup
+/sys/fs/cgroup/user/memory.max
+/sys/fs/cgroup/sys-fs-fuse-connections.mount/memory.max
+/sys/fs/cgroup/sys-kernel-debug.mount/memory.max
+/sys/fs/cgroup/dev-mqueue.mount/memory.max
+/sys/fs/cgroup/user.slice/memory.max
+/sys/fs/cgroup/sys-kernel-tracing.mount/memory.max
+/sys/fs/cgroup/socats/memory.max
+/sys/fs/cgroup/init.scope/memory.max
+/sys/fs/cgroup/system.slice/memory.max
+/sys/fs/cgroup/ptys/memory.max
+
+### cgroup ns
+cgroup:[4026531835]
+
+### mount ns / user namespaces?
+user:[4026531837]
+mnt:[4026531841]
+pid:[4026531836]
+cat: /proc/sys/kernel/unprivileged_userns_clone: No such file or directory
+
+### /proc/self/uid_map,gid_map
+         0          0 4294967295
+         0          0 4294967295
+
+### id
+uid=1000(user) gid=1000(user) groups=1000(user),27(sudo),100(users)
+
+### sudo
+/usr/bin/sudo
+-rwsr-xr-x 1 root root 306456 Apr 11 12:21 /usr/bin/sudo
+
+### groups
+user sudo users
+
+### writable check on /sys/fs/cgroup
+touch: cannot touch '/sys/fs/cgroup/testfile': Permission denied
+
+### /proc/sys writable?
+touch: cannot touch '/proc/sys/kernel/hostname': Permission denied
+
+### boot_id
+2bb79165-136a-4b63-829d-17027b0a8e40
+
+### clock source
+kvm-clock
+
+### hypervisor
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault invpcid_single ssbd ibrs ibpb stibp ibrs_enhanced fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves arat avx512vbmi umip avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid fsrm md_clear arch_capabilities

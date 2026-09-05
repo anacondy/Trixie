@@ -1,0 +1,32 @@
+{
+  "architecture": "x86_64",
+  "archive_pack_start_utc": "2026-09-04T14:31:48.936310Z",
+  "archive_schema": "agent9-edge-comprehensive-v1",
+  "archive_self_inclusion": "Impossible by definition; Agent 9 edge.zip is not nested inside itself.",
+  "canonical_probe_sha256": "870774e553380dd881964cfb09cc74871349e8b3b3ac2d00a53214022568046b",
+  "canonical_reproducible_run_utc": "2026-09-04T14:20:02.722079460Z to 2026-09-04T14:21:11.259311599Z",
+  "canonical_run_tag": "20260904T142002Z-2576",
+  "canonical_sandbox_id": "ixwcucmrk55t9qy240sxo",
+  "canonical_template_id": "nlhz8vlwyupq845jsdg9",
+  "creator": "Helpful agent on Arena.ai Agent Mode",
+  "external_checksum_sidecar": "/home/user/Agent 9 edge.zip.sha256",
+  "hostname": "e2b.local",
+  "initial_characterization_window_utc": "2026-09-04T12:11:04.583543938Z to approximately 2026-09-04T12:18:25.866920674Z",
+  "kernel": "6.1.158+",
+  "libc": [
+    "glibc",
+    "2.41"
+  ],
+  "metadata_generated_ist": "2026-09-04T20:01:49.415203+05:30",
+  "metadata_generated_utc": "2026-09-04T14:31:49.415203Z",
+  "os_release": "Debian GNU/Linux 13 (trixie); full=13.6",
+  "prompt_receipt_timestamps": "not exposed by API; intentionally not fabricated",
+  "python_used_to_build": "3.13.14 (main, Jul 14 2026, 04:45:36) [GCC 14.2.0]",
+  "requested_archive_name": "Agent 9 edge.zip",
+  "sandbox_id": "ixwcucmrk55t9qy240sxo",
+  "sensitive_data_policy": "Environment-variable values were not bulk-dumped. Sandbox/template IDs were included because the user explicitly requested them.",
+  "source_file_count_before_archive_docs": 81,
+  "template_id": "wvhxjiyesoij1nccqrqk",
+  "user_prompt_count": 3,
+  "working_directory": "/home/user"
+}

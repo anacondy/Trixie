@@ -1,0 +1,227 @@
+[
+ {
+  "host": "pypi.org",
+  "ip": "151.101.64.223",
+  "A_hostname_https": {
+   "ok": true,
+   "tls": "TLSv1.3",
+   "sni_used": "pypi.org",
+   "issuer_CN": "GlobalSign Atlas R3 DV TLS CA 2025 Q4",
+   "subject_CN": "pypi.org",
+   "http": "HTTP/1.1 200 OK"
+  },
+  "B_ip_sni_hostname": {
+   "ok": true,
+   "tls": "TLSv1.3",
+   "sni_used": "pypi.org",
+   "issuer_CN": "GlobalSign Atlas R3 DV TLS CA 2025 Q4",
+   "subject_CN": "pypi.org",
+   "http": "HTTP/1.1 200 OK"
+  },
+  "C_ip_sni_ip": {
+   "ok": true,
+   "tls": "TLSv1.3",
+   "sni_used": "151.101.64.223",
+   "issuer_CN": "GlobalSign Atlas R3 DV TLS CA 2025 Q4",
+   "subject_CN": "www.python.org",
+   "http": "HTTP/1.1 421 Misdirected Request"
+  },
+  "D_ip_http_hosthdr": {
+   "ok": true,
+   "bytes": 1042,
+   "status": "HTTP/1.1 301 Moved Permanently"
+  },
+  "E_hostname_http": {
+   "ok": true,
+   "bytes": 1042,
+   "status": "HTTP/1.1 301 Moved Permanently"
+  },
+  "F_curl_normal": "200|connect=0.001431|tls=0.020346|ttfb=0.029224",
+  "G_curl_pinned_ip": "200|connect=0.000247|tls=0.020909|ttfb=0.033294"
+ },
+ {
+  "host": "github.com",
+  "ip": "140.82.116.4",
+  "A_hostname_https": {
+   "ok": true,
+   "tls": "TLSv1.3",
+   "sni_used": "github.com",
+   "issuer_CN": "Sectigo Public Server Authentication CA DV E36",
+   "subject_CN": "github.com",
+   "http": "HTTP/1.1 200 OK"
+  },
+  "B_ip_sni_hostname": {
+   "ok": true,
+   "tls": "TLSv1.3",
+   "sni_used": "github.com",
+   "issuer_CN": "Sectigo Public Server Authentication CA DV E36",
+   "subject_CN": "github.com",
+   "http": "HTTP/1.1 200 OK"
+  },
+  "C_ip_sni_ip": {
+   "ok": true,
+   "tls": "TLSv1.3",
+   "sni_used": "140.82.116.4",
+   "issuer_CN": "Sectigo Public Server Authentication CA DV E36",
+   "subject_CN": "github.com",
+   "http": "HTTP/1.1 301 Moved Permanently"
+  },
+  "D_ip_http_hosthdr": {
+   "ok": true,
+   "bytes": 103,
+   "status": "HTTP/1.1 301 Moved Permanently"
+  },
+  "E_hostname_http": {
+   "ok": true,
+   "bytes": 103,
+   "status": "HTTP/1.1 301 Moved Permanently"
+  },
+  "F_curl_normal": "200|connect=0.002001|tls=0.020141|ttfb=0.028174",
+  "G_curl_pinned_ip": "200|connect=0.000284|tls=0.018346|ttfb=0.027277"
+ },
+ {
+  "host": "huggingface.co",
+  "ip": "99.86.101.36",
+  "A_hostname_https": {
+   "ok": true,
+   "tls": "TLSv1.3",
+   "sni_used": "huggingface.co",
+   "issuer_CN": "Amazon RSA 2048 M01",
+   "subject_CN": "huggingface.co",
+   "http": "HTTP/1.1 200 OK"
+  },
+  "B_ip_sni_hostname": {
+   "ok": true,
+   "tls": "TLSv1.3",
+   "sni_used": "huggingface.co",
+   "issuer_CN": "Amazon RSA 2048 M01",
+   "subject_CN": "huggingface.co",
+   "http": "HTTP/1.1 200 OK"
+  },
+  "C_ip_sni_ip": {
+   "ok": false,
+   "sni_used": "99.86.101.36",
+   "error": "SSLError: [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake failure (_ssl.c:1032)"
+  },
+  "D_ip_http_hosthdr": {
+   "ok": true,
+   "bytes": 561,
+   "status": "HTTP/1.1 301 Moved Permanently"
+  },
+  "E_hostname_http": {
+   "ok": true,
+   "bytes": 561,
+   "status": "HTTP/1.1 301 Moved Permanently"
+  },
+  "F_curl_normal": "200|connect=0.023957|tls=0.045087|ttfb=0.057529",
+  "G_curl_pinned_ip": "200|connect=0.000262|tls=0.017313|ttfb=0.027550"
+ },
+ {
+  "host": "pastebin.com",
+  "ip": "172.66.171.73",
+  "A_hostname_https": {
+   "ok": true,
+   "tls": "TLSv1.3",
+   "sni_used": "pastebin.com",
+   "issuer_CN": "WE1",
+   "subject_CN": "pastebin.com",
+   "http": "HTTP/1.1 200 OK"
+  },
+  "B_ip_sni_hostname": {
+   "ok": true,
+   "tls": "TLSv1.3",
+   "sni_used": "pastebin.com",
+   "issuer_CN": "WE1",
+   "subject_CN": "pastebin.com",
+   "http": "HTTP/1.1 200 OK"
+  },
+  "C_ip_sni_ip": {
+   "ok": false,
+   "sni_used": "172.66.171.73",
+   "error": "SSLError: [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] ssl/tls alert handshake failure (_ssl.c:1032)"
+  },
+  "D_ip_http_hosthdr": {
+   "ok": true,
+   "bytes": 419,
+   "status": "HTTP/1.1 301 Moved Permanently"
+  },
+  "E_hostname_http": {
+   "ok": true,
+   "bytes": 419,
+   "status": "HTTP/1.1 301 Moved Permanently"
+  },
+  "F_curl_normal": "200|connect=0.032440|tls=0.052008|ttfb=7.188419",
+  "G_curl_pinned_ip": "200|connect=0.000274|tls=0.024060|ttfb=0.242500"
+ },
+ {
+  "host": "webhook.site",
+  "ip": "178.63.67.153",
+  "A_hostname_https": {
+   "ok": true,
+   "tls": "TLSv1.3",
+   "sni_used": "webhook.site",
+   "issuer_CN": "YR2",
+   "subject_CN": "*.webhook.site",
+   "http": "HTTP/1.1 200 OK"
+  },
+  "B_ip_sni_hostname": {
+   "ok": true,
+   "tls": "TLSv1.3",
+   "sni_used": "webhook.site",
+   "issuer_CN": "YR2",
+   "subject_CN": "*.webhook.site",
+   "http": "HTTP/1.1 200 OK"
+  },
+  "C_ip_sni_ip": {
+   "ok": true,
+   "tls": "TLSv1.3",
+   "sni_used": "178.63.67.153",
+   "issuer_CN": "YE2",
+   "subject_CN": "11hookback.com",
+   "http": "HTTP/1.1 200 OK"
+  },
+  "D_ip_http_hosthdr": {
+   "ok": true,
+   "bytes": 4096,
+   "status": "HTTP/1.1 200 OK"
+  },
+  "E_hostname_http": {
+   "ok": true,
+   "bytes": 4096,
+   "status": "HTTP/1.1 200 OK"
+  },
+  "F_curl_normal": "200|connect=0.001906|tls=0.313085|ttfb=0.619547",
+  "G_curl_pinned_ip": "200|connect=0.000312|tls=0.315481|ttfb=0.626076"
+ },
+ {
+  "host": "transfer.sh",
+  "ip": "144.76.136.153",
+  "A_hostname_https": {
+   "ok": false,
+   "sni_used": "transfer.sh",
+   "error": "SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1032)"
+  },
+  "B_ip_sni_hostname": {
+   "ok": false,
+   "sni_used": "transfer.sh",
+   "error": "SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1032)"
+  },
+  "C_ip_sni_ip": {
+   "ok": false,
+   "sni_used": "144.76.136.153",
+   "error": "SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1032)"
+  },
+  "D_ip_http_hosthdr": {
+   "ok": true,
+   "bytes": 0,
+   "status": ""
+  },
+  "E_hostname_http": {
+   "ok": true,
+   "bytes": 0,
+   "status": ""
+  },
+  "F_curl_normal": "000|connect=0.001930|tls=0.000000|ttfb=0.000000",
+  "G_curl_pinned_ip": "000|connect=0.000319|tls=0.000000|ttfb=0.000000"
+ }
+]

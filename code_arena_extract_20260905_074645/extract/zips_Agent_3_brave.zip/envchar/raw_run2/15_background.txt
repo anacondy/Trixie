@@ -1,0 +1,13 @@
+# ============================================================
+# probe_environment.sh :: 15 background/long-running process test
+# run_id: raw_run2   mode: stress
+# host: e2b.local   user: user(1000)
+# date_utc: 2026-09-04T13:47:29Z
+# ============================================================
+
+$ nohup heartbeat (0.2s ticks), verify alive after 7s, then terminate
+process 2548 alive after 7s: YES
+ticks recorded in 15_background_heartbeat.log: 35
+heartbeat started pid=2548
+tick 1 1788529649
+tick 2 1788529649

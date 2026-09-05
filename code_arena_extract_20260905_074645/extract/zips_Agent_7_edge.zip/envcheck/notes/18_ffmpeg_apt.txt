@@ -1,0 +1,26 @@
+### apt install ffmpeg (--no-install-recommends), timed
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+debconf: unable to initialize frontend: Teletype
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Noninteractive
+Fetched 63.8 MB in 1s (120 MB/s)
+(Reading database ... 38553 files and directories currently installed.)
+Processing triggers for libc-bin (2.41-12+deb13u3) ...
+
+real	0m10.577s
+user	0m5.781s
+sys	0m1.760s
+
+### verify
+ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers
+built with gcc 14 (Debian 14.2.0-19)
+
+### df after
+/dev/root        25G  4.3G   20G  18% /
+
+### apt cache size now
+12K	/var/cache/apt
+
+### pip still fine after apt
+numpy ok 2.5.2

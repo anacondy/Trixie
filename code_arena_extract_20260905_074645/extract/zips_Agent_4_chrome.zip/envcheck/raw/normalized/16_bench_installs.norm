@@ -1,0 +1,28 @@
+================================================================
+ probe.sh v1.<NUM> section: 16_bench_installs.txt
+ host: e2b.local kernel: <VER>+ arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user: user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ python3 installs.py 3 <TMPDIR>/npm
+ pip download --no-deps requests ok <T> [notice] To update, run: pip install --upgrade pip
+ pip install --user rich (pure python) ok <T> [notice] To update, run: pip install --upgrade pip
+ pip install --user ujson (C++/meson) ok <T> [notice] To update, run: pip install --upgrade pip
+ npm install --no-audit --no-fund ms ok <T>
+ npm install ms (audit ON, attempt) exit=0 <T> <-- audit path is the variable one
+ npm install ms (audit ON, attempt) exit=0 <T> <-- audit path is the variable one
+ npm install ms (audit ON, attempt) exit=0 <T> <-- audit path is the variable one
+$ echo '--- apt install of a real system package (timed) ---'; PKG=$(command -v zstd >/dev/null && echo libzstd1 || echo zstd); t0=$(date +%s%N); sudo -n apt-get install -y -qq $PKG >/dev/null 2>&1; echo " $PKG: exit=$? in $(( ($(date +%s%N)-t0)/<BIGNUM> )) ms"
+--- apt install of a real system package (timed) ---
+ libzstd1: exit=0 in <T>
+
+$ echo '--- venv + install into it (isolation path) ---'; t0=$(date +%s%N); python3 -m venv <TMPDIR>/v2 >/dev/null 2>&1; <TMPDIR>/v2/bin/pip install -q numpy >/dev/null 2>&1; echo " venv + pip install numpy: $(( ($(date +%s%N)-t0)/<BIGNUM> )) ms; result="; <TMPDIR>/v2/bin/python -c 'import numpy;print(" ",numpy.__version__)' 2>&1
+--- venv + install into it (isolation path) ---
+ venv + pip install numpy: <T>; result=
+ <VER>
+
+$ echo '--- git clone over https (real-world bulk) ---'; t0=$(date +%s%N); git clone -q --depth 1 https://github.com/git/git <TMPDIR>/gc 2>&1 | tail -2; echo " shallow clone of git/git: $(( ($(date +%s%N)-t0)/<BIGNUM> )) ms, size $(du -sh <TMPDIR>/gc 2>/dev/null | cut -f1)"
+--- git clone over https (real-world bulk) ---
+ shallow clone of git/git: <T>, size <SZ>
+

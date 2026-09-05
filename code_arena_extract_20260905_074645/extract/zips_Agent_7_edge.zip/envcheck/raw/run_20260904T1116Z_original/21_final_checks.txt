@@ -1,0 +1,57 @@
+### nohup cross-call survival result (was started 2 calls ago)
+(not written yet)
+sleep still running (unexpected)
+
+### GPU / KVM device presence
+ls: cannot access '/dev/kvm': No such file or directory
+ls: cannot access '/dev/dri': No such file or directory
+nvidia-smi: absent
+
+### binutils / ld
+GNU ld (GNU Binutils for Debian) 2.44
+
+### adduser? sshd config check
+sshd present
+
+### timezone / locale
+LANG=
+LANGUAGE=
+LC_CTYPE="POSIX"
+
+### heartbeat server alive after all this?
+{"uptime_s": 466, "mem_current": 368340992, "pid": 3614, "path": "/final_check"}
+
+### final uptime/load
+ 11:22:49 up 7 min,  0 users,  load average: 0.30, 0.20, 0.07
+               total        used        free      shared  buff/cache   available
+Mem:            1984         441        1294           1         396        1543
+
+### file inventory of notes
+total 110
+drwxr-xr-x 2 user user 4096 Sep  4 11:22 .
+drwxr-xr-x 3 user user  128 Sep  4 11:20 ..
+-rw-r--r-- 1 user user 1314 Sep  4 11:16 01_system.txt
+-rw-r--r-- 1 user user 4018 Sep  4 11:16 02_isolation.txt
+-rw-r--r-- 1 user user 3018 Sep  4 11:16 02b_isolation.txt
+-rw-r--r-- 1 user user 7258 Sep  4 11:16 03_tools.txt
+-rw-r--r-- 1 user user 2262 Sep  4 11:16 04_limits_sudo_apt.txt
+-rw-r--r-- 1 user user 4812 Sep  4 11:16 05_fs.txt
+-rw-r--r-- 1 user user 1247 Sep  4 11:16 06_fs_tests.txt
+-rw-r--r-- 1 user user 1232 Sep  4 11:17 07_network_dns_ports.txt
+-rw-r--r-- 1 user user 1529 Sep  4 11:17 08_network_latency.txt
+-rw-r--r-- 1 user user  693 Sep  4 11:17 09_network_throughput.txt
+-rw-r--r-- 1 user user  706 Sep  4 11:18 10_cpu_bench.txt
+-rw-r--r-- 1 user user  698 Sep  4 11:20 11_disk_bench.txt
+-rw-r--r-- 1 user user  709 Sep  4 11:18 12_pip_bench.txt
+-rw-r--r-- 1 user user 1343 Sep  4 11:18 13_apt_bench.txt
+-rw-r--r-- 1 user user 2079 Sep  4 11:19 14_pkg_installs.txt
+-rw-r--r-- 1 user user 1792 Sep  4 11:19 15_network_extra.txt
+-rw-r--r-- 1 user user 1320 Sep  4 11:20 15b_network_fixed.txt
+-rw-r--r-- 1 user user 1827 Sep  4 11:20 16_memory.txt
+-rw-r--r-- 1 user user 1546 Sep  4 11:20 16b_memory_extra.txt
+-rw-r--r-- 1 user user 3400 Sep  4 11:20 17_compile_system.txt
+-rw-r--r-- 1 user user  776 Sep  4 11:21 18_ffmpeg_apt.txt
+-rw-r--r-- 1 user user 2329 Sep  4 11:21 19_services_nohup.txt
+-rw-r--r-- 1 user user 2540 Sep  4 11:22 20_background.txt
+-rw-r--r-- 1 user user  835 Sep  4 11:22 21_final_checks.txt
+-rw-r--r-- 1 user user   70 Sep  4 11:22 heartbeat.log

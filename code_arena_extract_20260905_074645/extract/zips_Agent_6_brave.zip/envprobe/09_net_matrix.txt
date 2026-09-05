@@ -1,0 +1,61 @@
+== DNS timing: raw-UDP stub queries to 8.8.8.8  (5 reps, median) ==
+  google.com                                   median    2.3 ms   min   1.1  max   18.8  (reps n=5)
+  github.com                                   median    9.0 ms   min   1.1  max   19.7  (reps n=5)
+  pypi.org                                     median    0.7 ms   min   0.5  max    0.8  (reps n=5)
+  huggingface.co                               median   15.0 ms   min   0.9  max   23.3  (reps n=5)
+  files.pythonhosted.org                       median    1.4 ms   min   1.1  max   10.2  (reps n=5)
+  registry.npmjs.org                           median    0.7 ms   min   0.6  max    0.8  (reps n=5)
+  deb.debian.org                               median    1.1 ms   min   1.1  max    1.3  (reps n=5)
+  nonexistent-domain-xyzabc123.example.com     median   21.8 ms   min   1.4  max   26.4  (reps n=5)
+
+== TCP connect RTT (7 reps, median) and UDP probes ==
+  -- TCP connect RTT --
+  8.8.8.8:443                               0.21 ms median  min   0.13  max   0.25  (7/7 ok)
+  1.1.1.1:443                               0.16 ms median  min   0.14  max   0.32  (7/7 ok)
+  google.com:443                            0.20 ms median  min   0.17  max   0.22  (7/7 ok)
+  github.com:443                            0.16 ms median  min   0.12  max   0.19  (7/7 ok)
+  github.com:22                             0.16 ms median  min   0.14  max   0.20  (7/7 ok)
+  pypi.org:443                              0.17 ms median  min   0.12  max   0.29  (7/7 ok)
+  huggingface.co:443                        0.17 ms median  min   0.14  max   0.31  (7/7 ok)
+  registry.npmjs.org:443                    0.17 ms median  min   0.12  max   0.28  (7/7 ok)
+  deb.debian.org:443                        0.17 ms median  min   0.15  max   0.20  (7/7 ok)
+  files.pythonhosted.org:443                0.17 ms median  min   0.13  max   0.25  (7/7 ok)
+  1.1.1.1:53                                0.14 ms median  min   0.14  max   0.17  (7/7 ok)
+  -- UDP probes (send, wait 1.2s for any reply) --
+  UDP 53 8.8.8.8 (valid DNS q) : reply 61B in 20.6 ms
+  UDP 53 1.1.1.1 (valid DNS q) : reply 61B in 18.1 ms
+  UDP 443 1.1.1.1 (QUIC-ish)   : no reply in 1.2s
+  UDP 123 time.google.com (NTP): reply 48B in 0.7 ms
+
+== ICMP ping 8.8.8.8 (sudo, 3 pings) ==
+--- 8.8.8.8 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2100ms
+rtt min/avg/max/mdev = 0.406/0.529/0.617/0.089 ms
+
+== IPv6 reachability ==
+curl: (7) Failed to connect to www.google.com port 443 after 3 ms: Could not connect to server
+  https://www.google.com over IPv6: http 000, 0.003102s
+
+== TCP 443 matrix via curl (2 runs each: dns/conn/tls/ttfb/total) ==
+  -- https://www.google.com/
+    run1: code=200 dns=0.002440 conn=0.002676 tls=0.012553 ttfb=0.048977 total=0.050139 spd=1665789B/s
+    run2: code=200 dns=0.001740 conn=0.002125 tls=0.011817 ttfb=0.047403 total=0.048470 spd=1720033B/s
+  -- https://github.com/
+    run1: code=200 dns=0.001222 conn=0.001464 tls=0.027772 ttfb=0.041212 total=0.103187 spd=5583377B/s
+    run2: code=200 dns=0.001491 conn=0.001731 tls=0.017931 ttfb=0.025404 total=0.062892 spd=9160576B/s
+  -- https://pypi.org/
+    run1: code=200 dns=0.001115 conn=0.001372 tls=0.024378 ttfb=0.034294 total=0.036354 spd=769241B/s
+    run2: code=200 dns=0.001156 conn=0.001394 tls=0.020432 ttfb=0.028950 total=0.030950 spd=903554B/s
+  -- https://huggingface.co/
+    run1: code=200 dns=0.019248 conn=0.019596 tls=0.039366 ttfb=0.049690 total=0.066301 spd=2745886B/s
+    run2: code=200 dns=0.022293 conn=0.022660 tls=0.042057 ttfb=0.051678 total=0.068594 spd=2654095B/s
+  -- https://registry.npmjs.org/
+    run1: code=200 dns=0.001772 conn=0.002110 tls=0.062349 ttfb=0.088040 total=0.088126 spd=22B/s
+    run2: code=200 dns=0.002752 conn=0.003088 tls=0.064261 ttfb=0.089578 total=0.089662 spd=22B/s
+  -- https://deb.debian.org/
+    run1: code=200 dns=0.001544 conn=0.001852 tls=0.019272 ttfb=0.027677 total=0.027742 spd=67623B/s
+    run2: code=200 dns=0.001875 conn=0.002170 tls=0.024192 ttfb=0.037098 total=0.037162 spd=50481B/s
+
+== plaintext HTTP ==
+  http://google.com/ code=301 ttfb=0.011473s total=0.011504s
+  http://deb.debian.org/ code=200 ttfb=0.018578s total=0.018697s

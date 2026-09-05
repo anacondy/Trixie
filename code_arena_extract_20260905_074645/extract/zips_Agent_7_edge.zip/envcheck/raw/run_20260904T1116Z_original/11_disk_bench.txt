@@ -1,0 +1,17 @@
+### Disk benchmarks (dd, 200MB, fsync where noted)
+--- /home/user/envcheck  (fs: ext2/ext3)
+  write 200MB (fdatasync):  830 MB/s
+  read 200MB (page cache):  5.2 GB/s
+  read 200MB (O_DIRECT):    3.2 GB/s
+  write 200MB (O_DIRECT):   1.6 GB/s
+--- /tmp  (fs: tmpfs)
+  write 200MB (fdatasync):  3.0 GB/s
+  read 200MB (page cache):  5.3 GB/s
+  read 200MB (O_DIRECT):      write 200MB (O_DIRECT):   
+### Small-file ops on ext4 (/home/user/envcheck)
+create+write 20000 small files : 4.36s  (4585 files/s)
+read 20000 small files          : 0.23s  (85397 files/s, 88890 bytes)
+delete 20000 small files        : 0.25s  (78461 files/s)
+
+### inode state after test
+/dev/root      6759792 136422 6623370    3% /

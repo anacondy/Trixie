@@ -1,0 +1,23 @@
+# ============================================================
+# probe_environment.sh :: 08 connection latency (curl -w breakdown, ICMP)
+# run_id: raw_run2   mode: stress
+# host: e2b.local   user: user(1000)
+# date_utc: 2026-09-04T13:47:00Z
+# ============================================================
+
+$ curl timing breakdown, seconds (dns tcp tls ttfb total http)
+https://www.google.com | 0.001929 0.002241 0.014469 0.054356 0.055890 200 142.251.153.119
+https://github.com | 0.001556 0.001870 0.020155 0.029922 0.068199 200 140.82.116.3
+https://pypi.org | 0.001198 0.001488 0.024191 0.036212 0.038280 200 151.101.0.223
+https://huggingface.co | 0.023392 0.023798 0.042845 0.052751 0.068006 200 3.163.189.37
+https://www.cloudflare.com | 0.034935 0.035344 0.058792 0.073574 0.219026 200 104.16.124.96
+https://8.8.8.8/ | 0.001237 0.001728 0.012920 0.018166 0.018473 200 8.8.8.8
+http://example.com/ | 0.027422 0.027714 0.000000 0.057479 0.057546 200 104.20.23.154
+
+$ ICMP (needs CAP_NET_RAW; sudo used if available)
+--- ping -c 4 -W 2 8.8.8.8 ---
+4 packets transmitted, 4 received, 0% packet loss, time 3070ms
+rtt min/avg/max/mdev = 0.437/0.475/0.536/0.040 ms
+--- ping -c 4 -W 2 google.com ---
+4 packets transmitted, 4 received, 0% packet loss, time 3059ms
+rtt min/avg/max/mdev = 0.512/0.600/0.661/0.057 ms

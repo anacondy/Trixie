@@ -1,0 +1,8 @@
+=== FINAL redaction confirmation re-scan (Sat Sep  5 07:49:21 UTC 2026) ===
+userinfo connection strings: 0
+DATABASE_URL/DB_* assignments: 0
+known key/token formats: 0
+bearer/basic auth: 0
+any-scheme userinfo URIs: 0
+.env* files: 0
+RESULT: ZERO SECRETS REMAIN — redaction complete (nothing required redaction; scan-verified)

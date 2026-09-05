@@ -1,0 +1,25 @@
+=== Section 3: direct-IP with hand-set SNI/Host ===
+== pypi.org via https://151.101.0.223 (curl --resolve, real SNI+Host)
+  http_code=200 t=0.035497s ip=151.101.0.223
+== pypi.org via http://151.101.0.223 with hand-set Host header (port 80)
+  http_code=301 t=0.014939s ip=151.101.0.223
+== openssl s_client to 151.101.0.223 with SNI pypi.org: leaf issuer
+  subject=CN=pypi.org
+  issuer=C=BE, O=GlobalSign nv-sa, CN=GlobalSign Atlas R3 DV TLS CA 2025 Q4
+== github.com via https://140.82.116.4 (curl --resolve, real SNI+Host)
+  http_code=200 t=0.077114s ip=140.82.116.4
+== github.com via http://140.82.116.4 with hand-set Host header (port 80)
+  http_code=301 t=0.017863s ip=140.82.116.4
+== openssl s_client to 140.82.116.4 with SNI github.com: leaf issuer
+  subject=CN=github.com
+  issuer=C=GB, O=Sectigo Limited, CN=Sectigo Public Server Authentication CA DV E36
+== files.pythonhosted.org via https://151.101.64.223 (curl --resolve, real SNI+Host)
+  http_code=200 t=0.031175s ip=151.101.64.223
+== files.pythonhosted.org via http://151.101.64.223 with hand-set Host header (port 80)
+  http_code=403 t=0.014613s ip=151.101.64.223
+== openssl s_client to 151.101.64.223 with SNI files.pythonhosted.org: leaf issuer
+  subject=CN=*.pythonhosted.org
+  issuer=C=BE, O=GlobalSign nv-sa, CN=GlobalSign Atlas R3 DV TLS CA 2025 Q4
+== cross-SNI test: Fastly IP 151.101.0.223 with SNI example.com
+  subject=CN=www.python.org
+  issuer=C=BE, O=GlobalSign nv-sa, CN=GlobalSign Atlas R3 DV TLS CA 2025 Q4

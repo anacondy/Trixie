@@ -1,0 +1,9 @@
+===== UTC: 2026-09-04T14:14:25Z =====
+numpy: 2.3.5 origin=/usr/local/lib/python3.13/site-packages/numpy/__init__.py
+pandas: 2.2.3 origin=/usr/local/lib/python3.13/site-packages/pandas/__init__.py
+sklearn: 1.6.1 origin=/usr/local/lib/python3.13/site-packages/sklearn/__init__.py
+PIL: 12.3.0 origin=/usr/local/lib/python3.13/site-packages/PIL/__init__.py
+torch: NOT INSTALLED
+requests: 2.33.0 origin=/usr/local/lib/python3.13/site-packages/requests/__init__.py
+tqdm: 4.69.0 origin=/usr/local/lib/python3.13/site-packages/tqdm/__init__.py
+httpx: 0.28.1 origin=/usr/local/lib/python3.13/site-packages/httpx/__init__.py

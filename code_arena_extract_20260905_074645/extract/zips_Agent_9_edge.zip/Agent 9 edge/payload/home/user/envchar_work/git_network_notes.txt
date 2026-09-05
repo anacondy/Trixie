@@ -1,0 +1,17 @@
+## git_https_ls_remote
+command=['git', '-c', 'credential.helper=', 'ls-remote', 'https://github.com/git/git.git', 'HEAD']
+status=ok rc=0 elapsed=0.750388s
+3cb9185f65410273787f74333cc027d2ea5daada	HEAD
+
+
+## git_native_9418_ls_remote
+command=['git', 'ls-remote', 'git://github.com/git/git.git', 'HEAD']
+status=error rc=-1 elapsed=30.007783s
+TimeoutExpired: Command '['git', 'ls-remote', 'git://github.com/git/git.git', 'HEAD']' timed out after 30 seconds
+
+## ssh_github_banner
+command=['ssh', '-4', '-o', 'BatchMode=yes', '-o', 'StrictHostKeyChecking=no', '-o', 'UserKnownHostsFile=/dev/null', '-o', 'ConnectTimeout=5', '-T', 'git@github.com']
+status=transport_reached rc=255 elapsed=0.478603s
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+git@github.com: Permission denied (publickey).
+

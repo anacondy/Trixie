@@ -1,0 +1,82 @@
+probe_run_start_utc=2026-09-04T14:20:02.722079460Z
+probe_mode=full
+probe_script=/home/user/environment_evidence/probe_environment.sh
+raw_file=13_memory_process.txt
+
+$ MEM_TEST_MIB=512 python3 - <<'PY'
+import os,time,resource,pathlib,gc
+mib=int(os.environ.get("MEM_TEST_MIB","512"));amount=mib*1024*1024
+cg=pathlib.Path("/sys/fs/cgroup")/next((x.split(":",2)[2].lstrip("/") for x in pathlib.Path("/proc/self/cgroup").read_text().splitlines() if x.startswith("0::")),"")
+def show(label):
+ print(label,"ru_maxrss_KiB",resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)
+ for f in ["memory.current","memory.peak","memory.max","memory.high","memory.swap.current","memory.events"]:
+  try:print(label,f,(cg/f).read_text().strip().replace("\\n",";"))
+  except Exception as e:print(label,f,repr(e))
+show("before");t=time.perf_counter_ns();b=bytearray(amount);print("allocation_bytes",amount,"seconds",f"{(time.perf_counter_ns()-t)/1e9:.9f}")
+p=os.sysconf("SC_PAGE_SIZE");t=time.perf_counter_ns()
+for i in range(0,amount,p):b[i]=(i//p)&255
+print("page_touch_seconds",f"{(time.perf_counter_ns()-t)/1e9:.9f}");show("touched");time.sleep(1);show("held");del b;gc.collect();time.sleep(.5);show("freed")
+PY
+before ru_maxrss_KiB 10644
+before memory.current 353382400
+before memory.peak 891387904
+before memory.max 1947172864
+before memory.high 1947172864
+before memory.swap.current 0
+before memory.events low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+allocation_bytes 536870912 seconds 0.325888404
+page_touch_seconds 0.031656181
+touched ru_maxrss_KiB 535104
+touched memory.current 891244544
+touched memory.peak 891387904
+touched memory.max 1947172864
+touched memory.high 1947172864
+touched memory.swap.current 0
+touched memory.events low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+held ru_maxrss_KiB 535104
+held memory.current 891404288
+held memory.peak 891404288
+held memory.max 1947172864
+held memory.high 1947172864
+held memory.swap.current 0
+held memory.events low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+freed ru_maxrss_KiB 535104
+freed memory.current 353476608
+freed memory.peak 891404288
+freed memory.max 1947172864
+freed memory.high 1947172864
+freed memory.swap.current 0
+freed memory.events low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+[exit_code=0]
+
+$ (echo "child_start BASHPID=$BASHPID"; for i in 1 2 3 4 5 6; do echo "heartbeat $i epoch_ns=$(date +%s%N)"; sleep 1; done) & child=$!; echo "parent BASHPID=$BASHPID child=$child"; wait "$child"; rc=$?; echo "child_returncode=$rc"; exit "$rc"
+parent BASHPID=3157 child=3158
+child_start BASHPID=3158
+heartbeat 1 epoch_ns=1788531665226055732
+heartbeat 2 epoch_ns=1788531666229266685
+heartbeat 3 epoch_ns=1788531667233014985
+heartbeat 4 epoch_ns=1788531668235987525
+heartbeat 5 epoch_ns=1788531669239755767
+heartbeat 6 epoch_ns=1788531670242742986
+child_returncode=0
+[exit_code=0]

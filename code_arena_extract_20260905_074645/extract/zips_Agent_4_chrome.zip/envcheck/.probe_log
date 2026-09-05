@@ -1,0 +1,6 @@
+./probe.sh: line 908: 16860 Killed                  python3 "$TMPD/oom.py" "$TMPD/oom.log"
+./probe.sh: line 1464: 19873 Killed                  python3 "$TMPD/oom.py" "$TMPD/oom.log"
+
+wrote raw/MANIFEST.txt and manifest.json (28 files)
+wrote MANIFEST.txt, manifest.json, SHA256SUMS.txt (22 files, 93,248 bytes)
+  run_id=20260904T140458Z-11960 sandbox=i0m9mhony51frr3osghn0 template=nlhz8vlwyupq845jsdg9

@@ -1,0 +1,54 @@
+== pip/package-manager capability suite ==
+== global site-packages perms (default pip target for /usr/local python) ==
+drwxrwxrwx  41 root root  4096 Jul 23 15:09 /usr/local/lib/python3.13
+drwxrwxrwx 369 root root 12288 Jul 23 18:05 /usr/local/lib/python3.13/site-packages
+site-packages WRITABLE by user
+
+== python 3.13 build flags ==
+Py_GIL_DISABLED: 0
+SOABI: cpython-313-x86_64-linux-gnu
+
+== venv creation + timing ==
+  venv created in 2.14s
+pip 26.1.2 from /tmp/vptest/lib/python3.13/site-packages/pip (python 3.13)
+
+== wheel installs (timed, quiet) ==
+         ~^
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    print(f'  {pkg:16s} rc=1 in {(1788520787.298882456-1788520787.004983689):6.2f}s')
+               ^^^
+NameError: name 'pkg' is not defined
+           ~^
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    print(f'  {pkg:16s} rc=1 in {(1788520787.618295698-1788520787.329165272):6.2f}s')
+               ^^^
+NameError: name 'pkg' is not defined
+          ~^
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    print(f'  {pkg:16s} rc=1 in {(1788520787.932171604-1788520787.647463525):6.2f}s')
+               ^^^
+NameError: name 'pkg' is not defined
+== sdist builds ==
+  markupsafe sdist (C ext compile, build isolation): rc=0 in   3.72s
+  six (pure sdist, legacy setup.py): rc=0 in   0.42s
+
+== import + version sanity ==
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'rich'
+
+== numpy micro-benches (from /usr/local python? use venv numpy) ==
+  File "<stdin>", line 4
+    t0=time.perf_counter(); for _ in range(200): np.dot(A,B); print(f"  np.dot warm x200        = {(time.perf_counter()-t0)*1000/200:.1f} ms/op")
+                            ^^^
+SyntaxError: invalid syntax
+
+== pip --user install test (outside venv, default interpreter) ==
+  idna importable from default python (user site) — pip --user rc=0 in 1.11s
+  user site: /home/user/.local/lib/python3.13/site-packages
+total 8
+drwxr-xr-x 4 user user   60 Sep  4 11:19 .
+drwxr-xr-x 3 user user   60 Sep  4 11:19 ..

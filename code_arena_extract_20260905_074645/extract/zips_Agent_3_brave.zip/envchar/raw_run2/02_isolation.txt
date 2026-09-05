@@ -1,0 +1,130 @@
+# ============================================================
+# probe_environment.sh :: 02 isolation (VM/container signals, identity, network topology)
+# run_id: raw_run2   mode: stress
+# host: e2b.local   user: user(1000)
+# date_utc: 2026-09-04T13:46:52Z
+# ============================================================
+
+$ ls -la /.dockerenv
+ls: cannot access '/.dockerenv': No such file or directory
+
+$ cat /proc/1/cgroup
+0::/init.scope
+
+$ PID1 cmdline
+/sbin/init 
+
+$ ps -eo pid,ppid,user,comm (first 25)
+    PID    PPID USER     COMMAND
+      1       0 root     systemd
+      2       0 root     kthreadd
+      3       2 root     rcu_gp
+      4       2 root     rcu_par_gp
+      5       2 root     slub_flushwq
+      6       2 root     netns
+      7       2 root     kworker/0:0-rcu_gp
+      8       2 root     kworker/0:0H-events_highpri
+      9       2 root     kworker/u4:0-flush-254:0
+     10       2 root     mm_percpu_wq
+     11       2 root     rcu_tasks_kthread
+     12       2 root     rcu_tasks_rude_kthread
+     13       2 root     rcu_tasks_trace_kthread
+     14       2 root     ksoftirqd/0
+     15       2 root     rcu_preempt
+     16       2 root     migration/0
+     17       2 root     kworker/0:1-cgroup_offline
+     18       2 root     cpuhp/0
+     19       2 root     cpuhp/1
+     20       2 root     migration/1
+     21       2 root     ksoftirqd/1
+     22       2 root     kworker/1:0-events
+     23       2 root     kworker/1:0H-events_highpri
+     25       2 root     kworker/u4:1-events_unbound
+
+$ ps (non-kernel processes)
+    PID    PPID USER       RSS COMMAND
+      1       0 root      8624 /sbin/init
+    173       2 root         4 bpfilter_umh
+    290       1 root      4076 /usr/lib/systemd/systemd-journald
+    308       1 systemd+  1448 /usr/lib/systemd/systemd-networkd
+    336       1 _rpc       408 /usr/sbin/rpcbind -f -w
+    340       1 message+   548 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    341       1 root      2648 /usr/lib/systemd/systemd-logind
+    359       1 root     23024 /usr/bin/envd
+    421       1 root       176 /sbin/agetty -o -- \u --noreset --noclear - linux
+    422       1 root       200 /usr/sbin/blkmapd
+    437       1 root     80584 /usr/local/bin/python3.13 /usr/local/bin/jupyter-server --IdentityProvider.token=
+    463       1 root     49504 /root/.server/.venv/bin/python /root/.server/.venv/bin/uvicorn main:app --host 0.0.0.0 --port 49999 --workers 1 --no-access-log --no-use-colors --timeout-keep-alive 640
+    470     359 root       772 socat -d -d -d TCP4-LISTEN:8888,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:8888
+    475     437 root     54536 /usr/local/bin/python3.13 -Xfrozen_modules=off -m ipykernel_launcher -f /root/.local/share/jupyter/runtime/kernel-6bd8c74e-fd89-448c-9e6a-22de9783e8b5.json
+    490     437 root     18196 node /usr/bin/ijskernel --hide-undefined /root/.local/share/jupyter/runtime/kernel-1fe44cf5-e7f2-4ee3-82b8-24ac60d6d93f.json --protocol=5.1
+    512     359 root       772 socat -d -d -d TCP4-LISTEN:35769,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:35769
+    513     359 root       772 socat -d -d -d TCP4-LISTEN:47945,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:47945
+    514     359 root       772 socat -d -d -d TCP4-LISTEN:34675,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:34675
+    515     359 root       776 socat -d -d -d TCP4-LISTEN:44461,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:44461
+    516     359 root       772 socat -d -d -d TCP4-LISTEN:39379,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:39379
+    517     359 root       768 socat -d -d -d TCP4-LISTEN:41435,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:41435
+    518     359 root       772 socat -d -d -d TCP4-LISTEN:43501,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:43501
+    521     359 root       772 socat -d -d -d TCP4-LISTEN:35105,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:35105
+    523     359 root       772 socat -d -d -d TCP4-LISTEN:60465,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:60465
+    524     359 root       776 socat -d -d -d TCP4-LISTEN:60493,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:60493
+    525     359 root       772 socat -d -d -d TCP4-LISTEN:53335,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:53335
+   2031     359 user      3316 /bin/bash -l -c rm -rf /home/user/envchar/raw_run2 && cd /home/user/envchar && bash probe_environment.sh --stress --outdir raw_run2 2>&1
+   2035    2031 user      3100 bash probe_environment.sh --stress --outdir raw_run2
+   2066       1 root      7044 /usr/lib/systemd/systemd-timedated
+
+$ grep -E "^Cap" /proc/self/status
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+
+$ grep -E "Seccomp|NoNewPrivs" /proc/self/status
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+
+$ id
+uid=1000(user) gid=1000(user) groups=1000(user),27(sudo),100(users)
+
+$ sudo -n id
+uid=0(root) gid=0(root) groups=0(root)
+
+$ ip -4 addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    inet 169.254.0.21/30 brd 169.254.0.23 scope global eth0
+       valid_lft forever preferred_lft forever
+
+$ ip route
+default via 169.254.0.22 dev eth0 
+169.254.0.20/30 dev eth0 proto kernel scope link src 169.254.0.21 
+
+$ cat /etc/resolv.conf
+nameserver 8.8.8.8
+$ cat /etc/hosts
+127.0.0.1        localhost
+::1              localhost ip6-localhost ip6-loopback
+fe00::           ip6-localnet
+ff00::           ip6-mcastprefix
+ff02::1          ip6-allnodes
+ff02::2          ip6-allrouters
+127.0.1.1        e2b.local
+192.0.2.1        events.e2b.local
+
+$ systemctl list-units --type=service --state=running
+code-interpreter.service
+dbus.service
+envd.service
+getty@tty1.service
+jupyter.service
+nfs-blkmap.service
+rpcbind.service
+ssh.service
+systemd-journald.service
+systemd-logind.service
+systemd-networkd.service
+systemd-timedated.service

@@ -1,0 +1,8 @@
+=== size threshold probe on speed.cloudflare.com/__down ===
+bytes=1000000 -> http=200 got=1000000 time=0.122721s
+bytes=10000000 -> http=200 got=10000000 time=0.174506s
+bytes=25000000 -> http=200 got=25000000 time=0.220496s
+bytes=50000000 -> http=200 got=50000000 time=0.325180s
+bytes=75000000 -> http=200 got=75000000 time=0.806237s
+bytes=99000000 -> http=200 got=99000000 time=0.634898s
+bytes=100000000 -> http=403 got=1 time=0.042022s

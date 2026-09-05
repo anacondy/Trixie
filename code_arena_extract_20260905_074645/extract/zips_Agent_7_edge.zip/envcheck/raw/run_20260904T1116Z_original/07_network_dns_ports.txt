@@ -1,0 +1,35 @@
+### /etc/resolv.conf
+nameserver 8.8.8.8
+### python DNS timing (5 tries each)
+host                                   resolved     min     med     max  [ms]
+google.com                       74.125.199.100     1.5     2.4     4.3
+github.com                         140.82.116.4     1.5    10.5    11.9
+pypi.org                        151.101.192.223     1.0     1.1     1.1
+huggingface.co                     3.165.160.11     1.6    18.8    22.3
+files.pythonhosted.org           151.101.64.223     1.2     9.0    12.0
+objects.githubusercontent.com   185.199.109.133     1.0     1.3     1.6
+
+### raw UDP:53 queries to public resolvers
+UDP:53 8.8.8.8 -> 1.8 ms, 124 bytes
+UDP:53 1.1.1.1 -> 18.5 ms, 44 bytes
+UDP:53 9.9.9.9 -> 6.0 ms, 44 bytes
+
+### ICMP ping
+ping: socktype: SOCK_RAW
+ping: socket: Operation not permitted
+ping: => missing cap_net_raw+p capability or setuid?
+
+### TCP connect probes (port reachability + RTT)
+github.com:22 -> 2.2 ms
+github.com:443 -> 10.3 ms
+github.com:80 -> 21.6 ms
+github.com:9418 -> 20.3 ms
+raw.githubusercontent.com:443 -> 1.4 ms
+pypi.org:443 -> 1.5 ms
+huggingface.co:443 -> 1.8 ms
+8.8.8.8:53 -> 0.3 ms
+8.8.8.8:443 -> 0.4 ms
+api.github.com:443 -> 21.0 ms
+
+### IPv6
+v6 google: http=000 total=0.002269s

@@ -1,0 +1,7 @@
+### nohup result final check
+survived and completed at 11:22:56
+sleep STILL running
+
+### python venv works?
+pip 26.1.2 from /tmp/venvtest/lib/python3.13/site-packages/pip (python 3.13)
+venv python ok

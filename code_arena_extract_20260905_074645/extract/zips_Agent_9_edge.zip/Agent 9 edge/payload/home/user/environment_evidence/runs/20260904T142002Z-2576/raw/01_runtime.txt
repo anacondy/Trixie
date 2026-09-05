@@ -1,0 +1,99 @@
+probe_run_start_utc=2026-09-04T14:20:02.722079460Z
+probe_mode=full
+probe_script=/home/user/environment_evidence/probe_environment.sh
+raw_file=01_runtime.txt
+
+$ date --iso-8601=ns
+2026-09-04T14:20:02,729709837+00:00
+[exit_code=0]
+
+$ date -u --iso-8601=ns
+2026-09-04T14:20:02,732170412+00:00
+[exit_code=0]
+
+$ pwd; printf "HOME=%s\\nSHELL=%s\\nUSER=%s\\nLOGNAME=%s\\n" "${HOME-<unset>}" "${SHELL-<unset>}" "${USER-<unset>}" "${LOGNAME-<unset>}"
+/home/user
+HOME=/home/user
+SHELL=/bin/bash
+USER=user
+LOGNAME=user
+[exit_code=0]
+
+$ id; whoami; groups; umask; hostname
+uid=1000(user) gid=1000(user) groups=1000(user),27(sudo),100(users)
+user
+user sudo users
+0022
+e2b.local
+[exit_code=0]
+
+$ uname -a; uname -r; uname -m; uname -p
+Linux e2b.local 6.1.158+ #1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026 x86_64 GNU/Linux
+6.1.158+
+x86_64
+unknown
+[exit_code=0]
+
+$ cat /etc/os-release
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.6
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+[exit_code=0]
+
+$ getconf GNU_LIBC_VERSION; ldd --version | head -n 4; getconf LONG_BIT; getconf PAGE_SIZE
+glibc 2.41
+ldd (Debian GLIBC 2.41-12+deb13u3) 2.41
+Copyright (C) 2024 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+64
+4096
+[exit_code=0]
+
+$ python3 -c 'import platform,sys; print(sys.version); print(platform.platform()); print(platform.libc_ver()); print(sys.executable)'
+3.13.14 (main, Jul 14 2026, 04:45:36) [GCC 14.2.0]
+Linux-6.1.158+-x86_64-with-glibc2.41
+('glibc', '2.41')
+/usr/local/bin/python3
+[exit_code=0]
+
+$ uptime; cat /proc/uptime; cat /proc/loadavg
+ 14:20:02 up 4 min,  0 users,  load average: 0.09, 0.06, 0.01
+295.84 547.32
+0.09 0.06 0.01 1/143 2610
+[exit_code=0]
+
+$ timedatectl
+               Local time: Fri 2026-09-04 14:20:02 UTC
+           Universal time: Fri 2026-09-04 14:20:02 UTC
+                 RTC time: n/a
+                Time zone: Etc/UTC (UTC, +0000)
+System clock synchronized: no
+              NTP service: inactive
+          RTC in local TZ: no
+[exit_code=0]
+
+$ printf "E2B_SANDBOX=%s\\n" "${E2B_SANDBOX-<unset>}"; env | cut -d= -f1 | sort
+E2B_SANDBOX=true
+E2B_EVENTS_ADDRESS
+E2B_SANDBOX
+E2B_SANDBOX_ID
+E2B_TEMPLATE_ID
+HOME
+LC_ALL
+LOGNAME
+PATH
+PWD
+SHELL
+SHLVL
+TZ
+USER
+_
+[exit_code=0]

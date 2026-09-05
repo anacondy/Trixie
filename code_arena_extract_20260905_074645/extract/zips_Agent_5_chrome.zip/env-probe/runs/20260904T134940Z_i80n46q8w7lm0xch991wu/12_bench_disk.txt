@@ -1,0 +1,88 @@
+############################################################
+# BENCHMARK: disk sequential / random / metadata
+# probe_version=1.1.1
+# run_utc=20260904T134940Z  sandbox=i80n46q8w7lm0xch991wu
+# generated=2026-09-04T13:50:29Z
+############################################################
+
+Method: dd with conv=fdatasync (forces flush) and oflag=direct (bypass cache).
+Page cache dropped between cold/warm reads via /proc/sys/vm/drop_caches.
+--- /home/user : 100 MiB ---
+$ dd if=/dev/zero of=/home/user/_ddtest bs=1M count=100 conv=fdatasync 2>&1 | tail -1
+104857600 bytes (105 MB, 100 MiB) copied, 0.169362 s, 619 MB/s
+[exit=0]
+
+$ sync; sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches' 2>/dev/null; dd if=/home/user/_ddtest of=/dev/null bs=1M 2>&1 | tail -1
+104857600 bytes (105 MB, 100 MiB) copied, 0.0502624 s, 2.1 GB/s
+[exit=0]
+
+$ dd if=/home/user/_ddtest of=/dev/null bs=1M 2>&1 | tail -1
+104857600 bytes (105 MB, 100 MiB) copied, 0.017589 s, 6.0 GB/s
+[exit=0]
+
+$ rm -f /home/user/_ddtest
+[exit=0]
+
+--- /tmp : 100 MiB ---
+$ dd if=/dev/zero of=/tmp/_ddtest bs=1M count=100 conv=fdatasync 2>&1 | tail -1
+104857600 bytes (105 MB, 100 MiB) copied, 0.0324288 s, 3.2 GB/s
+[exit=0]
+
+$ sync; sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches' 2>/dev/null; dd if=/tmp/_ddtest of=/dev/null bs=1M 2>&1 | tail -1
+104857600 bytes (105 MB, 100 MiB) copied, 0.0143445 s, 7.3 GB/s
+[exit=0]
+
+$ dd if=/tmp/_ddtest of=/dev/null bs=1M 2>&1 | tail -1
+104857600 bytes (105 MB, 100 MiB) copied, 0.0175589 s, 6.0 GB/s
+[exit=0]
+
+$ rm -f /tmp/_ddtest
+[exit=0]
+
+--- /dev/shm : 100 MiB ---
+$ dd if=/dev/zero of=/dev/shm/_ddtest bs=1M count=100 conv=fdatasync 2>&1 | tail -1
+104857600 bytes (105 MB, 100 MiB) copied, 0.0301973 s, 3.5 GB/s
+[exit=0]
+
+$ sync; sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches' 2>/dev/null; dd if=/dev/shm/_ddtest of=/dev/null bs=1M 2>&1 | tail -1
+104857600 bytes (105 MB, 100 MiB) copied, 0.0146519 s, 7.2 GB/s
+[exit=0]
+
+$ dd if=/dev/shm/_ddtest of=/dev/null bs=1M 2>&1 | tail -1
+104857600 bytes (105 MB, 100 MiB) copied, 0.0176927 s, 5.9 GB/s
+[exit=0]
+
+$ rm -f /dev/shm/_ddtest
+[exit=0]
+
+--- O_DIRECT 100 MiB on /home/user (bypasses page cache) ---
+$ dd if=/dev/zero of=/home/user/_odirect bs=1M count=100 oflag=direct 2>&1 | tail -1; rm -f /home/user/_odirect
+104857600 bytes (105 MB, 100 MiB) copied, 0.116545 s, 900 MB/s
+[exit=0]
+
+--- 2 GiB sequential write on /home/user (headroom check) ---
+$ df -h /home/user | tail -1
+/dev/root        25G  4.3G   20G  18% /
+[exit=0]
+
+$ dd if=/dev/zero of=/home/user/_big.bin bs=1M count=2048 conv=fdatasync 2>&1 | tail -1
+2147483648 bytes (2.1 GB, 2.0 GiB) copied, 2.45456 s, 875 MB/s
+[exit=0]
+
+$ df -h /home/user | tail -1; rm -f /home/user/_big.bin
+/dev/root        25G  6.3G   18G  27% /
+[exit=0]
+
+--- metadata ops: 5000 small file create/delete ---
+$ python3 -c "
+import os,time,shutil
+d='/home/user/_probe_manyfiles'; shutil.rmtree(d,ignore_errors=True); os.makedirs(d)
+t0=time.perf_counter()
+for i in range(5000): open(f'{d}/f{i}','wb').write(b'x'*512)
+el=time.perf_counter()-t0; print(f'create 5000 files: {el:.3f} s = {5000/el:,.0f} files/s')
+t0=time.perf_counter(); shutil.rmtree(d); print(f'delete 5000 files: {time.perf_counter()-t0:.3f} s')
+"
+create 5000 files: 0.312 s = 16,032 files/s
+delete 5000 files: 0.074 s
+[exit=0]
+

@@ -1,0 +1,72 @@
+##### Filesystem facts #####
+/dev/root      ext4  25253920 4230904  20707516  17% /
+Filesystem     Type 1K-blocks    Used Available Use% Mounted on
+
+##### /home/user (ext4 /dev/vda) #####
+=== home-1G: 1024 MiB of /dev/urandom -> /home/user/probe_1g.bin ===
+./disk_test.sh: line 13: bc: command not found
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 3.41595 s, 314 MB/s
+./disk_test.sh: line 15: bc: command not found
+dd(pages only) wall=s ->  MiB/s (cache-write speed)
+file size: 1073741824 bytes
+./disk_test.sh: line 22: bc: command not found
+./disk_test.sh: line 23: bc: command not found
+sync(flush to device) wall=s
+./disk_test.sh: line 25: bc: command not found
+EFFECTIVE end-to-end: s ->  MiB/s (real disk speed)
+removed /home/user/probe_1g.bin
+
+=== home-5G: 5120 MiB of /dev/urandom -> /home/user/probe_5g.bin ===
+./disk_test.sh: line 13: bc: command not found
+5120+0 records out
+5368709120 bytes (5.4 GB, 5.0 GiB) copied, 14.8278 s, 362 MB/s
+./disk_test.sh: line 15: bc: command not found
+dd(pages only) wall=s ->  MiB/s (cache-write speed)
+file size: 5368709120 bytes
+./disk_test.sh: line 22: bc: command not found
+./disk_test.sh: line 23: bc: command not found
+sync(flush to device) wall=s
+./disk_test.sh: line 25: bc: command not found
+EFFECTIVE end-to-end: s ->  MiB/s (real disk speed)
+removed /home/user/probe_5g.bin
+
+=== home-15G: 15360 MiB of /dev/urandom -> /home/user/probe_15g.bin ===
+./disk_test.sh: line 13: bc: command not found
+15360+0 records out
+16106127360 bytes (16 GB, 15 GiB) copied, 43.1595 s, 373 MB/s
+./disk_test.sh: line 15: bc: command not found
+dd(pages only) wall=s ->  MiB/s (cache-write speed)
+file size: 16106127360 bytes
+./disk_test.sh: line 22: bc: command not found
+./disk_test.sh: line 23: bc: command not found
+sync(flush to device) wall=s
+./disk_test.sh: line 25: bc: command not found
+EFFECTIVE end-to-end: s ->  MiB/s (real disk speed)
+removed /home/user/probe_15g.bin
+
+##### / root fs via sudo (if available) #####
+=== root-1G: 1024 MiB of /dev/urandom -> /probe_1g.bin ===
+./disk_test.sh: line 13: bc: command not found
+./disk_test.sh: line 15: bc: command not found
+dd(pages only) wall=s ->  MiB/s (cache-write speed)
+WRITE FAILED at this size (rc=1)
+dd: failed to open '/probe_1g.bin': Permission denied
+
+=== root-5G: 5120 MiB of /dev/urandom -> /probe_5g.bin ===
+./disk_test.sh: line 13: bc: command not found
+./disk_test.sh: line 15: bc: command not found
+dd(pages only) wall=s ->  MiB/s (cache-write speed)
+WRITE FAILED at this size (rc=1)
+dd: failed to open '/probe_5g.bin': Permission denied
+
+=== root-15G: 15360 MiB of /dev/urandom -> /probe_15g.bin ===
+./disk_test.sh: line 13: bc: command not found
+./disk_test.sh: line 15: bc: command not found
+dd(pages only) wall=s ->  MiB/s (cache-write speed)
+WRITE FAILED at this size (rc=1)
+dd: failed to open '/probe_15g.bin': Permission denied
+
+##### DISK PROBES COMPLETE #####
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        25G  4.1G   20G  17% /

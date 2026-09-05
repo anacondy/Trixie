@@ -1,0 +1,31 @@
+=== literal bash 'time' connect_ex runs ===
+--- 192.0.2.1 ---
+rc= 0
+
+real	0m0.022s
+user	0m0.018s
+sys	0m0.004s
+--- 198.51.100.1 ---
+rc= 0
+
+real	0m0.022s
+user	0m0.017s
+sys	0m0.004s
+--- 203.0.113.1 ---
+rc= 0
+
+real	0m0.022s
+user	0m0.014s
+sys	0m0.007s
+--- 10.255.255.1 ---
+rc= 11
+
+real	0m2.026s
+user	0m0.020s
+sys	0m0.004s
+--- 100.64.0.1 ---
+rc= 11
+
+real	0m2.024s
+user	0m0.019s
+sys	0m0.004s

@@ -1,0 +1,17 @@
+./00_INVENTORY.txt
+./_work/EXTRACTION_LOG.txt
+./_work/tree_after_zips_Agent_1_chrome.zip.txt
+./_work/tree_before_zips_Agent_1_chrome.zip.txt
+./_work/tree_before_zips_Agent_2_brave.zip.txt
+./_work/unzip_zips_Agent_1_chrome.zip.log
+./extract/zips_Agent_1_chrome.zip/01_runtime.txt
+./extract/zips_Agent_1_chrome.zip/02_tooling.txt
+./extract/zips_Agent_1_chrome.zip/03_filesystem.txt
+./extract/zips_Agent_1_chrome.zip/04_network.txt
+./extract/zips_Agent_1_chrome.zip/05_benchmarks.txt
+./extract/zips_Agent_1_chrome.zip/06_other.txt
+./extract/zips_Agent_1_chrome.zip/EXTRACTED_SHA256SUMS.txt
+./extract/zips_Agent_1_chrome.zip/MANIFEST.txt
+./extract/zips_Agent_1_chrome.zip/environment_characterization.md
+./extract/zips_Agent_1_chrome.zip/metadata.txt
+./extract/zips_Agent_1_chrome.zip/probe_environment.sh

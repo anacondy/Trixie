@@ -1,0 +1,84 @@
+probe_run_start_utc=2026-09-04T14:20:02.722079460Z
+probe_mode=full
+probe_script=/home/user/environment_evidence/probe_environment.sh
+raw_file=11_benchmarks.txt
+
+$ DISK_TEST_MIB=100 python3 - <<'PY'
+import os,time,statistics,tempfile,subprocess,pathlib,gc
+try:
+ a=sorted(os.sched_getaffinity(0));os.sched_setaffinity(0,{a[0]});print("affinity_before",a,"after",sorted(os.sched_getaffinity(0)))
+except Exception as e: print("affinity_error",repr(e))
+ts=[]
+for i in range(5):
+ t=time.perf_counter_ns();v=sum(range(10**7));s=(time.perf_counter_ns()-t)/1e9;ts.append(s);print("sum_run",i+1,f"{s:.9f}",v)
+print("sum_median_s",f"{statistics.median(ts):.9f}")
+ts=[]
+for r in range(3):
+ x=0;t=time.perf_counter_ns()
+ for i in range(10_000_000): x=(x+(i^(i>>3)))&0xffffffffffffffff
+ s=(time.perf_counter_ns()-t)/1e9;ts.append(s);print("loop_run",r+1,f"{s:.9f}",x)
+print("loop_median_s",f"{statistics.median(ts):.9f}")
+try:
+ import numpy as np
+ a=np.arange(10_000_000,dtype=np.int64);ts=[]
+ for r in range(3):
+  t=time.perf_counter_ns();v=int(np.sum((a*a)%97));s=(time.perf_counter_ns()-t)/1e9;ts.append(s);print("numpy_run",r+1,f"{s:.9f}",v)
+ print("numpy_median_s",f"{statistics.median(ts):.9f}");del a;gc.collect()
+except Exception as e: print("numpy_error",repr(e))
+size=int(os.environ.get("DISK_TEST_MIB","100"))*1024*1024
+p=pathlib.Path(os.environ.get("HOME","/tmp"))/(".envprobe_disk_"+str(os.getpid()))
+chunk=os.urandom(4*1024*1024);n=size//len(chunk);rem=size%len(chunk)
+try:
+ t=time.perf_counter_ns()
+ with open(p,"wb",buffering=0) as f:
+  for _ in range(n):f.write(chunk)
+  if rem:f.write(chunk[:rem])
+  os.fsync(f.fileno())
+ s=(time.perf_counter_ns()-t)/1e9;print("disk_write_fsync",size,f"{s:.9f}",f"{size/s:.3f} Bps")
+ fd=os.open(p,os.O_RDONLY)
+ try:os.posix_fadvise(fd,0,0,os.POSIX_FADV_DONTNEED);print("fadvise","ok")
+ except Exception as e:print("fadvise",repr(e))
+ os.close(fd)
+ b=bytearray(4*1024*1024);mv=memoryview(b);seen=0;t=time.perf_counter_ns()
+ with open(p,"rb",buffering=0) as f:
+  while True:
+   z=f.readinto(mv)
+   if not z:break
+   seen+=z
+ s=(time.perf_counter_ns()-t)/1e9;print("disk_read_after_fadvise",seen,f"{s:.9f}",f"{seen/s:.3f} Bps")
+ seen=0;t=time.perf_counter_ns()
+ with open(p,"rb",buffering=0) as f:
+  while True:
+   z=f.readinto(mv)
+   if not z:break
+   seen+=z
+ s=(time.perf_counter_ns()-t)/1e9;print("disk_read_warm",seen,f"{s:.9f}",f"{seen/s:.3f} Bps")
+ for r in range(2):
+  t=time.perf_counter_ns();q=subprocess.run(["dd",f"if={p}","of=/dev/null","bs=4M","iflag=direct","status=none"],capture_output=True,text=True);s=(time.perf_counter_ns()-t)/1e9
+  print("disk_read_direct",r+1,"rc",q.returncode,"seconds",f"{s:.9f}","Bps",f"{size/s:.3f}","stderr",repr(q.stderr))
+finally:
+ try:p.unlink()
+ except FileNotFoundError:pass
+PY
+affinity_before [0, 1] after [0]
+sum_run 1 0.136369170 49999995000000
+sum_run 2 0.148231104 49999995000000
+sum_run 3 0.190778375 49999995000000
+sum_run 4 0.135350465 49999995000000
+sum_run 5 0.177294560 49999995000000
+sum_median_s 0.148231104
+loop_run 1 1.707073169 50516936365248
+loop_run 2 1.603361208 50516936365248
+loop_run 3 1.572296740 50516936365248
+loop_median_s 1.603361208
+numpy_run 1 0.096412732 480000219
+numpy_run 2 0.068167326 480000219
+numpy_run 3 0.066016618 480000219
+numpy_median_s 0.068167326
+disk_write_fsync 104857600 0.092849223 1129332013.904 Bps
+fadvise ok
+disk_read_after_fadvise 104857600 0.026649618 3934675536.437 Bps
+disk_read_warm 104857600 0.015413149 6803126343.617 Bps
+disk_read_direct 1 rc 0 seconds 0.020686395 Bps 5068916067.783 stderr ''
+disk_read_direct 2 rc 0 seconds 0.019901620 Bps 5268797213.493 stderr ''
+[exit_code=0]

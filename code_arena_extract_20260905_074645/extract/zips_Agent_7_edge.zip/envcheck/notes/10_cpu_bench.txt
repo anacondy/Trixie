@@ -1,0 +1,24 @@
+### Python 3.13 CPU micro-benchmarks
+python 3.13.14 | platform: linux
+sum(range(10**7))          : 0.2209s  (45.3 M elem/s, result=49999995000000)
+genexpr sum(i*i 1e6)       : 0.0745s
+listcomp sum(i*i 1e6)      : 0.0771s
+empty for-loop 2e6 iters  : 0.0752s
+2e6 math.sin loop          : 0.3168s  (6.31 Mops/s)
+1MB string alloc           : 0.00037s
+2x sum(range(1e7)) on 2 procs: 0.2591s wall (vs ~0.56s serial est)
+
+### Node 20
+node sum(1e7) loop: 0.0824s 121.4Mops/s
+node 1e6 squares: 0.0108s ( 92.30 Mops/s )
+
+### gcc build+run
+gcc -O2 compile trivial C : 0.268s
+compiled C 1e9 additions   : 2.265s (0.44 Gops/s)
+
+### java startup
+openjdk version "11" 2018-09-25
+
+real	0m0.050s
+user	0m0.051s
+sys	0m0.017s

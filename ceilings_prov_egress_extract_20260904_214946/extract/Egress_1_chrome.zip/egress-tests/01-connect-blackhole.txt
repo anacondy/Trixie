@@ -1,0 +1,45 @@
+target           connect_ex  elapsed_s  post-connect recv
+192.0.2.1:9               0      0.000  no data (2s read timeout)
+192.0.2.99:9              0      0.000  no data (2s read timeout)
+198.51.100.10:9           0      0.000  no data (2s read timeout)
+203.0.113.77:9            0      0.000  no data (2s read timeout)
+10.255.255.1:9           11      2.002  no data (2s read timeout)
+100.64.0.1:9             11      2.002  no data (2s read timeout)
+[2001:db8::1]:9         101      0.000  (IPv6)
+--- HTTP GET attempts ---
+== http://192.0.2.1/ (GET, 10s cap)
+*   Trying 192.0.2.1:80...
+* Connected to 192.0.2.1 (192.0.2.1) port 80
+* using HTTP/1.x
+> GET / HTTP/1.1
+< HTTP/1.1 404 Not Found
+== http://192.0.2.99/ (GET, 10s cap)
+*   Trying 192.0.2.99:80...
+* Connected to 192.0.2.99 (192.0.2.99) port 80
+* using HTTP/1.x
+> GET / HTTP/1.1
+* Operation timed out after 10002 milliseconds with 0 bytes received
+curl: (28) Operation timed out after 10002 milliseconds with 0 bytes received
+== http://198.51.100.10/ (GET, 10s cap)
+*   Trying 198.51.100.10:80...
+* Connected to 198.51.100.10 (198.51.100.10) port 80
+* using HTTP/1.x
+> GET / HTTP/1.1
+* Operation timed out after 10002 milliseconds with 0 bytes received
+curl: (28) Operation timed out after 10002 milliseconds with 0 bytes received
+== http://203.0.113.77/ (GET, 10s cap)
+*   Trying 203.0.113.77:80...
+* Connected to 203.0.113.77 (203.0.113.77) port 80
+* using HTTP/1.x
+> GET / HTTP/1.1
+* Operation timed out after 10002 milliseconds with 0 bytes received
+curl: (28) Operation timed out after 10002 milliseconds with 0 bytes received
+== http://10.255.255.1/ (GET, 10s cap)
+*   Trying 10.255.255.1:80...
+* Connection timed out after 10002 milliseconds
+curl: (28) Connection timed out after 10002 milliseconds
+== http://100.64.0.1/ (GET, 10s cap)
+*   Trying 100.64.0.1:80...
+* Connection timed out after 10002 milliseconds
+curl: (28) Connection timed out after 10002 milliseconds
+192.0.2.1       events.e2b.local

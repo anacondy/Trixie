@@ -1,0 +1,30 @@
+== Throughput: real downloads (curl -w, HTTP/1.1, timed 13:58:06Z) ==
+-- cloudflare __down 50 MiB, 1 run(s) --
+  cloudflare 50MiB run1                       50.00 MiB   155.03 MiB/s  total   0.32s  ttfb    109 ms  code=200
+  HF gpt2 model.bin (range 5MB)                5.00 MiB     6.78 MiB/s  total   0.74s  ttfb    384 ms  code=206
+
+== upload test: cloudflare __up 2MiB ==
+  upload: speed=19326096B/s total=0.108514s code=200
+
+== egress location probe (ipinfo; non-fatal) ==
+{
+  "ip": "136.67.146.242",
+  "hostname": "242.146.67.136.bc.googleusercontent.com",
+  "city": "The Dalles",
+  "region": "Oregon",
+  "country": "US",
+  "loc": "45.5946,-121.1787",
+  "org": "AS396982 Google LLC",
+  "postal": "97058",
+  "timezone": "America/Los_Angeles",
+  "readme": "https://ipinfo.io/missingauth"
+}
+
+== ssh handshake egress test (port 22, github) ==
+git@github.com: Permission denied (publickey).
+
+== git clone (shallow, https) ==
+  clone ok, 28 KiB in 0.53s
+
+== node/npm registry install test (express, small tree) ==
+  [QUICK] skipped

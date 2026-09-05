@@ -1,0 +1,24 @@
+=== PHASE 3 — Integrity cross-check (Fri Sep  4 21:51:23 UTC 2026) ===
+
+--- 3a. Internal checksum file: extract/Provenance_1_edge.zip/MANIFEST.sha256 (content, read-only) ---
+7b0a4c8f9afab3eda34de169ff2b1d12ca601872b54dcd0a1652dd25bc895976  README.md
+d396d4363046fdaac789097a80316f1020dbb7aa55d2a1c9063c355aa781c2ac  sandbox_identity_provenance.md
+389002234ba1e84c379c623066f34e3a634f2dbffe9ce34a87f97d97c5b9acaa  prov_probe.txt
+b443eb50388ca867aff4bdac509e8c6513d45d79b8663d682a8ec11f2373f3c4  raw_capture.sh
+2da9bdda24c7abd926b1889c0eddb6dcb1bc4c0d85dc4121169191897f9de671  raw_evidence_2026-09-04T2037Z_instance2.txt
+
+--- 3b. sha256sum -c from INSIDE the extracted tree ---
+README.md: OK
+sandbox_identity_provenance.md: OK
+prov_probe.txt: OK
+raw_capture.sh: OK
+raw_evidence_2026-09-04T2037Z_instance2.txt: OK
+exit_code=0
+
+--- 3c. Independent recomputation (my Phase 2 EXTRACTED_SHA256SUMS for the same files) ---
+88ff5235751b54268d920bdb161f439227f47d7b948d47adf457a1469bcbf13f  extract/Provenance_1_edge.zip/MANIFEST.sha256
+7b0a4c8f9afab3eda34de169ff2b1d12ca601872b54dcd0a1652dd25bc895976  extract/Provenance_1_edge.zip/README.md
+389002234ba1e84c379c623066f34e3a634f2dbffe9ce34a87f97d97c5b9acaa  extract/Provenance_1_edge.zip/prov_probe.txt
+b443eb50388ca867aff4bdac509e8c6513d45d79b8663d682a8ec11f2373f3c4  extract/Provenance_1_edge.zip/raw_capture.sh
+2da9bdda24c7abd926b1889c0eddb6dcb1bc4c0d85dc4121169191897f9de671  extract/Provenance_1_edge.zip/raw_evidence_2026-09-04T2037Z_instance2.txt
+d396d4363046fdaac789097a80316f1020dbb7aa55d2a1c9063c355aa781c2ac  extract/Provenance_1_edge.zip/sandbox_identity_provenance.md
