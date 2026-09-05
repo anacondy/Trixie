@@ -1,4 +1,5 @@
 # Ignore large extraction trees - keep only reports
+*extract*/
 trixie_extract_*/
 trixie_extract_*
 .last_extract_dir
