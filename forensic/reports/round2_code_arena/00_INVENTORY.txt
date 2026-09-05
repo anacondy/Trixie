@@ -1,0 +1,216 @@
+================================================================
+00_INVENTORY.txt — Burst 10 light verification (code_arena family)
+Generated: 2026-09-05 09:04:51 UTC
+Method: sha256 + unzip -l + unzip -t + zipfile metadata.
+NO payload extraction. NO script/binary execution.
+Temp work dir: code_arena_extract_20260905_090530 (logs only).
+NOTE: code_arena_extract_20260905_074645 contains Agent 1-9 environment
+payloads already copied under forensic/evidence/Agent {1..9} in round 1.
+Those are environment evidence, NOT this code_arena characterization family.
+This burst verifies only the three round-2 code-arena characterization zips.
+Account mapping: chrome=account_a, edge=account_b, brave=account_c.
+
+================================================================
+ARCHIVE: zips/code_arena/account_b/code-arena-sandbox-characterization 1 edge.zip
+CATEGORY: code_arena  ACCOUNT: account_b
+SIZE_BYTES: 52550
+SHA256_OUTER: b727292849412d1a6c15f5415facdeb6b76db0519c787304f54f10c7fb685e21
+HASH_MATCH_INVENTORY: YES
+SIZE_MATCH_INVENTORY: YES
+--- unzip -l (exit 0) ---
+Archive:  zips/code_arena/account_b/code-arena-sandbox-characterization 1 edge.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      158  2026-09-04 21:19   .arena-marker.log
+      156  2026-09-04 21:19   drizzle.config.json
+      365  2026-09-04 21:19   eslint.config.mjs
+      104  2026-09-04 21:19   next.config.ts
+      773  2026-09-04 21:19   package.json
+      108  2026-09-04 21:19   postcss.config.mjs
+        0  2026-09-04 21:19   src/
+        0  2026-09-04 21:19   src/app/
+        0  2026-09-04 21:19   src/app/api/
+        0  2026-09-04 21:19   src/app/api/env-report/
+    11659  2026-09-04 21:19   src/app/api/env-report/route.ts
+        0  2026-09-04 21:19   src/app/api/health/
+      295  2026-09-04 21:19   src/app/api/health/route.ts
+      929  2026-09-04 21:19   src/app/globals.css
+      546  2026-09-04 21:19   src/app/layout.tsx
+      159  2026-09-04 21:19   src/app/page.tsx
+        0  2026-09-04 21:19   src/components/
+    30602  2026-09-04 21:19   src/components/env-dashboard.tsx
+        0  2026-09-04 21:19   src/db/
+      547  2026-09-04 21:19   src/db/index.ts
+      572  2026-09-04 21:19   src/db/schema.ts
+        0  2026-09-04 21:19   src/lib/
+     2194  2026-09-04 21:19   src/lib/env-report-types.ts
+      723  2026-09-04 21:19   tsconfig.json
+---------                     -------
+    49890                     24 files
+--- unzip -t (exit 0) ---
+Archive:  zips/code_arena/account_b/code-arena-sandbox-characterization 1 edge.zip
+    testing: .arena-marker.log        OK
+    testing: drizzle.config.json      OK
+    testing: eslint.config.mjs        OK
+    testing: next.config.ts           OK
+    testing: package.json             OK
+    testing: postcss.config.mjs       OK
+    testing: src/                     OK
+    testing: src/app/                 OK
+    testing: src/app/api/             OK
+    testing: src/app/api/env-report/   OK
+    testing: src/app/api/env-report/route.ts   OK
+    testing: src/app/api/health/      OK
+    testing: src/app/api/health/route.ts   OK
+    testing: src/app/globals.css      OK
+    testing: src/app/layout.tsx       OK
+    testing: src/app/page.tsx         OK
+    testing: src/components/          OK
+    testing: src/components/env-dashboard.tsx   OK
+    testing: src/db/                  OK
+    testing: src/db/index.ts          OK
+    testing: src/db/schema.ts         OK
+    testing: src/lib/                 OK
+    testing: src/lib/env-report-types.ts   OK
+    testing: tsconfig.json            OK
+No errors detected in compressed data of zips/code_arena/account_b/code-arena-sandbox-characterization 1 edge.zip.
+zipfile.testzip_first_bad: None
+file_entries: 16  dir_entries: 8  symlink_entries: 0
+total_uncompressed_bytes: 49890
+nested_archives: none
+integrity_issues: none
+VERDICT: PASS
+
+================================================================
+ARCHIVE: zips/code_arena/account_c/characterize-code-arena-environment 2 brave.zip
+CATEGORY: code_arena  ACCOUNT: account_c
+SIZE_BYTES: 25451
+SHA256_OUTER: 90691ee3838f7187e88878f8fe805222a64f14a86191a18d16f0ee2bebef1acf
+HASH_MATCH_INVENTORY: YES
+SIZE_MATCH_INVENTORY: YES
+--- unzip -l (exit 0) ---
+Archive:  zips/code_arena/account_c/characterize-code-arena-environment 2 brave.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      156  2026-09-04 21:20   drizzle.config.json
+      365  2026-09-04 21:20   eslint.config.mjs
+      104  2026-09-04 21:20   next.config.ts
+      773  2026-09-04 21:20   package.json
+      108  2026-09-04 21:20   postcss.config.mjs
+      127  2026-09-04 21:20   sandbox-recon-marker.txt
+        0  2026-09-04 21:20   src/
+        0  2026-09-04 21:20   src/app/
+        0  2026-09-04 21:20   src/app/api/
+        0  2026-09-04 21:20   src/app/api/env/
+     4942  2026-09-04 21:20   src/app/api/env/route.ts
+        0  2026-09-04 21:20   src/app/api/health/
+      295  2026-09-04 21:20   src/app/api/health/route.ts
+     1348  2026-09-04 21:20   src/app/globals.css
+      461  2026-09-04 21:20   src/app/layout.tsx
+    13169  2026-09-04 21:20   src/app/page.tsx
+        0  2026-09-04 21:20   src/db/
+      547  2026-09-04 21:20   src/db/index.ts
+      155  2026-09-04 21:20   src/db/schema.ts
+      723  2026-09-04 21:20   tsconfig.json
+---------                     -------
+    23273                     20 files
+--- unzip -t (exit 0) ---
+Archive:  zips/code_arena/account_c/characterize-code-arena-environment 2 brave.zip
+    testing: drizzle.config.json      OK
+    testing: eslint.config.mjs        OK
+    testing: next.config.ts           OK
+    testing: package.json             OK
+    testing: postcss.config.mjs       OK
+    testing: sandbox-recon-marker.txt   OK
+    testing: src/                     OK
+    testing: src/app/                 OK
+    testing: src/app/api/             OK
+    testing: src/app/api/env/         OK
+    testing: src/app/api/env/route.ts   OK
+    testing: src/app/api/health/      OK
+    testing: src/app/api/health/route.ts   OK
+    testing: src/app/globals.css      OK
+    testing: src/app/layout.tsx       OK
+    testing: src/app/page.tsx         OK
+    testing: src/db/                  OK
+    testing: src/db/index.ts          OK
+    testing: src/db/schema.ts         OK
+    testing: tsconfig.json            OK
+No errors detected in compressed data of zips/code_arena/account_c/characterize-code-arena-environment 2 brave.zip.
+zipfile.testzip_first_bad: None
+file_entries: 14  dir_entries: 6  symlink_entries: 0
+total_uncompressed_bytes: 23273
+nested_archives: none
+integrity_issues: none
+VERDICT: PASS
+
+================================================================
+ARCHIVE: zips/code_arena/account_a/characterize-code-arena-environment 3 chrome.zip
+CATEGORY: code_arena  ACCOUNT: account_a
+SIZE_BYTES: 25532
+SHA256_OUTER: c9b00727b8e0e0a0144ab26b37109ad4165c9dcdb0ad28907a94b95ee3c6c68a
+HASH_MATCH_INVENTORY: YES
+SIZE_MATCH_INVENTORY: YES
+--- unzip -l (exit 0) ---
+Archive:  zips/code_arena/account_a/characterize-code-arena-environment 3 chrome.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+       49  2026-09-04 21:20   .persistence-marker
+      156  2026-09-04 21:20   drizzle.config.json
+      365  2026-09-04 21:20   eslint.config.mjs
+      104  2026-09-04 21:20   next.config.ts
+      773  2026-09-04 21:20   package.json
+      108  2026-09-04 21:20   postcss.config.mjs
+        0  2026-09-04 21:20   src/
+        0  2026-09-04 21:20   src/app/
+        0  2026-09-04 21:20   src/app/api/
+        0  2026-09-04 21:20   src/app/api/env/
+      588  2026-09-04 21:20   src/app/api/env/route.ts
+        0  2026-09-04 21:20   src/app/api/health/
+      295  2026-09-04 21:20   src/app/api/health/route.ts
+      509  2026-09-04 21:20   src/app/globals.css
+      601  2026-09-04 21:20   src/app/layout.tsx
+    12327  2026-09-04 21:20   src/app/page.tsx
+        0  2026-09-04 21:20   src/db/
+      547  2026-09-04 21:20   src/db/index.ts
+      155  2026-09-04 21:20   src/db/schema.ts
+        0  2026-09-04 21:20   src/lib/
+     5852  2026-09-04 21:20   src/lib/fingerprint.ts
+      723  2026-09-04 21:20   tsconfig.json
+---------                     -------
+    23152                     22 files
+--- unzip -t (exit 0) ---
+Archive:  zips/code_arena/account_a/characterize-code-arena-environment 3 chrome.zip
+    testing: .persistence-marker      OK
+    testing: drizzle.config.json      OK
+    testing: eslint.config.mjs        OK
+    testing: next.config.ts           OK
+    testing: package.json             OK
+    testing: postcss.config.mjs       OK
+    testing: src/                     OK
+    testing: src/app/                 OK
+    testing: src/app/api/             OK
+    testing: src/app/api/env/         OK
+    testing: src/app/api/env/route.ts   OK
+    testing: src/app/api/health/      OK
+    testing: src/app/api/health/route.ts   OK
+    testing: src/app/globals.css      OK
+    testing: src/app/layout.tsx       OK
+    testing: src/app/page.tsx         OK
+    testing: src/db/                  OK
+    testing: src/db/index.ts          OK
+    testing: src/db/schema.ts         OK
+    testing: src/lib/                 OK
+    testing: src/lib/fingerprint.ts   OK
+    testing: tsconfig.json            OK
+No errors detected in compressed data of zips/code_arena/account_a/characterize-code-arena-environment 3 chrome.zip.
+zipfile.testzip_first_bad: None
+file_entries: 15  dir_entries: 7  symlink_entries: 0
+total_uncompressed_bytes: 23152
+nested_archives: none
+integrity_issues: none
+VERDICT: PASS
+
+================================================================
+BURST-10 FAIL LIST: (none — all three PASS)
+END
