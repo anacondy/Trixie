@@ -1,5 +1,7 @@
-# Round 3 prompts (placeholders)
+# Round 3 prompts
 
-Expected files (content to be uploaded later; not invented here):
+Present (user-added; name as uploaded):
 
-- `round3_calibrated.md`
+- `FalsificationPROMPT.md`
+
+Still not present (not invented here): `round3_calibrated.md`. Round-3 work is incomplete as expected.

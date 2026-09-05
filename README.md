@@ -41,8 +41,8 @@ characterizations/
 prompts/
   round1/                          # ORIGINALwork / Verification / Zipping
   forensic/                        # FORENSIC_UNPACK_PROMPT.md
-  round2/                          # placeholder README
-  round3/                          # placeholder README
+  round2/                          # user-added *PROMPT.md files (some B/F variants still pending)
+  round3/                          # FalsificationPROMPT.md (round3_calibrated still pending)
 forensic/
   reports/
     round1_environment/            # followup unpack reports

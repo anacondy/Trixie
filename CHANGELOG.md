@@ -19,3 +19,5 @@ Reorg of the Trixie forensic archive on branch `arena/01a070c2-trixie`. One line
 - **Burst 14** (`b6defc6`) — Split prompts into `round1/` and `forensic/`; add round2/round3 placeholders.
 - **Burst 15** (`67ff35c`) — Extract code_arena evidence with credential scrub (DATABASE_URL redacted in all three accounts).
 - **Burst 16** — INDEX_ALL.tsv, regenerated inventory + ID comparison (final mapping), README, this changelog.
+- **Housekeeping** — organised user-added round2/round3 prompts into `prompts/round2/` and `prompts/round3/`; confirmed no stray `api_env_snapshot*` files on this branch root (canonical copies remain under `forensic/evidence/code_arena/{chrome,brave,edge}/`).
+
