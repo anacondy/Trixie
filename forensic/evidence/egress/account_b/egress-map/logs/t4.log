@@ -1,0 +1,41 @@
+================================================================================
+TCP matrix -> 1.1.1.1
+================================================================================
+port   | handshake                  | data                                         
+----------------------------------------------------------------------------------
+21     | handshake OK (0 ms)        | NO DATA (recv timeout)                       
+22     | handshake OK (0 ms)        | NO DATA (recv timeout)                       
+25     | handshake OK (0 ms)        | NO DATA (recv timeout)                       
+53     | handshake OK (0 ms)        | data: 66B b'\x00@:\xe9\x81\x80\x00\x01\x00\x02\x00\x00\x00\x00\ncloudflare\x03co'
+80     | handshake OK (0 ms)        | data: 389B b'HTTP/1.1 301 Moved Permanent'   
+110    | handshake OK (0 ms)        | NO DATA (recv timeout)                       
+143    | handshake OK (0 ms)        | NO DATA (recv timeout)                       
+443    | handshake OK (0 ms)        | TLS TLSv1.3 OK (20 ms)                       
+465    | handshake OK (0 ms)        | NO DATA (recv timeout)                       
+587    | handshake OK (0 ms)        | NO DATA (recv timeout)                       
+993    | handshake OK (0 ms)        | NO DATA (recv timeout)                       
+995    | handshake OK (0 ms)        | NO DATA (recv timeout)                       
+3306   | handshake OK (0 ms)        | NO DATA (recv timeout)                       
+5432   | handshake OK (0 ms)        | NO DATA (recv timeout)                       
+6379   | handshake OK (0 ms)        | NO DATA (recv timeout)                       
+8080   | handshake OK (0 ms)        | NO DATA (recv timeout)                       
+8443   | handshake OK (0 ms)        | NO DATA (recv timeout)                       
+
+TCP control -> 8.8.8.8 (ports 53, 80, 443)
+53     | handshake OK (0 ms)        | data: 66B b'\x00@h\xa3\x81\x80\x00\x01\x00\x02\x00\x00\x00\x00\ncloudflare\x03co'
+80     | handshake OK (0 ms)        | NO DATA (recv timeout)                       
+443    | handshake OK (0 ms)        | TLS TLSv1.3 OK (5 ms)                        
+
+================================================================================
+UDP matrix
+================================================================================
+target     | port  | result
+--------------------------------------------------
+8.8.8.8    | 53    | response 61B (DNS rcode=0)
+8.8.8.8    | 123   | no response (timeout)
+8.8.8.8    | 443   | no response (timeout)
+8.8.8.8    | 500   | no response (timeout)
+1.1.1.1    | 53    | response 61B (DNS rcode=0)
+1.1.1.1    | 123   | no response (timeout)
+1.1.1.1    | 443   | no response (timeout)
+1.1.1.1    | 500   | no response (timeout)

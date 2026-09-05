@@ -1,0 +1,74 @@
+[
+ {
+  "ip": "1.1.1.1",
+  "note": "Cloudflare anycast (nearest PoP)",
+  "min_connect_ms": 0.2,
+  "rc": 0
+ },
+ {
+  "ip": "8.8.8.8",
+  "note": "Google anycast (nearest PoP)",
+  "min_connect_ms": 0.191,
+  "rc": 0
+ },
+ {
+  "ip": "9.9.9.9",
+  "note": "Quad9 anycast",
+  "min_connect_ms": 0.183,
+  "rc": 0
+ },
+ {
+  "ip": "168.95.1.1",
+  "note": "Chunghwa Telecom, Taiwan",
+  "min_connect_ms": 0.2,
+  "rc": 0
+ },
+ {
+  "ip": "200.160.2.3",
+  "note": "NIC.br, Brazil",
+  "min_connect_ms": 0.207,
+  "rc": 0
+ },
+ {
+  "ip": "196.10.52.58",
+  "note": "TENET, South Africa",
+  "min_connect_ms": 0.217,
+  "rc": 0
+ },
+ {
+  "ip": "202.12.29.1",
+  "note": "M-root (US/JP)",
+  "min_connect_ms": 0.179,
+  "rc": 0
+ },
+ {
+  "ip": "139.130.4.5",
+  "note": "Telstra, Australia",
+  "min_connect_ms": 0.186,
+  "rc": 0
+ },
+ {
+  "ip": "192.0.2.1",
+  "note": "TEST-NET-1 (has /etc/hosts entry)",
+  "min_connect_ms": 0.217,
+  "rc": 0
+ },
+ {
+  "ip": "192.0.2.200",
+  "note": "TEST-NET-1 other addr",
+  "min_connect_ms": 0.207,
+  "rc": 0
+ },
+ {
+  "ip": "198.51.100.1",
+  "note": "TEST-NET-2",
+  "min_connect_ms": 0.179,
+  "rc": 0
+ },
+ {
+  "ip": "203.0.113.1",
+  "note": "TEST-NET-3",
+  "min_connect_ms": 0.202,
+  "rc": 0
+ }
+]

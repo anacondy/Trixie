@@ -1,0 +1,8 @@
+boot_id=2bb79165-136a-4b63-829d-17027b0a8e40
+E2B_SANDBOX_ID=ibbwxrhn0lpoi9ybz9fru
+=== /.e2b ===
+ENV_ID=nlhz8vlwyupq845jsdg9
+TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+BUILD_ID=f34a5416-ef30-4cb7-8e18-0fdecd6eb529
+=== timestamp ===
+2026-09-04T19:17:02Z

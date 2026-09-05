@@ -1,0 +1,167 @@
+[
+ {
+  "host": "pypi.org",
+  "tls": "TLSv1.3",
+  "subject": "pypi.org",
+  "issuer_O": "GlobalSign nv-sa",
+  "issuer_CN": "GlobalSign Atlas R3 DV TLS CA 2025 Q4",
+  "notAfter": "Jan 29 04:33:07 2027 GMT",
+  "verified": "YES (default trust store)"
+ },
+ {
+  "host": "google.com",
+  "tls": "TLSv1.3",
+  "subject": "*.google.com",
+  "issuer_O": "Google Trust Services",
+  "issuer_CN": "WR2",
+  "notAfter": "Nov  2 08:37:34 2026 GMT",
+  "verified": "YES (default trust store)"
+ },
+ {
+  "host": "github.com",
+  "tls": "TLSv1.3",
+  "subject": "github.com",
+  "issuer_O": "Sectigo Limited",
+  "issuer_CN": "Sectigo Public Server Authentication CA DV E36",
+  "notAfter": "Nov 29 23:59:59 2026 GMT",
+  "verified": "YES (default trust store)"
+ },
+ {
+  "host": "huggingface.co",
+  "tls": "TLSv1.3",
+  "subject": "huggingface.co",
+  "issuer_O": "Amazon",
+  "issuer_CN": "Amazon RSA 2048 M01",
+  "notAfter": "Feb 27 23:59:59 2027 GMT",
+  "verified": "YES (default trust store)"
+ },
+ {
+  "host": "pastebin.com",
+  "tls": "TLSv1.3",
+  "subject": "pastebin.com",
+  "issuer_O": "Google Trust Services",
+  "issuer_CN": "WE1",
+  "notAfter": "Oct 11 21:19:51 2026 GMT",
+  "verified": "YES (default trust store)"
+ },
+ {
+  "host": "webhook.site",
+  "tls": "TLSv1.3",
+  "subject": "*.webhook.site",
+  "issuer_O": "Let's Encrypt",
+  "issuer_CN": "YR2",
+  "notAfter": "Dec  2 11:55:55 2026 GMT",
+  "verified": "YES (default trust store)"
+ },
+ {
+  "host": "transfer.sh",
+  "error": "SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1032)"
+ },
+ {
+  "host": "ngrok.io",
+  "tls": "TLSv1.3",
+  "subject": "*.ngrok.io",
+  "issuer_O": "Let's Encrypt",
+  "issuer_CN": "YE1",
+  "notAfter": "Nov  6 23:41:53 2026 GMT",
+  "verified": "YES (default trust store)"
+ },
+ {
+  "host": "api.anthropic.com",
+  "tls": "TLSv1.3",
+  "subject": "api.anthropic.com",
+  "issuer_O": "Google Trust Services",
+  "issuer_CN": "WE1",
+  "notAfter": "Oct 22 19:00:52 2026 GMT",
+  "verified": "YES (default trust store)"
+ },
+ {
+  "host": "openai.com",
+  "tls": "TLSv1.3",
+  "subject": "openai.com",
+  "issuer_O": "Let's Encrypt",
+  "issuer_CN": "YE2",
+  "notAfter": "Nov  9 03:16:09 2026 GMT",
+  "verified": "YES (default trust store)"
+ },
+ {
+  "host": "files.pythonhosted.org",
+  "tls": "TLSv1.3",
+  "subject": "*.pythonhosted.org",
+  "issuer_O": "GlobalSign nv-sa",
+  "issuer_CN": "GlobalSign Atlas R3 DV TLS CA 2025 Q4",
+  "notAfter": "Jan  9 21:08:02 2027 GMT",
+  "verified": "YES (default trust store)"
+ },
+ {
+  "host": "raw.githubusercontent.com",
+  "tls": "TLSv1.3",
+  "subject": "*.github.io",
+  "issuer_O": "Let's Encrypt",
+  "issuer_CN": "YR1",
+  "notAfter": "Oct 31 23:38:01 2026 GMT",
+  "verified": "YES (default trust store)"
+ },
+ {
+  "host": "registry.npmjs.org",
+  "tls": "TLSv1.2",
+  "subject": "npmjs.org",
+  "issuer_O": "Google Trust Services",
+  "issuer_CN": "WE1",
+  "notAfter": "Nov 22 02:49:24 2026 GMT",
+  "verified": "YES (default trust store)"
+ },
+ {
+  "host": "cloudflare.com",
+  "tls": "TLSv1.3",
+  "subject": "cloudflare.com",
+  "issuer_O": "Google Trust Services",
+  "issuer_CN": "WE1",
+  "notAfter": "Oct  6 22:47:27 2026 GMT",
+  "verified": "YES (default trust store)"
+ },
+ {
+  "host": "speed.cloudflare.com",
+  "tls": "TLSv1.3",
+  "subject": "speed.cloudflare.com",
+  "issuer_O": "Google Trust Services",
+  "issuer_CN": "WE1",
+  "notAfter": "Nov 22 09:29:14 2026 GMT",
+  "verified": "YES (default trust store)"
+ },
+ {
+  "host": "events.e2b.local",
+  "error": "TimeoutError: _ssl.c:1015: The handshake operation timed out"
+ },
+ {
+  "host": "1.1.1.1",
+  "tls": "TLSv1.3",
+  "subject": "cloudflare-dns.com",
+  "issuer_O": "SSL Corp",
+  "issuer_CN": "SSL.com SSL Intermediate CA ECC R2",
+  "notAfter": "Dec 21 19:20:01 2026 GMT",
+  "verified": "YES (default trust store)"
+ },
+ {
+  "host": "scanme.nmap.org",
+  "error": "SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1032)"
+ },
+ {
+  "host": "ubuntu.com",
+  "tls": "TLSv1.3",
+  "subject": "ubuntu.com",
+  "issuer_O": "Let's Encrypt",
+  "issuer_CN": "YR1",
+  "notAfter": "Sep 30 04:13:35 2026 GMT",
+  "verified": "YES (default trust store)"
+ },
+ {
+  "host": "wikipedia.org",
+  "tls": "TLSv1.3",
+  "subject": "*.wikipedia.org",
+  "issuer_O": "Let's Encrypt",
+  "issuer_CN": "YE2",
+  "notAfter": "Nov  3 19:15:40 2026 GMT",
+  "verified": "YES (default trust store)"
+ }
+]

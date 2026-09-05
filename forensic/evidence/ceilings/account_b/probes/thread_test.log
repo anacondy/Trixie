@@ -1,0 +1,5 @@
+RLIMIT_NPROC: soft=7917 hard=7917
+cgroup pids.max: max
+THREAD SPAWN FAILED at 7914 threads: RuntimeError: can't start new thread (elapsed 0.9s)
+peak thread count: 7914 (main thread + 7914 workers = 7915 tasks)
+workers released, done

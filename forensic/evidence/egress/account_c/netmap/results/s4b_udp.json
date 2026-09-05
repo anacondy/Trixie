@@ -1,0 +1,110 @@
+[
+ {
+  "host": "8.8.8.8",
+  "port": 53,
+  "test": "DNS A? google.com",
+  "sent": 28,
+  "rcvd": 124,
+  "ms": 0.8,
+  "result": "RECEIVED 124B (DNS reply) first3=173c81"
+ },
+ {
+  "host": "8.8.8.8",
+  "port": 123,
+  "test": "NTPv3 client",
+  "sent": 48,
+  "rcvd": 0,
+  "ms": 4004.3,
+  "result": "NO RESPONSE (silent drop - note: UDP gives no RST, so drop==filtered==closed)"
+ },
+ {
+  "host": "8.8.8.8",
+  "port": 443,
+  "test": "QUIC Initial (bogus ver)",
+  "sent": 1200,
+  "rcvd": 0,
+  "ms": 4004.2,
+  "result": "NO RESPONSE (silent drop - note: UDP gives no RST, so drop==filtered==closed)"
+ },
+ {
+  "host": "8.8.8.8",
+  "port": 500,
+  "test": "IKEv2 SA_INIT",
+  "sent": 20,
+  "rcvd": 0,
+  "ms": 4004.3,
+  "result": "NO RESPONSE (silent drop - note: UDP gives no RST, so drop==filtered==closed)"
+ },
+ {
+  "host": "8.8.8.8",
+  "port": 33434,
+  "test": "traceroute-style probe",
+  "sent": 40,
+  "rcvd": 0,
+  "ms": 4004.2,
+  "result": "NO RESPONSE (silent drop - note: UDP gives no RST, so drop==filtered==closed)"
+ },
+ {
+  "host": "8.8.8.8",
+  "port": 9999,
+  "test": "UDP control (unassigned)",
+  "sent": 5,
+  "rcvd": 0,
+  "ms": 4004.2,
+  "result": "NO RESPONSE (silent drop - note: UDP gives no RST, so drop==filtered==closed)"
+ },
+ {
+  "host": "1.1.1.1",
+  "port": 53,
+  "test": "DNS A? google.com",
+  "sent": 28,
+  "rcvd": 44,
+  "ms": 7.5,
+  "result": "RECEIVED 44B (DNS reply) first3=173c81"
+ },
+ {
+  "host": "1.1.1.1",
+  "port": 123,
+  "test": "NTPv3 client",
+  "sent": 48,
+  "rcvd": 0,
+  "ms": 4004.2,
+  "result": "NO RESPONSE (silent drop - note: UDP gives no RST, so drop==filtered==closed)"
+ },
+ {
+  "host": "1.1.1.1",
+  "port": 443,
+  "test": "QUIC Initial (bogus ver)",
+  "sent": 1200,
+  "rcvd": 0,
+  "ms": 4004.2,
+  "result": "NO RESPONSE (silent drop - note: UDP gives no RST, so drop==filtered==closed)"
+ },
+ {
+  "host": "1.1.1.1",
+  "port": 500,
+  "test": "IKEv2 SA_INIT",
+  "sent": 20,
+  "rcvd": 0,
+  "ms": 4004.2,
+  "result": "NO RESPONSE (silent drop - note: UDP gives no RST, so drop==filtered==closed)"
+ },
+ {
+  "host": "1.1.1.1",
+  "port": 33434,
+  "test": "traceroute-style probe",
+  "sent": 40,
+  "rcvd": 0,
+  "ms": 4004.2,
+  "result": "NO RESPONSE (silent drop - note: UDP gives no RST, so drop==filtered==closed)"
+ },
+ {
+  "host": "1.1.1.1",
+  "port": 9999,
+  "test": "UDP control (unassigned)",
+  "sent": 5,
+  "rcvd": 0,
+  "ms": 4004.2,
+  "result": "NO RESPONSE (silent drop - note: UDP gives no RST, so drop==filtered==closed)"
+ }
+]

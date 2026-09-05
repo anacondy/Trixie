@@ -1,0 +1,244 @@
+[
+ {
+  "target": "192.0.2.1:9",
+  "note": "TEST-NET-1 (RFC5737) [has /etc/hosts entry -> events.e2b.local]",
+  "connect_rc": 0,
+  "connect_ms": 0.4,
+  "connect_result": "SUCCESS",
+  "peername": "('192.0.2.1', 9)",
+  "dataplane": {
+   "bytes_recv": 0,
+   "ms": 4004.12,
+   "snippet": ""
+  },
+  "curl_http": {
+   "stdout": "000 28",
+   "stderr": "curl: (28) Operation timed out after 5002 milliseconds with 0 bytes received",
+   "ms": 5011.7
+  }
+ },
+ {
+  "target": "192.0.2.200:9",
+  "note": "TEST-NET-1 (RFC5737) other host",
+  "connect_rc": 0,
+  "connect_ms": 0.2,
+  "connect_result": "SUCCESS",
+  "peername": "('192.0.2.200', 9)",
+  "dataplane": {
+   "bytes_recv": 0,
+   "ms": 4004.16,
+   "snippet": ""
+  },
+  "curl_http": {
+   "stdout": "000 28",
+   "stderr": "curl: (28) Operation timed out after 5002 milliseconds with 0 bytes received",
+   "ms": 5011.3
+  }
+ },
+ {
+  "target": "198.51.100.1:9",
+  "note": "TEST-NET-2 (RFC5737)",
+  "connect_rc": 0,
+  "connect_ms": 0.16,
+  "connect_result": "SUCCESS",
+  "peername": "('198.51.100.1', 9)",
+  "dataplane": {
+   "bytes_recv": 0,
+   "ms": 4004.16,
+   "snippet": ""
+  },
+  "curl_http": {
+   "stdout": "000 28",
+   "stderr": "curl: (28) Operation timed out after 5002 milliseconds with 0 bytes received",
+   "ms": 5010.6
+  }
+ },
+ {
+  "target": "203.0.113.1:9",
+  "note": "TEST-NET-3 (RFC5737)",
+  "connect_rc": 0,
+  "connect_ms": 0.14,
+  "connect_result": "SUCCESS",
+  "peername": "('203.0.113.1', 9)",
+  "dataplane": {
+   "bytes_recv": 0,
+   "ms": 4004.14,
+   "snippet": ""
+  },
+  "curl_http": {
+   "stdout": "000 28",
+   "stderr": "curl: (28) Operation timed out after 5003 milliseconds with 0 bytes received",
+   "ms": 5011.7
+  }
+ },
+ {
+  "target": "10.255.255.1:9",
+  "note": "RFC1918 private",
+  "connect_rc": 11,
+  "connect_ms": 2002.13,
+  "connect_result": "TIMEOUT",
+  "peername": "unavailable (OSError)",
+  "dataplane": {
+   "http": "skipped (connect failed)"
+  },
+  "curl_http": {
+   "stdout": "000 28",
+   "stderr": "curl: (28) Connection timed out after 5002 milliseconds",
+   "ms": 5010.4
+  }
+ },
+ {
+  "target": "100.64.0.1:9",
+  "note": "RFC6598 CGNAT",
+  "connect_rc": 11,
+  "connect_ms": 2002.16,
+  "connect_result": "TIMEOUT",
+  "peername": "unavailable (OSError)",
+  "dataplane": {
+   "http": "skipped (connect failed)"
+  },
+  "curl_http": {
+   "stdout": "000 28",
+   "stderr": "curl: (28) Connection timed out after 5002 milliseconds",
+   "ms": 5010.6
+  }
+ },
+ {
+  "target": "192.0.2.1:80",
+  "note": "TEST-NET-1 port 80 [hosts entry]",
+  "connect_rc": 0,
+  "connect_ms": 0.33,
+  "connect_result": "SUCCESS",
+  "peername": "('192.0.2.1', 80)",
+  "dataplane": {
+   "bytes_recv": 192,
+   "ms": 1.29,
+   "snippet": "HTTP/1.1 404 Not Found|Content-Type: application/json; charset=utf-8|Date: Fri, 04 Sep 2026 19:44:14 GMT|Content-Length: 43|Connection: close||{\"error\":\"no matching operation was found\"}"
+  },
+  "curl_http": {
+   "stdout": "404 0",
+   "stderr": "",
+   "ms": 8.1
+  }
+ },
+ {
+  "target": "198.51.100.1:80",
+  "note": "TEST-NET-2 port 80",
+  "connect_rc": 0,
+  "connect_ms": 0.16,
+  "connect_result": "SUCCESS",
+  "peername": "('198.51.100.1', 80)",
+  "dataplane": {
+   "bytes_recv": 0,
+   "ms": 4004.18,
+   "snippet": ""
+  },
+  "curl_http": {
+   "stdout": "000 28",
+   "stderr": "curl: (28) Operation timed out after 5003 milliseconds with 0 bytes received",
+   "ms": 5011.3
+  }
+ },
+ {
+  "target": "203.0.113.1:80",
+  "note": "TEST-NET-3 port 80",
+  "connect_rc": 0,
+  "connect_ms": 0.21,
+  "connect_result": "SUCCESS",
+  "peername": "('203.0.113.1', 80)",
+  "dataplane": {
+   "bytes_recv": 0,
+   "ms": 4004.13,
+   "snippet": ""
+  },
+  "curl_http": {
+   "stdout": "000 28",
+   "stderr": "curl: (28) Operation timed out after 5002 milliseconds with 0 bytes received",
+   "ms": 5010.5
+  }
+ },
+ {
+  "target": "10.255.255.1:80",
+  "note": "RFC1918 port 80",
+  "connect_rc": 11,
+  "connect_ms": 2002.12,
+  "connect_result": "TIMEOUT",
+  "peername": "unavailable (OSError)",
+  "dataplane": {
+   "http": "skipped (connect failed)"
+  },
+  "curl_http": {
+   "stdout": "000 28",
+   "stderr": "curl: (28) Connection timed out after 5002 milliseconds",
+   "ms": 5010.4
+  }
+ },
+ {
+  "target": "100.64.0.1:80",
+  "note": "RFC6598 port 80",
+  "connect_rc": 11,
+  "connect_ms": 2002.15,
+  "connect_result": "TIMEOUT",
+  "peername": "unavailable (OSError)",
+  "dataplane": {
+   "http": "skipped (connect failed)"
+  },
+  "curl_http": {
+   "stdout": "000 28",
+   "stderr": "curl: (28) Connection timed out after 5002 milliseconds",
+   "ms": 5011.0
+  }
+ },
+ {
+  "target": "127.0.0.1:9",
+  "note": "CONTROL loopback closed port",
+  "connect_rc": 111,
+  "connect_ms": 0.05,
+  "connect_result": "ERRNO 111",
+  "peername": "unavailable (OSError)",
+  "dataplane": {
+   "http": "skipped (connect failed)"
+  },
+  "curl_http": {
+   "stdout": "000 7",
+   "stderr": "curl: (7) Failed to connect to 127.0.0.1 port 9 after 0 ms: Could not connect to server",
+   "ms": 8.6
+  }
+ },
+ {
+  "target": "8.8.8.8:53",
+  "note": "CONTROL real internet host",
+  "connect_rc": 0,
+  "connect_ms": 0.38,
+  "connect_result": "SUCCESS",
+  "peername": "('8.8.8.8', 53)",
+  "dataplane": {
+   "bytes_recv": 0,
+   "ms": 1.48,
+   "snippet": ""
+  },
+  "curl_http": {
+   "stdout": "000 52",
+   "stderr": "curl: (52) Empty reply from server",
+   "ms": 10.3
+  }
+ },
+ {
+  "target": "1.1.1.1:443",
+  "note": "CONTROL real internet host",
+  "connect_rc": 0,
+  "connect_ms": 0.19,
+  "connect_result": "SUCCESS",
+  "peername": "('1.1.1.1', 443)",
+  "dataplane": {
+   "bytes_recv": 414,
+   "ms": 13.26,
+   "snippet": "HTTP/1.1 400 Bad Request|Server: cloudflare|Date: Fri, 04 Sep 2026 19:44:42 GMT|Content-Type: text/html|Content-Length: 253|Connection: close|CF-RAY: -||<html>|<head><title>400 The plain HTTP"
+  },
+  "curl_http": {
+   "stdout": "400 0",
+   "stderr": "",
+   "ms": 23.7
+  }
+ }
+]
