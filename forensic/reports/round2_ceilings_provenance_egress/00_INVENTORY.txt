@@ -1,0 +1,163 @@
+================================================================
+00_INVENTORY.txt — Burst 8 light verification (Ceilings family)
+Generated: 2026-09-05 09:03:18 UTC
+Method: sha256sum equivalent + unzip -l + unzip -t + zipfile metadata.
+NO payload extraction. NO script/binary execution.
+Temp work dir: ceilings_extract_20260905_090246 (logs only).
+Account mapping: chrome=account_a, edge=account_b, brave=account_c.
+FAIL triggers: path traversal ../, absolute paths, unexpected symlinks,
+  nested zip uncompressed > 10 MB, total uncompressed > 50 MB, CRC fail,
+  outer hash mismatch vs burst-0 inventory.
+
+================================================================
+ARCHIVE: zips/ceilings/account_a/Ceilings 1 chrome.zip
+CATEGORY: ceilings  ACCOUNT: account_a
+SIZE_BYTES: 19730
+SHA256_OUTER: 83faeeda79d70a6b83650b97050bd0a4cf5df8bd9c7932cd93705d7020b1a3b6
+HASH_MATCH_INVENTORY: YES
+SIZE_MATCH_INVENTORY: YES
+--- unzip -l (exit 0) ---
+Archive:  zips/ceilings/account_a/Ceilings 1 chrome.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+    16830  2026-09-04 20:21   sandbox-ceiling-report.md
+        0  2026-09-04 19:36   ceiling/
+        0  2026-09-04 20:20   ceiling/scripts/
+     4470  2026-09-04 19:36   ceiling/scripts/mem_probe.py
+     1821  2026-09-04 19:55   ceiling/scripts/fd_probe.py
+     2906  2026-09-04 19:37   ceiling/scripts/proc_probe.py
+      612  2026-09-04 19:54   ceiling/scripts/kill_by_pattern.py
+      149  2026-09-04 19:55   ceiling/scripts/dup_loop.py
+     1575  2026-09-04 19:55   ceiling/scripts/forkcal.py
+     2530  2026-09-04 20:03   ceiling/scripts/forktest.c
+     1722  2026-09-04 19:55   ceiling/scripts/thrtest.c
+      420  2026-09-04 20:03   ceiling/scripts/kill_pids_file.py
+     1324  2026-09-04 20:16   ceiling/scripts/burn.c
+        0  2026-09-04 20:20   ceiling/out/
+     2923  2026-09-04 19:36   ceiling/out/memory_probes.json
+      793  2026-09-04 19:36   ceiling/out/memory_probes.tsv
+       41  2026-09-04 19:55   ceiling/out/fd_ph2.txt
+       42  2026-09-04 19:55   ceiling/out/fd_ph3.txt
+       89  2026-09-04 19:55   ceiling/out/fd_ph4.txt
+      431  2026-09-04 19:55   ceiling/out/fd_probe.json
+---------                     -------
+    38678                     20 files
+--- unzip -t (exit 0) ---
+Archive:  zips/ceilings/account_a/Ceilings 1 chrome.zip
+    testing: sandbox-ceiling-report.md   OK
+    testing: ceiling/                 OK
+    testing: ceiling/scripts/         OK
+    testing: ceiling/scripts/mem_probe.py   OK
+    testing: ceiling/scripts/fd_probe.py   OK
+    testing: ceiling/scripts/proc_probe.py   OK
+    testing: ceiling/scripts/kill_by_pattern.py   OK
+    testing: ceiling/scripts/dup_loop.py   OK
+    testing: ceiling/scripts/forkcal.py   OK
+    testing: ceiling/scripts/forktest.c   OK
+    testing: ceiling/scripts/thrtest.c   OK
+    testing: ceiling/scripts/kill_pids_file.py   OK
+    testing: ceiling/scripts/burn.c   OK
+    testing: ceiling/out/             OK
+    testing: ceiling/out/memory_probes.json   OK
+    testing: ceiling/out/memory_probes.tsv   OK
+    testing: ceiling/out/fd_ph2.txt   OK
+    testing: ceiling/out/fd_ph3.txt   OK
+    testing: ceiling/out/fd_ph4.txt   OK
+    testing: ceiling/out/fd_probe.json   OK
+No errors detected in compressed data of zips/ceilings/account_a/Ceilings 1 chrome.zip.
+zipfile.testzip_first_bad: None
+file_entries: 17  dir_entries: 3  symlink_entries: 0
+total_uncompressed_bytes: 38678
+nested_archives: none
+integrity_issues: none
+VERDICT: PASS
+
+================================================================
+ARCHIVE: zips/ceilings/account_b/Ceilings 2 edge.zip
+CATEGORY: ceilings  ACCOUNT: account_b
+SIZE_BYTES: 8756
+SHA256_OUTER: 484e0d1bbe86dc0f505d2308febb295424acde1be7e7fa67b2e860e6c903ffa5
+HASH_MATCH_INVENTORY: YES
+SIZE_MATCH_INVENTORY: YES
+--- unzip -l (exit 0) ---
+Archive:  zips/ceilings/account_b/Ceilings 2 edge.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+    19824  2026-09-04 21:04   sandbox_ceilings.md
+---------                     -------
+    19824                     1 file
+--- unzip -t (exit 0) ---
+Archive:  zips/ceilings/account_b/Ceilings 2 edge.zip
+    testing: sandbox_ceilings.md      OK
+No errors detected in compressed data of zips/ceilings/account_b/Ceilings 2 edge.zip.
+zipfile.testzip_first_bad: None
+file_entries: 1  dir_entries: 0  symlink_entries: 0
+total_uncompressed_bytes: 19824
+nested_archives: none
+integrity_issues: none
+VERDICT: PASS
+
+================================================================
+ARCHIVE: zips/ceilings/account_c/Ceilings 3 brave.zip
+CATEGORY: ceilings  ACCOUNT: account_c
+SIZE_BYTES: 18542
+SHA256_OUTER: 16013673423dc7c59ccffa0fae16071d8bddd3b916cc6291828679a14b2231f0
+HASH_MATCH_INVENTORY: YES
+SIZE_MATCH_INVENTORY: YES
+--- unzip -l (exit 0) ---
+Archive:  zips/ceilings/account_c/Ceilings 3 brave.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+    11943  2026-09-04 21:24   sandbox-ceilings.md
+        0  2026-09-04 21:21   probes/
+     2312  2026-09-04 20:49   probes/mem_bisect.py
+     1059  2026-09-04 20:49   probes/mem_bisect.log
+     1228  2026-09-04 20:51   probes/fd_test.py
+     2223  2026-09-04 20:54   probes/fork_test.py
+      729  2026-09-04 20:51   probes/thread_test.py
+      233  2026-09-04 20:51   probes/thread_test.log
+        0  2026-09-04 20:52   probes/fork_test.log
+     2062  2026-09-04 21:10   probes/fork_exec_test.py
+     2455  2026-09-04 21:10   probes/fork_exec_test.log
+     1915  2026-09-04 21:11   probes/disk_test.sh
+     2984  2026-09-04 21:12   probes/disk_test.log
+     1767  2026-09-04 21:13   probes/disk_test2.sh
+     1406  2026-09-04 21:14   probes/disk_test2.log
+      967  2026-09-04 21:14   probes/tmp_test.sh
+      837  2026-09-04 21:14   probes/tmp_test.log
+      721  2026-09-04 21:15   probes/cpu_burn.py
+      989  2026-09-04 21:15   probes/smt_penalty.py
+---------                     -------
+    35830                     19 files
+--- unzip -t (exit 0) ---
+Archive:  zips/ceilings/account_c/Ceilings 3 brave.zip
+    testing: sandbox-ceilings.md      OK
+    testing: probes/                  OK
+    testing: probes/mem_bisect.py     OK
+    testing: probes/mem_bisect.log    OK
+    testing: probes/fd_test.py        OK
+    testing: probes/fork_test.py      OK
+    testing: probes/thread_test.py    OK
+    testing: probes/thread_test.log   OK
+    testing: probes/fork_test.log     OK
+    testing: probes/fork_exec_test.py   OK
+    testing: probes/fork_exec_test.log   OK
+    testing: probes/disk_test.sh      OK
+    testing: probes/disk_test.log     OK
+    testing: probes/disk_test2.sh     OK
+    testing: probes/disk_test2.log    OK
+    testing: probes/tmp_test.sh       OK
+    testing: probes/tmp_test.log      OK
+    testing: probes/cpu_burn.py       OK
+    testing: probes/smt_penalty.py    OK
+No errors detected in compressed data of zips/ceilings/account_c/Ceilings 3 brave.zip.
+zipfile.testzip_first_bad: None
+file_entries: 18  dir_entries: 1  symlink_entries: 0
+total_uncompressed_bytes: 35830
+nested_archives: none
+integrity_issues: none
+VERDICT: PASS
+
+================================================================
+BURST-8 FAIL LIST: (none — all three PASS)
+END
