@@ -1,0 +1,62 @@
+================================================================================
+TEST 1 — TRANSPARENT-PROXY BEHAVIOUR (does connect() lie?)
+================================================================================
+
+[RFC5737 TEST-NET-1 (192.0.2.0/24)]  192.0.2.1
+  TCP connect_ex(192.0.2.1,9) = 0 (success)  (0.3 ms)
+  TCP connect_ex(192.0.2.1,80) = 0 (success)  (0.2 ms)
+
+[RFC5737 TEST-NET-2 (198.51.100.0/24)]  198.51.100.1
+  TCP connect_ex(198.51.100.1,9) = 0 (success)  (0.3 ms)
+  TCP connect_ex(198.51.100.1,80) = 0 (success)  (0.2 ms)
+
+[RFC5737 TEST-NET-3 (203.0.113.0/24)]  203.0.113.1
+  TCP connect_ex(203.0.113.1,9) = 0 (success)  (0.3 ms)
+  TCP connect_ex(203.0.113.1,80) = 0 (success)  (0.3 ms)
+
+[RFC1918 private (10.0.0.0/8)]  10.255.255.1
+  TCP connect_ex(10.255.255.1,9) = 11  (2002.1 ms)
+  TCP connect_ex(10.255.255.1,80) = 11  (2002.2 ms)
+
+[RFC6598 CGNAT (100.64.0.0/10)]  100.64.0.1
+  TCP connect_ex(100.64.0.1,9) = 11  (2002.2 ms)
+  TCP connect_ex(100.64.0.1,80) = 11  (2002.1 ms)
+
+[CONTROL — real internet (Cloudflare)]  1.1.1.1
+  TCP connect_ex(1.1.1.1,9) = 0 (success)  (0.4 ms)
+  TCP connect_ex(1.1.1.1,80) = 0 (success)  (0.3 ms)
+
+[CONTROL — real internet (Google DNS)]  8.8.8.8
+  TCP connect_ex(8.8.8.8,9) = 0 (success)  (0.3 ms)
+  TCP connect_ex(8.8.8.8,80) = 0 (success)  (0.3 ms)
+
+--- raw HTTP GET over the socket (port 80, Host: probe.test) ---
+  192.0.2.1       RFC5737 TEST-NET-1 (192.0.2.0/24)  -> HTTP/1.1 404 Not Found
+Content-Type: application/json; charset=utf-8
+Date: Fri, 04 Sep 2026 19:46:05 GMT
+Content-Length: 43
+Connection: close
+
+{"error":"no matching operation was found"}
+  198.51.100.1    RFC5737 TEST-NET-2 (198.51.100.0/24) -> <no data within timeout>
+  203.0.113.1     RFC5737 TEST-NET-3 (203.0.113.0/24) -> <no data within timeout>
+  10.255.255.1    RFC1918 private (10.0.0.0/8)       -> connect ERR TimeoutError: timed out
+  100.64.0.1      RFC6598 CGNAT (100.64.0.0/10)      -> connect ERR TimeoutError: timed out
+  1.1.1.1         CONTROL — real internet (Cloudflare) -> HTTP/1.1 409 Conflict
+Date: Fri, 04 Sep 2026 19:46:21 GMT
+Content-Type: text/plain; charset=UTF-8
+Content-Length: 16
+Connection: close
+X-Frame-Options: SAMEORIGIN
+Referrer-Policy: same-origin
+Cache-Control: private, max-age=0, no-store, no-cache, must-revalidate, post-chec
+  8.8.8.8         CONTROL — real internet (Google DNS) -> <no data within timeout>
+
+--- urllib HTTP GET (honours http_proxy/https_proxy env) ---
+  192.0.2.1       RFC5737 TEST-NET-1 (192.0.2.0/24)  -> ERR HTTPError: HTTP Error 404: Not Found in 0.01s
+  198.51.100.1    RFC5737 TEST-NET-2 (198.51.100.0/24) -> ERR TimeoutError: timed out in 6.01s
+  203.0.113.1     RFC5737 TEST-NET-3 (203.0.113.0/24) -> ERR TimeoutError: timed out in 6.01s
+  10.255.255.1    RFC1918 private (10.0.0.0/8)       -> ERR URLError: <urlopen error timed out> in 6.01s
+  100.64.0.1      RFC6598 CGNAT (100.64.0.0/10)      -> ERR URLError: <urlopen error timed out> in 6.01s
+  1.1.1.1         CONTROL — real internet (Cloudflare) -> ERR HTTPError: HTTP Error 403: Forbidden in 0.11s
+  8.8.8.8         CONTROL — real internet (Google DNS) -> ERR TimeoutError: timed out in 6.01s

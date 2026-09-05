@@ -1,0 +1,59 @@
+=== TLS issuer sweep: hostname-based https, 8s cap each ===
+== openai.com
+  *  subject: CN=openai.com
+  *  issuer: C=US; O=Let's Encrypt; CN=YE2
+  *  SSL certificate verify ok.
+  * Connected to openai.com (104.18.33.45) port 443
+== api.anthropic.com
+  *  subject: CN=api.anthropic.com
+  *  issuer: C=US; O=Google Trust Services; CN=WE1
+  *  SSL certificate verify ok.
+  * Connected to api.anthropic.com (160.79.104.10) port 443
+== pastebin.com
+  *  subject: CN=pastebin.com
+  *  issuer: C=US; O=Google Trust Services; CN=WE1
+  *  SSL certificate verify ok.
+  * Connected to pastebin.com (172.66.171.73) port 443
+== transfer.sh
+  * TLSv1.3 (OUT), TLS alert, decode error (562):
+  * TLS connect error: error:0A000126:SSL routines::unexpected eof while reading
+== webhook.site
+  *  subject: CN=*.webhook.site
+  *  issuer: C=US; O=Let's Encrypt; CN=YR2
+  *  SSL certificate verify ok.
+  * Connected to webhook.site (178.63.67.106) port 443
+== ngrok.io
+  *  subject: CN=*.ngrok.io
+  *  issuer: C=US; O=Let's Encrypt; CN=YE1
+  *  SSL certificate verify ok.
+  * Connected to ngrok.io (184.72.44.51) port 443
+== huggingface.co
+  *  subject: CN=huggingface.co
+  *  issuer: C=US; O=Amazon; CN=Amazon RSA 2048 M01
+  *  SSL certificate verify ok.
+  * Connected to huggingface.co (99.86.101.64) port 443
+== registry.npmjs.org
+  *  subject: CN=npmjs.org
+  *  issuer: C=US; O=Google Trust Services; CN=WE1
+  *  SSL certificate verify ok.
+  * Connected to registry.npmjs.org (104.16.11.34) port 443
+== raw.githubusercontent.com
+  *  subject: CN=*.github.io
+  *  issuer: C=US; O=Let's Encrypt; CN=YR1
+  *  SSL certificate verify ok.
+  * Connected to raw.githubusercontent.com (185.199.110.133) port 443
+== google.com
+  *  subject: CN=*.google.com
+  *  issuer: C=US; O=Google Trust Services; CN=WE2
+  *  SSL certificate verify ok.
+  * Connected to google.com (142.251.188.113) port 443
+== example.com
+  *  subject: CN=example.com
+  *  issuer: C=US; O=SSL Corporation; CN=Cloudflare TLS Issuing ECC CA 3
+  *  SSL certificate verify ok.
+  * Connected to example.com (172.66.147.243) port 443
+== speed.cloudflare.com
+  *  subject: CN=speed.cloudflare.com
+  *  issuer: C=US; O=Google Trust Services; CN=WE1
+  *  SSL certificate verify ok.
+  * Connected to speed.cloudflare.com (162.159.140.220) port 443

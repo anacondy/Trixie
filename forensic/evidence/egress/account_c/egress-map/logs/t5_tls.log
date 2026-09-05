@@ -1,0 +1,30 @@
+===== curl -svI https://pypi.org (grep) =====
+*  CAfile: /etc/ssl/certs/ca-certificates.crt
+*  CApath: /etc/ssl/certs
+* SSL connection using TLSv1.3 / TLS_AES_128_GCM_SHA256 / X25519MLKEM768 / RSASSA-PSS
+*  subject: CN=pypi.org
+*  subjectAltName: host "pypi.org" matched cert's "pypi.org"
+*  issuer: C=BE; O=GlobalSign nv-sa; CN=GlobalSign Atlas R3 DV TLS CA 2025 Q4
+*  SSL certificate verify ok.
+
+===== openssl s_client pypi.org =====
+issuer=C=BE, O=GlobalSign nv-sa, CN=GlobalSign Atlas R3 DV TLS CA 2025 Q4
+subject=CN=pypi.org
+notBefore=Dec 28 04:33:08 2025 GMT
+notAfter=Jan 29 04:33:07 2027 GMT
+
+===== curl chain-verify result (0 = chain verified against system CA store) =====
+pypi.org ssl_verify_result=0
+
+===== openssl s_client github.com =====
+issuer=C=GB, O=Sectigo Limited, CN=Sectigo Public Server Authentication CA DV E36
+subject=CN=github.com
+notBefore=Sep  1 00:00:00 2026 GMT
+notAfter=Nov 29 23:59:59 2026 GMT
+github.com ssl_verify_result=0
+===== openssl s_client google.com =====
+issuer=C=US, O=Google Trust Services, CN=WR2
+subject=CN=*.google.com
+notBefore=Aug 10 08:37:35 2026 GMT
+notAfter=Nov  2 08:37:34 2026 GMT
+google.com ssl_verify_result=0

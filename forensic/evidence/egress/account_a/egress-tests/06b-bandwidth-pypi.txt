@@ -1,0 +1,13 @@
+=== pip download numpy, cold cache ===
+[notice] A new release of pip is available: 26.1.2 -> 26.2.1
+[notice] To update, run: pip install --upgrade pip
+
+real	0m1.795s
+user	0m0.682s
+sys	0m0.162s
+drwxr-xr-x 2 user user       60 Sep  4 19:35 .
+drwxrwxrwt 9 root root      240 Sep  4 19:35 ..
+-rw-r--r-- 1 user user 16709995 Sep  4 19:35 numpy-2.5.2-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+# chosen numpy-2.5.2-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl size=16709995
+wheel URL: https://files.pythonhosted.org/packages/7b/44/59a1eb68e773c4098d107ef34a0dbdeca501d72ffcfbff9a7707343921ce/numpy-2.5.2-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+wheel-direct speed=95432788B/s size=16709995 t=0.175097s code=200

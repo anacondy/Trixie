@@ -1,0 +1,4 @@
+=== BANDWIDTH: 3 SEQUENTIAL runs, 100MB each (speed.cloudflare.com) ===
+SEQ run1 http=403 bytes=1 time_total=0.065399s speed_download=15B/s
+SEQ run2 http=403 bytes=1 time_total=0.042891s speed_download=23B/s
+SEQ run3 http=403 bytes=1 time_total=0.040581s speed_download=24B/s
