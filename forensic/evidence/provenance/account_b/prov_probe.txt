@@ -1,0 +1,17 @@
+# prov_probe.txt — stability probe, written in turn 1 (2026-09-04)
+date_utc=2026-09-04T19:30:28Z
+date_epoch=1788550228
+boot_id=2bb79165-136a-4b63-829d-17027b0a8e40
+E2B_SANDBOX_ID=ia4a7jw0xcyn756c09iwm
+E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+uptime_1=353.75
+stat_btime=1788549874
+hostname=e2b.local
+machine_id=67549745dd1a4564be928e47dca271fd
+envd_ActiveEnterTimestamp=Thu 2026-07-23 18:05:37 UTC
+jupyter_ActiveEnterTimestamp=Thu 2026-07-23 18:05:39 UTC
+# /.e2b verbatim >>>
+ENV_ID=nlhz8vlwyupq845jsdg9
+TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+BUILD_ID=f34a5416-ef30-4cb7-8e18-0fdecd6eb529
+# /.e2b verbatim <<<
