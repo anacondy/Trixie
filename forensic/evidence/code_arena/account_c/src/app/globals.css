@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #09090b;
+}
+
+/* faint blueprint grid */
+.arena-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 85%);
+}
+
+/* soft emerald glow at the top of the page */
+.arena-fade {
+  background: radial-gradient(
+    ellipse 80% 55% at 50% -10%,
+    rgb(16 185 129 / 0.1),
+    transparent 70%
+  );
+}
+
+/* slim dark scrollbars inside panels */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(255 255 255 / 0.12) transparent;
+}
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgb(255 255 255 / 0.12);
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
