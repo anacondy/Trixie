@@ -1,0 +1,317 @@
+================================================================
+00_INVENTORY_EGRESS_PROVENANCE.txt — Burst 9 light verification
+Generated: 2026-09-05 09:04:10 UTC
+Method: sha256 + unzip -l + unzip -t + zipfile metadata.
+NO payload extraction. NO script/binary execution.
+Temp work dirs: egress_extract_20260905_090400, provenance_extract_20260905_090400
+Account mapping: chrome=account_a, edge=account_b, brave=account_c.
+
+================================================================
+ARCHIVE: zips/egress/account_a/Egress 1 chrome.zip
+CATEGORY: egress  ACCOUNT: account_a
+SIZE_BYTES: 22380
+SHA256_OUTER: 3c1a7f82d33c156f5cf05351fa4af69eb6ba5f1fde87a9dabd7b4e3b1fab50f7
+HASH_MATCH_INVENTORY: YES
+SIZE_MATCH_INVENTORY: YES
+--- unzip -l (exit 0) ---
+Archive:  zips/egress/account_a/Egress 1 chrome.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+    19694  2026-09-04 20:22   network-egress-policy-report.md
+        0  2026-09-04 20:22   egress-tests/
+     1286  2026-09-04 20:22   egress-tests/00-environment.txt
+     6397  2026-09-04 20:22   egress-tests/02-dns.txt
+     1975  2026-09-04 20:22   egress-tests/01-connect-blackhole.txt
+     1485  2026-09-04 20:22   egress-tests/03-direct-ip.txt
+     3708  2026-09-04 20:22   egress-tests/04-ports.txt
+     2082  2026-09-04 20:22   egress-tests/05-tls.txt
+     2282  2026-09-04 20:22   egress-tests/05b-issuer-sweep.txt
+      445  2026-09-04 20:22   egress-tests/06-bandwidth-cloudflare.txt
+     1927  2026-09-04 20:22   egress-tests/06-bandwidth.txt
+      756  2026-09-04 20:22   egress-tests/06b-bandwidth-pypi.txt
+     1376  2026-09-04 20:22   egress-tests/06c-down403-h3.txt
+     1332  2026-09-04 20:22   egress-tests/s1-connect.py
+     3395  2026-09-04 20:22   egress-tests/s2-dns.py
+     5172  2026-09-04 20:22   egress-tests/s4-ports.py
+---------                     -------
+    53312                     16 files
+--- unzip -t (exit 0) ---
+Archive:  zips/egress/account_a/Egress 1 chrome.zip
+    testing: network-egress-policy-report.md   OK
+    testing: egress-tests/            OK
+    testing: egress-tests/00-environment.txt   OK
+    testing: egress-tests/02-dns.txt   OK
+    testing: egress-tests/01-connect-blackhole.txt   OK
+    testing: egress-tests/03-direct-ip.txt   OK
+    testing: egress-tests/04-ports.txt   OK
+    testing: egress-tests/05-tls.txt   OK
+    testing: egress-tests/05b-issuer-sweep.txt   OK
+    testing: egress-tests/06-bandwidth-cloudflare.txt   OK
+    testing: egress-tests/06-bandwidth.txt   OK
+    testing: egress-tests/06b-bandwidth-pypi.txt   OK
+    testing: egress-tests/06c-down403-h3.txt   OK
+    testing: egress-tests/s1-connect.py   OK
+    testing: egress-tests/s2-dns.py   OK
+    testing: egress-tests/s4-ports.py   OK
+No errors detected in compressed data of zips/egress/account_a/Egress 1 chrome.zip.
+zipfile.testzip_first_bad: None
+file_entries: 15  dir_entries: 1  symlink_entries: 0
+total_uncompressed_bytes: 53312
+nested_archives: none
+integrity_issues: none
+VERDICT: PASS
+
+================================================================
+ARCHIVE: zips/egress/account_c/Egress 2 brave.zip
+CATEGORY: egress  ACCOUNT: account_c
+SIZE_BYTES: 23093
+SHA256_OUTER: 72a2990c7540bcc0b4d1e7da963c3195d854c9f5703386b230192f7535eb2a82
+HASH_MATCH_INVENTORY: YES
+SIZE_MATCH_INVENTORY: YES
+--- unzip -l (exit 0) ---
+Archive:  zips/egress/account_c/Egress 2 brave.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  2026-09-04 20:26   egress-map/
+    19388  2026-09-04 20:26   egress-map/EGRESS_POLICY_MAP.md
+        0  2026-09-04 20:26   egress-map/logs/
+     3183  2026-09-04 20:26   egress-map/logs/t1.log
+      385  2026-09-04 20:26   egress-map/logs/t1_time.log
+     4446  2026-09-04 20:26   egress-map/logs/t2.log
+     3165  2026-09-04 20:26   egress-map/logs/t3.log
+     2754  2026-09-04 20:26   egress-map/logs/t4.log
+     1165  2026-09-04 20:26   egress-map/logs/t5_tls.log
+     1172  2026-09-04 20:26   egress-map/logs/t6_403.log
+      380  2026-09-04 20:26   egress-map/logs/t6_hetzner.log
+      407  2026-09-04 20:26   egress-map/logs/t6_ipv6.log
+      272  2026-09-04 20:26   egress-map/logs/t6_par.log
+      600  2026-09-04 20:26   egress-map/logs/t6_pip.log
+      276  2026-09-04 20:26   egress-map/logs/t6_seq.log
+      751  2026-09-04 20:26   egress-map/logs/t6_std.log
+      437  2026-09-04 20:26   egress-map/logs/t6_threshold.log
+      508  2026-09-04 20:26   egress-map/logs/t6_wheel.log
+     3135  2026-09-04 20:26   egress-map/t1_proxy.py
+     3859  2026-09-04 20:26   egress-map/t2_dns.py
+     3946  2026-09-04 20:26   egress-map/t3_ip_sni.py
+     3644  2026-09-04 20:26   egress-map/t4_ports.py
+---------                     -------
+    53873                     22 files
+--- unzip -t (exit 0) ---
+Archive:  zips/egress/account_c/Egress 2 brave.zip
+    testing: egress-map/              OK
+    testing: egress-map/EGRESS_POLICY_MAP.md   OK
+    testing: egress-map/logs/         OK
+    testing: egress-map/logs/t1.log   OK
+    testing: egress-map/logs/t1_time.log   OK
+    testing: egress-map/logs/t2.log   OK
+    testing: egress-map/logs/t3.log   OK
+    testing: egress-map/logs/t4.log   OK
+    testing: egress-map/logs/t5_tls.log   OK
+    testing: egress-map/logs/t6_403.log   OK
+    testing: egress-map/logs/t6_hetzner.log   OK
+    testing: egress-map/logs/t6_ipv6.log   OK
+    testing: egress-map/logs/t6_par.log   OK
+    testing: egress-map/logs/t6_pip.log   OK
+    testing: egress-map/logs/t6_seq.log   OK
+    testing: egress-map/logs/t6_std.log   OK
+    testing: egress-map/logs/t6_threshold.log   OK
+    testing: egress-map/logs/t6_wheel.log   OK
+    testing: egress-map/t1_proxy.py   OK
+    testing: egress-map/t2_dns.py     OK
+    testing: egress-map/t3_ip_sni.py   OK
+    testing: egress-map/t4_ports.py   OK
+No errors detected in compressed data of zips/egress/account_c/Egress 2 brave.zip.
+zipfile.testzip_first_bad: None
+file_entries: 20  dir_entries: 2  symlink_entries: 0
+total_uncompressed_bytes: 53873
+nested_archives: none
+integrity_issues: none
+VERDICT: PASS
+
+================================================================
+ARCHIVE: zips/egress/account_b/Egress 3 edge.zip
+CATEGORY: egress  ACCOUNT: account_b
+SIZE_BYTES: 55619
+SHA256_OUTER: 1ce470c36e838d38113d186ae6fd0cb0c8daa8a762719ce74c5c59a6b87182a9
+HASH_MATCH_INVENTORY: YES
+SIZE_MATCH_INVENTORY: YES
+--- unzip -l (exit 0) ---
+Archive:  zips/egress/account_b/Egress 3 edge.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  2026-09-04 20:35   netmap/
+        0  2026-09-04 20:01   netmap/results/
+    30795  2026-09-04 19:43   netmap/results/s2.json
+     5811  2026-09-04 19:44   netmap/results/s1.json
+     1193  2026-09-04 19:45   netmap/results/s1b.json
+     4378  2026-09-04 19:47   netmap/results/s5_mitm.json
+     3050  2026-09-04 19:47   netmap/results/s1c.json
+     2499  2026-09-04 19:49   netmap/results/s1d.json
+     5948  2026-09-04 19:51   netmap/results/s3.json
+     2747  2026-09-04 19:51   netmap/results/s1d_v2.json
+    11948  2026-09-04 19:53   netmap/results/s4_tcp.json
+     3454  2026-09-04 19:53   netmap/results/s1e.json
+     6419  2026-09-04 19:55   netmap/results/s5_sweep.json
+     2456  2026-09-04 19:56   netmap/results/s4b_udp.json
+     1974  2026-09-04 20:07   netmap/results/s4_portquiz.json
+     2545  2026-09-04 19:58   netmap/results/s4c_udp_control.json
+      472  2026-09-04 19:59   netmap/results/s6_cloudflare.txt
+      388  2026-09-04 20:01   netmap/results/s6_raw.txt
+     3151  2026-09-04 19:43   netmap/s1_tcp.py
+     4816  2026-09-04 19:43   netmap/dnsprobe.py
+     2636  2026-09-04 19:45   netmap/s1b_rtt.py
+     1684  2026-09-04 19:46   netmap/s1c_connect_vs_ttfb.py
+     2165  2026-09-04 19:48   netmap/s1d_proof.py
+     2919  2026-09-04 19:50   netmap/s3_direct_ip.py
+     2922  2026-09-04 19:50   netmap/s1d_v2.py
+     3378  2026-09-04 19:53   netmap/s4_ports.py
+     2173  2026-09-04 19:53   netmap/s1e_rangemap.py
+     2850  2026-09-04 19:54   netmap/s4b_udp.py
+     2588  2026-09-04 19:57   netmap/s4c_udp_control.py
+      807  2026-09-04 19:59   netmap/s6_bw.sh
+    39013  2026-09-04 20:07   netmap/egress-policy-map.md
+     3177  2026-09-04 20:34   netmap/s5_tls_intercept.py
+     2227  2026-09-04 20:34   netmap/s5_sweep.py
+     2105  2026-09-04 20:34   netmap/s4d_tcpdns_portquiz.py
+     1537  2026-09-04 20:34   netmap/s7_gaps.py
+     6584  2026-09-04 20:35   netmap/INDEX.md
+---------                     -------
+   172809                     36 files
+--- unzip -t (exit 0) ---
+Archive:  zips/egress/account_b/Egress 3 edge.zip
+    testing: netmap/                  OK
+    testing: netmap/results/          OK
+    testing: netmap/results/s2.json   OK
+    testing: netmap/results/s1.json   OK
+    testing: netmap/results/s1b.json   OK
+    testing: netmap/results/s5_mitm.json   OK
+    testing: netmap/results/s1c.json   OK
+    testing: netmap/results/s1d.json   OK
+    testing: netmap/results/s3.json   OK
+    testing: netmap/results/s1d_v2.json   OK
+    testing: netmap/results/s4_tcp.json   OK
+    testing: netmap/results/s1e.json   OK
+    testing: netmap/results/s5_sweep.json   OK
+    testing: netmap/results/s4b_udp.json   OK
+    testing: netmap/results/s4_portquiz.json   OK
+    testing: netmap/results/s4c_udp_control.json   OK
+    testing: netmap/results/s6_cloudflare.txt   OK
+    testing: netmap/results/s6_raw.txt   OK
+    testing: netmap/s1_tcp.py         OK
+    testing: netmap/dnsprobe.py       OK
+    testing: netmap/s1b_rtt.py        OK
+    testing: netmap/s1c_connect_vs_ttfb.py   OK
+    testing: netmap/s1d_proof.py      OK
+    testing: netmap/s3_direct_ip.py   OK
+    testing: netmap/s1d_v2.py         OK
+    testing: netmap/s4_ports.py       OK
+    testing: netmap/s1e_rangemap.py   OK
+    testing: netmap/s4b_udp.py        OK
+    testing: netmap/s4c_udp_control.py   OK
+    testing: netmap/s6_bw.sh          OK
+    testing: netmap/egress-policy-map.md   OK
+    testing: netmap/s5_tls_intercept.py   OK
+    testing: netmap/s5_sweep.py       OK
+    testing: netmap/s4d_tcpdns_portquiz.py   OK
+    testing: netmap/s7_gaps.py        OK
+    testing: netmap/INDEX.md          OK
+No errors detected in compressed data of zips/egress/account_b/Egress 3 edge.zip.
+zipfile.testzip_first_bad: None
+file_entries: 34  dir_entries: 2  symlink_entries: 0
+total_uncompressed_bytes: 172809
+nested_archives: none
+integrity_issues: none
+VERDICT: PASS
+
+================================================================
+ARCHIVE: zips/provenance/account_b/Provenance 1 edge.zip
+CATEGORY: provenance  ACCOUNT: account_b
+SIZE_BYTES: 39165
+SHA256_OUTER: 9f671397bff15f71038b7cfd409ae47fb3f17376daece1630c341c1d8bf0c250
+HASH_MATCH_INVENTORY: YES
+SIZE_MATCH_INVENTORY: YES
+--- unzip -l (exit 0) ---
+Archive:  zips/provenance/account_b/Provenance 1 edge.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     4441  2026-09-04 20:41   README.md
+      445  2026-09-04 20:42   MANIFEST.sha256
+    63482  2026-09-04 20:40   sandbox_identity_provenance.md
+      601  2026-09-04 20:37   prov_probe.txt
+    49545  2026-09-04 20:41   raw_evidence_2026-09-04T2037Z_instance2.txt
+     4511  2026-09-04 20:40   raw_capture.sh
+---------                     -------
+   123025                     6 files
+--- unzip -t (exit 0) ---
+Archive:  zips/provenance/account_b/Provenance 1 edge.zip
+    testing: README.md                OK
+    testing: MANIFEST.sha256          OK
+    testing: sandbox_identity_provenance.md   OK
+    testing: prov_probe.txt           OK
+    testing: raw_evidence_2026-09-04T2037Z_instance2.txt   OK
+    testing: raw_capture.sh           OK
+No errors detected in compressed data of zips/provenance/account_b/Provenance 1 edge.zip.
+zipfile.testzip_first_bad: None
+file_entries: 6  dir_entries: 0  symlink_entries: 0
+total_uncompressed_bytes: 123025
+nested_archives: none
+integrity_issues: none
+VERDICT: PASS
+
+================================================================
+ARCHIVE: zips/provenance/account_c/Provenance 2 brave.zip
+CATEGORY: provenance  ACCOUNT: account_c
+SIZE_BYTES: 8071
+SHA256_OUTER: df0f9fa71def077a63f554265f678163830dd5ec1443d2ad18046afd2d87aed6
+HASH_MATCH_INVENTORY: YES
+SIZE_MATCH_INVENTORY: YES
+--- unzip -l (exit 0) ---
+Archive:  zips/provenance/account_c/Provenance 2 brave.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+    23039  2026-09-04 20:38   sandbox_identity_provenance.md
+      242  2026-09-04 20:38   prov_probe.txt
+---------                     -------
+    23281                     2 files
+--- unzip -t (exit 0) ---
+Archive:  zips/provenance/account_c/Provenance 2 brave.zip
+    testing: sandbox_identity_provenance.md   OK
+    testing: prov_probe.txt           OK
+No errors detected in compressed data of zips/provenance/account_c/Provenance 2 brave.zip.
+zipfile.testzip_first_bad: None
+file_entries: 2  dir_entries: 0  symlink_entries: 0
+total_uncompressed_bytes: 23281
+nested_archives: none
+integrity_issues: none
+VERDICT: PASS
+
+================================================================
+ARCHIVE: zips/provenance/account_a/Provenance 3 chrome.zip
+CATEGORY: provenance  ACCOUNT: account_a
+SIZE_BYTES: 5743
+SHA256_OUTER: 32775e06fb465778c4e1b40c5b32ec3db5ebeaf8c4cb709d28219d5beae8e1f1
+HASH_MATCH_INVENTORY: YES
+SIZE_MATCH_INVENTORY: YES
+--- unzip -l (exit 0) ---
+Archive:  zips/provenance/account_a/Provenance 3 chrome.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+      230  2026-09-04 20:39   prov_probe.txt
+    16207  2026-09-04 20:41   sandbox_provenance_report.md
+---------                     -------
+    16437                     2 files
+--- unzip -t (exit 0) ---
+Archive:  zips/provenance/account_a/Provenance 3 chrome.zip
+    testing: prov_probe.txt           OK
+    testing: sandbox_provenance_report.md   OK
+No errors detected in compressed data of zips/provenance/account_a/Provenance 3 chrome.zip.
+zipfile.testzip_first_bad: None
+file_entries: 2  dir_entries: 0  symlink_entries: 0
+total_uncompressed_bytes: 16437
+nested_archives: none
+integrity_issues: none
+VERDICT: PASS
+
+================================================================
+BURST-9 FAIL LIST: (none — all six PASS)
+END
