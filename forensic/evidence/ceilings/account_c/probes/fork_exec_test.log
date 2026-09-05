@@ -1,0 +1,38 @@
+[21:10:35] RLIMIT_NPROC: soft=7917 hard=7917
+[21:10:35] cgroup pids.max: max
+[21:10:35] user tasks at start: 4
+[21:10:35]   250 children, 0.2s, mem.current=68 MiB, loadavg=8.91
+[21:10:35]   500 children, 0.3s, mem.current=114 MiB, loadavg=8.91
+[21:10:35]   750 children, 0.5s, mem.current=160 MiB, loadavg=8.91
+[21:10:35]   1000 children, 0.6s, mem.current=206 MiB, loadavg=8.91
+[21:10:36]   1250 children, 0.8s, mem.current=252 MiB, loadavg=8.91
+[21:10:36]   1500 children, 0.9s, mem.current=298 MiB, loadavg=8.91
+[21:10:36]   1750 children, 1.1s, mem.current=345 MiB, loadavg=8.43
+[21:10:36]   2000 children, 1.2s, mem.current=390 MiB, loadavg=8.43
+[21:10:36]   2250 children, 1.4s, mem.current=437 MiB, loadavg=8.43
+[21:10:36]   2500 children, 1.5s, mem.current=483 MiB, loadavg=8.43
+[21:10:37]   2750 children, 1.6s, mem.current=529 MiB, loadavg=8.43
+[21:10:37]   3000 children, 1.8s, mem.current=575 MiB, loadavg=8.43
+[21:10:37]   3250 children, 2.0s, mem.current=621 MiB, loadavg=8.43
+[21:10:37]   3500 children, 2.1s, mem.current=664 MiB, loadavg=8.43
+[21:10:37]   3750 children, 2.3s, mem.current=713 MiB, loadavg=8.43
+[21:10:37]   4000 children, 2.5s, mem.current=759 MiB, loadavg=8.43
+[21:10:37]   4250 children, 2.6s, mem.current=805 MiB, loadavg=8.43
+[21:10:38]   4500 children, 2.7s, mem.current=851 MiB, loadavg=8.43
+[21:10:38]   4750 children, 2.9s, mem.current=898 MiB, loadavg=8.43
+[21:10:38]   5000 children, 3.0s, mem.current=943 MiB, loadavg=8.43
+[21:10:38]   5250 children, 3.2s, mem.current=989 MiB, loadavg=8.43
+[21:10:38]   5500 children, 3.4s, mem.current=1035 MiB, loadavg=8.43
+[21:10:38]   5750 children, 3.5s, mem.current=1081 MiB, loadavg=8.43
+[21:10:39]   6000 children, 3.7s, mem.current=1127 MiB, loadavg=8.43
+[21:10:39]   6250 children, 3.8s, mem.current=1173 MiB, loadavg=8.43
+[21:10:39]   6500 children, 4.0s, mem.current=1219 MiB, loadavg=8.43
+[21:10:39]   6750 children, 4.1s, mem.current=1265 MiB, loadavg=8.43
+[21:10:39]   7000 children, 4.3s, mem.current=1311 MiB, loadavg=8.43
+[21:10:39]   7250 children, 4.5s, mem.current=1357 MiB, loadavg=8.43
+[21:10:40]   7500 children, 4.7s, mem.current=1403 MiB, loadavg=8.43
+[21:10:40]   7750 children, 4.8s, mem.current=1449 MiB, loadavg=8.43
+[21:10:40] SPAWN FAILED after 7913 children: errno 11 (Resource temporarily unavailable)
+[21:10:40] PEAK: 7913 sleep children; user tasks approx 7917
+[21:10:42] cleanup: terminating 7913 children
+[21:10:43] reaped 7913/7913, done
