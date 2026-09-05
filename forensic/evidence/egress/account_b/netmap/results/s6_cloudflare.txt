@@ -1,0 +1,12 @@
+=== SEQUENTIAL (3 runs, one at a time) ===
+seq-1: 1 19 0.051611 0.021103 0.051579 403
+seq-2: 1 15 0.064057 0.032517 0.064006 403
+seq-3: 1 31 0.031562 0.001725 0.031522 403
+
+=== PARALLEL (3 concurrent runs) ===
+par-1: par-2: par-3: 1 28 0.035665 0.002050 0.035622 403
+1 20 0.049617 0.018197 0.049586 403
+1 18 0.053746 0.021690 0.053721 403
+
+=== AGGREGATE PARALLEL THROUGHPUT (3 concurrent, total wall time) ===
+  3x100MB in 0.06s -> aggregate 41546.6 Mbit/s  (5193.3 MB/s)

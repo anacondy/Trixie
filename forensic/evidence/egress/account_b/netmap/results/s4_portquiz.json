@@ -1,0 +1,138 @@
+[
+ {
+  "port": 21,
+  "hs": true,
+  "hs_ms": 0.2,
+  "data": true,
+  "data_ms": 282.9,
+  "snip": "HTTP/1.1 200 OK"
+ },
+ {
+  "port": 22,
+  "hs": true,
+  "hs_ms": 0.3,
+  "data": true,
+  "data_ms": 281.5,
+  "snip": "HTTP/1.1 200 OK"
+ },
+ {
+  "port": 25,
+  "hs": true,
+  "hs_ms": 0.2,
+  "data": true,
+  "data_ms": 281.7,
+  "snip": "HTTP/1.1 200 OK"
+ },
+ {
+  "port": 53,
+  "hs": true,
+  "hs_ms": 0.2,
+  "data": true,
+  "data_ms": 281.0,
+  "snip": "HTTP/1.1 200 OK"
+ },
+ {
+  "port": 80,
+  "hs": true,
+  "hs_ms": 0.2,
+  "data": true,
+  "data_ms": 283.3,
+  "snip": "HTTP/1.1 200 OK"
+ },
+ {
+  "port": 110,
+  "hs": true,
+  "hs_ms": 0.2,
+  "data": true,
+  "data_ms": 281.1,
+  "snip": "HTTP/1.1 200 OK"
+ },
+ {
+  "port": 143,
+  "hs": true,
+  "hs_ms": 0.2,
+  "data": true,
+  "data_ms": 280.7,
+  "snip": "HTTP/1.1 200 OK"
+ },
+ {
+  "port": 443,
+  "hs": true,
+  "hs_ms": 0.2,
+  "data": true,
+  "data_ms": 280.8,
+  "snip": "HTTP/1.1 200 OK"
+ },
+ {
+  "port": 465,
+  "hs": true,
+  "hs_ms": 0.3,
+  "data": true,
+  "data_ms": 280.5,
+  "snip": "HTTP/1.1 200 OK"
+ },
+ {
+  "port": 587,
+  "hs": true,
+  "hs_ms": 0.2,
+  "data": true,
+  "data_ms": 280.7,
+  "snip": "HTTP/1.1 200 OK"
+ },
+ {
+  "port": 993,
+  "hs": true,
+  "hs_ms": 0.2,
+  "data": true,
+  "data_ms": 282.9,
+  "snip": "HTTP/1.1 200 OK"
+ },
+ {
+  "port": 995,
+  "hs": true,
+  "hs_ms": 0.3,
+  "data": true,
+  "data_ms": 282.7,
+  "snip": "HTTP/1.1 200 OK"
+ },
+ {
+  "port": 3306,
+  "hs": true,
+  "hs_ms": 0.2,
+  "data": true,
+  "data_ms": 282.7,
+  "snip": "HTTP/1.1 200 OK"
+ },
+ {
+  "port": 5432,
+  "hs": true,
+  "hs_ms": 0.2,
+  "data": true,
+  "data_ms": 280.5,
+  "snip": "HTTP/1.1 200 OK"
+ },
+ {
+  "port": 6379,
+  "hs": true,
+  "hs_ms": 0.2,
+  "data": true,
+  "data_ms": 282.6,
+  "snip": "HTTP/1.1 200 OK"
+ },
+ {
+  "port": 8080,
+  "hs": true,
+  "hs_ms": 0.2,
+  "data": true,
+  "data_ms": 281.4,
+  "snip": "HTTP/1.1 200 OK"
+ },
+ {
+  "port": 8443,
+  "hs": true,
+  "hs_ms": 0.2,
+  "data": true,
+  "data_ms": 282.4,
+  "snip": "HTTP/1.1 200 OK"
+ }
+]

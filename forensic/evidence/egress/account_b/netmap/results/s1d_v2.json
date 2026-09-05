@@ -1,0 +1,144 @@
+[
+ {
+  "target": "200.160.2.3",
+  "note": "Brazil NIC.br",
+  "connect_ms": 0.193,
+  "ok": "7/7",
+  "appl_ms": 340.5,
+  "appl": "HTTP/1.1 301 Moved Permanently"
+ },
+ {
+  "target": "139.130.4.5",
+  "note": "Australia Telstra",
+  "connect_ms": 0.188,
+  "ok": "7/7",
+  "appl_ms": 161.7,
+  "appl": "(empty)"
+ },
+ {
+  "target": "196.10.52.58",
+  "note": "South Africa TENET",
+  "connect_ms": 0.191,
+  "ok": "7/7",
+  "appl_ms": 273.6,
+  "appl": "(empty)"
+ },
+ {
+  "target": "168.95.1.1",
+  "note": "Taiwan Chunghwa",
+  "connect_ms": 0.194,
+  "ok": "7/7",
+  "appl_ms": 5005.5,
+  "appl": "TimeoutError"
+ },
+ {
+  "target": "202.12.29.1",
+  "note": "M-root",
+  "connect_ms": 0.235,
+  "ok": "7/7",
+  "appl_ms": 351.1,
+  "appl": "HTTP/1.0 400 Bad Request"
+ },
+ {
+  "target": "1.1.1.1",
+  "note": "Cloudflare anycast",
+  "connect_ms": 0.178,
+  "ok": "7/7",
+  "appl_ms": 19.0,
+  "appl": "HTTP/1.1 403 Forbidden"
+ },
+ {
+  "target": "192.0.2.1",
+  "note": "CONTROL local events svc",
+  "connect_ms": 0.169,
+  "ok": "7/7",
+  "appl_ms": 0.5,
+  "appl": "HTTP/1.0 404 Not Found"
+ },
+ {
+  "target": "198.51.100.1",
+  "note": "TEST-NET-2",
+  "connect_ms": 0.174,
+  "ok": "7/7",
+  "appl_ms": 5005.3,
+  "appl": "TimeoutError"
+ },
+ {
+  "target": "203.0.113.1",
+  "note": "TEST-NET-3",
+  "connect_ms": 0.205,
+  "ok": "7/7",
+  "appl_ms": 5005.4,
+  "appl": "TimeoutError"
+ },
+ {
+  "target": "10.255.255.1",
+  "note": "RFC1918",
+  "connect_ms": null,
+  "ok": "0/7",
+  "appl_ms": 5005.3,
+  "appl": "TimeoutError"
+ },
+ {
+  "target": "100.64.0.1",
+  "note": "RFC6598",
+  "connect_ms": null,
+  "ok": "0/7",
+  "appl_ms": 5005.3,
+  "appl": "TimeoutError"
+ },
+ {
+  "target": "www.google.com -> 142.251.152.119",
+  "note": "hostname (TLS)",
+  "dns_ms": 3.0,
+  "connect_ms": 0.233,
+  "ok": "7/7",
+  "appl_ms": 61.2,
+  "appl": "HTTP/1.1 200 OK"
+ },
+ {
+  "target": "www.uol.com.br -> 52.85.129.48",
+  "note": "hostname (TLS)",
+  "dns_ms": 27.79,
+  "connect_ms": 0.176,
+  "ok": "7/7",
+  "appl_ms": 49.9,
+  "appl": "HTTP/1.1 200 OK"
+ },
+ {
+  "target": "www.telstra.com.au -> 18.172.170.111",
+  "note": "hostname (TLS)",
+  "dns_ms": 28.95,
+  "connect_ms": 0.184,
+  "ok": "7/7",
+  "appl_ms": 186.7,
+  "appl": "HTTP/1.1 403 Forbidden"
+ },
+ {
+  "target": "www.chinadaily.com.cn -> 138.113.124.117",
+  "note": "hostname (TLS)",
+  "dns_ms": 9.75,
+  "connect_ms": 0.168,
+  "ok": "7/7",
+  "appl_ms": 170.8,
+  "appl": "HTTP/1.1 200 OK"
+ },
+ {
+  "target": "pypi.org -> 151.101.64.223",
+  "note": "hostname (TLS)",
+  "dns_ms": 0.75,
+  "connect_ms": 0.176,
+  "ok": "7/7",
+  "appl_ms": 77.0,
+  "appl": "HTTP/1.1 200 OK"
+ },
+ {
+  "target": "github.com -> 140.82.116.3",
+  "note": "hostname (TLS)",
+  "dns_ms": 0.8,
+  "connect_ms": 0.188,
+  "ok": "7/7",
+  "appl_ms": 44.7,
+  "appl": "HTTP/1.1 200 OK"
+ }
+]
