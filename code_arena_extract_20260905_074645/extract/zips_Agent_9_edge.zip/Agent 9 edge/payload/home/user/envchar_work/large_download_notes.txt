@@ -1,0 +1,15 @@
+Selected PyPI object: numpy-2.3.5-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl metadata_size=16597430
+google-CDN/Go tarball first 5,000,000 bytes: size=387 bytes blocks=8
+/tmp/envchar_google.bin: XML 1.0 document, ASCII text, with very long lines (387), with no line terminators
+github-codeload/git-v2.46.0.tar.gz: size=11255537 bytes blocks=21984
+/tmp/envchar_git.tar.gz: gzip compressed data, from Unix, original size modulo 2^32 47390720
+pypi-files/numpy-2.3.5-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl: size=16597430 bytes blocks=32424
+/tmp/envchar_numpy.whl: Zip archive data, at least v2.0 to extract, compression method=store
+huggingface/sshleifer/tiny-gpt2 pytorch_model.bin: size=2514146 bytes blocks=4912
+/tmp/envchar_hf.bin: data
+cloudflare-speed/10,000,000-byte generated payload: size=10000000 bytes blocks=19536
+/tmp/envchar_cloudflare.bin: SIMH tape data
+Validation:
+GitHub tarball gzip integrity: OK
+Done testing
+/tmp/envchar_hf.bin: data

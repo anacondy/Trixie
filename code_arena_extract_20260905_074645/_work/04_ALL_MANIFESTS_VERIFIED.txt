@@ -1,0 +1,55 @@
+=== systematic verification of all internal manifest/checksum files (52 candidates) ===
+PASS       extract/forensic_evidence_Agent_9_edge_Agent_9_edge_payload_home_user_environment_evidence_20260904T142002Z-2576.zip/environment_evidence/runs/20260904T142002Z-2576/SHA256SUMS  [ok=14 fail=0 missing=0]
+NONSTANDARD  extract/forensic_evidence_Agent_9_edge_Agent_9_edge_payload_home_user_environment_evidence_20260904T142002Z-2576.zip/environment_evidence/runs/20260904T142002Z-2576/manifest.json (no standard 'hash  path' lines; format-specific, reviewed manually)
+PASS       extract/forensic_evidence_Agent_9_edge_Agent_9_edge_payload_home_user_environment_evidence_20260904T142002Z-2576.zip/environment_evidence/runs/20260904T142002Z-2576/manifest.txt  [ok=14 fail=0 missing=0]
+PASS       extract/zips_Agent_1_chrome.zip/MANIFEST.txt  [ok=6 fail=0 missing=0]
+NONSTANDARD  extract/zips_Agent_2_brave.zip/envchar/MANIFEST.txt (no standard 'hash  path' lines; format-specific, reviewed manually)
+PASS       extract/zips_Agent_2_brave.zip/envchar/SHA256SUMS  [ok=19 fail=0 missing=0]
+NONSTANDARD  extract/zips_Agent_2_brave.zip/envchar/make_manifest.py (no standard 'hash  path' lines; format-specific, reviewed manually)
+PASS       extract/zips_Agent_3_brave.zip/SHA256SUMS_ALL.txt  [ok=24 fail=0 missing=0]
+PASS       extract/zips_Agent_3_brave.zip/envchar/raw_run2/SHA256SUMS  [ok=17 fail=0 missing=0]
+PASS       extract/zips_Agent_3_brave.zip/envchar/raw_run2/verification_manifest.txt  [ok=17 fail=0 missing=0]
+NONSTANDARD  extract/zips_Agent_4_chrome.zip/envcheck/.probe_manifest.log (no standard 'hash  path' lines; format-specific, reviewed manually)
+NONSTANDARD  extract/zips_Agent_4_chrome.zip/envcheck/make_manifest.py (no standard 'hash  path' lines; format-specific, reviewed manually)
+NONSTANDARD  extract/zips_Agent_4_chrome.zip/envcheck/raw/MANIFEST.txt (no standard 'hash  path' lines; format-specific, reviewed manually)
+PASS       extract/zips_Agent_4_chrome.zip/envcheck/raw/SHA256SUMS.normalized.txt  [ok=22 fail=0 missing=0]
+PASS       extract/zips_Agent_4_chrome.zip/envcheck/raw/SHA256SUMS.txt  [ok=22 fail=0 missing=0]
+NONSTANDARD  extract/zips_Agent_4_chrome.zip/envcheck/raw/manifest.json (no standard 'hash  path' lines; format-specific, reviewed manually)
+NONSTANDARD  extract/zips_Agent_4_chrome.zip/envcheck/raw/normalized/MANIFEST.norm (no standard 'hash  path' lines; format-specific, reviewed manually)
+NONSTANDARD  extract/zips_Agent_4_chrome.zip/envcheck/raw/normalized/SHA256SUMS.norm (no standard 'hash  path' lines; format-specific, reviewed manually)
+NONSTANDARD  extract/zips_Agent_4_chrome.zip/envcheck/raw/normalized/SHA256SUMS.normalized.norm (no standard 'hash  path' lines; format-specific, reviewed manually)
+NONSTANDARD  extract/zips_Agent_4_chrome.zip/envcheck/run_v2/MANIFEST.txt (no standard 'hash  path' lines; format-specific, reviewed manually)
+PASS       extract/zips_Agent_4_chrome.zip/envcheck/run_v2/SHA256SUMS.normalized.txt  [ok=22 fail=0 missing=0]
+PASS       extract/zips_Agent_4_chrome.zip/envcheck/run_v2/SHA256SUMS.txt  [ok=22 fail=0 missing=0]
+NONSTANDARD  extract/zips_Agent_4_chrome.zip/envcheck/run_v2/manifest.json (no standard 'hash  path' lines; format-specific, reviewed manually)
+NONSTANDARD  extract/zips_Agent_4_chrome.zip/envcheck/run_v2/normalized/MANIFEST.norm (no standard 'hash  path' lines; format-specific, reviewed manually)
+NONSTANDARD  extract/zips_Agent_4_chrome.zip/envcheck/run_v2/normalized/SHA256SUMS.norm (no standard 'hash  path' lines; format-specific, reviewed manually)
+NONSTANDARD  extract/zips_Agent_4_chrome.zip/envcheck/run_v2/normalized/SHA256SUMS.normalized.norm (no standard 'hash  path' lines; format-specific, reviewed manually)
+NONSTANDARD  extract/zips_Agent_5_chrome.zip/ARCHIVE_MANIFEST.md (no standard 'hash  path' lines; format-specific, reviewed manually)
+PASS       extract/zips_Agent_5_chrome.zip/env-probe/KIT_SHA256SUMS.txt  [ok=5 fail=0 missing=0]
+NONSTANDARD  extract/zips_Agent_5_chrome.zip/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/MANIFEST.json (no standard 'hash  path' lines; format-specific, reviewed manually)
+PASS       extract/zips_Agent_5_chrome.zip/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/SHA256SUMS.txt  [ok=16 fail=0 missing=0]
+NONSTANDARD  extract/zips_Agent_5_chrome.zip/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/MANIFEST.json (no standard 'hash  path' lines; format-specific, reviewed manually)
+PASS       extract/zips_Agent_5_chrome.zip/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/SHA256SUMS.txt  [ok=16 fail=0 missing=0]
+NONSTANDARD  extract/zips_Agent_6_brave.zip/envprobe/manifest.json (no standard 'hash  path' lines; format-specific, reviewed manually)
+PASS       extract/zips_Agent_6_brave.zip/envprobe/sha256sums.txt  [ok=18 fail=0 missing=0]
+NONSTANDARD  extract/zips_Agent_6_brave.zip/rerun_A_smoke6_QUICK/manifest.json (no standard 'hash  path' lines; format-specific, reviewed manually)
+PASS       extract/zips_Agent_6_brave.zip/rerun_A_smoke6_QUICK/sha256sums.txt  [ok=18 fail=0 missing=0]
+NONSTANDARD  extract/zips_Agent_6_brave.zip/rerun_B_smoke7_QUICK_PASS/manifest.json (no standard 'hash  path' lines; format-specific, reviewed manually)
+PASS       extract/zips_Agent_6_brave.zip/rerun_B_smoke7_QUICK_PASS/sha256sums.txt  [ok=18 fail=0 missing=0]
+NONSTANDARD  extract/zips_Agent_6_brave.zip/rerun_C_full_FULL_PASS/manifest.json (no standard 'hash  path' lines; format-specific, reviewed manually)
+PASS       extract/zips_Agent_6_brave.zip/rerun_C_full_FULL_PASS/sha256sums.txt  [ok=18 fail=0 missing=0]
+PASS       extract/zips_Agent_7_edge.zip/ZIP_CONTENTS_MANIFEST.txt  [ok=82 fail=0 missing=0]
+PASS       extract/zips_Agent_7_edge.zip/envcheck/raw/run_20260904T1116Z_original/MANIFEST.sha256  [ok=27 fail=0 missing=0]
+NONSTANDARD  extract/zips_Agent_7_edge.zip/envcheck/raw/run_20260904T1116Z_original/MANIFEST.txt (no standard 'hash  path' lines; format-specific, reviewed manually)
+PASS       extract/zips_Agent_7_edge.zip/envcheck/raw/run_20260904T141747Z/MANIFEST.sha256  [ok=17 fail=0 missing=0]
+NONSTANDARD  extract/zips_Agent_7_edge.zip/envcheck/raw/run_20260904T141747Z/MANIFEST.txt (no standard 'hash  path' lines; format-specific, reviewed manually)
+NONSTANDARD  extract/zips_Agent_8_edge.zip/VERIFICATION_MANIFEST.md (no standard 'hash  path' lines; format-specific, reviewed manually)
+NONSTANDARD  extract/zips_Agent_8_edge.zip/probe_raw/00_MANIFEST.txt (no standard 'hash  path' lines; format-specific, reviewed manually)
+PASS       extract/zips_Agent_9_edge.zip/Agent 9 edge/documentation/SHA256SUMS.txt  [ok=90 fail=0 missing=0]
+PASS       extract/zips_Agent_9_edge.zip/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/SHA256SUMS  [ok=14 fail=0 missing=0]
+NONSTANDARD  extract/zips_Agent_9_edge.zip/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/manifest.json (no standard 'hash  path' lines; format-specific, reviewed manually)
+PASS       extract/zips_Agent_9_edge.zip/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/manifest.txt  [ok=14 fail=0 missing=0]
+FAIL       extract/zips_Agent_9_edge.zip/Agent 9 edge/payload/home/user/environment_evidence_20260904T142002Z-2576.zip.sha256  [ok=0 fail=0 missing=1]  -> MISSING /home/user/environment_evidence_20260904T142002Z-2576.zip
+
+SUMMARY: 25 standard-format manifests verified; entries ok=552 fail=0 missing=1; 27 nonstandard manifests noted for manual review

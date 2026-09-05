@@ -1,0 +1,76 @@
+timestamp=2026-09-04T12:16:40,349253785+00:00
+-- namespace comparison as root
+/proc/1/ns:
+total 0
+lrwxrwxrwx 1 root root 0 Sep  4 12:11 cgroup -> cgroup:[4026531835]
+lrwxrwxrwx 1 root root 0 Sep  4 12:11 ipc -> ipc:[4026531839]
+lrwxrwxrwx 1 root root 0 Sep  4 12:11 mnt -> mnt:[4026531841]
+lrwxrwxrwx 1 root root 0 Sep  4 12:11 net -> net:[4026531840]
+lrwxrwxrwx 1 root root 0 Sep  4 12:11 pid -> pid:[4026531836]
+lrwxrwxrwx 1 root root 0 Sep  4 12:16 pid_for_children -> pid:[4026531836]
+lrwxrwxrwx 1 root root 0 Sep  4 12:11 time -> time:[4026531834]
+lrwxrwxrwx 1 root root 0 Sep  4 12:16 time_for_children -> time:[4026531834]
+lrwxrwxrwx 1 root root 0 Jul 23 18:05 user -> user:[4026531837]
+lrwxrwxrwx 1 root root 0 Sep  4 12:11 uts -> uts:[4026531838]
+
+/proc/2177/ns:
+total 0
+lrwxrwxrwx 1 user user 0 Sep  4 12:16 cgroup -> cgroup:[4026531835]
+lrwxrwxrwx 1 user user 0 Sep  4 12:16 ipc -> ipc:[4026531839]
+lrwxrwxrwx 1 user user 0 Sep  4 12:16 mnt -> mnt:[4026531841]
+lrwxrwxrwx 1 user user 0 Sep  4 12:16 net -> net:[4026531840]
+lrwxrwxrwx 1 user user 0 Sep  4 12:16 pid -> pid:[4026531836]
+lrwxrwxrwx 1 user user 0 Sep  4 12:16 pid_for_children -> pid:[4026531836]
+lrwxrwxrwx 1 user user 0 Sep  4 12:16 time -> time:[4026531834]
+lrwxrwxrwx 1 user user 0 Sep  4 12:16 time_for_children -> time:[4026531834]
+lrwxrwxrwx 1 user user 0 Sep  4 12:16 user -> user:[4026531837]
+lrwxrwxrwx 1 user user 0 Sep  4 12:16 uts -> uts:[4026531838]
+-- capability hex decode
+pid1 CapInh 0x0 none
+pid1 CapPrm 0x1ffffffffff CAP_CHOWN,CAP_DAC_OVERRIDE,CAP_DAC_READ_SEARCH,CAP_FOWNER,CAP_FSETID,CAP_KILL,CAP_SETGID,CAP_SETUID,CAP_SETPCAP,CAP_LINUX_IMMUTABLE,CAP_NET_BIND_SERVICE,CAP_NET_BROADCAST,CAP_NET_ADMIN,CAP_NET_RAW,CAP_IPC_LOCK,CAP_IPC_OWNER,CAP_SYS_MODULE,CAP_SYS_RAWIO,CAP_SYS_CHROOT,CAP_SYS_PTRACE,CAP_SYS_PACCT,CAP_SYS_ADMIN,CAP_SYS_BOOT,CAP_SYS_NICE,CAP_SYS_RESOURCE,CAP_SYS_TIME,CAP_SYS_TTY_CONFIG,CAP_MKNOD,CAP_LEASE,CAP_AUDIT_WRITE,CAP_AUDIT_CONTROL,CAP_SETFCAP,CAP_MAC_OVERRIDE,CAP_MAC_ADMIN,CAP_SYSLOG,CAP_WAKE_ALARM,CAP_BLOCK_SUSPEND,CAP_AUDIT_READ,CAP_PERFMON,CAP_BPF,CAP_CHECKPOINT_RESTORE
+pid1 CapEff 0x1ffffffffff CAP_CHOWN,CAP_DAC_OVERRIDE,CAP_DAC_READ_SEARCH,CAP_FOWNER,CAP_FSETID,CAP_KILL,CAP_SETGID,CAP_SETUID,CAP_SETPCAP,CAP_LINUX_IMMUTABLE,CAP_NET_BIND_SERVICE,CAP_NET_BROADCAST,CAP_NET_ADMIN,CAP_NET_RAW,CAP_IPC_LOCK,CAP_IPC_OWNER,CAP_SYS_MODULE,CAP_SYS_RAWIO,CAP_SYS_CHROOT,CAP_SYS_PTRACE,CAP_SYS_PACCT,CAP_SYS_ADMIN,CAP_SYS_BOOT,CAP_SYS_NICE,CAP_SYS_RESOURCE,CAP_SYS_TIME,CAP_SYS_TTY_CONFIG,CAP_MKNOD,CAP_LEASE,CAP_AUDIT_WRITE,CAP_AUDIT_CONTROL,CAP_SETFCAP,CAP_MAC_OVERRIDE,CAP_MAC_ADMIN,CAP_SYSLOG,CAP_WAKE_ALARM,CAP_BLOCK_SUSPEND,CAP_AUDIT_READ,CAP_PERFMON,CAP_BPF,CAP_CHECKPOINT_RESTORE
+pid1 CapBnd 0x1ffffffffff CAP_CHOWN,CAP_DAC_OVERRIDE,CAP_DAC_READ_SEARCH,CAP_FOWNER,CAP_FSETID,CAP_KILL,CAP_SETGID,CAP_SETUID,CAP_SETPCAP,CAP_LINUX_IMMUTABLE,CAP_NET_BIND_SERVICE,CAP_NET_BROADCAST,CAP_NET_ADMIN,CAP_NET_RAW,CAP_IPC_LOCK,CAP_IPC_OWNER,CAP_SYS_MODULE,CAP_SYS_RAWIO,CAP_SYS_CHROOT,CAP_SYS_PTRACE,CAP_SYS_PACCT,CAP_SYS_ADMIN,CAP_SYS_BOOT,CAP_SYS_NICE,CAP_SYS_RESOURCE,CAP_SYS_TIME,CAP_SYS_TTY_CONFIG,CAP_MKNOD,CAP_LEASE,CAP_AUDIT_WRITE,CAP_AUDIT_CONTROL,CAP_SETFCAP,CAP_MAC_OVERRIDE,CAP_MAC_ADMIN,CAP_SYSLOG,CAP_WAKE_ALARM,CAP_BLOCK_SUSPEND,CAP_AUDIT_READ,CAP_PERFMON,CAP_BPF,CAP_CHECKPOINT_RESTORE
+pid1 CapAmb 0x0 none
+shell CapInh 0x0 none
+shell CapPrm 0x0 none
+shell CapEff 0x0 none
+shell CapBnd 0x1ffffffffff CAP_CHOWN,CAP_DAC_OVERRIDE,CAP_DAC_READ_SEARCH,CAP_FOWNER,CAP_FSETID,CAP_KILL,CAP_SETGID,CAP_SETUID,CAP_SETPCAP,CAP_LINUX_IMMUTABLE,CAP_NET_BIND_SERVICE,CAP_NET_BROADCAST,CAP_NET_ADMIN,CAP_NET_RAW,CAP_IPC_LOCK,CAP_IPC_OWNER,CAP_SYS_MODULE,CAP_SYS_RAWIO,CAP_SYS_CHROOT,CAP_SYS_PTRACE,CAP_SYS_PACCT,CAP_SYS_ADMIN,CAP_SYS_BOOT,CAP_SYS_NICE,CAP_SYS_RESOURCE,CAP_SYS_TIME,CAP_SYS_TTY_CONFIG,CAP_MKNOD,CAP_LEASE,CAP_AUDIT_WRITE,CAP_AUDIT_CONTROL,CAP_SETFCAP,CAP_MAC_OVERRIDE,CAP_MAC_ADMIN,CAP_SYSLOG,CAP_WAKE_ALARM,CAP_BLOCK_SUSPEND,CAP_AUDIT_READ,CAP_PERFMON,CAP_BPF,CAP_CHECKPOINT_RESTORE
+shell CapAmb 0x0 none
+-- LSM/security status
+lsm=capability,landlock,selinuxselinux_enforce=0getenforce unavailable
+aa-status unavailable
+-- namespace creation tests
+unprivileged user+mount namespace: OK
+root mount namespace: OK
+-- special device/runtime sockets
+/dev/kvm absent
+crw-rw-rw- 1 root root 10, 229 Jul 23 18:05 /dev/fuse
+/var/run/docker.sock absent
+/run/docker.sock absent
+/run/containerd/containerd.sock absent
+-- kernel log virtualization excerpts
+[    0.000000] Command line: clocksource=kvm-clock i8042.noaux i8042.nokbd init=/sbin/init ip=169.254.0.21::169.254.0.22:255.255.255.252:instance:eth0:off:tap0 ipv6.autoconf=1 ipv6.disable=0 loglevel=1 panic=1 pci=off quiet random.trust_cpu=on reboot=k rootflags=discard pci=off virtio_mmio.device=4K@0xc0001000:6 root=/dev/vda rw virtio_mmio.device=4K@0xc0002000:7 virtio_mmio.device=4K@0xc0003000:8 virtio_mmio.device=4K@0xc0004000:9
+[    0.000000] Hypervisor detected: KVM
+[    0.000000] kvm-clock: Using msrs 4b564d01 and 4b564d00
+[    0.000001] kvm-clock: using sched offset of 24553442 cycles
+[    0.000003] clocksource: kvm-clock: mask: 0xffffffffffffffff max_cycles: 0x1cd42e4dffb, max_idle_ns: 881590591483 ns
+[    0.002397] kvm-guest: KVM setup pv remote TLB flush
+[    0.002429] kvm-guest: setup PV sched yield
+[    0.002437] Booting paravirtualized kernel on KVM
+[    0.002963] kvm-guest: PV spinlocks enabled
+[    0.002974] Kernel command line: clocksource=kvm-clock i8042.noaux i8042.nokbd init=/sbin/init ip=169.254.0.21::169.254.0.22:255.255.255.252:instance:eth0:off:tap0 ipv6.autoconf=1 ipv6.disable=0 loglevel=1 panic=1 pci=off quiet random.trust_cpu=on reboot=k rootflags=discard pci=off virtio_mmio.device=4K@0xc0001000:6 root=/dev/vda rw virtio_mmio.device=4K@0xc0002000:7 virtio_mmio.device=4K@0xc0003000:8 virtio_mmio.device=4K@0xc0004000:9
+[    0.018597] kvm-guest: setup PV IPIs
+[    0.050995] clocksource: Switched to clocksource kvm-clock
+[    0.076950] virtio_blk virtio1: 1/0/0 default/read/poll queues
+[    0.077549] virtio_blk virtio1: [vda] 54177792 512-byte logical blocks (27.7 GB/25.8 GiB)
+[    0.268221] systemd[1]: Detected virtualization kvm.
+[    0.270482] systemd[1]: Hostname set to <e2b.local>.
+-- time configuration
+2026-09-04T12:16:40,422777599+00:00
+               Local time: Fri 2026-09-04 12:16:40 UTC
+           Universal time: Fri 2026-09-04 12:16:40 UTC
+                 RTC time: n/a
+                Time zone: Etc/UTC (UTC, +0000)
+System clock synchronized: no
+              NTP service: inactive
+          RTC in local TZ: no

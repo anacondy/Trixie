@@ -1,0 +1,118 @@
+probe_run_start_utc=2026-09-04T14:20:02.722079460Z
+probe_mode=full
+probe_script=/home/user/environment_evidence/probe_environment.sh
+raw_file=07_dns.txt
+
+$ cat /etc/resolv.conf; cat /etc/hosts; ip -brief address; ip route; ip -6 route
+nameserver 8.8.8.8127.0.0.1        localhost
+::1              localhost ip6-localhost ip6-loopback
+fe00::           ip6-localnet
+ff00::           ip6-mcastprefix
+ff02::1          ip6-allnodes
+ff02::2          ip6-allrouters
+127.0.1.1        e2b.local
+192.0.2.1        events.e2b.local
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+eth0             UP             169.254.0.21/30 fe80::fc:ff:fe00:5/64 
+default via 169.254.0.22 dev eth0 
+169.254.0.20/30 dev eth0 proto kernel scope link src 169.254.0.21 
+fe80::/64 dev eth0 proto kernel metric 256 pref medium
+[exit_code=0]
+
+$ python3 - <<'PY'
+import socket,time,random,struct
+hosts=["google.com","github.com","pypi.org","huggingface.co"]
+for host in hosts:
+    for i in range(5):
+        t=time.perf_counter_ns()
+        try:
+            ans=socket.getaddrinfo(host,443,type=socket.SOCK_STREAM)
+            ips=sorted({x[4][0] for x in ans}); status="ok"
+        except Exception as e:
+            ips=[];status=type(e).__name__+":"+str(e)
+        print("getaddrinfo",host,i+1,status,f"{(time.perf_counter_ns()-t)/1e6:.3f} ms",",".join(ips))
+
+def query(server,name="google.com"):
+    tid=random.randrange(65536)
+    q=struct.pack("!HHHHHH",tid,0x100,1,0,0,0)+b"".join(bytes([len(x)])+x.encode() for x in name.split("."))+b"\0"+struct.pack("!HH",1,1)
+    s=socket.socket(socket.AF_INET,socket.SOCK_DGRAM);s.settimeout(2);t=time.perf_counter_ns()
+    try:
+        s.sendto(q,(server,53));data,peer=s.recvfrom(4096)
+        h=struct.unpack("!HHHHHH",data[:12])
+        print("udp_dns",server,f"{(time.perf_counter_ns()-t)/1e6:.3f} ms",f"bytes={len(data)} answers={h[3]} rcode={h[1]&15} peer={peer[0]}")
+    except Exception as e: print("udp_dns",server,f"{(time.perf_counter_ns()-t)/1e6:.3f} ms",type(e).__name__,str(e))
+    finally:s.close()
+for _ in range(3): query("8.8.8.8")
+PY
+getaddrinfo google.com 1 ok 4.212 ms 2607:f8b0:400e:c08::64,2607:f8b0:400e:c08::65,2607:f8b0:400e:c08::66,2607:f8b0:400e:c08::71,74.125.142.100,74.125.142.101,74.125.142.102,74.125.142.113,74.125.142.138,74.125.142.139
+getaddrinfo google.com 2 ok 1.293 ms 2607:f8b0:400e:c08::65,2607:f8b0:400e:c08::71,2607:f8b0:400e:c08::8a,2607:f8b0:400e:c08::8b,74.125.142.100,74.125.142.101,74.125.142.102,74.125.142.113,74.125.142.138,74.125.142.139
+getaddrinfo google.com 3 ok 1.392 ms 2607:f8b0:400e:c08::64,2607:f8b0:400e:c08::65,2607:f8b0:400e:c08::66,2607:f8b0:400e:c08::8b,74.125.142.100,74.125.142.101,74.125.142.102,74.125.142.113,74.125.142.138,74.125.142.139
+getaddrinfo google.com 4 ok 1.319 ms 2607:f8b0:400e:c08::64,2607:f8b0:400e:c08::65,2607:f8b0:400e:c08::66,2607:f8b0:400e:c08::8b,74.125.142.100,74.125.142.101,74.125.142.102,74.125.142.113,74.125.142.138,74.125.142.139
+getaddrinfo google.com 5 ok 1.197 ms 2607:f8b0:400e:c08::64,2607:f8b0:400e:c08::65,2607:f8b0:400e:c08::66,2607:f8b0:400e:c08::8b,74.125.142.100,74.125.142.101,74.125.142.102,74.125.142.113,74.125.142.138,74.125.142.139
+getaddrinfo github.com 1 ok 12.031 ms 140.82.116.3
+getaddrinfo github.com 2 ok 1.046 ms 140.82.116.3
+getaddrinfo github.com 3 ok 9.916 ms 140.82.116.3
+getaddrinfo github.com 4 ok 1.040 ms 140.82.116.3
+getaddrinfo github.com 5 ok 1.436 ms 140.82.116.3
+getaddrinfo pypi.org 1 ok 0.820 ms 151.101.0.223,151.101.128.223,151.101.192.223,151.101.64.223,2a04:4e42:200::223,2a04:4e42:400::223,2a04:4e42:600::223,2a04:4e42::223
+getaddrinfo pypi.org 2 ok 0.934 ms 151.101.0.223,151.101.128.223,151.101.192.223,151.101.64.223,2a04:4e42:200::223,2a04:4e42:400::223,2a04:4e42:600::223,2a04:4e42::223
+getaddrinfo pypi.org 3 ok 0.838 ms 151.101.0.223,151.101.128.223,151.101.192.223,151.101.64.223,2a04:4e42:200::223,2a04:4e42:400::223,2a04:4e42:600::223,2a04:4e42::223
+getaddrinfo pypi.org 4 ok 0.804 ms 151.101.0.223,151.101.128.223,151.101.192.223,151.101.64.223,2a04:4e42:200::223,2a04:4e42:400::223,2a04:4e42:600::223,2a04:4e42::223
+getaddrinfo pypi.org 5 ok 1.047 ms 151.101.0.223,151.101.128.223,151.101.192.223,151.101.64.223,2a04:4e42:200::223,2a04:4e42:400::223,2a04:4e42:600::223,2a04:4e42::223
+getaddrinfo huggingface.co 1 ok 22.370 ms 2600:9000:212d:1000:17:b174:6d00:93a1,2600:9000:212d:2800:17:b174:6d00:93a1,2600:9000:212d:3e00:17:b174:6d00:93a1,2600:9000:212d:4c00:17:b174:6d00:93a1,2600:9000:212d:5c00:17:b174:6d00:93a1,2600:9000:212d:9600:17:b174:6d00:93a1,2600:9000:212d:a200:17:b174:6d00:93a1,2600:9000:212d:c400:17:b174:6d00:93a1,99.86.101.36,99.86.101.39,99.86.101.56,99.86.101.64
+getaddrinfo huggingface.co 2 ok 23.169 ms 2600:9000:212d:2c00:17:b174:6d00:93a1,2600:9000:212d:4400:17:b174:6d00:93a1,2600:9000:212d:6600:17:b174:6d00:93a1,2600:9000:212d:6c00:17:b174:6d00:93a1,2600:9000:212d:7800:17:b174:6d00:93a1,2600:9000:212d:7a00:17:b174:6d00:93a1,2600:9000:212d:f400:17:b174:6d00:93a1,2600:9000:212d:fe00:17:b174:6d00:93a1,99.86.101.36,99.86.101.39,99.86.101.56,99.86.101.64
+getaddrinfo huggingface.co 3 ok 19.089 ms 2600:9000:212d:2c00:17:b174:6d00:93a1,2600:9000:212d:4400:17:b174:6d00:93a1,2600:9000:212d:6600:17:b174:6d00:93a1,2600:9000:212d:6c00:17:b174:6d00:93a1,2600:9000:212d:7800:17:b174:6d00:93a1,2600:9000:212d:7a00:17:b174:6d00:93a1,2600:9000:212d:f400:17:b174:6d00:93a1,2600:9000:212d:fe00:17:b174:6d00:93a1,99.86.101.36,99.86.101.39,99.86.101.56,99.86.101.64
+getaddrinfo huggingface.co 4 ok 16.992 ms 2600:9000:212d:1a00:17:b174:6d00:93a1,2600:9000:212d:2400:17:b174:6d00:93a1,2600:9000:212d:3400:17:b174:6d00:93a1,2600:9000:212d:400:17:b174:6d00:93a1,2600:9000:212d:5000:17:b174:6d00:93a1,2600:9000:212d:6400:17:b174:6d00:93a1,2600:9000:212d:e800:17:b174:6d00:93a1,2600:9000:212d:f000:17:b174:6d00:93a1,99.86.101.36,99.86.101.39,99.86.101.56,99.86.101.64
+getaddrinfo huggingface.co 5 ok 1.239 ms 2600:9000:212d:2c00:17:b174:6d00:93a1,2600:9000:212d:4400:17:b174:6d00:93a1,2600:9000:212d:6600:17:b174:6d00:93a1,2600:9000:212d:6c00:17:b174:6d00:93a1,2600:9000:212d:7800:17:b174:6d00:93a1,2600:9000:212d:7a00:17:b174:6d00:93a1,2600:9000:212d:f400:17:b174:6d00:93a1,2600:9000:212d:fe00:17:b174:6d00:93a1,99.86.101.36,99.86.101.39,99.86.101.56,99.86.101.64
+udp_dns 8.8.8.8 1.115 ms bytes=124 answers=6 rcode=0 peer=8.8.8.8
+udp_dns 8.8.8.8 1.038 ms bytes=124 answers=6 rcode=0 peer=8.8.8.8
+udp_dns 8.8.8.8 0.612 ms bytes=124 answers=6 rcode=0 peer=8.8.8.8
+[exit_code=0]
+
+$ for h in google.com 8.8.8.8 github.com pypi.org huggingface.co; do echo "### $h"; sudo -n ping -n -4 -c 3 -W 2 "$h"; done
+### google.com
+PING google.com (74.125.142.102) 56(84) bytes of data.
+64 bytes from 74.125.142.102: icmp_seq=1 ttl=113 time=0.846 ms
+64 bytes from 74.125.142.102: icmp_seq=2 ttl=113 time=0.513 ms
+64 bytes from 74.125.142.102: icmp_seq=3 ttl=113 time=0.490 ms
+
+--- google.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2049ms
+rtt min/avg/max/mdev = 0.490/0.616/0.846/0.162 ms
+### 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=113 time=0.507 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=113 time=0.462 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=113 time=0.418 ms
+
+--- 8.8.8.8 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2035ms
+rtt min/avg/max/mdev = 0.418/0.462/0.507/0.036 ms
+### github.com
+PING github.com (140.82.116.4) 56(84) bytes of data.
+64 bytes from 140.82.116.4: icmp_seq=1 ttl=58 time=6.69 ms
+64 bytes from 140.82.116.4: icmp_seq=2 ttl=58 time=6.66 ms
+64 bytes from 140.82.116.4: icmp_seq=3 ttl=58 time=6.79 ms
+
+--- github.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2004ms
+rtt min/avg/max/mdev = 6.659/6.712/6.787/0.054 ms
+### pypi.org
+PING pypi.org (151.101.64.223) 56(84) bytes of data.
+64 bytes from 151.101.64.223: icmp_seq=1 ttl=60 time=7.86 ms
+64 bytes from 151.101.64.223: icmp_seq=2 ttl=60 time=7.72 ms
+64 bytes from 151.101.64.223: icmp_seq=3 ttl=60 time=7.71 ms
+
+--- pypi.org ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2004ms
+rtt min/avg/max/mdev = 7.708/7.762/7.856/0.066 ms
+### huggingface.co
+PING huggingface.co (99.86.101.39) 56(84) bytes of data.
+64 bytes from 99.86.101.39: icmp_seq=1 ttl=250 time=7.38 ms
+64 bytes from 99.86.101.39: icmp_seq=2 ttl=250 time=7.41 ms
+64 bytes from 99.86.101.39: icmp_seq=3 ttl=250 time=7.82 ms
+
+--- huggingface.co ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+rtt min/avg/max/mdev = 7.383/7.537/7.819/0.199 ms
+[exit_code=0]

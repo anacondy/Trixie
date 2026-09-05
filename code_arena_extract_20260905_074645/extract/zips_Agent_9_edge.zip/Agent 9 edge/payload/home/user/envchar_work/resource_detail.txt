@@ -1,0 +1,300 @@
+timestamp=2026-09-04T12:11:20,477149742+00:00
+cgroup_relative=/user
+cgroup_dir=/sys/fs/cgroup/user
+-- cgroup directory
+total 0
+drwxr-xr-x  2 root root 0 Sep  4 12:11 .
+dr-xr-xr-x 13 root root 0 Jul 23 18:05 ..
+-r--r--r--  1 root root 0 Sep  4 12:11 cgroup.controllers
+-r--r--r--  1 root root 0 Sep  4 12:11 cgroup.events
+-rw-r--r--  1 root root 0 Sep  4 12:09 cgroup.freeze
+--w-------  1 root root 0 Sep  4 12:11 cgroup.kill
+-rw-r--r--  1 root root 0 Sep  4 12:11 cgroup.max.depth
+-rw-r--r--  1 root root 0 Sep  4 12:11 cgroup.max.descendants
+-rw-r--r--  1 root root 0 Sep  4 12:11 cgroup.procs
+-r--r--r--  1 root root 0 Sep  4 12:11 cgroup.stat
+-rw-r--r--  1 root root 0 Sep  4 12:11 cgroup.subtree_control
+-rw-r--r--  1 root root 0 Sep  4 12:11 cgroup.threads
+-rw-r--r--  1 root root 0 Sep  4 12:11 cgroup.type
+-rw-r--r--  1 root root 0 Sep  4 12:11 cpu.idle
+-rw-r--r--  1 root root 0 Sep  4 12:11 cpu.max
+-rw-r--r--  1 root root 0 Sep  4 12:11 cpu.max.burst
+-r--r--r--  1 root root 0 Sep  4 12:11 cpu.stat
+-rw-r--r--  1 root root 0 Jul 23 18:05 cpu.weight
+-rw-r--r--  1 root root 0 Sep  4 12:11 cpu.weight.nice
+-rw-r--r--  1 root root 0 Sep  4 12:11 cpuset.cpus
+-r--r--r--  1 root root 0 Sep  4 12:11 cpuset.cpus.effective
+-rw-r--r--  1 root root 0 Sep  4 12:11 cpuset.cpus.partition
+-rw-r--r--  1 root root 0 Sep  4 12:11 cpuset.mems
+-r--r--r--  1 root root 0 Sep  4 12:11 cpuset.mems.effective
+-rw-r--r--  1 root root 0 Sep  4 12:11 io.bfq.weight
+-rw-r--r--  1 root root 0 Sep  4 12:11 io.max
+-r--r--r--  1 root root 0 Sep  4 12:11 io.stat
+-rw-r--r--  1 root root 0 Jul 23 18:05 io.weight
+-r--r--r--  1 root root 0 Sep  4 12:11 memory.current
+-r--r--r--  1 root root 0 Sep  4 12:11 memory.events
+-r--r--r--  1 root root 0 Sep  4 12:11 memory.events.local
+-rw-r--r--  1 root root 0 Jul 23 18:05 memory.high
+-rw-r--r--  1 root root 0 Sep  4 12:11 memory.low
+-rw-r--r--  1 root root 0 Jul 23 18:05 memory.max
+-rw-r--r--  1 root root 0 Sep  4 12:11 memory.min
+-r--r--r--  1 root root 0 Sep  4 12:11 memory.numa_stat
+-rw-r--r--  1 root root 0 Sep  4 12:11 memory.oom.group
+-r--r--r--  1 root root 0 Sep  4 12:11 memory.peak
+--w-------  1 root root 0 Sep  4 12:11 memory.reclaim
+-r--r--r--  1 root root 0 Sep  4 12:11 memory.stat
+-r--r--r--  1 root root 0 Sep  4 12:11 memory.swap.current
+-r--r--r--  1 root root 0 Sep  4 12:11 memory.swap.events
+-rw-r--r--  1 root root 0 Sep  4 12:11 memory.swap.high
+-rw-r--r--  1 root root 0 Sep  4 12:11 memory.swap.max
+-r--r--r--  1 root root 0 Sep  4 12:11 memory.zswap.current
+-rw-r--r--  1 root root 0 Sep  4 12:11 memory.zswap.max
+-r--r--r--  1 root root 0 Sep  4 12:11 pids.current
+-r--r--r--  1 root root 0 Sep  4 12:11 pids.events
+-rw-r--r--  1 root root 0 Sep  4 12:11 pids.max
+-r--r--r--  1 root root 0 Sep  4 12:11 pids.peak
+-- selected current-cgroup files
+[cgroup.controllers]
+cpuset cpu io memory pids
+[cgroup.events]
+populated 1
+frozen 0
+[cgroup.freeze]
+0
+[cgroup.kill] unavailable
+[cgroup.max.depth]
+max
+[cgroup.max.descendants]
+max
+[cgroup.procs]
+1468
+1479
+[cgroup.stat]
+nr_descendants 0
+nr_dying_descendants 0
+[cgroup.subtree_control]
+[cgroup.threads]
+1468
+1482
+[cgroup.type]
+domain
+[cpu.max]
+max 100000
+[cpu.max.burst]
+0
+[cpu.weight]
+50
+[cpu.stat]
+usage_usec 2353410
+user_usec 857935
+system_usec 1495475
+nr_periods 0
+nr_throttled 0
+throttled_usec 0
+nr_bursts 0
+burst_usec 0
+[cpuset.cpus]
+
+[cpuset.cpus.effective]
+0-1
+[cpuset.mems]
+
+[cpuset.mems.effective]
+0
+[memory.max]
+1947172864
+[memory.min]
+0
+[memory.low]
+0
+[memory.high]
+1947172864
+[memory.current]
+188792832
+[memory.peak]
+190554112
+[memory.events]
+low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+[memory.events.local]
+low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+[memory.stat]
+anon 430080
+file 70369280
+kernel 117850112
+kernel_stack 16384
+pagetables 69632
+sec_pagetables 0
+percpu 0
+sock 0
+vmalloc 0
+shmem 229376
+zswap 0
+zswapped 0
+file_mapped 1601536
+file_dirty 131072
+file_writeback 0
+swapcached 0
+anon_thp 0
+file_thp 0
+shmem_thp 0
+inactive_anon 364544
+active_anon 233472
+inactive_file 18321408
+active_file 51818496
+unevictable 0
+slab_reclaimable 116738056
+slab_unreclaimable 70096
+slab 116808152
+workingset_refault_anon 0
+workingset_refault_file 0
+workingset_activate_anon 0
+workingset_activate_file 0
+workingset_restore_anon 0
+workingset_restore_file 0
+workingset_nodereclaim 0
+pgscan 0
+pgsteal 0
+pgscan_kswapd 0
+pgscan_direct 0
+pgsteal_kswapd 0
+pgsteal_direct 0
+pgfault 105166
+pgmajfault 133
+pgrefill 0
+pgactivate 6155
+pgdeactivate 0
+pglazyfree 0
+pglazyfreed 0
+zswpin 0
+zswpout 0
+thp_fault_alloc 0
+thp_collapse_alloc 0
+[memory.swap.max]
+max
+[memory.swap.current]
+0
+[pids.max]
+max
+[pids.current]
+2
+[pids.events]
+max 0
+[io.max]
+[io.stat]
+254:0 rbytes=69365760 wbytes=647168 rios=11874 wios=33 dbytes=0 dios=0
+[io.pressure] unavailable
+[cpu.pressure] unavailable
+[memory.pressure] unavailable
+-- shell process status (not /proc/self ambiguity)
+Name:	bash
+Pid:	1468
+PPid:	359
+Uid:	1000	1000	1000	1000
+Gid:	1000	1000	1000	1000
+NSpid:	1468
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+-- sudo process security status
+Name:	sh
+Pid:	1511
+PPid:	1509
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+NSpid:	1511
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+-- cmdline identities
+PID1 cmdline: /sbin/init 
+self cmdline: /bin/bash -l -c set -uo pipefail
+OUT=/home/user/envchar_work/resource_detail.txt
+CG_REL=$(awk -F: '$1=="0"{print $3}' /proc/self/cgroup)
+CG="/sys/fs/cgroup${CG_REL}"
+{
+  echo "timestamp=$(date --iso-8601=ns)"
+  echo "cgroup_relative=$CG_REL"
+  echo "cgroup_dir=$CG"
+  echo '-- cgroup directory'; ls -la "$CG" 2>&1 || true
+  echo '-- selected current-cgroup files'
+  for f in cgroup.controllers cgroup.events cgroup.freeze cgroup.kill cgroup.max.depth cgroup.max.descendants cgroup.procs cgroup.stat cgroup.subtree_control cgroup.threads cgroup.type cpu.max cpu.max.burst cpu.weight cpu.stat cpuset.cpus cpuset.cpus.effective cpuset.mems cpuset.mems.effective memory.max memory.min memory.low memory.high memory.current memory.peak memory.events memory.events.local memory.stat memory.swap.max memory.swap.current pids.max pids.current pids.events io.max io.stat io.pressure cpu.pressure memory.pressure; do
+    if [ -r "$CG/$f" ]; then echo "[$f]"; cat "$CG/$f" 2>&1; else echo "[$f] unavailable"; fi
+  done
+  echo '-- shell process status (not /proc/self ambiguity)'
+  grep -E '^(Name|Pid|PPid|Uid|Gid|NSpid|NoNewPrivs|Seccomp|Seccomp_filters|Cap(Inh|Prm|Eff|Bnd|Amb)):' "/proc/$$/status" 2>&1 || true
+  echo '-- sudo process security status'
+  sudo sh -c "grep -E '^(Name|Pid|PPid|Uid|Gid|NSpid|NoNewPrivs|Seccomp|Seccomp_filters|Cap(Inh|Prm|Eff|Bnd|Amb)):' /proc/\$\$/status" 2>&1 || true
+  echo '-- cmdline identities'
+  printf 'PID1 cmdline: '; tr '\0' ' ' </proc/1/cmdline 2>/dev/null; echo
+  printf 'self cmdline: '; tr '\0' ' ' </proc/$$/cmdline 2>/dev/null; echo
+  echo '-- filesystems'; cat /proc/filesystems
+  echo '-- kernel knobs'
+  for f in /proc/sys/kernel/unprivileged_userns_clone /proc/sys/kernel/yama/ptrace_scope /proc/sys/kernel/core_pattern /proc/sys/fs/file-max /proc/sys/fs/file-nr /proc/sys/kernel/pid_max /proc/sys/vm/overcommit_memory /proc/sys/vm/overcommit_ratio /proc/sys/vm/swappiness; do printf '%s=' "$f"; cat "$f" 2>&1 || true; done
+} > "$OUT"
+cat "$OUT" 
+-- filesystems
+nodev	sysfs
+nodev	tmpfs
+nodev	bdev
+nodev	proc
+nodev	cgroup
+nodev	cgroup2
+nodev	cpuset
+nodev	devtmpfs
+nodev	binfmt_misc
+nodev	debugfs
+nodev	tracefs
+nodev	securityfs
+nodev	sockfs
+nodev	bpf
+nodev	pipefs
+nodev	ramfs
+nodev	hugetlbfs
+nodev	rpc_pipefs
+nodev	devpts
+	ext3
+	ext2
+	ext4
+	squashfs
+nodev	nfs
+nodev	nfs4
+nodev	nfsd
+nodev	autofs
+	fuseblk
+nodev	fuse
+nodev	fusectl
+nodev	overlay
+	xfs
+nodev	mqueue
+nodev	selinuxfs
+nodev	pstore
+-- kernel knobs
+/proc/sys/kernel/unprivileged_userns_clone=cat: /proc/sys/kernel/unprivileged_userns_clone: No such file or directory
+/proc/sys/kernel/yama/ptrace_scope=cat: /proc/sys/kernel/yama/ptrace_scope: No such file or directory
+/proc/sys/kernel/core_pattern=core
+/proc/sys/fs/file-max=9223372036854775807
+/proc/sys/fs/file-nr=864	0	9223372036854775807
+/proc/sys/kernel/pid_max=4194304
+/proc/sys/vm/overcommit_memory=0
+/proc/sys/vm/overcommit_ratio=50
+/proc/sys/vm/swappiness=60

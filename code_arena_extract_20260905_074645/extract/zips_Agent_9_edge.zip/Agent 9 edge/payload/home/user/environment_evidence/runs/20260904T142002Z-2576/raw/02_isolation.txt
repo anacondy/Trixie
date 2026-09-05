@@ -1,0 +1,252 @@
+probe_run_start_utc=2026-09-04T14:20:02.722079460Z
+probe_mode=full
+probe_script=/home/user/environment_evidence/probe_environment.sh
+raw_file=02_isolation.txt
+
+$ for f in /.dockerenv /run/.containerenv; do if test -e "$f"; then ls -l "$f"; else echo "$f absent"; fi; done
+/.dockerenv absent
+/run/.containerenv absent
+[exit_code=0]
+
+$ systemd-detect-virt; systemd-detect-virt --container; systemd-detect-virt --vm
+kvm
+none
+kvm
+[exit_code=0]
+
+$ findmnt -n -o SOURCE,FSTYPE,OPTIONS /; stat -f -c "%T" /
+/dev/vda ext4 rw,relatime,discard
+ext2/ext3
+[exit_code=0]
+
+$ cat /proc/1/cgroup; cat /proc/self/cgroup
+0::/init.scope
+0::/user
+[exit_code=0]
+
+$ grep -E "^(Name|Pid|PPid|Uid|Gid|NSpid|NoNewPrivs|Seccomp|Seccomp_filters|Cap(Inh|Prm|Eff|Bnd|Amb)):" /proc/1/status
+Name:	systemd
+Pid:	1
+PPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+NSpid:	1
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+[exit_code=0]
+
+$ grep -E "^(Name|Pid|PPid|Uid|Gid|NSpid|NoNewPrivs|Seccomp|Seccomp_filters|Cap(Inh|Prm|Eff|Bnd|Amb)):" /proc/$$/status
+Name:	grep
+Pid:	2626
+PPid:	2576
+Uid:	1000	1000	1000	1000
+Gid:	1000	1000	1000	1000
+NSpid:	2626
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+[exit_code=0]
+
+$ sudo -n sh -c 'grep -E "^(Name|Pid|PPid|Uid|Gid|NSpid|NoNewPrivs|Seccomp|Seccomp_filters|Cap(Inh|Prm|Eff|Bnd|Amb)):" /proc/$$/status'
+Name:	sh
+Pid:	2629
+PPid:	2627
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+NSpid:	2629
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+[exit_code=0]
+
+$ sudo -n ls -l /proc/1/ns /proc/$$/ns
+/proc/1/ns:
+total 0
+lrwxrwxrwx 1 root root 0 Sep  4 14:15 cgroup -> cgroup:[4026531835]
+lrwxrwxrwx 1 root root 0 Sep  4 14:15 ipc -> ipc:[4026531839]
+lrwxrwxrwx 1 root root 0 Sep  4 14:15 mnt -> mnt:[4026531841]
+lrwxrwxrwx 1 root root 0 Sep  4 14:15 net -> net:[4026531840]
+lrwxrwxrwx 1 root root 0 Sep  4 14:15 pid -> pid:[4026531836]
+lrwxrwxrwx 1 root root 0 Sep  4 14:15 pid_for_children -> pid:[4026531836]
+lrwxrwxrwx 1 root root 0 Sep  4 14:15 time -> time:[4026531834]
+lrwxrwxrwx 1 root root 0 Sep  4 14:15 time_for_children -> time:[4026531834]
+lrwxrwxrwx 1 root root 0 Jul 23 18:05 user -> user:[4026531837]
+lrwxrwxrwx 1 root root 0 Sep  4 14:15 uts -> uts:[4026531838]
+
+/proc/2631/ns:
+total 0
+lrwxrwxrwx 1 root root 0 Sep  4 14:20 cgroup -> cgroup:[4026531835]
+lrwxrwxrwx 1 root root 0 Sep  4 14:20 ipc -> ipc:[4026531839]
+lrwxrwxrwx 1 root root 0 Sep  4 14:20 mnt -> mnt:[4026531841]
+lrwxrwxrwx 1 root root 0 Sep  4 14:20 net -> net:[4026531840]
+lrwxrwxrwx 1 root root 0 Sep  4 14:20 pid -> pid:[4026531836]
+lrwxrwxrwx 1 root root 0 Sep  4 14:20 pid_for_children -> pid:[4026531836]
+lrwxrwxrwx 1 root root 0 Sep  4 14:20 time -> time:[4026531834]
+lrwxrwxrwx 1 root root 0 Sep  4 14:20 time_for_children -> time:[4026531834]
+lrwxrwxrwx 1 root root 0 Sep  4 14:20 user -> user:[4026531837]
+lrwxrwxrwx 1 root root 0 Sep  4 14:20 uts -> uts:[4026531838]
+[exit_code=0]
+
+$ ps -ef --forest
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           2       0  0 14:15 ?        00:00:00 [kthreadd]
+root           3       2  0 14:15 ?        00:00:00  \_ [rcu_gp]
+root           4       2  0 14:15 ?        00:00:00  \_ [rcu_par_gp]
+root           5       2  0 14:15 ?        00:00:00  \_ [slub_flushwq]
+root           6       2  0 14:15 ?        00:00:00  \_ [netns]
+root           7       2  0 14:15 ?        00:00:00  \_ [kworker/0:0-mm_percpu_wq]
+root           8       2  0 14:15 ?        00:00:00  \_ [kworker/0:0H-events_highpri]
+root           9       2  0 14:15 ?        00:00:00  \_ [kworker/u4:0-ext4-rsv-conversion]
+root          10       2  0 14:15 ?        00:00:00  \_ [mm_percpu_wq]
+root          11       2  0 14:15 ?        00:00:00  \_ [rcu_tasks_kthread]
+root          12       2  0 14:15 ?        00:00:00  \_ [rcu_tasks_rude_kthread]
+root          13       2  0 14:15 ?        00:00:00  \_ [rcu_tasks_trace_kthread]
+root          14       2  0 14:15 ?        00:00:00  \_ [ksoftirqd/0]
+root          15       2  0 14:15 ?        00:00:00  \_ [rcu_preempt]
+root          16       2  0 14:15 ?        00:00:00  \_ [migration/0]
+root          17       2  0 14:15 ?        00:00:00  \_ [kworker/0:1-cgroup_offline]
+root          18       2  0 14:15 ?        00:00:00  \_ [cpuhp/0]
+root          19       2  0 14:15 ?        00:00:00  \_ [cpuhp/1]
+root          20       2  0 14:15 ?        00:00:00  \_ [migration/1]
+root          21       2  0 14:15 ?        00:00:00  \_ [ksoftirqd/1]
+root          22       2  0 14:15 ?        00:00:00  \_ [kworker/1:0-events]
+root          23       2  0 14:15 ?        00:00:00  \_ [kworker/1:0H-events_highpri]
+root          25       2  0 14:15 ?        00:00:00  \_ [kworker/u4:1-events_unbound]
+root          26       2  0 14:15 ?        00:00:00  \_ [kdevtmpfs]
+root          27       2  0 14:15 ?        00:00:00  \_ [inet_frag_wq]
+root          28       2  0 14:15 ?        00:00:00  \_ [kauditd]
+root          29       2  0 14:15 ?        00:00:00  \_ [khungtaskd]
+root          30       2  0 14:15 ?        00:00:00  \_ [oom_reaper]
+root          31       2  0 14:15 ?        00:00:00  \_ [kworker/u4:2-flush-254:0]
+root          32       2  0 14:15 ?        00:00:00  \_ [writeback]
+root          33       2  0 14:15 ?        00:00:00  \_ [kcompactd0]
+root          34       2  0 14:15 ?        00:00:00  \_ [ksmd]
+root          35       2  0 14:15 ?        00:00:00  \_ [khugepaged]
+root          36       2  0 14:15 ?        00:00:00  \_ [kintegrityd]
+root          37       2  0 14:15 ?        00:00:00  \_ [kblockd]
+root          38       2  0 14:15 ?        00:00:00  \_ [blkcg_punt_bio]
+root          39       2  0 14:15 ?        00:00:00  \_ [kworker/1:1-cgroup_free]
+root          40       2  0 14:15 ?        00:00:00  \_ [watchdogd]
+root          41       2  0 14:15 ?        00:00:00  \_ [rpciod]
+root          42       2  0 14:15 ?        00:00:00  \_ [xprtiod]
+root          43       2  0 14:15 ?        00:00:00  \_ [kworker/u4:3-flush-254:0]
+root          47       2  0 14:15 ?        00:00:00  \_ [kworker/u4:4-flush-254:0]
+root          53       2  0 14:15 ?        00:00:00  \_ [kworker/1:1H-kblockd]
+root          68       2  0 14:15 ?        00:00:00  \_ [kswapd0]
+root          71       2  0 14:15 ?        00:00:00  \_ [nfsiod]
+root          72       2  0 14:15 ?        00:00:00  \_ [kworker/0:1H-kblockd]
+root          74       2  0 14:15 ?        00:00:00  \_ [xfsalloc]
+root          76       2  0 14:15 ?        00:00:00  \_ [xfs_mru_cache]
+root          79       2  0 14:15 ?        00:00:00  \_ [kthrotld]
+root          82       2  0 14:15 ?        00:00:00  \_ [kworker/0:2-events]
+root          84       2  0 14:15 ?        00:00:00  \_ [irq/24-ACPI:Ged]
+root         117       2  0 14:15 ?        00:00:00  \_ [hwrng]
+root         141       2  0 14:15 ?        00:00:00  \_ [iscsi_conn_clea]
+root         165       2  0 14:15 ?        00:00:00  \_ [mld]
+root         166       2  0 14:15 ?        00:00:00  \_ [ipv6_addrconf]
+root         173       2  0 14:15 ?        00:00:00  \_ bpfilter_umh
+root         174       2  0 14:15 ?        00:00:00  \_ [kstrp]
+root         179       2  0 14:15 ?        00:00:00  \_ [zswap-shrink]
+root         180       2  0 14:15 ?        00:00:00  \_ [kworker/u5:0]
+root         257       2  0 14:15 ?        00:00:00  \_ [jbd2/vda-8]
+root         258       2  0 14:15 ?        00:00:00  \_ [ext4-rsv-conver]
+root         300       2  0 14:15 ?        00:00:00  \_ [kworker/1:2-events]
+root         305       2  0 14:15 ?        00:00:00  \_ [kworker/1:3-events]
+root         392       2  0 14:15 ?        00:00:00  \_ [kworker/0:3-events]
+root         393       2  0 14:15 ?        00:00:00  \_ [kworker/0:4-events]
+root        1315       2  0 14:15 ?        00:00:00  \_ [kworker/u4:5-ext4-rsv-conversion]
+root           1       0  0 14:15 ?        00:00:00 /sbin/init
+root         290       1  0 14:15 ?        00:00:00 /usr/lib/systemd/systemd-journald
+systemd+     308       1  0 14:15 ?        00:00:00 /usr/lib/systemd/systemd-networkd
+_rpc         336       1  0 14:15 ?        00:00:00 /usr/sbin/rpcbind -f -w
+message+     340       1  0 14:15 ?        00:00:00 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root         341       1  0 14:15 ?        00:00:00 /usr/lib/systemd/systemd-logind
+root         359       1  1 14:15 ?        00:00:03 /usr/bin/envd
+root         470     359  0 14:15 ?        00:00:00  \_ socat -d -d -d TCP4-LISTEN:8888,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:8888
+root         512     359  0 14:15 ?        00:00:00  \_ socat -d -d -d TCP4-LISTEN:35769,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:35769
+root         513     359  0 14:15 ?        00:00:00  \_ socat -d -d -d TCP4-LISTEN:47945,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:47945
+root         514     359  0 14:15 ?        00:00:00  \_ socat -d -d -d TCP4-LISTEN:34675,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:34675
+root         515     359  0 14:15 ?        00:00:00  \_ socat -d -d -d TCP4-LISTEN:44461,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:44461
+root         516     359  0 14:15 ?        00:00:00  \_ socat -d -d -d TCP4-LISTEN:39379,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:39379
+root         517     359  0 14:15 ?        00:00:00  \_ socat -d -d -d TCP4-LISTEN:41435,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:41435
+root         518     359  0 14:15 ?        00:00:00  \_ socat -d -d -d TCP4-LISTEN:43501,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:43501
+root         521     359  0 14:15 ?        00:00:00  \_ socat -d -d -d TCP4-LISTEN:35105,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:35105
+root         523     359  0 14:15 ?        00:00:00  \_ socat -d -d -d TCP4-LISTEN:60465,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:60465
+root         524     359  0 14:15 ?        00:00:00  \_ socat -d -d -d TCP4-LISTEN:60493,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:60493
+root         525     359  0 14:15 ?        00:00:00  \_ socat -d -d -d TCP4-LISTEN:53335,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:53335
+user        2576     359  4 14:20 ?        00:00:00  \_ bash /home/user/environment_evidence/probe_environment.sh --full
+user        2634    2576  0 14:20 ?        00:00:00      \_ ps -ef --forest
+root         387       1  0 14:15 ?        00:00:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+root         421       1  0 14:15 tty1     00:00:00 /sbin/agetty -o -- \u --noreset --noclear - linux
+root         422       1  0 14:15 ?        00:00:00 /usr/sbin/blkmapd
+root         437       1  0 14:15 ?        00:00:01 /usr/local/bin/python3.13 /usr/local/bin/jupyter-server --IdentityProvider.token=
+root         475     437  0 14:15 ?        00:00:00  \_ /usr/local/bin/python3.13 -Xfrozen_modules=off -m ipykernel_launcher -f /root/.local/share/jupyter/runtime/kernel-6bd8c74e-fd89-448c-9e6a-22de9783e8b5.json
+root         490     437  0 14:15 ?        00:00:00  \_ node /usr/bin/ijskernel --hide-undefined /root/.local/share/jupyter/runtime/kernel-1fe44cf5-e7f2-4ee3-82b8-24ac60d6d93f.json --protocol=5.1
+root         504     490  0 14:15 ?        00:00:00      \_ /usr/bin/node --eval (async function() { /*  * BSD 3-Clause License  *  * Copyright (c) 2018, Nicolas Riesco and others as credited in the AUTHORS file  * All rights reserved.  *  * Redistribution and use in source and binary forms, with or without  * modification, are permitted provided that the following conditions are met:  *  * 1. Redistributions of source code must retain the above copyright notice,  * this list of conditions and the following disclaimer.  *  * 2. Redistributions in binary form must reproduce the above copyright notice,  * this list of conditions and the following disclaimer in the documentation  * and/or other materials provided with the distribution.  *  * 3. Neither the name of the copyright holder nor the names of its contributors  * may be used to endorse or promote products derived from this software without  * specific prior written permission.  *  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE  * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR  * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF  * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS  * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE  * POSSIBILITY OF SUCH DAMAGE.  *  */  /* eslint-disable no-unused-vars */ var console = require("console"); var stream = require("stream"); var util = require("util"); var vm = require("vm"); /* eslint-enable no-unused-vars */  /*  * BSD 3-Clause License  *  * Copyright (c) 2015, Nicolas Riesco and others as credited in the AUTHORS file  * All rights reserved.  *  * Redistribution and use in source and binary forms, with or without  * modification, are permitted provided that the following conditions are met:  *  * 1. Redistributions of source code must retain the above copyright notice,  * this list of conditions and the following disclaimer.  *  * 2. Redistributions in binary form must reproduce the above copyright notice,  * this list of conditions and the following disclaimer in the documentation  * and/or other materials provided with the distribution.  *  * 3. Neither the name of the copyright holder nor the names of its contributors  * may be used to endorse or promote products derived from this software without  * specific prior written permission.  *  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE  * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR  * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF  * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS  * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE  * POSSIBILITY OF SUCH DAMAGE.  *  */  /* global console */ /* global stream */ /* global util */  /* global Promise */  /* global log */ /* global Display */  function Stdout(contextId, opt) {     stream.Transform.call(this, opt);      this._contextId = contextId; }  Stdout.prototype = Object.create(stream.Transform.prototype);  Stdout.prototype._transform = function(data, encoding, callback) {     var response = {         id: this._contextId,         stdout: data.toString(),     };     log("STDOUT:", response);     process.send(response);     this.push(data);     callback(); };  function Stderr(contextId, opt) {     stream.Transform.call(this, opt);      this._contextId = contextId; }  Stderr.prototype = Object.create(stream.Transform.prototype);  Stderr.prototype._transform = function(data, encoding, callback) {     var response = {         id: this._contextId,         stderr: data.toString(),     };     log("STDERR:", response);     process.send(response);     this.push(data);     callback(); };  function Requester(contextId) {     // context id     this.contextId = contextId;      // id for next request     this.requestId = 0;      // callback associated with a request (indexed by id)     this.callbacks = {};      // the Promise resolve callback associated with a request (indexed by id)     this.resolves = {};      // the Promise reject callback associated with a request (indexed by id)     this.rejects = {}; }  // send a request Requester.prototype.send = function send(request, callback) {     var requestId = this.requestId++;     request.id = requestId;      if (callback) {         this.callbacks[requestId] = callback;     }      var promise;     if (global.Promise) {         promise = new Promise(function(resolve, reject) {             this.resolves[requestId] = resolve;             this.rejects[requestId] = reject;         }.bind(this));     }      process.send({         id: this.contextId,         request: request,     });      return promise; };  // pass reply to the callbacks associated with a request Requester.prototype.receive = function receive(requestId, reply) {     var callback = this.callbacks[requestId];     if (callback) {         delete this.callbacks[requestId];         callback(null, reply);     }      var resolve = this.resolves[requestId];     if (resolve) {         delete this.resolves[requestId];         delete this.rejects[requestId];         resolve(reply);     } };  function Context(id) {     this.id = id;      this.requester = new Requester(this.id);      this.stdout = new Stdout(this.id);     this.stderr = new Stderr(this.id);     this.console = new console.Console(this.stdout, this.stderr);      this._capturedStdout = null;     this._capturedStderr = null;     this._capturedConsole = null;      this._async = false;     this._done = false;      // `$$` provides an interface for users to access the execution context     this.$$ = Object.create(null);      // `$$.config` provides an interface to configure NEL's features.     // * If `$$.config.awaitExecution` is set to `true`,     //   then execution requests that return a Promise will automatically     //   invoke `$$.async()` and the execution result will be replaced with the     //   value resolved by the promise.     Context.config = Context.config || {         awaitExecution: false,     };     Object.defineProperty(this.$$, "config", {         value: Context.config,         configurable: false,         writable: false,         enumerable: false,     });      this.$$.async = (function async(value) {         this._async = (arguments.length === 0) ? true : !!value;         return this._async;     }).bind(this);      this.$$.done = (function done(result) {         this.send({             mime: toMime(result),         }, false);     }).bind(this);      this.$$.sendResult = resolvePromise.call(this, this.sendResult);      this.$$.sendError = resolvePromise.call(this, this.sendError);      this.$$.mime = resolvePromise.call(this,         function sendMime(mimeBundle, keepAlive) {             this.send({                 mime: mimeBundle,             }, keepAlive);         }     );      this.$$.text = resolvePromise.call(this,         function sendText(text, keepAlive) {             this.send({                 mime: {                     "text/plain": text,                 },             }, keepAlive);         }     );      this.$$.html = resolvePromise.call(this,         function sendHtml(html, keepAlive) {             this.send({                 mime: {                     "text/html": html,                 },             }, keepAlive);         }     );      this.$$.svg = resolvePromise.call(this,         function sendSvg(svg, keepAlive) {             this.send({                 mime: {                     "image/svg+xml": svg,                 },             }, keepAlive);         }     );      this.$$.png = resolvePromise.call(this,         function sendPng(png, keepAlive) {             this.send({                 mime: {                     "image/png": png,                 },             }, keepAlive);         }     );      this.$$.jpeg = resolvePromise.call(this,         function sendJpeg(jpeg, keepAlive) {             this.send({                 mime: {                     "image/jpeg": jpeg,                 },             }, keepAlive);         }     );      this.$$.json = resolvePromise.call(this,         function sendJson(json, keepAlive) {             this.send({                 mime: {                     "application/json": json,                 },             }, keepAlive);         }     );      this.$$.input = (function input(options, callback) {         this.$$.async();          var inputRequest = {             input: options,         };          var inputCallback;         if (typeof callback === "function") {             inputCallback = function inputCallback(error, reply) {                 callback(error, reply.input);             };         }          var promise = this.requester.send(inputRequest, inputCallback);         if (promise) {             return promise.then(function(reply) { return reply.input; });         }     }).bind(this);      this.$$.display = (function createDisplay(id) {         return (arguments.length === 0) ?             new Display(this.id) :             new Display(this.id, id);     }).bind(this);      this.$$.clear = (function clear(options) {         process.send({             id: this.id,             request: {                 clear: options || {},             },         });     }).bind(this);      function isPromise(output) {         if (!global.Promise || typeof global.Promise !== "function") {             return false;         }         return output instanceof global.Promise;     }      function resolvePromise(outputHandler) {         return function(output, keepAlive) {             if (isPromise(output)) {                 this.$$.async();                  output.then(function(resolvedOutput) {                     outputHandler.call(this, resolvedOutput, keepAlive);                 }.bind(this)).catch(function(error) {                     this.sendError(error, false);                 }.bind(this));                  return;             }              outputHandler.apply(this, arguments);         }.bind(this);     } }  Context.prototype.sendResult = function sendResult(result, keepAlive) {     this.send({         mime: toMime(result),     }, keepAlive); };  Context.prototype.sendError = function sendError(error, keepAlive) {     this.send({         error: formatError(error),     }, keepAlive); };  Context.prototype.send = function send(message, keepAlive) {     message.id = this.id;     message.end = !keepAlive;      if (this._done) {         log("SEND: Warning! Message dropped:", message);         return;     }      if (keepAlive) {         this.$$.async();     } else {         this.done();     }      log("SEND:", message);      process.send(message); };  Context.prototype.done = function done() {     this._async = false;      if (this._done) {         log("DONE: Warning! Context#done already invoked");     }     this._done = true;      releaseContext(this.id, function onMissing() {         log("DONE: Warning! Context already released");     }); };  Context.prototype.captureGlobalContext = function captureGlobalContext() {     this._capturedStdout = process.stdout;     this._capturedStderr = process.stderr;     this._capturedConsole = console;      this.stdout.pipe(this._capturedStdout);     this.stderr.pipe(this._capturedStderr);     this.console.Console = this._capturedConsole.Console;      delete process.stdout;     process.stdout = this.stdout;      delete process.stderr;     process.stderr = this.stderr;      delete global.console;     global.console = this.console;      delete global.$$;     global.$$ = this.$$;      if (typeof global.$$mimer$$ !== "function") {         global.$$mimer$$ = defaultMimer;     }      delete global.$$mime$$;     Object.defineProperty(global, "$$mime$$", {         set: this.$$.mime,         configurable: true,         enumerable: false,     });      delete global.$$html$$;     Object.defineProperty(global, "$$html$$", {         set: this.$$.html,         configurable: true,         enumerable: false,     });      delete global.$$svg$$;     Object.defineProperty(global, "$$svg$$", {         set: this.$$.svg,         configurable: true,         enumerable: false,     });      delete global.$$png$$;     Object.defineProperty(global, "$$png$$", {         set: this.$$.png,         configurable: true,         enumerable: false,     });      delete global.$$jpeg$$;     Object.defineProperty(global, "$$jpeg$$", {         set: this.$$.jpeg,         configurable: true,         enumerable: false,     });      delete global.$$async$$;     Object.defineProperty(global, "$$async$$", {         get: (function() {             return this._async;         }).bind(this),         set: (function(value) {             this._async = !!value;         }).bind(this),         configurable: true,         enumerable: false,     });      global.$$done$$ = this.$$.done.bind(this);      if (!global.hasOwnProperty("$$defaultMimer$$")) {         Object.defineProperty(global, "$$defaultMimer$$", {             value: defaultMimer,             configurable: false,             writable: false,             enumerable: false,         });     } };  Context.prototype.releaseGlobalContext = function releaseGlobalContext() {     if (process.stdout === this.stdout) {         this.stdout.unpipe();          delete process.stdout;         process.stdout = this._capturedStdout;          this._capturedStdout = null;     }      if (process.stderr === this.stderr) {         this.stderr.unpipe();          delete process.stderr;         process.stderr = this._capturedStderr;          this._capturedStderr = null;     }      if (global.console === this.console) {         delete global.console;         global.console = this._capturedConsole;          this._capturedConsole = null;     } };  function formatError(error) {     return {         ename: (error && error.name) ?             error.name : typeof error,         evalue: (error && error.message) ?             error.message : util.inspect(error),         traceback: (error && error.stack) ?             error.stack.split("\n") : [],     }; }  function toMime(result) {     var mimer = (typeof global.$$mimer$$ === "function") ?         global.$$mimer$$ :         defaultMimer;     return mimer(result); }  function defaultMimer(result) { // eslint-disable-line complexity     if (typeof result === "undefined") {         return {             "text/plain": "undefined"         };     }      if (result === null) {         return {             "text/plain": "null"         };     }      var mime;     if (result._toMime) {         try {             mime = result._toMime();         } catch (error) {}     }     if (typeof mime !== "object") {         mime = {};     }      if (!("text/plain" in mime)) {         try {             mime["text/plain"] = util.inspect(result);         } catch (error) {}     }      if (result._toHtml && !("text/html" in mime)) {         try {             mime["text/html"] = result._toHtml();         } catch (error) {}     }      if (result._toSvg && !("image/svg+xml" in mime)) {         try {             mime["image/svg+xml"] = result._toSvg();         } catch (error) {}     }      if (result._toPng && !("image/png" in mime)) {         try {             mime["image/png"] = result._toPng();         } catch (error) {}     }      if (result._toJpeg && !("image/jpeg" in mime)) {         try {             mime["image/jpeg"] = result._toJpeg();         } catch (error) {}     }      return mime; }  // Context factory function getContext(id, onMissing) {     var cache = getContext.cache = getContext.cache || {};     var context = cache[id];     if (!context) {         onMissing && onMissing();         context = cache[id] = new Context(id);     }     return context; }  function releaseContext(id, onMissing) {     var context = getContext.cache[id];     if (context) {         log("releaseContext: Releasing context", id);         delete getContext.cache[id];     } else {         log("releaseContext: Warning! Context already released", id);         onMissing && onMissing();     } }  // Capture global context (it releases last capture if any) function captureGlobalContext(context) { // eslint-disable-line no-unused-vars     var last = captureGlobalContext.last;     last && last.releaseGlobalContext();     context.captureGlobalContext();     captureGlobalContext.last = context; } /*  * BSD 3-Clause License  *  * Copyright (c) 2017, Nicolas Riesco and others as credited in the AUTHORS file  * All rights reserved.  *  * Redistribution and use in source and binary forms, with or without  * modification, are permitted provided that the following conditions are met:  *  * 1. Redistributions of source code must retain the above copyright notice,  * this list of conditions and the following disclaimer.  *  * 2. Redistributions in binary form must reproduce the above copyright notice,  * this list of conditions and the following disclaimer in the documentation  * and/or other materials provided with the distribution.  *  * 3. Neither the name of the copyright holder nor the names of its contributors  * may be used to endorse or promote products derived from this software without  * specific prior written permission.  *  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE  * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR  * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF  * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS  * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE  * POSSIBILITY OF SUCH DAMAGE.  *  */  function Display(context_id, display_id) { // eslint-disable-line no-unused-vars     var send;      this.mime = function mime(mimeBundle) {         send(mimeBundle);     };      this.text = function text(text) {         send({"text/plain": text});     };      this.html = function html(html) {         send({"text/html": html});     };      this.svg = function svg(svg) {         send({"image/svg+xml": svg});     };      this.png = function png(png) {         send({"image/png": png});     };      this.jpeg = function jpeg(jpeg) {         send({"image/jpeg": jpeg});     };      this.json = function json(json) {         send({"application/json": json});     };      this.close = function close() {         process.send({             id: context_id,             display: {                 close: display_id,             },         });     };      if (arguments.length < 2) {         // case: without a display_id         send = function send(mime) {             process.send({                 id: context_id,                 display: {                     mime: mime,                 },             });         };     } else {         // case: with a display_id         send = function send(mime) {             process.send({                 id: context_id,                 display: {                     display_id: display_id,                     mime: mime,                 },             });         };          // open the display_id         process.send({             id: context_id,             display: {                 open: display_id,             },         });     } }  /*  * BSD 3-Clause License  *  * Copyright (c) 2015, Nicolas Riesco and others as credited in the AUTHORS file  * All rights reserved.  *  * Redistribution and use in source and binary forms, with or without  * modification, are permitted provided that the following conditions are met:  *  * 1. Redistributions of source code must retain the above copyright notice,  * this list of conditions and the following disclaimer.  *  * 2. Redistributions in binary form must reproduce the above copyright notice,  * this list of conditions and the following disclaimer in the documentation  * and/or other materials provided with the distribution.  *  * 3. Neither the name of the copyright holder nor the names of its contributors  * may be used to endorse or promote products derived from this software without  * specific prior written permission.  *  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE  * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR  * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF  * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS  * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE  * POSSIBILITY OF SUCH DAMAGE.  *  */  /* global util */ /* global vm */  /* global defaultMimer */  /* global getContext */ /* global captureGlobalContext */  // Setup logger var DEBUG = !!process.env.DEBUG; var log = DEBUG ?     function log() {         process.send({             log: "SERVER: " + util.format.apply(this, arguments),         });     } :     function noop() {};  // Set global.$$defaultMimer$$ Object.defineProperty(global, "$$defaultMimer$$", {     value: defaultMimer,     configurable: false,     writable: false,     enumerable: false, });  // Init IPC server init();  return;  function init() {     process.on("message", onMessage.bind(this));      process.on("uncaughtException", onUncaughtException.bind(this));      process.send({         status: "online",     }); }  function onUncaughtException(error) {     log("UNCAUGHTEXCEPTION:", error.stack);     process.send({         stderr: error.stack.toString(),     }); }  async function onMessage(message) {     log("RECEIVED:", message);      var action = message[0];     var code = message[1];     var id = message[2];      try {         var context = getContext(id, function onMissing() {             if (action === "reply") {                 throw new Error("NEL: Received a reply for a missing context");             }         });          captureGlobalContext(context);          if (action === "getAllPropertyNames") {             await onNameRequest(code, context);         } else if (action === "inspect") {             await onInspectRequest(code, context);         } else if (action === "run") {             await onRunRequest(code, context);         } else if (action === "reply") {             onReply(message, context);         } else {             throw new Error("NEL: Unhandled action: " + action);         }     } catch (error) {         context.$$.sendError(error);     } }  function onReply(message, context) {     var reply = message[1];     var requestId = message[3];     context.requester.receive(requestId, reply); }  async function onNameRequest(code, context) {     var message = {         id: context.id,         names: getAllPropertyNames(await run(code)),         end: true,     };     context.send(message); }  async function onInspectRequest(code, context) {     var message = {         id: context.id,         inspection: inspect(await run(code)),         end: true,     };     context.send(message); }  async function onRunRequest(code, context) {     var result = await run(code);      // If a result has already been sent, do not send this result.     if (context._done) {         return;     }      // If async mode has been enabled, do not send this result.     if (context._async) {         return;     }      // If no result has been sent yet and async mode has not been enabled,     // send this result.     if (context.$$.config.awaitExecution) {         context.$$.sendResult(result);     } else {         context.sendResult(result);     }      return; }  function getAllPropertyNames(object) {     var propertyList = [];      if (object === undefined) {         return [];     }      if (object === null) {         return [];     }      var prototype;     if (typeof object === "boolean") {         prototype = Boolean.prototype;     } else if (typeof object === "number") {         prototype = Number.prototype;     } else if (typeof object === "string") {         prototype = String.prototype;     } else {         prototype = object;     }      var prototypeList = [prototype];      function pushToPropertyList(e) {         if (propertyList.indexOf(e) === -1) {             propertyList.push(e);         }     }      while (prototype) {         var names = Object.getOwnPropertyNames(prototype).sort();         names.forEach(pushToPropertyList);          prototype = Object.getPrototypeOf(prototype);         if (prototype === null) {             break;         }          if (prototypeList.indexOf(prototype) === -1) {             prototypeList.push(prototype);         }     }      return propertyList; }  function inspect(object) {     if (object === undefined) {         return {             string: "undefined",             type: "Undefined",         };     }      if (object === null) {         return {             string: "null",             type: "Null",         };     }      if (typeof object === "boolean") {         return {             string: object ? "true" : "false",             type: "Boolean",             constructorList: ["Boolean", "Object"],         };     }      if (typeof object === "number") {         return {             string: util.inspect(object),             type: "Number",             constructorList: ["Number", "Object"],         };     }      if (typeof object === "string") {         return {             string: object,             type: "String",             constructorList: ["String", "Object"],             length: object.length,         };     }      if (typeof object === "function") {         return {             string: object.toString(),             type: "Function",             constructorList: ["Function", "Object"],             length: object.length,         };     }      var constructorList = getConstructorList(object);     var result = {         string: toString(object),         type: constructorList[0] || "",         constructorList: constructorList,     };      if ("length" in object) {         result.length = object.length;     }      return result;      function toString(object) {         try {             return util.inspect(object.valueOf());         } catch (e) {             return util.inspect(object);         }     }      function getConstructorList(object) {         var constructorList = [];          for (             var prototype = Object.getPrototypeOf(object);             prototype && prototype.constructor;             prototype = Object.getPrototypeOf(prototype)         ) {             constructorList.push(prototype.constructor.name);         }          return constructorList;     } }  async function run(code) {     return await vm.runInThisContext(code, { importModuleDynamically: vm.constants.USE_MAIN_CONTEXT_DEFAULT_LOADER }); }  })();
+root         463       1  0 14:15 ?        00:00:01 /root/.server/.venv/bin/python /root/.server/.venv/bin/uvicorn main:app --host 0.0.0.0 --port 49999 --workers 1 --no-access-log --no-use-colors --timeout-keep-alive 640
+root        2612       1 18 14:20 ?        00:00:00 /usr/lib/systemd/systemd-timedated
+[exit_code=0]
+
+$ lsns
+        NS TYPE   NPROCS   PID USER COMMAND
+4026531834 time        2  2576 user bash /home/user/environment_evidence/probe_environment.sh --full
+4026531835 cgroup      2  2576 user bash /home/user/environment_evidence/probe_environment.sh --full
+4026531836 pid         2  2576 user bash /home/user/environment_evidence/probe_environment.sh --full
+4026531837 user        2  2576 user bash /home/user/environment_evidence/probe_environment.sh --full
+4026531838 uts         2  2576 user bash /home/user/environment_evidence/probe_environment.sh --full
+4026531839 ipc         2  2576 user bash /home/user/environment_evidence/probe_environment.sh --full
+4026531840 net         2  2576 user bash /home/user/environment_evidence/probe_environment.sh --full
+4026531841 mnt         2  2576 user bash /home/user/environment_evidence/probe_environment.sh --full
+[exit_code=0]
+
+$ printf "lsm="; cat /sys/kernel/security/lsm; printf "selinux_enforce="; cat /sys/fs/selinux/enforce
+lsm=capability,landlock,selinuxselinux_enforce=0[exit_code=0]
+
+$ unshare -Ur true
+[exit_code=0]
+
+$ sudo -n unshare -m true
+[exit_code=0]
+
+$ for p in /dev/kvm /dev/fuse /var/run/docker.sock /run/docker.sock /run/containerd/containerd.sock; do if test -e "$p"; then ls -l "$p"; else echo "$p absent"; fi; done
+/dev/kvm absent
+crw-rw-rw- 1 root root 10, 229 Jul 23 18:05 /dev/fuse
+/var/run/docker.sock absent
+/run/docker.sock absent
+/run/containerd/containerd.sock absent
+[exit_code=0]
+
+$ sudo -n dmesg | grep -Ei "hypervisor|kvm|virtio|e2b" | head -n 80
+[    0.000000] Command line: clocksource=kvm-clock i8042.noaux i8042.nokbd init=/sbin/init ip=169.254.0.21::169.254.0.22:255.255.255.252:instance:eth0:off:tap0 ipv6.autoconf=1 ipv6.disable=0 loglevel=1 panic=1 pci=off quiet random.trust_cpu=on reboot=k rootflags=discard pci=off virtio_mmio.device=4K@0xc0001000:6 root=/dev/vda rw virtio_mmio.device=4K@0xc0002000:7 virtio_mmio.device=4K@0xc0003000:8 virtio_mmio.device=4K@0xc0004000:9
+[    0.000000] Hypervisor detected: KVM
+[    0.000000] kvm-clock: Using msrs 4b564d01 and 4b564d00
+[    0.000001] kvm-clock: using sched offset of 24553442 cycles
+[    0.000003] clocksource: kvm-clock: mask: 0xffffffffffffffff max_cycles: 0x1cd42e4dffb, max_idle_ns: 881590591483 ns
+[    0.002397] kvm-guest: KVM setup pv remote TLB flush
+[    0.002429] kvm-guest: setup PV sched yield
+[    0.002437] Booting paravirtualized kernel on KVM
+[    0.002963] kvm-guest: PV spinlocks enabled
+[    0.002974] Kernel command line: clocksource=kvm-clock i8042.noaux i8042.nokbd init=/sbin/init ip=169.254.0.21::169.254.0.22:255.255.255.252:instance:eth0:off:tap0 ipv6.autoconf=1 ipv6.disable=0 loglevel=1 panic=1 pci=off quiet random.trust_cpu=on reboot=k rootflags=discard pci=off virtio_mmio.device=4K@0xc0001000:6 root=/dev/vda rw virtio_mmio.device=4K@0xc0002000:7 virtio_mmio.device=4K@0xc0003000:8 virtio_mmio.device=4K@0xc0004000:9
+[    0.018597] kvm-guest: setup PV IPIs
+[    0.050995] clocksource: Switched to clocksource kvm-clock
+[    0.076950] virtio_blk virtio1: 1/0/0 default/read/poll queues
+[    0.077549] virtio_blk virtio1: [vda] 54177792 512-byte logical blocks (27.7 GB/25.8 GiB)
+[    0.268221] systemd[1]: Detected virtualization kvm.
+[    0.270482] systemd[1]: Hostname set to <e2b.local>.
+[exit_code=0]

@@ -1,0 +1,30 @@
+# ============================================================
+# probe_environment.sh :: 09 outbound port matrix + egress-interception checks
+# run_id: raw_run2   mode: stress
+# host: e2b.local   user: user(1000)
+# date_utc: 2026-09-04T13:47:06Z
+# ============================================================
+
+$ python3 TCP connect matrix (5s timeout)
+  DNS/TCP            8.8.8.8:53    OPEN    connect     3.7 ms
+  DoH                8.8.8.8:443   OPEN    connect     0.3 ms
+  http-on-8.8.8.8    8.8.8.8:80    OPEN    connect     0.3 ms
+  nonsense-service   8.8.8.8:3306  OPEN    connect     0.2 ms
+  nonsense-port-1    8.8.8.8:12345 OPEN    connect     0.4 ms
+  nonsense-port-2    8.8.8.8:59999 OPEN    connect     0.2 ms
+  cloudflare-TLS     one.one.one.one:443   OPEN    connect     9.2 ms
+  cloudflare-HTTP    one.one.one.one:80    OPEN    connect     8.9 ms
+  github-SSH         github.com:22    OPEN    connect     1.3 ms
+  github-TLS         github.com:443   OPEN    connect     1.4 ms
+  SMTP-25            gmail-smtp-in.l.google.com:25    OPEN    connect     2.9 ms
+  SMTP-587           smtp.gmail.com:587   OPEN    connect     2.3 ms
+  SMTPS-465          smtp.gmail.com:465   OPEN    connect     2.5 ms
+  IMAPS-993          imap.gmail.com:993   OPEN    connect     2.6 ms
+  FTP-21             ftp.gnu.org:21    OPEN    connect     2.0 ms
+  rsync-873          mirror.nforce.com:873   OPEN    connect   140.3 ms
+
+$ HTTP to an accepted-but-dead port (expect hang/timeout if proxied)
+http://8.8.8.8:3306/ -> http:000 time:6.002168s
+no HTTP response (accepted but nothing behind it)
+$ plain HTTP sanity (captive-portal check)
+http://example.com/ -> http:200 ip:104.20.23.154 time:0.048678s

@@ -1,0 +1,46 @@
+### Interface / MTU / routes
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    inet 127.0.0.1/8 scope host lo
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    inet 169.254.0.21/30 brd 169.254.0.23 scope global eth0
+--- default route:
+default via 169.254.0.22 dev eth0 
+169.254.0.20/30 dev eth0 proto kernel scope link src 169.254.0.21 
+--- MTU:
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+
+### Egress IP / geo
+34.187.218.115
+{
+  "ip": "34.187.218.115",
+  "hostname": "115.218.187.34.bc.googleusercontent.com",
+  "city": "The Dalles",
+  "region": "Oregon",
+  "country": "US",
+  "loc": "45.5946,-121.1787",
+  "org": "AS396982 Google LLC",
+  "postal": "97058",
+  "timezone": "America/Los_Angeles",
+  "readme": "https://ipinfo.io/missingauth"
+}
+### E2B_EVENTS_ADDRESS probe (192.0.2.1)
+192.0.2.1:80 -> SyntaxError: f-string: unmatched ')'
+192.0.2.1:443 -> SyntaxError: f-string: unmatched ')'
+192.0.2.1:4444 -> SyntaxError: f-string: unmatched ')'
+192.0.2.1:8080 -> SyntaxError: f-string: unmatched ')'
+
+### Parallel throughput: 4 x codeload (~30MB each)
+wall=11.98s for 4x~30MB parallel
+
+### GitHub release asset (release-assets.githubusercontent.com)
+http=302 bytes=0 total=0.181502s avg=0B/s
+
+### HuggingFace range download (50MB of gpt2 pytorch_model.bin)
+http=302 bytes=939 total=0.136301s avg=6889B/s
+
+### Upload test: 5MB POST to httpbin.org
+http=405 sent=786330 total=0.344066s upload_speed=2285404B/s
+
+### Upload test 2: cloudflare __up (10MB)
+http=200 sent=10485760 total=0.614697s upload_speed=17058420B/s

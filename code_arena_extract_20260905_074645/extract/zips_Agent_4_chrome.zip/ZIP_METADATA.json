@@ -1,0 +1,59 @@
+{
+  "archive": "Agent 4 chrome.zip",
+  "built_utc": "2026-09-04 14:39:43.262976 UTC",
+  "built_ist": "2026-09-04 20:09:43.263001 IST",
+  "built_by": "envcheck/make_bundle_zip.py",
+  "file_count": 151,
+  "total_bytes": 742557,
+  "sha256_of_zip": "see build output line SHA256_ZIP (computed after the archive is written)",
+  "template_id_divergence": {
+    "in_transcripts_and_manifest": "nlhz8vlwyupq845jsdg9",
+    "in_environment_at_build_time": "gujonb0q163l15z30yc7",
+    "sandbox_id_in_transcripts": "i0m9mhony51frr3osghn0",
+    "sandbox_id_matches_env": true,
+    "reading": "E2B_SANDBOX_ID is unchanged across the whole session, but E2B_TEMPLATE_ID differs between what the probe recorded during the measured run and what this shell sees now. The value inside the transcripts/MANIFEST.txt describes the environment that was characterized; the build-time value reflects the harness environment of the packaging turn. Nothing in the measurements depends on this, but do not silently substitute one for the other when diffing runs."
+  },
+  "sandbox": {
+    "sandbox_id": "i0m9mhony51frr3osghn0",
+    "template_id": "gujonb0q163l15z30yc7",
+    "os": "Debian GNU/Linux 13 (trixie)",
+    "kernel": "Linux 6.1.158+ x86_64",
+    "arch": "x86_64",
+    "python": "3.13.14",
+    "user": "user",
+    "cwd": "/home/user",
+    "hostname": "e2b.local"
+  },
+  "canonical_probe_run_id": "20260904T142012Z-22063",
+  "verification": {
+    "sha256sum_c_verbatim_OK": "22/22",
+    "sha256sum_c_normalized_OK": "22/22",
+    "cross_run_diff": "16/22 identical after normalization; 6 differ, all attributed to external variance",
+    "probe_exit_code": 0
+  },
+  "clock_caveats": [
+    "created_utc/created_ist are st_birthtime (ext4 crtime via statx), i.e. the instant the file was materialized in THIS sandbox instance.",
+    "11 file(s) share birth time 2026-09-04 13:44:24.469000 UTC: that is the workspace snapshot restore, so they were authored in an earlier turn and the filesystem cannot show the original moment.",
+    "The guest clock steps forward when the microVM resumes between tool calls, so it is not monotonic; compare run_id headers, not mtimes, across calls.",
+    "ZIP entry timestamps carry only 2-second DOS granularity; TIMELINE.csv holds the precise values."
+  ],
+  "generated_files": [
+    {
+      "path": "envcheck/BUNDLE_README.md",
+      "bytes": 38801,
+      "sha256": "8261a0ae220c56adc670870aa8d55cceb0577116174169b72e899065fc0de099",
+      "created_utc": "2026-09-04 14:34:36.561770 UTC",
+      "created_ist": "2026-09-04 20:04:36.561770 IST"
+    },
+    {
+      "path": "envcheck/TIMELINE.csv",
+      "bytes": 46436,
+      "sha256": "80e724aed41074523196e53c711836486064103fbea7c2fe92b6bf4d3dbd1fd6",
+      "created_utc": "2026-09-04 14:34:36.557770 UTC",
+      "created_ist": "2026-09-04 20:04:36.557770 IST"
+    }
+  ],
+  "timeline_rows": 0,
+  "evidence_rows_in_timeline": 148,
+  "self_hash_note": "ZIP_METADATA.json is written last, so it can hash the other generated files but not itself; its own SHA-256 is printed by the build as SHA256_META. Verify the archive with sha256sum -c against the per-run SHA256SUMS.txt files, or rebuild with `python3 envcheck/make_bundle_zip.py` and compare."
+}

@@ -1,0 +1,79 @@
+############################################################
+# ENVIRONMENT: injected variables & platform config
+# probe_version=1.1.0
+# run_utc=20260904T134652Z  sandbox=i80n46q8w7lm0xch991wu
+# generated=2026-09-04T13:49:04Z
+############################################################
+
+$ env | sort
+E2B_EVENTS_ADDRESS=http://192.0.2.1
+E2B_SANDBOX=true
+E2B_SANDBOX_ID=i80n46q8w7lm0xch991wu
+E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+HOME=/home/user
+LOGNAME=user
+OLDPWD=/home/user/env-probe
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+PWD=/tmp/_np
+SHELL=/bin/bash
+SHLVL=2
+USER=user
+_=/usr/bin/env
+[exit=0]
+
+$ cat /etc/hosts
+127.0.0.1        localhost
+::1              localhost ip6-localhost ip6-loopback
+fe00::           ip6-localnet
+ff00::           ip6-mcastprefix
+ff02::1          ip6-allnodes
+ff02::2          ip6-allrouters
+127.0.1.1        e2b.local
+192.0.2.1        events.e2b.local
+[exit=0]
+
+$ ls -la /home/user
+total 41
+drwx------ 8 user user  4096 Sep  4 13:47 .
+drwxr-xr-x 3 root root    60 Jul 23 15:09 ..
+drwxr-xr-x 3 user user    60 Sep  4 13:47 .cache
+drwxr-xr-x 3 user user    60 Sep  4 13:46 .config
+drwxr-xr-x 4 user user   128 Sep  4 13:48 .npm
+drwxr-xr-x 2 user user    60 Sep  4 13:43 .ssh
+-rw-r--r-- 1 user user     0 Sep  4 13:43 .sudo_as_admin_successful
+-rw-r--r-- 1 user user   107 Sep  4 13:43 PERSISTENCE_MARKER.txt
+drwxr-xr-x 3 user user    60 Sep  4 13:46 env-probe
+drwxr-xr-x 2 user user   128 Sep  4 13:43 envcheck
+-rw-r--r-- 1 user user 33576 Sep  4 13:43 environment_characterization.md
+[exit=0]
+
+$ ls -la /home/user/.config 2>/dev/null
+total 4
+drwxr-xr-x 3 user user   60 Sep  4 13:46 .
+drwx------ 8 user user 4096 Sep  4 13:47 ..
+drwxr-xr-x 2 user user   60 Sep  4 13:46 matplotlib
+[exit=0]
+
+$ findmnt -o TARGET,SOURCE,FSTYPE /etc/ssl/certs
+TARGET         SOURCE            FSTYPE
+/etc/ssl/certs tmpfs[/e2b/certs] tmpfs
+[exit=0]
+
+NOTE: /etc/ssl/certs on tmpfs => custom CAs do NOT survive reboot.
+$ cat /home/user/PERSISTENCE_MARKER.txt 2>/dev/null || echo '(no prior marker)'
+written_at=2026-09-04T11:40:29Z boot_id=2bb79165-136a-4b63-829d-17027b0a8e40 sandbox=iyl5sbten1irtm0cfue4p
+[exit=0]
+
+$ cat /tmp/PERSISTENCE_MARKER_TMP.txt 2>/dev/null || echo '(tmpfs marker absent - expected after reboot)'
+(tmpfs marker absent - expected after reboot)
+[exit=0]
+
+--- writing fresh persistence markers for the NEXT run ---
+$ echo "written_at=2026-09-04T13:49:04Z boot_id=2bb79165-136a-4b63-829d-17027b0a8e40 sandbox=i80n46q8w7lm0xch991wu uptime=322.26" | tee /home/user/PERSISTENCE_MARKER.txt
+written_at=2026-09-04T13:49:04Z boot_id=2bb79165-136a-4b63-829d-17027b0a8e40 sandbox=i80n46q8w7lm0xch991wu uptime=322.26
+[exit=0]
+
+$ echo "tmp_written_at=2026-09-04T13:49:04Z sandbox=i80n46q8w7lm0xch991wu" | tee /tmp/PERSISTENCE_MARKER_TMP.txt
+tmp_written_at=2026-09-04T13:49:04Z sandbox=i80n46q8w7lm0xch991wu
+[exit=0]
+

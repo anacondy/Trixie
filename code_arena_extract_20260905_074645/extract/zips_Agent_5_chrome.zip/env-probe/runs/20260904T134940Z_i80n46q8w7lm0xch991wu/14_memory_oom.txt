@@ -1,0 +1,58 @@
+############################################################
+# MEMORY: allocation ceiling and OOM behaviour
+# probe_version=1.1.1
+# run_utc=20260904T134940Z  sandbox=i80n46q8w7lm0xch991wu
+# generated=2026-09-04T13:50:53Z
+############################################################
+
+Method: subprocess allocates AND TOUCHES every 4096th byte to defeat lazy
+overcommit. rc=-9 means SIGKILL by the kernel OOM killer.
+$ free -m
+               total        used        free      shared  buff/cache   available
+Mem:            1984         419        1372           1         339        1565
+Swap:              0           0           0
+[exit=0]
+
+$ python3 -c "
+import subprocess,sys
+code='''
+import sys
+mb=int(sys.argv[1])
+try:
+    b=bytearray(mb*1024*1024)
+    for i in range(0,len(b),4096): b[i]=1
+    print(f'  {mb} MB: ALLOCATED+TOUCHED OK')
+except MemoryError:
+    print(f'  {mb} MB: MemoryError (refused)')
+'''
+for mb in [256,512,1024,1500,1800,2500,4000]:
+    p=subprocess.run([sys.executable,'-c',code,str(mb)],capture_output=True,text=True,timeout=300)
+    if p.returncode!=0: print(f'  {mb} MB: KILLED rc={p.returncode} (SIGKILL=-9)')
+    else: print((p.stdout or '').rstrip())
+"
+  256 MB: ALLOCATED+TOUCHED OK
+  512 MB: ALLOCATED+TOUCHED OK
+  1024 MB: ALLOCATED+TOUCHED OK
+  1500 MB: ALLOCATED+TOUCHED OK
+  1800 MB: KILLED rc=-9 (SIGKILL=-9)
+  2500 MB: MemoryError (refused)
+  4000 MB: MemoryError (refused)
+[exit=0]
+
+$ sudo dmesg 2>/dev/null | grep -iE 'oom|killed process|out of memory' | tail -8
+[  285.766026] [  pid  ]   uid  tgid total_vm      rss pgtables_bytes swapents oom_score_adj name
+[  285.766067] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=user,mems_allowed=0,global_oom,task_memcg=/user,task=python3,pid=2220,uid=1000
+[  285.766077] Out of memory: Killed process 2220 (python3) total-vm:1855896kB, anon-rss:1679380kB, file-rss:4kB, shmem-rss:0kB, UID:1000 pgtables:3348kB oom_score_adj:100
+[  434.739962] python3 invoked oom-killer: gfp_mask=0x140dca(GFP_HIGHUSER_MOVABLE|__GFP_COMP|__GFP_ZERO), order=0, oom_score_adj=100
+[  434.739993]  oom_kill_process.cold+0xb/0x10
+[  434.740101] [  pid  ]   uid  tgid total_vm      rss pgtables_bytes swapents oom_score_adj name
+[  434.740149] oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=user,mems_allowed=0,global_oom,task_memcg=/user,task=python3,pid=3227,uid=1000
+[  434.740159] Out of memory: Killed process 3227 (python3) total-vm:1855896kB, anon-rss:1680720kB, file-rss:0kB, shmem-rss:0kB, UID:1000 pgtables:3348kB oom_score_adj:100
+[exit=0]
+
+$ free -m
+               total        used        free      shared  buff/cache   available
+Mem:            1984         381        1653           1          50        1603
+Swap:              0           0           0
+[exit=0]
+

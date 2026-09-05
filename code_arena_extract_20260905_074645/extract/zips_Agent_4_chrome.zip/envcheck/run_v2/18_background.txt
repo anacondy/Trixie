@@ -1,0 +1,41 @@
+================================================================
+ probe.sh v1.0.0   section: 18_background.txt
+ run_id:    20260904T140458Z-11960
+ started:   2026-09-04T14:12:55Z
+ sandbox:   i0m9mhony51frr3osghn0
+ template:  nlhz8vlwyupq845jsdg9
+ host:      e2b.local   kernel: 6.1.158+   arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user:      user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ background survival protocol (must be run in TWO invocations to be meaningful)
+  This probe writes a tick file and exits; use probe_background.sh to test survival.
+  Verbatim check of detached-process support, run inline now:
+$ ps -o pid,ppid,etime,stat,cmd -p 19884 2>&1 | tail -2
+    PID    PPID     ELAPSED STAT CMD
+  19884   11960       00:01 S    bash -c for i in $(seq 1 20); do date -u +%H:%M:%S; sleep 1; done
+
+$ echo '  parent shell exit does not wait for it; the point is whether it is still alive on the NEXT probe run'
+  parent shell exit does not wait for it; the point is whether it is still alive on the NEXT probe run
+
+$ echo 'setsid variant:'; pgrep -fa 'BG' 2>/dev/null | head -3; pgrep -c -f 'raw/.bg_ticks.setsid' 2>/dev/null | xargs echo '  setsid loops alive:'
+setsid variant:
+19904 bash -c echo 'setsid variant:'; pgrep -fa 'BG' 2>/dev/null | head -3; pgrep -c -f 'raw/.bg_ticks.setsid' 2>/dev/null | xargs echo '  setsid loops alive:'
+  setsid loops alive: 2
+
+$ echo 'process/thread ceilings:'; CG=/sys/fs/cgroup$(awk -F: '$1==0{print $3}' /proc/self/cgroup); cat $CG/pids.max 2>&1; ulimit -u; echo '  open files:'; ulimit -n; echo '  inotify instances (fs.inotify.max_user_instances):'; cat /proc/sys/fs/inotify/max_user_instances /proc/sys/fs/inotify/max_user_watches 2>&1
+process/thread ceilings:
+max
+7917
+  open files:
+1024
+  inotify instances (fs.inotify.max_user_instances):
+128
+15628
+
+$ echo 'pty availability:'; ls -la /dev/ptmx 2>&1 | head -1; python3 -c "import pty;print('  pty.openpty:',pty.openpty()[0]>0)" 2>&1
+pty availability:
+crw-rw-rw- 1 root root 5, 2 Jul 23 18:05 /dev/ptmx
+  pty.openpty: True
+

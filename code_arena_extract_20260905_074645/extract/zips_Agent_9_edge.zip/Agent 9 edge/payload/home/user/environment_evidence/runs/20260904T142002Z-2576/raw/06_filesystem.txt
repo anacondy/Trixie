@@ -1,0 +1,136 @@
+probe_run_start_utc=2026-09-04T14:20:02.722079460Z
+probe_mode=full
+probe_script=/home/user/environment_evidence/probe_environment.sh
+raw_file=06_filesystem.txt
+
+$ pwd; printf "HOME=%s TMPDIR=%s\\n" "${HOME-<unset>}" "${TMPDIR-<unset>}"
+/home/user
+HOME=/home/user TMPDIR=<unset>
+[exit_code=0]
+
+$ df -hT / "$HOME" /tmp /var/tmp /dev/shm; df -B1 / "$HOME" /tmp /var/tmp /dev/shm; df -i / "$HOME" /tmp /var/tmp /dev/shm
+Filesystem     Type   Size  Used Avail Use% Mounted on
+/dev/root      ext4    25G  4.1G   20G  17% /
+/dev/root      ext4    25G  4.1G   20G  17% /
+tmpfs          tmpfs  993M  224K  993M   1% /tmp
+/dev/root      ext4    25G  4.1G   20G  17% /
+tmpfs          tmpfs  993M     0  993M   0% /dev/shm
+Filesystem       1B-blocks       Used   Available Use% Mounted on
+/dev/root      25860014080 4330262528 21206679552  17% /
+/dev/root      25860014080 4330262528 21206679552  17% /
+tmpfs           1040695296     229376  1040465920   1% /tmp
+/dev/root      25860014080 4330262528 21206679552  17% /
+tmpfs           1040695296          0  1040695296   0% /dev/shm
+Filesystem      Inodes  IUsed   IFree IUse% Mounted on
+/dev/root      6759792 136381 6623411    3% /
+/dev/root      6759792 136381 6623411    3% /
+tmpfs          1048576     14 1048562    1% /tmp
+/dev/root      6759792 136381 6623411    3% /
+tmpfs           254076      1  254075    1% /dev/shm
+[exit_code=0]
+
+$ findmnt -o TARGET,SOURCE,FSTYPE,OPTIONS
+TARGET                                        SOURCE            FSTYPE     OPTIONS
+/                                             /dev/vda          ext4       rw,relatime,discard
+|-/dev                                        devtmpfs          devtmpfs   rw,relatime,size=1013452k,nr_inodes=253363,mode=755
+| |-/dev/shm                                  tmpfs             tmpfs      rw,nosuid,nodev
+| |-/dev/pts                                  devpts            devpts     rw,nosuid,noexec,relatime,gid=5,mode=600,ptmxmode=000
+| |-/dev/mqueue                               mqueue            mqueue     rw,nosuid,nodev,noexec,relatime
+| `-/dev/hugepages                            hugetlbfs         hugetlbfs  rw,nosuid,nodev,relatime,pagesize=2M
+|-/proc                                       proc              proc       rw,nosuid,nodev,noexec,relatime
+| `-/proc/sys/fs/binfmt_misc                  systemd-1         autofs     rw,relatime,fd=36,pgrp=1,timeout=0,minproto=5,maxproto=5,direct
+|-/sys                                        sysfs             sysfs      rw,nosuid,nodev,noexec,relatime
+| |-/sys/kernel/security                      securityfs        securityfs rw,nosuid,nodev,noexec,relatime
+| |-/sys/fs/selinux                           selinuxfs         selinuxfs  rw,nosuid,noexec,relatime
+| |-/sys/fs/cgroup                            cgroup2           cgroup2    rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot
+| |-/sys/fs/pstore                            pstore            pstore     rw,nosuid,nodev,noexec,relatime
+| |-/sys/fs/bpf                               bpf               bpf        rw,nosuid,nodev,noexec,relatime,mode=700
+| |-/sys/kernel/debug                         debugfs           debugfs    rw,nosuid,nodev,noexec,relatime
+| |-/sys/kernel/tracing                       tracefs           tracefs    rw,nosuid,nodev,noexec,relatime
+| `-/sys/fs/fuse/connections                  fusectl           fusectl    rw,nosuid,nodev,noexec,relatime
+|-/run                                        tmpfs             tmpfs      rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755
+| |-/run/lock                                 tmpfs             tmpfs      rw,nosuid,nodev,noexec,relatime,size=5120k
+| |-/run/rpc_pipefs                           sunrpc            rpc_pipefs rw,relatime
+| |-/run/credentials/systemd-networkd.service ramfs             ramfs      ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+| |-/run/credentials/getty@tty1.service       ramfs             ramfs      ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+| `-/run/credentials/systemd-journald.service ramfs             ramfs      ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+|-/tmp                                        tmpfs             tmpfs      rw,nosuid,nodev,nr_inodes=1048576
+`-/etc/ssl/certs                              tmpfs[/e2b/certs] tmpfs      rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755
+[exit_code=0]
+
+$ findmnt -rn -o TARGET,SOURCE,FSTYPE,OPTIONS | awk '$4 ~ /(^|,)ro(,|$)/ {print}'
+/run/credentials/systemd-journald.service ramfs ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+/run/credentials/systemd-networkd.service ramfs ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+/run/credentials/getty@tty1.service ramfs ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+[exit_code=0]
+
+$ for d in / /home "$HOME" /tmp /var/tmp /dev/shm /root /usr/local /etc /proc /sys; do echo "[$d]"; stat -c "mode=%A (%a) owner=%U:%G size=%s dev=%d inode=%i" "$d" 2>&1; findmnt -n -T "$d" -o TARGET,SOURCE,FSTYPE,OPTIONS 2>&1; done
+[/]
+mode=drwxr-xr-x (755) owner=root:root size=4096 dev=65024 inode=2
+/ /dev/vda ext4 rw,relatime,discard
+[/home]
+mode=drwxr-xr-x (755) owner=root:root size=60 dev=65024 inode=16
+/ /dev/vda ext4 rw,relatime,discard
+[/home/user]
+mode=drwx------ (700) owner=user:user size=4096 dev=65024 inode=522760
+/ /dev/vda ext4 rw,relatime,discard
+[/tmp]
+mode=drwxrwxrwt (1777) owner=root:root size=200 dev=30 inode=1
+/tmp tmpfs tmpfs rw,nosuid,nodev,nr_inodes=1048576
+[/var/tmp]
+mode=drwxrwxrwt (1777) owner=root:root size=4096 dev=65024 inode=30420
+/ /dev/vda ext4 rw,relatime,discard
+[/dev/shm]
+mode=drwxrwxrwt (1777) owner=root:root size=40 dev=22 inode=1
+/dev/shm tmpfs tmpfs rw,nosuid,nodev
+[/root]
+mode=drwx------ (700) owner=root:root size=4096 dev=65024 inode=32345
+/ /dev/vda ext4 rw,relatime,discard
+[/usr/local]
+mode=drwxrwxrwx (777) owner=root:root size=4096 dev=65024 inode=24
+/ /dev/vda ext4 rw,relatime,discard
+[/etc]
+mode=drwxr-xr-x (755) owner=root:root size=4096 dev=65024 inode=32354
+/ /dev/vda ext4 rw,relatime,discard
+[/proc]
+mode=dr-xr-xr-x (555) owner=root:root size=0 dev=20 inode=1
+/proc proc proc rw,nosuid,nodev,noexec,relatime
+[/sys]
+mode=dr-xr-xr-x (555) owner=root:root size=0 dev=21 inode=1
+/sys sysfs sysfs rw,nosuid,nodev,noexec,relatime
+[exit_code=0]
+
+$ python3 - <<'PY'
+from pathlib import Path
+import uuid
+payload=("envprobe-"+uuid.uuid4().hex).encode()
+for loc in [str(Path.home()),"/tmp","/var/tmp","/dev/shm","/","/root","/usr/local","/proc","/sys"]:
+    p=Path(loc)/(".envprobe_"+uuid.uuid4().hex)
+    try:
+        p.write_bytes(payload); got=p.read_bytes(); p.unlink()
+        print(loc,"WRITE_READ_DELETE_OK",len(got),got==payload)
+    except Exception as e:
+        try: p.unlink(missing_ok=True)
+        except Exception: pass
+        print(loc,"FAILED",type(e).__name__,str(e))
+PY
+/home/user WRITE_READ_DELETE_OK 41 True
+/tmp WRITE_READ_DELETE_OK 41 True
+/var/tmp WRITE_READ_DELETE_OK 41 True
+/dev/shm WRITE_READ_DELETE_OK 41 True
+/ FAILED PermissionError [Errno 13] Permission denied: '/.envprobe_93a7e04f28e646839ebec70cdc12e42c'
+/root FAILED PermissionError [Errno 13] Permission denied: '/root/.envprobe_63cc3d894c994c14b018ec6c1be4e62a'
+/usr/local WRITE_READ_DELETE_OK 41 True
+/proc FAILED FileNotFoundError [Errno 2] No such file or directory: '/proc/.envprobe_2c53c5b7d4024463a5f40d36562cc036'
+/sys FAILED PermissionError [Errno 13] Permission denied: '/sys/.envprobe_f33dbe4c43f84a07b603a89868b61afe'
+[exit_code=0]
+
+$ for d in /root /usr/local /etc /sys /proc; do f="$d/.envprobe_sudo_$$"; if sudo -n sh -c "printf test > '$f' && test \"\$(cat '$f')\" = test && rm -f '$f'"; then echo "$d ROOT_WRITE_READ_DELETE_OK"; else echo "$d ROOT_TEST_FAILED rc=$?"; sudo -n rm -f "$f" 2>/dev/null; fi; done
+/root ROOT_WRITE_READ_DELETE_OK
+/usr/local ROOT_WRITE_READ_DELETE_OK
+/etc ROOT_WRITE_READ_DELETE_OK
+sh: 1: cannot create /sys/.envprobe_sudo_2869: Permission denied
+/sys ROOT_TEST_FAILED rc=2
+sh: 1: cannot create /proc/.envprobe_sudo_2869: Directory nonexistent
+/proc ROOT_TEST_FAILED rc=2
+[exit_code=0]

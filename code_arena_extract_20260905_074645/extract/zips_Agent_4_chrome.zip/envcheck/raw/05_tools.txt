@@ -1,0 +1,141 @@
+================================================================
+ probe.sh v1.0.0   section: 05_tools.txt
+ run_id:    20260904T142012Z-22063
+ started:   2026-09-04T14:20:12Z
+ sandbox:   i0m9mhony51frr3osghn0
+ template:  nlhz8vlwyupq845jsdg9
+ host:      e2b.local   kernel: 6.1.158+   arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user:      user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+# format: TOOL | PATH | version-first-line (or ABSENT)
+# raw command executed per line: $ <tool> --version
+7z               | ABSENT                     | -
+apt              | /usr/bin/apt               | apt 3.0.3 (amd64)
+apt-get          | /usr/bin/apt-get           | apt 3.0.3 (amd64)
+ar               | /usr/bin/ar                | GNU ar (GNU Binutils for Debian) 2.44
+awk              | /usr/bin/awk               | mawk 1.3.4 20250131
+aws              | ABSENT                     | -
+az               | ABSENT                     | -
+bc               | ABSENT                     | -
+blkid            | ABSENT                     | -
+bun              | ABSENT                     | -
+bwrap            | ABSENT                     | -
+bzip2            | /usr/bin/bzip2             | bzip2, a block-sorting file compressor.  Version 1.0.8, 13-Jul-2019.
+cc               | /usr/bin/cc                | cc (Debian 14.2.0-19) 14.2.0
+clang            | ABSENT                     | -
+clang++          | ABSENT                     | -
+cmake            | ABSENT                     | -
+conda            | ABSENT                     | -
+convert          | /usr/bin/convert           | Version: ImageMagick 7.1.1-43 Q16 x86_64 22550 https://imagemagick.org
+crontab          | ABSENT                     | -
+crun             | ABSENT                     | -
+curl             | /usr/bin/curl              | curl 8.14.1 (x86_64-pc-linux-gnu) libcurl/8.14.1 OpenSSL/3.5.6 zlib/1.3.1 brotli/1.1.0 zstd/1.5.7 libidn2/2.3.
+deno             | ABSENT                     | -
+dig              | ABSENT                     | -
+docker           | ABSENT                     | -
+dpkg             | /usr/bin/dpkg              | Debian 'dpkg' package management program version 1.22.22 (amd64).
+dpkg-query       | /usr/bin/dpkg-query        | Debian dpkg-query package management program query tool version 1.22.22 (amd64).
+duckdb           | ABSENT                     | -
+ffmpeg           | ABSENT                     | -
+ffprobe          | ABSENT                     | -
+file             | /usr/bin/file              | file-5.46
+find             | /usr/bin/find              | find (GNU findutils) 4.10.0
+findmnt          | /usr/bin/findmnt           | findmnt from util-linux 2.41
+g++              | /usr/bin/g++               | g++ (Debian 14.2.0-19) 14.2.0
+gawk             | ABSENT                     | -
+gcc              | /usr/bin/gcc               | gcc (Debian 14.2.0-19) 14.2.0
+gcc-ar           | /usr/bin/gcc-ar            | GNU ar (GNU Binutils for Debian) 2.44
+gcloud           | ABSENT                     | -
+gdb              | ABSENT                     | -
+git              | /usr/bin/git               | git version 2.47.3
+git-lfs          | ABSENT                     | -
+grep             | /usr/bin/grep              | grep (GNU grep) 3.11
+gzip             | /usr/bin/gzip              | gzip 1.13
+helm             | ABSENT                     | -
+host             | ABSENT                     | -
+htop             | ABSENT                     | -
+imagemagick      | ABSENT                     | -
+iostat           | ABSENT                     | -
+ip               | /usr/bin/ip                | Option "-version" is unknown, try "ip -help".
+iptables         | ABSENT                     | -
+jq               | /usr/bin/jq                | jq-1.7
+kubectl          | ABSENT                     | -
+ld               | /usr/bin/ld                | GNU ld (GNU Binutils for Debian) 2.44
+lldb             | ABSENT                     | -
+lsblk            | /usr/bin/lsblk             | lsblk from util-linux 2.41
+lsof             | ABSENT                     | -
+ltrace           | ABSENT                     | -
+make             | /usr/bin/make              | GNU Make 4.4.1
+mamba            | ABSENT                     | -
+mawk             | /usr/bin/mawk              | mawk 1.3.4 20250131
+micromamba       | ABSENT                     | -
+mongosh          | ABSENT                     | -
+mysql            | ABSENT                     | -
+nc               | ABSENT                     | -
+ncat             | ABSENT                     | -
+nerdctl          | ABSENT                     | -
+netcat           | ABSENT                     | -
+nft              | ABSENT                     | -
+ninja            | ABSENT                     | -
+nm               | /usr/bin/nm                | GNU nm (GNU Binutils for Debian) 2.44
+node             | /usr/bin/node              | v20.20.2
+npm              | /usr/bin/npm               | 10.8.2
+npx              | /usr/bin/npx               | 10.8.2
+nslookup         | ABSENT                     | -
+objdump          | /usr/bin/objdump           | GNU objdump (GNU Binutils for Debian) 2.44
+openssl          | /usr/bin/openssl           | OpenSSL 3.5.6 7 Apr 2026 (Library: OpenSSL 3.5.6 7 Apr 2026)
+parallel         | ABSENT                     | -
+perf             | ABSENT                     | -
+pgrep            | /usr/bin/pgrep             | pgrep from procps-ng 4.0.4
+ping             | /usr/bin/ping              | ping: invalid option -- '-'
+pip              | /usr/local/bin/pip         | pip 26.1.2 from /usr/local/lib/python3.13/site-packages/pip (python 3.13)
+pip3             | /usr/local/bin/pip3        | pip 26.1.2 from /usr/local/lib/python3.13/site-packages/pip (python 3.13)
+pipx             | ABSENT                     | -
+pkg-config       | /usr/bin/pkg-config        | 1.8.1
+pkill            | /usr/bin/pkill             | pkill from procps-ng 4.0.4
+pnpm             | ABSENT                     | -
+podman           | ABSENT                     | -
+ps               | /usr/bin/ps                | ps from procps-ng 4.0.4
+psql             | ABSENT                     | -
+pv               | ABSENT                     | -
+python           | /usr/local/bin/python      | Python 3.13.14
+python3          | /usr/local/bin/python3     | Python 3.13.14
+readelf          | /usr/bin/readelf           | GNU readelf (GNU Binutils for Debian) 2.44
+redis-cli        | ABSENT                     | -
+rg               | ABSENT                     | -
+rsync            | ABSENT                     | -
+runc             | ABSENT                     | -
+sar              | ABSENT                     | -
+scp              | /usr/bin/scp               | scp: unknown option -- -
+screen           | ABSENT                     | -
+sed              | /usr/bin/sed               | sed (GNU sed) 4.9
+sftp             | /usr/bin/sftp              | unknown option -- -
+sort             | /usr/bin/sort              | sort (GNU coreutils) 9.7
+sqlite3          | ABSENT                     | -
+ss               | /usr/bin/ss                | ss utility, iproute2-6.15.0
+ssh              | /usr/bin/ssh               | unknown option -- -
+strace           | ABSENT                     | -
+strings          | /usr/bin/strings           | GNU strings (GNU Binutils for Debian) 2.44
+systemctl        | /usr/bin/systemctl         | systemd 257 (257.13-1~deb13u1)
+tar              | /usr/bin/tar               | tar (GNU tar) 1.35
+tcpdump          | ABSENT                     | -
+terraform        | ABSENT                     | -
+time             | ABSENT                     | -
+tmux             | ABSENT                     | -
+top              | /usr/bin/top               | top from procps-ng 4.0.4
+traceroute       | ABSENT                     | -
+tshark           | ABSENT                     | -
+unzip            | /usr/bin/unzip             | caution:  both -n and -o specified; ignoring -o
+uv               | ABSENT                     | -
+vault            | ABSENT                     | -
+vmstat           | /usr/bin/vmstat            | vmstat from procps-ng 4.0.4
+watch            | /usr/bin/watch             | watch from procps-ng 4.0.4
+wget             | /usr/bin/wget              | GNU Wget 1.25.0 built on linux-gnu.
+xargs            | /usr/bin/xargs             | xargs (GNU findutils) 4.10.0
+xz               | /usr/bin/xz                | xz (XZ Utils) 5.8.1
+yarn             | ABSENT                     | -
+yq               | ABSENT                     | -
+zip              | /usr/bin/zip               | Copyright (c) 1990-2008 Info-ZIP - Type 'zip "-L"' for software license.
+zstd             | /usr/bin/zstd              | *** Zstandard CLI (64-bit) v1.5.7, by Yann Collet ***

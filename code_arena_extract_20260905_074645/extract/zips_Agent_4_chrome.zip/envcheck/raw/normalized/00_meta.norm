@@ -1,0 +1,46 @@
+================================================================
+ probe.sh v1.<NUM> section: 00_meta.txt
+ host: e2b.local kernel: <VER>+ arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user: user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ date -u '+%Y-%m-%dT%H:%M:%SZ'; date -u +%s
+<TS>
+<HEX>
+
+
+$ echo probe.sh metadata
+ probe.sh version=<VER> mode=full reps=3 with_oom=1 RUN_ID=<ID>
+
+$ cat /etc/os-release
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=<NUM>
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+
+$ uname -a
+Linux e2b.local <VER>+ #1 SMP PREEMPT_DYNAMIC Fri Jul 17 <TIME> UTC 2026 x86_64 GNU/Linux
+
+$ cat /proc/uptime; cat /proc/loadavg
+<NUM> <NUM>
+<LOADAVG>
+
+$ env | sort | grep -iE '^E2B_|^SANDBOX|^ARENA|^CI=' || echo '(no E2B_*/SANDBOX env vars)'
+E2B_EVENTS_ADDRESS=http://<VER>.1
+E2B_SANDBOX=true
+E2B_SANDBOX_ID=<TOKEN>
+E2B_TEMPLATE_ID=<TOKEN>
+
+$ nproc; getconf _NPROCESSORS_ONLN; getconf _NPROCESSORS_CONF
+2
+2
+2
+
+

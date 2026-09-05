@@ -1,0 +1,44 @@
+================================================================
+ probe.sh v1.<NUM> section: 08_persistence.txt
+ host: e2b.local kernel: <VER>+ arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user: user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ mkdir -p 'raw/.persist'; printf '%s %s\n' '<HEX>T<STAMP>-<PID>' $(date -u +%s) > 'raw/.persist/writer.txt'; echo ' marker written (diff against your own run to compare):'; cat 'raw/.persist/writer.txt'
+ marker written (diff against your own run to compare):
+<HEX>T142012Z-<N> <N>
+
+$ printf '%s %s\n' "<HEX>T<STAMP>-<PID>" $(date -u +%s) > /tmp/probe_persist_<ID> && echo ' /tmp marker written: /tmp/probe_persist_<ID>
+ /tmp marker written: /tmp/probe_persist_<ID>
+
+$ printf '%s %s\n' "<HEX>T<STAMP>-<PID>" $(date -u +%s) > /var/tmp/probe_persist_<ID> && echo ' /var/tmp marker written: /var/tmp/probe_persist_<ID>
+ /var/tmp marker written: /var/tmp/probe_persist_<ID>
+
+$ echo 'tmpfiles ages (governs /tmp and /var/tmp sweeping):'; grep -hE '^\s*[qQvdD]\s+/(tmp|var/tmp)(\s|$)' /usr/lib/tmpfiles.d/*.conf /etc/tmpfiles.d/*.conf 2>/dev/null | sort -u
+tmpfiles ages (governs /tmp and /var/tmp sweeping):
+q /tmp 1777 root root 10d
+q /var/tmp 1777 root root 30d
+
+$ systemctl list-timers --all --no-legend 2>&1 | awk '{print $1,$2,$NF}' | sort; echo '---'; systemctl status systemd-tmpfiles-clean.timer --no-pager 2>&1 | grep -E 'Active|Loaded' | sed 's/^ *//'
+<DATE> apt-daily-upgrade.service
+<DATE> apt-daily.service
+<DATE> fstrim.service
+<DATE> dpkg-db-backup.service
+<DATE> systemd-tmpfiles-clean.service
+---
+Loaded: loaded (/usr/lib/systemd/system/systemd-tmpfiles-clean.timer; static)
+Active: active (<SUBSTATE>) since Thu <TS> UTC; 1 month 12 days ago
+
+$ echo 'workspace snapshot exclusions are a policy of the harness, not the guest fs; verifiable names:'; echo ' .venv node_modules dist build out target coverage __pycache__ .cache .next .pytest_cache .ruff_cache .local .output'
+workspace snapshot exclusions are a policy of the harness, not the guest fs; verifiable names:
+ .venv node_modules dist build out target coverage __pycache__ .cache .next .pytest_cache .ruff_cache .local .output
+
+$ df -h $PWD | tail -1; df -i $PWD | tail -1
+/dev/root <SZ> <SZ> <SZ> 18% /
+/dev/root <DF> /
+
+$ echo 'inode/dir durability probes:'; sync; cat /proc/sys/vm/dirty_ratio /proc/sys/vm/dirty_expire_centisecs 2>&1 | tr '\n' ' '; echo
+inode/dir durability probes:
+<N> <N>
+

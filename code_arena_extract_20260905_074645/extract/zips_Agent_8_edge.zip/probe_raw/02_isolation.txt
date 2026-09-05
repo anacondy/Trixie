@@ -1,0 +1,167 @@
+===== UTC: 2026-09-04T14:14:23Z =====
+
+===== ls -la /.dockerenv =====
+ls: cannot access '/.dockerenv': No such file or directory
+
+===== /proc/1/cgroup =====
+0::/init.scope
+
+===== /proc/1/comm =====
+systemd
+
+===== ps aux | head -40 =====
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  1.3  0.6  23024 13988 ?        Ss   14:14   0:00 /sbin/init
+root           2  0.0  0.0      0     0 ?        S    14:14   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   14:14   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   14:14   0:00 [rcu_par_gp]
+root           5  0.0  0.0      0     0 ?        I<   14:14   0:00 [slub_flushwq]
+root           6  0.0  0.0      0     0 ?        I<   14:14   0:00 [netns]
+root           7  0.0  0.0      0     0 ?        I    14:14   0:00 [kworker/0:0-rcu_gp]
+root           8  0.0  0.0      0     0 ?        I<   14:14   0:00 [kworker/0:0H-events_highpri]
+root           9  0.7  0.0      0     0 ?        I    14:14   0:00 [kworker/u4:0-ext4-rsv-conversion]
+root          10  0.0  0.0      0     0 ?        I<   14:14   0:00 [mm_percpu_wq]
+root          11  0.0  0.0      0     0 ?        I    14:14   0:00 [rcu_tasks_kthread]
+root          12  0.0  0.0      0     0 ?        I    14:14   0:00 [rcu_tasks_rude_kthread]
+root          13  0.0  0.0      0     0 ?        I    14:14   0:00 [rcu_tasks_trace_kthread]
+root          14  0.0  0.0      0     0 ?        S    14:14   0:00 [ksoftirqd/0]
+root          15  0.0  0.0      0     0 ?        I    14:14   0:00 [rcu_preempt]
+root          16  0.0  0.0      0     0 ?        S    14:14   0:00 [migration/0]
+root          17  0.0  0.0      0     0 ?        I    14:14   0:00 [kworker/0:1-cgroup_offline]
+root          18  0.0  0.0      0     0 ?        S    14:14   0:00 [cpuhp/0]
+root          19  0.0  0.0      0     0 ?        S    14:14   0:00 [cpuhp/1]
+root          20  0.0  0.0      0     0 ?        S    14:14   0:00 [migration/1]
+root          21  0.1  0.0      0     0 ?        S    14:14   0:00 [ksoftirqd/1]
+root          22  0.0  0.0      0     0 ?        I    14:14   0:00 [kworker/1:0-events]
+root          23  0.0  0.0      0     0 ?        I<   14:14   0:00 [kworker/1:0H-events_highpri]
+root          25  0.3  0.0      0     0 ?        I    14:14   0:00 [kworker/u4:1-events_unbound]
+root          26  0.0  0.0      0     0 ?        S    14:14   0:00 [kdevtmpfs]
+root          27  0.0  0.0      0     0 ?        I<   14:14   0:00 [inet_frag_wq]
+root          28  0.0  0.0      0     0 ?        S    14:14   0:00 [kauditd]
+root          29  0.0  0.0      0     0 ?        S    14:14   0:00 [khungtaskd]
+root          30  0.0  0.0      0     0 ?        S    14:14   0:00 [oom_reaper]
+root          31  0.0  0.0      0     0 ?        I    14:14   0:00 [kworker/u4:2-events_unbound]
+root          32  0.0  0.0      0     0 ?        I<   14:14   0:00 [writeback]
+root          33  0.0  0.0      0     0 ?        S    14:14   0:00 [kcompactd0]
+root          34  0.0  0.0      0     0 ?        SN   14:14   0:00 [ksmd]
+root          35  0.0  0.0      0     0 ?        SN   14:14   0:00 [khugepaged]
+root          36  0.0  0.0      0     0 ?        I<   14:14   0:00 [kintegrityd]
+root          37  0.0  0.0      0     0 ?        I<   14:14   0:00 [kblockd]
+root          38  0.0  0.0      0     0 ?        I<   14:14   0:00 [blkcg_punt_bio]
+root          39  0.0  0.0      0     0 ?        I    14:14   0:00 [kworker/1:1-events_freezable]
+root          40  0.0  0.0      0     0 ?        S    14:14   0:00 [watchdogd]
+
+===== mount =====
+/dev/vda on / type ext4 (rw,relatime,discard)
+devtmpfs on /dev type devtmpfs (rw,relatime,size=1013452k,nr_inodes=253363,mode=755)
+proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
+sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
+securityfs on /sys/kernel/security type securityfs (rw,nosuid,nodev,noexec,relatime)
+selinuxfs on /sys/fs/selinux type selinuxfs (rw,nosuid,noexec,relatime)
+tmpfs on /dev/shm type tmpfs (rw,nosuid,nodev)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=600,ptmxmode=000)
+tmpfs on /run type tmpfs (rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755)
+cgroup2 on /sys/fs/cgroup type cgroup2 (rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot)
+pstore on /sys/fs/pstore type pstore (rw,nosuid,nodev,noexec,relatime)
+bpf on /sys/fs/bpf type bpf (rw,nosuid,nodev,noexec,relatime,mode=700)
+systemd-1 on /proc/sys/fs/binfmt_misc type autofs (rw,relatime,fd=36,pgrp=1,timeout=0,minproto=5,maxproto=5,direct)
+mqueue on /dev/mqueue type mqueue (rw,nosuid,nodev,noexec,relatime)
+debugfs on /sys/kernel/debug type debugfs (rw,nosuid,nodev,noexec,relatime)
+tracefs on /sys/kernel/tracing type tracefs (rw,nosuid,nodev,noexec,relatime)
+hugetlbfs on /dev/hugepages type hugetlbfs (rw,nosuid,nodev,relatime,pagesize=2M)
+tmpfs on /tmp type tmpfs (rw,nosuid,nodev,nr_inodes=1048576)
+tmpfs on /run/lock type tmpfs (rw,nosuid,nodev,noexec,relatime,size=5120k)
+fusectl on /sys/fs/fuse/connections type fusectl (rw,nosuid,nodev,noexec,relatime)
+ramfs on /run/credentials/systemd-journald.service type ramfs (ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700)
+ramfs on /run/credentials/systemd-networkd.service type ramfs (ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700)
+tmpfs on /etc/ssl/certs type tmpfs (rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755)
+sunrpc on /run/rpc_pipefs type rpc_pipefs (rw,relatime)
+ramfs on /run/credentials/getty@tty1.service type ramfs (ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700)
+
+===== findmnt -o TARGET,SOURCE,FSTYPE,OPTIONS =====
+TARGET                                        SOURCE            FSTYPE     OPTIONS
+/                                             /dev/vda          ext4       rw,relatime,discard
+|-/dev                                        devtmpfs          devtmpfs   rw,relatime,size=1013452k,nr_inodes=253363,mode=755
+| |-/dev/shm                                  tmpfs             tmpfs      rw,nosuid,nodev
+| |-/dev/pts                                  devpts            devpts     rw,nosuid,noexec,relatime,gid=5,mode=600,ptmxmode=000
+| |-/dev/mqueue                               mqueue            mqueue     rw,nosuid,nodev,noexec,relatime
+| `-/dev/hugepages                            hugetlbfs         hugetlbfs  rw,nosuid,nodev,relatime,pagesize=2M
+|-/proc                                       proc              proc       rw,nosuid,nodev,noexec,relatime
+| `-/proc/sys/fs/binfmt_misc                  systemd-1         autofs     rw,relatime,fd=36,pgrp=1,timeout=0,minproto=5,maxproto=5,direct
+|-/sys                                        sysfs             sysfs      rw,nosuid,nodev,noexec,relatime
+| |-/sys/kernel/security                      securityfs        securityfs rw,nosuid,nodev,noexec,relatime
+| |-/sys/fs/selinux                           selinuxfs         selinuxfs  rw,nosuid,noexec,relatime
+| |-/sys/fs/cgroup                            cgroup2           cgroup2    rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot
+| |-/sys/fs/pstore                            pstore            pstore     rw,nosuid,nodev,noexec,relatime
+| |-/sys/fs/bpf                               bpf               bpf        rw,nosuid,nodev,noexec,relatime,mode=700
+| |-/sys/kernel/debug                         debugfs           debugfs    rw,nosuid,nodev,noexec,relatime
+| |-/sys/kernel/tracing                       tracefs           tracefs    rw,nosuid,nodev,noexec,relatime
+| `-/sys/fs/fuse/connections                  fusectl           fusectl    rw,nosuid,nodev,noexec,relatime
+|-/run                                        tmpfs             tmpfs      rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755
+| |-/run/lock                                 tmpfs             tmpfs      rw,nosuid,nodev,noexec,relatime,size=5120k
+| |-/run/rpc_pipefs                           sunrpc            rpc_pipefs rw,relatime
+| |-/run/credentials/systemd-networkd.service ramfs             ramfs      ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+| |-/run/credentials/getty@tty1.service       ramfs             ramfs      ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+| `-/run/credentials/systemd-journald.service ramfs             ramfs      ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+|-/tmp                                        tmpfs             tmpfs      rw,nosuid,nodev,nr_inodes=1048576
+`-/etc/ssl/certs                              tmpfs[/e2b/certs] tmpfs      rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755
+
+===== /proc/self/status Caps/Seccomp/NSpid =====
+Name:	grep
+Uid:	1000	1000	1000	1000
+Gid:	1000	1000	1000	1000
+NSpid:	1421
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+Seccomp:	0
+Seccomp_filters:	0
+
+===== capsh --print (if any) =====
+/home/user/probe_environment.sh: line 92: capsh: command not found
+
+===== cgroup controllers =====
+total 0
+dr-xr-xr-x 13 root root 0 Jul 23 18:05 .
+drwxr-xr-x 10 root root 0 Jul 23 18:05 ..
+-r--r--r--  1 root root 0 Jul 23 18:05 cgroup.controllers
+-rw-r--r--  1 root root 0 Sep  4 14:14 cgroup.max.depth
+-rw-r--r--  1 root root 0 Sep  4 14:14 cgroup.max.descendants
+-rw-r--r--  1 root root 0 Jul 23 18:05 cgroup.procs
+-r--r--r--  1 root root 0 Sep  4 14:14 cgroup.stat
+-rw-r--r--  1 root root 0 Jul 23 18:05 cgroup.subtree_control
+-rw-r--r--  1 root root 0 Sep  4 14:14 cgroup.threads
+-r--r--r--  1 root root 0 Sep  4 14:14 cpu.stat
+-r--r--r--  1 root root 0 Sep  4 14:14 cpuset.cpus.effective
+-r--r--r--  1 root root 0 Sep  4 14:14 cpuset.mems.effective
+drwxr-xr-x  2 root root 0 Jul 23 18:05 dev-hugepages.mount
+drwxr-xr-x  2 root root 0 Jul 23 18:05 dev-mqueue.mount
+drwxr-xr-x  2 root root 0 Jul 23 18:05 init.scope
+-rw-r--r--  1 root root 0 Sep  4 14:14 io.cost.model
+-rw-r--r--  1 root root 0 Sep  4 14:14 io.cost.qos
+-r--r--r--  1 root root 0 Sep  4 14:14 io.stat
+-r--r--r--  1 root root 0 Sep  4 14:14 memory.numa_stat
+--w-------  1 root root 0 Sep  4 14:14 memory.reclaim
+-r--r--r--  1 root root 0 Sep  4 14:14 memory.stat
+drwxr-xr-x  2 root root 0 Jul 23 18:05 ptys
+drwxr-xr-x  2 root root 0 Jul 23 18:05 socats
+drwxr-xr-x  2 root root 0 Jul 23 18:05 sys-fs-fuse-connections.mount
+drwxr-xr-x  2 root root 0 Jul 23 18:05 sys-kernel-debug.mount
+drwxr-xr-x  2 root root 0 Jul 23 18:05 sys-kernel-tracing.mount
+drwxr-xr-x 21 root root 0 Sep  4 14:14 system.slice
+drwxr-xr-x  2 root root 0 Jul 23 18:05 user
+drwxr-xr-x  2 root root 0 Jul 23 18:05 user.slice
+
+===== memory.max cpu.max pids.max (if present) =====
+--- /sys/fs/cgroup/memory.max ---
+cat: /sys/fs/cgroup/memory.max: No such file or directory
+--- /sys/fs/cgroup/cpu.max ---
+cat: /sys/fs/cgroup/cpu.max: No such file or directory
+--- /sys/fs/cgroup/pids.max ---
+cat: /sys/fs/cgroup/pids.max: No such file or directory
+--- /sys/fs/cgroup/memory.current ---
+cat: /sys/fs/cgroup/memory.current: No such file or directory
+--- /sys/fs/cgroup/cgroup.controllers ---
+cpuset cpu io memory hugetlb pids

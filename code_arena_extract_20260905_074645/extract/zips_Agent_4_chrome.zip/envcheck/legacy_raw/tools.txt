@@ -1,0 +1,73 @@
+===== TOOL AVAILABILITY + VERSIONS =====
+python3        YES  /usr/local/bin/python3       Python 3.13.14
+python         YES  /usr/local/bin/python        Python 3.13.14
+pip            YES  /usr/local/bin/pip           pip 26.1.2 from /usr/local/lib/python3.13/site-packages/pip (python 3.13)
+pip3           YES  /usr/local/bin/pip3          pip 26.1.2 from /usr/local/lib/python3.13/site-packages/pip (python 3.13)
+conda          no
+mamba          no
+uv             no
+node           YES  /usr/bin/node                v20.20.2
+npm            YES  /usr/bin/npm                 10.8.2
+npx            YES  /usr/bin/npx                 10.8.2
+yarn           no
+pnpm           no
+git            YES  /usr/bin/git                 git version 2.47.3
+git-lfs        no
+curl           YES  /usr/bin/curl                curl 8.14.1 (x86_64-pc-linux-gnu) libcurl/8.14.1 OpenSSL/3.5.6 zlib/1.3.1 brotli/1.1.0 zstd/1.5.7 libidn2/2.3.8 libpsl/0.21.2 libssh2/1.11.1 nghttp2/1.64.0 nghttp3/1.8.0 librtmp/2.3 OpenLDAP/2.6.10
+wget           YES  /usr/bin/wget                GNU Wget 1.25.0 built on linux-gnu.
+rsync          no
+scp            YES  /usr/bin/scp                 scp: unknown option -- -
+ssh            YES  /usr/bin/ssh                 unknown option -- -
+ffmpeg         no
+ffprobe        no
+make           YES  /usr/bin/make                GNU Make 4.4.1
+cmake          no
+gcc            YES  /usr/bin/gcc                 gcc (Debian 14.2.0-19) 14.2.0
+g++            YES  /usr/bin/g++                 g++ (Debian 14.2.0-19) 14.2.0
+cc             YES  /usr/bin/cc                  cc (Debian 14.2.0-19) 14.2.0
+clang          no
+clang++        no
+ld             YES  /usr/bin/ld                  GNU ld (GNU Binutils for Debian) 2.44
+gdb            no
+jq             YES  /usr/bin/jq                  jq-1.7
+yq             no
+rg             no
+grep           YES  /usr/bin/grep                grep (GNU grep) 3.11
+sed            YES  /usr/bin/sed                 sed (GNU sed) 4.9
+awk            YES  /usr/bin/awk                 mawk 1.3.4 20250131
+tar            YES  /usr/bin/tar                 tar (GNU tar) 1.35
+gzip           YES  /usr/bin/gzip                gzip 1.13
+bzip2          YES  /usr/bin/bzip2               bzip2, a block-sorting file compressor.  Version 1.0.8, 13-Jul-2019.
+xz             YES  /usr/bin/xz                  xz (XZ Utils) 5.8.1
+zstd           no
+unzip          YES  /usr/bin/unzip               caution:  both -n and -o specified; ignoring -o
+7z             no
+htop           no
+tmux           no
+screen         no
+sqlite3        no
+psql           no
+mysql          no
+duckdb         no
+docker         no
+podman         no
+kubectl        no
+aws            no
+gcloud         no
+az             no
+openssl        YES  /usr/bin/openssl             OpenSSL 3.5.6 7 Apr 2026 (Library: OpenSSL 3.5.6 7 Apr 2026)
+ping           YES  /usr/bin/ping                ping: invalid option -- '-'
+traceroute     no
+dig            no
+nslookup       no
+host           no
+nc             no
+nmap           no
+time           YES  time                         /bin/bash: line 5: time: command not found
+perf           no
+strace         no
+lsof           no
+sort           YES  /usr/bin/sort                sort (GNU coreutils) 9.7
+pv             no
+gsed           no
+parallel       no

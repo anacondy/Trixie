@@ -1,0 +1,72 @@
+## python_venv_create
+status=ok rc=0 elapsed=2.265217 s
+command=['python3', '-m', 'venv', '/tmp/envchar_install_tests/venv']
+--- output ---
+
+
+## pip_pure_python_install
+status=ok rc=0 elapsed=0.587873 s
+command=['/tmp/envchar_install_tests/venv/bin/python', '-m', 'pip', 'install', '--disable-pip-version-check', '--no-cache-dir', 'pyfiglet==1.0.2']
+--- output ---
+Collecting pyfiglet==1.0.2
+  Downloading pyfiglet-1.0.2-py3-none-any.whl.metadata (7.1 kB)
+Downloading pyfiglet-1.0.2-py3-none-any.whl (1.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 38.6 MB/s  0:00:00
+Installing collected packages: pyfiglet
+Successfully installed pyfiglet-1.0.2
+
+
+## pip_import_verify
+status=ok rc=0 elapsed=0.055119 s
+command=['/tmp/envchar_install_tests/venv/bin/python', '-c', 'import pyfiglet; print(pyfiglet.__version__); print(pyfiglet.figlet_format("OK", font="small"))']
+--- output ---
+1.0.2
+  ___  _  __
+ / _ \| |/ /
+| (_) | ' < 
+ \___/|_|\_\
+            
+
+
+
+## npm_local_install
+status=ok rc=0 elapsed=0.574799 s
+command=['npm', 'install', '--ignore-scripts', '--no-audit', '--no-fund', 'is-number@7.0.0']
+--- output ---
+
+added 1 package in 507ms
+
+
+## npm_require_verify
+status=ok rc=0 elapsed=0.031030 s
+command=['node', '-e', 'const f=require("is-number"); if(!f(42)||f("x"))process.exit(1); console.log("is-number verification OK")']
+--- output ---
+is-number verification OK
+
+
+## gcc_native_compile
+status=ok rc=0 elapsed=0.225725 s
+command=['gcc', '-O2', '-Wall', '-Wextra', '-o', 'probe-gcc', 'probe.c']
+--- output ---
+
+
+## gcc_binary_verify
+status=ok rc=0 elapsed=0.002307 s
+command=['/tmp/envchar_install_tests/c/probe-gcc']
+--- output ---
+7346438449107812064
+
+
+## make_native_compile
+status=ok rc=0 elapsed=0.042270 s
+command=['make', 'CC=gcc']
+--- output ---
+gcc -O2 -Wall -Wextra -o probe probe.c
+
+
+## make_binary_verify
+status=ok rc=0 elapsed=0.002235 s
+command=['/tmp/envchar_install_tests/c/probe']
+--- output ---
+7346438449107812064
+

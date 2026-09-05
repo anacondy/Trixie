@@ -1,0 +1,36 @@
+# ============================================================
+# probe_environment.sh :: 10 throughput (real transfers)
+# run_id: raw_run2   mode: stress
+# host: e2b.local   user: user(1000)
+# date_utc: 2026-09-04T13:47:13Z
+# ============================================================
+
+$ curl download/upload measurements (time_total s, speed B/s, size B, http)
+--- dl.google.com chrome .deb (~141 MB) ---
+total:0.419073s speed:336832704B/s size:141157492 http:200
+
+--- huggingface.co all-MiniLM-L6-v2 model.safetensors (~90.9 MB) x2 ---
+run1: total:1.016857s speed:89362000B/s size:90868376 http:200
+run2: total:1.030034s speed:88218812B/s size:90868376 http:200
+
+--- github.com release asset (ripgrep 14.1.1, ~2.6 MB) ---
+total:0.130479s speed:19668375B/s size:2566310 http:200
+
+--- huggingface.co gpt2 tokenizer.json (~1.4 MB) ---
+total:0.175064s speed:7741488B/s size:1355256 http:200
+
+--- PyPI CDN via pip download (numpy wheel) ---
+
+[notice] A new release of pip is available: 26.1.2 -> 26.2.1
+[notice] To update, run: pip install --upgrade pip
+
+real	0m0.936s
+user	0m0.627s
+sys	0m0.072s
+-rw-r--r--  1 user user 16709995 Sep  4 13:47 numpy-2.5.2-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+
+--- upload 26.2 MB -> speed.cloudflare.com/__up ---
+total:0.577857s up_speed:45364856B/s http:200
+
+--- speed.cloudflare.com/__down 100MB (known to 403; documents bot protection) ---
+total:0.063703s speed:15B/s size:1 http:403

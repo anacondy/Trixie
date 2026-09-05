@@ -1,0 +1,32 @@
+== CPU micro-benchmarks (python 3.13.14, perf_counter, medians of 3) ==
+sum(range(10**7))          :    140.6 ms median of 3
+int-loop 3e6 (mod+add)     :    341.1 ms median of 3
+json.dumps x200k           :    539.2 ms median of 3
+
+== parallel speedup probe: 4x sum(range(10**7)) in parallel ==
+  4-parallel wall: 0.33 s  (2 vCPUs available)
+
+== single sequential run reference ==
+  1 run wall: 0.17 s
+
+== memory allocation ceiling probe ==
+MemTotal:        2032608 kB
+MemAvailable:    1550164 kB
+cgroup memory.max: 1947172864 (/sys/fs/cgroup/user/memory.max)
+  -> cgroup budget headroom ~1626 MiB (current=242049024)
+target: 1024 MiB (MemAvailable=1513 MiB)
+allocated+touched 1024 MiB OK; after: MemAvailable=492 MiB -> process survived, no OOM
+
+== memory.events ==
+low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+
+== vmstat 1 2 ==
+procs -----------memory---------- ---swap-- -----io---- -system-- -------cpu-------
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st gu
+ 1  0      0 1247092  61940 411616    0    0  1060   170  185    1  2  1 97  1  0  0
+ 1  0      0 1242536  62088 414440    0    0  2800   340  708  660 42  5 51  3  0  0

@@ -1,0 +1,152 @@
+================================================================
+ probe.sh v1.<NUM>   section: 19_services.txt
+ host:      e2b.local   kernel: <NUM>.158+   arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user:      user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ ss -tulnp 2>/dev/null | sort | head -30
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+tcp   LISTEN 0      100        <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      100        <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      100        <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      100        <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      100        <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      100        <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      100        <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      100        <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      100        <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      100        <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      100        <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      128            [::1]:8888          [::]:*
+tcp   LISTEN 0      128        <NUM>.<NUM>:8888       <NUM>.<NUM>:*
+tcp   LISTEN 0      2048         <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      4096               *:22               *:*
+tcp   LISTEN 0      4096               *:<BIGNUM>            *:*
+tcp   LISTEN 0      4096            [::]:111           [::]:*
+tcp   LISTEN 0      4096         <NUM>.<NUM>:111        <NUM>.<NUM>:*
+tcp   LISTEN 0      5       <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      5       <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      5       <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      5       <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      5       <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      5       <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      5       <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      5       <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      5       <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      5       <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+tcp   LISTEN 0      5       <NUM>.<NUM>:<BIGNUM>      <NUM>.<NUM>:*
+
+$ ps -eo pid,ppid,user,etime,rss,cmd --sort=pid 2>&1 | grep -vE '\[' | head -25
+    PID    PPID USER         ELAPSED   RSS CMD
+      1       0 root           28:44  3324 /sbin/init
+    173       2 root           28:44     4 bpfilter_umh
+    290       1 root           28:43  3836 /usr/lib/systemd/systemd-journald
+    308       1 systemd+       28:43  1448 /usr/lib/systemd/systemd-networkd
+    336       1 _rpc           28:43   404 /usr/sbin/rpcbind -f -w
+    340       1 message+       28:43   596 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    341       1 root           28:43  1124 /usr/lib/systemd/systemd-logind
+    359       1 root           28:43 <BIGNUM> /usr/bin/envd
+    421       1 root           28:42   176 /sbin/agetty -o -- \u --noreset --noclear - linux
+    422       1 root           28:42   200 /usr/sbin/blkmapd
+    437       1 root           28:41 <BIGNUM> /usr/local/bin/python3.13 /usr/local/bin/jupyter-server --<TOKEN>.token=
+    463       1 root           28:39 <BIGNUM> /root/.server/.venv/bin/python /root/.server/.venv/bin/uvicorn main:app --host <NUM>.<NUM> --port <BIGNUM> --workers 1 --no-access-log --no-use-colors --timeout-keep-alive 640
+    470     359 root           28:39   772 socat -d -d -d TCP4-LISTEN:8888,bind=<NUM>.<NUM>,reuseaddr,fork TCP4:localhost:8888
+    475     437 root           28:38 <BIGNUM> /usr/local/bin/python3.13 -Xfrozen_modules=off -m ipykernel_launcher -f /root/.local/share/jupyter/runtime/kernel-<HEX>-fd89-448c-9e6a-<HEX>.json
+    490     437 root           28:38 <BIGNUM> node /usr/bin/ijskernel --hide-undefined /root/.local/share/jupyter/runtime/kernel-<HEX>-e7f2-4ee3-82b8-<HEX>.json --protocol=<NUM>
+    512     359 root           28:37   772 socat -d -d -d TCP4-LISTEN:<BIGNUM>,bind=<NUM>.<NUM>,reuseaddr,fork TCP4:localhost:<BIGNUM>
+    513     359 root           28:37   772 socat -d -d -d TCP4-LISTEN:<BIGNUM>,bind=<NUM>.<NUM>,reuseaddr,fork TCP4:localhost:<BIGNUM>
+    514     359 root           28:37   772 socat -d -d -d TCP4-LISTEN:<BIGNUM>,bind=<NUM>.<NUM>,reuseaddr,fork TCP4:localhost:<BIGNUM>
+    515     359 root           28:37   776 socat -d -d -d TCP4-LISTEN:<BIGNUM>,bind=<NUM>.<NUM>,reuseaddr,fork TCP4:localhost:<BIGNUM>
+    516     359 root           28:37   772 socat -d -d -d TCP4-LISTEN:<BIGNUM>,bind=<NUM>.<NUM>,reuseaddr,fork TCP4:localhost:<BIGNUM>
+    517     359 root           28:37   768 socat -d -d -d TCP4-LISTEN:<BIGNUM>,bind=<NUM>.<NUM>,reuseaddr,fork TCP4:localhost:<BIGNUM>
+    518     359 root           28:37   772 socat -d -d -d TCP4-LISTEN:<BIGNUM>,bind=<NUM>.<NUM>,reuseaddr,fork TCP4:localhost:<BIGNUM>
+    521     359 root           28:37   772 socat -d -d -d TCP4-LISTEN:<BIGNUM>,bind=<NUM>.<NUM>,reuseaddr,fork TCP4:localhost:<BIGNUM>
+    523     359 root           28:37   772 socat -d -d -d TCP4-LISTEN:<BIGNUM>,bind=<NUM>.<NUM>,reuseaddr,fork TCP4:localhost:<BIGNUM>
+
+$ echo '--- sandbox infra env vars ---'; env | sort | grep -iE '^E2B|^SANDBOX|^ARENA' || echo '(none)'
+--- sandbox infra env vars ---
+E2B_EVENTS_ADDRESS=http://<NUM>.<NUM>
+E2B_SANDBOX=true
+E2B_SANDBOX_ID=<TOKEN>
+E2B_TEMPLATE_ID=<TOKEN>
+
+$ echo '--- systemd services enabled ---'; systemctl list-unit-files --state=enabled --no-legend 2>&1 | awk '{print $1}' | sort
+--- systemd services enabled ---
+apt-daily-upgrade.timer
+apt-daily.timer
+chrony.service
+chronyd-restricted.service
+dpkg-db-backup.timer
+envd.service
+fstrim.timer
+getty@.service
+nfs-blkmap.service
+nfs-client.target
+nftables.service
+reboot.target
+remote-fs.target
+rpcbind.service
+rpcbind.socket
+run-lock.mount
+ssh.service
+ssh.socket
+sshd-keygen.service
+systemd-confext.service
+systemd-journald-audit.socket
+systemd-network-generator.service
+systemd-networkd.service
+systemd-networkd.socket
+systemd-pcrextend.socket
+systemd-pcrlock-file-system.service
+systemd-pcrlock-firmware-code.service
+systemd-pcrlock-firmware-config.service
+systemd-pcrlock-machine-id.service
+systemd-pcrlock-make-policy.service
+systemd-pcrlock-secureboot-authority.service
+systemd-pcrlock-secureboot-policy.service
+systemd-pstore.service
+systemd-sysext.service
+systemd-sysext.socket
+
+$ echo '--- timers armed (can perturb benchmarks!) ---'; systemctl list-timers --all --no-legend 2>&1 | awk 'NF{print $1,$2,$NF}' | sort
+--- timers armed (can perturb benchmarks!) ---
+Fri 2026-09-04 apt-daily-upgrade.service
+Fri 2026-09-04 apt-daily.service
+Fri 2026-09-04 fstrim.service
+Sat 2026-09-05 dpkg-db-backup.service
+Sat 2026-09-05 systemd-tmpfiles-clean.service
+
+$ echo '--- tmpfiles sweep ages ---'; grep -hE '^\s*[qQvdD]\s+/(tmp|var/tmp)(\s|$)' /usr/lib/tmpfiles.d/*.conf 2>/dev/null | sort -u
+--- tmpfiles sweep ages ---
+q /tmp 1777 root root 10d
+q /var/tmp 1777 root root 30d
+
+$ echo '--- journald available? ---'; journalctl -n 2 2>&1 | tail -2
+--- journald available? ---
+Sep 04 <TIME> e2b.local sudo[<BIGNUM>]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)
+Sep 04 <TIME> e2b.local sudo[<BIGNUM>]: pam_unix(sudo:session): session closed for user root
+
+$ echo '--- ports bound by infra on the eth0 IP (preview exposure) ---'; ss -tlnp 2>/dev/null | awk '/<NUM>|<NUM>.<NUM>/ {print $4, $6}' | sort -u | head -20
+--- ports bound by infra on the eth0 IP (preview exposure) ---
+<NUM>.<NUM>:111
+<NUM>.<NUM>:<BIGNUM>
+<NUM>.<NUM>:<BIGNUM>
+<NUM>.<NUM>:<BIGNUM>
+<NUM>.<NUM>:<BIGNUM>
+<NUM>.<NUM>:<BIGNUM>
+<NUM>.<NUM>:<BIGNUM>
+<NUM>.<NUM>:<BIGNUM>
+<NUM>.<NUM>:<BIGNUM>
+<NUM>.<NUM>:<BIGNUM>
+<NUM>.<NUM>:<BIGNUM>
+<NUM>.<NUM>:<BIGNUM>
+<NUM>.<NUM>:<BIGNUM>
+<NUM>.<NUM>:8888
+<NUM>.<NUM>:<BIGNUM>
+<NUM>.<NUM>:<BIGNUM>
+<NUM>.<NUM>:<BIGNUM>
+<NUM>.<NUM>:<BIGNUM>
+<NUM>.<NUM>:<BIGNUM>
+<NUM>.<NUM>:<BIGNUM>
+

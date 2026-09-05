@@ -1,0 +1,56 @@
+================================================================
+ probe.sh v1.0.0   section: 15_bench_disk.txt
+ run_id:    20260904T140458Z-11960
+ started:   2026-09-04T14:12:44Z
+ sandbox:   i0m9mhony51frr3osghn0
+ template:  nlhz8vlwyupq845jsdg9
+ host:      e2b.local   kernel: 6.1.158+   arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user:      user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ PROBE_FS_DIR=/home/user/envcheck python3 disk.py 3
+  payload per test: 100 MiB, reps: 3
+
+  ### ext4 $PWD  (/home/user/envcheck)  fs= fstype=ext2/ext3
+    write_buffered       med=    52.6 ms (min    51.9 max    53.6)  =   1992 MB/s
+    fsync_after_write    med=    74.4 ms (min    65.4 max    96.9)  <- durability tax: 74.4 ms to make 100 MiB crash-safe (1410 MB/s effective)
+    read_cached          med=    16.6 ms (min    16.5 max    18.0)  =   6324 MB/s
+    mmap_plus_sha256     med=    78.7 ms (min    76.7 max    85.4)  =   1332 MB/s
+    unlink               med=     9.9 ms (min     9.7 max    10.3)
+    O_DIRECT write       med=    10.6 ms  =   5929 MB/s
+    O_DIRECT read               0 MB/s (0 MiB in 0.0 ms) - page cache bypassed
+
+  ### tmpfs /tmp  (/tmp)  fs= fstype=tmpfs
+    write_buffered       med=    29.6 ms (min    28.3 max    32.3)  =   3541 MB/s
+    fsync_after_write    med=     0.0 ms (min     0.0 max     0.0)  <- durability tax: 0.0 ms to make 100 MiB crash-safe (40037265 MB/s effective)
+    read_cached          med=    20.0 ms (min    19.1 max    20.1)  =   5231 MB/s
+    mmap_plus_sha256     med=    74.8 ms (min    71.9 max    76.1)  =   1402 MB/s
+    unlink               med=     5.6 ms (min     5.5 max     5.9)
+    O_DIRECT             not supported on this fs (Invalid argument) - expected on tmpfs
+    O_DIRECT read        unavailable on this fs
+
+  ### tmpfs /dev/shm  (/dev/shm)  fs= fstype=tmpfs
+    write_buffered       med=    30.6 ms (min    28.8 max    36.6)  =   3425 MB/s
+    fsync_after_write    med=     0.0 ms (min     0.0 max     0.0)  <- durability tax: 0.0 ms to make 100 MiB crash-safe (37065251 MB/s effective)
+    read_cached          med=    20.2 ms (min    19.5 max    25.1)  =   5182 MB/s
+    mmap_plus_sha256     med=    94.8 ms (min    78.4 max   103.7)  =   1106 MB/s
+    unlink               med=     6.4 ms (min     5.6 max     8.5)
+    O_DIRECT             not supported on this fs (Invalid argument) - expected on tmpfs
+    O_DIRECT read        unavailable on this fs
+
+  many small files (shard-heavy pipelines):
+    ext4       write 2000x1KiB:  0.081s ( 24754 files/s) | read-back  0.017s | write+fsync 100:  0.065s (  0.7 ms/op)
+    tmpfs /tmp write 2000x1KiB:  0.018s (113038 files/s) | read-back  0.014s | write+fsync 100:  0.001s (  0.0 ms/op)
+
+  note: reads above are page-cache warm unless O_DIRECT; that gap IS the finding for caching design.
+$ dd if=/dev/zero of=./probe_dd.bin bs=1M count=200 conv=fsync 2>&1 | tail -1; rm -f probe_dd.bin
+209715200 bytes (210 MB, 200 MiB) copied, 0.180041 s, 1.2 GB/s
+
+$ dd if=/dev/zero of=./probe_dd2.bin bs=1M count=200 oflag=direct 2>&1 | tail -1; rm -f probe_dd2.bin
+209715200 bytes (210 MB, 200 MiB) copied, 0.205475 s, 1.0 GB/s
+
+$ if sudo -n sh -c 'sync; echo 3 > /proc/sys/vm/drop_caches' 2>/dev/null; then dd if=/dev/zero of=./probe_c.bin bs=1M count=100 conv=fsync >/dev/null 2>&1; sync; sudo -n sh -c 'echo 3 > /proc/sys/vm/drop_caches'; dd if=./probe_c.bin of=/dev/null bs=1M 2>&1 | tail -1; echo '  (above = COLD read, caches dropped)'; rm -f probe_c.bin; else echo '  drop_caches unavailable (no sudo) - cold-read test skipped'; fi
+104857600 bytes (105 MB, 100 MiB) copied, 0.0497735 s, 2.1 GB/s
+  (above = COLD read, caches dropped)
+

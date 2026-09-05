@@ -1,0 +1,81 @@
+================================================================
+ probe.sh v1.0.0   section: 17_mem_pressure.txt
+ run_id:    20260904T140458Z-11960
+ started:   2026-09-04T14:12:54Z
+ sandbox:   i0m9mhony51frr3osghn0
+ template:  nlhz8vlwyupq845jsdg9
+ host:      e2b.local   kernel: 6.1.158+   arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user:      user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ CG=/sys/fs/cgroup$(awk -F: '$1==0{print $3}' /proc/self/cgroup); echo 'limit/current/events:'; for f in memory.max memory.high memory.current memory.events memory.stat; do echo "-- $f"; cat $CG/$f 2>&1 | head -8; done
+limit/current/events:
+-- memory.max
+1947172864
+-- memory.high
+1947172864
+-- memory.current
+329613312
+-- memory.events
+low 0
+high 0
+max 0
+oom 0
+oom_kill 2
+oom_group_kill 0
+-- memory.stat
+anon 1744896
+file 309596160
+kernel 18526208
+kernel_stack 114688
+pagetables 253952
+sec_pagetables 0
+percpu 0
+sock 0
+
+$ echo 'memory.stat key fields:'; CG=/sys/fs/cgroup$(awk -F: '$1==0{print $3}' /proc/self/cgroup); grep -E '^(anon|file|slab|kernel_stack|pagetables|sock|shmem|dirty|writeback|inactive_anon|active_anon|workingset_refault)' $CG/memory.stat 2>&1 | sort
+memory.stat key fields:
+active_anon 376832
+anon 1839104
+anon_thp 0
+file 309923840
+file_dirty 122880
+file_mapped 3022848
+file_thp 0
+file_writeback 0
+inactive_anon 174870528
+kernel_stack 114688
+pagetables 253952
+shmem 173420544
+shmem_thp 0
+slab 16535120
+slab_reclaimable 9436984
+slab_unreclaimable 7098136
+sock 0
+workingset_refault_anon 0
+workingset_refault_file 41179
+
+$ echo 'swap:'; awk '/SwapTotal|SwapFree/{print}' /proc/meminfo
+swap:
+SwapTotal:             0 kB
+SwapFree:              0 kB
+
+$ python3 oom_probe.py  (DRIVES TO OOM - child is SIGKILLed by design)
+  memory.max=1947172864 (1857 MiB)  start current=316 MiB
+  allocated   128 MiB | cgroup current    444 MiB | rss    137 MiB
+  allocated   256 MiB | cgroup current    572 MiB | rss    265 MiB
+  allocated   384 MiB | cgroup current    701 MiB | rss    393 MiB
+  allocated   512 MiB | cgroup current    829 MiB | rss    521 MiB
+  allocated   640 MiB | cgroup current    957 MiB | rss    649 MiB
+  allocated   768 MiB | cgroup current   1085 MiB | rss    777 MiB
+  allocated   896 MiB | cgroup current   1214 MiB | rss    905 MiB
+  allocated  1024 MiB | cgroup current   1342 MiB | rss   1033 MiB
+  allocated  1152 MiB | cgroup current   1470 MiB | rss   1161 MiB
+  allocated  1280 MiB | cgroup current   1598 MiB | rss   1289 MiB
+  allocated  1408 MiB | cgroup current   1630 MiB | rss   1415 MiB
+
+  >>> process was SIGKILLed (exit 137) -> OOM killer, NOT a catchable MemoryError
+  >>> consequence: buffered stdout of a killed process is lost; flush progress to disk
+
+  post-test memory.events: low 0 high 0 max 0 oom 0 oom_kill 3 oom_group_kill 0 

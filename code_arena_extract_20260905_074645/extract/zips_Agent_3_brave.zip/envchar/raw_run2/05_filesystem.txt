@@ -1,0 +1,72 @@
+# ============================================================
+# probe_environment.sh :: 05 filesystem (space, mounts, write tests)
+# run_id: raw_run2   mode: stress
+# host: e2b.local   user: user(1000)
+# date_utc: 2026-09-04T13:46:59Z
+# ============================================================
+
+$ pwd; echo $HOME
+/home/user/envchar
+/home/user
+
+$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        25G  4.1G   20G  17% /
+devtmpfs        990M     0  990M   0% /dev
+tmpfs           993M     0  993M   0% /dev/shm
+tmpfs           397M  324K  397M   1% /run
+tmpfs           993M   36K  993M   1% /tmp
+tmpfs           5.0M     0  5.0M   0% /run/lock
+
+$ df -i
+Filesystem      Inodes  IUsed   IFree IUse% Mounted on
+/dev/root      6759792 136359 6623433    3% /
+devtmpfs        253363    137  253226    1% /dev
+tmpfs           254076      1  254075    1% /dev/shm
+tmpfs           819200    437  818763    1% /run
+tmpfs          1048576     15 1048561    1% /tmp
+tmpfs           254076      2  254074    1% /run/lock
+
+$ cat /proc/mounts
+/dev/root / ext4 rw,relatime,discard 0 0
+devtmpfs /dev devtmpfs rw,relatime,size=1013452k,nr_inodes=253363,mode=755 0 0
+proc /proc proc rw,nosuid,nodev,noexec,relatime 0 0
+sysfs /sys sysfs rw,nosuid,nodev,noexec,relatime 0 0
+securityfs /sys/kernel/security securityfs rw,nosuid,nodev,noexec,relatime 0 0
+selinuxfs /sys/fs/selinux selinuxfs rw,nosuid,noexec,relatime 0 0
+tmpfs /dev/shm tmpfs rw,nosuid,nodev 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,gid=5,mode=600,ptmxmode=000 0 0
+tmpfs /run tmpfs rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755 0 0
+cgroup2 /sys/fs/cgroup cgroup2 rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot 0 0
+pstore /sys/fs/pstore pstore rw,nosuid,nodev,noexec,relatime 0 0
+bpf /sys/fs/bpf bpf rw,nosuid,nodev,noexec,relatime,mode=700 0 0
+systemd-1 /proc/sys/fs/binfmt_misc autofs rw,relatime,fd=36,pgrp=1,timeout=0,minproto=5,maxproto=5,direct 0 0
+mqueue /dev/mqueue mqueue rw,nosuid,nodev,noexec,relatime 0 0
+debugfs /sys/kernel/debug debugfs rw,nosuid,nodev,noexec,relatime 0 0
+tracefs /sys/kernel/tracing tracefs rw,nosuid,nodev,noexec,relatime 0 0
+hugetlbfs /dev/hugepages hugetlbfs rw,nosuid,nodev,relatime,pagesize=2M 0 0
+tmpfs /tmp tmpfs rw,nosuid,nodev,nr_inodes=1048576 0 0
+tmpfs /run/lock tmpfs rw,nosuid,nodev,noexec,relatime,size=5120k 0 0
+fusectl /sys/fs/fuse/connections fusectl rw,nosuid,nodev,noexec,relatime 0 0
+ramfs /run/credentials/systemd-journald.service ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700 0 0
+ramfs /run/credentials/systemd-networkd.service ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700 0 0
+tmpfs /etc/ssl/certs tmpfs rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755 0 0
+sunrpc /run/rpc_pipefs rpc_pipefs rw,relatime 0 0
+ramfs /run/credentials/getty@tty1.service ramfs ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700 0 0
+
+$ write+read+delete tests
+/home/user: write+read+delete OK
+/tmp: write+read+delete OK
+/var/tmp: write+read+delete OK
+/dev/shm: write+read+delete OK
+/usr/local/bin: write+read+delete OK
+probe_environment.sh: line 155: /opt/.probe_wtest_2035: Permission denied
+/opt: FAILED (read-only or no permission for user)
+probe_environment.sh: line 155: /etc/.probe_wtest_2035: Permission denied
+/etc: FAILED (read-only or no permission for user)
+probe_environment.sh: line 155: /root/.probe_wtest_2035: Permission denied
+/root: FAILED (read-only or no permission for user)
+probe_environment.sh: line 155: /mnt/.probe_wtest_2035: Permission denied
+/mnt: FAILED (read-only or no permission for user)
+probe_environment.sh: line 155: /srv/.probe_wtest_2035: Permission denied
+/srv: FAILED (read-only or no permission for user)

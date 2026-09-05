@@ -1,0 +1,234 @@
+# envchar raw transcript
+# file: 01_runtime.txt
+# title: OS / kernel / libc / clock
+# generated_utc: 2026-09-04T13:45:05Z
+# host: e2b.local
+# sandbox: i4i7wdij5c7gh9absvtu8
+# template: nlhz8vlwyupq845jsdg9
+# probe: /home/user/envchar/probe.sh
+# NOTE: This file is a verbatim command transcript. Do not summarize.
+
+================================================================
+=== uname -a
+=== CMD: uname -a
+=== UTC: 2026-09-04T13:45:05Z
+================================================================
+Linux e2b.local 6.1.158+ #1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026 x86_64 GNU/Linux
+=== EXIT: 0  WALL_S: 0.0041 ===
+
+================================================================
+=== uname fields
+=== CMD: uname -s -r -v -m -o
+=== UTC: 2026-09-04T13:45:05Z
+================================================================
+Linux 6.1.158+ #1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026 x86_64 GNU/Linux
+=== EXIT: 0  WALL_S: 0.0040 ===
+
+================================================================
+=== os-release
+=== CMD: cat /etc/os-release
+=== UTC: 2026-09-04T13:45:05Z
+================================================================
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.6
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+=== EXIT: 0  WALL_S: 0.0042 ===
+
+================================================================
+=== debian version
+=== CMD: cat /etc/debian_version
+=== UTC: 2026-09-04T13:45:05Z
+================================================================
+13.6
+=== EXIT: 0  WALL_S: 0.0042 ===
+
+================================================================
+=== arch
+=== CMD: uname -m
+=== UTC: 2026-09-04T13:45:05Z
+================================================================
+x86_64
+=== EXIT: 0  WALL_S: 0.0042 ===
+
+================================================================
+=== dpkg architecture
+=== CMD: dpkg --print-architecture
+=== UTC: 2026-09-04T13:45:05Z
+================================================================
+amd64
+=== EXIT: 0  WALL_S: 0.0126 ===
+
+================================================================
+=== ldd --version
+=== CMD: ldd --version
+=== UTC: 2026-09-04T13:45:05Z
+================================================================
+ldd (Debian GLIBC 2.41-12+deb13u3) 2.41
+Copyright (C) 2024 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Written by Roland McGrath and Ulrich Drepper.
+=== EXIT: 0  WALL_S: 0.0059 ===
+
+================================================================
+=== getconf GNU_LIBC_VERSION
+=== CMD: getconf GNU_LIBC_VERSION
+=== UTC: 2026-09-04T13:45:05Z
+================================================================
+glibc 2.41
+=== EXIT: 0  WALL_S: 0.0067 ===
+
+================================================================
+=== libc.so.6
+=== CMD: /lib/x86_64-linux-gnu/libc.so.6
+=== UTC: 2026-09-04T13:45:05Z
+================================================================
+GNU C Library (Debian GLIBC 2.41-12+deb13u3) stable release version 2.41.
+Copyright (C) 2025 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.
+There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.
+Compiled by GNU CC version 14.2.0.
+libc ABIs: UNIQUE IFUNC ABSOLUTE
+Minimum supported kernel: 3.2.0
+For bug reporting instructions, please see:
+<http://www.debian.org/Bugs/>.
+=== EXIT: 0  WALL_S: 0.0035 ===
+
+================================================================
+=== dpkg libc6
+=== CMD: dpkg -l libc6
+=== UTC: 2026-09-04T13:45:05Z
+================================================================
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name           Version         Architecture Description
++++-==============-===============-============-=================================
+ii  libc6:amd64    2.41-12+deb13u3 amd64        GNU C Library: Shared libraries
+=== EXIT: 0  WALL_S: 0.0173 ===
+
+================================================================
+=== hostname
+=== CMD: hostname
+=== UTC: 2026-09-04T13:45:05Z
+================================================================
+e2b.local
+=== EXIT: 0  WALL_S: 0.0037 ===
+
+================================================================
+=== hostnamectl
+=== CMD: hostnamectl
+=== UTC: 2026-09-04T13:45:05Z
+================================================================
+Failed to query product UUID, ignoring: Access denied
+Failed to query hardware serial, ignoring: Access denied
+ Static hostname: e2b.local
+       Icon name: computer-vm
+         Chassis: vm 🖴
+      Machine ID: 67549745dd1a4564be928e47dca271fd
+         Boot ID: 2bb79165136a4b63829d17027b0a8e40
+  Virtualization: kvm
+Operating System: Debian GNU/Linux 13 (trixie)
+          Kernel: Linux 6.1.158+
+    Architecture: x86-64
+=== EXIT: 0  WALL_S: 0.0783 ===
+
+================================================================
+=== uptime
+=== CMD: uptime
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+ 13:45:06 up 3 min,  0 users,  load average: 0.00, 0.01, 0.00
+=== EXIT: 0  WALL_S: 0.0150 ===
+
+================================================================
+=== proc uptime
+=== CMD: cat /proc/uptime
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+218.97 426.27
+=== EXIT: 0  WALL_S: 0.0038 ===
+
+================================================================
+=== date local
+=== CMD: date
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+Fri Sep  4 13:45:06 UTC 2026
+=== EXIT: 0  WALL_S: 0.0037 ===
+
+================================================================
+=== date utc
+=== CMD: date -u
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+Fri Sep  4 13:45:06 UTC 2026
+=== EXIT: 0  WALL_S: 0.0053 ===
+
+================================================================
+=== timedatectl
+=== CMD: timedatectl
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+               Local time: Fri 2026-09-04 13:45:06 UTC
+           Universal time: Fri 2026-09-04 13:45:06 UTC
+                 RTC time: n/a
+                Time zone: Etc/UTC (UTC, +0000)
+System clock synchronized: no
+              NTP service: inactive
+          RTC in local TZ: no
+=== EXIT: 0  WALL_S: 0.1897 ===
+
+================================================================
+=== timezone file
+=== CMD: cat /etc/timezone
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+cat: /etc/timezone: No such file or directory
+=== EXIT: 1  WALL_S: 0.0038 ===
+
+================================================================
+=== localtime
+=== CMD: ls -l /etc/localtime
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+lrwxrwxrwx 1 root root 27 Jul 13 00:00 /etc/localtime -> /usr/share/zoneinfo/Etc/UTC
+=== EXIT: 0  WALL_S: 0.0061 ===
+
+================================================================
+=== locale
+=== CMD: locale
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+LANG=
+LANGUAGE=
+LC_CTYPE="POSIX"
+LC_NUMERIC="POSIX"
+LC_TIME="POSIX"
+LC_COLLATE="POSIX"
+LC_MONETARY="POSIX"
+LC_MESSAGES="POSIX"
+LC_PAPER="POSIX"
+LC_NAME="POSIX"
+LC_ADDRESS="POSIX"
+LC_TELEPHONE="POSIX"
+LC_MEASUREMENT="POSIX"
+LC_IDENTIFICATION="POSIX"
+LC_ALL=
+=== EXIT: 0  WALL_S: 0.0077 ===
+
+================================================================
+=== kernel cmdline
+=== CMD: cat /proc/cmdline
+=== UTC: 2026-09-04T13:45:06Z
+================================================================
+clocksource=kvm-clock i8042.noaux i8042.nokbd init=/sbin/init ip=169.254.0.21::169.254.0.22:255.255.255.252:instance:eth0:off:tap0 ipv6.autoconf=1 ipv6.disable=0 loglevel=1 panic=1 pci=off quiet random.trust_cpu=on reboot=k rootflags=discard pci=off virtio_mmio.device=4K@0xc0001000:6 root=/dev/vda rw virtio_mmio.device=4K@0xc0002000:7 virtio_mmio.device=4K@0xc0003000:8 virtio_mmio.device=4K@0xc0004000:9
+=== EXIT: 0  WALL_S: 0.0046 ===

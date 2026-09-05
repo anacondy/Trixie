@@ -1,0 +1,30 @@
+# envchar raw transcript
+# file: 13_disk_bench.txt
+# title: Disk sequential write/read 80 MiB
+# generated_utc: 2026-09-04T13:45:05Z
+# host: e2b.local
+# sandbox: i4i7wdij5c7gh9absvtu8
+# template: nlhz8vlwyupq845jsdg9
+# probe: /home/user/envchar/probe_bench.py
+# NOTE: This file is a verbatim measurement transcript. Do not summarize.
+
+
+================================================================
+=== 80 MiB random payload write+fsync / drop_caches / read
+=== UTC: 2026-09-04T13:45:39Z
+================================================================
+--- /home/user/_envchar_80mb.bin ---
+write+fsync bytes=83886080 sec=0.0920 MiB_s=869.23
+uncached_read bytes=83886080 sec=0.0949 MiB_s=842.83 sha256=47072768454fe69ff1abfd7caebdb99e0362fa6865651726235af154a901b82a
+cached_reread bytes=83886080 sec=0.0145 MiB_s=5527.84
+deleted OK
+--- /tmp/_envchar_80mb.bin ---
+write+fsync bytes=83886080 sec=0.0210 MiB_s=3813.79
+uncached_read bytes=83886080 sec=0.0672 MiB_s=1190.77 sha256=47072768454fe69ff1abfd7caebdb99e0362fa6865651726235af154a901b82a
+cached_reread bytes=83886080 sec=0.0150 MiB_s=5319.31
+deleted OK
+--- /var/tmp/_envchar_80mb.bin ---
+write+fsync bytes=83886080 sec=0.0906 MiB_s=883.20
+uncached_read bytes=83886080 sec=0.0821 MiB_s=974.15 sha256=47072768454fe69ff1abfd7caebdb99e0362fa6865651726235af154a901b82a
+cached_reread bytes=83886080 sec=0.0140 MiB_s=5734.50
+deleted OK

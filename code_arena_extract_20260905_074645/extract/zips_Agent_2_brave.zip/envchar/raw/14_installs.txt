@@ -1,0 +1,120 @@
+# envchar raw transcript
+# file: 14_installs.txt
+# title: Package install timings (apt/pip/npm/git)
+# generated_utc: 2026-09-04T13:45:05Z
+# host: e2b.local
+# sandbox: i4i7wdij5c7gh9absvtu8
+# template: nlhz8vlwyupq845jsdg9
+# probe: /home/user/envchar/probe_bench.py
+# NOTE: This file is a verbatim measurement transcript. Do not summarize.
+
+
+================================================================
+=== apt-get update
+=== UTC: 2026-09-04T13:45:40Z
+================================================================
+=== CMD: sudo apt-get update -qq
+
+=== EXIT: 0  WALL_S: 1.1129 ===
+
+================================================================
+=== apt-get install tree
+=== UTC: 2026-09-04T13:45:41Z
+================================================================
+=== CMD: sudo env DEBIAN_FRONTEND=noninteractive apt-get install -y tree
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  tree
+0 upgraded, 1 newly installed, 0 to remove and 37 not upgraded.
+Need to get 59.4 kB of archives.
+After this operation, 132 kB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian trixie/main amd64 tree amd64 2.2.1-1 [59.4 kB]
+Fetched 59.4 kB in 0s (1553 kB/s)
+Selecting previously unselected package tree.
+(Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 38546 files and directories currently installed.)
+Preparing to unpack .../tree_2.2.1-1_amd64.deb ...
+Unpacking tree (2.2.1-1) ...
+Setting up tree (2.2.1-1) ...
+=== EXIT: 0  WALL_S: 2.2346 ===
+
+================================================================
+=== tree --version
+=== UTC: 2026-09-04T13:45:43Z
+================================================================
+=== CMD: tree --version
+tree v2.2.1 © 1996 - 2024 by Steve Baker, Thomas Moore, Francesc Rocher, Florian Sesser, Kyosuke Tokoro
+=== EXIT: 0  WALL_S: 0.0013 ===
+
+================================================================
+=== pip install tabulate==0.9.0
+=== UTC: 2026-09-04T13:45:43Z
+================================================================
+=== CMD: /usr/local/bin/python3 -m pip install --disable-pip-version-check tabulate==0.9.0
+Collecting tabulate==0.9.0
+  Downloading tabulate-0.9.0-py3-none-any.whl.metadata (34 kB)
+Downloading tabulate-0.9.0-py3-none-any.whl (35 kB)
+Installing collected packages: tabulate
+Successfully installed tabulate-0.9.0
+=== EXIT: 0  WALL_S: 1.1763 ===
+
+================================================================
+=== python import tabulate
+=== UTC: 2026-09-04T13:45:45Z
+================================================================
+=== CMD: /usr/local/bin/python3 -c import tabulate; print(tabulate.__version__)
+0.9.0
+=== EXIT: 0  WALL_S: 0.0654 ===
+
+================================================================
+=== npm install left-pad (in /tmp/envchar_npm)
+=== UTC: 2026-09-04T13:45:45Z
+================================================================
+=== CMD: bash -lc cd /tmp/envchar_npm && npm install left-pad --no-fund --no-audit
+npm warn deprecated left-pad@1.3.0: use String.prototype.padStart()
+
+added 1 package in 844ms
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 12.0.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.2
+npm notice To update run: npm install -g npm@12.0.2
+npm notice
+=== EXIT: 0  WALL_S: 1.0181 ===
+
+================================================================
+=== git clone --depth 1 jqlang/jq
+=== UTC: 2026-09-04T13:45:46Z
+================================================================
+=== CMD: git clone --depth 1 https://github.com/jqlang/jq.git /tmp/envchar_jq_src
+Cloning into '/tmp/envchar_jq_src'...
+=== EXIT: 0  WALL_S: 1.8856 ===
+
+================================================================
+=== du jq src
+=== UTC: 2026-09-04T13:45:48Z
+================================================================
+=== CMD: du -sh /tmp/envchar_jq_src
+7.3M	/tmp/envchar_jq_src
+=== EXIT: 0  WALL_S: 0.0054 ===

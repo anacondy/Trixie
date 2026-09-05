@@ -1,0 +1,156 @@
+================================================================
+ probe.sh v1.0.0   section: 19_services.txt
+ run_id:    20260904T142012Z-22063
+ started:   2026-09-04T14:24:17Z
+ sandbox:   i0m9mhony51frr3osghn0
+ template:  nlhz8vlwyupq845jsdg9
+ host:      e2b.local   kernel: 6.1.158+   arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user:      user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ ss -tulnp 2>/dev/null | sort | head -30
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+tcp   LISTEN 0      100        127.0.0.1:34675      0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:35105      0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:35769      0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:39379      0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:41435      0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:43501      0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:44461      0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:47945      0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:53335      0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:60465      0.0.0.0:*          
+tcp   LISTEN 0      100        127.0.0.1:60493      0.0.0.0:*          
+tcp   LISTEN 0      128            [::1]:8888          [::]:*          
+tcp   LISTEN 0      128        127.0.0.1:8888       0.0.0.0:*          
+tcp   LISTEN 0      2048         0.0.0.0:49999      0.0.0.0:*          
+tcp   LISTEN 0      4096               *:22               *:*          
+tcp   LISTEN 0      4096               *:49983            *:*          
+tcp   LISTEN 0      4096            [::]:111           [::]:*          
+tcp   LISTEN 0      4096         0.0.0.0:111        0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:34675      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:35105      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:35769      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:39379      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:41435      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:43501      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:44461      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:47945      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:53335      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:60465      0.0.0.0:*          
+tcp   LISTEN 0      5       169.254.0.21:60493      0.0.0.0:*          
+
+$ ps -eo pid,ppid,user,etime,rss,cmd --sort=pid 2>&1 | grep -vE '\[' | head -25
+    PID    PPID USER         ELAPSED   RSS CMD
+      1       0 root           40:04  3324 /sbin/init
+    173       2 root           40:04     4 bpfilter_umh
+    290       1 root           40:04  3588 /usr/lib/systemd/systemd-journald
+    308       1 systemd+       40:04  1448 /usr/lib/systemd/systemd-networkd
+    336       1 _rpc           40:04   404 /usr/sbin/rpcbind -f -w
+    340       1 message+       40:04   596 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    341       1 root           40:04  1124 /usr/lib/systemd/systemd-logind
+    359       1 root           40:04 21720 /usr/bin/envd
+    421       1 root           40:03   176 /sbin/agetty -o -- \u --noreset --noclear - linux
+    422       1 root           40:03   200 /usr/sbin/blkmapd
+    437       1 root           40:02 78416 /usr/local/bin/python3.13 /usr/local/bin/jupyter-server --IdentityProvider.token=
+    463       1 root           40:00 49532 /root/.server/.venv/bin/python /root/.server/.venv/bin/uvicorn main:app --host 0.0.0.0 --port 49999 --workers 1 --no-access-log --no-use-colors --timeout-keep-alive 640
+    470     359 root           40:00   772 socat -d -d -d TCP4-LISTEN:8888,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:8888
+    475     437 root           39:59 54612 /usr/local/bin/python3.13 -Xfrozen_modules=off -m ipykernel_launcher -f /root/.local/share/jupyter/runtime/kernel-6bd8c74e-fd89-448c-9e6a-22de9783e8b5.json
+    490     437 root           39:58 18208 node /usr/bin/ijskernel --hide-undefined /root/.local/share/jupyter/runtime/kernel-1fe44cf5-e7f2-4ee3-82b8-24ac60d6d93f.json --protocol=5.1
+    512     359 root           39:58   772 socat -d -d -d TCP4-LISTEN:35769,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:35769
+    513     359 root           39:58   772 socat -d -d -d TCP4-LISTEN:47945,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:47945
+    514     359 root           39:58   772 socat -d -d -d TCP4-LISTEN:34675,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:34675
+    515     359 root           39:58   776 socat -d -d -d TCP4-LISTEN:44461,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:44461
+    516     359 root           39:58   772 socat -d -d -d TCP4-LISTEN:39379,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:39379
+    517     359 root           39:58   768 socat -d -d -d TCP4-LISTEN:41435,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:41435
+    518     359 root           39:58   772 socat -d -d -d TCP4-LISTEN:43501,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:43501
+    521     359 root           39:58   772 socat -d -d -d TCP4-LISTEN:35105,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:35105
+    523     359 root           39:58   772 socat -d -d -d TCP4-LISTEN:60465,bind=169.254.0.21,reuseaddr,fork TCP4:localhost:60465
+
+$ echo '--- sandbox infra env vars ---'; env | sort | grep -iE '^E2B|^SANDBOX|^ARENA' || echo '(none)'
+--- sandbox infra env vars ---
+E2B_EVENTS_ADDRESS=http://192.0.2.1
+E2B_SANDBOX=true
+E2B_SANDBOX_ID=i0m9mhony51frr3osghn0
+E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+
+$ echo '--- systemd services enabled ---'; systemctl list-unit-files --state=enabled --no-legend 2>&1 | awk '{print $1}' | sort
+--- systemd services enabled ---
+apt-daily-upgrade.timer
+apt-daily.timer
+chrony.service
+chronyd-restricted.service
+dpkg-db-backup.timer
+envd.service
+fstrim.timer
+getty@.service
+nfs-blkmap.service
+nfs-client.target
+nftables.service
+reboot.target
+remote-fs.target
+rpcbind.service
+rpcbind.socket
+run-lock.mount
+ssh.service
+ssh.socket
+sshd-keygen.service
+systemd-confext.service
+systemd-journald-audit.socket
+systemd-network-generator.service
+systemd-networkd.service
+systemd-networkd.socket
+systemd-pcrextend.socket
+systemd-pcrlock-file-system.service
+systemd-pcrlock-firmware-code.service
+systemd-pcrlock-firmware-config.service
+systemd-pcrlock-machine-id.service
+systemd-pcrlock-make-policy.service
+systemd-pcrlock-secureboot-authority.service
+systemd-pcrlock-secureboot-policy.service
+systemd-pstore.service
+systemd-sysext.service
+systemd-sysext.socket
+
+$ echo '--- timers armed (can perturb benchmarks!) ---'; systemctl list-timers --all --no-legend 2>&1 | awk 'NF{print $1,$2,$NF}' | sort
+--- timers armed (can perturb benchmarks!) ---
+Fri 2026-09-04 apt-daily-upgrade.service
+Fri 2026-09-04 apt-daily.service
+Fri 2026-09-04 fstrim.service
+Sat 2026-09-05 dpkg-db-backup.service
+Sat 2026-09-05 systemd-tmpfiles-clean.service
+
+$ echo '--- tmpfiles sweep ages ---'; grep -hE '^\s*[qQvdD]\s+/(tmp|var/tmp)(\s|$)' /usr/lib/tmpfiles.d/*.conf 2>/dev/null | sort -u
+--- tmpfiles sweep ages ---
+q /tmp 1777 root root 10d
+q /var/tmp 1777 root root 30d
+
+$ echo '--- journald available? ---'; journalctl -n 2 2>&1 | tail -2
+--- journald available? ---
+Sep 04 14:24:04 e2b.local sudo[26963]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)
+Sep 04 14:24:05 e2b.local sudo[26963]: pam_unix(sudo:session): session closed for user root
+
+$ echo '--- ports bound by infra on the eth0 IP (preview exposure) ---'; ss -tlnp 2>/dev/null | awk '/169.254|0.0.0.0/ {print $4, $6}' | sort -u | head -20
+--- ports bound by infra on the eth0 IP (preview exposure) ---
+0.0.0.0:111 
+0.0.0.0:49999 
+127.0.0.1:34675 
+127.0.0.1:35105 
+127.0.0.1:35769 
+127.0.0.1:39379 
+127.0.0.1:41435 
+127.0.0.1:43501 
+127.0.0.1:44461 
+127.0.0.1:47945 
+127.0.0.1:53335 
+127.0.0.1:60465 
+127.0.0.1:60493 
+127.0.0.1:8888 
+169.254.0.21:34675 
+169.254.0.21:35105 
+169.254.0.21:35769 
+169.254.0.21:39379 
+169.254.0.21:41435 
+169.254.0.21:43501 
+

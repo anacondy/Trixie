@@ -1,0 +1,111 @@
+############################################################
+# FILESYSTEM: mounts, capacity, write/read/delete matrix
+# probe_version=1.1.0
+# run_utc=20260904T134652Z  sandbox=i80n46q8w7lm0xch991wu
+# generated=2026-09-04T13:47:00Z
+############################################################
+
+$ mount
+/dev/vda on / type ext4 (rw,relatime,discard)
+devtmpfs on /dev type devtmpfs (rw,relatime,size=1013452k,nr_inodes=253363,mode=755)
+proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
+sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
+securityfs on /sys/kernel/security type securityfs (rw,nosuid,nodev,noexec,relatime)
+selinuxfs on /sys/fs/selinux type selinuxfs (rw,nosuid,noexec,relatime)
+tmpfs on /dev/shm type tmpfs (rw,nosuid,nodev)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=600,ptmxmode=000)
+tmpfs on /run type tmpfs (rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755)
+cgroup2 on /sys/fs/cgroup type cgroup2 (rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot)
+pstore on /sys/fs/pstore type pstore (rw,nosuid,nodev,noexec,relatime)
+bpf on /sys/fs/bpf type bpf (rw,nosuid,nodev,noexec,relatime,mode=700)
+systemd-1 on /proc/sys/fs/binfmt_misc type autofs (rw,relatime,fd=36,pgrp=1,timeout=0,minproto=5,maxproto=5,direct)
+mqueue on /dev/mqueue type mqueue (rw,nosuid,nodev,noexec,relatime)
+debugfs on /sys/kernel/debug type debugfs (rw,nosuid,nodev,noexec,relatime)
+tracefs on /sys/kernel/tracing type tracefs (rw,nosuid,nodev,noexec,relatime)
+hugetlbfs on /dev/hugepages type hugetlbfs (rw,nosuid,nodev,relatime,pagesize=2M)
+tmpfs on /tmp type tmpfs (rw,nosuid,nodev,nr_inodes=1048576)
+tmpfs on /run/lock type tmpfs (rw,nosuid,nodev,noexec,relatime,size=5120k)
+fusectl on /sys/fs/fuse/connections type fusectl (rw,nosuid,nodev,noexec,relatime)
+ramfs on /run/credentials/systemd-journald.service type ramfs (ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700)
+ramfs on /run/credentials/systemd-networkd.service type ramfs (ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700)
+tmpfs on /etc/ssl/certs type tmpfs (rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755)
+sunrpc on /run/rpc_pipefs type rpc_pipefs (rw,relatime)
+ramfs on /run/credentials/getty@tty1.service type ramfs (ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700)
+[exit=0]
+
+$ findmnt -o TARGET,SOURCE,FSTYPE,OPTIONS
+TARGET                                        SOURCE            FSTYPE     OPTIONS
+/                                             /dev/vda          ext4       rw,relatime,discard
+|-/dev                                        devtmpfs          devtmpfs   rw,relatime,size=1013452k,nr_inodes=253363,mode=755
+| |-/dev/shm                                  tmpfs             tmpfs      rw,nosuid,nodev
+| |-/dev/pts                                  devpts            devpts     rw,nosuid,noexec,relatime,gid=5,mode=600,ptmxmode=000
+| |-/dev/mqueue                               mqueue            mqueue     rw,nosuid,nodev,noexec,relatime
+| `-/dev/hugepages                            hugetlbfs         hugetlbfs  rw,nosuid,nodev,relatime,pagesize=2M
+|-/proc                                       proc              proc       rw,nosuid,nodev,noexec,relatime
+| `-/proc/sys/fs/binfmt_misc                  systemd-1         autofs     rw,relatime,fd=36,pgrp=1,timeout=0,minproto=5,maxproto=5,direct
+|-/sys                                        sysfs             sysfs      rw,nosuid,nodev,noexec,relatime
+| |-/sys/kernel/security                      securityfs        securityfs rw,nosuid,nodev,noexec,relatime
+| |-/sys/fs/selinux                           selinuxfs         selinuxfs  rw,nosuid,noexec,relatime
+| |-/sys/fs/cgroup                            cgroup2           cgroup2    rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot
+| |-/sys/fs/pstore                            pstore            pstore     rw,nosuid,nodev,noexec,relatime
+| |-/sys/fs/bpf                               bpf               bpf        rw,nosuid,nodev,noexec,relatime,mode=700
+| |-/sys/kernel/debug                         debugfs           debugfs    rw,nosuid,nodev,noexec,relatime
+| |-/sys/kernel/tracing                       tracefs           tracefs    rw,nosuid,nodev,noexec,relatime
+| `-/sys/fs/fuse/connections                  fusectl           fusectl    rw,nosuid,nodev,noexec,relatime
+|-/run                                        tmpfs             tmpfs      rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755
+| |-/run/lock                                 tmpfs             tmpfs      rw,nosuid,nodev,noexec,relatime,size=5120k
+| |-/run/rpc_pipefs                           sunrpc            rpc_pipefs rw,relatime
+| |-/run/credentials/systemd-networkd.service ramfs             ramfs      ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+| |-/run/credentials/getty@tty1.service       ramfs             ramfs      ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+| `-/run/credentials/systemd-journald.service ramfs             ramfs      ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+|-/tmp                                        tmpfs             tmpfs      rw,nosuid,nodev,nr_inodes=1048576
+`-/etc/ssl/certs                              tmpfs[/e2b/certs] tmpfs      rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755
+[exit=0]
+
+$ df -hT
+Filesystem     Type      Size  Used Avail Use% Mounted on
+/dev/root      ext4       25G  4.1G   20G  17% /
+devtmpfs       devtmpfs  990M     0  990M   0% /dev
+tmpfs          tmpfs     993M     0  993M   0% /dev/shm
+tmpfs          tmpfs     397M  320K  397M   1% /run
+tmpfs          tmpfs     993M   80K  993M   1% /tmp
+tmpfs          tmpfs     5.0M     0  5.0M   0% /run/lock
+[exit=0]
+
+$ df -i
+Filesystem      Inodes  IUsed   IFree IUse% Mounted on
+/dev/root      6759792 136336 6623456    3% /
+devtmpfs        253363    137  253226    1% /dev
+tmpfs           254076      1  254075    1% /dev/shm
+tmpfs           819200    434  818766    1% /run
+tmpfs          1048576     12 1048564    1% /tmp
+tmpfs           254076      2  254074    1% /run/lock
+[exit=0]
+
+--- write/read/delete matrix ---
+/home/user   WRITE=OK      READ=probe-canary   DELETE=OK
+/tmp         WRITE=OK      READ=probe-canary   DELETE=OK
+/dev/shm     WRITE=OK      READ=probe-canary   DELETE=OK
+/var/tmp     WRITE=OK      READ=probe-canary   DELETE=OK
+/opt         WRITE=DENIED  env_probe.sh: line 205: /opt/.__probe_wtest_1421: Permission denied
+/usr/local   WRITE=OK      READ=probe-canary   DELETE=OK
+/etc         WRITE=DENIED  env_probe.sh: line 205: /etc/.__probe_wtest_1421: Permission denied
+/root        WRITE=DENIED  env_probe.sh: line 205: /root/.__probe_wtest_1421: Permission denied
+/            WRITE=DENIED  env_probe.sh: line 205: //.__probe_wtest_1421: Permission denied
+
+--- read-only mounts ---
+$ findmnt -o TARGET,FSTYPE,OPTIONS | grep -E '\bro\b' || echo '(none beyond credential ramfs)'
+| |-/run/credentials/systemd-networkd.service ramfs      ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+| |-/run/credentials/getty@tty1.service       ramfs      ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+| `-/run/credentials/systemd-journald.service ramfs      ro,nosuid,nodev,noexec,relatime,nosymfollow,mode=700
+[exit=0]
+
+--- tmpfs are RAM-backed: these consume the memory budget ---
+$ df -h /tmp /dev/shm /run /home/user
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           993M   80K  993M   1% /tmp
+tmpfs           993M     0  993M   0% /dev/shm
+tmpfs           397M  320K  397M   1% /run
+/dev/root        25G  4.1G   20G  17% /
+[exit=0]
+

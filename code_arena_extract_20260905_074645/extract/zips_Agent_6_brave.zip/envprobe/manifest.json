@@ -1,0 +1,175 @@
+{
+  "manifest": "environment-probe-run-manifest",
+  "schema_version": 2,
+  "run_1_canonical": {
+    "id": "run-1",
+    "started_utc": "2026-09-04T11:15:36Z",
+    "ended_utc": "2026-09-04T11:23:05Z",
+    "evidence": "timestamps parsed from file contents (01_runtime.txt header; last bg_ticks.txt entry). Per-file mtimes are NOT write times: after the run the workspace was snapshotted and re-materialized (see verification).",
+    "producer": "Interactive agent session (Arena.ai Agent Mode); probes issued as live bash batches; identical battery consolidated in /home/user/environment_probe.sh v1.0.0.",
+    "notes": [
+      "VM booted 2026-09-04T11:11:19Z; probes ran 11:15:36Z..11:23:05Z (uptime 5-13 min)",
+      "two probe batches hit shell-quoting bugs leaving Python tracebacks in 10_net_throughput.txt and 12_pip.txt; kept verbatim; corrected re-measurements in 10b_net_throughput2.txt and 12b_pip2.txt (what the report cites)",
+      "bg_ticks.txt appended by detached background ticker 11:22:05Z..11:23:05Z (cross-tool-call survival evidence)",
+      "15_process_demo.txt documents the platform-supervised HTTP server check (HTTP 200, 1.1 ms) plus ticker stop"
+    ]
+  },
+  "verification_session": {
+    "note": "Session that produced this manifest (turn 2). Workspace restored from the run-1 snapshot; transcripts byte-identical, verified by SHA-256 below.",
+    "sandbox_id": "i9nxb4qydn3qmwway6hd3",
+    "template_id": "nlhz8vlwyupq845jsdg9",
+    "vm_booted_utc": "2026-09-04T13:43:38Z",
+    "files_materialized_utc": "2026-09-04T13:43:49.873Z",
+    "manifest_generated_utc": "2026-09-04T13:45:39Z",
+    "measured_cross_session_findings": [
+      "ONLY /home/user subtree persisted across the run-1 -> turn-2 boundary (measured)",
+      "system state did NOT persist: apt-installed sqlite3 gone, /tmp wiped (venvs, npm test tree), ~/.local (pip --user idna) gone",
+      "new VM instance: sandbox ID changed, but boot_id IDENTICAL (template-constant, not per-boot) and template ID unchanged",
+      "restored file mtimes are normalized to the materialization stamp (13:43:49.873Z), not original write times"
+    ]
+  },
+  "machine_captured_during_run": {
+    "sandbox_id": "idxwgcmp6a9ioo1823yuk",
+    "template_id": "nlhz8vlwyupq845jsdg9",
+    "hostname": "e2b.local",
+    "boot_id": "2bb79165-136a-4b63-829d-17027b0a8e40",
+    "os": "Debian GNU/Linux 13 (trixie) 13.6",
+    "kernel": "6.1.158+ SMP PREEMPT_DYNAMIC x86_64",
+    "libc": "glibc 2.41-12+deb13u3",
+    "isolation": "KVM microVM (systemd PID 1); no /.dockerenv or /run/.containerenv",
+    "cpus_exposed": 2,
+    "cpu": "Intel Xeon @ 2.60 GHz (KVM) 1 core x 2 threads AVX-512",
+    "ram_total_mib": 1984,
+    "swap": "none",
+    "cgroup_memory_max_b": 1947172864,
+    "cgroup_cpu_max": "max (no quota)",
+    "uid": 1000,
+    "sudo": "passwordless root CapEff 0x1ffffffffff Seccomp 0",
+    "python": "3.13.14 (custom /usr/local build)",
+    "node": "v20.20.2",
+    "git": "2.47.3"
+  },
+  "network_captured_during_run": {
+    "egress_ip": "34.143.70.112",
+    "egress_city": "The Dalles",
+    "egress_region": "Oregon",
+    "egress_org": "AS396982 Google LLC",
+    "resolver": "8.8.8.8 (A-records rewritten into 0.0.0.0/8 by egress forwarder)",
+    "dns_blocked_observed": [
+      "speed.hetzner.de (NOERROR/NODATA x3)"
+    ],
+    "ipv6": "not routed",
+    "quic_udp443": "no reply"
+  },
+  "files": [
+    {
+      "path": "01_runtime.txt",
+      "bytes": 4416,
+      "sha256": "41490d0ec9cff99079f450ca7064056caef5ffb40b35aa0ff4b2779b16d1a624",
+      "mtime_note": "snapshot-materialization stamp 2026-09-04T13:43:49.873Z; original write time in content where present"
+    },
+    {
+      "path": "02_identity.txt",
+      "bytes": 5648,
+      "sha256": "715d6551dde1c300df0a2d6ea5191202fe90f59e4506e3c73fe83c1d276b4ea4",
+      "mtime_note": "snapshot-materialization stamp 2026-09-04T13:43:49.873Z; original write time in content where present"
+    },
+    {
+      "path": "03_tools.txt",
+      "bytes": 3609,
+      "sha256": "9a2fa02d5f9d6b22653d7ff95e5b5270ff92ed6bb46a4c6fc738b23d4b90a438",
+      "mtime_note": "snapshot-materialization stamp 2026-09-04T13:43:49.873Z; original write time in content where present"
+    },
+    {
+      "path": "04_fs.txt",
+      "bytes": 2829,
+      "sha256": "10eac5bf48afb9b88643361daf049b005968d6545ea16ff6918ea6cf36481858",
+      "mtime_note": "snapshot-materialization stamp 2026-09-04T13:43:49.873Z; original write time in content where present"
+    },
+    {
+      "path": "05_cpu_mem.txt",
+      "bytes": 1176,
+      "sha256": "1a8e8f4d5b1c884c1613de30a61d8ab59cf111c93d8dc21e4b8c811d3da9a0b5",
+      "mtime_note": "snapshot-materialization stamp 2026-09-04T13:43:49.873Z; original write time in content where present"
+    },
+    {
+      "path": "06_compilers_pkgs.txt",
+      "bytes": 2652,
+      "sha256": "2fc038ac0fd666c78a0fed7c4a38ec7248d76db8e576afe194db81d77b3625b0",
+      "mtime_note": "snapshot-materialization stamp 2026-09-04T13:43:49.873Z; original write time in content where present"
+    },
+    {
+      "path": "07_cgroup_sudo.txt",
+      "bytes": 4543,
+      "sha256": "d81e818da04ef3a44a567e72b8aabaeb442288de6098739f880a1e0a5b51cd3b",
+      "mtime_note": "snapshot-materialization stamp 2026-09-04T13:43:49.873Z; original write time in content where present"
+    },
+    {
+      "path": "09_net_matrix.txt",
+      "bytes": 4200,
+      "sha256": "2df76c1306f1052abe3f8f95666ef76f3c929b441ad53e1e51ec964d99a4de57",
+      "mtime_note": "snapshot-materialization stamp 2026-09-04T13:43:49.873Z; original write time in content where present"
+    },
+    {
+      "path": "10_net_throughput.txt",
+      "bytes": 2836,
+      "sha256": "b36f15f978bfb78951777850e11129a99f4d2cc281a090806b3c7a149600b7b0",
+      "mtime_note": "snapshot-materialization stamp 2026-09-04T13:43:49.873Z; original write time in content where present"
+    },
+    {
+      "path": "10b_net_throughput2.txt",
+      "bytes": 1614,
+      "sha256": "748b98e7270e9594529c481871e9809743f0bb12814ccca0bbfb33a24535a982",
+      "mtime_note": "snapshot-materialization stamp 2026-09-04T13:43:49.873Z; original write time in content where present"
+    },
+    {
+      "path": "11_disk.txt",
+      "bytes": 1512,
+      "sha256": "e08542eed1485e2c1548361db83ea14005b9e444094f8e3263879fcde236b1f1",
+      "mtime_note": "snapshot-materialization stamp 2026-09-04T13:43:49.873Z; original write time in content where present"
+    },
+    {
+      "path": "12_pip.txt",
+      "bytes": 2132,
+      "sha256": "8567335975028044c67238ed5955694d57ac1c1e0cb7cd7e3e0ea54cc28bda65",
+      "mtime_note": "snapshot-materialization stamp 2026-09-04T13:43:49.873Z; original write time in content where present"
+    },
+    {
+      "path": "12b_pip2.txt",
+      "bytes": 2649,
+      "sha256": "9901556f0a0f4ccd9e4248d90f43c61c22a2e57c0d316b9e1188c1f6c154653b",
+      "mtime_note": "snapshot-materialization stamp 2026-09-04T13:43:49.873Z; original write time in content where present"
+    },
+    {
+      "path": "13_bg_misc.txt",
+      "bytes": 2432,
+      "sha256": "5d9b91c8850d014d568aaa9dd114cbbf31d9c25c58e151a5ff65352235f0b352",
+      "mtime_note": "snapshot-materialization stamp 2026-09-04T13:43:49.873Z; original write time in content where present"
+    },
+    {
+      "path": "14_final.txt",
+      "bytes": 1853,
+      "sha256": "e8d5837cb9eb5276b1deb334419359631bbea4e9617930e6fc8f76fd4ea23d52",
+      "mtime_note": "snapshot-materialization stamp 2026-09-04T13:43:49.873Z; original write time in content where present"
+    },
+    {
+      "path": "15_process_demo.txt",
+      "bytes": 625,
+      "sha256": "302f1dcf9fb62eac00aedd012e4e475f6a33905e38e71653b7653d6d80ae1aff",
+      "mtime_note": "snapshot-materialization stamp 2026-09-04T13:43:49.873Z; original write time in content where present"
+    },
+    {
+      "path": "bg_ticks.txt",
+      "bytes": 273,
+      "sha256": "0a592e54fbe6c772aff9a42d92eee6314023a2a2cba643ff78ac84a23b5fd0c0",
+      "mtime_note": "snapshot-materialization stamp 2026-09-04T13:43:49.873Z; original write time in content where present"
+    },
+    {
+      "path": ".persist_marker",
+      "bytes": 33,
+      "sha256": "973bb258c943aacb33276c0927ab8c4a994785785699e2e459b9ca1557a98b1a",
+      "mtime_note": "snapshot-materialization stamp 2026-09-04T13:43:49.873Z; original write time in content where present"
+    }
+  ],
+  "verify": "cd /home/user/envprobe && sha256sum -c sha256sums.txt"
+}

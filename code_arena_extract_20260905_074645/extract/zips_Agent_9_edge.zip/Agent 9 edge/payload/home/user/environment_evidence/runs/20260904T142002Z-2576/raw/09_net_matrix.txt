@@ -1,0 +1,71 @@
+probe_run_start_utc=2026-09-04T14:20:02.722079460Z
+probe_mode=full
+probe_script=/home/user/environment_evidence/probe_environment.sh
+raw_file=09_net_matrix.txt
+
+$ python3 - <<'PY'
+import socket,time
+T=[("google.com",80),("google.com",443),("8.8.8.8",53),("8.8.8.8",443),("github.com",22),("github.com",80),("github.com",443),("github.com",9418),("pypi.org",80),("pypi.org",443),("huggingface.co",80),("huggingface.co",443)]
+for host,port in T:
+  for i in range(2):
+    t=time.perf_counter_ns()
+    try:
+      with socket.create_connection((host,port),timeout=3) as s: print(host,port,i+1,"connected",f"{(time.perf_counter_ns()-t)/1e6:.3f} ms","peer="+s.getpeername()[0])
+    except Exception as e: print(host,port,i+1,"failed",f"{(time.perf_counter_ns()-t)/1e6:.3f} ms",type(e).__name__,str(e))
+PY
+google.com 80 1 connected 4.585 ms peer=74.125.142.113
+google.com 80 2 connected 1.199 ms peer=74.125.142.113
+google.com 443 1 connected 1.222 ms peer=74.125.142.113
+google.com 443 2 connected 1.430 ms peer=74.125.142.113
+8.8.8.8 53 1 connected 0.224 ms peer=8.8.8.8
+8.8.8.8 53 2 connected 0.202 ms peer=8.8.8.8
+8.8.8.8 443 1 connected 0.158 ms peer=8.8.8.8
+8.8.8.8 443 2 connected 0.170 ms peer=8.8.8.8
+github.com 22 1 connected 9.971 ms peer=140.82.116.4
+github.com 22 2 connected 1.211 ms peer=140.82.116.3
+github.com 80 1 connected 1.146 ms peer=140.82.116.3
+github.com 80 2 connected 11.731 ms peer=140.82.116.4
+github.com 443 1 connected 10.706 ms peer=140.82.116.4
+github.com 443 2 connected 11.769 ms peer=140.82.116.4
+github.com 9418 1 connected 12.416 ms peer=140.82.116.3
+github.com 9418 2 connected 7.780 ms peer=140.82.116.3
+pypi.org 80 1 connected 1.248 ms peer=151.101.64.223
+pypi.org 80 2 connected 0.966 ms peer=151.101.64.223
+pypi.org 443 1 connected 0.857 ms peer=151.101.128.223
+pypi.org 443 2 connected 1.204 ms peer=151.101.128.223
+huggingface.co 80 1 connected 1.531 ms peer=99.86.101.64
+huggingface.co 80 2 connected 1.797 ms peer=99.86.101.39
+huggingface.co 443 1 connected 1.372 ms peer=99.86.101.36
+huggingface.co 443 2 connected 1.590 ms peer=99.86.101.36
+[exit_code=0]
+
+$ GIT_TERMINAL_PROMPT=0 timeout 30 git -c credential.helper= ls-remote https://github.com/git/git.git HEAD
+3cb9185f65410273787f74333cc027d2ea5daada	HEAD
+[exit_code=0]
+
+$ GIT_TERMINAL_PROMPT=0 timeout 30 git ls-remote git://github.com/git/git.git HEAD
+[exit_code=124]
+
+$ timeout 15 ssh -4 -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=5 -T git@github.com
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+git@github.com: Permission denied (publickey).
+[exit_code=255]
+
+$ for h in google.com github.com pypi.org huggingface.co; do echo "### $h"; curl -6 -sS -o /dev/null --connect-timeout 3 --max-time 5 -w "code=%{http_code} remote=%{remote_ip} connect=%{time_connect} total=%{time_total}\\n" "https://$h/"; echo rc=$?; done
+### google.com
+curl: (7) Failed to connect to google.com port 443 after 1 ms: Could not connect to server
+code=000 remote= connect=0.000000 total=0.001347
+rc=7
+### github.com
+curl: (6) Could not resolve host: github.com
+code=000 remote= connect=0.000000 total=0.001167
+rc=6
+### pypi.org
+curl: (7) Failed to connect to pypi.org port 443 after 1 ms: Could not connect to server
+code=000 remote= connect=0.000000 total=0.001080
+rc=7
+### huggingface.co
+curl: (7) Failed to connect to huggingface.co port 443 after 22 ms: Could not connect to server
+code=000 remote= connect=0.000000 total=0.022314
+rc=7
+[exit_code=0]

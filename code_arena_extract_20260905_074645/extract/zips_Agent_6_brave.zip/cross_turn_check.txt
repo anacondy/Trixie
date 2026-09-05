@@ -1,0 +1,76 @@
+== cross-turn persistence checks (turn boundary ~13:43:49Z) ==
+now: 2026-09-04T13:44:53Z
+uptime: up 1 minute | since 2026-09-04 13:43:38
+boot_id: 2bb79165-136a-4b63-829d-17027b0a8e40
+E2B_SANDBOX_ID: i9nxb4qydn3qmwway6hd3
+E2B_TEMPLATE_ID: nlhz8vlwyupq845jsdg9
+hostname: e2b.local
+kernel: 6.1.158+
+
+== apt-installed sqlite3 (system state canary) ==
+sqlite3 GONE -> system package state did NOT persist
+
+== /tmp state ==
+total 4
+drwxrwxrwt  8 root root  160 Sep  4 13:43 .
+drwxr-xr-x 19 root root 4096 Jul 23 18:05 ..
+drwxrwxrwt  2 root root   40 Jul 23 18:05 .ICE-unix
+drwxrwxrwt  2 root root   40 Jul 23 18:05 .X11-unix
+drwxrwxrwt  2 root root   40 Jul 23 18:05 .XIM-unix
+drwxrwxrwt  2 root root   40 Jul 23 18:05 .font-unix
+drwxr-xr-x  2 user user  100 Sep  4 13:43 arena-workspace
+
+== pip --user idna (~/.local is snapshot-excluded) ==
+idna present: 3.18
+~/.local absent
+
+== venv /tmp/vptest + /tmp/npmtest ==
+both gone (tmpfs wiped)
+
+== /home/user survived? ==
+RAW_VERBATIM_APPENDIX.md
+cross_turn_check.txt
+environment_characterization.md
+environment_probe.sh
+envprobe
+01_runtime.txt
+02_identity.txt
+03_tools.txt
+04_fs.txt
+05_cpu_mem.txt
+06_compilers_pkgs.txt
+07_cgroup_sudo.txt
+09_net_matrix.txt
+10_net_throughput.txt
+10b_net_throughput2.txt
+11_disk.txt
+12_pip.txt
+12b_pip2.txt
+13_bg_misc.txt
+14_final.txt
+15_process_demo.txt
+bg_ticks.txt
+manifest.json
+sha256sums.txt
+
+== /home/user/.npm (not in exclusion list) ==
+
+== workspace root dir mtimes ==
+total 110
+drwx------ 4 user user  4096 2026-09-04 13:44:53.317100345 +0000 .
+drwxr-xr-x 3 root root    60 2026-07-23 15:09:58.374180193 +0000 ..
+drwxr-xr-x 2 user user    60 2026-09-04 13:43:49.873100345 +0000 .ssh
+-rw-r--r-- 1 user user     0 2026-09-04 13:43:49.873100345 +0000 .sudo_as_admin_successful
+-rw-r--r-- 1 user user 52916 2026-09-04 13:43:50.041100345 +0000 RAW_VERBATIM_APPENDIX.md
+-rw-r--r-- 1 user user  1451 2026-09-04 13:44:53.401100345 +0000 cross_turn_check.txt
+-rw-r--r-- 1 user user 24257 2026-09-04 13:43:49.873100345 +0000 environment_characterization.md
+-rw-r--r-- 1 user user 18106 2026-09-04 13:44:16.077100345 +0000 environment_probe.sh
+drwxr-xr-x 2 user user  4096 2026-09-04 13:43:50.041100345 +0000 envprobe
+
+== jupyter/others (services state) ==
+      1 systemd         /sbin/init
+    290 systemd-journal /usr/lib/systemd/systemd-journald
+    308 systemd-network /usr/lib/systemd/systemd-networkd
+    340 dbus-daemon     /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+    341 systemd-logind  /usr/lib/systemd/systemd-logind
+    359 envd            /usr/bin/envd

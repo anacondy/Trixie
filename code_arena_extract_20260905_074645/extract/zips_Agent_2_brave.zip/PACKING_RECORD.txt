@@ -1,0 +1,11 @@
+archive: Agent 2 brave.zip
+packed_utc: 2026-09-04T15:12:14Z
+packed_ist: 2026-09-04T20:42:14+05:30
+packer: Arena.ai Agent Mode
+host: e2b.local
+uname: Linux e2b.local 6.1.158+ #1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026 x86_64 GNU/Linux
+sandbox_id_at_pack: i54yseeebo34z5jxzvoju
+template_id: nlhz8vlwyupq845jsdg9
+00_ZIP_INDEX.md_sha256: e13fb4e2656af229a6fe01f011cfa0e8c873c7d48ae558bd594d429860a8b3fc
+payload_files: 26 (plus this record = 27 files, 29 zip entries including dirs)
+note: filesystem mtimes inside the zip are snapshot-restore times (15:10 UTC), not logical creation times. See 00_ZIP_INDEX.md.

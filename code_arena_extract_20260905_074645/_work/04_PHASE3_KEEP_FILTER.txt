@@ -1,0 +1,111 @@
+=== PHASE 3 — 'what to keep' filter (Code Arena high-value artefacts) — Sat Sep  5 07:48:05 UTC 2026 ===
+pattern 'src/app/api': 0 file(s)
+pattern 'src/app': 0 file(s)
+pattern 'page.tsx': 0 file(s)
+pattern 'page.jsx': 0 file(s)
+pattern 'components/': 0 file(s)
+pattern 'lib/': 0 file(s)
+pattern 'drizzle': 0 file(s)
+pattern 'drizzle.config': 0 file(s)
+pattern 'sandbox-recon-marker': 0 file(s)
+pattern 'package.json': 0 file(s)
+pattern 'package-lock.json': 0 file(s)
+pattern 'api/env': 0 file(s)
+pattern 'SANDBOX://RECON': 0 file(s)
+pattern 'screenshot': 0 file(s)
+pattern '.html': 0 file(s)
+pattern 'transcript': 0 file(s)
+pattern 'session': 1 file(s)
+extract/zips_Agent_2_brave.zip/_envchar/session_marker.txt
+
+=== actual high-value content of these bundles (for the kept-vs-discarded table) ===
+
+--- forensic_evidence_Agent_9_edge_Agent_9_edge_payload_home_user_environment_evidence_20260904T142002Z-2576 ---
+    environment_evidence/README.md
+    environment_evidence/probe_environment.sh
+    environment_evidence/runs/20260904T142002Z-2576/SHA256SUMS
+    environment_evidence/runs/20260904T142002Z-2576/manifest.json
+    environment_evidence/runs/20260904T142002Z-2576/manifest.txt
+    environment_evidence/runs/20260904T142002Z-2576/persistence_sentinel.txt
+    environment_evidence/runs/20260904T142002Z-2576/probe_environment.sh
+    environment_evidence/runs/20260904T142002Z-2576/raw/01_runtime.txt
+    environment_evidence/runs/20260904T142002Z-2576/raw/02_isolation.txt
+    environment_evidence/runs/20260904T142002Z-2576/raw/03_resources.txt
+    environment_evidence/runs/20260904T142002Z-2576/raw/04_tooling.txt
+    environment_evidence/runs/20260904T142002Z-2576/raw/05_packages.txt
+    environment_evidence/runs/20260904T142002Z-2576/raw/06_filesystem.txt
+    environment_evidence/runs/20260904T142002Z-2576/raw/07_dns.txt
+    environment_evidence/runs/20260904T142002Z-2576/raw/08_http_latency.txt
+    environment_evidence/runs/20260904T142002Z-2576/raw/09_net_matrix.txt
+    environment_evidence/runs/20260904T142002Z-2576/raw/10_throughput.txt
+    environment_evidence/runs/20260904T142002Z-2576/raw/11_benchmarks.txt
+    environment_evidence/runs/20260904T142002Z-2576/raw/12_install_compile.txt
+    environment_evidence/runs/20260904T142002Z-2576/raw/13_memory_process.txt
+    environment_evidence/runs/20260904T142002Z-2576/raw/14_persistence.txt
+
+--- zips_Agent_1_chrome ---
+    01_runtime.txt
+    02_tooling.txt
+    03_filesystem.txt
+    04_network.txt
+    05_benchmarks.txt
+    06_other.txt
+    MANIFEST.txt
+    environment_characterization.md
+    metadata.txt
+    probe_environment.sh
+
+--- zips_Agent_2_brave ---
+    00_ZIP_INDEX.md
+    PACKING_RECORD.txt
+    _envchar/session_marker.txt
+    envchar/MANIFEST.txt
+    envchar/README.md
+    envchar/SHA256SUMS
+    envchar/make_manifest.py
+    envchar/probe.sh
+    envchar/probe_bench.py
+    envchar/raw/01_runtime.txt
+    envchar/raw/02_isolation.txt
+    envchar/raw/03_user_limits.txt
+    envchar/raw/04_cgroup.txt
+    envchar/raw/05_environment.txt
+    envchar/raw/06_tools.txt
+    envchar/raw/07_python_packages.txt
+    envchar/raw/08_filesystem.txt
+    envchar/raw/09_net_matrix.txt
+    envchar/raw/10_net_throughput.txt
+    envchar/raw/11_net_ports.txt
+    envchar/raw/12_cpu_bench.txt
+    envchar/raw/13_disk_bench.txt
+    envchar/raw/14_installs.txt
+    envchar/raw/15_memory.txt
+    envchar/raw/16_misc.txt
+    environment_characterization.md
+
+--- zips_Agent_3_brave ---
+    00_README.md
+    SHA256SUMS_ALL.txt
+    envchar/bench.py
+    envchar/persistence_marker.txt
+    envchar/probe_environment.sh
+    envchar/raw_run2/01_runtime.txt
+    envchar/raw_run2/02_isolation.txt
+    envchar/raw_run2/03_limits.txt
+    envchar/raw_run2/04_tooling.txt
+    envchar/raw_run2/05_filesystem.txt
+    envchar/raw_run2/06_persistence.txt
+    envchar/raw_run2/07_dns.txt
+    envchar/raw_run2/08_latency.txt
+    envchar/raw_run2/09_net_matrix.txt
+    envchar/raw_run2/10_throughput.txt
+    envchar/raw_run2/11_cpu_bench.txt
+    envchar/raw_run2/12_disk_bench.txt
+    envchar/raw_run2/13_installs.txt
+    envchar/raw_run2/14_memory.txt
+    envchar/raw_run2/15_background.txt
+    envchar/raw_run2/15_background_heartbeat.log
+    envchar/raw_run2/16_env_services.txt
+    envchar/raw_run2/SHA256SUMS
+    envchar/raw_run2/verification_manifest.txt
+    environment_characterization.md

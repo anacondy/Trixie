@@ -1,0 +1,29 @@
+0 verbose cli /usr/bin/node /usr/bin/npm
+1 info using npm@10.8.2
+2 info using node@v20.20.2
+3 silly config load:file:/usr/lib/node_modules/npm/npmrc
+4 silly config load:file:/tmp/envprobe-installs.Q0S2iL/npm/.npmrc
+5 silly config load:file:/home/user/.npmrc
+6 silly config load:file:/usr/etc/npmrc
+7 verbose title npm install is-number@7.0.0
+8 verbose argv "install" "--ignore-scripts" "--no-audit" "--no-fund" "is-number@7.0.0"
+9 verbose logfile logs-max:10 dir:/home/user/.npm/_logs/2026-09-04T14_18_56_360Z-
+10 verbose logfile /home/user/.npm/_logs/2026-09-04T14_18_56_360Z-debug-0.log
+11 silly packumentCache heap:998768640 maxSize:249692160 maxEntrySize:124846080
+12 silly logfile done cleaning log files
+13 silly idealTree buildDeps
+14 silly fetch manifest is-number@7.0.0
+15 silly packumentCache full:https://registry.npmjs.org/is-number cache-miss
+16 http fetch GET 200 https://registry.npmjs.org/is-number 120ms (cache miss)
+17 silly packumentCache full:https://registry.npmjs.org/is-number set size:undefined disposed:false
+18 silly placeDep ROOT is-number@7.0.0 OK for: envprobe@1.0.0 want: 7.0.0
+19 silly reify moves {}
+20 silly tarball no local data for is-number@https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz. Extracting by manifest.
+21 http fetch GET 200 https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz 51ms (cache miss)
+22 silly ADD node_modules/is-number
+23 verbose cwd /tmp/envprobe-installs.Q0S2iL/npm
+24 verbose os Linux 6.1.158+
+25 verbose node v20.20.2
+26 verbose npm  v10.8.2
+27 verbose exit 0
+28 info ok

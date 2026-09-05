@@ -1,0 +1,7 @@
+=== supplementary userinfo scan (any scheme://…@host) ===
+(no hits)
+
+=== nested zip identity check (Agent 9 embedded copy vs repo copy) ===
+nested-in-Agent9: e8215900f3136be5bfddbd74233d9c05b48dc7bfff250802f77ffa5e53dfdb9d
+repo-copy:        e8215900f3136be5bfddbd74233d9c05b48dc7bfff250802f77ffa5e53dfdb9d
+IDENTICAL

@@ -1,0 +1,32 @@
+################################################################
+# SECTION: 08_http_latency.txt   (probe run run_20260904T141747Z)
+# STARTED : 2026-09-04T14:17:51Z
+################################################################
+### HTTPS latency breakdown (curl -w, 2 runs each)
+--- https://www.google.com/
+http=200 dns=0.001610 conn=0.002010 tls=0.019438 ttfb=0.057714 total=0.059176 speed=1410960B/s
+http=200 dns=0.001390 conn=0.001706 tls=0.010337 ttfb=0.051683 total=0.052523 speed=1589417B/s
+--- https://github.com/
+http=200 dns=0.001706 conn=0.001910 tls=0.018640 ttfb=0.026276 total=0.104376 speed=5519822B/s
+http=200 dns=0.001555 conn=0.001808 tls=0.021492 ttfb=0.030948 total=0.073288 speed=7861273B/s
+--- https://pypi.org/
+http=200 dns=0.001281 conn=0.001610 tls=0.023750 ttfb=0.035497 total=0.037439 speed=746948B/s
+http=200 dns=0.001453 conn=0.001672 tls=0.024930 ttfb=0.035032 total=0.037017 speed=755463B/s
+--- https://huggingface.co/
+http=200 dns=0.017254 conn=0.017609 tls=0.036321 ttfb=0.057555 total=0.073563 speed=2474831B/s
+http=200 dns=0.022584 conn=0.023053 tls=0.039604 ttfb=0.048766 total=0.062153 speed=2929158B/s
+
+### plain HTTP (port 80)
+--- http://www.google.com/
+http=200 dns=0.001700 conn=0.002041 tls=0.000000 ttfb=0.044937 total=0.045723 speed=1829429B/s
+--- http://github.com/
+http=301 dns=0.001237 conn=0.001466 tls=0.000000 ttfb=0.015626 total=0.015644 speed=0B/s
+--- http://pypi.org/
+http=301 dns=0.001141 conn=0.001445 tls=0.000000 ttfb=0.019358 total=0.019379 speed=0B/s
+--- http://huggingface.co/
+http=301 dns=0.001377 conn=0.001632 tls=0.000000 ttfb=0.017603 total=0.017701 speed=9434B/s
+
+### redirect behavior
+http=301 dns=0.001603 conn=0.001858 tls=0.000000 ttfb=0.011579 total=0.011716 speed=18692B/s
+
+# section rc=0   FINISHED: 2026-09-04T14:17:51Z

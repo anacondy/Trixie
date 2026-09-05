@@ -1,0 +1,62 @@
+== numpy via pip download+install (linux cp313 wheel) ==
+  consolidated in 12_pip.txt
+== numpy + orjson micro-bench ==
+  consolidated in 12_pip.txt (benchmarks run there)
+
+== spawn detached background ticker (cross-call survival test) ==
+  spawned pid=7251 (setsid, detached), ticks every 5s -> /tmp/smoke_run7/bg_ticks.txt
+  ticks so far: 2 (still running; final check in section 15)
+  NOTE: the canonical run verified survival ACROSS tool calls in an interactive
+        session; a single script run can only demonstrate in-session survival.
+
+== GPU / special devices ==
+ls: cannot access '/dev/dri': No such file or directory
+ls: cannot access '/dev/nvidia*': No such file or directory
+ls: cannot access '/dev/kvm': No such file or directory
+autofs
+console
+core
+cpu
+cpu_dma_latency
+fd
+full
+fuse
+hugepages
+hwrng
+initctl
+kmsg
+log
+loop-control
+loop0
+loop1
+loop2
+loop3
+loop4
+loop5
+
+== kernel modules loaded? ==
+
+== sysctl highlights ==
+  kernel.hostname         e2b.local
+  kernel.pid_max          4194304
+  vm.swappiness           60
+  fs.file-max             9223372036854775807
+  net.ipv4.ip_forward     0
+  kernel.random.boot_id   2bb79165-136a-4b63-829d-17027b0a8e40
+
+== git local demo (init/commit in /tmp) ==
+ba4bfc6 init
+
+== jupyter/code-interpreter context ==
+    359 envd            /usr/bin/envd
+    437 jupyter-server  /usr/local/bin/python3.13 /usr/local/bin/jupyter-server --IdentityProvider.token=
+    463 uvicorn         /root/.server/.venv/bin/python /root/.server/.venv/bin/uvicorn main:app --host 0.0.0.0 --port 49999 --workers 1 --no-access-log --no-use-colors --timeout-keep-alive 640
+    475 python3.13      /usr/local/bin/python3.13 -Xfrozen_modules=off -m ipykernel_launcher -f /root/.local/share/jupyter/runtime/kernel-6bd8c74e-fd89-448c-9e6a-22de9783e8b5.json
+    490 node            node /usr/bin/ijskernel --hide-undefined /root/.local/share/jupyter/runtime/kernel-1fe44cf5-e7f2-4ee3-82b8-24ac60d6d93f.json --protocol=5.1
+
+== final: free + df + load ==
+               total        used        free      shared  buff/cache   available
+Mem:            1984         436        1548          13         150        1548
+/dev/root        25G  4.1G   20G  17% /
+tmpfs           993M   13M  980M   2% /tmp
+0.19 0.12 0.04 1/142 7322

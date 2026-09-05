@@ -1,0 +1,68 @@
+# ============================================================
+# probe_environment.sh :: 01 runtime (OS / kernel / CPU / RAM)
+# run_id: raw_run2   mode: stress
+# host: e2b.local   user: user(1000)
+# date_utc: 2026-09-04T13:46:52Z
+# ============================================================
+
+$ uname -a
+Linux e2b.local 6.1.158+ #1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026 x86_64 GNU/Linux
+
+$ cat /etc/os-release
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+VERSION="13 (trixie)"
+VERSION_CODENAME=trixie
+DEBIAN_VERSION_FULL=13.6
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+
+$ ldd --version | head -2
+ldd (Debian GLIBC 2.41-12+deb13u3) 2.41
+Copyright (C) 2024 Free Software Foundation, Inc.
+
+$ arch
+x86_64
+
+$ nproc
+2
+
+$ grep -m1 "model name" /proc/cpuinfo
+model name	: Intel(R) Xeon(R) Processor @ 2.60GHz
+
+$ cpu flags of interest
+aes
+avx
+avx2
+avx512f
+fma
+sha_ni
+sse4_2
+
+$ head -5 /proc/meminfo
+MemTotal:        2032608 kB
+MemFree:         1685180 kB
+MemAvailable:    1642204 kB
+Buffers:            3024 kB
+Cached:            44752 kB
+
+$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:           1.9Gi       381Mi       1.6Gi       1.1Mi        64Mi       1.6Gi
+Swap:             0B          0B          0B
+
+$ uptime
+ 13:46:52 up 1 min,  0 users,  load average: 0.22, 0.11, 0.04
+
+$ hostname
+e2b.local
+
+$ date; timedatectl (TZ)
+Fri Sep  4 13:46:52 UTC 2026
+               Local time: Fri 2026-09-04 13:46:52 UTC
+           Universal time: Fri 2026-09-04 13:46:52 UTC
+                 RTC time: n/a
+                Time zone: Etc/UTC (UTC, +0000)

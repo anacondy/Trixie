@@ -1,0 +1,6 @@
+./probe.sh: line 909: 27034 Killed                  python3 "$TMPD/oom.py" "$TMPD/oom.log"
+  probe finished: 2026-09-04T14:24:17Z  duration 245s -> raw
+  normalized copies -> raw/normalized/
+wrote MANIFEST.txt, manifest.json, SHA256SUMS.txt (22 files, 92,986 bytes)
+  run_id=20260904T142012Z-22063 sandbox=i0m9mhony51frr3osghn0 template=nlhz8vlwyupq845jsdg9
+  manifest -> raw/MANIFEST.txt

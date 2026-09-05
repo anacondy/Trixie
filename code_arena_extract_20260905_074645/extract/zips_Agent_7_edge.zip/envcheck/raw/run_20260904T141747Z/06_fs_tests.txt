@@ -1,0 +1,23 @@
+################################################################
+# SECTION: 06_fs_tests.txt   (probe run run_20260904T141747Z)
+# STARTED : 2026-09-04T14:17:50Z
+################################################################
+### 1MiB write+read+delete integrity tests (sha1 compare) at 14:17:50
+/home/user/.probe_disk_eWKbbl : OK (1048576 bytes, sha1=e97215b91f7f7b10f09ed938a9bcfc75a22eba6a reread=e97215b91f7f7b10f09ed938a9bcfc75a22eba6a MATCH)
+/tmp/probe_tmp_85521355 : OK (1048576 bytes, sha1=7c4057fb41b31f11d1f2cec9fcb8f2c4de7f6a40 reread=7c4057fb41b31f11d1f2cec9fcb8f2c4de7f6a40 MATCH)
+/var/tmp : OK (1048576 bytes, sha1=29eea6e27b06bf4c99360a52c650f076d71e3486 reread=29eea6e27b06bf4c99360a52c650f076d71e3486 MATCH)
+/dev/shm : OK (1048576 bytes, sha1=b8fb5053daaa23db93e7c3e3ef12e346344c8c4f reread=b8fb5053daaa23db93e7c3e3ef12e346344c8c4f MATCH)
+/home/user : OK (1048576 bytes, sha1=19666743d95f6e6018ca153d7dcee51136380afb reread=19666743d95f6e6018ca153d7dcee51136380afb MATCH)
+
+### 200MB write to tmpfs /tmp with fdatasync
+209715200 bytes (210 MB, 200 MiB) copied, 0.104843 s, 2.0 GB/s
+size: 209715200
+
+### special (unicode/spaces) filename
+OK created
+
+### read-only probes
+touch: cannot touch '/proc/version': Permission denied
+touch: cannot touch '/sys/kernel/config': Permission denied
+
+# section rc=1   FINISHED: 2026-09-04T14:17:50Z

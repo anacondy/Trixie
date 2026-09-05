@@ -1,0 +1,50 @@
+================================================================
+ probe.sh v1.<NUM>   section: 12_net_throughput.txt
+ host:      e2b.local   kernel: <NUM>.158+   arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user:      user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ python3 tp.py 3
+  single-stream download (3 reps each; median Mbps reported)
+  source                              med Mbps      min      max       bytes
+  cloudflare __down <SZ>                 <NUM>    <NUM>    <NUM>    <BIGNUM>
+  cachefly <SZ>                        <NUM>   <NUM>   <NUM>   <BIGNUM>
+  cachefly <SZ>                         FAILED  HTTPError HTTP Error 404: Not Found
+  github raw (small file)                  <NUM>      <NUM>      <NUM>        3808
+
+  sustained (6 consecutive <SZ> pulls; look for decay => a cap)
+    pull 1:   <SZ>/s
+    pull 2:   <SZ>/s
+    pull 3:   <SZ>/s
+    pull 4:   <SZ>/s
+    pull 5:   <SZ>/s
+    pull 6:   <SZ>/s
+    -> median <SZ>/s, first-vs-last delta +<SZ>/s
+
+  concurrency scaling (<SZ> per stream, threads)
+   streams  agg MB/s  agg Mbps  per-stream MB/s
+         1 FAILED HTTPError HTTP Error 404: Not Found
+         2 FAILED HTTPError HTTP Error 404: Not Found
+         4 FAILED HTTPError HTTP Error 404: Not Found
+         8 FAILED HTTPError HTTP Error 404: Not Found
+        16 FAILED HTTPError HTTP Error 404: Not Found
+
+  upload (POST to cloudflare __up)
+       payload     MB/s  first bytes of response
+       <BIGNUM>     <NUM>  b'HTTP/<NUM> 200'
+      <BIGNUM>     <NUM>  b'HTTP/<NUM> 200'
+      <BIGNUM>     <NUM>  b'HTTP/<NUM> 200'
+
+  download/upload asymmetry is a real link property; record both.
+$ curl -sS -o /dev/null -m 60 -w '  curl cf25MB: http=%{http_code} dns=%{time_namelookup}s tcp=%{time_connect}s tls=%{time_appconnect}s ttfb=%{time_starttransfer}s total=%{time_total}s size=%{size_download} speed=%{speed_download}B/s ver=%{http_version} remote_ip=%{remote_ip}\n' 'https://speed.cloudflare.com/__down?bytes=<BIGNUM>'
+  curl cf25MB: http=200 dns=<T> tcp=<T> tls=<T> ttfb=<T> total=<T> size=<BIGNUM> speed=<SZ> ver=<NUM> remote_ip=<NUM>.<NUM>
+
+$ curl -sS --http3 -o /dev/null -m 15 -w '  curl --http3 cloudflare: http=%{http_code} ver=%{http_version} total=%{time_total}s  (QUIC/UDP-443 probe)\n' https://cloudflare.com/ 2>&1 | tail -2
+  curl --http3 cloudflare: http=301 ver=3 total=<T>  (QUIC/UDP-443 probe)
+
+$ curl -sS -o /dev/null -m 15 -w '  curl http  : http=%{http_code} ver=%{http_version} total=%{time_total}s\n' https://example.com/ 2>&1; curl -sS -o /dev/null -m 15 -w '  curl https://example.com:3000 (nonstandard port): http=%{http_code} connect=%{time_connect}s\n' https://example.com:3000 2>&1 | tail -2
+  curl http  : http=200 ver=2 total=<T>
+curl: (28) Connection timed out after <BIGNUM> milliseconds
+  curl https://example.com:3000 (nonstandard port): http=000 connect=<T>
+

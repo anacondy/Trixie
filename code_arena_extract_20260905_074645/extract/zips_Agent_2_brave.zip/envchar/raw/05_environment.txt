@@ -1,0 +1,73 @@
+# envchar raw transcript
+# file: 05_environment.txt
+# title: Environment variables and PATH
+# generated_utc: 2026-09-04T13:45:05Z
+# host: e2b.local
+# sandbox: i4i7wdij5c7gh9absvtu8
+# template: nlhz8vlwyupq845jsdg9
+# probe: /home/user/envchar/probe.sh
+# NOTE: This file is a verbatim command transcript. Do not summarize.
+
+================================================================
+=== env sorted
+=== CMD: bash -c env | sort
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+E2B_EVENTS_ADDRESS=http://192.0.2.1
+E2B_SANDBOX=true
+E2B_SANDBOX_ID=i4i7wdij5c7gh9absvtu8
+E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+HOME=/home/user
+LOGNAME=user
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+PWD=/home/user/envchar
+SHELL=/bin/bash
+SHLVL=2
+USER=user
+_=/usr/bin/env
+=== EXIT: 0  WALL_S: 0.0058 ===
+
+================================================================
+=== PATH
+=== CMD: bash -c printf "%s\n" "$PATH"
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+=== EXIT: 0  WALL_S: 0.0044 ===
+
+================================================================
+=== pwd
+=== CMD: pwd
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+/home/user/envchar
+=== EXIT: 0  WALL_S: 0.0025 ===
+
+================================================================
+=== HOME
+=== CMD: bash -c printf "%s\n" "$HOME"
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+/home/user
+=== EXIT: 0  WALL_S: 0.0038 ===
+
+================================================================
+=== SHELL
+=== CMD: bash -c printf "%s\n" "$SHELL"
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+/bin/bash
+=== EXIT: 0  WALL_S: 0.0034 ===
+
+================================================================
+=== python sys.path
+=== CMD: python3 -c import sys,site; print('exe',sys.executable); print('ver',sys.version); print('path',sys.path); print('USER_SITE',site.USER_SITE); print('ENABLE_USER_SITE',site.ENABLE_USER_SITE); print('sitepkgs',site.getsitepackages())
+=== UTC: 2026-09-04T13:45:09Z
+================================================================
+exe /usr/local/bin/python3
+ver 3.13.14 (main, Jul 14 2026, 04:45:36) [GCC 14.2.0]
+path ['', '/usr/local/lib/python313.zip', '/usr/local/lib/python3.13', '/usr/local/lib/python3.13/lib-dynload', '/usr/local/lib/python3.13/site-packages']
+USER_SITE /home/user/.local/lib/python3.13/site-packages
+ENABLE_USER_SITE True
+sitepkgs ['/usr/local/lib/python3.13/site-packages']
+=== EXIT: 0  WALL_S: 0.0142 ===

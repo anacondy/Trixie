@@ -1,0 +1,34 @@
+================================================================
+ probe.sh v1.<NUM> section: 10_net_dns.txt
+ host: e2b.local kernel: <VER>+ arch: x86_64
+ effective: E2B_SANDBOX=truetrue
+ user: user uid=1000 mode=full reps=3 oom=1
+================================================================
+
+$ python3 dns.py 3
+ host status n min ms med ms p95 ms max ms
+ google.com OK 3 <NUM> <NUM> <NUM> <NUM>
+ www.google.com OK 3 <NUM> <NUM> <NUM> <NUM>
+ github.com OK 3 <NUM> <NUM> <NUM> <NUM>
+ pypi.org OK 3 <NUM> <NUM> <NUM> <NUM>
+ files.pythonhosted.org OK 3 <NUM> <NUM> <NUM> <NUM>
+ huggingface.co OK 3 <NUM> <NUM> <NUM> <NUM>
+ cdn.huggingface.co gaierror 3 <NUM> <NUM> <NUM> <NUM>
+ registry.npmjs.org OK 3 <NUM> <NUM> <NUM> <NUM>
+ objects.<TOKEN>.com OK 3 <NUM> <NUM> <NUM> <NUM>
+ raw.<TOKEN>.com OK 3 <NUM> <NUM> <NUM> <NUM>
+ cdn.jsdelivr.net OK 3 <NUM> <NUM> <NUM> <NUM>
+ security.debian.org OK 3 <NUM> <NUM> <NUM> <NUM>
+ deb.debian.org OK 3 <NUM> <NUM> <NUM> <NUM>
+ archive.ubuntu.com OK 3 <NUM> <NUM> <NUM> <NUM>
+ crates.io OK 3 <NUM> <NUM> <NUM> <NUM>
+ gcr.io OK 3 <NUM> <NUM> <NUM> <NUM>
+ quay.io OK 3 <NUM> <NUM> <NUM> <NUM>
+ docker.io OK 3 <NUM> <NUM> <NUM> <NUM>
+ kaggle.com OK 3 <NUM> <NUM> <NUM> <NUM>
+ www.kaggle.com OK 3 <NUM> <NUM> <NUM> <NUM>
+ example.com OK 3 <NUM> <NUM> <NUM> <NUM>
+ nonexistent-host-zzz-<BIGNUM>.invalid gaierror 3 <NUM> <NUM> <NUM> <NUM>
+
+ cold-cache behaviour: the tail values are uncached lookups through the egress resolver;
+ medians ~<<T> mean answers are served from a local cache, NOT from a remote recursive resolver.

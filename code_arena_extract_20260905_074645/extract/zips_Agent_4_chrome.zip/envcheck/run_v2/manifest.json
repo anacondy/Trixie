@@ -1,0 +1,197 @@
+{
+  "manifest_version": "1.1.0",
+  "probe": "probe.sh",
+  "run_id": "20260904T140458Z-11960",
+  "timestamp_utc": "2026-09-04T14:19:59Z",
+  "host": {
+    "hostname": "e2b.local",
+    "os": "Debian GNU/Linux 13 (trixie)",
+    "kernel": "6.1.158+",
+    "arch": "x86_64",
+    "python": "3.13.14",
+    "user": "user",
+    "cwd": "/home/user/envcheck",
+    "sandbox_id": "i0m9mhony51frr3osghn0",
+    "template_id": "nlhz8vlwyupq845jsdg9"
+  },
+  "environment": {
+    "E2B_SANDBOX": "true",
+    "E2B_SANDBOX_ID": "i0m9mhony51frr3osghn0",
+    "E2B_TEMPLATE_ID": "nlhz8vlwyupq845jsdg9",
+    "E2B_EVENTS_ADDRESS": "http://192.0.2.1"
+  },
+  "transcript_header_seen": {
+    "run_id": "20260904T140458Z-11960",
+    "started": "2026-09-04T14:04:58Z",
+    "sandbox": "i0m9mhony51frr3osghn0",
+    "template": "nlhz8vlwyupq845jsdg9",
+    "host": "e2b.local   kernel: 6.1.158+   arch: x86_64",
+    "effective": "E2B_SANDBOX=truetrue",
+    "user": "user uid=1000 mode=full reps=3 oom=1"
+  },
+  "totals": {
+    "files": 22,
+    "bytes": 93248,
+    "matching_normalized": 22
+  },
+  "semantics": {
+    "sha256": "hash of the verbatim transcript; will differ across hosts/runs by design",
+    "sha256_normalized": "hash after masking timestamps/durations/sizes/bandwidth/pids/tokens; equal values across two runs mean the environment matched on everything measurable"
+  },
+  "files": [
+    {
+      "file": "00_meta.txt",
+      "bytes": 1704,
+      "sha256": "dc51e23384c59896671df5a9643f55fd71bbd7213faa8a6fd6ace308c19f7d64",
+      "sha256_normalized": "1cffc6098e20158f022d1d3de063ff8a17a6067056dfe092da51e0ea49421567",
+      "normalized_file": "normalized/00_meta.norm"
+    },
+    {
+      "file": "01_runtime.txt",
+      "bytes": 5990,
+      "sha256": "a18a164fd854e08b56cf27f4a21e0d0ed00a4bfd907109ddfa8108f16089c73a",
+      "sha256_normalized": "e6dffc3f66015a5c908fdf0fea3695a2cc8af70715f8edb784d1839d1beb6b88",
+      "normalized_file": "normalized/01_runtime.norm"
+    },
+    {
+      "file": "02_isolation.txt",
+      "bytes": 9948,
+      "sha256": "8f4f700cd74973cd09db6d50ef06a1d27e5eb4fe014ac3fa2ac08da295476f9f",
+      "sha256_normalized": "75fc469d3dc1c9d7f6eb6a948549977b254ff5f12c1b17b95c9b3b3960cb6f6f",
+      "normalized_file": "normalized/02_isolation.norm"
+    },
+    {
+      "file": "03_limits.txt",
+      "bytes": 3027,
+      "sha256": "24438cac4ea6c2dc4073587de1c1fd38b8b6daad992a5e7024673d5e29efc7b9",
+      "sha256_normalized": "e9a6c3d22cff8d3c371e58ab153d689ba411f07c14ca046601038e4b928a6c46",
+      "normalized_file": "normalized/03_limits.norm"
+    },
+    {
+      "file": "04_users.txt",
+      "bytes": 2254,
+      "sha256": "73f4238eedd5c6544ca72ab1c2164646b592395e8e5a18114f7ae64ce4f06681",
+      "sha256_normalized": "54c661bd5d25c0fcc15103b6beed3d4e3a5747210efef7bd373eaf8e0d75cb13",
+      "normalized_file": "normalized/04_users.norm"
+    },
+    {
+      "file": "05_tools.txt",
+      "bytes": 8790,
+      "sha256": "bd2a8706aab57fe12455eaecd98442bbf07f1c61f39c5a5c9b2ef782b50a7a52",
+      "sha256_normalized": "8aaa0e5da093c3190f5526193d9bf1e39e891883a278cd44cc4ca1672a38d56b",
+      "normalized_file": "normalized/05_tools.norm"
+    },
+    {
+      "file": "06_pkg_and_compile.txt",
+      "bytes": 5093,
+      "sha256": "eb4f401ff563e514f9fb1924fe37a636d5b096b708a6d8368ec4c8a50f386b79",
+      "sha256_normalized": "b74c9dc18a7dc7c0117eaaee8242b740d3a747d3bc6069a4f0d13dc4bfb37c68",
+      "normalized_file": "normalized/06_pkg_and_compile.norm"
+    },
+    {
+      "file": "06b_pip_freeze_sorted.txt",
+      "bytes": 3199,
+      "sha256": "b0c24c82f6067fcb8a1286b52712f9137c9fdc8f6fb9507b0f0a101f4cb976e5",
+      "sha256_normalized": "5bcff435ae3cdc4af7a9b0251385d2fc8954ee200faa3581cbe7a646b28fbaf3",
+      "normalized_file": "normalized/06b_pip_freeze_sorted.norm"
+    },
+    {
+      "file": "07_filesystem.txt",
+      "bytes": 7294,
+      "sha256": "bea75a9231685f7a29699f30aae93a25f9033353ffe207652081d2ea8fc87ccb",
+      "sha256_normalized": "847178e95fed204a16d2d6ba5781abf7ed6bc3fd8db0d67e68a8d6d441aaba97",
+      "normalized_file": "normalized/07_filesystem.norm"
+    },
+    {
+      "file": "08_persistence.txt",
+      "bytes": 2870,
+      "sha256": "63163c7a33599745cc8e67de0b864687029c9a00ebaac7880d317f99452f9585",
+      "sha256_normalized": "58c51ab2efa371220de3c2a173e8b35e078f30608055f0c451542fa4c35ee0de",
+      "normalized_file": "normalized/08_persistence.norm"
+    },
+    {
+      "file": "09_net_matrix.txt",
+      "bytes": 9413,
+      "sha256": "98cbb6913c03830ff9b8c3a881256933653fbadb33d14452d2ee861ea77c8de7",
+      "sha256_normalized": "4e2558ddac435a4e3405bc5fe5ad158a3ca2ff340dbbe89d564aa5defcb9cceb",
+      "normalized_file": "normalized/09_net_matrix.norm"
+    },
+    {
+      "file": "10_net_dns.txt",
+      "bytes": 2749,
+      "sha256": "ac7b9a2c546958a39a9092461e781c6b313ade78f5bd4bd0196b7aaf819b03ee",
+      "sha256_normalized": "45cff97fd31dd4d22e14c2e020704790e4d60ed40166ebe0a49b8900651817f5",
+      "normalized_file": "normalized/10_net_dns.norm"
+    },
+    {
+      "file": "11_net_latency.txt",
+      "bytes": 2433,
+      "sha256": "a0d63f4318eb03debc8c215b94980407a8b886408966ed87226181aa563ec8de",
+      "sha256_normalized": "a21c9074eacc8c202e679c3d21c31cf13ef51fda5fbc3fcc9640283e17ef5927",
+      "normalized_file": "normalized/11_net_latency.norm"
+    },
+    {
+      "file": "12_net_throughput.txt",
+      "bytes": 3098,
+      "sha256": "2befdcf4066185eefad15ed23ec744e47c4e68b1845416d11a73406a959770be",
+      "sha256_normalized": "996f4178b454b688c5ba533334063d1571799699c4109f71100c2963e768796f",
+      "normalized_file": "normalized/12_net_throughput.norm"
+    },
+    {
+      "file": "13_net_egress_proof.txt",
+      "bytes": 1932,
+      "sha256": "6b679149c795f0c8de7de7b46fb12175933e03f928437f4b0cbab3712cc028ea",
+      "sha256_normalized": "670147733dff6d47e2d2ac6aedd90de75578529ae62196d44b5e66ae9eca8340",
+      "normalized_file": "normalized/13_net_egress_proof.norm"
+    },
+    {
+      "file": "14_bench_cpu.txt",
+      "bytes": 2245,
+      "sha256": "20c77ed929413d0577136365ba991cac922ea7849af11b909561bc5ada59e030",
+      "sha256_normalized": "f6cb0d6f30417cd8f0fe5bd9eae649534be90ef97ae9338957c353c34aa6919c",
+      "normalized_file": "normalized/14_bench_cpu.norm"
+    },
+    {
+      "file": "15_bench_disk.txt",
+      "bytes": 3708,
+      "sha256": "5b98034ccac429cd56ae142ab96697156925daffece81bd719d68065bf4cd99c",
+      "sha256_normalized": "c88bb0ae7c2f19c78420532d745e016c2e5df1671d616ae24cefbf4b3409d783",
+      "normalized_file": "normalized/15_bench_disk.norm"
+    },
+    {
+      "file": "16_bench_installs.txt",
+      "bytes": 2505,
+      "sha256": "3f90e8e5f367e82f428a2524a1e973559305bb8b6a0f128ff23dc3e3fa0fe5db",
+      "sha256_normalized": "f22b321d45cbfd612fee036d5dc14722ec9c269f4824c610d5bb5803437eb799",
+      "normalized_file": "normalized/16_bench_installs.norm"
+    },
+    {
+      "file": "17_mem_pressure.txt",
+      "bytes": 2838,
+      "sha256": "4df400b7a2b91125dc2a823c25cf60b4a1298ab3db3caa27e4e8deb7f2211d25",
+      "sha256_normalized": "bfd3ef22b35cc6a61ff054f847b7937dcbc2783a0a1bd6653348bb6c73de65cc",
+      "normalized_file": "normalized/17_mem_pressure.norm"
+    },
+    {
+      "file": "18_background.txt",
+      "bytes": 2091,
+      "sha256": "1e20c0b43449f98001f222df8d6d6e604f39378166a2f131af38000a82f9eff0",
+      "sha256_normalized": "81a5b18d064b26f418aabe0d7b109d14cfbd3ce2bf5648a793d4aeac40f581a1",
+      "normalized_file": "normalized/18_background.norm"
+    },
+    {
+      "file": "19_services.txt",
+      "bytes": 8270,
+      "sha256": "8493e3435a76d753ee7ee522897d19476e7b8b0293e00e067f3f72e6c90e6cb2",
+      "sha256_normalized": "fd0755883398a7d2ea29f3f0b40f56b987a3d718ff6d49eafe0e8c0afb095900",
+      "normalized_file": "normalized/19_services.norm"
+    },
+    {
+      "file": "20_accelerators.txt",
+      "bytes": 1797,
+      "sha256": "15598e7ce06301e5edad4f721e6fc10e39278758e63a3f08dbb9cb010334cedd",
+      "sha256_normalized": "7421d1ec899fbe30747d962de68013bf84e68d26153a7ef1cca661651f2c9487",
+      "normalized_file": "normalized/20_accelerators.norm"
+    }
+  ]
+}

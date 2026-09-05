@@ -1,0 +1,25 @@
+== CPU micro-benchmarks (python 3.13.14, perf_counter, medians of 3) ==
+sum(range(10**7))          :    129.2 ms median of 3
+int-loop 3e6 (mod+add)     :    281.6 ms median of 3
+
+== parallel speedup probe: 4x sum(range(10**7)) in parallel ==
+  4-parallel wall: 0.28 s
+
+== single sequential run reference ==
+  1 run wall: 0.14 s
+
+== memory allocation ceiling probe ==
+MemTotal:        2032608 kB
+MemAvailable:    1581256 kB
+  [QUICK] reduced target to 256 MiB
+MemAvailable: 1544 MiB; target: 256 MiB
+allocated+touched 256 MiB OK; after: MemAvailable=1296 MiB -> process survived, no OOM
+
+== memory.events ==
+n/a
+
+== vmstat 1 2 ==
+procs -----------memory---------- ---swap-- -----io---- -system-- -------cpu-------
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st gu
+ 0  0      0 1536584   7684 205104    0    0  1153   324  209    1  3  1 96  0  0  0
+ 0  0      0 1536332   7684 205124    0    0     0     0  101  162  0  0 100  0  0  0

@@ -1,0 +1,4 @@
+server	iteration	status	elapsed_ms	note
+8.8.8.8	1	ok	1.436	bytes=124 answers=6 rcode=0 peer=8.8.8.8
+8.8.8.8	2	ok	0.663	bytes=124 answers=6 rcode=0 peer=8.8.8.8
+8.8.8.8	3	ok	1.504	bytes=124 answers=6 rcode=0 peer=8.8.8.8

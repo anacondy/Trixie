@@ -1,0 +1,5 @@
+  workers=1   all 40 requests in  4.26s | 13.51 MB/s | req/latency med= 101.0ms p95= 184.8ms | ok=39/40
+  workers=8   all 40 requests in  0.71s | 81.53 MB/s | req/latency med= 122.2ms p95= 248.8ms | ok=39/40
+  workers=16  all 40 requests in  0.61s | 93.81 MB/s | req/latency med= 164.6ms p95= 372.0ms | ok=39/40
+  workers=32  all 40 requests in  0.57s | 101.71 MB/s | req/latency med= 184.8ms p95= 447.5ms | ok=39/40
+  sample versions: ['2.5.2', '3.0.5', '1.18.1', '2.34.2']

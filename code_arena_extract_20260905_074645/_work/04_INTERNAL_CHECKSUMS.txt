@@ -1,0 +1,136 @@
+=== PHASE 4 — internal checksum/manifest verification (Sat Sep  5 07:48:27 UTC 2026) ===
+
+--- all manifest/checksum/packing files across all trees ---
+extract/forensic_evidence_Agent_9_edge_Agent_9_edge_payload_home_user_environment_evidence_20260904T142002Z-2576.zip/environment_evidence/runs/20260904T142002Z-2576/SHA256SUMS
+extract/forensic_evidence_Agent_9_edge_Agent_9_edge_payload_home_user_environment_evidence_20260904T142002Z-2576.zip/environment_evidence/runs/20260904T142002Z-2576/manifest.json
+extract/forensic_evidence_Agent_9_edge_Agent_9_edge_payload_home_user_environment_evidence_20260904T142002Z-2576.zip/environment_evidence/runs/20260904T142002Z-2576/manifest.txt
+extract/zips_Agent_1_chrome.zip/MANIFEST.txt
+extract/zips_Agent_2_brave.zip/PACKING_RECORD.txt
+extract/zips_Agent_2_brave.zip/envchar/MANIFEST.txt
+extract/zips_Agent_2_brave.zip/envchar/SHA256SUMS
+extract/zips_Agent_2_brave.zip/envchar/make_manifest.py
+extract/zips_Agent_3_brave.zip/SHA256SUMS_ALL.txt
+extract/zips_Agent_3_brave.zip/envchar/raw_run2/SHA256SUMS
+extract/zips_Agent_3_brave.zip/envchar/raw_run2/verification_manifest.txt
+extract/zips_Agent_4_chrome.zip/envcheck/.probe_manifest.log
+extract/zips_Agent_4_chrome.zip/envcheck/make_manifest.py
+extract/zips_Agent_4_chrome.zip/envcheck/raw/MANIFEST.txt
+extract/zips_Agent_4_chrome.zip/envcheck/raw/SHA256SUMS.normalized.txt
+extract/zips_Agent_4_chrome.zip/envcheck/raw/SHA256SUMS.txt
+extract/zips_Agent_4_chrome.zip/envcheck/raw/manifest.json
+extract/zips_Agent_4_chrome.zip/envcheck/raw/normalized/MANIFEST.norm
+extract/zips_Agent_4_chrome.zip/envcheck/raw/normalized/SHA256SUMS.norm
+extract/zips_Agent_4_chrome.zip/envcheck/raw/normalized/SHA256SUMS.normalized.norm
+extract/zips_Agent_4_chrome.zip/envcheck/run_v2/MANIFEST.txt
+extract/zips_Agent_4_chrome.zip/envcheck/run_v2/SHA256SUMS.normalized.txt
+extract/zips_Agent_4_chrome.zip/envcheck/run_v2/SHA256SUMS.txt
+extract/zips_Agent_4_chrome.zip/envcheck/run_v2/manifest.json
+extract/zips_Agent_4_chrome.zip/envcheck/run_v2/normalized/MANIFEST.norm
+extract/zips_Agent_4_chrome.zip/envcheck/run_v2/normalized/SHA256SUMS.norm
+extract/zips_Agent_4_chrome.zip/envcheck/run_v2/normalized/SHA256SUMS.normalized.norm
+extract/zips_Agent_5_chrome.zip/ARCHIVE_MANIFEST.md
+extract/zips_Agent_5_chrome.zip/env-probe/KIT_SHA256SUMS.txt
+extract/zips_Agent_5_chrome.zip/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/MANIFEST.json
+extract/zips_Agent_5_chrome.zip/env-probe/runs/20260904T134652Z_i80n46q8w7lm0xch991wu/SHA256SUMS.txt
+extract/zips_Agent_5_chrome.zip/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/MANIFEST.json
+extract/zips_Agent_5_chrome.zip/env-probe/runs/20260904T134940Z_i80n46q8w7lm0xch991wu/SHA256SUMS.txt
+extract/zips_Agent_6_brave.zip/envprobe/manifest.json
+extract/zips_Agent_6_brave.zip/envprobe/sha256sums.txt
+extract/zips_Agent_6_brave.zip/rerun_A_smoke6_QUICK/manifest.json
+extract/zips_Agent_6_brave.zip/rerun_A_smoke6_QUICK/sha256sums.txt
+extract/zips_Agent_6_brave.zip/rerun_B_smoke7_QUICK_PASS/manifest.json
+extract/zips_Agent_6_brave.zip/rerun_B_smoke7_QUICK_PASS/sha256sums.txt
+extract/zips_Agent_6_brave.zip/rerun_C_full_FULL_PASS/manifest.json
+extract/zips_Agent_6_brave.zip/rerun_C_full_FULL_PASS/sha256sums.txt
+extract/zips_Agent_7_edge.zip/ZIP_CONTENTS_MANIFEST.txt
+extract/zips_Agent_7_edge.zip/envcheck/raw/run_20260904T1116Z_original/MANIFEST.sha256
+extract/zips_Agent_7_edge.zip/envcheck/raw/run_20260904T1116Z_original/MANIFEST.txt
+extract/zips_Agent_7_edge.zip/envcheck/raw/run_20260904T141747Z/MANIFEST.sha256
+extract/zips_Agent_7_edge.zip/envcheck/raw/run_20260904T141747Z/MANIFEST.txt
+extract/zips_Agent_8_edge.zip/VERIFICATION_MANIFEST.md
+extract/zips_Agent_8_edge.zip/probe_raw/00_MANIFEST.txt
+extract/zips_Agent_9_edge.zip/Agent 9 edge/documentation/SHA256SUMS.txt
+extract/zips_Agent_9_edge.zip/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/SHA256SUMS
+extract/zips_Agent_9_edge.zip/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/manifest.json
+extract/zips_Agent_9_edge.zip/Agent 9 edge/payload/home/user/environment_evidence/runs/20260904T142002Z-2576/manifest.txt
+extract/zips_Agent_9_edge.zip/Agent 9 edge/payload/home/user/environment_evidence_20260904T142002Z-2576.zip.sha256
+
+--- Agent 1: MANIFEST.txt (hash section only, from bundle root) ---
+01_runtime.txt: OK
+02_tooling.txt: OK
+03_filesystem.txt: OK
+04_network.txt: OK
+05_benchmarks.txt: OK
+06_other.txt: OK
+exit_code=0
+
+--- Agent 2: envchar/SHA256SUMS (from envchar/) ---
+raw/01_runtime.txt: OK
+raw/02_isolation.txt: OK
+raw/03_user_limits.txt: OK
+raw/04_cgroup.txt: OK
+raw/05_environment.txt: OK
+raw/06_tools.txt: OK
+raw/07_python_packages.txt: OK
+raw/08_filesystem.txt: OK
+raw/09_net_matrix.txt: OK
+raw/10_net_throughput.txt: OK
+raw/11_net_ports.txt: OK
+raw/12_cpu_bench.txt: OK
+raw/13_disk_bench.txt: OK
+raw/14_installs.txt: OK
+raw/15_memory.txt: OK
+raw/16_misc.txt: OK
+probe.sh: OK
+probe_bench.py: OK
+make_manifest.py: OK
+exit_code=0
+
+--- Agent 3: SHA256SUMS_ALL.txt (from bundle root) ---
+./00_README.md: OK
+./envchar/bench.py: OK
+./envchar/persistence_marker.txt: OK
+./envchar/probe_environment.sh: OK
+./envchar/raw_run2/01_runtime.txt: OK
+./envchar/raw_run2/02_isolation.txt: OK
+./envchar/raw_run2/03_limits.txt: OK
+./envchar/raw_run2/04_tooling.txt: OK
+./envchar/raw_run2/05_filesystem.txt: OK
+./envchar/raw_run2/06_persistence.txt: OK
+./envchar/raw_run2/07_dns.txt: OK
+./envchar/raw_run2/08_latency.txt: OK
+./envchar/raw_run2/09_net_matrix.txt: OK
+./envchar/raw_run2/10_throughput.txt: OK
+./envchar/raw_run2/11_cpu_bench.txt: OK
+./envchar/raw_run2/12_disk_bench.txt: OK
+./envchar/raw_run2/13_installs.txt: OK
+./envchar/raw_run2/14_memory.txt: OK
+./envchar/raw_run2/15_background.txt: OK
+./envchar/raw_run2/15_background_heartbeat.log: OK
+./envchar/raw_run2/16_env_services.txt: OK
+./envchar/raw_run2/SHA256SUMS: OK
+./envchar/raw_run2/verification_manifest.txt: OK
+./environment_characterization.md: OK
+exit_code=0
+
+--- Agent 9 (nested): runs/20260904T142002Z-2576/SHA256SUMS (from run dir) ---
+raw/01_runtime.txt: OK
+raw/02_isolation.txt: OK
+raw/03_resources.txt: OK
+raw/04_tooling.txt: OK
+raw/05_packages.txt: OK
+raw/06_filesystem.txt: OK
+raw/07_dns.txt: OK
+raw/08_http_latency.txt: OK
+raw/09_net_matrix.txt: OK
+raw/10_throughput.txt: OK
+raw/11_benchmarks.txt: OK
+raw/12_install_compile.txt: OK
+raw/13_memory_process.txt: OK
+raw/14_persistence.txt: OK
+exit_code=0
+
+--- Agent 9 (nested): manifest.json probe_script_sha256 claim ---
+claimed: 870774e553380dd881964cfb09cc74871349e8b3b3ac2d00a53214022568046b
+actual:  870774e553380dd881964cfb09cc74871349e8b3b3ac2d00a53214022568046b
+MATCH

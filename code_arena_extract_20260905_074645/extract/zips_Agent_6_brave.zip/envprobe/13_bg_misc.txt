@@ -1,0 +1,78 @@
+== numpy via pip download+install (linux cp313 wheel) ==
+Successfully downloaded numpy
+-rw-r--r-- 1 user user 16709995 Sep  4 11:21 numpy-2.5.2-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+Successfully installed numpy-2.5.2
+  download 0.84s, install 2.33s
+
+== numpy + orjson micro-bench ==
+  numpy 2.5.2 | orjson 3.12.0
+  arange(1e7,f64).sum()  = 49999995000000 in   47.5 ms (incl alloc)
+  2048x2048 matmul       =  192.5 ms (incl rng+alloc)
+  np.dot warm x100       = 125.94 ms/op
+  json.dumps x200k       =  480.8 ms | orjson.dumps x200k =   36.2 ms
+
+== spawn detached background ticker (cross-call survival test) ==
+  spawned pid=2626 (setsid, detached), ticks every 5s -> bg_ticks.txt
+  initial tick count: 1
+
+== GPU / special devices ==
+ls: cannot access '/dev/dri': No such file or directory
+ls: cannot access '/dev/nvidia*': No such file or directory
+ls: cannot access '/dev/kvm': No such file or directory
+autofs
+console
+core
+cpu
+cpu_dma_latency
+fd
+full
+fuse
+hugepages
+hwrng
+initctl
+kmsg
+log
+loop-control
+loop0
+loop1
+loop2
+loop3
+loop4
+loop5
+loop6
+loop7
+mem
+mqueue
+net
+null
+ptmx
+ptp0
+pts
+random
+
+== kernel modules loaded? ==
+
+== sysctl highlights ==
+  kernel.hostname         n/a
+  kernel.pid_max          n/a
+  vm.swappiness           n/a
+  fs.file-max             n/a
+  net.ipv4.ip_forward     n/a
+  kernel.random.boot_id   n/a
+
+== git local demo (init/commit in /tmp) ==
+cf5575b init
+
+== jupyter/code-interpreter context ==
+    359 envd            /usr/bin/envd
+    437 jupyter-server  /usr/local/bin/python3.13 /usr/local/bin/jupyter-server --IdentityProvider.token=
+    463 uvicorn         /root/.server/.venv/bin/python /root/.server/.venv/bin/uvicorn main:app --host 0.0.0.0 --port 49999 --workers 1 --no-access-log --no-use-colors --timeout-keep-alive 640
+    475 python3.13      /usr/local/bin/python3.13 -Xfrozen_modules=off -m ipykernel_launcher -f /root/.local/share/jupyter/runtime/kernel-6bd8c74e-fd89-448c-9e6a-22de9783e8b5.json
+    490 node            node /usr/bin/ijskernel --hide-undefined /root/.local/share/jupyter/runtime/kernel-1fe44cf5-e7f2-4ee3-82b8-24ac60d6d93f.json --protocol=5.1
+
+== final: free + df + load ==
+               total        used        free      shared  buff/cache   available
+Mem:            1984         568        1292         115         380        1416
+/dev/root        25G  4.1G   20G  18% /
+tmpfs           993M  115M  878M  12% /tmp
+0.41 0.14 0.04 1/139 2665
