@@ -1,0 +1,50 @@
+======================================================================
+C6 UNIT ARITHMETIC (convention: kernel 'kB' = 1024 B; GiB/MiB = binary; GB = decimal)
+  MemTotal: 2032608 kB = 2081390592 B = 1984.97 MiB = 1.9384 GiB  (decimal: 2.0814 GB)
+  cgroup user memory.max: 1901536 kB = 1947172864 B = 1856.97 MiB = 1.8134 GiB  (decimal: 1.9472 GB)
+  cgroup user memory.current (BEFORE D1): 182532 kB = 186912768 B = 178.25 MiB = 0.1741 GiB  (decimal: 0.1869 GB)
+  memory.max as decimal GB = 1.9472 GB  -> the limit is set as a DECIMAL number (1947172864 = 1.947172864 GB)
+  MemTotal - memory.max = 134217728 B = 128.0 MiB reserved outside the user cgroup
+  (parsed from the RESULT line: last_success=1600, first_kill=1632, resolution=32 MiB; the coarse-phase 1792 MiB line is NOT the bisected result)
+  D1 last_success: 1638400 kB = 1677721600 B = 1600.00 MiB = 1.5625 GiB  (decimal: 1.6777 GB)
+  D1 first_kill: 1671168 kB = 1711276032 B = 1632.00 MiB = 1.5938 GiB  (decimal: 1.7113 GB)
+  D1 first_kill as decimal: 1671168 kB = 1711276032 B = 1632.00 MiB = 1.5938 GiB  (decimal: 1.7113 GB)
+  first_kill 1632 MiB / memory.max 1857.0 MiB = 87.9% of the cgroup limit
+  headroom at the kill = 225.0 MiB (rest of cgroup = other processes + page cache)
+======================================================================
+D2 DISK
+  1073741824 B (1.0 GiB) in 3.57009s = 301 MB/s (dd, decimal) = 287.1 MiB/s = 2.41 Gbit/s
+  5368709120 B (5.0 GiB) in 19.528s = 275 MB/s (dd, decimal) = 262.3 MiB/s = 2.20 Gbit/s
+  tmpfs /tmp size = 993 MiB (df -BM) -> /tmp is RAM-backed and capped there, NOT at the 25G disk
+  /tmp RAM proof: writing 268435456 B moved cgroup memory.current by 268627968 B (ratio 1.0007x the file size) and rm released it -> tmpfs pages are counted as cgroup memory
+======================================================================
+D6 SMT
+  cpu mask 0: 1T=0.4546s  2T=0.9082s  ratio=1.9978x  => throughput gain from the sibling = +0.11%
+  cpu mask 1: 1T=0.4852s  2T=0.9628s  ratio=1.9843x  => throughput gain from the sibling = +0.79%
+  (masks 2 and 3 rejected by taskset: 'Invalid argument' -> only cpu0,cpu1 exist)
+======================================================================
+B1 CONFOUNTER TEST
+  idle (cpu_busy 1.2%): n=3 speeds MB/s = [49.4, 174.1, 183.1]
+      min=49.4 max=183.1 mean=135.5 MB/s (= 1.08 Gbit/s)
+  verified-burn (cpu_busy 100.0%): n=5 speeds MB/s = [179.3, 164.3, 85.3, 167.8, 66.3]
+      min=66.3 max=179.3 mean=132.6 MB/s (= 1.06 Gbit/s)
+  ranges overlap? idle[49.4,183.1] vs burn[66.3,179.3] -> OVERLAP: no separation
+  cgroup throttling during burn: nr_throttled=0 throttled_usec=0 -> cpu.max='max 100000' (no quota)
+  per-Cloudflare-POP means (the actual confounder):
+    172.66.0.218: n=4 mean=140.2 MB/s values=[174.1, 179.3, 92.4, 115.0]
+    162.159.140.220: n=4 mean=122.4 MB/s values=[49.4, 183.1, 164.3, 92.9]
+  C4: httpbin.org 0.169 MB/s vs cloudflare mean 131.3 MB/s = 775x faster -> httpbin is not a bandwidth probe
+======================================================================
+D5 CONCURRENCY
+  dispatch order and start-gap:
+    A: start=2026-09-06T17:07:33.491Z end=2026-09-06T17:07:37.503Z 
+    B: start=2026-09-06T17:07:35.861Z end=2026-09-06T17:07:39.871Z gap=2.370s
+    C: start=2026-09-06T17:07:37.519Z end=2026-09-06T17:07:41.547Z gap=1.658s
+    D: start=2026-09-06T17:07:39.567Z end=2026-09-06T17:07:43.595Z gap=2.048s
+    E: start=2026-09-06T17:07:41.504Z end=2026-09-06T17:07:45.515Z gap=1.937s
+    F: start=2026-09-06T17:07:43.571Z end=2026-09-06T17:07:47.595Z gap=2.067s
+    G: start=2026-09-06T17:07:45.819Z end=2026-09-06T17:07:49.851Z gap=2.248s
+    H: start=2026-09-06T17:07:47.507Z end=2026-09-06T17:07:51.531Z gap=1.688s
+  mean start-gap = 2.002s; total wall A.start->H.end = 18.040s for 8 calls each sleeping 4s
+  => if all 8 truly ran in parallel, wall would be ~4.1s; observed 18.0s -> host-side dispatcher is SERIAL, no per-session parallelism observed
+======================================================================

@@ -1,0 +1,17 @@
+=== CMD: python3 oombisect2.py
+=== RECORDED_UTC: 2026-09-06T17:06:23Z
+memory.max = 1947172864 = 1856.96875 MiB
+step1 size=1734200832 (1653.86 MiB) rc=-9 peak_memcurrent=1692729344 (1614.3 MiB) out=
+FINAL last_ok=1703776256 (1624.848 MiB) first_kill=1734200832 (1653.863 MiB) gap=29.0 MiB
+confirm last_ok  rc=0 peak=1641.5 MiB
+confirm first_kill rc=-9 peak=1648.2 MiB
+events after:
+low 0
+high 0
+max 0
+oom 0
+oom_kill 5
+oom_group_kill 0
+
+session alive: yes, this shell still running; current=13.8 MiB
+=== EXIT: 0

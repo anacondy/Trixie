@@ -1,0 +1,5 @@
+=== CMD: sh -c env | grep ^E2B_TEMPLATE_ID; echo "exit=$?"
+=== RECORDED_UTC: 2026-09-06T17:04:20Z
+E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+exit=0
+=== EXIT: 0

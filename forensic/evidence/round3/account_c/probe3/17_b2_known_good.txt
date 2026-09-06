@@ -1,0 +1,7 @@
+=== CMD: sh -c echo "--- identical-method control: curl HTTPS to speed.cloudflare.com ---"; curl -sS -o /dev/null -w "code=%{http_code} connect=%{time_connect}s appconnect=%{time_appconnect}s ttfb=%{time_starttransfer}s total=%{time_total}s speed=%{speed_download}B/s\n" --max-time 40 "https://speed.cloudflare.com/__down?bytes=1048576"; echo "--- control: curl HTTPS to example.com ---"; curl -sS -o /dev/null -w "code=%{http_code} ttfb=%{time_starttransfer}s total=%{time_total}s\n" --max-time 20 https://example.com/
+=== RECORDED_UTC: 2026-09-06T17:05:04Z
+--- identical-method control: curl HTTPS to speed.cloudflare.com ---
+code=200 connect=0.021120s appconnect=0.050028s ttfb=0.111795s total=0.154928s speed=6768150B/s
+--- control: curl HTTPS to example.com ---
+code=200 ttfb=0.068752s total=0.068851s
+=== EXIT: 0

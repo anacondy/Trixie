@@ -1,0 +1,10 @@
+=== B1 extra variance: two more idle-CPU 32MiB downloads ===
+idle_run_1 wall=0.313s MiBps=102.2
+idle_run_2 wall=0.275s MiBps=116.4
+--- load average right now ---
+0.29 0.39 0.22 1/138 2174
+--- cgroup cpu.max (no quota) ---
+max 100000
+--- nr_throttled (must be 0 for 'no cpu capping') ---
+nr_throttled 0
+throttled_usec 0

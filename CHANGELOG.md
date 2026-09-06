@@ -22,4 +22,5 @@ Reorg of the Trixie forensic archive on branch `arena/01a070c2-trixie`. One line
 - **Burst 17** (`f2a634c`) — Fill `vm_class` in INDEX_ALL.tsv from existing env-lock evidence only (environment mostly T, provenance mixed, egress NEW, ceilings blank, code_arena left blank pending snapshots).
 - **Burst 18** (`9f00ba6`) — code_arena `vm_class=C` from the five committed `/api/env` snapshots.
 - **Housekeeping** — organised user-added round2/round3 prompts into `prompts/round2/` and `prompts/round3/`; confirmed no stray `api_env_snapshot*` files on this branch root (canonical copies remain under `forensic/evidence/code_arena/{chrome,brave,edge}/`).
+- **Burst 19** — Place & unpack round-3 probe archives into `zips/round3/` and `forensic/evidence/round3/`; outer SHA-256 + per-manifest file hashes + hash-of-hashes all PASS (`forensic/reports/round3/UNPACK_REPORT.md`).
 

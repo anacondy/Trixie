@@ -1,0 +1,13 @@
+# C1 MTIME-CHECK  recorded_utc=2026-09-06T17:08:39Z
+stat c1_probe.txt:
+mtime=2026-09-06 17:08:39.838787133 +0000  ctime=2026-09-06 17:08:39.838787133 +0000  size=48
+date -u now:          2026-09-06T17:08:39Z
+--- pre-existing files in this sandbox (do their mtimes match their content write-times?)
+/etc/os-release mtime=2026-07-04 09:05:00.000000000 +0000
+/etc/resolv.conf mtime=1970-01-01 00:00:00.000000000 +0000
+/etc/hostname mtime=1970-01-01 00:00:00.000000000 +0000
+--- NOTE: the restore-time mtime reset CANNOT be observed from inside a single live session.
+    (would require comparing to the next restore). C1 is therefore AVOIDED, not disproved:
+    every raw file here carries its own write timestamp in its first line.
+--- proof that the technique works: content time vs mtime of c1_probe.txt should agree now
+# finished_utc=2026-09-06T17:08:39Z

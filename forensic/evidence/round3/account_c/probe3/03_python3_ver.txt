@@ -1,0 +1,4 @@
+=== CMD: python3 -V
+=== RECORDED_UTC: 2026-09-06T17:04:20Z
+Python 3.13.14
+=== EXIT: 0

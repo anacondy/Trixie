@@ -1,0 +1,15 @@
+=== CMD: SSH egress retest (20s, 4 hosts incl. control) + port-53 UDP already OK
+=== RECORDED_UTC: 2026-09-06T17:11:55Z
+/usr/bin/ssh
+OpenSSH_10.0p2 Debian-7+deb13u4, OpenSSL 3.5.6 7 Apr 2026
+--- banner test 20s each ---
+github.com      [end]
+gitlab.com      [end]
+192.0.2.1       [end]
+1.1.1.1         [end]
+--- ssh client identical-method control: github.com:22 ---
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+git@github.com: Permission denied (publickey).
+--- control: ssh to a bogus TEST-NET host (should equally fail/succeed identically?) ---
+Connection timed out during banner exchange
+Connection to 192.0.2.1 port 22 timed out

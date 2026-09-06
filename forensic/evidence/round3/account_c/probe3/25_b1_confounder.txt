@@ -1,0 +1,16 @@
+=== CMD: B1b — verify CPU actually pegged, then re-measure ===
+=== RECORDED_UTC: 2026-09-06T17:10:32Z
+--- CPU utilization while IDLE:
+busy fraction over 2s: 53.4%
+idle1 code=200 ttfb=0.313799s total=0.386562s speed=10850274B/s
+idle2 code=200 ttfb=0.086189s total=0.164158s speed=25550408B/s
+--- start 2 sha512 burners on cpu0+cpu1 ---
+--- CPU utilization while BURNERS on:
+busy fraction over 2s: 100.0%
+loadavg:
+0.73 0.40 0.16 4/148 1824
+busy1 code=200 ttfb=0.065484s total=0.141592s speed=29622464B/s
+busy2 code=200 ttfb=0.137019s total=0.209976s speed=19975159B/s
+--- CPU utilization after kill:
+busy fraction over 2s: 50.6%
+idle3 code=200 ttfb=0.087212s total=0.167551s speed=25032998B/s

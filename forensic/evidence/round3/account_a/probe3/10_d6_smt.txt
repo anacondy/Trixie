@@ -1,0 +1,16 @@
+# D6 SMT PENALTY  recorded_utc=2026-09-06T17:04:25Z
+--- topology: thread_siblings_list = 0-1; nproc=2
+--- taskset -c 0 python3 d6bench.py
+single-thread wall = 0.4546 s
+2-thread wall trial0 = 0.9086 s
+2-thread wall trial1 = 0.9078 s
+--- taskset -c 1 python3 d6bench.py
+single-thread wall = 0.4852 s
+2-thread wall trial0 = 0.9550 s
+2-thread wall trial1 = 0.9706 s
+--- taskset -c 2 python3 d6bench.py
+taskset: failed to set pid 1555's affinity: Invalid argument
+--- taskset -c 3 python3 d6bench.py
+taskset: failed to set pid 1556's affinity: Invalid argument
+--- ratio calc
+# finished_utc=2026-09-06T17:04:31Z

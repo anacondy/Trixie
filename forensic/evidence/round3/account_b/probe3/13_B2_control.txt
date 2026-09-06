@@ -1,0 +1,10 @@
+=== B2 control: curl http://example.com (known-good) ===
+http_code=200 time_total=0.044195s
+exit=0
+=== B2 control: curl https://example.com (known-good) ===
+http_code=200 time_total=0.063498s
+exit=0
+=== DNS control: getent hosts example.com ===
+2606:4700:10::6814:179a example.com
+2606:4700:10::ac42:93f3 example.com
+exit=0

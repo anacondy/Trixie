@@ -1,0 +1,38 @@
+=== extra domains (safe, some often-filtered categories): HTTP then HTTPS ===
+torproject.org HTTP[0]=code=301 HTTPS[0]=code=301 ttfb=0.515010
+archive.org HTTP[0]=code=200 HTTPS[0]=code=200 ttfb=0.094428
+signal.org HTTP[0]=code=301 HTTPS[0]=code=200 ttfb=0.125939
+iana.org HTTP[0]=code=301 HTTPS[0]=code=301 ttfb=0.111071
+kernel.org HTTP[0]=code=301 HTTPS[0]=code=200 ttfb=0.192004
+deb.debian.org HTTP[0]=code=200 HTTPS[0]=code=200 ttfb=0.032356
+raw.githubusercontent.com HTTP[0]=code=301 HTTPS[0]=code=301 ttfb=0.031336
+registry.npmjs.org HTTP[0]=code=301 HTTPS[0]=code=200 ttfb=0.039465
+crates.io HTTP[0]=code=403 HTTPS[0]=code=403 ttfb=0.044976
+www.iana.org HTTP[28]=curl: (28) Operation timed out after 6002 milliseconds with 0 bytes received
+code=000 HTTPS[0]=code=200 ttfb=0.050307
+
+=== transparent proxy data-plane checks ===
+-- TCP accepted earlier for 192.0.2.1:80. Does DATA flow? --
+{"error":"no matching operation was found"}
+HTTP192_0_2_1 rc=404 ttfb=0.001752
+
+curl: (28) Operation timed out after 5003 milliseconds with 0 bytes received
+
+HTTP198_51_100_1 rc=000 ttfb=0.000000
+
+curl: (28) Operation timed out after 5003 milliseconds with 0 bytes received
+
+HTTP203_0_113_1 rc=000
+
+-- E2B_EVENTS_ADDRESS (192.0.2.1) GET /events --
+{"error":"no matching operation was found"}
+EVENTS rc=404
+
+
+=== mechanism: does routing key on SNI or on IP? ===
+-- https://example.com forced to github.com IP via --resolve (SNI=example.com, IP=github) --
+code=301 remote_ip=140.82.116.4 ssl_verify=skipped
+-- compare: https://example.com via its REAL ip --
+code=200 remote_ip=172.66.147.243
+-- http://1.1.1.1 with Host: example.com (IP-routing test, HTTP plaintext) --
+code=403 remote_ip=1.1.1.1

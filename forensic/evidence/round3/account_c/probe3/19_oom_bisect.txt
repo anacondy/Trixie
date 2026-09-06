@@ -1,0 +1,26 @@
+=== CMD: python3 oombisect.py (OOM bisect, subprocess isolation)
+=== RECORDED_UTC: 2026-09-06T17:05:23Z
+memory.max bytes = 1947172864
+memory.max MiB = 1856.96875
+start memory.current = 192073728
+probe high=1947172864 -> rc=-9 out='' err='' dt=1.34s
+step 1 mid=973586432 (928.5 MiB) rc=0 out='TOUCHED_OK size=973586432' dt=0.79s memcur_before≈17199104
+step 2 mid=1460379648 (1392.7 MiB) rc=0 out='TOUCHED_OK size=1460379648' dt=1.10s memcur_before≈18165760
+step 3 mid=1703776256 (1624.8 MiB) rc=0 out='TOUCHED_OK size=1703776256' dt=1.41s memcur_before≈13119488
+step 4 mid=1825474560 (1740.9 MiB) rc=-9 out='' dt=1.27s memcur_before≈11649024
+step 5 mid=1764625408 (1682.9 MiB) rc=-9 out='' dt=1.19s memcur_before≈11812864
+FINAL low(ok)=1703776256 (1624.848 MiB)  high(kill)=1764625408 (1682.878 MiB)  gap=58 MiB
+final memory.current = 11812864
+=== EXIT: 0
+=== after-events:
+low 0
+high 0
+max 0
+oom 0
+oom_kill 3
+oom_group_kill 0
+=== session-survival check (same shell after kills):
+SURVIVED_OK
+2026-09-06T17:05:30Z
+=== memory.current after:
+6221824

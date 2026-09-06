@@ -1,0 +1,47 @@
+# D2 REAL DISK (/dev/urandom, C3-compliant)  recorded_utc=2026-09-06T17:04:15Z
+--- filesystem identity (prove what is RAM)
+--- df -h before
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        25G  4.1G   20G  17% /
+tmpfs           993M  8.0K  993M   1% /tmp
+/dev/root        25G  4.1G   20G  17% /
+
+=== target /home/user ===
+--- write 1 GiB of /dev/urandom to /home/user/d2_test.bin
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 3.57009 s, 301 MB/s
+rc=0 start=2026-09-06T17:04:15Z end=2026-09-06T17:04:19Z
+/dev/root        25G  5.1G   19G  22% /
+--- write 5 GiB of /dev/urandom to /home/user/d2_test.bin
+5120+0 records in
+5120+0 records out
+5368709120 bytes (5.4 GB, 5.0 GiB) copied, 19.528 s, 275 MB/s
+rc=0 start=2026-09-06T17:04:19Z end=2026-09-06T17:04:38Z
+/dev/root        25G  9.1G   15G  38% /
+=== target /tmp ===
+--- write 1 GiB of /dev/urandom to /tmp/d2_test.bin
+dd: error writing '/tmp/d2_test.bin': No space left on device
+993+0 records in
+992+0 records out
+1040683008 bytes (1.0 GB, 992 MiB) copied, 2.85562 s, 364 MB/s
+rc=1 start=2026-09-06T17:04:39Z end=2026-09-06T17:04:41Z
+tmpfs           993M  993M     0 100% /tmp
+--- write 5 GiB of /dev/urandom to /tmp/d2_test.bin
+dd: error writing '/tmp/d2_test.bin': No space left on device
+993+0 records in
+992+0 records out
+1040683008 bytes (1.0 GB, 992 MiB) copied, 2.84362 s, 366 MB/s
+rc=1 start=2026-09-06T17:04:42Z end=2026-09-06T17:04:44Z
+tmpfs           993M  993M     0 100% /tmp
+--- df -h after
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        25G  4.1G   20G  17% /
+tmpfs           993M   12K  993M   1% /tmp
+/dev/root        25G  4.1G   20G  17% /
+--- is /tmp RAM? write 256 MiB then check cgroup memory.current delta
+268435456 bytes (268 MB, 256 MiB) copied, 0.727028 s, 369 MB/s
+cgroup memory.current before=11141120 after=279769088 delta_bytes=268627968
+-rw-r--r-- 1 user user 268435456 Sep  6 17:04 /tmp/memtest.bin
+cgroup memory.current after rm=11931648
+# D2 finished_utc=2026-09-06T17:04:45Z

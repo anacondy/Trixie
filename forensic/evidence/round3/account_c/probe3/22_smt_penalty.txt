@@ -1,0 +1,12 @@
+=== CMD: python3 smt.py
+=== RECORDED_UTC: 2026-09-06T17:06:34Z
+cpu0 sched_affinity of self: {0, 1}
+smt siblings again: 0-1
+tA (1 proc, cpu0)        = 6.968s
+tA2 (repeat)             = 6.969s
+tB (2 procs, cpu0+cpu1)  = 7.062s
+tC (2 procs, both cpu0)  = 13.947s
+SMT throughput speedup (2x work in tB vs 1x in tA): 1.973x
+same-core contention ratio tC/tA (expect ~2.0 if threads share core): 2.002
+cpufreq: no scaling_governor exposed (VM, fixed freq?)
+=== EXIT: 0

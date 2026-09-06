@@ -1,0 +1,17 @@
+=== CMD: fd ceiling retry (resource.setrlimit, bash ulimit, prlimit)
+=== RECORDED_UTC: 2026-09-06T17:08:02Z
+python 3.13.14
+os.setrlimit present: False
+resource.setrlimit present: True
+start rlimit: (1024, 524288)
+phaseA(soft inherited): opened 1018 fds in 0.00s then OSError(24, 'Too many open files')
+raised to hard: (524288, 524288)
+phaseB(soft=hard): opened 524282 fds in 0.65s then OSError(24, 'Too many open files')
+----- prlimit availability -----
+/usr/bin/prlimit
+----- bash ulimit raise then child drive -----
+524288
+child rlimit: (524288, 524288)
+bash-ulimit child opened 524282 then OSError(24, 'Too many open files')
+----- fd count after all: /proc/self/fd -----
+7

@@ -1,0 +1,99 @@
+=== CMD: D3b — certs, SNI vs IP, SSH banners, UDP DNS vs DoH, broader domain set, egress IP
+=== RECORDED_UTC: 2026-09-06T17:10:28Z
+## A. TLS certificate issuers (MITM check) ##
+-- speed.cloudflare.com
+   * ALPN: curl offers h2,http/1.1
+   * SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384 / X25519MLKEM768 / id-ecPublicKey
+   * ALPN: server accepted http/1.1
+   *  subject: CN=speed.cloudflare.com
+   *  expire date: Nov 22 09:29:14 2026 GMT
+   *  issuer: C=US; O=Google Trust Services; CN=WE1
+-- github.com
+   * ALPN: curl offers h2,http/1.1
+   * SSL connection using TLSv1.3 / TLS_AES_128_GCM_SHA256 / x25519 / id-ecPublicKey
+   * ALPN: server accepted h2
+   *  subject: CN=github.com
+   *  expire date: Nov 29 23:59:59 2026 GMT
+   *  issuer: C=GB; O=Sectigo Limited; CN=Sectigo Public Server Authentication CA DV E36
+-- www.google.com
+   * ALPN: curl offers h2,http/1.1
+   * SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384 / X25519MLKEM768 / id-ecPublicKey
+   * ALPN: server accepted h2
+   *  subject: CN=www.google.com
+   *  expire date: Nov  2 08:39:48 2026 GMT
+   *  issuer: C=US; O=Google Trust Services; CN=WR2
+
+## B. SSH banners (real hosts vs TEST-NET falsifier) ##
+github.com:22          (no banner within 6s)
+
+gitlab.com:22          (no banner within 6s)
+
+192.0.2.1:22           (no banner within 6s)
+
+203.0.113.1:22         (no banner within 6s)
+
+
+## C. direct-IP vs hostname (SNI level) ##
+-- A: hostname (control):
+   code=200 ttfb=0.027380s
+-- B: real IP as URL, SNI=IP, -k:
+   code=301 ttfb=0.036645s
+-- C: real IP + Host header, SNI=IP, -k:
+   code=200 ttfb=0.026234s
+-- D: TEST-NET IP with TLS (should fail if proxy is honest):
+curl: (28) Connection timed out after 15002 milliseconds
+   code=000 ttfb=0.000000s
+   FAILED
+-- E: plain HTTP to TEST-NET, what does proxy answer?:
+HTTP/1.1 404 Not Found
+Content-Type: application/json; charset=utf-8
+Date: Sun, 06 Sep 2026 17:11:08 GMT
+Content-Length: 43
+
+{"error":"no matching operation was found"}
+## D. UDP DNS direct vs DoH ##
+UDP DNS 8.8.8.8:53 OK in 1ms, 61 bytes
+-- DoH 1.1.1.1:
+{"Status":0,"TC":false,"RD":true,"RA":true,"AD":false,"CD":false,"Question":[{"name":"example.com","type":1}],"Answer":[{"name":"example.com","type":1,"TTL":148,"data":"172.66.147.243"},{"name":"example.com","type":1,"TTL":148,"data":"104.20.23.154"}
+
+## E. broader reachability set (HTTP codes only) ##
+raw.githubusercontent.com    code=301 ttfb=0.031764s
+objects.githubusercontent.com code=404 ttfb=0.028906s
+api.github.com               code=200 ttfb=0.039379s
+codeload.github.com          code=301 ttfb=0.113872s
+files.pythonhosted.org       code=200 ttfb=0.041175s
+registry-1.docker.io         code=404 ttfb=0.210849s
+ghcr.io                      code=301 ttfb=0.114022s
+static.crates.io             code=403 ttfb=0.141116s
+proxy.golang.org             code=200 ttfb=0.019956s
+deb.debian.org               code=200 ttfb=0.032817s
+security.debian.org          code=302 ttfb=0.034039s
+snapshot.debian.org          code=200 ttfb=0.510875s
+nodejs.org                   code=307 ttfb=0.142072s
+www.python.org               code=200 ttfb=0.038290s
+telegram.org                 code=200 ttfb=0.567935s
+www.signal.org               code=301 ttfb=0.108751s
+gitlab.com                   code=301 ttfb=0.206289s
+bitbucket.org                code=200 ttfb=3.225816s
+launchpad.net                code=200 ttfb=0.425965s
+archive.ubuntu.com           code=200 ttfb=0.218819s
+ppa.launchpad.net            curl: (60) SSL: no alternative certificate subject name matches target hostname 'ppa.launchpad.net'
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the webpage mentioned above.
+code=000 ttfb=0.000000s
+CURL_FAIL
+go.dev                       code=200 ttfb=0.067445s
+crates.io                    code=403 ttfb=0.050133s
+repo1.maven.org              code=200 ttfb=0.080147s
+
+## F. egress IP & egress hostname ##
+34.82.237.153
+34.82.237.153
+## G. infrastructure: iptables/nft (permission check) ##
+timeout: failed to run command 'nft': No such file or directory
+timeout: failed to run command 'iptables': No such file or directory
+## H. proxy env vars (masked) ##
+(none if empty)

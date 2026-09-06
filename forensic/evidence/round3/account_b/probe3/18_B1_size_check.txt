@@ -1,0 +1,4 @@
+=== size_download check on speed.cloudflare.com 32MiB ===
+size_download=33554432 time_total=0.236815
+=== 128MiB fetch: sustained-throughput sanity ===
+size_download=1 time_total=0.035932 ttfb=0.035891

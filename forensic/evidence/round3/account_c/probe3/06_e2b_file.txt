@@ -1,0 +1,7 @@
+=== CMD: sh -c cat /.e2b 2>&1; ls -la /.e2b 2>&1
+=== RECORDED_UTC: 2026-09-06T17:04:20Z
+ENV_ID=nlhz8vlwyupq845jsdg9
+TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+BUILD_ID=f34a5416-ef30-4cb7-8e18-0fdecd6eb529
+-rw-r--r-- 1 root root 107 Jul 23 18:05 /.e2b
+=== EXIT: 0

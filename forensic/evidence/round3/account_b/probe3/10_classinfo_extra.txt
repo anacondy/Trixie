@@ -1,0 +1,18 @@
+--- hostname ---
+e2b.local
+--- systemd-detect-virt ---
+kvm
+--- nproc ---
+2
+--- E2B-ish env ---
+E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+E2B_EVENTS_ADDRESS=http://192.0.2.1
+E2B_SANDBOX_ID=i8h6fqsmx2z4wfzs4klkk
+E2B_SANDBOX=true
+--- proxy env ---
+--- resolv.conf ---
+nameserver 8.8.8.8--- /etc/debian_version ---
+13.6
+--- VERSION_ID/CODENAME ---
+VERSION_ID="13"
+VERSION_CODENAME=trixie

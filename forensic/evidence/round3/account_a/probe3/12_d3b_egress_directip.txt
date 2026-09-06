@@ -1,0 +1,88 @@
+# D3b EGRESS MECHANISM - corrected direct-IP arms (IPv4 literals)  recorded_utc=2026-09-06T17:06:22Z
+# NOTE on 11_d3_egress.txt: 'direct-ip' arms were invalid there (getent returned AAAA first -> curl(3)).
+# Arms: (1) hostname via DNS [control], (2) IPv4 literal URL + --resolve pin (SNI+Host = real domain, DNS bypassed),
+#       (3) IPv4 literal URL WITHOUT --resolve (SNI/Host = the IP -> wrong name), (4) python TCP connect + HTTP GET to the same IP.
+
+=== example.com  A=172.66.147.243 ===
+  (1) hostname:      http=200 dns=0.001646 connect=0.001916 ttfb=0.036366 ip=172.66.147.243
+  (2) IP+--resolve:  http=200 connect=0.000217 ttfb=0.031899 ip=172.66.147.243
+curl: (35) TLS connect error: error:0A000410:SSL routines::ssl/tls alert handshake failure
+  (3) IP-only SNI:   http=000 connect=0.000211 ttfb=0.000000 ip=
+  (3) exit=35
+  (4) py TCP ok in 0.002s, TLS+GET first bytes: b'HTTP/1.1 200 OK\r\nDate: Sun, 06 Sep 2026 ' (0.055s)
+=== pastebin.com  A=172.66.171.73 ===
+  (1) hostname:      http=200 dns=0.024942 connect=0.025183 ttfb=0.253670 ip=172.66.171.73
+  (2) IP+--resolve:  http=200 connect=0.000219 ttfb=0.233054 ip=172.66.171.73
+curl: (35) TLS connect error: error:0A000410:SSL routines::ssl/tls alert handshake failure
+  (3) IP-only SNI:   http=000 connect=0.000249 ttfb=0.000000 ip=
+  (3) exit=35
+  (4) py TCP ok in 0.002s, TLS+GET first bytes: b'HTTP/1.1 200 OK\r\nDate: Sun, 06 Sep 2026 ' (0.254s)
+=== api.anthropic.com  A=160.79.104.10 ===
+  (1) hostname:      http=404 dns=0.023904 connect=0.024145 ttfb=0.054498 ip=160.79.104.10
+  (2) IP+--resolve:  http=404 connect=0.000222 ttfb=0.027607 ip=160.79.104.10
+curl: (35) TLS connect error: error:0A000410:SSL routines::ssl/tls alert handshake failure
+  (3) IP-only SNI:   http=000 connect=0.000223 ttfb=0.000000 ip=
+  (3) exit=35
+  (4) py TCP ok in 0.002s, TLS+GET first bytes: b'HTTP/1.1 404 Not Found\r\nDate: Sun, 06 Se' (0.127s)
+=== pypi.org  A=151.101.0.223 ===
+  (1) hostname:      http=200 dns=0.001520 connect=0.001788 ttfb=0.035052 ip=151.101.0.223
+  (2) IP+--resolve:  http=200 connect=0.000230 ttfb=0.031450 ip=151.101.0.223
+curl: (60) SSL: no alternative certificate subject name matches target ipv4 address '151.101.0.223'
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the webpage mentioned above.
+  (3) IP-only SNI:   http=000 connect=0.000253 ttfb=0.000000 ip=
+  (3) exit=60
+  (4) py TCP ok in 0.002s, TLS+GET first bytes: b'HTTP/1.1 200 OK\r\nConnection: close\r\nCont' (0.051s)
+=== github.com  A=140.82.116.4 ===
+  (1) hostname:      http=200 dns=0.001614 connect=0.001796 ttfb=0.031564 ip=140.82.116.3
+  (2) IP+--resolve:  http=200 connect=0.000238 ttfb=0.028343 ip=140.82.116.4
+curl: (60) SSL: no alternative certificate subject name matches target ipv4 address '140.82.116.4'
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the webpage mentioned above.
+  (3) IP-only SNI:   http=000 connect=0.000235 ttfb=0.000000 ip=
+  (3) exit=60
+  (4) py TCP ok in 0.002s, TLS+GET first bytes: b'HTTP/1.1 200 OK\r\nDate: Sun, 06 Sep 2026 ' (0.014s)
+=== openai.com  A=104.18.33.45 ===
+  (1) hostname:      http=403 dns=0.013786 connect=0.014075 ttfb=0.048175 ip=104.18.33.45
+  (2) IP+--resolve:  http=403 connect=0.000348 ttfb=0.042212 ip=104.18.33.45
+curl: (35) TLS connect error: error:0A000410:SSL routines::ssl/tls alert handshake failure
+  (3) IP-only SNI:   http=000 connect=0.000254 ttfb=0.000000 ip=
+  (3) exit=35
+  (4) py TCP ok in 0.002s, TLS+GET first bytes: b'HTTP/1.1 403 Forbidden\r\nDate: Sun, 06 Se' (0.063s)
+
+=== IPv6 egress test ===
+curl: (7) Failed to connect to cloudflare.com port 443 after 10 ms: Could not connect to server
+cloudflare v6: http=000 ttfb=0.000000 ip=
+curl -6 exit=7
+=== is there an HTTP proxy on the wire? (no *proxy* env vars; check listening sockets) ===
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+LISTEN 0      100        127.0.0.1:35769      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:47945      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:34675      0.0.0.0:*          
+LISTEN 0      4096         0.0.0.0:111        0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:35769      0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:47945      0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:34675      0.0.0.0:*          
+LISTEN 0      128        127.0.0.1:8888       0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:8888       0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:44461      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:35105      0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:39379      0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:41435      0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:43501      0.0.0.0:*          
+LISTEN 0      100        127.0.0.1:35105      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:44461      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:39379      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:41435      0.0.0.0:*          
+LISTEN 0      5       169.254.0.21:43501      0.0.0.0:*          
+=== routing ===
+default via 169.254.0.22 dev eth0 
+169.254.0.20/30 dev eth0 proto kernel scope link src 169.254.0.21 
+    inet 169.254.0.21/30 brd 169.254.0.23 scope global eth0
+# D3b finished_utc=2026-09-06T17:06:24Z

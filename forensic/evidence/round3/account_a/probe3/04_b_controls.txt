@@ -1,0 +1,30 @@
+# content_write_time=2026-09-06T17:11:52Z (added post-hoc; see manifest note)
+# SECTION B - REASONING CONTROLS (B2 known-good first, B3 known-bad first)
+=== B2.a KNOWN-GOOD CONTROL (must succeed) ===
+--- control 1: example.com via curl -sS -o /dev/null -w
+http=200 dns=0.023894 connect=0.024142 tls=0.054205 ttfb=0.073634 total=0.073713 size=559 ip=104.20.23.154
+--- control 2: DNS resolution path
+2606:4700:10::6814:179a example.com
+2606:4700:10::ac42:93f3 example.com
+py getaddrinfo: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('104.20.23.154', 443))]
+--- control 3: proxy env / resolv.conf
+(no *proxy* env vars)
+nameserver 8.8.8.8=== B3.a FALSE-POSITIVE CONTROL: RFC5737 TEST-NET, must FAIL ===
+--- curl connect to 192.0.2.1:443 (expect fail/timeout)
+curl: (28) Connection timed out after 8002 milliseconds
+http=000 connect=0.000000 total=8.002898 ip=
+curl_exit=28 -> FAILED as required
+--- curl connect to 198.51.100.1:443 (expect fail/timeout)
+curl: (28) Connection timed out after 8001 milliseconds
+http=000 connect=0.000000 total=8.001512 ip=
+curl_exit=28 -> FAILED as required
+--- curl connect to 203.0.113.1:443 (expect fail/timeout)
+curl: (28) Connection timed out after 8002 milliseconds
+http=000 connect=0.000000 total=8.002118 ip=
+curl_exit=28 -> FAILED as required
+--- python raw connect() to 192.0.2.1:80 (expect fail)
+('192.0.2.1', 80) CONNECTED (UNTRUSTWORTHY PROBE!) in 0.004s
+('198.51.100.1', 443) CONNECTED (UNTRUSTWORTHY PROBE!) in 0.000s
+('203.0.113.1', 22) CONNECTED (UNTRUSTWORTHY PROBE!) in 0.000s
+--- E2B_EVENTS_ADDRESS points at RFC5737 TEST-NET-1; is it reachable? (expect no)
+http=404 total=0.002019
