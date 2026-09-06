@@ -1,0 +1,36 @@
+=== DNS resolution (getent ahostsv4) ===
+DNS example.com => 104.20.23.154   STREAM example.com
+DNS www.google.com => 142.251.156.119 STREAM www.google.com
+DNS en.wikipedia.org => 198.35.26.224   STREAM dyna.wikimedia.org
+DNS github.com => 140.82.116.4    STREAM github.com
+DNS www.youtube.com => 142.251.157.4   STREAM www.youtube.com
+DNS www.reddit.com => 151.101.129.140 STREAM reddit.map.fastly.net
+DNS x.com => 151.101.66.146  STREAM x.com
+DNS speed.cloudflare.com => 172.66.0.218    STREAM speed.cloudflare.com
+DNS pypi.org => 151.101.192.223 STREAM pypi.org
+DNS www.python.org => 151.101.192.223 STREAM dualstack.python.map.fastly.net
+DNS news.ycombinator.com => 209.216.230.207 STREAM news.ycombinator.com
+=== HTTP (port 80, Host header only) ===
+HTTP example.com => code=200 t=0.031015
+HTTP www.google.com => code=200 t=0.040205
+HTTP en.wikipedia.org => code=301 t=0.058270
+HTTP github.com => code=301 t=0.022980
+HTTP www.youtube.com => code=301 t=0.080925
+HTTP www.reddit.com => code=301 t=0.017851
+HTTP x.com => code=301 t=0.022703
+HTTP speed.cloudflare.com => code=301 t=0.030948
+HTTP pypi.org => code=301 t=0.017312
+HTTP www.python.org => code=301 t=0.030385
+HTTP news.ycombinator.com => code=301 t=0.090992
+=== HTTPS (TLS SNI) ===
+HTTPS example.com => code=200 t=0.071033 ttfb=0.070939
+HTTPS www.google.com => code=200 t=0.052985 ttfb=0.051766
+HTTPS en.wikipedia.org => code=301 t=0.088843 ttfb=0.088769
+HTTPS github.com => code=200 t=0.069542 ttfb=0.030837
+HTTPS www.youtube.com => code=200 t=0.310335 ttfb=0.179002
+HTTPS www.reddit.com => code=403 t=0.050049 ttfb=0.032258
+HTTPS x.com => code=200 t=0.138060 ttfb=0.135449
+HTTPS speed.cloudflare.com => code=200 t=0.064485 ttfb=0.062745
+HTTPS pypi.org => code=200 t=0.032367 ttfb=0.030596
+HTTPS www.python.org => code=200 t=0.043208 ttfb=0.036729
+HTTPS news.ycombinator.com => code=200 t=0.165965 ttfb=0.131819

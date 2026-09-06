@@ -1,0 +1,17 @@
+=== CMD: sh -c echo "soft: $(ulimit -Sn)  hard: $(ulimit -Hn)"; echo "nofile-soft: $(ulimit -n)"; ulimit -a
+=== RECORDED_UTC: 2026-09-06T17:04:24Z
+soft: 1024  hard: 524288
+nofile-soft: 1024
+time(seconds)        unlimited
+file(blocks)         unlimited
+data(kbytes)         unlimited
+stack(kbytes)        8192
+coredump(blocks)     0
+memory(kbytes)       unlimited
+locked memory(kbytes) 8192
+process              7917
+nofiles              1024
+vmemory(kbytes)      unlimited
+locks                unlimited
+rtprio               0
+=== EXIT: 0

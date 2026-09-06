@@ -1,0 +1,39 @@
+=== CMD: C5 wrong-path check, D6 core_id falsifier, process-count sanity, D5 timings
+=== RECORDED_UTC: 2026-09-06T17:14:19Z
+--- C5: is there a /sys/fs/cgroup/ WITHOUT user/? ---
+total 0
+dr-xr-xr-x 13 root root 0 Jul 23 18:05 .
+drwxr-xr-x 10 root root 0 Jul 23 18:05 ..
+-r--r--r--  1 root root 0 Sep  6 17:14 cgroup.controllers
+-rw-r--r--  1 root root 0 Sep  6 17:14 cgroup.max.depth
+-rw-r--r--  1 root root 0 Sep  6 17:14 cgroup.max.descendants
+-rw-r--r--  1 root root 0 Sep  6 17:14 cgroup.procs
+-r--r--r--  1 root root 0 Sep  6 17:14 cgroup.stat
+--- top-level cgroup files ---
+cgroup.controllers
+cgroup.events
+cgroup.freeze
+cgroup.kill
+cgroup.max.depth
+cgroup.max.descendants
+cgroup.procs
+cgroup.stat
+cgroup.subtree_control
+cgroup.threads
+cgroup.type
+cpu.idle
+--- D6 falsifier: core_id / physical_package_id per cpu ---
+cpu0: core_id=0 physical_package_id=0 sibling_list=0-1
+cpu1: core_id=0 physical_package_id=0 sibling_list=0-1
+--- D5f: 100 concurrent procs in one shell ---
+100
+all 100 done in 2.08s
+--- D5 recorded timestamps ---
+p1: D5 call p1 start: 1788714704.184732600 / 17:11:44.186 D5 call p1 end:   1788714707.189495879 / 17:11:47.190 
+p2: D5 call p2 start: 1788714705.376927954 / 17:11:45.378 D5 call p2 end:   1788714708.381612308 / 17:11:48.383 
+p3: D5 call p3 start: 1788714706.589504935 / 17:11:46.590 D5 call p3 end:   1788714709.594147385 / 17:11:49.595 
+p4: D5 call p4 start: 1788714707.726314893 / 17:11:47.727 D5 call p4 end:   1788714710.730931863 / 17:11:50.732 
+p5: D5 call p5 start: 1788714708.964122188 / 17:11:48.965 D5 call p5 end:   1788714711.968696711 / 17:11:51.970 
+p6: D5 call p6 start: 1788714710.169738923 / 17:11:50.171 D5 call p6 end:   1788714713.174376456 / 17:11:53.175 
+p7: D5 call p7 start: 1788714711.391062767 / 17:11:51.392 D5 call p7 end:   1788714714.395571649 / 17:11:54.396 
+p8: D5 call p8 start: 1788714712.585063523 / 17:11:52.586 D5 call p8 end:   1788714715.589715304 / 17:11:55.591 

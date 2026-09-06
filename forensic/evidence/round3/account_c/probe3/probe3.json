@@ -1,0 +1,253 @@
+{
+  "run": {
+    "timestamp_utc": "2026-09-06T17:04:20Z (first capture; last command 17:15:00Z)",
+    "surface": "arena.ai Agent Mode (agent tool-shell session) — NOT arena.ai/code; Section E NOT PERFORMED",
+    "browser": "n/a — no browser in this session; curl 8.14.1 used as HTTP client",
+    "account_label": "n/a — not exposed to sandbox (env shows only E2B_* and standard vars)",
+    "sandbox_id": "ids70tfd987wffpjczbai",
+    "template_id": "nlhz8vlwyupq845jsdg9",
+    "build_id": "f34a5416-ef30-4cb7-8e18-0fdecd6eb529",
+    "vm_class": "T",
+    "os_pretty": "Debian GNU/Linux 13 (trixie), DEBIAN_VERSION_FULL=13.6",
+    "kernel_stamp": "#1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026 (kernel 6.1.158+)",
+    "python_ver": "3.13.14"
+  },
+  "calibration": [
+    {
+      "id": "A1",
+      "answer_memory": "Los Angeles Dodgers beat NY Yankees 4-1, clinched 2024-10-30 (Game 5, 7-6).",
+      "answer_search": "Confirmed: Dodgers 4-1, 7-6 Game 5 at Yankee Stadium, Freeman WS MVP, 8th title (deadline.com [1], aljazeera.com [2]).",
+      "cutoff_self": "2024-06",
+      "confidence": 0.99
+    },
+    {
+      "id": "A2",
+      "answer_memory": "India won the 2025 ICC Champions Trophy, beating New Zealand in the final in Dubai.",
+      "answer_search": "Confirmed: India 254/6 vs NZ 251/7, won by 4 wickets, 2025-03-09, Dubai; Rohit Sharma 76 (POTM); India's 3rd CT title (aljazeera.com [3], wikipedia [4], icc-cricket.com [5]).",
+      "cutoff_self": "2024-06",
+      "confidence": 0.97
+    },
+    {
+      "id": "A3",
+      "answer_memory": "'cannot verify' — honestly could not name a specific published PQC-audit CLI from memory; would NOT have asserted absence.",
+      "answer_search": "YES — multiple published, user-facing tools exist: (1) Mini PQC Scanner (github.com/oferzinger/mini-pqc-scanner, open-source CLI, released ~2025-09; checks TLS handshakes/certs, OpenSSH & VPN configs, OpenSSL/crypto libraries, Apache/Nginx, cloud env) [6]; (2) quantakrypto/pqc-tools: qScan (classical-crypto scanner across 14 languages + readiness score) and qProbe (active TLS/SSH endpoint probe for PQC-hybrid KEX and classical-cert posture, ownership-gated) [7]; (3) ssh-audit (sshd algorithm inventory incl. mlkem768x25519/sntrup761 hybrid KEX — server side, not key files) [8][9]; (4) Wiz host-configuration auditing for PQC readiness — commercial platform, not a standalone CLI [10]. NUANCE: I found NO single published CLI that audits all four layers in one run (classical-vs-hybrid SSH KEYS on disk + quantum-vulnerable GPG keys + OpenSSH/OpenSSL support + browser PQC support); coverage is split across tools, and GPG-key-algorithm auditing is the least covered.",
+      "cutoff_self": "2024-06",
+      "confidence": 0.82
+    },
+    {
+      "id": "A4",
+      "answer_memory": "uname -a kernel build date = Fri Jul 17 14:31:34 UTC 2026 (observed 09_uname_a.txt), i.e. ~2 years after my self-reported cutoff (2024-06). IMPLICATION: nothing I 'know' about this environment can come from training. Every environment fact in this report (template id, /.e2b format, /etc/hosts 192.0.2.1 entry, cgroup path /sys/fs/cgroup/user/, gateway 404 JSON, Debian 13.6 + Python 3.13.14 + kernel 6.1.158 Jul-2026) was OBSERVED LIVE in this run, not recalled. Training-era priors about e2b/Agent Mode are untrustworthy here.",
+      "answer_search": "n/a (local observation; no search needed)",
+      "cutoff_self": "2024-06",
+      "confidence": 0.9
+    },
+    {
+      "id": "A5",
+      "answer_memory": "RECALL HORIZON (memory only, no search): newest release I can NAME WITH DATE from recall = Claude 3.5 Sonnet (2024-06-20); GPT-4o (2024-05-13); Gemini 1.5 Pro (2024-02); DeepSeek-V2 (2024-05). Vendor-specific context-window flags of the form context-1m-YYYY-MM-DD: NONE recallable (honest absence — that convention post-dates my horizon). First notable release I MISS: Claude 3.7 Sonnet (know it exists, cannot date it; ~2025-02) — also o3 / GPT-4.5-class releases are undatable from my recall. BRACKET: [2024-06-20 (Claude 3.5 Sonnet)] .. [~2025-02 (Claude 3.7 Sonnet, name-only)]. This bracket is consistent with my rote cutoff but is a more reliable clock.",
+      "answer_search": "not used — A5 is memory-only by design",
+      "cutoff_self": "2024-06",
+      "confidence": 0.55
+    }
+  ],
+  "falsifications": [
+    {
+      "id": "B3-CONNECT-HIJACK",
+      "claim": "TCP connect() answers for unroutable RFC5737 TEST-NET addresses, so connect() results are NOT evidence of reachability",
+      "confirming_cmd": "bash -c 'exec 3<>/dev/tcp/192.0.2.1/443' and '/dev/tcp/203.0.113.1/443'",
+      "confirming_out": "CONNECT_OK (both TEST-NET-1 and TEST-NET-3; also 8.8.8.8:53)", 
+      "falsifying_cmd": "real TLS to the identical TEST-NET address: curl -sk https://192.0.2.1/ ; plus curl http://192.0.2.1/",
+      "falsifying_out": "curl: (28) Connection timed out after 15002 ms (TLS to TEST-NET); plain HTTP to TEST-NET returns HTTP/1.1 404 with {\"error\":\"no matching operation was found\"} — internal E2B gateway answering",
+      "verdict": "CONFIRMED. connect() is hijacked/answered by an accept-all gateway; all network conclusions in this run use HTTP code + TTFB (real exchange), never connect() alone.",
+      "grade": "MEASURED"
+    },
+    {
+      "id": "A0-CLASS-T",
+      "claim": "This box is CLASS T (Debian 13 / Py 3.13 / kernel stamp Fri Jul 17 14:31:34 UTC 2026 / MemTotal 2032608 kB)",
+      "confirming_cmd": "grep PRETTY_NAME /etc/os-release; python3 -V; uname -v; grep MemTotal /proc/meminfo",
+      "confirming_out": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\" (13.6); Python 3.13.14; '#1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026'; MemTotal 2032608 kB",
+      "falsifying_cmd": "same commands checked against CLASS-B discriminators (bookworm string, 3.11, 'Mon May 11 18:48:24 UTC 2026', ~3.8 GiB)",
+      "falsifying_out": "no CLASS-B discriminator present anywhere in 01_os_release.txt / 02_uname_v.txt / 03_python3_ver.txt / 04_meminfo.txt; cgroup memory.max=1947172864 B (1.8134 GiB) is consistent with a 1.94 GiB guest (host reserves the delta).",
+      "verdict": "CLASS T — all five discriminators agree; no force-fitting required. (Class identity is a fit to the two known classes, not proof of provenance.)",
+      "grade": "MEASURED"
+    },
+    {
+      "id": "D1-OOM-SCOPE",
+      "claim": "OOM kill is cgroup-scoped to the allocating subprocess; session survives; ceiling between 1624.85 and 1653.86 MiB of process anon",
+      "confirming_cmd": "python3 src/oombisect2.py (subprocess allocate-and-touch, bisect to <=32 MiB)",
+      "confirming_out": "last success 1703776256 B (1624.848 MiB), first kill 1734200832 B (1653.863 MiB), gap 29.0 MiB; rc=-9 (SIGKILL); cgroup memory.events oom_kill 0->5; peak sampled memory.current 1641.5 / 1648.2 MiB pre-kill; cgroup memory.max=1856.97 MiB",
+      "falsifying_cmd": "session-survival check: 6 further trial subprocesses executed by the SAME shell after 3 kills; memory.events re-read; final memory.current",
+      "falsifying_out": "all later trials ran fine; same shell alive ('SURVIVED_OK', 2026-09-06T17:05:30Z); memory.current returned to 6.2 MiB — if the session had died, no later command would have produced output",
+      "verdict": "CONFIRMED child-scoped kill, session survives. Caveat: kills occurred 174–208 MiB BELOW the cgroup memory.max reading because page cache (up to ~1.57 GiB observed) also counts against memory.max, so the exact anon ceiling depends on cache pressure; cgroup-vs-hypervisor attribution of the killing mechanism cannot be fully separated with in-guest tools.",
+      "grade": "MEASURED"
+    },
+    {
+      "id": "D6-SMT-SIBLINGS",
+      "claim": "cpu0/cpu1 are SMT threads of ONE physical core (siblings 0-1), with ~no SMT penalty",
+      "confirming_cmd": "cat /sys/devices/system/cpu/cpuN/topology/{core_id,physical_package_id,thread_siblings_list}; taskset compute benchmark (python3 src/smt.py)",
+      "confirming_out": "cpu0 and cpu1 both: core_id=0, physical_package_id=0, thread_siblings_list=0-1; tA(1 cpu0)=6.968s, tB(cpu0,cpu1)=7.062s => 2-workload throughput speedup 1.973x; tC(both cpu0)=13.947s => contention ratio 2.002",
+      "falsifying_cmd": "core_id comparison (if they were separate physical cores, core_id would differ 0 vs 1)",
+      "falsifying_out": "core_id identical (=0) for both -> falsifier CLEAN; no cpufreq scaling_governor exposed => fixed-frequency VM, so frequency-scaling did not confound the ratios",
+      "verdict": "CONFIRMED: one physical core, 2 SMT threads; SMT overhead ~1.4% (speedup 1.973x vs ideal 2.000x); double-pinning one thread gains nothing (2.002x).",
+      "grade": "MEASURED"
+    },
+    {
+      "id": "D4-FD-CEILING",
+      "claim": "fd ceiling = soft 1024 (EMFILE ~1017), hard 524288, and the hard limit is real and reachable",
+      "confirming_cmd": "python3 src/fdtest2.py (os.open loop until OSError); resource.setrlimit((hard,hard)); then bash 'ulimit -n 524288' + child drive",
+      "confirming_out": "phaseA: 1018 fds then OSError(24,'Too many open files'); after setrlimit: 524282 fds then EMFILE; bash ulimit path: child opened 524282 then EMFILE; nr_open=1073741816, fs.file-max=2^63-1",
+      "falsifying_cmd": "if a smuggled container cap (e.g. 4096) existed below the hard limit, EMFILE would occur far below 524288",
+      "falsifying_out": "EMFILE appeared only at 524282 fds — no hidden cap below the hard limit; also os.setrlimit is ABSENT from this Python build (AttributeError) but resource.setrlimit works — noted as a build quirk",
+      "verdict": "CONFIRMED. A child CAN raise its soft limit to the hard 524288 and use all of it.",
+      "grade": "MEASURED"
+    },
+    {
+      "id": "D3-EGRESS-OPEN",
+      "claim": "For the tested set (~45 hosts), egress is OPEN at DNS, IP and SNI layers; no TLS MITM; SSH-22 works; the only 'proxy' found is an accept-all gateway",
+      "confirming_cmd": "python getaddrinfo (16 hosts); curl HTTPS (45 hosts); curl -v cert issuers; UDP DNS query to 8.8.8.8:53; DoH to 1.1.1.1; ssh -p22 git@github.com",
+      "confirming_out": "all 16 DNS resolve (1-64ms); all 45 HTTPS reachable with app-layer codes (200/301/302/307/404); certs from Google Trust Services (WE1/WR2) and Sectigo with valid SANs => no TLS interception; UDP:53 answered in 1ms; DoH answered; ssh reached REAL github sshd (ED25519 host key accepted, then 'Permission denied (publickey)'); egress IP 34.82.237.153 (GCP) per ifconfig.me and ipify",
+      "falsifying_cmd": "identical probes to targets that SHOULD fail: TEST-NET TLS, TEST-NET HTTP, ssh to 192.0.2.1:22; plus app-layer-fail targets (reddit, static.crates.io, ppa.launchpad.net)",
+      "falsifying_out": "https://192.0.2.1/ times out (15002ms); http://192.0.2.1/ -> gateway JSON 404; ssh 192.0.2.1:22 -> 'Connection timed out during banner exchange'; reddit.com & static.crates.io 403, ppa.launchpad.net cert SAN mismatch — all app-layer, not network-layer blocks; speed.cloudflare.com/__down?bytes=16MiB -> 403 while 2/4MiB -> 200 (server-side rule)",
+      "verdict": "CONFIRMED for the tested set. NO blocklist found at DNS/SNI/IP layer. Scope: ~45 hostnames + ports 22/53/80/443; SSH-22 verified only to github.com (gitlab.com banner test inconclusive via raw /dev/tcp, but the ssh-client control proved the method works). 'Filtered-looking' hosts turned out to be app-layer (403/bot-walls/cert issues).",
+      "grade": "MEASURED"
+    },
+    {
+      "id": "B1-NOT-CAUSAL",
+      "claim": "The co-occurrence 'slow download with high CPU' is NOT caused by local CPU pressure",
+      "confirming_cmd": "initial observation: curl __down?bytes=2097152 with idle CPU = 14.38 MB/s",
+      "confirming_out": "idle_2MiB: 14383659 B/s; later idle runs: 10.85-31.44 MB/s (idle1 ttfb 0.314s vs idle2 0.086s) — huge variance with no CPU activity",
+      "falsifying_cmd": "controlled discrimination: verify CPU actually pegged via /proc/stat busy-fraction sampler, then re-download while two sha512 burners hold both CPUs at 100%",
+      "falsifying_out": "busy fraction verified 100.0% during burners (ambient baseline already 53.4% with sidecar processes); downloads during 100% CPU: 29.62 and 19.98 MB/s — the FASTEST run of the whole experiment occurred at 100% CPU; TTFBs 0.065-0.314s uncorrelated with CPU state",
+      "verdict": "Causation FALSIFIED: correlation not reproduced under control. Confounders: shared-host/VM load (ambient ~53% busy even 'idle'), network path/shaping variance, and possibly reverse causation (fast transfers burn CPU for TLS + copy).",
+      "grade": "MEASURED"
+    }
+  ],
+  "measurements": [
+    {
+      "id": "M01-A0-LOCK",
+      "command": "grep PRETTY_NAME /etc/os-release; uname -v; python3 -V; grep MemTotal /proc/meminfo; df -h / | tail -1; cat /.e2b; env | grep ^E2B_TEMPLATE_ID; cat /proc/sys/kernel/random/boot_id",
+      "raw_output": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\" | #1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026 | Python 3.13.14 | MemTotal: 2032608 kB | /dev/root 25G 4.1G 20G 17% / | ENV_ID=nlhz8vlwyupq845jsdg9 TEMPLATE_ID=nlhz8vlwyupq845jsdg9 BUILD_ID=f34a5416-ef30-4cb7-8e18-0fdecd6eb529 | E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9 | 2bb79165-136a-4b63-829d-17027b0a8e40",
+      "value": "CLASS T; template nlhz8vlwyupq845jsdg9; build f34a5416-ef30-4cb7-8e18-0fdecd6eb529",
+      "unit": "n/a",
+      "status": "ok",
+      "note": "files 01-09; hostname e2b.local; E2B_SANDBOX_ID=ids70tfd987wffpjczbai; boot_id noted (C2: template-constant per prior art — not used as a reboot detector)"
+    },
+    {
+      "id": "M02-MEM-THREE-WAYS-C6",
+      "command": "awk on /proc/meminfo MemTotal; python3 on cgroup memory.max",
+      "raw_output": "MemTotal: 2032608 kB = 1984.97 MiB = 1.93845 GiB (2032608/1024=1984.97; /1048576=1.93845) | memory.max 1947172864 B = 1901536.00 kB = 1856.969 MiB = 1.8134 GiB",
+      "value": "guest 2032608 kB / 1984.97 MiB / 1.93845 GiB; cgroup limit 1947172864 B / 1856.97 MiB / 1.8134 GiB",
+      "unit": "kB / MiB / GiB",
+      "status": "ok",
+      "note": "CONVENTION: kB=1024B, MiB=1048576B, GiB=1073741824B (binary); decimal MB=1e6B used only for disk MB/s, where MiB/s also given. The 1.94 GiB figure is CORRECT; no 1.894 GiB discrepancy (that earlier doc figure is acknowledged as the doc's retracted unit error).",
+    "note2": "meminfo also shows 0 swap, overcommit_memory=0, MemAvailable 1526576-1651904 kB across the run"
+    },
+    {
+      "id": "M03-D1-OOM",
+      "command": "python3 src/oombisect2.py (subprocess bytearray touch, bisect to <=32MiB, 5ms memory.current sampling)",
+      "raw_output": "memory.max=1947172864 (1856.97 MiB) | last_ok=1703776256 (1624.848 MiB) first_kill=1734200832 (1653.863 MiB) gap=29.0 MiB | rc=-9 | peak sampled mem.current: 1641.5 MiB (ok) / 1648.2 MiB (kill) | events: oom_kill 3->5 (oom 0, oom_group_kill 0) | session alive after kills; final memory.current 6.2 MiB",
+      "value": "anon ceiling in [1624.85, 1653.86] MiB (gap 29.0 MiB); kill = SIGKILL to child only",
+      "unit": "MiB",
+      "status": "ok",
+      "note": "Kill did NOT end the session (6 trials ran after 3 kills in same shell). Exact threshold varies with page-cache charge (observed 0.05-1.57 GiB cache counting against memory.max)."
+    },
+    {
+      "id": "M04-D2-DISK",
+      "command": "dd if=/dev/urandom ... ; timed with date +%s.%N; sync timed separately; sha256sum; Shmem deltas for tmpfs proof",
+      "raw_output": "A) 1024 MiB buffered -> /home/user: 3.362s = 304.6 MiB/s (319.4 MB/s); sync 0.047s; B) 5120 MiB O_DIRECT -> /home/user: 18.504s = 276.7 MiB/s (290.1 MB/s); sync 0.003s; C) 512 MiB -> /tmp tmpfs: 1.534s = 333.8 MiB/s (350.0 MB/s); sha256 d1g: ade40d3e...  d5g: b2418055...; tmpfs-RAM proof: Shmem 1096kB -> 410688kB (400 MiB file) -> 1188kB after delete; cgroup current 25.9MB -> 446.0MB -> 26.6MB; page cache after 1G+5G files: memory.current 1688784896 B then 32034816 B after rm+sync",
+      "value": "buffered 304.6 MiB/s; O_DIRECT 276.7 MiB/s; tmpfs 333.8 MiB/s",
+      "unit": "MiB/s",
+      "status": "ok",
+      "note": "C3 complied: /dev/urandom (no zero-fill), sync timed separately. Caveat: figures include urandom generation cost; not raw disk ceiling. tmpfs proven RAM-backed via Shmem+cgroup charge (both rise and fall with file). 5 GiB buffered variant also ran (54.6s wall inc. 1G+5G+5G); 25G ext4 had 20G free."
+    },
+    {
+      "id": "M05-D3-EGRESS",
+      "command": "curl http://192.0.2.1/ ; curl -sk https://192.0.2.1/ ; curl -v cert issuers; python UDP DNS; DoH; ssh -p22 git@github.com; ifconfig.me+ipify",
+      "raw_output": "http://192.0.2.1/ -> HTTP/1.1 404 {\"error\":\"no matching operation was found\"} (E2B gateway); https://192.0.2.1/ -> timeout 15.0s; issuers: Google Trust Services CN=WE1 (speed.cloudflare.com), Sectigo (github.com), Google Trust Services CN=WR2 (google.com); TLS1.3 X25519MLKEM768 negotiated for speed.cloudflare.com and google.com; UDP 8.8.8.8:53 OK 1ms; DoH 1.1.1.1 OK; ssh github.com:22 -> 'Warning: Permanently added github.com (ED25519)... Permission denied (publickey)'; egress IP 34.82.237.153 (both services)",
+      "value": "no MITM; no DNS/SNI/IP blocklist in tested set; SSH-22 open to github.com; gateway answers TEST-NET with JSON 404",
+      "unit": "n/a",
+      "status": "ok",
+      "note": "B3 applied: connect() alone untrusted; all conclusions from HTTP/TLS/SSH exchanges. 45+ hosts tested; 403s (reddit, crates.io) and ppa.launchpad SAN mismatch are app-layer. C4 complied: httpbin.org used for reachability only (TTFB 0.266s), bandwidth from speed.cloudflare.com."
+    },
+    {
+      "id": "M06-D4-FDS",
+      "command": "python3 src/fdtest2.py; bash ulimit -n 524288 + child; /proc/sys/fs/nr_open; ulimit -u; pid_max; pids.max",
+      "raw_output": "soft 1024 / hard 524288; EMFILE at 1018 fds (phaseA) and 524282 fds (raised to hard); nr_open=1073741816; fs.file-max=9223372036854775807; ulimit -u 7917; pid_max 4194304; cgroup pids.max 'max'; 100 concurrent shell procs completed in 2.08s",
+      "value": "soft 1024; achievable ceiling 524282 (hard 524288); raise-from-child allowed",
+      "unit": "fds",
+      "status": "ok",
+      "note": "os.setrlimit missing from this Python build (works via resource module) — build quirk recorded."
+    },
+    {
+      "id": "M07-D5-CONCURRENCY",
+      "command": "8 parallel tool calls, each: date +%s.%N start; sleep 3; date end",
+      "raw_output": "starts (epoch ns): ...704.18, 705.38, 706.59, 707.73, 708.96, 710.17, 711.39, 712.59 => staggered ~1.21s apart; each span 3.005s; p1 ended 707.19 AFTER p2 (705.38) and p3 (706.59) started => 3-way overlap; max observed overlap ~3-5; all 8 succeeded; total window 11.41s",
+      "value": "no per-session cap at 8; dispatcher staggers launches ~1.2s; concurrency allowed (overlap observed)",
+      "unit": "n/a",
+      "status": "ok",
+      "note": "honest correction: calls are NOT launched simultaneously; they overlap 3-5 deep. 100-proc intra-shell burst also fine."
+    },
+    {
+      "id": "M08-D6-SMT",
+      "command": "python3 src/smt.py (sha512 loop, os.sched_setaffinity pinning); topology reads",
+      "raw_output": "tA=6.968s tA2=6.969s tB=7.062s tC=13.947s; SMT speedup 1.973x; same-core contention 2.002x; cpu0/cpu1 core_id=0 package=0 siblings=0-1; no cpufreq exposed",
+      "value": "SMT overhead ~1.4%; 2 threads on 2 siblings ≈ full 2.0x",
+      "unit": "x",
+      "status": "ok",
+      "note": "very repeatable (6.968 vs 6.969). nproc=2, 1 socket x 1 core x 2 threads, Intel Xeon @2.60GHz."
+    },
+    {
+      "id": "M09-LOCAL-PQC-STACK",
+      "command": "ssh -V; ssh -Q kex | grep -iE 'mlkem|sntrup'; openssl version; curl -V; gpg --version",
+      "raw_output": "OpenSSH_10.0p2 Debian-7+deb13u4 | kex: sntrup761x25519-sha512, sntrup761x25519-sha512@openssh.com, mlkem768x25519-sha256 | key types: no ML-DSA/Dilithium/Falcon | OpenSSL 3.5.6 7 Apr 2026 | curl 8.14.1 (OpenSSL/3.5.6) | GnuPG 2.4.7 (libgcrypt 1.11.0) | no browser binary in /usr/bin",
+      "value": "PQC-hybrid KEX available client-side; no PQC signature/key types; no browser to audit",
+      "unit": "n/a",
+      "status": "ok",
+      "note": "live evidence for A3: this box would pass a 'PQC-hybrid SSH KEX' check and fail a 'PQC keys' check (classical only)."
+    },
+    {
+      "id": "M10-B1-DATA",
+      "command": "curl https://speed.cloudflare.com/__down?bytes=N with /proc/stat CPU sampler (idle vs verified-100% busy)",
+      "raw_output": "idle: 14.38, 31.44, 10.85, 25.55, 25.03 MB/s (ttfb 0.086-0.314s); busy(verified 100.0%): 29.62, 19.98 MB/s (ttfb 0.065-0.137s); ambient busy 53.4%/50.6% without burners; 16MiB request -> 403 (all sizes >=2MiB to 16MiB tested)",
+      "value": "no CPU->speed effect; variance dominated by network/sidecar load",
+      "unit": "MB/s",
+      "status": "ok",
+      "note": "B1 discriminator: controllably 100% CPU did not slow downloads."
+    },
+    {
+      "id": "M11-C2-BOOT-UP",
+      "command": "uptime; cat /proc/uptime; hostname; E2B_SANDBOX_ID",
+      "raw_output": "up 2 min (17:04:24Z); uptime 153.14s / idle 295.49s; hostname e2b.local; E2B_SANDBOX_ID=ids70tfd987wffpjczbai",
+      "value": "fresh sandbox at capture time",
+      "unit": "n/a",
+      "status": "ok",
+      "note": "C2 complied: reboot detection via uptime+sandbox_id, boot_id recorded but not used as evidence."
+    },
+    {
+      "id": "M12-C5-CGROUP-PATH",
+      "command": "ls /sys/fs/cgroup/ ; /proc/self/cgroup ; cat /sys/fs/cgroup/user/memory.max",
+      "raw_output": "/proc/self/cgroup -> 0::/user; /sys/fs/cgroup/user/memory.max=1947172864; /sys/fs/cgroup/ root has only cgroup.controllers etc. (NO memory.max at root)",
+      "value": "limits live at /sys/fs/cgroup/user/ as the checklist said",
+      "unit": "n/a",
+      "status": "ok",
+      "note": "reading the wrong path would have failed; correct path used throughout."
+    },
+    {
+      "id": "M13-E-NOT-PERFORMED",
+      "command": "(not run) SECTION E requires arena.ai/code surface, not Agent Mode",
+      "raw_output": "surface = arena.ai Agent Mode tool-shell per session context; no arena.ai/code shell, app route, or preview URL available to this agent here",
+      "value": "E1-E4 NOT PERFORMED",
+      "unit": "n/a",
+      "status": "not_performed",
+      "note": "R1: NOT PERFORMED — honest, no guessed values. Incidental: template_id observed in A0 (nlhz8vlwyupq845jsdg9) matches the value named in E1, but no E-header claim is made from this session."
+    },
+    {
+      "id": "M14-MANIFEST",
+      "command": "sha256sum per raw NN_*.txt + hash-of-hashes (sha256 of sorted digest lines)",
+      "raw_output": "38 raw files; HASH-OF-HASHES e4737d2fde8c5630732becb8c601ffc1a5579707e28b70d5ca8030fa45197e47; sha256(manifest3.txt)=b9a55b1ea8a4202f1250daa69569150e32ab0b954420f968ea5b7d6b94df6391",
+      "value": "manifest3.txt written to /home/user/probe3/",
+      "unit": "n/a",
+      "status": "ok",
+      "note": "all raw files are pure command output with RECORDED_UTC timestamps inside (C1); LLM-written helpers moved to probe3/src/."
+    }
+  ]
+}

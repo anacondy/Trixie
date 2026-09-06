@@ -1,0 +1,38 @@
+=== CMD: D3 egress ladder — DNS vs SNI vs IP, certs, proxy behavior
+=== RECORDED_UTC: 2026-09-06T17:08:37Z
+## 1. DNS resolution layer (python getaddrinfo) ##
+DNS-OK  example.com              104.20.23.154,172.66.147.243,2606:4700:10::6814:179a,2606:4700:10::ac42:93f3 19ms
+DNS-OK  www.google.com           142.251.150.119,142.251.151.119,142.251.152.119,142.251.153.119 1ms
+DNS-OK  github.com               140.82.116.3                             12ms
+DNS-OK  pypi.org                 151.101.0.223,151.101.128.223,151.101.192.223,151.101.64.223 1ms
+DNS-OK  httpbin.org              100.59.99.192,100.63.40.118,18.235.200.183,3.212.75.38 1ms
+DNS-OK  speed.cloudflare.com     162.159.140.220,172.66.0.218,2606:4700:7::da,2a06:98c1:58::da 34ms
+DNS-OK  www.wikipedia.org        198.35.26.224,2620:0:863:ed1a::1         20ms
+DNS-OK  archive.org              207.241.224.2                            1ms
+DNS-OK  x.com                    162.159.140.229                          1ms
+DNS-OK  www.reddit.com           151.101.1.140,151.101.129.140,151.101.193.140,151.101.65.140 1ms
+DNS-OK  www.torproject.org       116.202.120.165,116.202.120.166,204.8.99.144,204.8.99.146 64ms
+DNS-OK  huggingface.co           2600:9000:212d:1600:17:b174:6d00:93a1,2600:9000:212d:2000:17:b174:6d00:93a1,2600:9000:212d:3800:17:b174:6d00:93a1,2600:9000:212d:4c00:17:b174:6d00:93a1 2ms
+DNS-OK  registry.npmjs.org       104.16.0.34,104.16.1.34,104.16.10.34,104.16.11.34 26ms
+DNS-OK  debian.org               151.101.130.132,151.101.194.132,151.101.2.132,151.101.66.132 2ms
+DNS-OK  www.kernel.org           151.101.1.55,151.101.129.55,151.101.193.55,151.101.65.55 11ms
+DNS-OK  www.rust-lang.org        185.199.108.153,185.199.109.153,185.199.110.153,185.199.111.153 17ms
+DNS-OK  eu.httpbin.org           100.59.99.192,100.63.40.118,18.235.200.183,3.212.75.38 19ms
+
+## 2. HTTPS layer (real TLS: counts as evidence; connect() alone does not) ##
+example.com              code=200 ttfb=0.056532s total=0.056632s
+www.google.com           code=200 ttfb=0.051576s total=0.053691s
+github.com               code=200 ttfb=0.040143s total=0.111269s
+pypi.org                 code=200 ttfb=0.028831s total=0.030769s
+httpbin.org              code=200 ttfb=0.266084s total=0.266166s
+speed.cloudflare.com     code=200 ttfb=0.068368s total=0.070832s
+www.wikipedia.org        code=200 ttfb=0.090768s total=0.135668s
+archive.org              code=200 ttfb=0.086297s total=0.086560s
+x.com                    code=200 ttfb=0.113190s total=0.113907s
+www.reddit.com           code=403 ttfb=0.036291s total=0.057005s
+www.torproject.org       code=200 ttfb=0.148198s total=0.192015s
+huggingface.co           code=200 ttfb=0.055404s total=0.071334s
+registry.npmjs.org       code=200 ttfb=0.046071s total=0.046173s
+debian.org               code=302 ttfb=0.058819s total=0.058872s
+www.kernel.org           code=200 ttfb=0.045106s total=0.046957s
+www.rust-lang.org        code=301 ttfb=0.032838s total=0.032930s

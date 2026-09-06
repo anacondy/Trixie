@@ -1,0 +1,10 @@
+=== CMD: sh -c df -hT / /tmp /home/user 2>&1; echo "---"; grep -E " / | /tmp | /home" /proc/mounts | head -20
+=== RECORDED_UTC: 2026-09-06T17:04:24Z
+Filesystem     Type   Size  Used Avail Use% Mounted on
+/dev/root      ext4    25G  4.1G   20G  17% /
+tmpfs          tmpfs  993M  8.0K  993M   1% /tmp
+/dev/root      ext4    25G  4.1G   20G  17% /
+---
+/dev/root / ext4 rw,relatime,discard 0 0
+tmpfs /tmp tmpfs rw,nosuid,nodev,nr_inodes=1048576 0 0
+=== EXIT: 0

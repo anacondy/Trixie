@@ -1,0 +1,23 @@
+=== CMD: sh -c echo "--- system overcommit/swap ---"; cat /proc/sys/vm/overcommit_memory; grep -E "SwapTotal|MemAvailable|Committed_AS" /proc/meminfo; echo "--- memory.max arithmetic ---"; B=$(cat /sys/fs/cgroup/user/memory.max); python3 -c "b=$B; print(f\"{b} bytes = {b/1024:.2f} kB = {b/1048576:.3f} MiB = {b/1073741824:.4f} GiB\")"; echo "--- before events ---"; cat /sys/fs/cgroup/user/memory.events; echo "--- tool availability ---"; which time dd taskset curl python3 sha256sum 2>&1
+=== RECORDED_UTC: 2026-09-06T17:05:11Z
+--- system overcommit/swap ---
+0
+MemAvailable:    1526576 kB
+SwapTotal:             0 kB
+Committed_AS:     562360 kB
+--- memory.max arithmetic ---
+1947172864 bytes = 1901536.00 kB = 1856.969 MiB = 1.8134 GiB
+--- before events ---
+low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+--- tool availability ---
+/usr/bin/dd
+/usr/bin/taskset
+/usr/bin/curl
+/usr/local/bin/python3
+/usr/bin/sha256sum
+=== EXIT: 1

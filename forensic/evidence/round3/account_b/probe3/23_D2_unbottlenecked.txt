@@ -1,0 +1,5 @@
+fill_devshm_400MiB_urandom(write to RAM, urandom-bound) rc=0 wall=1.155s decimal_MBps=363.1 binary_MiBps=346.3
+read_ram_source_to_null rc=0 wall=0.084s decimal_MBps=4993.2 binary_MiBps=4761.9
+RAM_to_tmpfs_write rc=0 wall=0.278s decimal_MBps=1508.7 binary_MiBps=1438.8
+RAM_to_ext4_write(fsync) rc=0 wall=0.413s decimal_MBps=1015.6 binary_MiBps=968.5
+urandom_ceiling_to_null_1GiB rc=0 wall=3.514s decimal_MBps=305.6 binary_MiBps=291.4

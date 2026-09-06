@@ -1,0 +1,53 @@
+# B1 CORRELATION vs CAUSATION + C4/C7-COMPLIANT BANDWIDTH  recorded_utc=2026-09-06T17:06:40Z
+# B2 control for the bandwidth probe: example.com already fetched OK with identical tool (04_b_controls.txt).
+# B3 falsifier for 'slow': RFC5737 connect() 'succeeded' (04_b_controls.txt) so we never trust connect() alone.
+
+=== B1 CONFOUNDER TEST: same download, idle CPU vs CPU saturated ===
+confounders listed: (i) CPU contention slowing the download process itself (TLS/crypto, memcpy, python overhead);
+  (ii) time-varying CDN/server-side load or peering (the download path itself changed between trials);
+  (iii) shared-host 'noisy neighbour' on the physical machine (we cannot see or control it);
+  (iv) cgroup cpu.max throttling (measured: 'max 100000' = no quota) -> ruled out by file, not by inference;
+  (v) cache warm/cold on the local resolver/TCP path; (vi) measurement order (first trial pays connection setup).
+
+--- IDLE trial 1 (load before: 0.24 0.21 0.09)
+  idle dl: http=200 size=50000000 ttfb=0.856799 total=1.012927 speed=49361898 B/s ip=162.159.140.220
+--- IDLE trial 2 (load before: 0.24 0.21 0.09)
+  idle dl: http=200 size=50000000 ttfb=0.109734 total=0.287227 speed=174078342 B/s ip=172.66.0.218
+--- IDLE trial 3 (load before: 0.24 0.21 0.09)
+  idle dl: http=200 size=50000000 ttfb=0.090500 total=0.273120 speed=183069712 B/s ip=162.159.140.220
+
+--- SATURATED trial: 2x busy loops pinned to both CPUs, then the identical download
+  load during burn: 0.38 0.24 0.10  (nproc=2)
+  busy dl 1: http=200 size=50000000 ttfb=0.099894 total=0.278920 speed=179262871 B/s ip=172.66.0.218
+  busy dl 2: http=200 size=50000000 ttfb=0.111593 total=0.304297 speed=164313154 B/s ip=162.159.140.220
+  load after burn: 0.38 0.24 0.10
+--- discriminator result: if speed is ~unchanged under CPU saturation, 'high CPU causes slow downloads' is FALSE here.
+
+=== B1b control: same URL twice back-to-back (is the variance ours or the network's?) ===
+  repeat 1: size=20000000 total=0.216435 speed=92406496 B/s ip=172.66.0.218
+  repeat 2: size=20000000 total=0.215175 speed=92947600 B/s ip=162.159.140.220
+  repeat 3: size=20000000 total=0.173921 speed=114994738 B/s ip=172.66.0.218
+=== C4: httpbin.org comparison (why it is not a bandwidth probe) ===
+httpbin /bytes/100000: http=200 size=100000 ttfb=0.461530 total=0.590018 speed=169486 B/s
+# B1 finished_utc=2026-09-06T17:06:47Z
+# B1 (cont.) CPU SATURATION VERIFIED, THEN DOWNLOAD RE-MEASURED  recorded_utc=2026-09-06T17:07:31Z
+--- baseline: idle cpu busy% over 3s
+idle baseline cpu_busy_pct=1.2
+--- start 20s CPU burn in background, then run the identical download while burning
+DURING_BURN: size=50000000 ttfb=0.393293 total=0.586491 speed=85252800 B/s
+./b1b_cpu_check.sh: line 10: bc: command not found
+window=s  cpu_busy_pct=100.0  (2 vCPUs => 100% = both fully busy)
+cpu.stat: usage_usec 148894558 nr_throttled 0 throttled_usec 0 
+DURING_BURN: size=50000000 ttfb=0.093473 total=0.297985 speed=167793680 B/s
+./b1b_cpu_check.sh: line 10: bc: command not found
+window=s  cpu_busy_pct=100.0  (2 vCPUs => 100% = both fully busy)
+cpu.stat: usage_usec 149748366 nr_throttled 0 throttled_usec 0 
+DURING_BURN: size=50000000 ttfb=0.534768 total=0.754317 speed=66285129 B/s
+./b1b_cpu_check.sh: line 10: bc: command not found
+window=s  cpu_busy_pct=100.0  (2 vCPUs => 100% = both fully busy)
+cpu.stat: usage_usec 151516294 nr_throttled 0 throttled_usec 0 
+BURN: cpu_busy_pct=100.0 over 20s
+--- after burn, idle again
+post-burn cpu_busy_pct=0.3
+--- VERDICT LOGIC: if cpu_busy_pct ~100 during the burn AND speed_download is within idle variance, CPU is NOT the cause.
+# finished_utc=2026-09-06T17:07:57Z

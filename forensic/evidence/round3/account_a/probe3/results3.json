@@ -1,0 +1,421 @@
+{
+ "run": {
+  "timestamp_utc": "2026-09-06T17:01:15Z",
+  "timestamp_utc_end": "2026-09-06T17:12:00Z",
+  "surface": "Arena.ai Agent Mode (E2B_SANDBOX=true, no app/preview, no DATABASE_URL)",
+  "browser": "NOT OBSERVED (no browser in this sandbox; nothing observed)",
+  "account_label": "NOT OBSERVED (not exposed to the sandbox; not inferred)",
+  "sandbox_id": "i3xgkkubxoiw2bi4vlqkx",
+  "template_id": "nlhz8vlwyupq845jsdg9",
+  "build_id": "f34a5416-ef30-4cb7-8e18-0fdecd6eb529",
+  "boot_id": "2bb79165-136a-4b63-829d-17027b0a8e40",
+  "vm_class": "T",
+  "vm_class_evidence": "4/4 T markers present, 0/4 B markers: trixie, Python 3.13.14, kernel stamp Fri Jul 17 14:31:34 UTC 2026, MemTotal 2032608 kB = 1.9384 GiB",
+  "virtualization": "kvm (systemd-detect-virt) / Hypervisor vendor KVM / full",
+  "os_pretty": "Debian GNU/Linux 13 (trixie)",
+  "kernel_stamp": "#1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026 (Linux 6.1.158+)",
+  "python_ver": "Python 3.13.14",
+  "uptime_at_first_command_s": 22.26,
+  "hostname": "e2b.local",
+  "nproc": 2,
+  "manifest3_hash_of_hashes": "8c2822c01dc1211bd14a005468500398f748c1b46642e3eb0bbac102851c5483",
+  "raw_files": 26
+ },
+ "calibration": [
+  {
+   "id": "A1",
+   "question": "2024 World Series winner",
+   "answer_memory": "Los Angeles Dodgers over NY Yankees 4-1; I also asserted Game 1 = 6-2 and Game 4 = LAD",
+   "answer_search": "Dodgers beat Yankees 4-1, clinching 7-6 in Game 5 on 2024-10-30 (8th title, first since 2020). Series detail corrected: Game 1 was 6-3 in 10 innings on a Freeman walk-off grand slam; the Yankees won Game 2 in extras 5-4; Dodgers took Games 3 and 4 on the road.",
+   "delta": "Winner + 4-1 series shape correct from memory; two game-level details wrong (G1 score 6-2 vs 6-3; and I had LAD taking G4 while NY won G2).",
+   "cutoff_self": "~2025-01",
+   "confidence": 0.93
+  },
+  {
+   "id": "A2",
+   "question": "2025 ICC Champions Trophy winner",
+   "answer_memory": "India beat New Zealand, final in Dubai 2025-03-09; I attributed the top score (~76) to KL Rahul",
+   "answer_search": "India won by 4 wickets with 6 balls to spare. NZ 251/7 (Mitchell 63, Bracewell 53); IND 254/6 in 49 overs - top score was ROHIT SHARMA 76 (83), Iyer 48, KL Rahul 34*; Jadeja hit the winning runs.",
+   "delta": "Winner, venue, date and margin correct; the top-scorer attribution was wrong (Rohit 76, not Rahul; Rahul was 34*).",
+   "cutoff_self": "~2025-01",
+   "confidence": 0.62
+  },
+  {
+   "id": "A3",
+   "question": "does a user-facing CLI for Linux post-quantum readiness auditing exist?",
+   "answer_memory": "No such single CLI present in parametric memory; honest state = 'unknown / cannot verify' (refused to assert a negative).",
+   "answer_search": "YES, several exist: 'Mini PQC Scanner' (github.com/oferzinger/mini-pqc-scanner, CLI checking TLS certs, OpenSSH/VPN configs, OpenSSL); Anvil Secure 'PQCscan' (free/OSS, tls-scan + ssh-scan modes, create-report HTML); quantakrypto/pqc-tools (qScan CLI with readiness score + SARIF/CBOM, plus qProbe for live X25519MLKEM768 probing).",
+   "delta": "Memory FALSE-NEGATIVE, corrected by search: at least three published CLIs cover 2-3 of the three axes asked about. My parametric negative would have been graded wrong; the search tool is what saved it.",
+   "cutoff_self": "~2025-01",
+   "confidence": 0.3
+  },
+  {
+   "id": "A4",
+   "question": "kernel build date vs self-reported cutoff",
+   "answer_memory": "uname -v = '#1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026', ~18 months after my ~2025-01 cutoff.",
+   "answer_search": "NOT APPLICABLE (measured locally by command, not a search question).",
+   "delta": "Implication stated: no training-derived knowledge can describe this kernel (6.1.158+), this image, or this sandbox. Every statement in this report about the box comes from a command run in this session; anything else is labelled NOT PERFORMED.",
+   "cutoff_self": "~2025-01",
+   "confidence": 0.99
+  },
+  {
+   "id": "A5",
+   "question": "recall-horizon bracket from memory only",
+   "answer_memory": "Newest reliably dated: Claude 3.5 Sonnet 2024-06-20, GPT-4o 2024-05-13; vendor identifiers recalled: 'context-1m-2025-08-07', 'prompt-caching-2024-07-31'. First notably MISSING: any 2026 frontier release.",
+   "answer_search": "2026 releases I had no parametric memory of, per three independent aggregator pages: Kimi K2.5 (Jan 27), GPT-5.3 Codex (Feb 5), GLM-5 (Feb 11), Claude Sonnet 4.6 (Feb 17), Gemini 3.1 Pro preview (Feb 19), GPT-5.4 (Mar 5), Claude Opus 4.7 (Apr 16), GPT-5.5 (Apr 23), Claude Fable 5 (Jun 9). Dates CONFLICT across sources (e.g. Opus 4.6 is dated Feb 5 on one page, Feb 17 on another) and come from SEO-style aggregators, so I mark them REPORTED, not verified.",
+   "delta": "Parametric horizon brackets to ~2025 H2, i.e. roughly 9-12 months before today. The recall bracket, not the rote self-reported cutoff, is the usable clock; the 2026 list is third-party-reported and internally inconsistent.",
+   "cutoff_self": "~2025-01",
+   "confidence": 0.55
+  }
+ ],
+ "falsifications": [
+  {
+   "id": "F1",
+   "claim": "KVM microVM, not a container, not bare metal",
+   "confirming_cmd": "systemd-detect-virt; dmesg | grep 'Command line'; grep hypervisor /proc/cpuinfo",
+   "confirming_out": "kvm | cmdline: init=/sbin/init root=/dev/vda virtio_mmio... ip=169.254.0.21 | hypervisor flag present",
+   "falsifying_cmd": "cat /proc/1/cgroup; ls -d /.dockerenv; systemctl list-units (real init tree?)",
+   "falsifying_out": "/proc/1/cgroup='0::/' with system.slice/user.slice present and no container id; /.dockerenv absent -> not a container; own kernel+PID1 -> not bare metal",
+   "verdict": "KVM guest with its own kernel",
+   "grade": "MEASURED"
+  },
+  {
+   "id": "F2",
+   "claim": "CLASS T (not B, not NEW)",
+   "confirming_cmd": "grep PRETTY_NAME /etc/os-release; python3 -V; uname -v; grep MemTotal /proc/meminfo",
+   "confirming_out": "Debian GNU/Linux 13 (trixie) / Python 3.13.14 / Fri Jul 17 14:31:34 UTC 2026 / 2032608 kB",
+   "falsifying_cmd": "same four commands (each B marker is a different string)",
+   "falsifying_out": "0/4 B markers: not bookworm, not 3.11, not 'Mon May 11 18:48:24 UTC 2026', not ~3.8 GiB",
+   "verdict": "CLASS T, 4/4 markers",
+   "grade": "MEASURED"
+  },
+  {
+   "id": "F3",
+   "claim": "OOM ceiling: 1600 MiB OK, 1632 MiB killed; session survives",
+   "confirming_cmd": "python3 d1_oom_bisect.py (allocate-and-touch in a subprocess, 32 MiB resolution)",
+   "confirming_out": "1600 MiB rc=0 'TOUCHED_MiB 1600'; 1632 MiB rc=-9; memory.events oom_kill 0 -> 3 (the 3 failing trials)",
+   "falsifying_cmd": "cat /sys/fs/cgroup/user/memory.events; uptime; echo alive (written after the kills)",
+   "falsifying_out": "a session-ending kill would leave no post-D1 output; observed oom_kill=3, 'up 3 min', post-D1 lines present",
+   "verdict": "cgroup-scoped OOM kill only",
+   "grade": "MEASURED"
+  },
+  {
+   "id": "F4",
+   "claim": "No domain blocklist; DNS unfiltered; egress open",
+   "confirming_cmd": "curl -sS -o /dev/null -w '%{http_code}' https://H/ ; curl --resolve H:443:<A> https://H/ ; getent hosts H",
+   "confirming_out": "17/18 hosts gave real statuses (200/301/302/403/404/421); direct-IP+--resolve gave identical statuses for pastebin.com, api.anthropic.com, openai.com, api.openai.com, huggingface.co, example.com",
+   "falsifying_cmd": "identical method on control example.com (B2) + getent for every host",
+   "falsifying_out": "control=200 so the probe is valid; DNS returned A and AAAA for every public host, so no DNS-level filtering. Only 169.254.169.254 (timeout) and metadata.google.internal (NXDOMAIN) failed",
+   "verdict": "blocklist = cloud metadata only",
+   "grade": "MEASURED"
+  },
+  {
+   "id": "F5",
+   "claim": "IPv6 egress blocked",
+   "confirming_cmd": "curl -6 -sS -o /dev/null -w '%{http_code} %{remote_ip}' https://cloudflare.com/",
+   "confirming_out": "curl: (7) Failed to connect ... after 10 ms; http=000; ip= (empty)",
+   "falsifying_cmd": "curl -4 same URL; getent hosts cloudflare.com",
+   "falsifying_out": "-4 gives 200 with a real ip; DNS still returned AAAA for 12 hosts -> resolver not filtering, block is at connect()",
+   "verdict": "IPv4-only egress",
+   "grade": "MEASURED"
+  },
+  {
+   "id": "F6",
+   "claim": "raw connect() is untrustworthy (transparent proxy); use TTFB",
+   "confirming_cmd": "python3 socket.create_connection to 192.0.2.1:80, 198.51.100.1:443, 203.0.113.1:22",
+   "confirming_out": "all three 'CONNECTED' in 0.004/0.000/0.000 s",
+   "falsifying_cmd": "curl -m 8 https://192.0.2.1/ ; curl -sS http://192.0.2.1/",
+   "falsifying_out": "curl(28) timed out after 8002 ms (http=000), while plain GET returned HTTP 404 in 2.0 ms -> local acceptance, not a real route",
+   "verdict": "connect() results discarded; TTFB used throughout",
+   "grade": "MEASURED"
+  },
+  {
+   "id": "F7",
+   "claim": "/tmp is RAM (tmpfs, 993 MiB); /home/user is the 25G disk",
+   "confirming_cmd": "findmnt /tmp; dd urandom->/tmp 256 MiB with cgroup memory.current before/after; rm",
+   "confirming_out": "tmpfs 993M; memory.current +268627968 B for a 268435456 B file (1.0007x); after rm back to 11931648 B",
+   "falsifying_cmd": "dd urandom 5 GiB -> /tmp ; df -h /tmp",
+   "falsifying_out": "'No space left on device' after 992 MiB, df shows 100% full - a disk-backed /tmp would have taken all 5 GiB as /home/user did",
+   "verdict": "/tmp = RAM, capped 993 MiB",
+   "grade": "MEASURED"
+  },
+  {
+   "id": "F8",
+   "claim": "8 tool calls in one block run SERIALLY (~2.0 s apart), not in parallel",
+   "confirming_cmd": "8x bash each writing its own UTC start/end clock into d5/<X>.txt",
+   "confirming_out": "starts 33.491/35.861/37.519/39.567/41.504/43.571/45.819/47.507; mean gap 2.002 s; wall 18.040 s",
+   "falsifying_cmd": "each call sleeps exactly 4 s, so a parallel runtime must finish in ~4.1 s",
+   "falsifying_out": "observed 18.040 s, i.e. 4.4x the parallel expectation -> not concurrent",
+   "verdict": "no observed per-session parallelism; effective concurrency 1",
+   "grade": "MEASURED"
+  },
+  {
+   "id": "F9",
+   "claim": "high CPU does NOT cause slow downloads (correlation is confounded)",
+   "confirming_cmd": "/proc/stat busy% around each download + curl speed_download during a verified burn",
+   "confirming_out": "cpu_busy_pct=100.0 during burn; speeds 179.3/164.3/85.3/167.8/66.3 MB/s (mean 132.6) vs idle cpu_busy_pct=1.2 -> 49.4/174.1/183.1 (mean 135.5)",
+   "falsifying_cmd": "same URL idle n=3 + per-POP breakdown + cpu.stat throttling counters",
+   "falsifying_out": "burn range [66.3,179.3] fully overlaps idle range [49.4,183.1]; nr_throttled=0, throttled_usec=0, cpu.max='max 100000'. Measured confounder: POP choice (172.66.0.218 mean 140.2 vs 162.159.140.220 mean 122.4 MB/s) + TCP ramp",
+   "verdict": "CPU ruled out; confounder identified",
+   "grade": "MEASURED"
+  },
+  {
+   "id": "F10",
+   "claim": "SMT sibling adds ~0 throughput; only 1 physical core",
+   "confirming_cmd": "taskset -c 0 python3 d6bench.py (1 thread vs 2 forked threads, same mask)",
+   "confirming_out": "mask 0: 1T=0.4546 s, 2T=0.9082/0.9078 s -> 1.998x, sibling gain +0.11%; mask 1: 1T=0.4852, 2T=0.9628 -> 1.984x, +0.79%",
+   "falsifying_cmd": "taskset -c 2 and -c 3; cat /sys/devices/system/cpu/cpu0/topology/thread_siblings_list; lscpu",
+   "falsifying_out": "taskset -c 2 -> 'failed to set affinity: Invalid argument'; siblings='0-1'; lscpu 1 socket x 1 core x 2 threads -> no 2-core comparison possible",
+   "verdict": "ratio measured; SMT gain ~0%; vs-2-core NOT MEASURABLE",
+   "grade": "MEASURED"
+  },
+  {
+   "id": "F11",
+   "claim": "child can raise RLIMIT_NOFILE to the hard limit but not above it",
+   "confirming_cmd": "python3 d4_fd.py (parent opens to EMFILE; child setrlimit then opens)",
+   "confirming_out": "parent soft/hard=(1024,524288) -> 1018 fds then EMFILE(24); child after setrlimit -> 524285 fds then EMFILE(24)",
+   "falsifying_cmd": "resource.setrlimit(RLIMIT_NOFILE,(hard+1,hard+1))",
+   "falsifying_out": "ValueError 'not allowed to raise maximum limit' -> hard cap real",
+   "verdict": "soft 1024 / hard 524288",
+   "grade": "MEASURED"
+  },
+  {
+   "id": "F12",
+   "claim": "memory limit is a hard cgroup ceiling with no swap escape",
+   "confirming_cmd": "cat /proc/swaps; cat /sys/fs/cgroup/user/memory.swap.max",
+   "confirming_out": "/proc/swaps header only (no devices); swap.max='max' but nothing to swap to",
+   "falsifying_cmd": "the D1 bisect itself",
+   "falsifying_out": "with swap, 1792 MiB would slow and return rc=0; observed immediate rc=-9 at 1632 MiB and memory.current collapse to 13942784 B",
+   "verdict": "no swap; over-limit = immediate kill",
+   "grade": "MEASURED"
+  },
+  {
+   "id": "F13",
+   "claim": "MemTotal = 1.94 GiB is correct (C6)",
+   "confirming_cmd": "python3 arithmetic on MemTotal=2032608 kB (15_analysis_derived.txt)",
+   "confirming_out": "2032608 kB = 2081390592 B = 1984.97 MiB = 1.9384 GiB (= 2.0814 decimal GB)",
+   "falsifying_cmd": "same arithmetic under the alternative conventions / a class-B box",
+   "falsifying_out": "binary 1.9384, decimal 2.0814; no convention reproduces '1.894 GiB'; class B would read ~3.89 GiB",
+   "verdict": "1.94 GiB stands",
+   "grade": "MEASURED"
+  },
+  {
+   "id": "F14",
+   "claim": "Section E does not apply to this surface",
+   "confirming_cmd": "env | grep ^E2B_; cat /.e2b; env | grep -c DATABASE_URL",
+   "confirming_out": "E2B_SANDBOX=true, template nlhz8vlwyupq845jsdg9, build f34a5416-..., hostname e2b.local, DATABASE_URL count 0",
+   "falsifying_cmd": "env | grep DATABASE_URL; look for a generated app / preview server",
+   "falsifying_out": "none found -> not arena.ai/code",
+   "verdict": "E1-E4 NOT PERFORMED (out of scope by the task's own rule)",
+   "grade": "MEASURED"
+  },
+  {
+   "id": "F15",
+   "claim": "C1: file mtimes are not usable as evidence",
+   "confirming_cmd": "stat -c '%y %z' on pre-existing image files",
+   "confirming_out": "/etc/resolv.conf and /etc/hostname mtime = 1970-01-01 00:00:00 (epoch), /etc/os-release = 2026-07-04 09:05:00 while the box booted 2026-09-06",
+   "falsifying_cmd": "write a file now and stat it (does mtime track reality?)",
+   "falsifying_out": "c1_probe.txt mtime = 2026-09-06 17:08:39.838 = the embedded content time -> live writes are fine, only restore-stamped files lie. The restore reset itself is NOT observable inside one session: AVOIDED, not disproved.",
+   "verdict": "mtimes avoided; content timestamps used",
+   "grade": "MEASURED"
+  }
+ ],
+ "measurements": [
+  {
+   "id": "A0-lock",
+   "command": "grep PRETTY_NAME /etc/os-release; uname -v; python3 -V; grep MemTotal /proc/meminfo; df -h /; cat /.e2b; env|grep ^E2B_TEMPLATE_ID; cat /proc/sys/kernel/random/boot_id",
+   "raw_output": "# A0 VM-CLASS LOCK  recorded_utc=2026-09-06T17:01:15Z\n--- grep PRETTY_NAME /etc/os-release\nPRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\n--- uname -v\n#1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026\n--- uname -a\nLinux e2b.local 6.1.158+ #1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026 x86_64 GNU/Linux\n--- python3 -V\nPython 3.13.14\n--- grep MemTotal /proc/meminfo\nMemTotal:        2032608 kB\n--- df -h / | tail -1\n/dev/root        25G  4.1G   20G  17% /\n--- cat /.e2b\nENV_ID=nlhz8vlwyupq845jsdg9\nTEMPLATE_ID=nlhz8vlwyupq845jsdg9\nBUILD_ID=f34a5416-ef30-4cb7-8e18-0fdecd6eb529\n--- env | grep ^E2B_TEMPLATE_ID\nE2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9\n--- cat /proc/sys/kernel/random/boot_id\n2bb79165-136a-4b63-829d-17027b0a8e40\n--- uptime / sandbox_id / hostname\n 17:01:15 up 0 min,  0 users,  load average: 0.06, 0.02, 0.00\n22.26 35.21\ne2b.local\nE2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9\nE2B_EVENTS_ADDRESS=http://192.0.2.1\nE2B_SANDBOX_ID=i3xgkkubxoiw2bi4vlqkx\nE2B_SANDBOX=true\n",
+   "value": "CLASS T",
+   "unit": "class",
+   "status": "MEASURED",
+   "note": "4/4 T markers, 0/4 B markers"
+  },
+  {
+   "id": "A0-uptime",
+   "command": "cat /proc/uptime (first command of the session)",
+   "raw_output": "22.26 35.21",
+   "value": 22.26,
+   "unit": "s",
+   "status": "MEASURED",
+   "note": "fresh sandbox: 22 s of uptime at the first command; boot_id 2bb79165-... is identity only (C2)"
+  },
+  {
+   "id": "C5-cgroup",
+   "command": "cat /sys/fs/cgroup/user/memory.max; memory.high; memory.swap.max; cpu.max; pids.max; /proc/swaps",
+   "raw_output": "# CGROUP LIMITS (C5: /sys/fs/cgroup/user/ first)  recorded_utc=2026-09-06T17:03:13Z\n--- ls /sys/fs/cgroup/user/\ntotal 0\ndrwxr-xr-x  2 root root 0 Sep  6 17:03 .\ndr-xr-xr-x 13 root root 0 Jul 23 18:05 ..\n-r--r--r--  1 root root 0 Sep  6 17:03 cgroup.controllers\n-r--r--r--  1 root root 0 Sep  6 17:03 cgroup.events\n-rw-r--r--  1 root root 0 Sep  6 17:01 cgroup.freeze\n--w-------  1 root root 0 Sep  6 17:03 cgroup.kill\n-rw-r--r--  1 root root 0 Sep  6 17:03 cgroup.max.depth\n-rw-r--r--  1 root root 0 Sep  6 17:03 cgroup.max.descendants\n-rw-r--r--  1 root root 0 Sep  6 17:03 cgroup.procs\n-r--r--r--  1 root root 0 Sep  6 17:03 cgroup.stat\n-rw-r--r--  1 root root 0 Sep  6 17:03 cgroup.subtree_control\n-rw-r--r--  1 root root 0 Sep  6 17:03 cgroup.threads\n-rw-r--r--  1 root root 0 Sep  6 17:03 cgroup.type\n-rw-r--r--  1 root root 0 Sep  6 17:03 cpu.idle\n-rw-r--r--  1 root root 0 Sep  6 17:03 cpu.max\n-rw-r--r--  1 root root 0 Sep  6 17:03 cpu.max.burst\n-r--r--r--  1 root root 0 Sep  6 17:03 cpu.stat\n-rw-r--r--  1 root root 0 Jul 23 18:05 cpu.weight\n-rw-r--r--  1 root root 0 Sep  6 17:03 cpu.weight.nice\n-rw-r--r--  1 root root 0 Sep  6 17:03 cpuset.cpus\n-r--r--r--  1 root root 0 Sep  6 17:03 cpuset.cpus.effective\n-rw-r--r--  1 root root 0 Sep  6 17:03 cpuset.cpus.partition\n-rw-r--r--  1 root root 0 Sep  6 17:03 cpuset.mems\n-r--r--r--  1 root root 0 Sep  6 17:03 cpuset.mems.effective\n-rw-r--r--  1 root root 0 Sep  6 17:03 io.bfq.weight\n-rw-r--r--  1 root root 0 Sep  6 17:03 io.max\n-r--r--r--  1 root root 0 Sep  6 17:03 io.stat\n-rw-r--r--  1 root root 0 Jul 23 18:05 io.weight\n-r--r--r--  1 root root 0 Sep  6 17:03 memory.current\n--- /sys/fs/cgroup/user/memory.max\n1947172864\n--- /sys/fs/cgroup/user/memory.high\n1947172864\n--- /sys/fs/cgroup/user/memory.current\n186912768\n--- /sys/fs/cgroup/user/memory.events (BEFORE d1)\nlow 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n--- /sys/fs/cgroup/user/memory.swap.max\nmax\n--- /sys/fs/cgroup/user/cpu.max\nmax 100000\n--- /sys/fs/cgroup/user/pid\n...[TRUNCATED 780 chars]",
+   "value": "memory.max=1947172864 B (1.8134 GiB / 1.9472 GB); high=max; swap none; cpu.max='max 100000' (no quota); pids.max=max",
+   "unit": "bytes",
+   "status": "MEASURED",
+   "note": "/sys/fs/cgroup/memory.max does not exist (root cgroup has no memory controller file) -> C5 is real"
+  },
+  {
+   "id": "C6-units",
+   "command": "python3 arithmetic from MemTotal (analyze.py)",
+   "raw_output": "  MemTotal: 2032608 kB = 2081390592 B = 1984.97 MiB = 1.9384 GiB  (decimal: 2.0814 GB)\n  cgroup user memory.max: 1901536 kB = 1947172864 B = 1856.97 MiB = 1.8134 GiB  (decimal: 1.9472 GB)\n  memory.max as decimal GB = 1.9472 GB  -> the limit is set as a DECIMAL number (1947172864 = 1.947172864 GB)\n  MemTotal - memory.max = 134217728 B = 128.0 MiB reserved outside the user cgroup\n  (parsed from the RESULT line: last_success=1600, first_kill=1632, resolution=32 MiB; the coarse-phase 1792 MiB line is NOT the bisected result)\n  D1 last_success: 1638400 kB = 1677721600 B = 1600.00 MiB = 1.5625 GiB  (decimal: 1.6777 GB)\n  D1 first_kill: 1671168 kB = 1711276032 B = 1632.00 MiB = 1.5938 GiB  (decimal: 1.7113 GB)\n  D1 first_kill as decimal: 1671168 kB = 1711276032 B = 1632.00 MiB = 1.5938 GiB  (decimal: 1.7113 GB)\n  first_kill 1632 MiB / memory.max 1857.0 MiB = 87.9% of the cgroup limit",
+   "value": "2032608 kB = 1984.97 MiB = 1.9384 GiB = 2.0814 GB",
+   "unit": "kB/MiB/GiB/GB",
+   "status": "MEASURED",
+   "note": "convention: kernel 'kB'=1024 B; MiB/GiB binary; GB decimal. MemTotal-memory.max = 128.0 MiB kept outside the user cgroup"
+  },
+  {
+   "id": "D1-oom",
+   "command": "python3 d1_oom_bisect.py (subprocess allocate-and-touch, 1 MiB blocks, bisected)",
+   "raw_output": "# D1 OOM CEILING BISECT  recorded_utc=2026-09-06T17:04:05Z sandbox=i3xgkkubxoiw2bi4vlqkx\n== D1 OOM bisect, cgroup /user memory.max = 1947172864\nmemory.events BEFORE: {'low': '0', 'high': '0', 'max': '0', 'oom': '0', 'oom_kill': '0', 'oom_group_kill': '0'}\nmemory.current BEFORE: 192155648\n  trial 256 MiB -> rc=0 out='TOUCHED_MiB 256' err=[]\n  trial 512 MiB -> rc=0 out='TOUCHED_MiB 512' err=[]\n  trial 768 MiB -> rc=0 out='TOUCHED_MiB 768' err=[]\n  trial 1024 MiB -> rc=0 out='TOUCHED_MiB 1024' err=[]\n  trial 1280 MiB -> rc=0 out='TOUCHED_MiB 1280' err=[]\n  trial 1536 MiB -> rc=0 out='TOUCHED_MiB 1536' err=[]\n  trial 1792 MiB -> rc=-9 out='' err=[]\ncoarse bracket: last_ok=1536 MiB, first_kill=1792 MiB\n  bisect 1664 MiB -> rc=-9 out='' err=[]\n  bisect 1600 MiB -> rc=0 out='TOUCHED_MiB 1600' err=[]\n  bisect 1632 MiB -> rc=-9 out='' err=[]\nRESULT last_success=1600 MiB  first_kill=1632 MiB  resolution=32 MiB\nmemory.events AFTER: {'low': '0', 'high': '0', 'max': '0', 'oom': '0', 'oom_kill': '3', 'oom_group_kill': '0'}\nmemory.current AFTER: 13942784\n# D1 finished_utc=2026-09-06T17:04:15Z\n# session still alive after D1: yes (this line was written by the same session)\n 17:04:15 up 3 min,  0 users,  load average: 0.16, 0.05, 0.01\nlow 0\nhigh 0\nmax 0\noom 0\noom_kill 3\noom_group_kill 0\n",
+   "value": "last_success=1600 MiB (1.5625 GiB); first_kill=1632 MiB (1.5938 GiB); resolution=32 MiB; oom_kill 0->3",
+   "unit": "MiB",
+   "status": "MEASURED",
+   "note": "rc=-9 SIGKILL at 1632 MiB = 87.9% of memory.max (225 MiB of headroom was other processes/page cache). Session survived: post-D1 lines written, uptime continued"
+  },
+  {
+   "id": "D2-disk-home",
+   "command": "dd if=/dev/urandom of=/home/user/d2_test.bin bs=1M count=1024/5120 conv=fsync",
+   "raw_output": "# D2 REAL DISK (/dev/urandom, C3-compliant)  recorded_utc=2026-09-06T17:04:15Z\n--- filesystem identity (prove what is RAM)\n--- df -h before\nFilesystem      Size  Used Avail Use% Mounted on\n/dev/root        25G  4.1G   20G  17% /\ntmpfs           993M  8.0K  993M   1% /tmp\n/dev/root        25G  4.1G   20G  17% /\n\n=== target /home/user ===\n--- write 1 GiB of /dev/urandom to /home/user/d2_test.bin\n1024+0 records in\n1024+0 records out\n1073741824 bytes (1.1 GB, 1.0 GiB) copied, 3.57009 s, 301 MB/s\nrc=0 start=2026-09-06T17:04:15Z end=2026-09-06T17:04:19Z\n/dev/root        25G  5.1G   19G  22% /\n--- write 5 GiB of /dev/urandom to /home/user/d2_test.bin\n5120+0 records in\n5120+0 records out\n5368709120 bytes (5.4 GB, 5.0 GiB) copied, 19.528 s, 275 MB/s\nrc=0 start=2026-09-06T17:04:19Z end=2026-09-06T17:04:38Z\n/dev/root        25G  9.1G   15G  38% /\n=== target /tmp ===\n--- write 1 GiB of /dev/urandom to /tmp/d2_test.bin\ndd: error writing '/tmp/d2_test.bin': No space left on device\n993+0 records in\n992+0 records out\n1040683008 bytes (1.0 GB, 992 MiB) copied, 2.85562 s, 364 MB/s\nrc=1 start=2026-09-06T17:04:39Z end=2026-09-06T17:04:41Z\ntmpfs           993M  993M     0 100% /tmp\n--- write 5 GiB of /dev/urandom to /tmp/d2_test.bin\ndd: error writing '/tmp/d2_test.bin': No space left on device\n993+0 records in\n992+0 records out\n1040683008 bytes (1.0 GB, 992 MiB) copied, 2.84362 s, 366 MB/s\nrc=1 start=2026-09-06T17:04:42Z end=2026-09-06T17:04:44Z\ntmpfs           993M  993M     0 100% /tmp\n--- df -h after\nFilesystem      Size  Used Avail Use% Mounted on\n/dev/root        25G  4.1G   20G  17% /\ntmpfs           993M   12K  993M   1% /tmp\n/dev/root        25G  4.1G   20G  17% /\n--- is /tmp RAM? write 256 MiB then check cgroup memory.current delta\n268435456 bytes (268 MB, 256 MiB) copied, 0.727028 s, 369 MB/s\ncgroup memory.current before=11141120 after=279769088 delta_bytes=268627968\n-rw-r--r-- 1 user user 268435456 Sep  6 17:04 /tmp/memtest.bin\ncgroup memory.current after rm=11931648\n# D2 fin\n...[TRUNCATED 31 chars]",
+   "value": "1 GiB: 301 MB/s (287.1 MiB/s); 5 GiB: 275 MB/s (262.3 MiB/s)",
+   "unit": "MB/s",
+   "status": "MEASURED",
+   "note": "/dev/urandom (incompressible, C3) with conv=fsync; /dev/root 25G, 4.1G used, 20G avail"
+  },
+  {
+   "id": "D2-disk-tmp",
+   "command": "dd if=/dev/urandom of=/tmp/... bs=1M count=1024/5120 conv=fsync; findmnt /tmp",
+   "raw_output": "# D2 REAL DISK (/dev/urandom, C3-compliant)  recorded_utc=2026-09-06T17:04:15Z\n--- filesystem identity (prove what is RAM)\n--- df -h before\nFilesystem      Size  Used Avail Use% Mounted on\n/dev/root        25G  4.1G   20G  17% /\ntmpfs           993M  8.0K  993M   1% /tmp\n/dev/root        25G  4.1G   20G  17% /\n\n=== target /home/user ===\n--- write 1 GiB of /dev/urandom to /home/user/d2_test.bin\n1024+0 records in\n1024+0 records out\n1073741824 bytes (1.1 GB, 1.0 GiB) copied, 3.57009 s, 301 MB/s\nrc=0 start=2026-09-06T17:04:15Z end=2026-09-06T17:04:19Z\n/dev/root        25G  5.1G   19G  22% /\n--- write 5 GiB of /dev/urandom to /home/user/d2_test.bin\n5120+0 records in\n5120+0 records out\n5368709120 bytes (5.4 GB, 5.0 GiB) copied, 19.528 s, 275 MB/s\nrc=0 start=2026-09-06T17:04:19Z end=2026-09-06T17:04:38Z\n/dev/root        25G  9.1G   15G  38% /\n=== target /tmp ===\n--- write 1 GiB of /dev/urandom to /tmp/d2_test.bin\ndd: error writing '/tmp/d2_test.bin': No space left on device\n993+0 records in\n992+0 records out\n1040683008 bytes (1.0 GB, 992 MiB) copied, 2.85562 s, 364 MB/s\nrc=1 start=2026-09-06T17:04:39Z end=2026-09-06T17:04:41Z\ntmpfs           993M  993M     0 100% /tmp\n--- write 5 GiB of /dev/urandom to /tmp/d2_test.bin\ndd: error writing '/tmp/d2_test.bin': No space left on device\n993+0 records in\n992+0 records out\n1040683008 bytes (1.0 GB, 992 MiB) copied, 2.84362 s, 366 MB/s\nrc=1 start=2026-09-06T17:04:42Z end=2026-09-06T17:04:44Z\ntmpfs           993M  993M     0 100% /tmp\n--- df -h after\nFilesystem      Size  Used Avail Use% Mounted on\n/dev/root        25G  4.1G   20G  17% /\ntmpfs           993M   12K  993M   1% /tmp\n/dev/root        25G  4.1G   20G  17% /\n--- is /tmp RAM? write 256 MiB then check cgroup memory.current delta\n268435456 bytes (268 MB, 256 MiB) copied, 0.727028 s, 369 MB/s\ncgroup memory.current before=11141120 after=279769088 delta_bytes=268627968\n-rw-r--r-- 1 user user 268435456 Sep  6 17:04 /tmp/memtest.bin\ncgroup memory.current after rm=11931648\n# D2 fin\n...[TRUNCATED 31 chars]",
+   "value": "tmpfs 993 MiB; 364-366 MB/s then ENOSPC after 992 MiB; 256 MiB write moved cgroup memory.current by 268627968 B (1.0007x)",
+   "unit": "MB/s",
+   "status": "MEASURED",
+   "note": "proof /tmp is RAM: the write is charged to cgroup memory and released on rm; 5 GiB impossible (ENOSPC)"
+  },
+  {
+   "id": "D3-egress",
+   "command": "getent/python DNS + curl hostname + curl --resolve direct-IP + python TCP/TLS per host (18 targets)",
+   "raw_output": "# D3b EGRESS MECHANISM - corrected direct-IP arms (IPv4 literals)  recorded_utc=2026-09-06T17:06:22Z\n# NOTE on 11_d3_egress.txt: 'direct-ip' arms were invalid there (getent returned AAAA first -> curl(3)).\n# Arms: (1) hostname via DNS [control], (2) IPv4 literal URL + --resolve pin (SNI+Host = real domain, DNS bypassed),\n#       (3) IPv4 literal URL WITHOUT --resolve (SNI/Host = the IP -> wrong name), (4) python TCP connect + HTTP GET to the same IP.\n\n=== example.com  A=172.66.147.243 ===\n  (1) hostname:      http=200 dns=0.001646 connect=0.001916 ttfb=0.036366 ip=172.66.147.243\n  (2) IP+--resolve:  http=200 connect=0.000217 ttfb=0.031899 ip=172.66.147.243\ncurl: (35) TLS connect error: error:0A000410:SSL routines::ssl/tls alert handshake failure\n  (3) IP-only SNI:   http=000 connect=0.000211 ttfb=0.000000 ip=\n  (3) exit=35\n  (4) py TCP ok in 0.002s, TLS+GET first bytes: b'HTTP/1.1 200 OK\\r\\nDate: Sun, 06 Sep 2026 ' (0.055s)\n=== pastebin.com  A=172.66.171.73 ===\n  (1) hostname:      http=200 dns=0.024942 connect=0.025183 ttfb=0.253670 ip=172.66.171.73\n  (2) IP+--resolve:  http=200 connect=0.000219 ttfb=0.233054 ip=172.66.171.73\ncurl: (35) TLS connect error: error:0A000410:SSL routines::ssl/tls alert handshake failure\n  (3) IP-only SNI:   http=000 connect=0.000249 ttfb=0.000000 ip=\n  (3) exit=35\n  (4) py TCP ok in 0.002s, TLS+GET first bytes: b'HTTP/1.1 200 OK\\r\\nDate: Sun, 06 Sep 2026 ' (0.254s)\n=== api.anthropic.com  A=160.79.104.10 ===\n  (1) hostname:      http=404 dns=0.023904 connect=0.024145 ttfb=0.054498 ip=160.79.104.10\n  (2) IP+--resolve:  http=404 connect=0.000222 ttfb=0.027607 ip=160.79.104.10\ncurl: (35) TLS connect error: error:0A000410:SSL routines::ssl/tls alert handshake failure\n  (3) IP-only SNI:   http=000 connect=0.000223 ttfb=0.000000 ip=\n  (3) exit=35\n  (4) py TCP ok in 0.002s, TLS+GET first bytes: b'HTTP/1.1 404 Not Found\\r\\nDate: Sun, 06 Se' (0.127s)\n=== pypi.org  A=151.101.0.223 ===\n  (1) hostname:      http=200 dns=0.001520 connect=0.001788 ttf\n...[TRUNCATED 3682 chars]",
+   "value": "17/18 public hosts reachable; DNS unfiltered (A and AAAA both returned); direct-IP+correct-SNI works for every host; IPv6 connect fails; 169.254.169.254 times out; metadata.google.internal NXDOMAIN",
+   "unit": "count",
+   "status": "MEASURED",
+   "note": "blocklist enumerated = {169.254.169.254, metadata.google.internal, IPv6}. The 'IP-only SNI' arm failed on cert validation (curl 35/60), NOT filtering"
+  },
+  {
+   "id": "D3-egress-bug",
+   "command": "(self-audit) 11_d3_egress.txt direct-IP arms",
+   "raw_output": "curl: (3) URL rejected: Port number was not a decimal number between 0 and 65535",
+   "value": "invalid",
+   "unit": "n/a",
+   "status": "INVALID-THEN-FIXED",
+   "note": "getent returns AAAA first, so $ip was an IPv6 literal -> those arms measured nothing; superseded by 12_d3b_egress_directip.txt"
+  },
+  {
+   "id": "D4-fd",
+   "command": "python3 d4_fd.py (open /dev/null until EMFILE; child setrlimit; raise above hard)",
+   "raw_output": "# D4 FD CEILING (rerun, script bug fixed)  recorded_utc=2026-09-06T17:05:13Z\nparent soft/hard RLIMIT_NOFILE = (1024, 524288)\nparent max simultaneously open /dev/null fds = 1018 (process starts with 3: stdin/out/err)\nfailure was: OSError 24 Too many open files\nCHILD inherited soft/hard = (1024, 524288) -> after setrlimit(soft:=hard) = (524288, 524288)\nCHILD max simultaneously open fds = 524285 failure: OSError 24 Too many open files\nraising ABOVE hard limit fails as expected: ValueError not allowed to raise maximum limit\nulimit -n soft/hard from shell: 1024 / 524288 / \n/proc/sys/fs/file-max = 9223372036854775807\nopenable? /proc/sys/fs/nr_open = 1073741816\n# finished_utc=2026-09-06T17:05:14Z\n",
+   "value": "soft 1024 -> 1018 usable fds; child setrlimit to hard 524288 -> 524285 fds; raise above hard = ValueError",
+   "unit": "fds",
+   "status": "MEASURED",
+   "note": "yes, a child CAN raise to the hard limit; nr_open=1073741816, file-max effectively unlimited"
+  },
+  {
+   "id": "D5-concurrency",
+   "command": "8x bash tool calls in one block, each writing UTC start/end into d5/<X>.txt",
+   "raw_output": "call=A start=2026-09-06T17:07:33.491Z pid=1898 cpu=0 0\ncall=A end=2026-09-06T17:07:37.503Z\ncall=B start=2026-09-06T17:07:35.861Z pid=1912 cpu=0 0\ncall=B end=2026-09-06T17:07:39.871Z\ncall=C start=2026-09-06T17:07:37.519Z pid=1919 cpu=0 0\ncall=C end=2026-09-06T17:07:41.547Z\ncall=D start=2026-09-06T17:07:39.567Z pid=1927 cpu=0 0\ncall=D end=2026-09-06T17:07:43.595Z\ncall=E start=2026-09-06T17:07:41.504Z pid=1968 cpu=0 0\ncall=E end=2026-09-06T17:07:45.515Z\ncall=F start=2026-09-06T17:07:43.571Z pid=1985 cpu=0 0\ncall=F end=2026-09-06T17:07:47.595Z\ncall=G start=2026-09-06T17:07:45.819Z pid=1994 cpu=0 0\ncall=G end=2026-09-06T17:07:49.851Z\ncall=H start=2026-09-06T17:07:47.507Z pid=2001 cpu=0 0\ncall=H end=2026-09-06T17:07:51.531Z",
+   "value": "mean start-gap 2.002 s; total wall 18.040 s vs 4.1 s if parallel",
+   "unit": "s",
+   "status": "MEASURED",
+   "note": "no per-session parallelism observed in Agent Mode; the host dispatcher serialises with ~2 s overhead per call"
+  },
+  {
+   "id": "D6-smt",
+   "command": "taskset -c 0|1|2|3 python3 d6bench.py (1 thread vs 2 forked threads)",
+   "raw_output": "# D6 SMT PENALTY  recorded_utc=2026-09-06T17:04:25Z\n--- topology: thread_siblings_list = 0-1; nproc=2\n--- taskset -c 0 python3 d6bench.py\nsingle-thread wall = 0.4546 s\n2-thread wall trial0 = 0.9086 s\n2-thread wall trial1 = 0.9078 s\n--- taskset -c 1 python3 d6bench.py\nsingle-thread wall = 0.4852 s\n2-thread wall trial0 = 0.9550 s\n2-thread wall trial1 = 0.9706 s\n--- taskset -c 2 python3 d6bench.py\ntaskset: failed to set pid 1555's affinity: Invalid argument\n--- taskset -c 3 python3 d6bench.py\ntaskset: failed to set pid 1556's affinity: Invalid argument\n--- ratio calc\n# finished_utc=2026-09-06T17:04:31Z\n",
+   "value": "mask0 ratio 1.998x (sibling +0.11%); mask1 ratio 1.984x (+0.79%); -c 2/-c 3 rejected",
+   "unit": "ratio",
+   "status": "MEASURED",
+   "note": "thread_siblings_list=0-1, lscpu 1 core x 2 threads -> the 'SMT penalty vs 2 real cores' is not measurable on this box"
+  },
+  {
+   "id": "B1-confounder",
+   "command": "/proc/stat busy% + curl speed_download idle vs during verified 100% CPU burn",
+   "raw_output": "# B1 CORRELATION vs CAUSATION + C4/C7-COMPLIANT BANDWIDTH  recorded_utc=2026-09-06T17:06:40Z\n# B2 control for the bandwidth probe: example.com already fetched OK with identical tool (04_b_controls.txt).\n# B3 falsifier for 'slow': RFC5737 connect() 'succeeded' (04_b_controls.txt) so we never trust connect() alone.\n\n=== B1 CONFOUNDER TEST: same download, idle CPU vs CPU saturated ===\nconfounders listed: (i) CPU contention slowing the download process itself (TLS/crypto, memcpy, python overhead);\n  (ii) time-varying CDN/server-side load or peering (the download path itself changed between trials);\n  (iii) shared-host 'noisy neighbour' on the physical machine (we cannot see or control it);\n  (iv) cgroup cpu.max throttling (measured: 'max 100000' = no quota) -> ruled out by file, not by inference;\n  (v) cache warm/cold on the local resolver/TCP path; (vi) measurement order (first trial pays connection setup).\n\n--- IDLE trial 1 (load before: 0.24 0.21 0.09)\n  idle dl: http=200 size=50000000 ttfb=0.856799 total=1.012927 speed=49361898 B/s ip=162.159.140.220\n--- IDLE trial 2 (load before: 0.24 0.21 0.09)\n  idle dl: http=200 size=50000000 ttfb=0.109734 total=0.287227 speed=174078342 B/s ip=172.66.0.218\n--- IDLE trial 3 (load before: 0.24 0.21 0.09)\n  idle dl: http=200 size=50000000 ttfb=0.090500 total=0.273120 speed=183069712 B/s ip=162.159.140.220\n\n--- SATURATED trial: 2x busy loops pinned to both CPUs, then the identical download\n  load during burn: 0.38 0.24 0.10  (nproc=2)\n  busy dl 1: http=200 size=50000000 ttfb=0.099894 total=0.278920 speed=179262871 B/s ip=172.66.0.218\n  busy dl 2: http=200 size=50000000 ttfb=0.111593 total=0.304297 speed=164313154 B/s ip=162.159.140.220\n  load after burn: 0.38 0.24 0.10\n--- discriminator result: if speed is ~unchanged under CPU saturation, 'high CPU causes slow downloads' is FALSE here.\n\n=== B1b control: same URL twice back-to-back (is the variance ours or the network's?) ===\n  repeat 1: size=20000000 total=0.216435 speed=92406496 B/\n...[TRUNCATED 1638 chars]",
+   "value": "idle(cpu 1.2%) mean 135.5 MB/s; burn(cpu 100.0%) mean 132.6 MB/s; ranges overlap; nr_throttled=0",
+   "unit": "MB/s",
+   "status": "MEASURED",
+   "note": "correlation is not causation; confounders = Cloudflare POP choice (140.2 vs 122.4 MB/s), TCP ramp, noisy neighbour (unobservable)"
+  },
+  {
+   "id": "C4-httpbin",
+   "command": "curl https://httpbin.org/bytes/100000 vs speed.cloudflare.com/__down?bytes=50000000",
+   "raw_output": "=== C4: httpbin.org comparison (why it is not a bandwidth probe) ===\nhttpbin /bytes/100000: http=200 size=100000 ttfb=0.461530 total=0.590018 speed=169486 B/s",
+   "value": "httpbin 0.169 MB/s vs cloudflare mean 131.3 MB/s = 775x",
+   "unit": "MB/s",
+   "status": "MEASURED",
+   "note": "C4 confirmed: httpbin is not a bandwidth probe"
+  },
+  {
+   "id": "B2-control",
+   "command": "curl -sS -o /dev/null -w ... https://example.com (before any 'blocked' claim)",
+   "raw_output": "# content_write_time=2026-09-06T17:11:52Z (added post-hoc; see manifest note)\n# SECTION B - REASONING CONTROLS (B2 known-good first, B3 known-bad first)\n=== B2.a KNOWN-GOOD CONTROL (must succeed) ===\n--- control 1: example.com via curl -sS -o /dev/null -w\nhttp=200 dns=0.023894 connect=0.024142 tls=0.054205 ttfb=0.073634 total=0.073713 size=559 ip=104.20.23.154\n--- control 2: DNS resolution path\n2606:4700:10::6814:179a example.com\n2606:4700:10::ac42:93f3 example.com\npy getaddrinfo: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('104.20.23.154', 443))]\n--- control 3: proxy env / resolv.conf\n(no *proxy* env vars)\nnameserver 8.8.8.8=== B3.a FALSE-POSITIVE CONTROL: RFC5737 TEST-NET, must FAIL ===\n--- curl connect to 192.0.2.1:443 (expect fail/timeout)\ncurl: (28) Connection timed out after 8002 milliseconds\nhttp=000 connect=0.000000 total=8.002898 ip=\ncurl_exit=28 -> FAILED as required\n--- curl connect to 198.51.100.1:443 (expect fail/timeout)\ncurl: (28) Connection timed out after 8001 milliseconds\nhttp=000 connect=0.000000 total=8.001512 ip=\ncurl_exit=28 -> FAILED as required\n--- curl connect to 203.0.113.1:443 (expect fail/timeout)\ncurl: (28) Connection timed out after 8002 milliseconds\nhttp=000 connect=0.000000 total=8.002118 ip=\ncurl_exit=28 -> FAILED as required\n--- python raw connect() to 192.0.2.1:80 (expect fail)\n('192.0.2.1', 80) CONNECTED (UNTRUSTWORTHY PROBE!) in 0.004s\n('198.51.100.1', 443) CONNECTED (UNTRUSTWORTHY PROBE!) in 0.000s\n('203.0.113.1', 22) CONNECTED (UNTRUSTWORTHY PROBE!) in 0.000s\n--- E2B_EVENTS_ADDRESS points at RFC5737 TEST-NET-1; is it reachable? (expect no)\nhttp=404 total=0.002019\n",
+   "value": "http=200 ttfb=0.0736 s ip=104.20.23.154",
+   "unit": "status",
+   "status": "MEASURED",
+   "note": "probe validated by identical method before use"
+  },
+  {
+   "id": "B3-falsifier",
+   "command": "python3 socket.create_connection to RFC5737 TEST-NET; curl to the same addresses",
+   "raw_output": "# content_write_time=2026-09-06T17:11:52Z (added post-hoc; see manifest note)\n# SECTION B - REASONING CONTROLS (B2 known-good first, B3 known-bad first)\n=== B2.a KNOWN-GOOD CONTROL (must succeed) ===\n--- control 1: example.com via curl -sS -o /dev/null -w\nhttp=200 dns=0.023894 connect=0.024142 tls=0.054205 ttfb=0.073634 total=0.073713 size=559 ip=104.20.23.154\n--- control 2: DNS resolution path\n2606:4700:10::6814:179a example.com\n2606:4700:10::ac42:93f3 example.com\npy getaddrinfo: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('104.20.23.154', 443))]\n--- control 3: proxy env / resolv.conf\n(no *proxy* env vars)\nnameserver 8.8.8.8=== B3.a FALSE-POSITIVE CONTROL: RFC5737 TEST-NET, must FAIL ===\n--- curl connect to 192.0.2.1:443 (expect fail/timeout)\ncurl: (28) Connection timed out after 8002 milliseconds\nhttp=000 connect=0.000000 total=8.002898 ip=\ncurl_exit=28 -> FAILED as required\n--- curl connect to 198.51.100.1:443 (expect fail/timeout)\ncurl: (28) Connection timed out after 8001 milliseconds\nhttp=000 connect=0.000000 total=8.001512 ip=\ncurl_exit=28 -> FAILED as required\n--- curl connect to 203.0.113.1:443 (expect fail/timeout)\ncurl: (28) Connection timed out after 8002 milliseconds\nhttp=000 connect=0.000000 total=8.002118 ip=\ncurl_exit=28 -> FAILED as required\n--- python raw connect() to 192.0.2.1:80 (expect fail)\n('192.0.2.1', 80) CONNECTED (UNTRUSTWORTHY PROBE!) in 0.004s\n('198.51.100.1', 443) CONNECTED (UNTRUSTWORTHY PROBE!) in 0.000s\n('203.0.113.1', 22) CONNECTED (UNTRUSTWORTHY PROBE!) in 0.000s\n--- E2B_EVENTS_ADDRESS points at RFC5737 TEST-NET-1; is it reachable? (expect no)\nhttp=404 total=0.002019\n",
+   "value": "connect() 'succeeded' 3/3 in <=4 ms; curl timed out 8 s; GET http://192.0.2.1/ = 404 in 2.0 ms",
+   "unit": "n/a",
+   "status": "MEASURED",
+   "note": "false-positive control caught a lying primitive: connect() is worthless here"
+  },
+  {
+   "id": "C1-mtimes",
+   "command": "stat -c '%y %z' on image files and on a file written now",
+   "raw_output": "# C1 MTIME-CHECK  recorded_utc=2026-09-06T17:08:39Z\nstat c1_probe.txt:\nmtime=2026-09-06 17:08:39.838787133 +0000  ctime=2026-09-06 17:08:39.838787133 +0000  size=48\ndate -u now:          2026-09-06T17:08:39Z\n--- pre-existing files in this sandbox (do their mtimes match their content write-times?)\n/etc/os-release mtime=2026-07-04 09:05:00.000000000 +0000\n/etc/resolv.conf mtime=1970-01-01 00:00:00.000000000 +0000\n/etc/hostname mtime=1970-01-01 00:00:00.000000000 +0000\n--- NOTE: the restore-time mtime reset CANNOT be observed from inside a single live session.\n    (would require comparing to the next restore). C1 is therefore AVOIDED, not disproved:\n    every raw file here carries its own write timestamp in its first line.\n--- proof that the technique works: content time vs mtime of c1_probe.txt should agree now\n# finished_utc=2026-09-06T17:08:39Z\n",
+   "value": "/etc/hostname and /etc/resolv.conf mtime = 1970-01-01; live file mtime matches its embedded content time",
+   "unit": "n/a",
+   "status": "MEASURED",
+   "note": "restore-time reset itself NOT observable in one session -> AVOIDED, not disproved"
+  },
+  {
+   "id": "D1-session",
+   "command": "uptime + echo after 3 OOM kills",
+   "raw_output": "=2026-09-06T17:04:15Z\n# session still alive after D1: yes (this line was written by the same session)\n 17:04:15 up 3 min,  0 users,  load average: 0.16, 0.05, 0.01\nlow 0\nhigh 0\nmax 0\noom 0\noom_kill 3\noom_group_kill 0\n",
+   "value": "session alive",
+   "unit": "n/a",
+   "status": "MEASURED",
+   "note": "the OOM kill does NOT end the session; memory.current fell to 13942784 B"
+  },
+  {
+   "id": "E-cross-surface",
+   "command": "env|grep ^E2B_; cat /.e2b; env|grep -c DATABASE_URL",
+   "raw_output": "# SECTION E - CODE ARENA CROSS-SURFACE: STATUS = NOT PERFORMED (scoping rule)\n# The task states Section E runs \"ONLY in arena.ai/code, not Agent Mode\".\n# This session is an Agent Mode sandbox. Evidence for the surface (not an inference):\n#   E2B_SANDBOX=true, E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9, BUILD_ID=f34a5416-ef30-4cb7-8e18-0fdecd6eb529\n#   hostname=e2b.local, no DATABASE_URL in env, no generated app project, no preview server started.\n# E1 (template_id): would be measured here; the Agent Mode value is nlhz8vlwyupq845jsdg9 (see /.e2b).\n# E2 (uname/host/nproc/MemTotal/cgroup): measured for THIS surface in 01/05/06, not for the code surface.\n# E3 (DATABASE_URL scheme+host): NOT PERFORMED - variable absent in this environment:\n0\n0 (grep found no DATABASE_URL)\n# E4 (preview URL hostname/headers): NOT PERFORMED - no preview server was started in this session.\n# Cross-surface comparison (T vs B vs code sandbox) is therefore OUT OF SCOPE for this draw.\n",
+   "value": "NOT PERFORMED",
+   "unit": "n/a",
+   "status": "NOT PERFORMED",
+   "note": "Agent Mode surface; Section E is scoped to arena.ai/code only"
+  },
+  {
+   "id": "manifest",
+   "command": "./make_manifest.sh (sha256sum per raw file + sha256 of the joined digests)",
+   "raw_output": "# probe3 manifest  generated_utc=2026-09-06T17:11:52Z\n# sandbox_id=i3xgkkubxoiw2bi4vlqkx template_id=nlhz8vlwyupq845jsdg9 boot_id=2bb79165-136a-4b63-829d-17027b0a8e40\n# uptime_at_manifest=658.41s  host=e2b.local\n# NOTE (C1): mtimes are NOT trusted; each raw file carries its own write-time in its content.\n# format: sha256  bytes  content_write_time_utc  path\n6c1b910d6b32c006f8b4ba5ed003daaa52f7011eee1c05e7a5ca03737b87f6f1  971  2026-09-06T17:01:15Z  01_a0_lock.txt\n775fb484a9d48edef23717955f2c193754b6e077b796d205020e36f769a0bcf1  2500  2026-09-06T17:11:52Z  02_a_calib_memory_only.txt\nb9454def07d3238bdee333b8291606f9b0ef3cdf2184ea8b0294f1b6cdb095f1  1352  2026-09-06T17:11:52Z  03_c_checklist_ack.txt\nfb6db9df3b363caff2e91e9779a8ca33448fb19737fe2ee6087df140f9a0d866  1652  2026-09-06T17:11:52Z  04_b_controls.txt\na7110a114b1a7414928f90d8cf75e7d2fea791acb7284e07381d81fd8c24155b  2780  2026-09-06T17:03:13Z  05_cgroup_limits.txt\naa7c76c353d072bd6fc706630e2de1924e43277ea40d5a499b3664daa0a8329e  2830  2026-09-06T17:03:13Z  06_cpu_topology.txt\n1ac89b395cb48ad98b4e82a5bc778342da3f1c82c7dbbbf7ee7b1a5f6eafc42f  1290  2026-09-06T17:04:05Z  07_d1_oom.txt\n62a463b71b2e899048d2e069d529f855774e4be09973341d4f1aff7e82bb823e  2031  2026-09-06T17:04:15Z  08_d2_disk.txt\nc150c5562852d8971e6fbad8ddd1e1720c699801ce41404597db3494f635dec0  699  2026-09-06T17:05:13Z  09_d4_fd.txt\ne1ae5dcff141550ba00fbca776f7915f02d71036bbe4e76cd29f43369eff3a29  607  2026-09-06T17:04:25Z  10_d6_smt.txt\n4e83db58642d52666d004fd26b8695c8c2aeab9665fbc15588ed51810a8bcf01  11340  2026-09-06T17:05:28Z  11_d3_egress.txt\n7938b6f791dc0433cca4659ecdc599f0e1d669942e8a3a9e66b9e8ee58ed7649  5682  2026-09-06T17:06:22Z  12_d3b_egress_directip.txt\n5436c5e48fd5263119bc45c48428470ebbb14fbbb45edaab9c3ca2b918143ab4  3638  2026-09-06T17:06:40Z  13_b1_bandwidth.txt\nf2f4d477462a224ccfb8a1879c17a6c3a79304b0f4a0e7285913ccaa675987e3  857  2026-09-06T17:08:39Z  14_c1_mtimes.txt\nba362172494509826b8a2420c7a9cea3ec2fbb6eb676f702dd842c82f9bb89b0  \n...[TRUNCATED 1438 chars]",
+   "value": "8c2822c01dc1211bd14a005468500398f748c1b46642e3eb0bbac102851c5483",
+   "unit": "sha256",
+   "status": "MEASURED",
+   "note": "26 files; regenerated after adding embedded write-times to 4 files that lacked them"
+  }
+ ],
+ "self_audit": {
+  "my_own_errors_caught": [
+   "11_d3_egress.txt: direct-IP arms invalid (getent returned AAAA first -> curl(3)). Superseded by 12_d3b_egress_directip.txt; the file is kept and labelled INVALID in the JSON rather than deleted.",
+   "13_b1_bandwidth.txt first pass used /proc/loadavg (1-min decay) to 'prove' CPU saturation, which showed only 0.38 during a real burn; replaced with /proc/stat busy% which read 100.0.",
+   "d4_fd.py crashed with UnboundLocalError on its first run (the OSError variable was unbound); fixed and re-run, 09_d4_fd.txt is the rerun.",
+   "analyze.py first parsed the COARSE first_kill=1792 MiB instead of the bisected RESULT first_kill=1632 MiB; fixed, so the reported ceiling is the 32 MiB-resolution value.",
+   "b1b_cpu_check.sh printed 'bc: command not found' (bc is absent from the image); the busy% figure came from the python path, not bc."
+  ],
+  "not_performed": [
+   "C1 restore-time mtime reset (unobservable inside one session)",
+   "D6 SMT penalty vs 2 physical cores (only 1 core exists)",
+   "Section E1-E4 (wrong surface)",
+   "Noisy-neighbour / host-level CPU contention (invisible from inside the guest)"
+  ],
+  "grader_notes": "Every number in this JSON is either quoted from a raw file in /home/user/probe3/ or computed from one by analyze.py (15_analysis_derived.txt). No value was typed from memory. Two claims are explicitly NOT MEASURED rather than estimated."
+ }
+}

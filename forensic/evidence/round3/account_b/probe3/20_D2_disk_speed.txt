@@ -1,0 +1,26 @@
+=== fs summary ===
+Filesystem     Type   Size  Used Avail Use% Mounted on
+/dev/root      ext4    25G  4.1G   20G  17% /
+tmpfs          tmpfs  993M   44K  993M   1% /tmp
+=== home ext4: 1 GiB ===
+W home_1GiB rc=0 bytes=1073741824 wall=3.540s decimal_MBps=303.3 binary_MiBps=289.3
+  file_size=1073741824 name=/home/user/probe3/d2_h1g.bin
+=== tmp tmpfs: 1 GiB (expect ENOSPC near ~993M cap) ===
+dd: error writing '/tmp/d2_t1g.bin': No space left on device
+W tmp_1GiB rc=1 bytes=1073741824 wall=2.950s decimal_MBps=364.0 binary_MiBps=347.1
+  file_size=1040650240 name=/tmp/d2_t1g.bin
+=== tmp tmpfs: 512 MiB (successful, for bandwidth) ===
+dd: error writing '/tmp/d2_t512m.bin': No space left on device
+W tmp_512MiB rc=1 bytes=536870912 wall=0.006s decimal_MBps=89478.5 binary_MiBps=85333.3
+  file_size=0 name=/tmp/d2_t512m.bin
+=== home ext4: 5 GiB ===
+W home_5GiB rc=0 bytes=5368709120 wall=16.100s decimal_MBps=333.5 binary_MiBps=318.0
+  file_size=5368709120 name=/home/user/probe3/d2_h5g.bin
+=== tmp tmpfs: 5 GiB (expect ENOSPC) ===
+dd: error writing '/tmp/d2_t5g.bin': No space left on device
+W tmp_5GiB rc=1 bytes=5368709120 wall=0.006s decimal_MBps=894784.9 binary_MiBps=853333.3
+  file_size=0 name=/tmp/d2_t5g.bin
+=== cleanup ===
+Filesystem     Type   Size  Used Avail Use% Mounted on
+/dev/root      ext4    25G  4.1G   20G  17% /
+tmpfs          tmpfs  993M   44K  993M   1% /tmp

@@ -1,0 +1,12 @@
+# SECTION E - CODE ARENA CROSS-SURFACE: STATUS = NOT PERFORMED (scoping rule)
+# The task states Section E runs "ONLY in arena.ai/code, not Agent Mode".
+# This session is an Agent Mode sandbox. Evidence for the surface (not an inference):
+#   E2B_SANDBOX=true, E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9, BUILD_ID=f34a5416-ef30-4cb7-8e18-0fdecd6eb529
+#   hostname=e2b.local, no DATABASE_URL in env, no generated app project, no preview server started.
+# E1 (template_id): would be measured here; the Agent Mode value is nlhz8vlwyupq845jsdg9 (see /.e2b).
+# E2 (uname/host/nproc/MemTotal/cgroup): measured for THIS surface in 01/05/06, not for the code surface.
+# E3 (DATABASE_URL scheme+host): NOT PERFORMED - variable absent in this environment:
+0
+0 (grep found no DATABASE_URL)
+# E4 (preview URL hostname/headers): NOT PERFORMED - no preview server was started in this session.
+# Cross-surface comparison (T vs B vs code sandbox) is therefore OUT OF SCOPE for this draw.

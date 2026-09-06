@@ -1,0 +1,48 @@
+=== post-D1 session liveness ===
+Sun Sep  6 17:10:26 UTC 2026
+ 17:10:26 up 9 min,  0 users,  load average: 0.52, 0.44, 0.23
+E2B_SANDBOX_ID=i8h6fqsmx2z4wfzs4klkk
+boot_id (template-constant, not a liveness signal): 2bb79165-136a-4b63-829d-17027b0a8e40
+=== C1 check: stat mtime vs file-creation evidence ===
+07_boot_id.txt mtime=2026-09-06 17:02:33.830762759 +0000
+28_D1_oom_bisect.txt mtime=2026-09-06 17:10:05.362762759 +0000
+scripts/oom_probe.py mtime=2026-09-06 17:09:46.806762759 +0000
+--- content-embedded timestamps (created during THIS session ~17:0xZ) ---
+2026-09-06T17:02:33Z
+start 1788714521.281570687 pid 1942
+=== filesystem hygiene: no big binaries left ===
+106K	/home/user/probe3
+total 90
+drwxr-xr-x 3 user user 4096 Sep  6 17:10 .
+drwx------ 3 user user  128 Sep  6 17:02 ..
+-rw-r--r-- 1 user user   43 Sep  6 17:02 00_os_release.txt
+-rw-r--r-- 1 user user   52 Sep  6 17:02 01_uname_v.txt
+-rw-r--r-- 1 user user   15 Sep  6 17:02 02_python3_V.txt
+-rw-r--r-- 1 user user   28 Sep  6 17:02 03_meminfo_MemTotal.txt
+-rw-r--r-- 1 user user   40 Sep  6 17:02 04_df_root.txt
+-rw-r--r-- 1 user user  107 Sep  6 17:02 05_dot_e2b.txt
+-rw-r--r-- 1 user user   37 Sep  6 17:02 06_env_E2B_TEMPLATE_ID.txt
+-rw-r--r-- 1 user user   37 Sep  6 17:02 07_boot_id.txt
+-rw-r--r-- 1 user user   94 Sep  6 17:02 08_uname_a.txt
+-rw-r--r-- 1 user user   21 Sep  6 17:02 09_timestamp_utc.txt
+-rw-r--r-- 1 user user  379 Sep  6 17:02 10_classinfo_extra.txt
+-rw-r--r-- 1 user user 3160 Sep  6 17:02 11_cgroup_cpu.txt
+-rw-r--r-- 1 user user  182 Sep  6 17:02 12_B3_rfc5737.txt
+-rw-r--r-- 1 user user  324 Sep  6 17:02 13_B2_control.txt
+-rw-r--r-- 1 user user  795 Sep  6 17:05 14_B1_cpu_download.txt
+-rw-r--r-- 1 user user  358 Sep  6 17:03 15_cgroup_limits.txt
+-rw-r--r-- 1 user user 1875 Sep  6 17:03 16_D3_egress_probe.txt
+-rw-r--r-- 1 user user 1097 Sep  6 17:04 17_disk_precheck.txt
+-rw-r--r-- 1 user user  201 Sep  6 17:05 18_B1_size_check.txt
+-rw-r--r-- 1 user user  629 Sep  6 17:06 19_D6_smt_penalty.txt
+-rw-r--r-- 1 user user 1381 Sep  6 17:07 20_D2_disk_speed.txt
+-rw-r--r-- 1 user user  317 Sep  6 17:07 21_D2_tmpfs_clean.txt
+-rw-r--r-- 1 user user 1379 Sep  6 17:07 22_D4_fd_discovery.txt
+-rw-r--r-- 1 user user  433 Sep  6 17:08 23_D2_unbottlenecked.txt
+-rw-r--r-- 1 user user  589 Sep  6 17:08 24_D4_fd_ceiling.txt
+-rw-r--r-- 1 user user  734 Sep  6 17:08 25_D5_concurrency.txt
+-rw-r--r-- 1 user user 1688 Sep  6 17:09 26_D3_phase2.txt
+-rw-r--r-- 1 user user  350 Sep  6 17:09 27_D3_ua_test.txt
+-rw-r--r-- 1 user user 1355 Sep  6 17:10 28_D1_oom_bisect.txt
+-rw-r--r-- 1 user user  691 Sep  6 17:10 29_C1_liveness.txt
+drwxr-xr-x 2 user user  128 Sep  6 17:09 scripts

@@ -1,0 +1,138 @@
+# content_write_time=2026-09-06T17:11:52Z (added post-hoc; see manifest note)
+# SECTION: FALSIFICATION LEDGER  (R2)  recorded_utc=2026-09-06T17:09Z
+# Every claim below lists the command that would have produced DIFFERENT output if the claim were false.
+
+F1  claim: "this box is a KVM virtual machine (microVM), not a container and not bare metal"
+    confirming_cmd: systemd-detect-virt ; head -2 /proc/1/sched ; dmesg | grep 'Command line'
+    confirming_out: "kvm" ; /proc/1/sched absent (PID1 is a real init, not the tool runner) ;
+                    cmdline has "init=/sbin/init", root=/dev/vda, virtio_mmio devices, ip=169.254.0.21
+    falsifying_cmd: cat /proc/1/cgroup ; ls -d /.dockerenv ; grep -c 'container=' /proc/1/environ ; cat /proc/cpuinfo|grep -c hypervisor
+    falsifying_out: /proc/1/cgroup = "0::/" with system.slice present and NO docker/lxc id;
+                    /.dockerenv absent; hypervisor flag PRESENT (a container would still show the host's
+                    flag, but a bare-metal box would not) -> container and bare-metal both excluded
+    verdict: KVM guest with its own kernel and real PID1. grade=MEASURED
+
+F2  claim: "CLASS T (not B, not NEW)"
+    confirming_cmd: grep PRETTY_NAME /etc/os-release; python3 -V; uname -v; grep MemTotal /proc/meminfo
+    confirming_out: Debian GNU/Linux 13 (trixie) / Python 3.13.14 / #1 SMP PREEMPT_DYNAMIC Fri Jul 17
+                    14:31:34 UTC 2026 / MemTotal: 2032608 kB  (all four T markers)
+    falsifying_cmd: same four commands (each B marker is a distinct string)
+    falsifying_out: none present: not "Debian GNU/Linux 12 (bookworm)", not "Python 3.11",
+                    not "Mon May 11 18:48:24 UTC 2026", not ~3.8 GiB. 0 of 4 B markers -> not class B.
+    verdict: CLASS T. grade=MEASURED
+
+F3  claim: "the OOM ceiling is 1600 MiB OK / 1632 MiB killed, and the kill does NOT end the session"
+    confirming_cmd: python3 d1_oom_bisect.py  (allocate-and-touch 1 MiB blocks in a subprocess)
+    confirming_out: 1600 MiB -> rc=0 "TOUCHED_MiB 1600"; 1632 MiB -> rc=-9 (SIGKILL);
+                    memory.events oom_kill 0 -> 3 (exactly the 3 failed trials: 1792, 1664, 1632)
+    falsifying_cmd: cat /sys/fs/cgroup/user/memory.events ; uptime ; echo alive
+    falsifying_out: if the ceiling were elsewhere, a different MiB value would exit 0; if the kill ended
+                    the session, oom_kill would have stayed 0 and no further output would exist.
+                    Observed instead: oom_kill=3, "up 3 min", and post-D1 lines were written.
+    verdict: cgroup-scoped OOM kill, session survives. grade=MEASURED
+
+F4  claim: "no domain blocklist: egress is open; DNS is unfiltered; no IP/SNI-level filter for the tested set"
+    confirming_cmd: curl -sS -o /dev/null -w '%{http_code}' https://<host>/  and
+                    curl --resolve <host>:443:<A-record> https://<host>/   (DNS bypassed, SNI kept)
+    confirming_out: 17/18 hostnames returned a real HTTP status (200/301/302/403/404/421);
+                    direct-IP+--resolve returned the SAME status for all 6 retested hosts, including
+                    pastebin.com, api.anthropic.com, openai.com, api.openai.com, huggingface.co.
+    falsifying_cmd: identical method against a known-good control (B2) + getent hosts for each host
+    falsifying_out: control example.com = 200 by the identical method (probe is valid); DNS returned
+                    A/AAAA for EVERY public hostname tested (a DNS-level block would print nothing).
+                    The only failures were 169.254.169.254 (link-local metadata, connect timeout) and
+                    metadata.google.internal (NXDOMAIN) -> cloud-metadata blocked, public net not.
+    verdict: blocklist found = {169.254.169.254, metadata.google.internal}; public egress OPEN. grade=MEASURED
+
+F5  claim: "IPv6 egress is blocked (IPv4 only)"
+    confirming_cmd: curl -6 -sS -o /dev/null -w '%{http_code} %{remote_ip}' https://cloudflare.com/
+    confirming_out: curl: (7) Failed to connect ... after 10 ms ; http=000 ; ip= (empty)
+    falsifying_cmd: curl -4 same URL, and getent hosts cloudflare.com (is DNS stripping AAAA?)
+    falsifying_out: curl -4 = 200 with a real remote_ip; DNS DID return AAAA records for 12 hosts
+                    (e.g. 2606:4700:10::6814:179a) -> resolver unfiltered, so the block is at connect().
+    verdict: IPv6 connect blocked. grade=MEASURED
+
+F6  claim: "raw TCP connect() is untrustworthy here (transparent proxy); TTFB must be used (C7)"
+    confirming_cmd: python3 socket.create_connection to 192.0.2.1:80 / 198.51.100.1:443 / 203.0.113.1:22
+    confirming_out: all three "CONNECTED" in 0.004s / 0.000s / 0.000s -> RFC5737 TEST-NET accepted
+    falsifying_cmd: curl -m 8 https://192.0.2.1/  (same address, needs a real handshake)
+    falsifying_out: curl: (28) Connection timed out after 8002 ms, http=000 -> the connect() 'success'
+                    was local acceptance. Corroborating: GET http://192.0.2.1/ = HTTP 404 in 2.0 ms,
+                    i.e. something local answers for that address.
+    verdict: connect() lies; only TTFB/HTTP-status evidence used. grade=MEASURED
+
+F7  claim: "/tmp is RAM (tmpfs); /home/user is disk"
+    confirming_cmd: findmnt /tmp ; dd if=/dev/urandom of=/tmp/memtest.bin bs=1M count=256 conv=fsync
+                    with cgroup memory.current read before/after ; rm
+    confirming_out: tmpfs 993M on /tmp; memory.current +268627968 B for a 268435456 B file (ratio
+                    1.0007x); after rm memory.current fell back to 11931648 B
+    falsifying_cmd: the 5 GiB urandom write to /tmp ; df -h /tmp
+    falsifying_out: "No space left on device" after 992 MiB and df shows tmpfs 993M 100% full —
+                    a 25G disk-backed /tmp would have accepted all 5 GiB like /home/user did.
+    verdict: /tmp is RAM and capped at 993 MiB. grade=MEASURED
+
+F8  claim: "8 tool calls issued in ONE block are dispatched SERIALLY, ~2.0 s apart"
+    confirming_cmd: 8x bash, each writing its own start/end clock time into d5/<X>.txt
+    confirming_out: starts 33.491, 35.861, 37.519, 39.567, 41.504, 43.571, 45.819, 47.507 (UTC s)
+                    mean gap 2.002 s; total wall 18.040 s
+    falsifying_cmd: same 8 calls (each sleeps exactly 4 s) -> compare wall time with 4.1 s
+    falsifying_out: if the runtime ran them concurrently, A.start->H.end would be ~4.1 s; observed
+                    18.040 s. No pair of calls shares a 4 s window without a ~2 s dispatch offset.
+    verdict: no observed per-session parallelism in Agent Mode; cap = 1 concurrent exec. grade=MEASURED
+
+F9  claim: "high CPU does NOT cause slow downloads here (the correlation is confounded)"
+    confirming_cmd: /proc/stat busy% around the download + curl speed_download during a verified burn
+    confirming_out: cpu_busy_pct=100.0 while downloading; speeds 179.3/164.3/85.3/167.8/66.3 MB/s
+                    (mean 132.6) vs idle cpu_busy_pct=1.2 speeds 49.4/174.1/183.1 (mean 135.5)
+    falsifying_cmd: same URL, idle, n=3, plus per-POP breakdown of every trial
+    falsifying_out: if CPU were causal, the burn trials would sit BELOW the idle range; they overlap
+                    it entirely (burn max 179.3 > idle min 49.4). cpu.stat nr_throttled=0,
+                    throttled_usec=0 with cpu.max="max 100000" -> no quota throttling either.
+                    The measured confounder: which Cloudflare POP is hit (172.66.0.218 mean 140.2 vs
+                    162.159.140.220 mean 122.4 MB/s) and TCP ramp/ttfb.
+    verdict: correlation not causation; CPU ruled out by experiment. grade=MEASURED
+
+F10 claim: "the sibling thread adds ~0 throughput (1 physical core, 2 SMT threads)"
+    confirming_cmd: taskset -c 0 python3 d6bench.py  (1 thread vs 2 forked threads, same affinity)
+    confirming_out: 1T=0.4546 s, 2T=0.9082/0.9078 s -> ratio 1.998x, sibling gain +0.11%
+                   (mask 1: 1T=0.4852, 2T=0.9628 -> ratio 1.984x, +0.79%)
+    falsifying_cmd: taskset -c 2 / -c 3 (are there two real cores?) ; cat thread_siblings_list
+    falsifying_out: taskset -c 2 -> "failed to set pid's affinity: Invalid argument"; siblings = "0-1";
+                    lscpu: 1 socket, 1 core/socket, 2 threads/core. A 2-core box would have accepted
+                    -c 2 and shown ratio ~1.0x for a 2-thread run across real cores.
+    verdict: SMT sibling throughput ~0% for this scalar loop; 2-core comparison NOT MEASURABLE
+             (only 1 physical core exists). grade=MEASURED (ratio) / NOT PERFORMED (vs 2 cores)
+
+F11 claim: "a child process CAN raise RLIMIT_NOFILE from 1024 to the hard limit, but not above it"
+    confirming_cmd: python3 d4_fd.py (parent opens until EMFILE; child setrlimit then opens)
+    confirming_out: parent soft/hard=(1024,524288), 1018 fds then EMFILE(24);
+                    child after setrlimit -> 524285 fds then EMFILE(24)
+    falsifying_cmd: resource.setrlimit(RLIMIT_NOFILE, (hard+1, hard+1)) in the same process
+    falsifying_out: ValueError "not allowed to raise maximum limit" -> the hard cap is real.
+    verdict: soft 1024 / hard 524288; raise-to-hard works, raise-above-hard does not. grade=MEASURED
+
+F12 claim: "the memory limit is a hard cgroup ceiling with no swap escape"
+    confirming_cmd: cat /proc/swaps ; cat /sys/fs/cgroup/user/memory.swap.max
+    confirming_out: /proc/swaps = header only (no devices); memory.swap.max = "max" but nothing to swap to
+    falsifying_cmd: the D1 bisect itself
+    falsifying_out: if swap existed, a 1792 MiB touch would have slowed down and returned rc=0;
+                    instead rc=-9 immediately at 1632 MiB and memory.current fell to 13942784 B.
+    verdict: no swap; over-limit = immediate OOM kill. grade=MEASURED
+
+F13 claim: "the 1.94 GiB figure in the CLASS T definition is correct (C6)"
+    confirming_cmd: python3 -c on MemTotal=2032608 kB (arithmetic in 15_analysis_derived.txt)
+    confirming_out: 2032608 kB = 2081390592 B = 1984.97 MiB = 1.9384 GiB (and 2.0814 decimal GB)
+    falsifying_cmd: same arithmetic against a 3.8 GiB box (class B)
+    falsifying_out: class B would print ~3984 MiB / ~3.89 GiB. Observed 1984.97 MiB -> 1.94 GiB stands;
+                    the retracted "1.894 GiB" is not reproducible from this MemTotal by any convention
+                    (binary 1.9384, decimal 2.0814).
+    verdict: 1.94 GiB CORRECT. grade=MEASURED
+
+F14 claim: "SECTION E does not apply to this surface"
+    confirming_cmd: env | grep ^E2B_ ; cat /.e2b  (surface identification)
+    confirming_out: E2B_SANDBOX=true, E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9, BUILD_ID=f34a5416-...
+                    hostname e2b.local, no DATABASE_URL, no app project -> Agent Mode sandbox, not a
+                    Code-Arena app sandbox.
+    falsifying_cmd: env | grep DATABASE_URL ; ls for a generated app / preview server
+    falsifying_out: none found. E1-E4 = NOT PERFORMED (out of scope by the task's own rule:
+                    "run ONLY in arena.ai/code, not Agent Mode"). grade=MEASURED (the scoping)

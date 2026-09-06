@@ -1,0 +1,23 @@
+=== CMD: python3 fdtest.py
+=== RECORDED_UTC: 2026-09-06T17:06:28Z
+whoami: user
+start rlimit: (1024, 524288)
+nr_open: 1073741816
+fs.file-max: 9223372036854775807
+-- phase A: inherit soft limit, open fds until EMFILE --
+phaseA: opened 1017 fds, then OSError(24, 'Too many open files') (0.00s)
+-- phase B: raise soft->hard (child of this shell; rlimit is per-process) --
+Traceback (most recent call last):
+  File "/home/user/probe3/fdtest.py", line 17, in <module>
+    os.setrlimit(resource.RLIMIT_NOFILE, (hard, hard))
+    ^^^^^^^^^^^^
+AttributeError: module 'os' has no attribute 'setrlimit'
+=== EXIT: 1
+---
+--- per-user max processes ---
+4194304
+--- pids.current ---
+3
+--- fd hard in a fresh sh ---
+524288
+1024

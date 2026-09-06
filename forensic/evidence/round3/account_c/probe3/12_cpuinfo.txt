@@ -1,0 +1,12 @@
+=== CMD: sh -c nproc; lscpu | grep -E "^CPU\(s\)|Thread|Core|Socket|Model name|MHz" ; echo "---siblings---"; for c in 0 1 2 3 4 5; do [ -e /sys/devices/system/cpu/cpu$c/topology/thread_siblings_list ] && echo "cpu$c: $(cat /sys/devices/system/cpu/cpu$c/topology/thread_siblings_list)"; done
+=== RECORDED_UTC: 2026-09-06T17:04:24Z
+2
+CPU(s):                                  2
+Model name:                              Intel(R) Xeon(R) Processor @ 2.60GHz
+Thread(s) per core:                      2
+Core(s) per socket:                      1
+Socket(s):                               1
+---siblings---
+cpu0: 0-1
+cpu1: 0-1
+=== EXIT: 1

@@ -1,0 +1,31 @@
+=== ulimit -Sn (soft) ===
+1024
+=== ulimit -Hn (hard) ===
+524288
+=== /proc/sys/fs/file-max ===
+9223372036854775807
+=== /proc/sys/fs/file-nr (allocated/unused/max) ===
+896	0	9223372036854775807
+=== ulimit -a ===
+real-time non-blocking time  (microseconds, -R) unlimited
+core file size              (blocks, -c) 0
+data seg size               (kbytes, -d) unlimited
+scheduling priority                 (-e) 0
+file size                   (blocks, -f) unlimited
+pending signals                     (-i) 7917
+max locked memory           (kbytes, -l) 8192
+max memory size             (kbytes, -m) unlimited
+open files                          (-n) 1024
+pipe size                (512 bytes, -p) 8
+POSIX message queues         (bytes, -q) 819200
+real-time priority                  (-r) 0
+stack size                  (kbytes, -s) 8192
+cpu time                   (seconds, -t) unlimited
+max user processes                  (-u) 7917
+virtual memory              (kbytes, -v) unlimited
+file locks                          (-x) unlimited
+=== /proc/self/limits (fd section) ===
+Max open files            1024                 524288               files     
+Max locked memory         8388608              8388608              bytes     
+Max address space         unlimited            unlimited            bytes     
+Max file locks            unlimited            unlimited            locks     

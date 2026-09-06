@@ -1,0 +1,7 @@
+=== CMD: sh -c echo "hostname: $(hostname)"; echo "sandbox_id_env: ${E2B_SANDBOX_ID:-<none>}"; uptime; cat /proc/uptime
+=== RECORDED_UTC: 2026-09-06T17:04:24Z
+hostname: e2b.local
+sandbox_id_env: ids70tfd987wffpjczbai
+ 17:04:24 up 2 min,  0 users,  load average: 0.01, 0.02, 0.00
+153.14 295.49
+=== EXIT: 0

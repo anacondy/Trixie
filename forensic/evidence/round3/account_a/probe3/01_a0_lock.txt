@@ -1,0 +1,29 @@
+# A0 VM-CLASS LOCK  recorded_utc=2026-09-06T17:01:15Z
+--- grep PRETTY_NAME /etc/os-release
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+--- uname -v
+#1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026
+--- uname -a
+Linux e2b.local 6.1.158+ #1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026 x86_64 GNU/Linux
+--- python3 -V
+Python 3.13.14
+--- grep MemTotal /proc/meminfo
+MemTotal:        2032608 kB
+--- df -h / | tail -1
+/dev/root        25G  4.1G   20G  17% /
+--- cat /.e2b
+ENV_ID=nlhz8vlwyupq845jsdg9
+TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+BUILD_ID=f34a5416-ef30-4cb7-8e18-0fdecd6eb529
+--- env | grep ^E2B_TEMPLATE_ID
+E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+--- cat /proc/sys/kernel/random/boot_id
+2bb79165-136a-4b63-829d-17027b0a8e40
+--- uptime / sandbox_id / hostname
+ 17:01:15 up 0 min,  0 users,  load average: 0.06, 0.02, 0.00
+22.26 35.21
+e2b.local
+E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+E2B_EVENTS_ADDRESS=http://192.0.2.1
+E2B_SANDBOX_ID=i3xgkkubxoiw2bi4vlqkx
+E2B_SANDBOX=true

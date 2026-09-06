@@ -1,0 +1,11 @@
+# D4 FD CEILING (rerun, script bug fixed)  recorded_utc=2026-09-06T17:05:13Z
+parent soft/hard RLIMIT_NOFILE = (1024, 524288)
+parent max simultaneously open /dev/null fds = 1018 (process starts with 3: stdin/out/err)
+failure was: OSError 24 Too many open files
+CHILD inherited soft/hard = (1024, 524288) -> after setrlimit(soft:=hard) = (524288, 524288)
+CHILD max simultaneously open fds = 524285 failure: OSError 24 Too many open files
+raising ABOVE hard limit fails as expected: ValueError not allowed to raise maximum limit
+ulimit -n soft/hard from shell: 1024 / 524288 / 
+/proc/sys/fs/file-max = 9223372036854775807
+openable? /proc/sys/fs/nr_open = 1073741816
+# finished_utc=2026-09-06T17:05:14Z

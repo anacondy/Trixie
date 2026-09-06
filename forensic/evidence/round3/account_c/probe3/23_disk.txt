@@ -1,0 +1,29 @@
+=== CMD: disk tests v3 (timing fixed)
+=== RECORDED_UTC: 2026-09-06T17:10:18Z
+--- cgroup memory.current baseline ---
+30396416
+--- TEST A: 1024 MiB urandom -> ext4 /home/user (buffered) ---
+dd wall=3.362 s
+304.6 MiB/s = 319.4 MB/s (decimal)
+sync wall=0.047 s
+size: 1073741824
+--- TEST B: 5120 MiB urandom -> ext4 (O_DIRECT) ---
+dd wall=18.504 s
+276.7 MiB/s = 290.1 MB/s (decimal)
+sync wall=0.003 s
+size: 5368709120
+--- TEST C: 512 MiB urandom -> tmpfs /tmp ---
+dd wall=1.534 s
+333.8 MiB/s = 350.0 MB/s (decimal)
+Shmem:            525372 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+--- integrity ---
+ade40d3e610cffc53b03fa237866c4ecbe44dbc17c8d528a42d714fe20331bb2  d1g.bin
+b24180554535de4867db6e25386bf7798651f36c9256347c07e911d6afcc396b  d5g.bin
+--- memory.current while files cached ---
+1688784896
+--- memory.current after rm+sync ---
+32034816
+/dev/root        25G  4.1G   20G  17% /
+tmpfs           993M  8.0K  993M   1% /tmp

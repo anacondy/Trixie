@@ -1,0 +1,7 @@
+=== UA test: do reddit/crates 403 clear with a browser User-Agent? ===
+www.reddit.com WITH browser UA => code=403
+crates.io WITH browser UA => code=404
+=== control: same UA against known-good www.wikipedia.org ===
+wikipedia code=200
+=== raw TCP+TTFB evidence (connect ok even when HTTP 403) ===
+reddit code=403 ttfb=0.034698 remote_ip=151.101.65.140

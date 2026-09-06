@@ -1,0 +1,6 @@
+=== CMD: sh -c grep MemTotal /proc/meminfo; echo "---"; awk "/MemTotal/{print \$2\" kB = \"\$2/1024\" MiB = \"\$2/1048576\" GiB\"}" /proc/meminfo
+=== RECORDED_UTC: 2026-09-06T17:04:20Z
+MemTotal:        2032608 kB
+---
+2032608 kB = 1984.97 MiB = 1.93845 GiB
+=== EXIT: 0

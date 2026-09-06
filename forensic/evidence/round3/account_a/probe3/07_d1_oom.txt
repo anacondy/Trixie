@@ -1,0 +1,27 @@
+# D1 OOM CEILING BISECT  recorded_utc=2026-09-06T17:04:05Z sandbox=i3xgkkubxoiw2bi4vlqkx
+== D1 OOM bisect, cgroup /user memory.max = 1947172864
+memory.events BEFORE: {'low': '0', 'high': '0', 'max': '0', 'oom': '0', 'oom_kill': '0', 'oom_group_kill': '0'}
+memory.current BEFORE: 192155648
+  trial 256 MiB -> rc=0 out='TOUCHED_MiB 256' err=[]
+  trial 512 MiB -> rc=0 out='TOUCHED_MiB 512' err=[]
+  trial 768 MiB -> rc=0 out='TOUCHED_MiB 768' err=[]
+  trial 1024 MiB -> rc=0 out='TOUCHED_MiB 1024' err=[]
+  trial 1280 MiB -> rc=0 out='TOUCHED_MiB 1280' err=[]
+  trial 1536 MiB -> rc=0 out='TOUCHED_MiB 1536' err=[]
+  trial 1792 MiB -> rc=-9 out='' err=[]
+coarse bracket: last_ok=1536 MiB, first_kill=1792 MiB
+  bisect 1664 MiB -> rc=-9 out='' err=[]
+  bisect 1600 MiB -> rc=0 out='TOUCHED_MiB 1600' err=[]
+  bisect 1632 MiB -> rc=-9 out='' err=[]
+RESULT last_success=1600 MiB  first_kill=1632 MiB  resolution=32 MiB
+memory.events AFTER: {'low': '0', 'high': '0', 'max': '0', 'oom': '0', 'oom_kill': '3', 'oom_group_kill': '0'}
+memory.current AFTER: 13942784
+# D1 finished_utc=2026-09-06T17:04:15Z
+# session still alive after D1: yes (this line was written by the same session)
+ 17:04:15 up 3 min,  0 users,  load average: 0.16, 0.05, 0.01
+low 0
+high 0
+max 0
+oom 0
+oom_kill 3
+oom_group_kill 0

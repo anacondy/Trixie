@@ -1,0 +1,7 @@
+=== CMD: sh -c df -h / | tail -1; echo "---full---"; df -h /
+=== RECORDED_UTC: 2026-09-06T17:04:20Z
+/dev/root        25G  4.1G   20G  17% /
+---full---
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        25G  4.1G   20G  17% /
+=== EXIT: 0

@@ -1,0 +1,15 @@
+=== thread_siblings_list cpu0/cpu1 ===
+0-1
+0-1
+=== warmup ===
+cpus=0 iters=5000000 elapsed=0.666s x=997412507
+=== run A: solo on cpu0 (sibling cpu1 idle) ===
+cpus=0 iters=90000000 elapsed=11.680s x=926650007
+=== run B: solo on cpu1 (sibling cpu0 idle) ===
+cpus=1 iters=90000000 elapsed=11.503s x=926650007
+=== run C: PAIR cpu0 AND cpu1 simultaneously (SMT siblings) ===
+cpus=0 iters=90000000 elapsed=12.400s x=926650007
+cpus=1 iters=90000000 elapsed=11.129s x=926650007
+=== run D: PAIR both pinned to cpu0 (same logical CPU) ===
+cpus=0 iters=90000000 elapsed=22.380s x=926650007
+cpus=0 iters=90000000 elapsed=22.302s x=926650007

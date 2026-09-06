@@ -1,0 +1,40 @@
+memory.max bytes = 1947172864  (=1856 MiB floor)
+--- memory.events BEFORE ---
+low 0
+high 0
+max 0
+oom 0
+oom_kill 0
+oom_group_kill 0
+--- memory.stat anon+file BEFORE ---
+anon 811008
+file 55332864
+slab 22425648
+--- memory.current BEFORE ---
+80023552
+--- confirm upper bound 2048 MiB kills ---
+Traceback (most recent call last):
+  File "/home/user/probe3/scripts/oom_probe.py", line 5, in <module>
+    b = bytearray(size)
+MemoryError
+probe_2048 rc=1
+--- bisect start lo=0 hi=2048 ---
+mid=1024MiB SURVIVED rc=0 -> lo=1024 SURVIVED mib=1024 len=1073741824 checksum=23592960 VmRSS_kB=1057396
+mid=1536MiB SURVIVED rc=0 -> lo=1536 SURVIVED mib=1536 len=1610612736 checksum=35389440 VmRSS_kB=1579964
+/tmp/d1.sh: line 24:  2108 Killed                  python3 $PROBE $mid > /tmp/oom_out.txt 2>&1
+mid=1792MiB KILLED rc=137 -> hi=1792 
+/tmp/d1.sh: line 24:  2110 Killed                  python3 $PROBE $mid > /tmp/oom_out.txt 2>&1
+mid=1664MiB KILLED rc=137 -> hi=1664 
+mid=1600MiB SURVIVED rc=0 -> lo=1600 SURVIVED mib=1600 len=1677721600 checksum=36864000 VmRSS_kB=1647080
+mid=1632MiB SURVIVED rc=0 -> lo=1632 SURVIVED mib=1632 len=1711276032 checksum=37601280 VmRSS_kB=1675408
+=== BISECT RESULT ===
+last_survive_MiB=1632 first_kill_MiB=1664 gap=32
+--- memory.events AFTER ---
+low 0
+high 0
+max 0
+oom 0
+oom_kill 2
+oom_group_kill 0
+--- memory.current AFTER ---
+7237632

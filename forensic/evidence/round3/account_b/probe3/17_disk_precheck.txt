@@ -1,0 +1,20 @@
+=== df -hT ===
+Filesystem     Type      Size  Used Avail Use% Mounted on
+/dev/root      ext4       25G  4.1G   20G  17% /
+devtmpfs       devtmpfs  990M     0  990M   0% /dev
+tmpfs          tmpfs     993M     0  993M   0% /dev/shm
+tmpfs          tmpfs     397M  320K  397M   1% /run
+tmpfs          tmpfs     993M   16K  993M   1% /tmp
+tmpfs          tmpfs     5.0M     0  5.0M   0% /run/lock
+=== findmnt ===
+TARGET                                        FSTYPE     SOURCE            OPTIONS
+/                                             ext4       /dev/vda          rw,relatime,discard
+=== mount | grep -E 'tmp|overlay|root' ===
+/dev/vda on / type ext4 (rw,relatime,discard)
+tmpfs on /dev/shm type tmpfs (rw,nosuid,nodev)
+tmpfs on /run type tmpfs (rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755)
+tmpfs on /tmp type tmpfs (rw,nosuid,nodev,nr_inodes=1048576)
+tmpfs on /run/lock type tmpfs (rw,nosuid,nodev,noexec,relatime,size=5120k)
+tmpfs on /etc/ssl/certs type tmpfs (rw,nosuid,nodev,size=406524k,nr_inodes=819200,mode=755)
+=== inodes home ===
+/dev/root      6759792 136311 6623481    3% /

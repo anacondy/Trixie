@@ -1,0 +1,6 @@
+=== B3 connect to 192.0.2.1:80 (TEST-NET-1, must fail) ===
+exit=0
+=== B3 connect to 198.51.100.1:443 (TEST-NET-2) ===
+exit=0
+=== B3 connect to 203.0.113.1:80 (TEST-NET-3) ===
+exit=0

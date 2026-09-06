@@ -1,0 +1,49 @@
+=== C5: controller file at cgroup root vs user/ ===
+--- cat /sys/fs/cgroup/memory.max ---
+cat: /sys/fs/cgroup/memory.max: No such file or directory
+rc=1
+--- cat /sys/fs/cgroup/user/memory.max ---
+1947172864
+--- ls /sys/fs/cgroup (top level) ---
+cgroup.controllers
+cgroup.max.depth
+cgroup.max.descendants
+cgroup.procs
+cgroup.stat
+cgroup.subtree_control
+cgroup.threads
+cpu.stat
+cpuset.cpus.effective
+cpuset.mems.effective
+dev-hugepages.mount
+dev-mqueue.mount
+init.scope
+io.cost.model
+io.cost.qos
+io.stat
+memory.numa_stat
+memory.reclaim
+memory.stat
+ptys
+socats
+sys-fs-fuse-connections.mount
+sys-kernel-debug.mount
+sys-kernel-tracing.mount
+system.slice
+user
+user.slice
+--- cat /proc/self/cgroup ---
+0::/user
+=== C6: memory arithmetic (three ways) ===
+MemTotal kB = 2032608
+kB = 2032608
+MiB (kB/1024) = 1984.97
+GiB (kB/1048576) = 1.93845
+cgroup memory.max B = 1947172864
+kB = 1901536
+MiB (B/1048576) = 1856.97
+GiB (B/1073741824) = 1.81345
+D1 ceiling: last-survive 1632 MiB first-kill 1664 MiB
+1632 MiB = 1.59375 GiB
+1664 MiB = 1.625 GiB
+(convention: all figures above are BINARY: 1 KiB=1024 B, 1 MiB=1048576 B, 1 GiB=1073741824 B)

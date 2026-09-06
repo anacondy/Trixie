@@ -1,0 +1,9 @@
+=== clean tmpfs write test (leftover partials removed) ===
+tmpfs           993M   44K  993M   1% /tmp
+rc=0 wall=1.484s
+file_size=536870912
+decimal_MBps=361.8 binary_MiBps=345.0
+=== tmpfs after write ===
+tmpfs           993M  513M  481M  52% /tmp
+=== tmpfs after cleanup ===
+tmpfs           993M   44K  993M   1% /tmp

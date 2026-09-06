@@ -1,0 +1,30 @@
+# content_write_time=2026-09-06T17:11:52Z (added post-hoc; see manifest note)
+# A0/A SECTION A - CALIBRATION, MEMORY-ONLY ANSWERS (written BEFORE any search tool call)
+# written_utc=2026-09-06T17:01Z (see 01_a0_lock.txt for the A0 lock)
+# self_reported_knowledge_cutoff = approx. 2025-01 (rote recall, low trust; see A5 bracket)
+
+A1 answer_memory = "Los Angeles Dodgers beat the New York Yankees, 4-1 (Games 1,2,3,5 to LAD;
+   Game 4 NY). Final game 2024-10-30."  confidence = 0.93
+A2 answer_memory = "India beat New Zealand in the ICC Champions Trophy 2025 final (Dubai,
+   2025-03-09). India chased NZ's ~252, won by 4 wickets; KL Rahul top-scored ~76."  confidence = 0.62
+A3 answer_memory = "No published, user-facing CLI for post-quantum readiness auditing of a Linux
+   box is present in my parametric memory. I know of *components* (openssh 9.9+ mlkem768x25519-sha256,
+   OpenSSL 3.5 PQC providers, 'pqscan'-style GPG key-strength checks, liboqs/liboqs-openssh,
+   Cloudflare/CISA 'PQ Migration' guidance) but NOT a single named shipped CLI that audits
+   all three axes at once. Per the task's instruction: 'cannot verify' - a bare 'no such tool
+   exists' would be an unproven false negative. I DO have a search tool, so A3 gets an
+   answer_search below."  confidence = 0.30 (in the negative; the honest state is 'unknown')
+A4 answer_memory = kernel build date from uname -a = "Fri Jul 17 14:31:34 UTC 2026" -> this is
+   ~18 months AFTER my self-reported ~2025-01 cutoff. IMPLICATION: nothing I 'know' from
+   training can describe this specific kernel, its config, its patches, or this sandbox image.
+   Any statement I make about this box must come from a command in THIS session. R1 applies to
+   everything in Sections A0, B, C, D.
+A5 recall_horizon_bracket (MEMORY ONLY, no search):
+   NEWEST release present from recall: Claude 3.5 Sonnet (2024-06-20) and GPT-4o (2024-05-13);
+   vendor identifier recalled: Anthropic beta header 'context-1m-2025-08-07' (1M context beta,
+   ~Aug 2025) and 'prompt-caching-2024-07-31'. Later than those I have fragments but no
+   reliable dates (e.g. a 'Claude Sonnet 4.5' / 'GPT-5' generation, Gemini 2.5 Pro) - I will
+   NOT assign dates I cannot stand behind.
+   FIRST notable release MISSING: anything dated after ~2025 H2 (e.g. any 2026 frontier release).
+   => parametric horizon brackets to roughly 2025 H2, ~12 months before today (2026-09-06).
+   Note: this recall-based bracket is the more reliable clock than the rote self-reported cutoff.

@@ -1,0 +1,11 @@
+=== CMD: sh -c echo "--- TCP connect TEST-NET-1 192.0.2.1:443 (should FAIL if network is honest) ---"; timeout 8 bash -c "exec 3<>/dev/tcp/192.0.2.1/443 && echo CONNECT_OK || echo CONNECT_FAIL_rc=$?"; echo "--- TCP connect TEST-NET-3 203.0.113.1:443 ---"; timeout 8 bash -c "exec 3<>/dev/tcp/203.0.113.1/443 && echo CONNECT_OK || echo CONNECT_FAIL_rc=$?"; echo "--- TCP connect known-good-control 1.1.1.1:443 (should SUCCEED) ---"; timeout 8 bash -c "exec 3<>/dev/tcp/1.1.1.1/443 && echo CONNECT_OK || echo CONNECT_FAIL_rc=$?"; echo "--- TCP connect control 8.8.8.8:53 ---"; timeout 8 bash -c "exec 3<>/dev/tcp/8.8.8.8/53 && echo CONNECT_OK || echo CONNECT_FAIL_rc=$?"
+=== RECORDED_UTC: 2026-09-06T17:05:04Z
+--- TCP connect TEST-NET-1 192.0.2.1:443 (should FAIL if network is honest) ---
+CONNECT_OK
+--- TCP connect TEST-NET-3 203.0.113.1:443 ---
+CONNECT_OK
+--- TCP connect known-good-control 1.1.1.1:443 (should SUCCEED) ---
+CONNECT_OK
+--- TCP connect control 8.8.8.8:53 ---
+CONNECT_OK
+=== EXIT: 0

@@ -1,0 +1,12 @@
+=== baseline ===
+1024
+=== bash can raise soft to hard? ===
+raised_to_524288 ok, now ulimit -n = 524288
+=== bash attempt above hard (expect failure) ===
+/bin/bash: line 32: ulimit: open files: cannot modify limit: Operation not permitted
+=== python fd ceiling tests ===
+[default_soft] soft=1024 hard=524288
+[at_default_soft_1024] opened 1018 fds then [Errno 24] Too many open files: '/dev/null'
+[raise-beyond-hard] rejected: not allowed to raise maximum limit
+[after_raise_to_hard] soft=524288 hard=524288
+[at_hard_524288] opened 523264 fds then [Errno 24] Too many open files: '/dev/null'

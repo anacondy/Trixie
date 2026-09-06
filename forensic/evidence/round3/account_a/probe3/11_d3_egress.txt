@@ -1,0 +1,190 @@
+# D3 EGRESS MECHANISM  recorded_utc=2026-09-06T17:05:28Z
+# METHOD per target: (a) DNS via getent+python, (b) hostname HTTPS via curl, (c) DIRECT-IP with Host header (DNS bypassed, SNI/Host kept), (d) DIRECT-IP plain TCP :80. Falsifier for 'blocked' = control domain example.com via identical method (B2).
+
+=== CONTROL (known-good, identical method) ===
+-- control example.com resolved_ip=2606:4700:10::6814:179a
+  hostname: http=200 dns=0.027161 connect=0.027458 ttfb=0.073594 ip=104.20.23.154
+curl: (7) Failed to connect to example.com port 443 after 0 ms: Could not connect to server
+  direct-ip+Host: http=000 connect=0.000000 ttfb=0.000000 ip=
+  plain-80 hostname: http=200 ttfb=0.037829 ip=172.66.147.243
+
+=== httpbin.org ===
+  DNS getent: 98.88.229.31    httpbin.org
+100.59.99.192   httpbin.org
+  DNS getaddrinfo: ['18.235.200.183', '18.235.200.183', '18.235.200.183']
+  hostname https: http=200 dns=0.001581 connect=0.001808 tls=0.201366 ttfb=0.269200 ip=44.194.227.11 size=9593
+  direct-ip+Host/SNI: http=200 connect=0.000266 ttfb=0.290696 ip=44.194.227.11
+  direct-ip http80: http=200 ttfb=0.133916
+=== pastebin.com ===
+  DNS getent: 2606:4700:10::ac42:ab49 pastebin.com
+2606:4700:10::6814:1d96 pastebin.com
+  DNS getaddrinfo: ['104.20.29.150', '104.20.29.150', '104.20.29.150']
+  hostname https: http=200 dns=0.027594 connect=0.027917 tls=0.046502 ttfb=0.330092 ip=104.20.29.150 size=43124
+curl: (7) Failed to connect to pastebin.com port 443 after 0 ms: Could not connect to server
+  direct-ip+Host/SNI: http=000 connect=0.000000 ttfb=0.000000 ip=
+  direct-ip https exit=7
+curl: (3) URL rejected: Port number was not a decimal number between 0 and 65535
+  direct-ip http80: http=000 ttfb=0.000000
+  direct-ip http80 exit=3
+=== api.anthropic.com ===
+  DNS getent: 2607:6bc0::10   api.anthropic.com
+  DNS getaddrinfo: ['160.79.104.10', '160.79.104.10', '160.79.104.10']
+  hostname https: http=404 dns=0.001522 connect=0.001769 tls=0.019676 ttfb=0.031014 ip=160.79.104.10 size=132
+curl: (7) Failed to connect to api.anthropic.com port 443 after 0 ms: Could not connect to server
+  direct-ip+Host/SNI: http=000 connect=0.000000 ttfb=0.000000 ip=
+  direct-ip https exit=7
+curl: (3) URL rejected: Port number was not a decimal number between 0 and 65535
+  direct-ip http80: http=000 ttfb=0.000000
+  direct-ip http80 exit=3
+=== registry.npmjs.org ===
+  DNS getent: 2606:4700::6810:622 registry.npmjs.org
+2606:4700::6810:522 registry.npmjs.org
+  DNS getaddrinfo: ['104.16.3.34', '104.16.3.34', '104.16.3.34']
+  hostname https: http=200 dns=0.001061 connect=0.001369 tls=0.027979 ttfb=0.045255 ip=104.16.10.34 size=2
+curl: (7) Failed to connect to registry.npmjs.org port 443 after 0 ms: Could not connect to server
+  direct-ip+Host/SNI: http=000 connect=0.000000 ttfb=0.000000 ip=
+  direct-ip https exit=7
+curl: (3) URL rejected: Port number was not a decimal number between 0 and 65535
+  direct-ip http80: http=000 ttfb=0.000000
+  direct-ip http80 exit=3
+=== github.com ===
+  DNS getent: 140.82.116.3    github.com
+  DNS getaddrinfo: ['140.82.116.4', '140.82.116.4', '140.82.116.4']
+  hostname https: http=200 dns=0.010106 connect=0.010324 tls=0.027696 ttfb=0.035703 ip=140.82.116.4 size=575966
+  direct-ip+Host/SNI: http=200 connect=0.000281 ttfb=0.026263 ip=140.82.116.4
+  direct-ip http80: http=301 ttfb=0.013084
+=== raw.githubusercontent.com ===
+  DNS getent: 2606:50c0:8002::154 raw.githubusercontent.com
+2606:50c0:8001::154 raw.githubusercontent.com
+  DNS getaddrinfo: ['185.199.109.133', '185.199.109.133', '185.199.109.133']
+  hostname https: http=301 dns=0.001115 connect=0.001366 tls=0.022037 ttfb=0.033288 ip=185.199.110.133 size=0
+curl: (7) Failed to connect to raw.githubusercontent.com port 443 after 0 ms: Could not connect to server
+  direct-ip+Host/SNI: http=000 connect=0.000000 ttfb=0.000000 ip=
+  direct-ip https exit=7
+curl: (3) URL rejected: Port number was not a decimal number between 0 and 65535
+  direct-ip http80: http=000 ttfb=0.000000
+  direct-ip http80 exit=3
+=== pypi.org ===
+  DNS getent: 2a04:4e42:200::223 pypi.org
+2a04:4e42:600::223 pypi.org
+  DNS getaddrinfo: ['151.101.192.223', '151.101.192.223', '151.101.192.223']
+  hostname https: http=200 dns=0.000947 connect=0.001224 tls=0.027999 ttfb=0.037882 ip=151.101.0.223 size=27965
+curl: (7) Failed to connect to pypi.org port 443 after 0 ms: Could not connect to server
+  direct-ip+Host/SNI: http=000 connect=0.000000 ttfb=0.000000 ip=
+  direct-ip https exit=7
+curl: (3) URL rejected: Port number was not a decimal number between 0 and 65535
+  direct-ip http80: http=000 ttfb=0.000000
+  direct-ip http80 exit=3
+=== proxy.golang.org ===
+  DNS getent: 2607:f8b0:400e:c09::8d proxy.golang.org
+  DNS getaddrinfo: ['74.125.195.141', '74.125.195.141', '74.125.195.141']
+  hostname https: http=200 dns=0.002462 connect=0.002683 tls=0.013950 ttfb=0.018984 ip=74.125.195.141 size=9628
+curl: (7) Failed to connect to proxy.golang.org port 443 after 0 ms: Could not connect to server
+  direct-ip+Host/SNI: http=000 connect=0.000000 ttfb=0.000000 ip=
+  direct-ip https exit=7
+curl: (3) URL rejected: Port number was not a decimal number between 0 and 65535
+  direct-ip http80: http=000 ttfb=0.000000
+  direct-ip http80 exit=3
+=== archive.ubuntu.com ===
+  DNS getent: 2620:2d:4000:1::103 archive.ubuntu.com
+2620:2d:4002:1::102 archive.ubuntu.com
+  DNS getaddrinfo: ['91.189.91.82', '91.189.91.82', '91.189.91.82']
+  hostname https: http=200 dns=0.001399 connect=0.001675 tls=0.327188 ttfb=0.488079 ip=91.189.92.23 size=697
+curl: (7) Failed to connect to archive.ubuntu.com port 443 after 0 ms: Could not connect to server
+  direct-ip+Host/SNI: http=000 connect=0.000000 ttfb=0.000000 ip=
+  direct-ip https exit=7
+curl: (3) URL rejected: Port number was not a decimal number between 0 and 65535
+  direct-ip http80: http=000 ttfb=0.000000
+  direct-ip http80 exit=3
+=== deb.debian.org ===
+  DNS getent: 2a04:4e42:400::644 debian.map.fastlydns.net deb.debian.org
+2a04:4e42:200::644 debian.map.fastlydns.net deb.debian.org
+  DNS getaddrinfo: ['151.101.130.132', '151.101.130.132', '151.101.130.132']
+  hostname https: http=200 dns=0.001745 connect=0.001990 tls=0.024399 ttfb=0.034755 ip=151.101.66.132 size=1876
+curl: (7) Failed to connect to deb.debian.org port 443 after 0 ms: Could not connect to server
+  direct-ip+Host/SNI: http=000 connect=0.000000 ttfb=0.000000 ip=
+  direct-ip https exit=7
+curl: (3) URL rejected: Port number was not a decimal number between 0 and 65535
+  direct-ip http80: http=000 ttfb=0.000000
+  direct-ip http80 exit=3
+=== security.debian.org ===
+  DNS getent: 2a04:4e42:600::644 security.debian.org
+2a04:4e42::644  security.debian.org
+  DNS getaddrinfo: ['151.101.130.132', '151.101.130.132', '151.101.130.132']
+  hostname https: http=302 dns=0.001482 connect=0.001837 tls=0.022567 ttfb=0.031750 ip=151.101.194.132 size=325
+curl: (7) Failed to connect to security.debian.org port 443 after 0 ms: Could not connect to server
+  direct-ip+Host/SNI: http=000 connect=0.000000 ttfb=0.000000 ip=
+  direct-ip https exit=7
+curl: (3) URL rejected: Port number was not a decimal number between 0 and 65535
+  direct-ip http80: http=000 ttfb=0.000000
+  direct-ip http80 exit=3
+=== cdn.jsdelivr.net ===
+  DNS getent: 2606:4700::6811:cf05 cdn.jsdelivr.net.cdn.cloudflare.net cdn.jsdelivr.net
+2606:4700::6811:d005 cdn.jsdelivr.net.cdn.cloudflare.net cdn.jsdelivr.net
+  DNS getaddrinfo: ['104.17.207.5', '104.17.207.5', '104.17.207.5']
+  hostname https: http=301 dns=0.028349 connect=0.028595 tls=0.048385 ttfb=0.063884 ip=104.17.207.5 size=58
+curl: (7) Failed to connect to cdn.jsdelivr.net port 443 after 0 ms: Could not connect to server
+  direct-ip+Host/SNI: http=000 connect=0.000000 ttfb=0.000000 ip=
+  direct-ip https exit=7
+curl: (3) URL rejected: Port number was not a decimal number between 0 and 65535
+  direct-ip http80: http=000 ttfb=0.000000
+  direct-ip http80 exit=3
+=== npm.pkg.github.com ===
+  DNS getent: 140.82.116.33   pkg.github.com npm.pkg.github.com
+  DNS getaddrinfo: ['140.82.116.33', '140.82.116.33', '140.82.116.33']
+  hostname https: http=301 dns=0.010709 connect=0.010897 tls=0.032105 ttfb=0.125456 ip=140.82.116.33 size=71
+  direct-ip+Host/SNI: http=301 connect=0.000259 ttfb=0.121754 ip=140.82.116.33
+  direct-ip http80: http=301 ttfb=0.012594
+=== huggingface.co ===
+  DNS getent: 2600:9000:212d:ec00:17:b174:6d00:93a1 huggingface.co
+2600:9000:212d:0:17:b174:6d00:93a1 huggingface.co
+  DNS getaddrinfo: ['99.86.101.64', '99.86.101.64', '99.86.101.64']
+  hostname https: http=200 dns=0.022593 connect=0.022871 tls=0.041479 ttfb=0.126812 ip=99.86.101.36 size=178467
+curl: (7) Failed to connect to huggingface.co port 443 after 0 ms: Could not connect to server
+  direct-ip+Host/SNI: http=000 connect=0.000000 ttfb=0.000000 ip=
+  direct-ip https exit=7
+curl: (3) URL rejected: Port number was not a decimal number between 0 and 65535
+  direct-ip http80: http=000 ttfb=0.000000
+  direct-ip http80 exit=3
+=== openai.com ===
+  DNS getent: 104.18.33.45    openai.com
+172.64.154.211  openai.com
+  DNS getaddrinfo: ['104.18.33.45', '104.18.33.45', '104.18.33.45']
+  hostname https: http=403 dns=0.013071 connect=0.013346 tls=0.035510 ttfb=0.044282 ip=104.18.33.45 size=9616
+  direct-ip+Host/SNI: http=403 connect=0.000247 ttfb=0.051359 ip=172.64.154.211
+  direct-ip http80: http=301 ttfb=0.021564
+=== gemini.google.com ===
+  DNS getent: 2001:4860:4826:200:: gemini.google.com
+2001:4860:482a:200:: gemini.google.com
+  DNS getaddrinfo: ['142.251.151.2', '142.251.151.2', '142.251.151.2']
+  hostname https: http=200 dns=0.001284 connect=0.001563 tls=0.011597 ttfb=0.088195 ip=142.251.155.2 size=814786
+curl: (7) Failed to connect to gemini.google.com port 443 after 0 ms: Could not connect to server
+  direct-ip+Host/SNI: http=000 connect=0.000000 ttfb=0.000000 ip=
+  direct-ip https exit=7
+curl: (3) URL rejected: Port number was not a decimal number between 0 and 65535
+  direct-ip http80: http=000 ttfb=0.000000
+  direct-ip http80 exit=3
+=== api.openai.com ===
+  DNS getent: 2a06:98c1:58::f3 api.openai.com
+2606:4700:7::f3 api.openai.com
+  DNS getaddrinfo: ['162.159.140.245', '162.159.140.245', '162.159.140.245']
+  hostname https: http=421 dns=0.001639 connect=0.001952 tls=0.020893 ttfb=0.031202 ip=162.159.140.245 size=124
+curl: (7) Failed to connect to api.openai.com port 443 after 0 ms: Could not connect to server
+  direct-ip+Host/SNI: http=000 connect=0.000000 ttfb=0.000000 ip=
+  direct-ip https exit=7
+curl: (3) URL rejected: Port number was not a decimal number between 0 and 65535
+  direct-ip http80: http=000 ttfb=0.000000
+  direct-ip http80 exit=3
+=== 169.254.169.254 ===
+  DNS getent:   DNS getaddrinfo: ['169.254.169.254', '169.254.169.254', '169.254.169.254']
+curl: (28) Connection timed out after 12002 milliseconds
+  hostname https: http=000 dns=0.000011 connect=0.000000 tls=0.000000 ttfb=0.000000 ip= size=0
+  hostname https exit=28
+  direct-ip test: SKIPPED (no A record -> DNS-level block or NXDOMAIN)
+=== metadata.google.internal ===
+  DNS getent:   DNS getaddrinfo FAILED: gaierror [Errno -2] Name or service not known
+curl: (6) Could not resolve host: metadata.google.internal
+  hostname https: http=000 dns=0.000000 connect=0.000000 tls=0.000000 ttfb=0.000000 ip= size=0
+  hostname https exit=6
+  direct-ip test: SKIPPED (no A record -> DNS-level block or NXDOMAIN)
+# D3 finished_utc=2026-09-06T17:05:44Z

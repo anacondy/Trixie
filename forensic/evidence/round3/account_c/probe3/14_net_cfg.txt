@@ -1,0 +1,19 @@
+=== CMD: sh -c cat /etc/resolv.conf; echo "---proxy/env names---"; env | grep -iE "proxy|e2b|arena|sandbox" | cut -d= -f1 | sort -u; echo "---template id---"; env | grep -E "(^|_)TEMPLATE_ID="; echo "---hosts---"; cat /etc/hosts
+=== RECORDED_UTC: 2026-09-06T17:04:24Z
+nameserver 8.8.8.8---proxy/env names---
+E2B_EVENTS_ADDRESS
+E2B_SANDBOX
+E2B_SANDBOX_ID
+E2B_TEMPLATE_ID
+---template id---
+E2B_TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+---hosts---
+127.0.0.1        localhost
+::1              localhost ip6-localhost ip6-loopback
+fe00::           ip6-localnet
+ff00::           ip6-mcastprefix
+ff02::1          ip6-allnodes
+ff02::2          ip6-allrouters
+127.0.1.1        e2b.local
+192.0.2.1        events.e2b.local
+=== EXIT: 0

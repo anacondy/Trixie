@@ -1,0 +1,15 @@
+# content_write_time=2026-09-06T17:11:52Z (added post-hoc; see manifest note)
+# SECTION C - MEASUREMENT-TRAP ACKNOWLEDGEMENTS (how each is avoided in THIS run)
+C1 mtimes reset on restore  -> write_times are INSIDE file contents: every raw file begins with
+   "recorded_utc=$(date -u ...)" expanded at write time; manifest3.txt hashes them. Verified in D-check.
+C2 boot_id template-constant -> boot_id recorded for identity ONLY, never used for reboot detection.
+   Reboot/session identity from /proc/uptime + E2B_SANDBOX_ID (i3xgkkubxoiw2bi4vlqkx).
+C3 zero-filled writes inflate MB/s -> all disk tests use /dev/urandom (incompressible), timed
+   separately with `sync` after write, oflag not used to fake it. Reported MB/s AND MiB/s.
+C4 httpbin.org slow -> bandwidth probe = speed.cloudflare.com/__down?bytes=N (+ known-good control
+   example.com for probe validity). httpbin used only if at all, and flagged.
+C5 cgroup paths -> read /sys/fs/cgroup/user/... first; /sys/fs/cgroup/... recorded as contrast.
+C6 GiB vs GB -> convention stated: kB as printed by /proc (1 kB = 1000 B? NO: kernel prints
+   kibibytes labelled kB; treated as 1024 B). Arithmetic shown for every memory figure.
+C7 transparent proxy -> connect() RTT not trusted; curl -w ttfb (time_starttransfer) measured,
+   and B3 false-positive control run FIRST against RFC5737 addresses.
