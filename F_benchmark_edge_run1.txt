@@ -1,0 +1,210 @@
+F BENCHMARK RUN — edge (account_c), fresh session, 2026-09-07
+sandbox_id=irknu94yo0jlb1bwwus10
+
+ENVIRONMENT
+
+date -u +%FT%TZ: 2026-09-07T19:19:50Z
+
+cat /.e2b:
+
+ENV_ID=nlhz8vlwyupq845jsdg9
+
+TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+
+BUILD_ID=f34a5416-ef30-4cb7-8e18-0fdecd6eb529
+
+E2B_SANDBOX_ID: irknu94yo0jlb1bwwus10
+
+MemTotal: 2032608 kB
+
+memory.max: 1947172864
+
+cpu.max: max 100000
+
+cpuset.cpus.effective: 0-1
+
+Python: 3.13.14
+
+numpy: 2.3.3
+
+OpenBLAS: 0.3.30
+
+OpenBLAS configuration: USE64BITINT DYNAMIC_ARCH NO_AFFINITY
+
+OpenBLAS MAX_THREADS=64
+
+C1 dtype=python-int n=10000000
+
+runs: 0.197672995 0.207623368 0.200717484 0.206962222 0.196915572
+
+min: 0.196915572
+
+median: 0.200717484
+
+max: 0.207623368
+
+C2 dtype=python-int n=10000000
+
+runs: 0.889236930 0.996425981 0.932394107 0.893994608 0.940340024
+
+min: 0.889236930
+
+median: 0.932394107
+
+max: 0.996425981
+
+C3 dtype=float64 n=10000000
+
+runs: 0.030141797 0.029043586 0.028169507 0.028045895 0.028108742
+
+min: 0.028045895
+
+median: 0.028169507
+
+max: 0.030141797
+
+C4 dtype=float64 n=1000 GFLOP/s
+
+runs: 80.173562936 76.442477189 76.727745789 79.798034367 79.698957908
+
+min: 76.442477189
+
+median: 79.698957908
+
+max: 80.173562936
+
+C5 dtype=float64 n=5000000
+
+runs: 0.100363680 0.103369530 0.101010553 0.100248906 0.101190385
+
+min: 0.100248906
+
+median: 0.101010553
+
+max: 0.103369530
+
+C6 dtype=complex128 n=4194304
+
+runs: 0.225039356 0.220664795 0.227810631 0.224302180 0.224529600
+
+min: 0.220664795
+
+median: 0.224529600
+
+max: 0.227810631
+
+C7 taskset=0 dtype=python-int n=10000000
+
+runs: 0.195164818 0.197744298 0.190372343 0.197097199 0.198732563
+
+min: 0.190372343
+
+median: 0.197097199
+
+max: 0.198732563
+
+C7 taskset=0,1 dtype=python-int n=10000000
+
+runs: 0.234606775 0.198598991 0.194123055 0.212837438 0.193530720
+
+min: 0.193530720
+
+median: 0.198598991
+
+max: 0.234606775
+
+C7 SMT scaling ratio
+
+0.983681718
+
+I1 write=256MiB path=/home/user MB/s
+
+runs: 1.472061230 1.322323682 0.289727501
+
+min: 0.289727501
+
+median: 1.322323682
+
+max: 1.472061230
+
+I2 read=256MiB method=O_DIRECT MB/s
+
+runs: 3185.650535175 1486.042692885 557.809398946
+
+min: 557.809398946
+
+median: 1486.042692885
+
+max: 3185.650535175
+
+I3 write=256MiB path=/tmp
+
+MemAvailable_before_kB: 1536712
+
+MemAvailable_after_kB: 1276168
+
+MB/s runs: 2370.629546946 2868.563986068 2853.088283862
+
+min: 2370.629546946
+
+median: 2853.088283862
+
+max: 2868.563986068
+
+N1 endpoint=https://speed.cloudflare.com/__down?bytes=100000000 mode=sequential MB/s
+
+runs: 1379.920136294 1628.990903503 2481.397828966
+
+min: 1379.920136294
+
+median: 1628.990903503
+
+max: 2481.397828966
+
+N1 endpoint=https://speed.cloudflare.com/__down?bytes=100000000 mode=parallel MB/s
+
+runs: 1948.658423699 1652.319521187 1918.512413102
+
+min: 1652.319521187
+
+median: 1918.512413102
+
+max: 1948.658423699
+
+N2 endpoint=pypi.org
+
+run 1 seconds: 0.980428098
+
+run 1 MB/s: 17.033375557
+
+run 2 seconds: 0.830318783
+
+run 2 MB/s: 20.112757102
+
+run 3 seconds: 0.886027905
+
+run 3 MB/s: 18.848164833
+
+N3 endpoint=pypi.org
+
+run 1: 0.001186 0.001506 0.021141 0.032189 0.033600
+
+run 2: 0.001065 0.001314 0.023538 0.033783 0.035211
+
+run 3: 0.001186 0.001482 0.021109 0.030435 0.032333
+
+N3 endpoint=github.com
+
+run 1: 0.001187 0.001382 0.027630 0.040899 0.106363
+
+run 2: 0.009561 0.009779 0.035715 0.047731 0.103320
+
+run 3: 0.028044 0.028419 0.055565 0.068781 0.132085
+
+N3 endpoint=huggingface.co
+
+run 1: 0.018639 0.018984 0.038990 0.050203 0.065968
+
+run 2: 0.030734 0.031128 0.048091 0.058310 0.072066
+
+run 3: 0.001780 0.002102 0.022290 0.034358 0.051904

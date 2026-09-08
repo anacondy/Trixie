@@ -1,0 +1,178 @@
+F BENCHMARK RUN — chrome (account_a), fresh session, 2026-09-07
+sandbox_id=io4itrltdn92q78m4cxm2
+
+ENVIRONMENT:
+2026-09-07T19:25:09Z
+ENV_ID=nlhz8vlwyupq845jsdg9
+TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+BUILD_ID=f34a5416-ef30-4cb7-8e18-0fdecd6eb529
+io4itrltdn92q78m4cxm2
+MemTotal:        2032608 kB
+1947172864
+max 100000
+0-1
+Python 3.13.14
+Build Dependencies:
+  blas:
+    detection method: pkgconfig
+    found: true
+    include directory: /opt/_internal/cpython-3.13.8/lib/python3.13/site-packages/scipy_openblas64/include
+    lib directory: /opt/_internal/cpython-3.13.8/lib/python3.13/site-packages/scipy_openblas64/lib
+    name: scipy-openblas
+    openblas configuration: OpenBLAS 0.3.30  USE64BITINT DYNAMIC_ARCH NO_AFFINITY
+      Haswell MAX_THREADS=64
+    pc file directory: /project/.openblas
+    version: 0.3.30
+  lapack:
+    detection method: pkgconfig
+    found: true
+    include directory: /opt/_internal/cpython-3.13.8/lib/python3.13/site-packages/scipy_openblas64/lib
+    lib directory: /opt/_internal/cpython-3.13.8/lib/python3.13/site-packages/scipy_openblas64/lib
+    name: scipy-openblas
+    openblas configuration: OpenBLAS 0.3.30  USE64BITINT DYNAMIC_ARCH NO_AFFINITY
+      Haswell MAX_THREADS=64
+    pc file directory: /project/.openblas
+
+================================================================================
+CPU (5 repeats, 1 warmup discarded, timing: time.perf_counter())
+================================================================================
+
+C1: sum(range(10**7)) [pure python]
+  dtype: int, n: 10000000
+  Headline (min): 0.153807 s
+  Runs (s): [0.185903, 0.153807, 0.162006, 0.172998, 0.173150]
+  Min: 0.153807 s | Median: 0.172998 s | Max: 0.185903 s
+
+C2: sum(i*i for i in range(10**7)) [generator]
+  dtype: int, n: 10000000
+  Headline (min): 0.714286 s
+  Runs (s): [0.756122, 0.732590, 0.731256, 0.724003, 0.714286]
+  Min: 0.714286 s | Median: 0.731256 s | Max: 0.756122 s
+
+C3: np.arange(10**7, dtype=np.float64).sum()
+  dtype: float64, n: 10000000
+  Headline (min): 0.007584 s
+  Runs (s): [0.007584, 0.007906, 0.008605, 0.007995, 0.007653]
+  Min: 0.007584 s | Median: 0.007906 s | Max: 0.008605 s
+
+C4: a=np.random.rand(1000,1000); a@a
+  dtype: float64, n: 1000x1000 (2*n^3 = 2.000000e+09 FLOPs)
+  Headline (min time / max GFLOP/s): 0.013742 s (145.54 GFLOP/s)
+  Runs (time s): [0.015080, 0.013903, 0.013865, 0.013858, 0.013742]
+  Runs (GFLOP/s): [132.63, 143.85, 144.25, 144.33, 145.54]
+  Time (s): Min: 0.013742 s | Median: 0.013865 s | Max: 0.015080 s
+  GFLOP/s:  Min: 132.63 | Median: 144.25 | Max: 145.54
+
+C5: np.sort(np.random.rand(5_000_000))
+  dtype: float64, n: 5000000
+  Headline (min): 0.050835 s
+  Runs (s): [0.053121, 0.050835, 0.051368, 0.050966, 0.051426]
+  Min: 0.050835 s | Median: 0.051368 s | Max: 0.053121 s
+
+C6: np.fft.fft(np.random.rand(2**22))
+  dtype: float64, n: 4194304
+  Headline (min): 0.172572 s
+  Runs (s): [0.188272, 0.172572, 0.177286, 0.176703, 0.174147]
+  Min: 0.172572 s | Median: 0.176703 s | Max: 0.188272 s
+
+C7: taskset -c 0 <C1> and taskset -c 0,1 <C1>
+  dtype: int, n: 10000000
+  taskset -c 0:
+    Headline (min): 0.150820 s
+    Runs (s): [0.150820, 0.157644, 0.154205, 0.151946, 0.151764]
+    Min: 0.150820 s | Median: 0.151946 s | Max: 0.157644 s
+  taskset -c 0,1:
+    Headline (min): 0.154918 s
+    Runs (s): [0.154918, 0.159214, 0.160623, 0.156870, 0.161169]
+    Min: 0.154918 s | Median: 0.159214 s | Max: 0.161169 s
+  SMT scaling ratio (min 0 / min 0,1): 0.9735
+  SMT scaling ratio (median 0 / median 0,1): 0.9544
+
+================================================================================
+I/O (3 repeats, 1 warmup discarded, timing: time.perf_counter())
+================================================================================
+
+I1: write 256 MiB of os.urandom to /home/user, fsync, report MB/s [NOT zeros]
+  Headline (min time / max throughput): 0.194507 s (1380.08 MB/s, 1316.15 MiB/s)
+  Runs (time s):  [0.199899, 0.194507, 0.195624]
+  Runs (MB/s):    [1342.86, 1380.08, 1372.20]
+  Runs (MiB/s):   [1280.65, 1316.15, 1308.63]
+  Time (s):       Min: 0.194507 s | Median: 0.195624 s | Max: 0.199899 s
+  Speed (MB/s):   Min: 1342.86 MB/s | Median: 1372.20 MB/s | Max: 1380.08 MB/s
+  Speed (MiB/s):  Min: 1280.65 MiB/s | Median: 1308.63 MiB/s | Max: 1316.15 MiB/s
+
+I2: read it back with O_DIRECT if available, else after dropping caches
+  Method: O_DIRECT (aligned mmap buffer, chunk size 1 MiB)
+  Headline (min time / max throughput): 0.359573 s (746.54 MB/s, 711.96 MiB/s)
+  Runs (time s):  [0.364159, 0.460978, 0.359573]
+  Runs (MB/s):    [737.14, 582.32, 746.54]
+  Runs (MiB/s):   [702.99, 555.34, 711.96]
+  Time (s):       Min: 0.359573 s | Median: 0.364159 s | Max: 0.460978 s
+  Speed (MB/s):   Min: 582.32 MB/s | Median: 737.14 MB/s | Max: 746.54 MB/s
+  Speed (MiB/s):  Min: 555.34 MiB/s | Median: 702.99 MiB/s | Max: 711.96 MiB/s
+
+I3: write 256 MiB to /tmp; record MemAvailable before/after to prove it is RAM
+  Headline (min time / max throughput): 0.089638 s (2994.68 MB/s, 2855.94 MiB/s)
+  Runs (time s):         [0.089966, 0.089904, 0.089638]
+  Runs (MB/s):           [2983.76, 2985.82, 2994.68]
+  Runs (MiB/s):          [2845.53, 2847.50, 2855.94]
+  MemAvailable Before:   ['1083588 kB (1058.19 MiB)', '1083588 kB (1058.19 MiB)', '1083552 kB (1058.16 MiB)']
+  MemAvailable After:    ['841920 kB (822.19 MiB)', '841920 kB (822.19 MiB)', '841884 kB (822.15 MiB)']
+  MemAvailable Delta:    ['241668 kB (236.00 MiB)', '241668 kB (236.00 MiB)', '241668 kB (236.00 MiB)']
+  Time (s):              Min: 0.089638 s | Median: 0.089904 s | Max: 0.089966 s
+  Speed (MB/s):          Min: 2983.76 MB/s | Median: 2985.82 MB/s | Max: 2994.68 MB/s
+
+================================================================================
+NETWORK (3 repeats, 1 warmup discarded, timing: time.perf_counter())
+================================================================================
+
+N1: https://speed.cloudflare.com/__down?bytes=100000000
+  Sequential (100,000,000 bytes):
+    Headline (min time / max throughput): 0.404760 s (247.06 MB/s)
+    Runs (time s): [0.458269, 0.404760, 0.418163]
+    Runs (MB/s):   [218.21, 247.06, 239.14]
+    Time (s):      Min: 0.404760 s | Median: 0.418163 s | Max: 0.458269 s
+    Speed (MB/s):  Min: 218.21 MB/s | Median: 239.14 MB/s | Max: 247.06 MB/s
+
+  Parallel (3 concurrent streams, 300,000,000 bytes total per run):
+    Headline (min wall time / max aggregate throughput): 0.612205 s (490.03 MB/s)
+    Runs (wall time s):      [1.110367, 0.637615, 0.612205]
+    Runs (aggregate MB/s):   [270.18, 470.50, 490.03]
+    Run 1 stream times: [0.395079 s (253.11 MB/s), 0.892626 s (112.03 MB/s), 1.106220 s (90.40 MB/s)] | Wall: 1.110367 s
+    Run 2 stream times: [0.586338 s (170.55 MB/s), 0.633423 s (157.87 MB/s), 0.607156 s (164.70 MB/s)] | Wall: 0.637615 s
+    Run 3 stream times: [0.517274 s (193.32 MB/s), 0.607822 s (164.52 MB/s), 0.555479 s (180.02 MB/s)] | Wall: 0.612205 s
+    Wall Time (s):   Min: 0.612205 s | Median: 0.637615 s | Max: 1.110367 s
+    Aggregate MB/s:  Min: 270.18 MB/s | Median: 470.50 MB/s | Max: 490.03 MB/s
+
+N2: pip download --no-cache-dir numpy (cold, x3)
+  Package: numpy-2.5.3-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16708577 bytes / 16.71 MB)
+  Headline (min): 0.864193 s (19.33 MB/s)
+  Runs (time s): [0.892819, 0.887181, 0.864193]
+  Runs (MB/s):   [18.71, 18.83, 19.33]
+  Time (s):      Min: 0.864193 s | Median: 0.887181 s | Max: 0.892819 s
+  Speed (MB/s):  Min: 18.71 MB/s | Median: 18.83 MB/s | Max: 19.33 MB/s
+
+N3: curl -w '%{time_namelookup} %{time_connect} %{time_appconnect} %{time_starttransfer} %{time_total}'
+  Endpoint: https://pypi.org
+    Headline (min time_total): 0.030848 s
+    Raw runs [namelookup connect appconnect starttransfer total]:
+      Run 1: 0.001273 0.001594 0.020662 0.037156 0.038789
+      Run 2: 0.001220 0.001552 0.020239 0.028974 0.030848
+      Run 3: 0.001218 0.001495 0.020062 0.032495 0.034077
+    time_total (s): Min: 0.030848 s | Median: 0.034077 s | Max: 0.038789 s
+
+  Endpoint: https://github.com
+    Headline (min time_total): 0.068668 s
+    Raw runs [namelookup connect appconnect starttransfer total]:
+      Run 1: 0.010818 0.011187 0.028056 0.036079 0.073283
+      Run 2: 0.001546 0.001778 0.019651 0.028254 0.068668
+      Run 3: 0.001630 0.001866 0.020127 0.029199 0.069751
+    time_total (s): Min: 0.068668 s | Median: 0.069751 s | Max: 0.073283 s
+
+  Endpoint: https://huggingface.co
+    Headline (min time_total): 0.049906 s
+    Raw runs [namelookup connect appconnect starttransfer total]:
+      Run 1: 0.020757 0.021182 0.038832 0.048545 0.064359
+      Run 2: 0.030906 0.031346 0.048248 0.058702 0.071795
+      Run 3: 0.001730 0.002075 0.021238 0.032602 0.049906
+    time_total (s): Min: 0.049906 s | Median: 0.064359 s | Max: 0.071795 s

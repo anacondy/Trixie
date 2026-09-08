@@ -1,0 +1,202 @@
+F BENCHMARK RUN — brave (account_b), fresh session, 2026-09-07
+sandbox_id=ialorgpy4povbxjcqk2ck
+
+I'll run the benchmark exactly as specified: environment first, then CPU, I/O, and network with the stated repeats, warmup, and timing.
+
+Environment is captured. Next I’ll run the CPU suite (C1–C7) with warmup, `perf_counter`, and the specified repeats.
+
+C1–C6 are done. Running C7 next: C1 under `taskset -c 0` and `taskset -c 0,1`.
+
+CPU C7 finished. Next is I/O: urandom write/fsync, O_DIRECT (or cache-drop) read, and the `/tmp` RAM check.
+
+I/O is done. Starting network tests: N1 sequential and parallel, then N2 and N3.
+
+Cloudflare rejected urllib (403). Switching N1 to curl on the same endpoint.
+
+Curl without a User-Agent got 403. Retrying N1 with a browser User-Agent on the same URL.
+
+Referer is required for the 100 MB download. Re-running N1 with that header on the same URL.
+
+Re-running N3 with the exact curl command (no `-L`), then deleting every file I created.
+
+ENVIRONMENT
+date -u: 2026-09-07T19:19:39Z
+/.e2b:
+  ENV_ID=nlhz8vlwyupq845jsdg9
+  TEMPLATE_ID=nlhz8vlwyupq845jsdg9
+  BUILD_ID=f34a5416-ef30-4cb7-8e18-0fdecd6eb529
+E2B_SANDBOX_ID=ialorgpy4povbxjcqk2ck
+MemTotal:        2032608 kB
+/sys/fs/cgroup/user/memory.max: 1947172864
+/sys/fs/cgroup/user/cpu.max: max 100000
+/sys/fs/cgroup/user/cpuset.cpus.effective: 0-1
+Python 3.13.14
+numpy 2.3.5
+numpy.show_config() | head -20:
+Build Dependencies:
+  blas:
+    detection method: pkgconfig
+    found: true
+    include directory: /opt/_internal/cpython-3.13.8/lib/python3.13/site-packages/scipy_openblas64/include
+    lib directory: /opt/_internal/cpython-3.13.8/lib/python3.13/site-packages/scipy_openblas64/lib
+    name: scipy-openblas
+    openblas configuration: OpenBLAS 0.3.30  USE64BITINT DYNAMIC_ARCH NO_AFFINITY
+      Haswell MAX_THREADS=64
+    pc file directory: /project/.openblas
+    version: 0.3.30
+  lapack:
+    detection method: pkgconfig
+    found: true
+    include directory: /opt/_internal/cpython-3.13.8/lib/python3.13/site-packages/scipy_openblas64/include
+    lib directory: /opt/_internal/cpython-3.13.8/lib/python3.13/site-packages/scipy_openblas64/lib
+    name: scipy-openblas
+    openblas configuration: OpenBLAS 0.3.30  USE64BITINT DYNAMIC_ARCH NO_AFFINITY
+      Haswell MAX_THREADS=64
+    pc file directory: /project/.openblas
+    version: 0.3.30
+
+TIMING=time.perf_counter  WARMUP=1 discarded before each test
+CPU repeats=5  I/O,network repeats=3
+MB/s = bytes/s / 1e6   MiB/s = bytes/s / 2^20
+
+CPU
+C1 sum(range(10**7))  dtype=Python int  n=10000000
+  runs_s: 0.151128730  0.145776321  0.152725481  0.153553427  0.151329190
+  min=0.145776321  median=0.151329190  max=0.153553427
+  HEADLINE_MIN_s=0.145776321
+
+C2 sum(i*i for i in range(10**7))  dtype=Python int  n=10000000
+  runs_s: 0.601432194  0.533864870  0.572415148  0.530672015  0.531978530
+  min=0.530672015  median=0.533864870  max=0.601432194
+  HEADLINE_MIN_s=0.530672015
+
+C3 np.arange(10**7, dtype=np.float64).sum()  dtype=float64  n=10000000
+  runs_s: 0.022821950  0.022678421  0.021717336  0.021182136  0.020370146
+  min=0.020370146  median=0.021717336  max=0.022821950
+  HEADLINE_MIN_s=0.020370146
+
+C4 a=np.random.rand(1000,1000); a@a  dtype=float64  n=1000  FLOPs=2*n^3=2000000000
+  runs_s: 0.013153339  0.013153608  0.012201512  0.012304834  0.015816472
+  min=0.012201512  median=0.013153339  max=0.015816472
+  HEADLINE_MIN_s=0.012201512
+  GFLOP/s runs: 152.052646100  152.049536523  163.914111628  162.537747360  126.450449885
+  GFLOP/s min=126.450449885  median=152.052646100  max=163.914111628
+  HEADLINE_GFLOP/s (from min time)=163.914111628
+
+C5 np.sort(np.random.rand(5_000_000))  dtype=float64  n=5000000
+  runs_s: 0.054647699  0.058222767  0.051776112  0.049310189  0.048968374
+  min=0.048968374  median=0.051776112  max=0.058222767
+  HEADLINE_MIN_s=0.048968374
+
+C6 np.fft.fft(np.random.rand(2**22))  in_dtype=float64  out_dtype=complex128  n=4194304
+  runs_s: 0.212679007  0.235643370  0.213368314  0.217505261  0.242485637
+  min=0.212679007  median=0.217505261  max=0.242485637
+  HEADLINE_MIN_s=0.212679007
+
+C7 taskset -c 0  <C1>  dtype=Python int  n=10000000
+  runs_s: 0.123796529  0.125295997  0.123317763  0.120131140  0.118543162
+  min=0.118543162  median=0.123317763  max=0.125295997
+  HEADLINE_MIN_s=0.118543162
+C7 taskset -c 0,1  <C1>  dtype=Python int  n=10000000
+  runs_s: 0.125876519  0.121071344  0.137987438  0.139865396  0.141299361
+  min=0.121071344  median=0.137987438  max=0.141299361
+  HEADLINE_MIN_s=0.121071344
+C7 SMT_scaling_ratio min(c0)/min(c0,1)=0.979118137
+C7 SMT_scaling_ratio min(c0,1)/min(c0)=1.021327269
+
+I/O  SIZE=268435456 bytes = 256 MiB  data=os.urandom
+I1 write+fsync /home/user  (urandom gen untimed for MB/s; gen times also listed)
+  urandom_s: 0.652438837  0.557677605  0.701463097
+  write_fsync_s: 0.229218141  0.231785075  0.230540472
+  min=0.229218141  median=0.230540472  max=0.231785075
+  HEADLINE_MIN_s=0.229218141
+  MB/s runs: 1171.091672  1158.122265  1164.374540
+  HEADLINE_MB/s (from min time)=1171.091672
+  urandom+write+fsync_s: 0.881656978  0.789462680  0.932003569
+  min=0.789462680  median=0.881656978  max=0.932003569
+  MB/s from that min=340.022984
+
+I2 read O_DIRECT=True (os.O_DIRECT=16384) got=268435456 each
+  runs_s: 0.055718378  0.054512893  0.055581712
+  min=0.054512893  median=0.055581712  max=0.055718378
+  HEADLINE_MIN_s=0.054512893
+  MB/s runs: 4817.718420  4924.256286  4829.564372
+  HEADLINE_MB/s (from min time)=4924.256286
+
+I3 write 256 MiB to /tmp
+  /proc/mounts: tmpfs /tmp tmpfs rw,nosuid,nodev,nr_inodes=1048576 0 0
+  MemAvailable_kB before write (after urandom alloc)=1292972
+  MemAvailable_kB after write=1030924
+  MemAvailable_delta_kB=-262048
+  /proc/meminfo before: MemTotal=2032608 MemFree=1065360 MemAvailable=1533632 Cached=453880 Shmem=1096
+  /proc/meminfo after:  MemTotal=2032608 MemFree=562124  MemAvailable=1030924 Cached=715960 Shmem=263176
+  write_fsync_s (MemAvailable trial):0.157167222
+  timed repeats write_fsync_s: 0.112690720  0.111062100  0.108263210
+  min=0.108263210  median=0.111062100  max=0.112690720
+  HEADLINE_MIN_s=0.108263210
+  MB/s runs: 2382.054671  2416.985236  2479.470690
+  HEADLINE_MB/s (from min time)=2479.470690
+
+NETWORK
+N1 https://speed.cloudflare.com/__down?bytes=100000000
+  note: curl without Referer -> HTTP 403 size=1; timed runs used Header Referer: https://speed.cloudflare.com/ ; HTTP 200 size=100000000 each
+  curl_w fields: http_code size_download time_namelookup time_connect time_appconnect time_starttransfer time_total speed_download
+  sequential warmup discarded wall_s=1.494739197 curl_w=200 100000000 0.002139 0.002346 0.025141 0.216693 1.486102 67290132
+  sequential run[0] wall_s=0.462110277 curl_w=200 100000000 0.002009 0.002247 0.023011 0.063515 0.453247 220630252
+  sequential run[1] wall_s=0.381809693 curl_w=200 100000000 0.001949 0.002271 0.022705 0.069325 0.371935 268864183
+  sequential run[2] wall_s=1.574312868 curl_w=200 100000000 0.001995 0.002351 0.027645 0.088402 1.564155 63932282
+  sequential wall min=0.381809693  median=0.462110277  max=1.574312868
+  HEADLINE_MIN_s=0.381809693
+  sequential MB/s (100000000/wall): 216.398563  261.910585  63.519776
+  sequential HEADLINE_MB/s (from min wall)=261.910585
+  parallel (3 concurrent) warmup discarded wall_s=2.429914226
+  parallel run[0] wall_s=0.487623978 agg_bytes=300000000 agg_MB/s_wall=615.228154
+    per: 0.377174555 200 100000000 0.003846 0.004123 0.023386 0.053987 0.365994 273228522
+         0.481679687 200 100000000 0.002990 0.003381 0.026305 0.152388 0.472880 211470140
+         0.481831029 200 100000000 0.006709 0.007081 0.027161 0.063990 0.473164 211343212
+  parallel run[1] wall_s=1.085652049 agg_bytes=300000000 agg_MB/s_wall=276.331630
+    per: 0.445874765 200 100000000 0.002198 0.002448 0.027613 0.076569 0.420365 237888521
+         0.456370411 200 100000000 0.006112 0.006552 0.026205 0.066525 0.446824 223801765
+         1.084410758 200 100000000 0.007209 0.007630 0.047743 0.176402 1.069005 93544931
+  parallel run[2] wall_s=0.838947851 agg_bytes=300000000 agg_MB/s_wall=357.590760
+    per: 0.838370716 200 100000000 0.001475 0.006080 0.025197 0.077254 0.828242 120737658
+         0.479771478 200 100000000 0.001525 0.001775 0.022387 0.060076 0.453428 220542180
+         0.522363333 200 100000000 0.005345 0.005939 0.026541 0.063263 0.501853 199261536
+  parallel wall min=0.487623978  median=0.838947851  max=1.085652049
+  HEADLINE_MIN_s=0.487623978
+  parallel HEADLINE_agg_MB/s_wall (from min wall)=615.228154
+
+N2 pip download --no-cache-dir numpy  cold  wheel=numpy-2.5.3-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl  bytes=16708577
+  warmup discarded wall_s=0.936899866
+  runs_s: 0.852795674  0.918559926  0.873489649
+  min=0.852795674  median=0.873489649  max=0.918559926
+  HEADLINE_MIN_s=0.852795674
+  MB/s (16708577/wall): 19.592474  18.189297  19.128120
+  HEADLINE_MB/s (from min time)=19.592474
+
+N3 curl -o /dev/null -s -w '%{time_namelookup} %{time_connect} %{time_appconnect} %{time_starttransfer} %{time_total}'
+  fields: time_namelookup time_connect time_appconnect time_starttransfer time_total
+  pypi.org
+    warmup discarded: 0.001669 0.002072 0.029477 0.062106 0.064341
+    run[0]: 0.001636 0.001837 0.022462 0.032681 0.034240
+    run[1]: 0.001671 0.001921 0.022797 0.034463 0.036206
+    run[2]: 0.001555 0.001897 0.021358 0.030592 0.032837
+    time_total: 0.034240  0.036206  0.032837
+    min=0.032837  median=0.034240  max=0.036206
+    HEADLINE_MIN_time_total=0.032837
+  github.com
+    warmup discarded: 0.001739 0.001993 0.017499 0.025188 0.060365
+    run[0]: 0.001510 0.001755 0.018989 0.027436 0.067975
+    run[1]: 0.001743 0.002021 0.024383 0.034389 0.085632
+    run[2]: 0.001653 0.001982 0.018818 0.026264 0.061534
+    time_total: 0.067975  0.085632  0.061534
+    min=0.061534  median=0.067975  max=0.085632
+    HEADLINE_MIN_time_total=0.061534
+  huggingface.co
+    warmup discarded: 0.002728 0.003162 0.020516 0.029654 0.044328
+    run[0]: 0.015883 0.016163 0.032393 0.041383 0.055620
+    run[1]: 0.001808 0.002079 0.019875 0.029643 0.048169
+    run[2]: 0.030927 0.031324 0.051517 0.063117 0.080272
+    time_total: 0.055620  0.048169  0.080272
+    min=0.048169  median=0.055620  max=0.080272
+    HEADLINE_MIN_time_total=0.048169
