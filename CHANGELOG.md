@@ -26,5 +26,6 @@ Reorg of the Trixie forensic archive on branch `arena/01a070c2-trixie`. One line
 - **Burst 20** — Move the three `F_benchmark_*_run1.txt` run logs into `forensic/evidence/benchmarks/{account_a,account_b,account_c}/` (names unchanged); all 3 SHA-256 MATCH pre- and post-move; report at `forensic/reports/benchmarks/BENCH_REPORT.md`.
 - **Burst 21** — README replaced; added `docs/wiki_home.md`; wiki Home published (`4cf922b`); later reformatted Home for spacing and scanability (facts unchanged).
 - **Docs / license** — reformatted root `README.md` to match wiki spacing; added Apache License 2.0 (`LICENSE`).
+- **Docs (honest pass)** — rewrote `README.md` and `docs/wiki_home.md` as a claim ledger: only in-tree facts; empty dirs, missing GitHub-connect/persistence/class-B/control labelled not in this repo; class C OS corrected to bookworm; OOM quoted as ranges.
 
 
