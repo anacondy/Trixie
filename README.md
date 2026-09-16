@@ -1,273 +1,293 @@
-# Trixie — an empirical characterization of Arena.ai's sandboxes
+# Trixie
 
-Hash-verified artefacts from live **Arena Agent Mode** sessions, plus a cross-surface look at **Code Arena**.
+Forensic characterisation of the Agent-mode sandbox behind Code Arena / arena.ai.
 
-Every number below is something you can open a file and see. Claims without a file in *this* repository are listed as **not in this repo**, not as findings.
+Three independent sessions (one per browser profile), four rounds of probes, every archive hash-verified. Raw zips, original characterisation markdown, and original prompt files are **never** overwritten.
 
-> Independent research. Not affiliated with or endorsed by Arena / LMArena.
-
-[Wiki](https://github.com/anacondy/Trixie/wiki) (the story) · [Apache-2.0](LICENSE)
-
----
-
-## How to read this repo
-
-| Rule | Meaning |
-|------|---------|
-| Browser string in filenames is ground truth | `chrome` / `brave` / `edge` in the name wins. `account_a/b/c` are aliases — see [`ACCOUNTS.md`](ACCOUNTS.md) (a = chrome, b = brave, c = edge). |
-| Raw beats prose | Prefer redirected `.txt` and JSON over agent `.md`. Agent reports are commentary. |
-| Disagreement is data | When three sessions disagree, that is the finding. Do not average it away. |
-| History only moves forward | Append-only [`CHANGELOG.md`](CHANGELOG.md). No force-push. |
-| Do not execute archives | Unpack and hash. Do not run extracted `.py` / `.sh`. |
+- Per-zip index: `forensic/reports/summary/INDEX_ALL.tsv`
+- Outer SHA-256 inventory: `forensic/reports/summary/00_ROOT_INVENTORY.txt`
+- Round-3 integrity report: `forensic/reports/round3/UNPACK_REPORT.md`
+- Benchmark integrity + caveats: `forensic/reports/benchmarks/BENCH_REPORT.md`
 
 ---
 
-## What is actually in the tree
+## TL;DR
 
-| Path | Role | Status |
-|------|------|--------|
-| `zips/environment/` | Round-1 followup Agent zips (9) | present |
-| `zips/ceilings/` `zips/egress/` `zips/provenance/` `zips/code_arena/` | Round-2 archives (3 each) | present |
-| `zips/round3/` | Calibrated probe zips (3) | present |
-| `zips/persistence/` `zips/benchmarks/` | reserved | **empty** (`.gitkeep` only) |
-| `forensic/evidence/` | unpacked raws | **~843 files** |
-| `forensic/evidence/benchmarks/` | F-run texts ×3 | present |
-| `forensic/evidence/persistence/` | — | **empty** |
-| `forensic/evidence/github_connect/` | — | **absent** |
-| `characterizations/environment/` | round-1 agent reports (9) | present |
-| `characterizations/{ceilings,egress,provenance,code_arena,benchmarks,persistence}/` | — | **empty** |
-| `prompts/` | instruments, verbatim | round-1/2 present; round-3 falsification prompt present |
-| `forensic/reports/` | unpack / verify / index | present (some indexes stale — see below) |
-| `docs/wiki_home.md` | wiki Home seed | present |
+This repository characterises an **E2B microVM template**, thoroughly and reproducibly, at the level of kernel, cgroups, rlimits, filesystem and egress.
+
+It does **not** establish anything about cross-session persistence, tool-call concurrency limits, or cross-account performance — and the platform branding is asserted by the operator, not measured by any probe.
+
+Read §3 before quoting any number from this repo.
 
 ---
 
-## What the files show
+## 1. What this proves
 
-### Agent Mode guest (class T)
+All values below are **byte-identical across three independent sessions** unless marked otherwise.
 
-Repeated across round-1 environment raws, provenance probes, round-3 A0 locks, and F-benchmark headers.
+### Runtime
 
-| Item | Value |
-|------|--------|
-| Distro | Debian 13 (trixie) |
-| Kernel | `6.1.158+`, stamp `#1 … Fri Jul 17 14:31:34 UTC 2026` |
-| Python | 3.13.14 |
-| CPU | 2 vCPU, `Intel(R) Xeon(R) Processor @ 2.60GHz`, SMT siblings `0-1` (one physical core) |
-| Memory | `MemTotal 2032608 kB` · cgroup `/user` `memory.max = 1947172864` · no swap |
-| Disk | `/dev/root` ~25 G ext4 · `/tmp` tmpfs ~993 MiB (charges RAM) |
-| Host | `e2b.local` · `E2B_SANDBOX=true` |
-| Template / build | `nlhz8vlwyupq845jsdg9` / `f34a5416-ef30-4cb7-8e18-0fdecd6eb529` |
+```
+OS                Debian GNU/Linux 13 (trixie), /etc/debian_version 13.6
+Kernel            6.1.158+  #1 SMP PREEMPT_DYNAMIC Fri Jul 17 14:31:34 UTC 2026
+Python            3.13.14
+Hostname          e2b.local
+```
 
-**Virt:** KVM guest, not Docker. `systemd-detect-virt=kvm`, no `/.dockerenv`, PID 1 is systemd, ACPI OEM `FIRECK`, kernel cmdline `pci=off virtio_mmio…`.
+### Isolation
 
-**Privilege:** `uid=1000` in group `sudo`. `sudo -n true` → root. User `Seccomp: 0`. User `CapEff` is **empty**; the bounding set / PID 1 is capable. Do not read that as “the user process has all capabilities”.
+KVM microVM with its own kernel and a real PID 1 — **not** a container, **not** bare metal. Established by exclusion, not assumption:
 
-Evidence: `forensic/evidence/environment/`, `forensic/evidence/provenance/`, `forensic/evidence/round3/`.
+| Test | Result | Excludes |
+|---|---|---|
+| `systemd-detect-virt` | `kvm` | bare metal |
+| `/proc/1/cgroup` | `0::/` with `system.slice`, no docker/lxc id | container |
+| `/.dockerenv` | absent | container |
+| `hypervisor` CPU flag | present | bare metal |
+| kernel cmdline | `init=/sbin/init`, `root=/dev/vda`, virtio_mmio | — |
 
-### Identity (what changes, what does not)
+cgroup v2 limits live at **`/sys/fs/cgroup/user`**, not the cgroup root (the root has no `memory.max`).
 
-| Signal | Behaviour |
-|--------|-----------|
-| `E2B_SANDBOX_ID` | new per session — this is the instance id |
-| `boot_id` `2bb79165-136a-4b63-829d-17027b0a8e40` | **same** across accounts and sessions — image-constant, not a reboot detector |
-| `/proc/uptime` at first command | often tens of seconds — fresh guest clock, not a long-lived VM you SSH into |
-| In-guest services | timestamps from **2026-07-23** in September sessions — snapshot-resume of a long-lived image |
+### Resources
 
-Agent 4 also recorded template `gujonb0q163l15z30yc7` next to the usual id (recorded quirk, not the lock).
+```
+MemTotal                  2032608 kB   (1984.97 MiB / 1.938 GiB)
+memory.max                1947172864 B (1856.97 MiB)
+memory.swap.max           "max"  — but /proc/swaps is empty, so no swap exists
+cpu.max                   "max 100000"  → no CPU quota (nr_throttled = 0)
+pids.max                  "max"         → no PID cap
+cpuset.cpus.effective     0-1
+CPU topology              1 socket / 1 core / 2 threads, siblings "0-1"
+RLIMIT_NOFILE             soft 1024, hard 524288
+/tmp                      tmpfs, ~993 MiB (≈ MemTotal / 2)
+/                         ext4 on /dev/vda
+```
 
-Evidence: `prov_probe.txt`, round-1 ID comparison, round-3 A0 files.
-
-### Ceilings — quote as ranges
-
-Limits that **agree** across sessions:
-
-| Resource | Measured |
-|----------|----------|
-| FDs | soft **1024** (EMFILE ~1018) · hard **524288** (child can raise to hard; not above) |
-| Processes | `ulimit -u` **7917** · cgroup `pids.max = max` (unenforced) |
-| CPU quota | `cpu.max = max 100000` · `nr_throttled = 0` |
-| SMT | cpu0/cpu1 are siblings of **one** core |
-
-OOM of a touched anonymous allocation **moves by session**. Do not quote one interval as *the* ceiling:
-
-| Session | Last success | First kill |
-|---------|--------------|------------|
-| Round-3 chrome | 1600 MiB | 1632 MiB |
-| Round-3 brave | 1632 MiB | 1664 MiB |
-| Round-3 edge | 1624.85 MiB | 1653.86 MiB |
-| Ceilings chrome (TSV) | 1632 MiB | 1664 MiB |
-| Ceilings edge (markdown only) | 1637 MiB | 1638 MiB |
-
-The child takes SIGKILL; the **session survives**. Account_c ceilings markdown argues host-global OOM rather than cgroup-max — left standing, not resolved.
-
-Evidence: `forensic/evidence/ceilings/`, round-3 D1 files. Fork-to-7917 is well attested as an ulimit; the exact “7914 EAGAIN” figure is weaker (empty brave `fork_test.log`; edge ceilings is markdown without a probe log tree).
+- **OOM is cgroup-scoped and the session survives it.** `memory.events:oom_kill` increments; subsequent commands still execute.
+- **fd limits behave as documented POSIX.** A child can `setrlimit` soft → hard and open ~524 k fds; raising above hard fails with `ValueError: not allowed to raise maximum limit`. EMFILE lands at 1017–1018 with the default soft limit (the 1-fd spread is baseline descriptors).
+- **`/tmp` is RAM, proven two ways:** `dd` hits ENOSPC at ~992 MiB, and `memory.current` rises by 1.0007× the bytes written, then falls back after `rm`.
+- **SMT sibling adds ~0–1.4 % throughput.** `taskset -c 2` fails with EINVAL — there is only one physical core.
 
 ### Network
 
-**Solid:**
+- **`connect()` is not evidence of reachability.** An accept-all gateway returns success for RFC 5737 TEST-NET addresses. Only TTFB / HTTP-status evidence is valid here. Corroborated on all three accounts.
+  - `192.0.2.1` is genuinely local: `/etc/hosts` maps it to `events.e2b.local`, `E2B_EVENTS_ADDRESS` points at it, and it answers with an E2B JSON 404 in ~1.7 ms.
+  - `198.51.100.1` / `203.0.113.1` accept the connection and then transfer **zero** bytes.
+- **DNS is unfiltered.** `/etc/resolv.conf` → `nameserver 8.8.8.8`; every public hostname tested returned A and AAAA records.
+- **IPv6 egress is blocked at `connect()`, not at the resolver** — AAAA records resolve fine, `curl -6` fails in ~10 ms while `curl -4` returns 200.
+- **Cloud metadata is blocked:** `169.254.169.254` times out, `metadata.google.internal` is NXDOMAIN.
+- **Public egress is otherwise open for the tested sets.** Origin-side 403s (reddit, crates.io) were separated from network-level blocks by User-Agent controls.
 
-- HTTPS to ordinary sites works (real HTTP codes, real TTFB).
-- `connect()` to RFC5737 TEST-NET (`192.0.2.1`, `198.51.100.1`, `203.0.113.1`) succeeds in milliseconds. `curl` to the same addresses times out **or** hits a local JSON `404` in ~2 ms. **TCP connect is not reachability here.**
-- Checked certificate leaves are public CAs (pypi.org → GlobalSign, github.com → Sectigo). System store verifies.
-- Round-3 chrome: IPv6 `curl -6` fails; IPv4 to the same name works; DNS still returned AAAA.
+### Identity / provenance
 
-**Nuance:** an `E2B Proxy CA` file exists on the guest. It was **not** the issuer of those checked leaves. “No MITM” means “not on the hosts we opened”, not “no proxy CA exists”.
+```
+E2B_TEMPLATE_ID / ENV_ID   nlhz8vlwyupq845jsdg9      constant, all sessions
+BUILD_ID                   f34a5416-ef30-4cb7-8e18-0fdecd6eb529   constant
+E2B_SANDBOX_ID             varies every session
+boot_id                    2bb79165-136a-4b63-829d-17027b0a8e40   CONSTANT
+```
 
-**Unresolved:** round-2 egress write-ups talk about DNS-level blocks; round-3 chrome reports no public DNS blocklist (metadata endpoints only). Both are in the tree. Neither is promoted to a platform law.
-
-Evidence: `forensic/evidence/egress/`, round-3 D3 / B3 files.
-
-### Code Arena (class C) — a different product
-
-Not Agent Mode. Five `/api/env` snapshots agree:
-
-| Item | Value |
-|------|--------|
-| Template / build | `n93h7d3hf6qbdd07x3yo` / `62640bfa-…` |
-| Guest OS | **Debian 12 (bookworm)** — not trixie |
-| CPU / memory | 4 vCPU · `MemTotal 4034208 kB` · cgroup `memory.max 3996811264` |
-| Database | Postgres on `127.0.0.1:5432` (same VM) |
-| Persistence in snapshots | `/app` markers and DB rows survive across dates; `/tmp` marker does not |
-
-Evidence: `forensic/evidence/code_arena/{chrome,brave,edge}/` snapshots. Packaged round-2 zips are Next.js skeletons; the env lock is in the snapshots.
-
-### F benchmarks (2026-09-07)
-
-Three self-describing texts, SHA-256 verified before and after placement.
-
-- Same template, same cgroup shape, three sandbox ids.
-- **Quote ranges, never a bare minimum.** Several tests swing 2–5× *inside one session*.
-- Numpy is not held constant: brave **2.3.5**, edge **2.3.3**, chrome **unrecorded**. C3–C6 are confounded.
-- Flag, do not treat as account properties: brave I2 (~4.9 GB/s, likely page-cache), edge N1 (rate-only, ~5× peers), edge I1 (seconds labelled as MB/s).
-
-Usable cross-account: pure-Python C1 / C2 / C7, and N2 / N3.
-
-Evidence: `forensic/evidence/benchmarks/` · report: `forensic/reports/benchmarks/BENCH_REPORT.md`.
-
-### Round-3 calibration (models)
-
-Same falsification prompt, three fresh sessions. **Self-reported** cutoffs:
-
-| Browser | `cutoff_self` in the JSON |
-|---------|---------------------------|
-| edge | 2024-06 |
-| chrome | ~2025-01 |
-| brave | ~mid-2025 |
-
-Factual calibration items often agreed. That is LLM text, not a sandbox knob. Agent Mode does not name the model in-session. Do not upgrade this table to “proven heterogeneous routing policy”.
-
-Evidence: `forensic/evidence/round3/account_{a,b,c}/probe3/*.json`.
+The `boot_id` result is the sharpest finding in the archive. It is **identical across all three accounts, across round 2 and round 3, and across different days** while `sandbox_id` changes every session. A boot_id that survives distinct sessions is not a booted kernel — it is a **memory snapshot being restored**. Sessions are VM-forked from one template image, not cold-booted.
 
 ---
 
-## Disagreements left standing
+## 2. What this does **not** prove
 
-These are in the primary files. They are not bugs to paper over.
-
-1. **Tool-call concurrency.** Round-3 chrome: 8 calls serial, ~2 s gaps, wall ~18 s. Round-3 brave: overlapped, wall ~10 s. Ceilings edge markdown: 8/8 parallel, ~5 s wall.
-2. **DNS filtering.** Round-2 egress reports vs round-3 “no public DNS blocklist”.
-3. **OOM mechanism.** Child cgroup kill vs account_c ceilings `global_oom` / `CONSTRAINT_NONE`.
-
----
-
-## Not in this repo
-
-| Topic | What is here instead |
-|-------|----------------------|
-| GitHub App identity, grants, workflows lag, screenshots | README/wiki text only. No `forensic/evidence/github_connect/`. |
-| Agent Mode persistence campaign (128 MiB / 10k files / drop at 140 MiB) | Prompt exists (`prompts/round2/PersistencePROMPT.md`). Zips and evidence dirs are empty. |
-| Class B session (bookworm / Py 3.11 / kernel `Mon May 11 18:48:24 UTC 2026` / ~3.8 GiB) | Used as a **negative discriminator** in round-3 (“0/4 B markers”). No raw session. |
-| Non-Arena E2B control (“template is not an Arena fingerprint”) | Not archived. Sharing `nlhz8vlwyupq845jsdg9` across *Arena* sessions does not prove it is public E2B. |
-| Characterizations for ceilings / egress / provenance / code_arena / benchmarks / persistence | Empty directories. |
-| ICMP “blocked” as a measured result | Not established in the raws cited here. |
+| Claim you might expect here | Status |
+|---|---|
+| **Cross-session persistence** | **No evidence at all.** `zips/persistence/` and `forensic/evidence/persistence/` are skeleton-only. The round-3 "C1 liveness" probes show only that a session survived ~9 minutes and its own OOM kills. Nothing tests session boundaries, idle timeout, or reconnect. |
+| **Tool-call concurrency cap** | **Not measured, and the accounts contradict each other.** See §3.1. |
+| **Cross-account performance differences** | **Confounded.** numpy versions differ and one is unrecorded; units are mislabelled in one log; within-session spread is 2–5×, larger than most between-account deltas. `BENCH_REPORT.md` §5 documents this in full. |
+| **That this is LMArena specifically** | **Operator-asserted, not measured.** No `ARENA_*` environment variable, no arena hostname, no arena-branded artefact exists anywhere in the evidence tree. Every occurrence of "arena.ai" is a free-text `surface:` field an agent typed into its own JSON. The machine-observable identity is *purely* E2B. |
+| **Code Arena app sandbox vs Agent Mode** | Section E is `NOT PERFORMED` on every account, by the task's own scoping rule. The `code_arena/` evidence is scaffold snapshots only. |
+| **A fixed "OOM ceiling"** | The ceiling is session-dependent, not a constant. See §3.2. |
+| **Global egress policy** | Sample-bounded: 18 / 21 / ~45 hostnames, ports 22/53/80/443. Absence of a block in this sample is not absence of a blocklist. |
 
 ---
 
-## VM classes — what this archive can fill in
+## 3. Known defects in this archive
 
-| | T (Agent Mode, in this repo) | B (named, **not in this repo**) | C (Code Arena, in this repo) |
+Listed because they are load-bearing. Do not quote around them.
+
+### 3.1 The D5 concurrency verdict is contradicted by its own raw data
+
+`account_a`'s falsification ledger (F8) states *"no observed per-session parallelism; cap = 1 concurrent exec."* Rebuilding the timeline from its own `d5/A..H.txt` files:
+
+| Account | sleep | dispatch gap | wall | serial prediction | **max simultaneous** |
+|---|---|---|---|---|---|
+| account_a (chrome) | 4 s | 2.00 s | 18.04 s | 32 s | **3** |
+| account_b (brave) | 7 s | 0.47 s | 10.27 s | 56 s | **8** |
+| account_c (edge) | 3 s | 1.20 s | 11.41 s | 24 s | **3** |
+
+Chrome's calls overlap (A runs 0.000–4.012 s, B starts at 2.370 s) and its wall time is 18.04 s against a 32 s serial prediction. `account_b` concludes the opposite ("no cap at ≤ 8").
+
+Neither is right in substance. All three used **different sleep durations**, so observed concurrency is simply `sleep ÷ dispatch_gap` — nobody saturated a ceiling, so **no account measured the cap.** The only genuinely measured quantity is the dispatch interval, and that varies 4× across sessions with no explanation.
+
+Reproduce:
+
+```bash
+python3 - <<'PY'
+import re, glob
+from datetime import datetime
+ev = []
+for p in sorted(glob.glob("forensic/evidence/round3/account_a/probe3/d5/*.txt")):
+    t = open(p).read()
+    f = lambda x: datetime.strptime(x, "%Y-%m-%dT%H:%M:%S.%fZ")
+    ev.append((f(re.search(r'start=(\S+)', t).group(1)),
+               f(re.search(r'end=(\S+)',   t).group(1))))
+pts = sorted([(s, 1) for s, _ in ev] + [(e, -1) for _, e in ev])
+cur = mx = 0
+for _, d in pts:
+    cur += d; mx = max(mx, cur)
+t0 = min(s for s, _ in ev)
+print("max simultaneous:", mx,
+      "| wall:", round((max(e for _, e in ev) - t0).total_seconds(), 3), "s",
+      "| serial prediction: 32.0 s")
+PY
+```
+
+### 3.2 OOM ceiling is reported as a constant but is baseline-dependent
+
+| Account | baseline `memory.current` | last survive | first kill |
 |---|---|---|---|
-| Guest OS | Debian 13 trixie | bookworm / Py 3.11 — discriminator only | Debian 12 bookworm |
-| Kernel stamp | `#1 … Fri Jul 17 14:31:34 UTC 2026` | `Mon May 11 18:48:24 UTC 2026` (unchecked here) | `#2 … Fri Mar 13 10:12:54 UTC 2026` |
-| Python | 3.13.14 | 3.11.2 (unchecked here) | app-side (Node) |
-| vCPU / MemTotal | 2 / 2 032 608 kB | 2 / ~3.8 GiB (unchecked here) | 4 / 4 034 208 kB |
-| cgroup user memory.max | 1 947 172 864 B | — | 3 996 811 264 B |
-| template / BUILD_ID | `nlhz8vlwyupq845jsdg9` / `f34a5416-…` | — | `n93h7d3hf6qbdd07x3yo` / `62640bfa-…` |
+| account_a | 192 155 648 B | 1600 MiB | 1632 MiB |
+| account_b | 80 023 552 B | 1632 MiB | 1664 MiB |
+| account_c | 185 868 288 B | ~1624.85 MiB | ~1653.86 MiB |
 
-`INDEX_ALL.tsv` column `NEW` means **could not classify** from env-lock evidence (egress; provenance brave). It is not a fourth hardware class. `ID_COMPARISON_ROUND2.md` still says that column is blank — that paragraph is stale.
+`account_c` catches the reason — page cache counts against `memory.max`. Accounts a and b report their figure without that caveat.
 
----
+**The stable constant is `memory.max = 1947172864`.** The ceiling is a derived, session-varying observation.
 
-## Layout
+### 3.3 No cross-account round-3 synthesis exists
 
-| Path | What |
-|------|------|
-| `ACCOUNTS.md` | account ↔ browser ↔ acctN |
-| `CHANGELOG.md` | append-only burst / PR log |
-| `LICENSE` | Apache License 2.0 |
-| `characterizations/environment/` | round-1 agent reports |
-| `zips/` | immutable archives (persistence/benchmarks reserved empty) |
-| `prompts/` | `round1/` `forensic/` `round2/` `round3/` |
-| `forensic/evidence/` | unpacked raws (~843 files) |
-| `forensic/reports/` | unpack reports, `summary/INDEX_ALL.tsv`, `benchmarks/BENCH_REPORT.md`, `round3/UNPACK_REPORT.md` |
-| `docs/wiki_home.md` | wiki Home seed |
-| `ceilings_prov_egress_extract_*/` `code_arena_extract_*/` | audit work trees, for humans |
+`forensic/reports/round3/` contains only `UNPACK_REPORT.md` — integrity and placement. The contradiction in §3.1 sits unreconciled in the evidence tree because nobody read the raw numbers back against the ledger.
+
+### 3.4 Repo metadata lags the evidence
+
+- Three round-3 zips are absent from `INDEX_ALL.tsv` (22 indexed vs 24 on disk).
+- One `INDEX_ALL.tsv` row points at a file that is not committed.
+- 10 files listed in `run9`'s manifest are absent from the committed tree.
 
 ---
 
-## Verification (of files that exist)
+## 4. Reliability by category
 
-| Set | Status |
-|-----|--------|
-| Round-1 environment | Inventory claims 363 SHA-256 entries / 17 manifests, 0 mismatches; outer zip SHAs 9/9 in `00_ROOT_INVENTORY.txt` |
-| Round-2 zips | Light-verify PASS (hash, `unzip -t`, no traversal). See round-2 verify reports |
-| Round-3 | 26 / 32 / 38 per-file PASS. Hash-of-hashes PASS **under each tree’s own method**. Brave/edge manifests say “sorted”; the digest that matches is **listed / filename order**, not sort-by-hash. See `forensic/reports/round3/UNPACK_REPORT.md` |
-| F benchmarks | 3/3 SHA-256 MATCH pre- and post-move |
-| GitHub-connect | **not performed** — no artefacts |
-
-`00_ROOT_INVENTORY.txt` is Burst 16: it still lists benchmarks evidence as empty. F texts arrived later (Burst 20).
-
----
-
-## Methods
-
-1. **Raw layer first.** Shell redirection in-sandbox. Agent prose is secondary.
-2. **Hash everything** that shipped as a tree. Re-verify before interpreting.
-3. **Identical prompts, fresh sessions** where the prompt says so. Variance is signal.
-4. **Never execute archive contents.**
-5. **Report ranges.** Flag confounds (numpy version, method mismatch, page-cache, unit mislabels).
-6. **Publish honest negatives:** `cannot verify`, `not performed`, `unrecorded`, empty directories.
+| Category | Rating | Basis |
+|---|---|---|
+| **Runtime** — OS, kernel, Python | **High** | Identical strings, 3/3 sessions, hash-verified, trivially re-checkable |
+| **Isolation** — KVM, PID 1, cgroup path | **High** | Positive tests excluding both container and bare metal |
+| **Resources** — limits | **High** | Byte-identical 3/3 |
+| **Resources** — OOM ceiling | **Medium** | Real but session-dependent; see §3.2 |
+| **Network** — method and findings | **Medium-High** | Controlled, with false-negative controls; sample-bounded |
+| **Identity** — E2B template lineage | **High** | Constant IDs + constant boot_id across varying sandbox_ids |
+| **Identity** — platform attribution | **Low** | Agent-asserted, zero machine grounding |
+| **Concurrency** | **Low** | Internally contradictory, cap never saturated |
+| **Persistence** | **None** | Category is empty |
+| **Benchmarks** — as cross-account comparison | **Low** | Confounded; the report says so itself |
+| **Benchmarks** — as single-session snapshots | **Medium** | Single run each, no repeats |
 
 ---
 
-## Still open
+## 5. Reproducibility
 
-- Persistence turns 2/3 (Prompt B) — campaign not in the repo
-- GitHub-connect evidence — not archived
-- Class B session — not archived
-- Non-Arena E2B control — not archived
-- Probe G (connected-session egress), Probe H (workflows push)
-- vanilla / react-vite Code Arena templates
-- Host tenancy, SMT policy, sandbox TTL, per-turn wall-clock budget
-- Section E on a live `arena.ai/code` session (snapshots exist; a full E run does not)
+### Fully reproducible — verification
+
+Every hash, manifest and hash-of-hashes recomputes from this repository alone.
+
+```bash
+# outer zip hashes vs the index
+awk -F'\t' 'NR>1 {print $NF"  "$1}' forensic/reports/summary/INDEX_ALL.tsv | sha256sum -c -
+
+# round-3 archive integrity
+for z in zips/round3/*.zip; do unzip -t "$z" >/dev/null && sha256sum "$z"; done
+
+# per-file manifest check inside an extracted tree
+cd forensic/evidence/round3/account_b/probe3 && sha256sum -c manifest3.txt --quiet
+```
+
+**Manifest dialect warning.** The three round-3 trees use three incompatible formats. Chrome is 4-column (`sha256  bytes  write_time  path`) with hash-of-hashes over **digests only**; brave and edge are `sha256sum` lines with hash-of-hashes over the **full lines**. In both brave and edge the word *"sorted"* in the footer means **name-sorted, not hash-sorted** — sorting lexicographically by hash yields a different, non-matching digest. Edge's `SELF-SHA256` is the hash of the file *with that line removed*. None of these are failures; all are documented in `forensic/reports/round3/UNPACK_REPORT.md`.
+
+### Partially reproducible — re-measurement
+
+Round 3 ships its probe sources, so these can be re-run inside an equivalent sandbox:
+
+| Probe | Script |
+|---|---|
+| OOM bisect | `round3/account_a/probe3/d1_oom_bisect.py`, `account_b/probe3/scripts/oom_probe.py`, `account_c/probe3/src/oombisect.py` |
+| fd ceiling | `account_a/probe3/d4_fd.py`, `account_c/probe3/src/fdtest.py` |
+| SMT penalty | `account_c/probe3/src/smt.py`, `account_b/probe3/scripts/burn.py` |
+| Manifest generation | `account_a/probe3/make_manifest.sh` (only tree that ships its own generator) |
+
+### Not reproducible
+
+- **The D5 concurrency test** — no shared script, three different sleep values. This is the direct cause of §3.1.
+- **The benchmarks** — no scripts ship at all. Defended in `BENCH_REPORT.md` §5.6 on the grounds that the originating prompt deletes created files; defensible, but it means those numbers cannot be repeated by an outsider.
+- **Anything requiring the sandbox itself** — re-running needs access to the same surface, which this repository cannot grant.
 
 ---
 
-## Reproducing
+## 6. Layout
 
-Instruments are in `prompts/`.
+```
+zips/
+  environment/account_{a,b,c}/   9 zips   Agent 1-9, round 1 followup
+  provenance/account_{a,b,c}/    3 zips
+  ceilings/account_{a,b,c}/      3 zips
+  egress/account_{a,b,c}/        3 zips
+  code_arena/account_{a,b,c}/    3 zips
+  round3/                        3 zips   falsification probes
+  benchmarks/ persistence/       empty
 
-1. Fresh Agent Mode session (or Code Arena, if that is the prompt).
-2. Keep outputs verbatim.
-3. Ship raws + manifest + hash-of-hashes (or one self-describing text, for F).
-4. Diff against this repo. Do not re-read prose first.
-5. Do not execute extracted scripts.
+forensic/
+  evidence/
+    environment/account_{a,b,c}/runN/
+    provenance/ ceilings/ egress/ code_arena/ round3/account_{a,b,c}/
+    benchmarks/account_{a,b,c}/          3 run logs, txt not zip
+    persistence/                         EMPTY — see §2
+  reports/
+    round1_environment/                  unpack + crosscheck
+    round2_ceilings_provenance_egress/
+    round2_code_arena/
+    round3/UNPACK_REPORT.md              integrity + placement only
+    benchmarks/BENCH_REPORT.md           integrity + confound analysis
+    summary/                             inventory, INDEX_ALL.tsv, ID comparison
+
+characterizations/environment/           original round-1 narrative *.md
+prompts/round{1,2,3}/                    instruction sets, unmodified
+```
+
+### Account mapping
+
+Browser string in filenames is ground truth; `account_*` labels are aliases.
+
+| account | browser | env run numbers |
+|---|---|---|
+| account_a | chrome | 1, 4, 5 |
+| account_b | brave | 2, 3, 6 |
+| account_c | edge | 7, 8, 9 |
 
 ---
 
-## License
+## 7. Method
 
-Copyright 2026 Anuj Meena
+Collection and verification are performed by **separate agents**. The verifier's scope is `sha256sum` + `unzip -t` + `git mv`, and it explicitly does not execute payloads or analyse content. Every round-3 claim carries a **falsifying command** — the command that would have produced different output had the claim been false — and a grade of `MEASURED` or `NOT PERFORMED`.
 
-Licensed under the Apache License, Version 2.0. See [`LICENSE`](LICENSE).
+Where earlier rounds were wrong, the retraction is in the record rather than edited away. Chrome's F13 retracts an earlier `1.894 GiB` figure and demonstrates it is unreproducible from `MemTotal` under any convention.
+
+---
+
+## 8. Safety
+
+- Do **not** execute `.sh`, `.py`, `.c`, or binaries found inside zips or extract trees without review.
+- No archive contains path traversal, absolute paths, symlinks, or nested zips. `unzip -t` clean on all 24.
+- `code_arena` `drizzle.config.json` has `DATABASE_URL` redacted to scheme + host only. Per-account scrub records: `forensic/evidence/code_arena/account_*/SCRUB_REPORT.md`.
+- Quarantine: none.
+
+---
+
+## 9. Open work
+
+1. A genuine **cross-session persistence** round — the only wholly empty category.
+2. A **D5 re-run** with one shared script and a sleep long enough to actually saturate the dispatcher, so the concurrency cap is measured rather than inferred.
+3. A **cross-account round-3 synthesis** report, which would have caught §3.1.
+4. Benchmark re-runs that print `numpy.__version__` and record byte counts alongside rates.
