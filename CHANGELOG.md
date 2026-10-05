@@ -29,3 +29,9 @@ Reorg of the Trixie forensic archive on branch `arena/01a070c2-trixie`. One line
 - **Docs (honest pass)** — rewrote `README.md` and `docs/wiki_home.md` as a claim ledger: only in-tree facts; empty dirs, missing GitHub-connect/persistence/class-B/control labelled not in this repo; class C OS corrected to bookworm; OOM quoted as ranges.
 
 
+- **Direct landing (2026-09-24)** — reports: previews/MASTER_SHEET, coldstart/ADJUDICATION, persistence/PERSISTENCE_20DAY_20260924, mpx/MPX_SESSION_SANDBOX_FINDINGS; evidence: d5_rerun_20260924, provenance/control_probe_note; summary: TEST_INVENTORY + INDEX_ALL completed to 28 rows (+3 round-3, +3 preview; SHAs re-verified); prompts: preview/ + round4/; methods/ added.
+- **README (2026-09-24)** — replaced with the cross-checked README_v2 fold (65e306b5…) + 8 dated updates (viewer, D5 re-run, 20-day persistence, MPX, INDEX completion).
+- **Wiki (2026-09-24)** — Home: appended "September 15–24" section.
+- **Docs sync (2026-10-05)** — `docs/wiki_home.md` updated to match the live wiki Home (September 15–24 section; sha fcfd3eaf…).
+- **Tidy (2026-10-05)** — Sep-15 preview artifacts moved from root: bundles → `zips/previews/account_{a,b,c}/` (INDEX_ALL paths updated, outer SHAs unchanged); results md + BRAVE_RESULTS → `forensic/reports/previews/`.
+- **README pass (2026-10-05)** — layout table lists `zips/previews/`; the 15 `.gitkeep`-only placeholder dirs labelled intentional.
