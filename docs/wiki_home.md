@@ -154,3 +154,66 @@ Say these out loud so they stop travelling as results:
 | Evidence (~843 files) | `forensic/evidence/` |
 | Instruments | `prompts/` |
 | License | `LICENSE` (Apache-2.0) |
+
+## September 15–24: the viewer, the re-runs, and the 20-day boundary
+
+*Appended 2026-09-24. In-tree sources: `forensic/reports/previews/MASTER_SHEET.md`,
+`forensic/evidence/d5_rerun_20260924/`, `forensic/reports/persistence/PERSISTENCE_20DAY_20260924.md`,
+`forensic/reports/mpx/MPX_SESSION_SANDBOX_FINDINGS.md`, `forensic/reports/coldstart/ADJUDICATION.md`,
+`forensic/reports/summary/INDEX_ALL.tsv` (now 28 rows).*
+
+**The in-app file viewer (Sep 15).** A 29-row master sheet driven entirely by human y/n
+verdicts across Chrome, Edge and Brave: every row with three votes was unanimous. Markdown,
+code, JSON, CSV (rendered as a real table), images, SVG, PDF, Office files, audio and video
+preview; archives and binaries download-only. Two surprises: routing is **by file extension,
+not content** (zip bytes named `.txt` preview as garbled text), and the panel is
+**single-file** — after a batch only the last presented file is visible until the human
+navigates the dropdown. A ~10 MB Markdown file proved a **sufficient crash trigger**
+("We couldn't load this chat"; reproduced three times across Chrome and Brave); the round was
+closed by operator decision — the crash behaviour itself is the finding.
+
+**D5 re-run (Sep 24).** The round-3 divergence on process concurrency (chrome "cap = 1
+measured" vs brave "no cap at 8") was re-run by the operator in three fresh sessions — Chrome,
+**Firefox** (a fourth measured browser), Brave. Result: stagger 0.10–3.44 s, 8–10 processes
+simultaneously resident on 2 vCPUs, walls ≈ 20–23 s. No hard concurrency cap; the round-3
+"cap = 1" was a dispatch-timing artifact — confirming the per-session dispatch-variance
+hypothesis.
+
+**20-day persistence (Sep 24).** The original Sep-4 sessions — idle for twenty days — were
+reopened and answered a read-only check. All three accounts: a **fresh microVM** (new sandbox
+id, uptime ≈ 11–12 s, every `/home/user` mtime = the restore stamp) with `/home/user`
+**byte-identical** to Sep 4 (Brave manifest SHA match; Chrome 148/148 re-hash + zip SHA match;
+Edge top-level + Sep-4-verified zip, its agent honestly noting nested files were not
+re-enumerated by the three commands). Excluded paths (`/tmp`, `/dev/shm`, `~/.cache`,
+`~/.npm`, `~/.local`, `~/.config`) were wiped exactly as the snapshot model predicts. Two
+consequences: (1) cross-turn persistence is confirmed at the 20-day boundary — the strongest
+form yet of the snapshot-resume regime; (2) **idle time is not the hard-reject trigger** — a
+20-day-idle session resumes fine, so the one observed hard rejection is best explained by
+context size. Two incidental corrections came from the agents' own records: the boot_id has
+been stable since Sep 4 (now 9 identical observations; one agent's "boot_id is new" was loose
+phrasing), and the Sep-4 packaging shell's odd template id was genuine — a fifth distinct
+runtime template id, i.e. per-boot harness variance while product ids stay constant.
+
+**Cross-surface: MPX (Sep 24).** A separate five-burst media-player session on the lmarena
+surface ran its own hash-disciplined forensics: same class-T base (kernel stamp, MemTotal,
+cgroup locks), template `nlhz8vlwyupq845jsdg9` + BUILD_ID `f34a5416-…` matching Agent Mode,
+and the **same boot_id** — extending the snapshot lineage across surfaces and 20 days. Its
+SDL/FFmpeg/cmake toolchain was apt-installed in-session: the base template is pristine.
+
+**Adjudication and bookkeeping.** The 09-16 cold-start forensic review was adjudicated against
+the repo: most findings pre-empted on main; the D5 contradiction and the run9 manifest gap
+confirmed by recomputation; one stale omission and one over-read noted
+(`forensic/reports/coldstart/ADJUDICATION.md`). `INDEX_ALL.tsv` was completed to 28 rows —
+the three round-3 zips and the three Sep-15 preview bundles are now indexed, every outer
+SHA-256 re-verified against freshly downloaded bytes. A control-probe provenance note and a
+test inventory joined the tree.
+
+### Open items — updated 2026-09-24
+
+- **Resolved:** B turns 2/3 cross-turn survival (→ the 20-day round above); preview row 28
+  (10 MB crash; closed by operator decision after the third reproduction).
+- **Still open:** preview row-29 CDN canary (Edge styled-look outlier) and the xlsx
+  grid-memory check; Probe G (connected-session egress) and Probe H (post-acceptance workflows
+  push) — prompts drafted in `prompts/round4/`; vanilla / react-vite Code Arena templates;
+  class-B second encounter; full Section E live run; `github_connect` evidence and the turn-1
+  provenance note still to land (primaries with the operator).
