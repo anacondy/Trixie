@@ -19,7 +19,8 @@ Reorg of the Trixie forensic archive on branch `arena/01a070c2-trixie`. One line
 - **Burst 14** (`b6defc6`) — Split prompts into `round1/` and `forensic/`; add round2/round3 placeholders.
 - **Burst 15** (`67ff35c`) — Extract code_arena evidence with credential scrub (DATABASE_URL redacted in all three accounts).
 - **Burst 16** — INDEX_ALL.tsv, regenerated inventory + ID comparison (final mapping), README, this changelog.
-- **Burst 17** (`f2a634c`) — Fill `vm_class` in INDEX_ALL.tsv from existing env-lock evidence only (environment mostly T, provenance mixed, egress NEW, ceilings blank, code_arena left blank pending snapshots).
+- **Burst 17** (`f2a634c`) — Fill `vm_class` in INDEX_ALL.tsv from existing e
+nv-lock evidence only (environment mostly T, provenance mixed, egress NEW, ceilings blank, code_arena left blank pending snapshots).
 - **Burst 18** (`9f00ba6`) — code_arena `vm_class=C` from the five committed `/api/env` snapshots.
 - **Housekeeping** — organised user-added round2/round3 prompts into `prompts/round2/` and `prompts/round3/`; confirmed no stray `api_env_snapshot*` files on this branch root (canonical copies remain under `forensic/evidence/code_arena/{chrome,brave,edge}/`).
 - **Burst 19** — Place & unpack round-3 probe archives into `zips/round3/` and `forensic/evidence/round3/`; outer SHA-256 + per-manifest file hashes + hash-of-hashes all PASS (`forensic/reports/round3/UNPACK_REPORT.md`).
@@ -27,5 +28,5 @@ Reorg of the Trixie forensic archive on branch `arena/01a070c2-trixie`. One line
 - **Burst 21** — README replaced; added `docs/wiki_home.md`; wiki Home published (`4cf922b`); later reformatted Home for spacing and scanability (facts unchanged).
 - **Docs / license** — reformatted root `README.md` to match wiki spacing; added Apache License 2.0 (`LICENSE`).
 - **Docs (honest pass)** — rewrote `README.md` and `docs/wiki_home.md` as a claim ledger: only in-tree facts; empty dirs, missing GitHub-connect/persistence/class-B/control labelled not in this repo; class C OS corrected to bookworm; OOM quoted as ranges.
-
-
+- **Direct landing (2026-09-24)** — reports: previews/MASTER_SHEET, coldstart/ADJUDICATION, persistence/PERSISTENCE_20DAY_20260924, mpx/MPX_SESSION_SANDBOX_FINDINGS; evidence: d5_rerun_20260924, provenance/control_probe_note; summary: TEST_INVENTORY + INDEX_ALL completed to 28 rows (+3 round-3, +3 preview; SHAs re-verified); prompts: preview/ + round4/; methods/ added.
+- **README (2026-09-24)** — replaced with the cross-checked README_v2 fold (65e306b5…) + 8 dated updates (viewer, D5 re-run, 20-day persistence, MPX, INDEX completion).
