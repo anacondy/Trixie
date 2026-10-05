@@ -131,7 +131,7 @@ Evidence: GitHub API records + settings-page screenshots (`forensic/evidence/git
 | `CHANGELOG.md` | append-only burst / PR log |
 | `LICENSE` | Apache License 2.0 |
 | `characterizations/` | agents' reports, per category; `environment/` = round-1 originals |
-| `zips/` | immutable archives: environment (round-1 followup), provenance, ceilings, egress, code_arena, persistence, benchmarks, round3/ |
+| `zips/` | immutable archives: environment (round-1 followup), provenance, ceilings, egress, code_arena, round3/, previews/ (Sep-15 preview bundles); persistence and benchmarks are (placeholders, awaiting future zips) |
 | `prompts/` | `round1/` `forensic/` `round2/` `round3/` `preview/` `round4/` — every instrument, verbatim |
 | `forensic/evidence/` | unpacked raws per account (**843 files**, 849 with `.gitkeep`): environment, provenance, ceilings, egress, code_arena (+5 api_env snapshots), round3/, benchmarks/ (F runs x3); `github_connect/` + two provenance notes land via Burst 22 |
 | `forensic/reports/` | per-round unpack reports + `summary/` (`INDEX_ALL.tsv`, inventories, ID comparisons) + `benchmarks/BENCH_REPORT.md` + `round3/UNPACK_REPORT.md` + `previews/MASTER_SHEET.md` + `coldstart/ADJUDICATION.md` + `persistence/` + `mpx/` |
@@ -139,6 +139,8 @@ Evidence: GitHub API records + settings-page screenshots (`forensic/evidence/git
 | `docs/wiki_home.md` | wiki Home seed (source of truth the wiki mirrors) |
 | `ceilings_prov_egress_extract_*/` | audit work trees, kept for human review |
 | `code_arena_extract_*/` | same |
+
+*15 placeholder dirs (intentional, `.gitkeep`-only, awaiting future zips): `characterizations/{benchmarks, ceilings, code_arena, egress, persistence, provenance}`, `zips/benchmarks/account_{a,b,c}`, `zips/persistence/account_{a,b,c}`, `forensic/evidence/persistence/account_{a,b,c}`.*
 
 ---
 

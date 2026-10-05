@@ -34,3 +34,4 @@ Reorg of the Trixie forensic archive on branch `arena/01a070c2-trixie`. One line
 - **Wiki (2026-09-24)** — Home: appended "September 15–24" section.
 - **Docs sync (2026-10-05)** — `docs/wiki_home.md` updated to match the live wiki Home (September 15–24 section; sha fcfd3eaf…).
 - **Tidy (2026-10-05)** — Sep-15 preview artifacts moved from root: bundles → `zips/previews/account_{a,b,c}/` (INDEX_ALL paths updated, outer SHAs unchanged); results md + BRAVE_RESULTS → `forensic/reports/previews/`.
+- **README pass (2026-10-05)** — layout table lists `zips/previews/`; the 15 `.gitkeep`-only placeholder dirs labelled intentional.
