@@ -23,7 +23,7 @@ zips/code_arena/account_c/code-arena-sandbox-characterization 1 edge.zip	code_ar
 zips/round3/probe3_evidence chrome.zip	round3	new_sessions	account_a	chrome	1	i3xgkkubxoiw2bi4vlqkx	nlhz8vlwyupq845jsdg9	T	b5580da4f4fb8ff10c2fed1b8ad7013d0c94eca0ba4dad1d435b479a6fecab6a	2026-09-06
 zips/round3/probe3_evidence brave.zip	round3	new_sessions	account_b	brave	2	i8h6fqsmx2z4wfzs4klkk	nlhz8vlwyupq845jsdg9	T	0599cf708d26185f44ca9c401375f510bbe3edf1369c7e43a4b3427078f0dd1b	2026-09-06
 zips/round3/probe3_evidence edge.zip	round3	new_sessions	account_c	edge	3	ids70tfd987wffpjczbai	nlhz8vlwyupq845jsdg9	T	9c8a596de81013188310dcfbdf09b8571a7446dc78f5c74a57c93692549f10a2	2026-09-06
-preview_calibration_chrome_2026-09-15.zip	preview	new_sessions	account_a	chrome					00c21c7663f3793c1b6adfa5fcc937b77df3f04f8227218dc376747cd2b56813	2026-09-15
-Preview Probe [Brave].zip	preview	new_sessions	account_b	brave		ie5tmq8jibvyinh0363wa			4c495dae5c27bbb0aadf377b91da308eb6afec8a4397fb77487237aadb5ae932	2026-09-15
-preview_probe_bundle_edge_20260915.zip	preview	new_sessions	account_c	edge					67e75e2a9af2c19e274073f3b3e8e2c2b4cd1106d84f8b2fefa608c3a1e3c5d1	2026-09-15
+zips/previews/account_a/preview_calibration_chrome_2026-09-15.zip	preview	new_sessions	account_a	chrome					00c21c7663f3793c1b6adfa5fcc937b77df3f04f8227218dc376747cd2b56813	2026-09-15
+zips/previews/account_b/Preview Probe [Brave].zip	preview	new_sessions	account_b	brave		ie5tmq8jibvyinh0363wa			4c495dae5c27bbb0aadf377b91da308eb6afec8a4397fb77487237aadb5ae932	2026-09-15
+zips/previews/account_c/preview_probe_bundle_edge_20260915.zip	preview	new_sessions	account_c	edge					67e75e2a9af2c19e274073f3b3e8e2c2b4cd1106d84f8b2fefa608c3a1e3c5d1	2026-09-15
 forensic/evidence/environment/account_c/run9/Agent 9 edge/payload/home/user/environment_evidence_20260904T142002Z-2576.zip	environment	followup	account_c	edge	9	ixwcucmrk55t9qy240sxo	nlhz8vlwyupq845jsdg9	T	e8215900f3136be5bfddbd74233d9c05b48dc7bfff250802f77ffa5e53dfdb9d	2026-09-04
